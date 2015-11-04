@@ -1,0 +1,704 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:Source"
+      name = "Source">
+      <Group
+         location = "group:External"
+         name = "External">
+         <FileRef
+            location = "group:VgcCustomElements.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcCustomMappings.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcSharedViews.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcCentralViewController.swift">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:Framework"
+         name = "Framework">
+         <FileRef
+            location = "group:VgcManager.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcCentralPublisher.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcCentralPublisherWatch.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcController.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcElements.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcIcadePeripheral.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcMotion.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcPeripheral.swift">
+         </FileRef>
+         <FileRef
+            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcBrowser.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcStreamer.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcWatchConnectivity.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcActivity.swift">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "group:Bridge/vgcBridge"
+      name = "Framework Projects">
+      <Group
+         location = "group:../../Frameworks/VirtualGameControllerIOS"
+         name = "VirtualGameControllerIOS">
+         <Group
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameController"
+            name = "VirtualGameController">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameController.h">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameControllerIOS"
+            name = "VirtualGameControllerIOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerIOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameControllerIOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:../../Frameworks/VirtualGameControllerOSX"
+         name = "VirtualGameControllerOSX">
+         <Group
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerOSX/VirtualGameControllerOSX"
+            name = "VirtualGameControllerOSX">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerOSX.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerOSX/VirtualGameControllerOSX.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:../../Frameworks/VirtualGameControllerTvOS"
+         name = "VirtualGameControllerTvOS">
+         <Group
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerTvOS/VirtualGameControllerTvOS"
+            name = "VirtualGameControllerTvOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerTvOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerTvOS/VirtualGameControllerTvOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:../../Frameworks/VirtualGameControllerWatchOS"
+         name = "VirtualGameControllerWatchOS">
+         <Group
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS"
+            name = "VirtualGameControllerWatchOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerWatchOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Sample Projects">
+      <Group
+         location = "group:Samples/Bridge_iOS"
+         name = "Bridge_iOS">
+         <FileRef
+            location = "group:BridgeiOS.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:vgcBridge"
+            name = "vgcBridge">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:LaunchScreen.storyboard">
+               </FileRef>
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcBridge WatchKit App"
+            name = "vgcBridge WatchKit App">
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcBridge WatchKit Extension"
+            name = "vgcBridge WatchKit Extension">
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <FileRef
+                  location = "group:README__ignoredByTemplate__">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:ElementRow.swift">
+            </FileRef>
+            <FileRef
+               location = "group:ExtensionDelegate.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:InterfaceController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:NotificationController.swift">
+            </FileRef>
+            <FileRef
+               location = "group:PushNotificationPayload.apns">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:vgcBridge.textClipping">
+         </FileRef>
+         <Group
+            location = "group:vgcBridgeTests"
+            name = "vgcBridgeTests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcBridgeTests.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcBridgeUITests"
+            name = "vgcBridgeUITests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcBridgeUITests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Samples/Central_iOS"
+         name = "Central_iOS">
+         <FileRef
+            location = "group:Central_iOS.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControlleriOSSample"
+            name = "CentralVirtualGameControlleriOSSample">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:LaunchScreen.storyboard">
+               </FileRef>
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:CentralVirtualGameControlleriOSSample.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControlleriOSSampleTests"
+            name = "CentralVirtualGameControlleriOSSampleTests">
+            <FileRef
+               location = "group:CentralVirtualGameControlleriOSSampleTests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CentralVirtualGameControlleriOSSampleUITests"
+            name = "CentralVirtualGameControlleriOSSampleUITests">
+            <FileRef
+               location = "group:CentralVirtualGameControlleriOSSampleUITests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Samples/Central_OSX"
+         name = "Central_OSX">
+         <FileRef
+            location = "group:Central_OSX.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSample"
+            name = "CentralVirtualGameControllerOSXSample">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:CentralVirtualGameControllerOSXSample.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSampleTests"
+            name = "CentralVirtualGameControllerOSXSampleTests">
+            <FileRef
+               location = "group:CentralVirtualGameControllerOSXSampleTests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSampleUITests"
+            name = "CentralVirtualGameControllerOSXSampleUITests">
+            <FileRef
+               location = "group:CentralVirtualGameControllerOSXSampleUITests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Samples/Central_tvOS"
+         name = "Central_tvOS">
+         <FileRef
+            location = "group:Central_tvOS.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControllerTVSample"
+            name = "CentralVirtualGameControllerTVSample">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:App Icon &amp; Top Shelf Image.brandassets"
+                  name = "App Icon &amp; Top Shelf Image.brandassets">
+                  <Group
+                     location = "group:App Icon - Large.imagestack"
+                     name = "App Icon - Large.imagestack">
+                     <Group
+                        location = "group:Back.imagestacklayer"
+                        name = "Back.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:Contents.json">
+                     </FileRef>
+                     <Group
+                        location = "group:Front.imagestacklayer"
+                        name = "Front.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Middle.imagestacklayer"
+                        name = "Middle.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <Group
+                     location = "group:App Icon - Small.imagestack"
+                     name = "App Icon - Small.imagestack">
+                     <Group
+                        location = "group:Back.imagestacklayer"
+                        name = "Back.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:Contents.json">
+                     </FileRef>
+                     <Group
+                        location = "group:Front.imagestacklayer"
+                        name = "Front.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Middle.imagestacklayer"
+                        name = "Middle.imagestacklayer">
+                        <Group
+                           location = "group:Content.imageset"
+                           name = "Content.imageset">
+                           <FileRef
+                              location = "group:Contents.json">
+                           </FileRef>
+                        </Group>
+                        <FileRef
+                           location = "group:Contents.json">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+                  <Group
+                     location = "group:Top Shelf Image.imageset"
+                     name = "Top Shelf Image.imageset">
+                     <FileRef
+                        location = "group:Contents.json">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <Group
+                  location = "group:LaunchImage.launchimage"
+                  name = "LaunchImage.launchimage">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CentralVirtualGameControllerTVSampleTests"
+            name = "CentralVirtualGameControllerTVSampleTests">
+            <FileRef
+               location = "group:CentralVirtualGameControllerTVSampleTests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Samples/Peripheral_iOS"
+         name = "Peripheral_iOS">
+         <FileRef
+            location = "group:Peripheral_iOS.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:PeripheralVirtualGameControlleriOSSample"
+            name = "PeripheralVirtualGameControlleriOSSample">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:116-controller.imageset"
+                  name = "116-controller.imageset">
+                  <FileRef
+                     location = "group:116-controller.png">
+                  </FileRef>
+                  <FileRef
+                     location = "group:116-controller@2x.png">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:17-pause.imageset"
+                  name = "17-pause.imageset">
+                  <FileRef
+                     location = "group:17-pause.png">
+                  </FileRef>
+                  <FileRef
+                     location = "group:17-pause@2x.png">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:LaunchScreen.storyboard">
+               </FileRef>
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:PeripheralVirtualGameControlleriOSSample.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:PeripheralVirtualGameControlleriOSSampleTests"
+            name = "PeripheralVirtualGameControlleriOSSampleTests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:PeripheralVirtualGameControlleriOSSampleTests.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:PeripheralVirtualGameControlleriOSSampleUITests"
+            name = "PeripheralVirtualGameControlleriOSSampleUITests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:PeripheralVirtualGameControlleriOSSampleUITests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
+         location = "group:Samples/Peripheral_OSX"
+         name = "Peripheral_OSX">
+         <FileRef
+            location = "group:Peripheral_OSX.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:vgcPeripheral_OSX"
+            name = "vgcPeripheral_OSX">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcPeripheral_OSXTests"
+            name = "vgcPeripheral_OSXTests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcPeripheral_OSXTests.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcPeripheral_OSXUITests"
+            name = "vgcPeripheral_OSXUITests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcPeripheral_OSXUITests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+   </Group>
+</Workspace>

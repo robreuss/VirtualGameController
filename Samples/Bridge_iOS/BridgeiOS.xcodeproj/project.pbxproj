@@ -1,0 +1,847 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		202BBF891BE56B90004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF861BE56B90004D47EC /* VgcCustomElements.swift */; };
+		202BBF8A1BE56B90004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */; };
+		202BBF8B1BE56B90004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF881BE56B90004D47EC /* VgcSharedViews.swift */; };
+		207BFA3F1BBB7A210061A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */; };
+		207BFA411BBB7A210061A9B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA401BBB7A210061A9B0 /* ViewController.swift */; };
+		207BFA441BBB7A210061A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA421BBB7A210061A9B0 /* Main.storyboard */; };
+		207BFA461BBB7A210061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA451BBB7A210061A9B0 /* Assets.xcassets */; };
+		207BFA491BBB7A210061A9B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA471BBB7A210061A9B0 /* LaunchScreen.storyboard */; };
+		207BFA541BBB7A210061A9B0 /* vgcBridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA531BBB7A210061A9B0 /* vgcBridgeTests.swift */; };
+		207BFA5F1BBB7A210061A9B0 /* vgcBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA5E1BBB7A210061A9B0 /* vgcBridgeUITests.swift */; };
+		207BFA641BBB7A210061A9B0 /* BridgeiOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 207BFA631BBB7A210061A9B0 /* BridgeiOS.app */; };
+		207BFA6C1BBB7A210061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */; };
+		207BFA731BBB7A220061A9B0 /* BridgeiOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		207BFA7A1BBB7A220061A9B0 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA791BBB7A220061A9B0 /* InterfaceController.swift */; };
+		207BFA7C1BBB7A220061A9B0 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */; };
+		207BFA7E1BBB7A220061A9B0 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */; };
+		207BFA801BBB7A220061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */; };
+		207BFAA51BBB81240061A9B0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFAA41BBB81240061A9B0 /* Interface.storyboard */; };
+		209F634D1BE70F6B00A8FDB3 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */; };
+		20A1216A1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; };
+		20A1216B1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20AEB9391BE69E3500F62758 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */; };
+		20AEB93A1BE69E3500F62758 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20F967DC1BBDB5FA00EF2815 /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		207BFA501BBB7A210061A9B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 207BFA331BBB7A210061A9B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207BFA3A1BBB7A210061A9B0;
+			remoteInfo = vgcBridge;
+		};
+		207BFA5B1BBB7A210061A9B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 207BFA331BBB7A210061A9B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207BFA3A1BBB7A210061A9B0;
+			remoteInfo = vgcBridge;
+		};
+		207BFA651BBB7A210061A9B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 207BFA331BBB7A210061A9B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207BFA621BBB7A210061A9B0;
+			remoteInfo = "vgcBridge WatchKit App";
+		};
+		207BFA741BBB7A220061A9B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 207BFA331BBB7A210061A9B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 207BFA711BBB7A220061A9B0;
+			remoteInfo = "vgcBridge WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		207BFA871BBB7A220061A9B0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				207BFA731BBB7A220061A9B0 /* BridgeiOS.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA8B1BBB7A220061A9B0 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				207BFA641BBB7A210061A9B0 /* BridgeiOS.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A1216C1BDAC0E100E30083 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				20A1216B1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20A1216F1BDAC0F300E30083 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				20AEB93A1BE69E3500F62758 /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
+		202BBF881BE56B90004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		207BFA401BBB7A210061A9B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		207BFA431BBB7A210061A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		207BFA451BBB7A210061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		207BFA481BBB7A210061A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		207BFA4A1BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207BFA4F1BBB7A210061A9B0 /* BridgeiOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgeiOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		207BFA531BBB7A210061A9B0 /* vgcBridgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = vgcBridgeTests.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		207BFA551BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207BFA5A1BBB7A210061A9B0 /* BridgeiOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BridgeiOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		207BFA5E1BBB7A210061A9B0 /* vgcBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vgcBridgeUITests.swift; sourceTree = "<group>"; };
+		207BFA601BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207BFA631BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		207BFA6D1BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BridgeiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		207BFA781BBB7A220061A9B0 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		207BFA791BBB7A220061A9B0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterfaceController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		207BFA811BBB7A220061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		207BFAA31BBB81240061A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; };
+		20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameControllerWatchOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-watchos/VirtualGameControllerWatchOS.framework"; sourceTree = "<group>"; };
+		20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		207BFA381BBB7A210061A9B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AEB9391BE69E3500F62758 /* VirtualGameController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA4C1BBB7A210061A9B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA571BBB7A210061A9B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA6F1BBB7A220061A9B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20A1216A1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		207BFA321BBB7A210061A9B0 = {
+			isa = PBXGroup;
+			children = (
+				207BFA3D1BBB7A210061A9B0 /* vgcBridge_iOS */,
+				207BFA671BBB7A210061A9B0 /* vgcBridge_iOS WatchKit App */,
+				207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */,
+				207BFA3C1BBB7A210061A9B0 /* Products */,
+				207BFA521BBB7A210061A9B0 /* vgcBridge_iOSTests */,
+				207BFA5D1BBB7A210061A9B0 /* vgcBridge_iOSUITests */,
+			);
+			sourceTree = "<group>";
+		};
+		207BFA3C1BBB7A210061A9B0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */,
+				207BFA4F1BBB7A210061A9B0 /* BridgeiOS.xctest */,
+				207BFA5A1BBB7A210061A9B0 /* BridgeiOS.xctest */,
+				207BFA631BBB7A210061A9B0 /* BridgeiOS.app */,
+				207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		207BFA3D1BBB7A210061A9B0 /* vgcBridge_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				202BBF861BE56B90004D47EC /* VgcCustomElements.swift */,
+				20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */,
+				202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */,
+				202BBF881BE56B90004D47EC /* VgcSharedViews.swift */,
+				207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */,
+				209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */,
+				207BFA401BBB7A210061A9B0 /* ViewController.swift */,
+				207BFA421BBB7A210061A9B0 /* Main.storyboard */,
+				207BFA451BBB7A210061A9B0 /* Assets.xcassets */,
+				207BFA471BBB7A210061A9B0 /* LaunchScreen.storyboard */,
+				207BFA4A1BBB7A210061A9B0 /* Info.plist */,
+			);
+			name = vgcBridge_iOS;
+			path = vgcBridge;
+			sourceTree = "<group>";
+		};
+		207BFA521BBB7A210061A9B0 /* vgcBridge_iOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				207BFA531BBB7A210061A9B0 /* vgcBridgeTests.swift */,
+				207BFA551BBB7A210061A9B0 /* Info.plist */,
+			);
+			name = vgcBridge_iOSTests;
+			path = vgcBridgeTests;
+			sourceTree = "<group>";
+		};
+		207BFA5D1BBB7A210061A9B0 /* vgcBridge_iOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				207BFA5E1BBB7A210061A9B0 /* vgcBridgeUITests.swift */,
+				207BFA601BBB7A210061A9B0 /* Info.plist */,
+			);
+			name = vgcBridge_iOSUITests;
+			path = vgcBridgeUITests;
+			sourceTree = "<group>";
+		};
+		207BFA671BBB7A210061A9B0 /* vgcBridge_iOS WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */,
+				207BFAA41BBB81240061A9B0 /* Interface.storyboard */,
+				207BFA6D1BBB7A210061A9B0 /* Info.plist */,
+			);
+			name = "vgcBridge_iOS WatchKit App";
+			path = "vgcBridge WatchKit App";
+			sourceTree = "<group>";
+		};
+		207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				20F967CE1BBDB2EA00EF2815 /* Shared */,
+				207BFA791BBB7A220061A9B0 /* InterfaceController.swift */,
+				20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */,
+				207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */,
+				207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */,
+				207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */,
+				207BFA811BBB7A220061A9B0 /* Info.plist */,
+				207BFA771BBB7A220061A9B0 /* Supporting Files */,
+			);
+			name = "vgcBridge_iOS WatchKit Extension";
+			path = "vgcBridge WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		207BFA771BBB7A220061A9B0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				207BFA781BBB7A220061A9B0 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		20F967CE1BBDB2EA00EF2815 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */,
+			);
+			name = Shared;
+			path = ../../../Shared;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		207BFA3A1BBB7A210061A9B0 /* BridgeiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207BFA8C1BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS" */;
+			buildPhases = (
+				207BFA371BBB7A210061A9B0 /* Sources */,
+				207BFA381BBB7A210061A9B0 /* Frameworks */,
+				207BFA391BBB7A210061A9B0 /* Resources */,
+				207BFA8B1BBB7A220061A9B0 /* Embed Watch Content */,
+				20A1216F1BDAC0F300E30083 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				207BFA661BBB7A210061A9B0 /* PBXTargetDependency */,
+			);
+			name = BridgeiOS;
+			productName = vgcBridge;
+			productReference = 207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		207BFA4E1BBB7A210061A9B0 /* BridgeiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207BFA8F1BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOSTests" */;
+			buildPhases = (
+				207BFA4B1BBB7A210061A9B0 /* Sources */,
+				207BFA4C1BBB7A210061A9B0 /* Frameworks */,
+				207BFA4D1BBB7A210061A9B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				207BFA511BBB7A210061A9B0 /* PBXTargetDependency */,
+			);
+			name = BridgeiOSTests;
+			productName = vgcBridgeTests;
+			productReference = 207BFA4F1BBB7A210061A9B0 /* BridgeiOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		207BFA591BBB7A210061A9B0 /* BridgeiOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207BFA921BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOSUITests" */;
+			buildPhases = (
+				207BFA561BBB7A210061A9B0 /* Sources */,
+				207BFA571BBB7A210061A9B0 /* Frameworks */,
+				207BFA581BBB7A210061A9B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				207BFA5C1BBB7A210061A9B0 /* PBXTargetDependency */,
+			);
+			name = BridgeiOSUITests;
+			productName = vgcBridgeUITests;
+			productReference = 207BFA5A1BBB7A210061A9B0 /* BridgeiOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		207BFA621BBB7A210061A9B0 /* BridgeiOS WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207BFA881BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS WatchKit App" */;
+			buildPhases = (
+				207BFA611BBB7A210061A9B0 /* Resources */,
+				207BFA871BBB7A220061A9B0 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				207BFA751BBB7A220061A9B0 /* PBXTargetDependency */,
+			);
+			name = "BridgeiOS WatchKit App";
+			productName = "vgcBridge WatchKit App";
+			productReference = 207BFA631BBB7A210061A9B0 /* BridgeiOS.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		207BFA711BBB7A220061A9B0 /* BridgeiOS WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 207BFA841BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS WatchKit Extension" */;
+			buildPhases = (
+				207BFA6E1BBB7A220061A9B0 /* Sources */,
+				207BFA6F1BBB7A220061A9B0 /* Frameworks */,
+				207BFA701BBB7A220061A9B0 /* Resources */,
+				20A1216C1BDAC0E100E30083 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BridgeiOS WatchKit Extension";
+			productName = "vgcBridge WatchKit Extension";
+			productReference = 207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		207BFA331BBB7A210061A9B0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Rob Reuss";
+				TargetAttributes = {
+					207BFA3A1BBB7A210061A9B0 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					207BFA4E1BBB7A210061A9B0 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 207BFA3A1BBB7A210061A9B0;
+					};
+					207BFA591BBB7A210061A9B0 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 207BFA3A1BBB7A210061A9B0;
+					};
+					207BFA621BBB7A210061A9B0 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					207BFA711BBB7A220061A9B0 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = 207BFA361BBB7A210061A9B0 /* Build configuration list for PBXProject "BridgeiOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 207BFA321BBB7A210061A9B0;
+			productRefGroup = 207BFA3C1BBB7A210061A9B0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				207BFA3A1BBB7A210061A9B0 /* BridgeiOS */,
+				207BFA4E1BBB7A210061A9B0 /* BridgeiOSTests */,
+				207BFA591BBB7A210061A9B0 /* BridgeiOSUITests */,
+				207BFA621BBB7A210061A9B0 /* BridgeiOS WatchKit App */,
+				207BFA711BBB7A220061A9B0 /* BridgeiOS WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		207BFA391BBB7A210061A9B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFA491BBB7A210061A9B0 /* LaunchScreen.storyboard in Resources */,
+				207BFA461BBB7A210061A9B0 /* Assets.xcassets in Resources */,
+				207BFA441BBB7A210061A9B0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA4D1BBB7A210061A9B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA581BBB7A210061A9B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA611BBB7A210061A9B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFAA51BBB81240061A9B0 /* Interface.storyboard in Resources */,
+				207BFA6C1BBB7A210061A9B0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA701BBB7A220061A9B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFA801BBB7A220061A9B0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		207BFA371BBB7A210061A9B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				202BBF8A1BE56B90004D47EC /* VgcCustomMappings.swift in Sources */,
+				202BBF8B1BE56B90004D47EC /* VgcSharedViews.swift in Sources */,
+				207BFA411BBB7A210061A9B0 /* ViewController.swift in Sources */,
+				207BFA3F1BBB7A210061A9B0 /* AppDelegate.swift in Sources */,
+				202BBF891BE56B90004D47EC /* VgcCustomElements.swift in Sources */,
+				209F634D1BE70F6B00A8FDB3 /* VgcCentralViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA4B1BBB7A210061A9B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFA541BBB7A210061A9B0 /* vgcBridgeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA561BBB7A210061A9B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFA5F1BBB7A210061A9B0 /* vgcBridgeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		207BFA6E1BBB7A220061A9B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				207BFA7E1BBB7A220061A9B0 /* NotificationController.swift in Sources */,
+				20F967DC1BBDB5FA00EF2815 /* ElementRow.swift in Sources */,
+				207BFA7C1BBB7A220061A9B0 /* ExtensionDelegate.swift in Sources */,
+				207BFA7A1BBB7A220061A9B0 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		207BFA511BBB7A210061A9B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207BFA3A1BBB7A210061A9B0 /* BridgeiOS */;
+			targetProxy = 207BFA501BBB7A210061A9B0 /* PBXContainerItemProxy */;
+		};
+		207BFA5C1BBB7A210061A9B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207BFA3A1BBB7A210061A9B0 /* BridgeiOS */;
+			targetProxy = 207BFA5B1BBB7A210061A9B0 /* PBXContainerItemProxy */;
+		};
+		207BFA661BBB7A210061A9B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207BFA621BBB7A210061A9B0 /* BridgeiOS WatchKit App */;
+			targetProxy = 207BFA651BBB7A210061A9B0 /* PBXContainerItemProxy */;
+		};
+		207BFA751BBB7A220061A9B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 207BFA711BBB7A220061A9B0 /* BridgeiOS WatchKit Extension */;
+			targetProxy = 207BFA741BBB7A220061A9B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		207BFA421BBB7A210061A9B0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				207BFA431BBB7A210061A9B0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		207BFA471BBB7A210061A9B0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				207BFA481BBB7A210061A9B0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		207BFAA41BBB81240061A9B0 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				207BFAA31BBB81240061A9B0 /* Base */,
+			);
+			name = Interface.storyboard;
+			path = "../../../Peripheral/PeripheralVirtualGameControllerWatchOSSample/PeripheralVirtualGameControllerWatchOSSample WatchKit App";
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		207BFA821BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		207BFA831BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		207BFA851BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "vgcBridge WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = BridgeiOS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		207BFA861BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "vgcBridge WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS.watchkitapp.watchkitextension;
+				PRODUCT_NAME = BridgeiOS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		207BFA891BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = BridgeiOS_WatchKit_Extension;
+				INFOPLIST_FILE = "vgcBridge WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS.watchkitapp;
+				PRODUCT_NAME = BridgeiOS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		207BFA8A1BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = BridgeiOS_WatchKit_Extension;
+				INFOPLIST_FILE = "vgcBridge WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS.watchkitapp;
+				PRODUCT_NAME = BridgeiOS;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		207BFA8D1BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = vgcBridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS;
+				PRODUCT_NAME = BridgeiOS;
+			};
+			name = Debug;
+		};
+		207BFA8E1BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = vgcBridge/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.BridgeiOS;
+				PRODUCT_NAME = BridgeiOS;
+			};
+			name = Release;
+		};
+		207BFA901BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = vgcBridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.vgcBridgeTests;
+				PRODUCT_NAME = BridgeiOS;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BridgeiOS.app/BridgeiOS";
+			};
+			name = Debug;
+		};
+		207BFA911BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = vgcBridgeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.vgcBridgeTests;
+				PRODUCT_NAME = BridgeiOS;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BridgeiOS.app/BridgeiOS";
+			};
+			name = Release;
+		};
+		207BFA931BBB7A220061A9B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = vgcBridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.vgcBridgeUITests;
+				PRODUCT_NAME = BridgeiOS;
+				TEST_TARGET_NAME = vgcBridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		207BFA941BBB7A220061A9B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = vgcBridgeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.vgcBridgeUITests;
+				PRODUCT_NAME = BridgeiOS;
+				TEST_TARGET_NAME = vgcBridge;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		207BFA361BBB7A210061A9B0 /* Build configuration list for PBXProject "BridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA821BBB7A220061A9B0 /* Debug */,
+				207BFA831BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		207BFA841BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA851BBB7A220061A9B0 /* Debug */,
+				207BFA861BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		207BFA881BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA891BBB7A220061A9B0 /* Debug */,
+				207BFA8A1BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		207BFA8C1BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA8D1BBB7A220061A9B0 /* Debug */,
+				207BFA8E1BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		207BFA8F1BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA901BBB7A220061A9B0 /* Debug */,
+				207BFA911BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		207BFA921BBB7A220061A9B0 /* Build configuration list for PBXNativeTarget "BridgeiOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				207BFA931BBB7A220061A9B0 /* Debug */,
+				207BFA941BBB7A220061A9B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 207BFA331BBB7A210061A9B0 /* Project object */;
+}

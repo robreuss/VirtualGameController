@@ -1,0 +1,550 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		202BBF951BE56BAE004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */; };
+		202BBF961BE56BAE004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */; };
+		202BBF971BE56BAE004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */; };
+		208DFC001BA7C99800C75E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */; };
+		208DFC021BA7C99800C75E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFC011BA7C99800C75E41 /* ViewController.swift */; };
+		208DFC051BA7C99800C75E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208DFC031BA7C99800C75E41 /* Main.storyboard */; };
+		208DFC071BA7C99800C75E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208DFC061BA7C99800C75E41 /* Assets.xcassets */; };
+		208DFC0A1BA7C99800C75E41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208DFC081BA7C99800C75E41 /* LaunchScreen.storyboard */; };
+		208DFC151BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFC141BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleTests.swift */; };
+		208DFC201BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFC1F1BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleUITests.swift */; };
+		20AEB9371BE69E1400F62758 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AEB9311BE69DBF00F62758 /* VirtualGameController.framework */; };
+		20AEB9381BE69E1400F62758 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AEB9311BE69DBF00F62758 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20AEB9431BE7090800F62758 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AEB9421BE7090800F62758 /* VgcCentralViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		208DFC111BA7C99800C75E41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 208DFBF41BA7C99800C75E41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 208DFBFB1BA7C99800C75E41;
+			remoteInfo = CentralVirtualGameControlleriOSSample;
+		};
+		208DFC1C1BA7C99800C75E41 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 208DFBF41BA7C99800C75E41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 208DFBFB1BA7C99800C75E41;
+			remoteInfo = CentralVirtualGameControlleriOSSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		20C8D5A41BD8529F002DD5A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				20AEB9381BE69E1400F62758 /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
+		202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		208DFBFC1BA7C99800C75E41 /* vgcCentral_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vgcCentral_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		208DFC011BA7C99800C75E41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		208DFC041BA7C99800C75E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		208DFC061BA7C99800C75E41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		208DFC091BA7C99800C75E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		208DFC0B1BA7C99800C75E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		208DFC101BA7C99800C75E41 /* vgcCentral_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vgcCentral_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		208DFC141BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVirtualGameControlleriOSSampleTests.swift; sourceTree = "<group>"; };
+		208DFC161BA7C99800C75E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		208DFC1B1BA7C99800C75E41 /* vgcCentral_iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vgcCentral_iOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		208DFC1F1BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVirtualGameControlleriOSSampleUITests.swift; sourceTree = "<group>"; };
+		208DFC211BA7C99800C75E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20AEB9311BE69DBF00F62758 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		20AEB9421BE7090800F62758 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		208DFBF91BA7C99800C75E41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AEB9371BE69E1400F62758 /* VirtualGameController.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC0D1BA7C99800C75E41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC181BA7C99800C75E41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		208DFBF31BA7C99800C75E41 = {
+			isa = PBXGroup;
+			children = (
+				208DFBFE1BA7C99800C75E41 /* vgcCentraliOS */,
+				208DFC131BA7C99800C75E41 /* vgcCentraliOSTests */,
+				208DFC1E1BA7C99800C75E41 /* vgcCentraliOSUITests */,
+				208DFBFD1BA7C99800C75E41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		208DFBFD1BA7C99800C75E41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				208DFBFC1BA7C99800C75E41 /* vgcCentral_iOS.app */,
+				208DFC101BA7C99800C75E41 /* vgcCentral_iOS.xctest */,
+				208DFC1B1BA7C99800C75E41 /* vgcCentral_iOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		208DFBFE1BA7C99800C75E41 /* vgcCentraliOS */ = {
+			isa = PBXGroup;
+			children = (
+				20AEB9421BE7090800F62758 /* VgcCentralViewController.swift */,
+				202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */,
+				202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */,
+				202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */,
+				20AEB9311BE69DBF00F62758 /* VirtualGameController.framework */,
+				208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */,
+				208DFC011BA7C99800C75E41 /* ViewController.swift */,
+				208DFC031BA7C99800C75E41 /* Main.storyboard */,
+				208DFC061BA7C99800C75E41 /* Assets.xcassets */,
+				208DFC081BA7C99800C75E41 /* LaunchScreen.storyboard */,
+				208DFC0B1BA7C99800C75E41 /* Info.plist */,
+			);
+			name = vgcCentraliOS;
+			path = CentralVirtualGameControlleriOSSample;
+			sourceTree = "<group>";
+		};
+		208DFC131BA7C99800C75E41 /* vgcCentraliOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				208DFC141BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleTests.swift */,
+				208DFC161BA7C99800C75E41 /* Info.plist */,
+			);
+			name = vgcCentraliOSTests;
+			path = CentralVirtualGameControlleriOSSampleTests;
+			sourceTree = "<group>";
+		};
+		208DFC1E1BA7C99800C75E41 /* vgcCentraliOSUITests */ = {
+			isa = PBXGroup;
+			children = (
+				208DFC1F1BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleUITests.swift */,
+				208DFC211BA7C99800C75E41 /* Info.plist */,
+			);
+			name = vgcCentraliOSUITests;
+			path = CentralVirtualGameControlleriOSSampleUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		208DFBFB1BA7C99800C75E41 /* vgcCentral_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 208DFC241BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOS" */;
+			buildPhases = (
+				208DFBF81BA7C99800C75E41 /* Sources */,
+				208DFBF91BA7C99800C75E41 /* Frameworks */,
+				208DFBFA1BA7C99800C75E41 /* Resources */,
+				20C8D5A41BD8529F002DD5A6 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = vgcCentral_iOS;
+			productName = CentralVirtualGameControlleriOSSample;
+			productReference = 208DFBFC1BA7C99800C75E41 /* vgcCentral_iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		208DFC0F1BA7C99800C75E41 /* vgcCentral_iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 208DFC271BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOSTests" */;
+			buildPhases = (
+				208DFC0C1BA7C99800C75E41 /* Sources */,
+				208DFC0D1BA7C99800C75E41 /* Frameworks */,
+				208DFC0E1BA7C99800C75E41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				208DFC121BA7C99800C75E41 /* PBXTargetDependency */,
+			);
+			name = vgcCentral_iOSTests;
+			productName = CentralVirtualGameControlleriOSSampleTests;
+			productReference = 208DFC101BA7C99800C75E41 /* vgcCentral_iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		208DFC1A1BA7C99800C75E41 /* vgcCentral_iOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 208DFC2A1BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOSUITests" */;
+			buildPhases = (
+				208DFC171BA7C99800C75E41 /* Sources */,
+				208DFC181BA7C99800C75E41 /* Frameworks */,
+				208DFC191BA7C99800C75E41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				208DFC1D1BA7C99800C75E41 /* PBXTargetDependency */,
+			);
+			name = vgcCentral_iOSUITests;
+			productName = CentralVirtualGameControlleriOSSampleUITests;
+			productReference = 208DFC1B1BA7C99800C75E41 /* vgcCentral_iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		208DFBF41BA7C99800C75E41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Rob Reuss";
+				TargetAttributes = {
+					208DFBFB1BA7C99800C75E41 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					208DFC0F1BA7C99800C75E41 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 208DFBFB1BA7C99800C75E41;
+					};
+					208DFC1A1BA7C99800C75E41 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 208DFBFB1BA7C99800C75E41;
+					};
+				};
+			};
+			buildConfigurationList = 208DFBF71BA7C99800C75E41 /* Build configuration list for PBXProject "Central_iOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 208DFBF31BA7C99800C75E41;
+			productRefGroup = 208DFBFD1BA7C99800C75E41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				208DFBFB1BA7C99800C75E41 /* vgcCentral_iOS */,
+				208DFC0F1BA7C99800C75E41 /* vgcCentral_iOSTests */,
+				208DFC1A1BA7C99800C75E41 /* vgcCentral_iOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		208DFBFA1BA7C99800C75E41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208DFC0A1BA7C99800C75E41 /* LaunchScreen.storyboard in Resources */,
+				208DFC071BA7C99800C75E41 /* Assets.xcassets in Resources */,
+				208DFC051BA7C99800C75E41 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC0E1BA7C99800C75E41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC191BA7C99800C75E41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		208DFBF81BA7C99800C75E41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				202BBF961BE56BAE004D47EC /* VgcCustomMappings.swift in Sources */,
+				202BBF971BE56BAE004D47EC /* VgcSharedViews.swift in Sources */,
+				208DFC021BA7C99800C75E41 /* ViewController.swift in Sources */,
+				208DFC001BA7C99800C75E41 /* AppDelegate.swift in Sources */,
+				202BBF951BE56BAE004D47EC /* VgcCustomElements.swift in Sources */,
+				20AEB9431BE7090800F62758 /* VgcCentralViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC0C1BA7C99800C75E41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208DFC151BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		208DFC171BA7C99800C75E41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				208DFC201BA7C99800C75E41 /* CentralVirtualGameControlleriOSSampleUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		208DFC121BA7C99800C75E41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 208DFBFB1BA7C99800C75E41 /* vgcCentral_iOS */;
+			targetProxy = 208DFC111BA7C99800C75E41 /* PBXContainerItemProxy */;
+		};
+		208DFC1D1BA7C99800C75E41 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 208DFBFB1BA7C99800C75E41 /* vgcCentral_iOS */;
+			targetProxy = 208DFC1C1BA7C99800C75E41 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		208DFC031BA7C99800C75E41 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208DFC041BA7C99800C75E41 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		208DFC081BA7C99800C75E41 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				208DFC091BA7C99800C75E41 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		208DFC221BA7C99800C75E41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		208DFC231BA7C99800C75E41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		208DFC251BA7C99800C75E41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSample;
+				PRODUCT_NAME = vgcCentral_iOS;
+			};
+			name = Debug;
+		};
+		208DFC261BA7C99800C75E41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSample;
+				PRODUCT_NAME = vgcCentral_iOS;
+			};
+			name = Release;
+		};
+		208DFC281BA7C99800C75E41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSampleTests;
+				PRODUCT_NAME = vgcCentral_iOS;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vgcCentral_iOS.app/vgcCentral_iOS";
+			};
+			name = Debug;
+		};
+		208DFC291BA7C99800C75E41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSampleTests;
+				PRODUCT_NAME = vgcCentral_iOS;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/vgcCentral_iOS.app/vgcCentral_iOS";
+			};
+			name = Release;
+		};
+		208DFC2B1BA7C99800C75E41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSampleUITests;
+				PRODUCT_NAME = vgcCentral_iOS;
+				TEST_TARGET_NAME = CentralVirtualGameControlleriOSSample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		208DFC2C1BA7C99800C75E41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CentralVirtualGameControlleriOSSampleUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControlleriOSSampleUITests;
+				PRODUCT_NAME = vgcCentral_iOS;
+				TEST_TARGET_NAME = CentralVirtualGameControlleriOSSample;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		208DFBF71BA7C99800C75E41 /* Build configuration list for PBXProject "Central_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208DFC221BA7C99800C75E41 /* Debug */,
+				208DFC231BA7C99800C75E41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		208DFC241BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208DFC251BA7C99800C75E41 /* Debug */,
+				208DFC261BA7C99800C75E41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		208DFC271BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208DFC281BA7C99800C75E41 /* Debug */,
+				208DFC291BA7C99800C75E41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		208DFC2A1BA7C99800C75E41 /* Build configuration list for PBXNativeTarget "vgcCentral_iOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				208DFC2B1BA7C99800C75E41 /* Debug */,
+				208DFC2C1BA7C99800C75E41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 208DFBF41BA7C99800C75E41 /* Project object */;
+}
