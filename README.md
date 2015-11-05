@@ -31,7 +31,7 @@ iOS game controller framework that wraps GCController and supports the developme
 - Controller-forwarding
 - Unlimited number of controllers on Apple TV (with caveats)
 - Ability to enhance slide-on/form-fitting controllers with motion, Extended profile and custom elements
-- iCade controller support
+- iCade controller support (mapped into _GameController_, so they appear as MFi hardware)
 - Easy to implement 3d touch on software controllers
 - Easy to utilize on-screen and Bluetooth keyboards with software controllers
 - Support for snapshots (using Apple format)
@@ -68,11 +68,11 @@ import VirtualGameController
 
 CocoaPods and Carthage support will be forthcoming.
 
-## Sample Projects
+## Sample Projects Notes
 
 A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
 
-- To explore using your __Apple Watch__ as a controller, reference the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
+- To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 
 
 ## Creating a Software-based Peripheral
@@ -208,6 +208,17 @@ There are two features supported by a Central that exceed the capabilities of th
 - Custom elements
 - Custom mapping
 
-####Potential Approval Issues
+####Potential App Store Approval Issues
 There is only one feature that I think may cause problems with app approval: snapshots.  *VirtualGameController* not only supports the same snapshot functionality offered by *GameController*, it does so using the same data format, which is private.
+
+##Donations
+If you like VirtualGameController, please feel free to donate to support it's continued development!
+
+<div>
+<script src="https://raw.github.com/paypal/JavaScriptButtons/master/dist/paypal-button.min.js?merchant=MERCHANT_ID"
+    data-button="buynow"
+    data-name="Donate to The Changelog"
+    data-amount="5.00"
+></script>
+</div>
 
