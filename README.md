@@ -51,9 +51,13 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 
 ## Software-based Peripheral
 ####Initialization
+Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).
+
 ```swift
-VgcManager.startAs(.Peripheral, customElements: CustomElements(), customMappings: CustomMappings())
+VgcManager.startAs(.Peripheral, customElements: nil, customMappings: nil)
 ```
+After calling the **startAs** method, the Peripheral may be defined by setting it's **deviceInfo** property.  It is not required and the following example settings is the default and should suffice for most purposes.
+
 Pass an empty string to deviceUID to have it be created by the system using NSUUID() and stored to user defaults.  
 
 Pass an empty string to vendorName and the device network name will be used to identify the Peripheral.
@@ -62,6 +66,10 @@ Pass an empty string to vendorName and the device network name will be used to i
 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
 ```
 ####Finding Central Services
+In the simplest implementation, you'll just be connecting to the first Central service you find, and if you always use a Bridge, you'll be connecting to the first Bridge you find.  In those cases, you'll want to start the search and use the notification to call the **connectToService** method described below.
+
+Things get a bit more complicated if you are using both methods, and the following methods and notifications should be able to handle most scenarios.
+
 Begin the search for Bridges and Centrals:
 
 ```swift
@@ -73,7 +81,7 @@ Access the current set of found services:
 VgcManager.peripheral.availableServices
 ```
 
-Related notifications - both notifications carry a reference to a VgcService as their object payload:
+Related notifications - both notifications carry a reference to a VgcService as their payload:
 
 ```swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
@@ -133,4 +141,10 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayer
 ```
 
 ####Motion (Accelerometer)
+Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
+
+```swift
+VgcManager.peripheral.motion.start()
+VgcManager.peripheral.motion.stop()
+```
 ## Game Integration 

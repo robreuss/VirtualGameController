@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Initialize Peripheral
-        VgcManager.startAs(.Peripheral, customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
 
         // Set peripheral device info
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults

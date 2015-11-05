@@ -17,7 +17,7 @@ class ViewController: VgcCentralViewController {
     override func viewDidLoad() {
         
         // .Bridge publishes both a Peripheral and Central service
-        VgcManager.startAs(.Bridge, customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Bridge, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
         
         super.viewDidLoad()
 

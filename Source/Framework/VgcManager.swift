@@ -209,14 +209,7 @@ public class VgcManager: NSObject {
             #if !os(watchOS)
             if iCadeControllerMode != .Disabled { iCadePeripheral = VgcIcadePeripheral() } else { iCadePeripheral = nil }
             #endif
-            /*
-            if iCadeControllerMode == true && VgcManager.appRole == .Central {
-                
-                #if !os(watchOS)
-                VgcController.enableIcadeController()
-                #endif
-            }
-            */
+            
         }
     }
 
@@ -268,9 +261,11 @@ public class VgcManager: NSObject {
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
     ///
-    public class func startAs(appRole: AppRole, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
+    public class func startAs(appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
 
         self.appRole = appRole
+        
+        if appIdentifier != "" { self.appIdentifier = appIdentifier }
         
         Elements.customElements = customElements
         Elements.customMappings = customMappings
@@ -282,17 +277,17 @@ public class VgcManager: NSObject {
         switch (VgcManager.appRole) {
             
             case .Peripheral:
+                
                 VgcManager.peripheral = Peripheral()
-                // Default device for Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
+                
+                // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
                 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
             
             case .Central:
                 VgcController.setup()
             
             case .Bridge, .EnhancementBridge:
-                VgcManager.peripheral = Peripheral()
-                // Default device for Bridge, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: VgcManager.appRole.description, attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+                
                 VgcController.setup()
             }
       
