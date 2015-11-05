@@ -269,7 +269,7 @@ public class VgcManager: NSObject {
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
     ///
-    public class func startAs(appRole: AppRole, customElements: CustomElementsSuperclass, customMappings: CustomMappingsSuperclass) {
+    public class func startAs(appRole: AppRole, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
 
         self.appRole = appRole
         
