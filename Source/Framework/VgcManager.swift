@@ -145,10 +145,6 @@ public enum ProfileType: Int, CustomStringConvertible {
     
 }
 
-var bonjourTypePeripheral = ""
-var bonjourTypeCentral = ""
-var bonjourTypeBridge = ""
-
 /// For transmitted element value messages...
 let messageValueSeperator = ":"
 
@@ -189,7 +185,10 @@ public class VgcManager: NSObject {
     /// This should be set to something that uniquely identifies your app.
     ///
     public static var appIdentifier = "vgc"
-
+    
+    static var bonjourTypeCentral: String { return "_\(VgcManager.appIdentifier)_central._tcp." }
+    static var bonjourTypeBridge: String { return "_\(VgcManager.appIdentifier)_bridge._tcp." }
+    
     ///
     /// An app in Bridge mode can call it's handlers or simply relay
     /// data forward to the Central.  Relaying is more performant.
@@ -283,34 +282,20 @@ public class VgcManager: NSObject {
         switch (VgcManager.appRole) {
             
             case .Peripheral:
-                bonjourTypePeripheral = "_\(appIdentifier)_central._tcp."
                 VgcManager.peripheral = Peripheral()
-               
+                // Default device for Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
+                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+            
             case .Central:
-                bonjourTypeCentral = "_\(appIdentifier)_central._tcp."
+                VgcController.setup()
             
             case .Bridge, .EnhancementBridge:
-                bonjourTypePeripheral = "_\(appIdentifier)_central._tcp."
-                bonjourTypeCentral = "_\(appIdentifier)_bridge._tcp."
                 VgcManager.peripheral = Peripheral()
+                // Default device for Bridge, can be overriden by setting the VgcManager.peripheral.deviceInfo property
+                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: VgcManager.appRole.description, attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+                VgcController.setup()
             }
-
-        bonjourTypeCentral = "_\(appIdentifier)_central._tcp."
-        bonjourTypeBridge = "_\(appIdentifier)_bridge._tcp."
-        
-        // Do any necessary setup in the VgcController class if Central or Bridge
-        if appRole != .Peripheral { VgcController.setup() }
-
-        // Default device for Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-        if appRole == .Peripheral {
-            VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
-        }
-            
-        // Default device for Bridge, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-        if deviceIsTypeOfBridge() {
-            VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: VgcManager.appRole.description, attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
-        }
-                
+      
         #endif
 
     }

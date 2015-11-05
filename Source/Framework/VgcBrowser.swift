@@ -57,7 +57,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         print("Setting up NSNetService for browsing")
         
-        self.localService = NSNetService.init(domain: "local.", type: bonjourTypePeripheral, name: deviceName, port: 0)
+        self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
         self.localService.delegate = self
         self.localService.includesPeerToPeer = true
         
@@ -200,19 +200,19 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func browseForCentral() {
         
-        print("Searching for Centrals on \(bonjourTypeCentral)")
+        print("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
         centralBrowser = NSNetServiceBrowser()
         centralBrowser.includesPeerToPeer = true
         centralBrowser.delegate = self
-        centralBrowser.searchForServicesOfType(bonjourTypeCentral, inDomain: "local")
+        centralBrowser.searchForServicesOfType(VgcManager.bonjourTypeCentral, inDomain: "local")
         
         // We only searches for bridges if we are not type bridge (bridges don't connect to bridges)
         if !deviceIsTypeOfBridge() {
-            print("Searching for Bridges on \(bonjourTypeBridge)")
+            print("Searching for Bridges on \(VgcManager.bonjourTypeBridge)")
             bridgeBrowser = NSNetServiceBrowser()
             bridgeBrowser.includesPeerToPeer = true
             bridgeBrowser.delegate = self
-            bridgeBrowser.searchForServicesOfType(bonjourTypeBridge, inDomain: "local")
+            bridgeBrowser.searchForServicesOfType(VgcManager.bonjourTypeBridge, inDomain: "local")
         }
     }
     
@@ -285,7 +285,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         } else {
             print("Found service of type \(service.type) at \(service.name)")
             var vgcService: VgcService
-            if service.type == bonjourTypeBridge {
+            if service.type == VgcManager.bonjourTypeBridge {
                 vgcService = VgcService(name: service.name, type:.Bridge, netService: service)
             } else {
                 vgcService = VgcService(name: service.name, type:.Central, netService: service)
