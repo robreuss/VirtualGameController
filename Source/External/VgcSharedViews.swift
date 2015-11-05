@@ -20,7 +20,6 @@ var peripheralManager = VgcManager.peripheral
 public class PeripheralControlPadView: NSObject {
 
     var elements = VgcManager.elements
-    var custom = VgcManager.elements.custom
     var parentView: UIView!
     var controlOverlay: UIView!
     var controlLabel: UILabel!
@@ -301,8 +300,8 @@ public class PeripheralControlPadView: NSObject {
         } else {
             
             keyboardLabel.text = keyboardTextField.text!
-            custom[CustomElementType.Keyboard.rawValue]!.value = keyboardTextField.text!
-            VgcManager.peripheral.sendElementState(custom[CustomElementType.Keyboard.rawValue]!)
+            VgcManager.elements.custom[CustomElementType.Keyboard.rawValue]!.value = keyboardTextField.text!
+            VgcManager.peripheral.sendElementState(VgcManager.elements.custom[CustomElementType.Keyboard.rawValue]!)
             keyboardTextField.text = ""
             
         }
@@ -736,9 +735,10 @@ public class ElementDebugView: UIView {
         
         var labelHeight: CGFloat = 20.0
         let deviceDetailsFontSize: CGFloat = 14.0
+        let leftMargin: CGFloat = 40.0
         var yPosition = controllerVendorName.bounds.size.height
         
-        let controllerTypeLabel = UILabel(frame: CGRect(x: 50, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
+        let controllerTypeLabel = UILabel(frame: CGRect(x: leftMargin, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
         controllerTypeLabel.backgroundColor = UIColor.lightGrayColor()
         controllerTypeLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth]
         controllerTypeLabel.text = "Controller Type: " + controller.deviceInfo.controllerType.description
@@ -747,7 +747,7 @@ public class ElementDebugView: UIView {
         titleRegion.addSubview(controllerTypeLabel)
         
         yPosition += labelHeight
-        let profileTypeLabel = UILabel(frame: CGRect(x: 50, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
+        let profileTypeLabel = UILabel(frame: CGRect(x: leftMargin, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
         profileTypeLabel.backgroundColor = UIColor.lightGrayColor()
         profileTypeLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth]
         profileTypeLabel.text = "Profile Type: " + controller.profileType.description
@@ -757,7 +757,7 @@ public class ElementDebugView: UIView {
         
         yPosition += labelHeight
         
-        let attachedLabel = UILabel(frame: CGRect(x: 50, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
+        let attachedLabel = UILabel(frame: CGRect(x: leftMargin, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
         attachedLabel.backgroundColor = UIColor.lightGrayColor()
         attachedLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth]
         attachedLabel.text = "Attached to Device: " + "\(controller.deviceInfo.attachedToDevice)"
@@ -767,7 +767,7 @@ public class ElementDebugView: UIView {
         
         yPosition += labelHeight
         
-        let supportsMotionLabel = UILabel(frame: CGRect(x: 50, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
+        let supportsMotionLabel = UILabel(frame: CGRect(x: leftMargin, y: yPosition, width: titleRegion.frame.size.width - 50, height: labelHeight))
         supportsMotionLabel.backgroundColor = UIColor.lightGrayColor()
         supportsMotionLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth]
         supportsMotionLabel.text = "Supports Motion: " + "\(controller.deviceInfo.supportsMotion)"
