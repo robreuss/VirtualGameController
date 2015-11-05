@@ -378,6 +378,10 @@ public class DeviceInfo: NSObject, NSCoding {
             self.vendorName = "Unknown"
         }
         
+        if profileType == .MicroGamepad {
+            print("ERROR: The use of the .MicroGamepad profile for software-based controllers will lead to unpredictable results.")
+        }
+        
     }
     
     public override var description: String {

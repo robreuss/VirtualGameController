@@ -951,6 +951,9 @@ public class VgcMicroGamepad: GCMicroGamepad {
     
     public var vgcController: VgcController?
     
+    private var vgcReportsAbsoluteDpadValues: Bool
+    private var allowsRotation: Bool
+    
     private var vgcDpad:            VgcControllerDirectionPad
     private var vgcButtonA:         VgcControllerButtonInput
     private var vgcButtonX:         VgcControllerButtonInput
@@ -976,6 +979,48 @@ public class VgcMicroGamepad: GCMicroGamepad {
     ///
     override public weak var controller: GCController? {
         if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.microGamepad!.controller } else { return nil }
+    }
+    
+    public override var reportsAbsoluteDpadValues: Bool {
+        get {
+            
+            if vgcController?.deviceInfo.controllerType == .MFiHardware {
+                return vgcController!.hardwareController.reportsAbsoluteDpadValues
+            } else {
+                return vgcReportsAbsoluteDpadValues
+            }
+            
+        }
+        set {
+            
+            if vgcController?.deviceInfo.controllerType == .MFiHardware {
+                vgcController!.hardwareController.reportsAbsoluteDpadValues = newValue
+            } else {
+                vgcReportsAbsoluteDpadValues = newValue
+            }
+            
+        }
+    }
+    
+    public override var allowsRotation: Bool {
+        get {
+            
+            if vgcController?.deviceInfo.controllerType == .MFiHardware {
+                return vgcController!.hardwareController.allowsRotation
+            } else {
+                return vgcAllowsRotation
+            }
+            
+        }
+        set {
+            
+            if vgcController?.deviceInfo.controllerType == .MFiHardware {
+                vgcController!.hardwareController.allowsRotation = newValue
+            } else {
+                vgcAllowsRotation = newValue
+            }
+            
+        }
     }
     
     public override var dpad: GCControllerDirectionPad { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0) { return vgcController!.hardwareController.microGamepad!.dpad } else { return vgcDpad } } }
