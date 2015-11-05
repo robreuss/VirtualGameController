@@ -19,6 +19,7 @@ iOS game controller framework that wraps GCController and supports the developme
  	- [GCController Replacement](#gccontroller)
 	- [Central versus Bridge](#central_versus_bridge)
 	- [Extended Functionality](#extended)
+1. [Contributions](#contributions)
 
 ## Features
 
@@ -211,27 +212,6 @@ There are two features supported by a Central that exceed the capabilities of th
 ####Potential App Store Approval Issues
 There is only one feature that I think may cause problems with app approval: snapshots.  *VirtualGameController* not only supports the same snapshot functionality offered by *GameController*, it does so using the same data format, which is private.
 
-##Donations
-If you like VirtualGameController, please feel free to donate to support it's continued development!
-
-<div>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="YK8P35LFGY5CN">
-<table>
-<tr><td><input type="hidden" name="on0" value="Thank you for your contribution!">Thank you for your contribution!</td></tr><tr><td><select name="os0">
-	<option value="Tier 1">Tier 1 $5.00 USD</option>
-	<option value="Tier 2">Tier 2 $10.00 USD</option>
-	<option value="Tier 3">Tier 3 $25.00 USD</option>
-	<option value="Tier 4">Tier 4 $50.00 USD</option>
-	<option value="Tier 5">Tier 5 $100.00 USD</option>
-</select> </td></tr>
-</table>
-<input type="hidden" name="currency_code" value="USD">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-
-
-</div>
+##Contributions
+If you like VirtualGameController, please feel free to [contribute](http://www.simplyformed.net) to support it's continued development!
 
