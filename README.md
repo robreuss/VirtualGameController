@@ -1,10 +1,12 @@
 # VirtualGameController
 iOS game controller framework that wraps GCController and supports the development of software-based controllers.  
 
+1. [Features](#features)
+1. [Requirements](#requirements)
 1. [Platform Support](#platform_support)
+1. [Terminology](#terminology)
 1. [Integration](#integration)
 1. [Sample Projects](#samples)
-1. [Terminology](#terminology)
 1. [Software-based Peripheral](#usage)
 	- [Initialization](#initialization)
 	- [Finding Central Services](#finding_services)
@@ -14,6 +16,29 @@ iOS game controller framework that wraps GCController and supports the developme
 	- [Player Index](#player_index)
 	- [Motion (Accelerometer)](#motion)
 1. [Game Integration](#game_integration)
+ 	- [GCController Replacement](#gccontroller)
+	- [Central versus Bridge](#central_versus_bridge)
+	- [Extended Functionality](#extended)
+
+## Features
+
+- Drop-in replacement (wrapper) for *GameController*
+- Software-based controllers on all supported platforms
+- Device motion support
+- Custom controller elements
+- Custom element mapping
+- WiFi-based
+- Controller-forwarding
+- Unlimited number of controllers on Apple TV (with caveats)
+- Ability to enhance slide-on/form-fitting controllers with motion, Extended profile and custom elements
+- iCade controller support
+- Easy to implement 3d touch on software controllers
+- Easy to utilize on-screen and Bluetooth keyboards with software controllers
+- Support for snapshots (using Apple format)
+- Use of hardware keyboard with Apple TV (when in combination with a software controller)
+- Developed in Swift
+- Framework-based
+
 
 ## Requirements
 
@@ -27,29 +52,30 @@ iOS game controller framework that wraps GCController and supports the developme
 - OS X
 - watchOS
 
-## Integration
 
-Platform-specific framework projects are included in the workspace.
+## Terminology
+* **Peripheral**: A software-based game controller.
+* **Central**: Typically a game that supports hardware and software controllers.  The Central utilizes VirtualGameController as a replacement for the Apple Game Controller framework.
+* **Bridge**: Acts as a relay between a Peripheral and a Central, and represents a hybrid of the two.  Key use case is "controller forwarding".
+
+
+## Integration
+Platform-specific framework projects are included in the workspace.  A single framework file supports both Peripherals (software-based controllers) and Centrals (games, replacement for GCController).
 
 ```swift
 import VirtualGameController
 ```
 
+CocoaPods and Carthage support will be forthcoming.
+
 ## Sample Projects
 
 A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
 
-- To explore using your Apple Watch as a controller, reference the iOS Bridge sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
+- To explore using your __Apple Watch__ as a controller, reference the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 
 
-
-## Terminology
-
-* **Peripheral**: A software-based game controller.
-* **Central**: Typically a game that supports hardware and software controllers.  The Central utilizes VirtualGameController as a replacement for the Apple Game Controller framework.
-* **Bridge**: Acts as a relay between a Peripheral and a Central, and represents a hybrid of the two.  Key use case is "controller forwarding".
-
-## Software-based Peripheral
+## Creating a Software-based Peripheral
 ####Initialization
 Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).  **appIdentifier** is for use with Bonjour and should be a short, unique identifier for your app.
 
@@ -148,3 +174,40 @@ VgcManager.peripheral.motion.start()
 VgcManager.peripheral.motion.stop()
 ```
 ## Game Integration 
+####GCController Replacement
+**VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController**:
+
+```swift
+import GameController
+```
+
+becomes...
+
+```swift
+import VirtualGameController
+```
+
+The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces **GCC** with **VgcC**.  There are a couple of exceptions where **GameController** structures are used and should not be modified:
+
+```swift
+GCControllerButtonValueChangedHandler
+GCControllerDirectionPadValueChangedHandler
+```
+If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. The one limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
+
+####Central versus Bridge
+There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
+
+A **Central** is exactly what you expect in terms of game integration: your Central is your game and there should only be one implemented at a time.  
+
+A **Bridge** combines the behavior of a Central and a Peripheral; it is a Peripheral in relation to your Central, and it is a Central in relation to your Peripheral(s).  Another name for it would be a *controller forwarder*, because it's primary function is to forward/relay values sent by one or more Peripherals to the Central.  The Peripheral could be a MFi hardware controller, an iCade hardware controller, an *Apple Watch* or a software-based virtual controller (assuming the Bridge is deployed on an iPhone paired to the watch).  If the bridge is implemented on a device with device motion support (an iOS device) the Bridge can extend the capabilities of a Peripheral to include motion support.  For example, a MFi or iCade controller can appear to the Central to implement the motion profile.  
+
+####Extended Functionality
+There are two features supported by a Central that exceed the capabilities of the Apple *GameController* framework, and should be used with caution if you want to make reverting to that framework easy:
+
+- Custom elements
+- Custom mapping
+
+####Potential Approval Issues
+There is only one feature that I think may cause problems with app approval: snapshots.  *VirtualGameController* not only supports the same snapshot functionality offered by *GameController*, it does so using the same data format, which is private.
+
