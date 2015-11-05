@@ -3,13 +3,14 @@ iOS game controller framework that wraps GCController and supports the developme
 
 1. [Platform Support](#platform_support)
 1. [Integration](#integration)
+1. [Sample Projects](#samples)
 1. [Terminology](#terminology)
 1. [Software-based Peripheral](#usage)
 	- [Initialization](#initialization)
 	- [Finding Central Services](#finding_services)
 	- [Connecting to a Central](#connecting)
 	- [Sending Values to a Central](#sending)
-	- [Notifications](#notifications)
+	- [System Messages](#system_messages)
 	- [Player Index](#player_index)
 	- [Motion (Accelerometer)](#motion)
 1. [Game Integration](#game_integration)
@@ -28,11 +29,19 @@ iOS game controller framework that wraps GCController and supports the developme
 
 ## Integration
 
-Framework projects are included in the workspace.
+Platform-specific framework projects are included in the workspace.
 
 ```swift
 import VirtualGameController
 ```
+
+## Sample Projects
+
+A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
+
+- To explore using your Apple Watch as a controller, reference the iOS Bridge sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
+
+
 
 ## Terminology
 
@@ -64,29 +73,64 @@ Access the current set of found services:
 VgcManager.peripheral.availableServices
 ```
 
-Related notifications:
+Related notifications - both notifications carry a reference to a VgcService as their object payload:
 
 ```swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
 ```
         
-####Connecting to a Central
+####Connecting to and Disconnecting from a Central
 Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
 
 ```swift
 VgcManager.peripheral.connectToService(service)
 ```
-####Sending Values to a Central
-An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  For Peripherals, a global variable "elements" contains the entire set of elements.  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the "sendElementState" method.
+
+To disconnect from a service:
 
 ```swift
-let leftShoulder = VgcManager.peripheral.elements.leftShoulder
-leftShoulder.value = 1.0z
+VgcManager.peripheral.disconnectFromService()
+```
+
+Related notifications:
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
+```
+
+####Sending Values to a Central
+An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the "sendElementState" method.
+
+```swift
+let leftShoulder = VgcManager.elements.leftShoulder
+leftShoulder.value = 1.0
 VgcManager.peripheral.sendElementState(leftShoulder)
 ```
 
-####Notifications
+####System Messages
+The only currently implemented system message relevant to the Peripheral role is a message sent by the Central when it receives an element value from a Peripheral that fails a checksum test.  System messages are enumerated, and the invalid checksum message is of type .ReceivedInvalidMessage.  
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
+```
+
+Example of handling .ReceivedInvalidMessage:
+
+```swift
+    let systemMessageTypeRaw = notification.object as! Int
+    let systemMessageType = SystemMessages(rawValue: systemMessageTypeRaw)
+    if systemMessageType == SystemMessages.ReceivedInvalidMessage {        
+		// Do something
+    }
+```
 ####Player Index
+When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
+```
+
 ####Motion (Accelerometer)
 ## Game Integration 
