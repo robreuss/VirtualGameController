@@ -51,10 +51,10 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 
 ## Software-based Peripheral
 ####Initialization
-Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).
+Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).  **appIdentifier** is for use with Bonjour and should be a short, unique identifier for your app.
 
 ```swift
-VgcManager.startAs(.Peripheral, customElements: nil, customMappings: nil)
+VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: nil, customMappings: nil)
 ```
 After calling the **startAs** method, the Peripheral may be defined by setting it's **deviceInfo** property.  It is not required and the following example settings is the default and should suffice for most purposes.
 
