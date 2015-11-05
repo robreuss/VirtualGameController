@@ -24,7 +24,7 @@ struct ActivityType : OptionSetType {
 
 public class VgcActivity {
     
-    private let elements = VgcManager.peripheral.elements
+    private let elements = VgcManager.elements
     
     let cmActivityManager = CMMotionActivityManager()
     let pedometer = CMPedometer()

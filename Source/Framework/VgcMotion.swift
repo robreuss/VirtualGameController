@@ -14,7 +14,7 @@ import CoreMotion
 public class VgcMotionManager: NSObject {
 
     #if os(iOS)
-    private let elements = VgcManager.peripheral.elements
+    private let elements = VgcManager.elements
     #endif
     
     #if os(watchOS)

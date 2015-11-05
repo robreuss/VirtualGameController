@@ -31,8 +31,7 @@ let deviceName = NSHost.currentHost().localizedName!
 
 class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, NSStreamDelegate, VgcStreamerDelegate {
 
-    private let elements = VgcManager.peripheral.elements
-    
+    var elements: Elements!
     var peripheral: Peripheral!
     var connectedVgcService: VgcService!
     var localService: NSNetService!
@@ -51,6 +50,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         super.init()
         
         self.peripheral = peripheral
+        
+        elements = VgcManager.elements
         
         self.streamer = VgcStreamer(delegate: self, delegateName: "Browser")
         

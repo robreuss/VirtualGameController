@@ -175,7 +175,14 @@ public class VgcManager: NSObject {
     static let sharedInstance = VgcManager()
     private override init() {}
 
+    // Default to being a Peripheral
     public static var appRole: AppRole = .Peripheral
+    
+    ///
+    /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
+    /// of which have their own set of elements).
+    ///
+    public static var elements = Elements()
     
     ///
     /// Used as a component of the bonjour names for the various app types.

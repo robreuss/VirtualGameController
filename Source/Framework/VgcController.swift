@@ -1729,7 +1729,7 @@ func decodeSnapshot<T>(data: NSData) throws -> T {
 
 public class VgcExtendedGamepadSnapshot: NSObject {
  
-    private let elements = VgcManager.peripheral.elements
+    private let elements = VgcManager.elements
     
     // Use a custom named version of the snapshot struct
     struct VgcExtendedGamepadSnapShotDataV100 {
@@ -1871,7 +1871,7 @@ public class VgcExtendedGamepadSnapshot: NSObject {
 // MARK: - Gamepad Snapshot
 public class VgcGamepadSnapshot: NSObject {
 
-    private let elements = VgcManager.peripheral.elements
+    private let elements = VgcManager.elements
     
     // Use a custom named version of the snapshot struct
     struct VgcGamepadSnapShotDataV100 {

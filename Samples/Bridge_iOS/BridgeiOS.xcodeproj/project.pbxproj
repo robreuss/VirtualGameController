@@ -10,6 +10,9 @@
 		202BBF891BE56B90004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF861BE56B90004D47EC /* VgcCustomElements.swift */; };
 		202BBF8A1BE56B90004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */; };
 		202BBF8B1BE56B90004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF881BE56B90004D47EC /* VgcSharedViews.swift */; };
+		2033A1BE1BEB3C7C005C5845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1BC1BEB3C7C005C5845 /* Assets.xcassets */; };
+		2033A1BF1BEB3C7C005C5845 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1BD1BEB3C7C005C5845 /* Info.plist */; };
+		2033A1C11BEB3C8F005C5845 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1C01BEB3C8F005C5845 /* Interface.storyboard */; };
 		207BFA3F1BBB7A210061A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */; };
 		207BFA411BBB7A210061A9B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA401BBB7A210061A9B0 /* ViewController.swift */; };
 		207BFA441BBB7A210061A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA421BBB7A210061A9B0 /* Main.storyboard */; };
@@ -18,13 +21,11 @@
 		207BFA541BBB7A210061A9B0 /* vgcBridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA531BBB7A210061A9B0 /* vgcBridgeTests.swift */; };
 		207BFA5F1BBB7A210061A9B0 /* vgcBridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA5E1BBB7A210061A9B0 /* vgcBridgeUITests.swift */; };
 		207BFA641BBB7A210061A9B0 /* BridgeiOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 207BFA631BBB7A210061A9B0 /* BridgeiOS.app */; };
-		207BFA6C1BBB7A210061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */; };
 		207BFA731BBB7A220061A9B0 /* BridgeiOS.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		207BFA7A1BBB7A220061A9B0 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA791BBB7A220061A9B0 /* InterfaceController.swift */; };
 		207BFA7C1BBB7A220061A9B0 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */; };
 		207BFA7E1BBB7A220061A9B0 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */; };
 		207BFA801BBB7A220061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */; };
-		207BFAA51BBB81240061A9B0 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFAA41BBB81240061A9B0 /* Interface.storyboard */; };
 		209F634D1BE70F6B00A8FDB3 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */; };
 		20A1216A1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; };
 		20A1216B1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -115,6 +116,9 @@
 		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF881BE56B90004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		2033A1BC1BEB3C7C005C5845 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2033A1BD1BEB3C7C005C5845 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2033A1C01BEB3C8F005C5845 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207BFA401BBB7A210061A9B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -129,8 +133,6 @@
 		207BFA5E1BBB7A210061A9B0 /* vgcBridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vgcBridgeUITests.swift; sourceTree = "<group>"; };
 		207BFA601BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207BFA631BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		207BFA6D1BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BridgeiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		207BFA781BBB7A220061A9B0 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		207BFA791BBB7A220061A9B0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterfaceController.swift; sourceTree = "<group>"; };
@@ -138,7 +140,6 @@
 		207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207BFA811BBB7A220061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		207BFAA31BBB81240061A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameControllerWatchOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-watchos/VirtualGameControllerWatchOS.framework"; sourceTree = "<group>"; };
 		20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
@@ -179,11 +180,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2033A1BB1BEB3C7C005C5845 /* vgcBridge WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				2033A1C01BEB3C8F005C5845 /* Interface.storyboard */,
+				2033A1BC1BEB3C7C005C5845 /* Assets.xcassets */,
+				2033A1BD1BEB3C7C005C5845 /* Info.plist */,
+			);
+			path = "vgcBridge WatchKit App";
+			sourceTree = "<group>";
+		};
 		207BFA321BBB7A210061A9B0 = {
 			isa = PBXGroup;
 			children = (
+				2033A1BB1BEB3C7C005C5845 /* vgcBridge WatchKit App */,
 				207BFA3D1BBB7A210061A9B0 /* vgcBridge_iOS */,
-				207BFA671BBB7A210061A9B0 /* vgcBridge_iOS WatchKit App */,
 				207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */,
 				207BFA3C1BBB7A210061A9B0 /* Products */,
 				207BFA521BBB7A210061A9B0 /* vgcBridge_iOSTests */,
@@ -240,17 +251,6 @@
 			);
 			name = vgcBridge_iOSUITests;
 			path = vgcBridgeUITests;
-			sourceTree = "<group>";
-		};
-		207BFA671BBB7A210061A9B0 /* vgcBridge_iOS WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				207BFA6B1BBB7A210061A9B0 /* Assets.xcassets */,
-				207BFAA41BBB81240061A9B0 /* Interface.storyboard */,
-				207BFA6D1BBB7A210061A9B0 /* Info.plist */,
-			);
-			name = "vgcBridge_iOS WatchKit App";
-			path = "vgcBridge WatchKit App";
 			sourceTree = "<group>";
 		};
 		207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */ = {
@@ -459,8 +459,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				207BFAA51BBB81240061A9B0 /* Interface.storyboard in Resources */,
-				207BFA6C1BBB7A210061A9B0 /* Assets.xcassets in Resources */,
+				2033A1BF1BEB3C7C005C5845 /* Info.plist in Resources */,
+				2033A1C11BEB3C8F005C5845 /* Interface.storyboard in Resources */,
+				2033A1BE1BEB3C7C005C5845 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,15 +556,6 @@
 				207BFA481BBB7A210061A9B0 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		207BFAA41BBB81240061A9B0 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				207BFAA31BBB81240061A9B0 /* Base */,
-			);
-			name = Interface.storyboard;
-			path = "../../../Peripheral/PeripheralVirtualGameControllerWatchOSSample/PeripheralVirtualGameControllerWatchOSSample WatchKit App";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

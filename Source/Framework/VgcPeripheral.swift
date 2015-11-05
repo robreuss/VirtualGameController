@@ -26,12 +26,6 @@ public let VgcPeripheralLostService:                String = "VgcPeripheralLostS
 
 public class Peripheral: NSObject {
     
-    ///
-    /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
-    /// of which have their own set of elements).
-    ///
-    public var elements = Elements()
-    
     private var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
     var playerIndex: GCControllerPlayerIndex!
@@ -50,7 +44,7 @@ public class Peripheral: NSObject {
     override init() {
         
         super.init()
-        
+
         self.haveConnectionToCentral = false
         
         #if !os(watchOS)
@@ -299,7 +293,7 @@ public class Peripheral: NSObject {
         
         if let mappedElementIdentifier = Elements.customMappings.mappings[elementToBeMapped.identifier] {
             
-            let mappedElement = elements.elementFromIdentifier(mappedElementIdentifier)
+            let mappedElement = VgcManager.elements.elementFromIdentifier(mappedElementIdentifier)
             mappedElement.mappingComplete = true
             print("   Mapping \(elementToBeMapped.name) to \(mappedElement.name)")
             mappedElement.value = elementToBeMapped.value

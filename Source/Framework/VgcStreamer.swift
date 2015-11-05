@@ -20,7 +20,7 @@ import Foundation
 
 class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
 
-    private let elements = VgcManager.peripheral.elements
+    private var elements: Elements!
     var delegate: VgcStreamerDelegate!
     var delegateName: String
     var malformedMessageCount: Int = 0
@@ -31,6 +31,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         self.delegate = delegate
         self.delegateName = delegateName
+        elements = VgcManager.elements
         
     }
     

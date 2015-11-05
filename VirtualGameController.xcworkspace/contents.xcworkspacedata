@@ -147,6 +147,36 @@
       location = "container:"
       name = "Sample Projects">
       <Group
+         location = "group:Samples/Bridge_iOS"
+         name = "Bridge_iOS">
+         <FileRef
+            location = "group:BridgeiOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:vgcBridge.textClipping">
+         </FileRef>
+         <Group
+            location = "group:vgcBridgeTests"
+            name = "vgcBridgeTests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcBridgeTests.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:vgcBridgeUITests"
+            name = "vgcBridgeUITests">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:vgcBridgeUITests.swift">
+            </FileRef>
+         </Group>
+      </Group>
+      <Group
          location = "group:Samples/Central_tvOS"
          name = "Central_tvOS">
          <FileRef
@@ -306,121 +336,6 @@
             </FileRef>
             <FileRef
                location = "group:Info.plist">
-            </FileRef>
-         </Group>
-      </Group>
-      <Group
-         location = "group:Samples/Bridge_iOS"
-         name = "Bridge_iOS">
-         <FileRef
-            location = "group:BridgeiOS.xcodeproj">
-         </FileRef>
-         <Group
-            location = "group:vgcBridge"
-            name = "vgcBridge">
-            <FileRef
-               location = "group:AppDelegate.swift">
-            </FileRef>
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-               <FileRef
-                  location = "group:LaunchScreen.storyboard">
-               </FileRef>
-               <FileRef
-                  location = "group:Main.storyboard">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:ViewController.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:vgcBridge WatchKit App"
-            name = "vgcBridge WatchKit App">
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-            </Group>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:vgcBridge WatchKit Extension"
-            name = "vgcBridge WatchKit Extension">
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <FileRef
-                  location = "group:README__ignoredByTemplate__">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:ElementRow.swift">
-            </FileRef>
-            <FileRef
-               location = "group:ExtensionDelegate.swift">
-            </FileRef>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:InterfaceController.swift">
-            </FileRef>
-            <FileRef
-               location = "group:NotificationController.swift">
-            </FileRef>
-            <FileRef
-               location = "group:PushNotificationPayload.apns">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:vgcBridge.textClipping">
-         </FileRef>
-         <Group
-            location = "group:vgcBridgeTests"
-            name = "vgcBridgeTests">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:vgcBridgeTests.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:vgcBridgeUITests"
-            name = "vgcBridgeUITests">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:vgcBridgeUITests.swift">
             </FileRef>
          </Group>
       </Group>

@@ -19,8 +19,8 @@ var peripheralManager = VgcManager.peripheral
 // A simple mock-up of a game controller (Peripheral)
 public class PeripheralControlPadView: NSObject {
 
-    let elements = VgcManager.peripheral.elements
-    var custom = VgcManager.peripheral.elements.custom
+    var elements = VgcManager.elements
+    var custom = VgcManager.elements.custom
     var parentView: UIView!
     var controlOverlay: UIView!
     var controlLabel: UILabel!
@@ -41,7 +41,7 @@ public class PeripheralControlPadView: NSObject {
     public init (aParentView: UIView) {
         
         super.init()
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
         
@@ -624,7 +624,7 @@ class VgcStick: UIView {
 
 class VgcAbxyButtonPad: UIView {
 
-    let elements = VgcManager.peripheral.elements
+    let elements = VgcManager.elements
     var aButton: VgcButton!
     var bButton: VgcButton!
     var xButton: VgcButton!
@@ -795,7 +795,7 @@ public class ElementDebugView: UIView {
             return
         }
         
-        for element in VgcManager.peripheral.elements.elementsForController(controller) {
+        for element in VgcManager.elements.elementsForController(controller) {
             
             let elementLabel = UILabel(frame: CGRect(x: 10, y: yPosition, width: frame.size.width * 0.50, height: labelHeight))
             elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleRightMargin]

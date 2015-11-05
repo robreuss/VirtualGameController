@@ -31,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(application: UIApplication) {
         
         // Just as an example, sending a pause signal to our Central as we enter background
-        elements.pauseButton.value = 1.0
-        VgcManager.peripheral.sendElementState(elements.pauseButton)
+        VgcManager.elements.pauseButton.value = 1.0
+        VgcManager.peripheral.sendElementState(VgcManager.elements.pauseButton)
         
     }
 
@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         
         // Letting the Central know we are back from background
-        VgcManager.peripheral.elements.pauseButton.value = 0.0
-        VgcManager.peripheral.sendElementState(elements.pauseButton)
+        VgcManager.elements.pauseButton.value = 0.0
+        VgcManager.peripheral.sendElementState(VgcManager.elements.pauseButton)
         
     }
 
