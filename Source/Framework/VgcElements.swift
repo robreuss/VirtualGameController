@@ -344,7 +344,7 @@ public class Elements: NSObject {
         // Iterate the set to set the identifier and load up the hash
         // used by devs to access the elements
         
-        if Elements.customElements.customProfileElements != nil {
+        if Elements.customElements != nil && Elements.customElements.customProfileElements != nil {
             for customElement in Elements.customElements.customProfileElements {
                 
                 custom[customElement.identifier] = customElement
@@ -374,7 +374,7 @@ public class Elements: NSObject {
     public var watchProfileElements: [Element]
     private var elementsByHashValue = Dictionary<Int, Element>()
     
-    public static var customElements = CustomElementsSuperclass()
+    public static var customElements: CustomElementsSuperclass!
     public static var customMappings: CustomMappingsSuperclass!
     
     public var custom = Dictionary<Int, Element>()
