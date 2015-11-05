@@ -75,7 +75,7 @@ class VgcCentralViewController: UIViewController {
 
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: "NewPlayerIndexNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
 
         #if !os(tvOS)
             // To enable iCade, this must be after the notification observers are defined. The connect notification should be used

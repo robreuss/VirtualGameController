@@ -48,7 +48,7 @@ public class PeripheralControlPadView: NSObject {
         parentView = aParentView
         
         // Notification that a player index has been set
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: "NewPlayerIndexNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
         
         parentView.backgroundColor = UIColor.darkGrayColor()
         

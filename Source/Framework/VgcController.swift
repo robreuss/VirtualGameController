@@ -893,7 +893,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     let encodedDataArray = streamer.encodedMessageWithChecksum(playerIndexElement.identifier, value: playerIndexElement.value)
                     toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName("NewPlayerIndexNotification", object: self)
+                    NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: self)
                     
                 } else {
                     print("PERIPHERAL: Cannot send player index, no connection, no netservice manager or no open stream")

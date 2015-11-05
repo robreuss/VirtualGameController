@@ -23,6 +23,8 @@ public let VgcPeripheralDidConnectNotification:     String = "VgcPeripheralDidCo
 public let VgcPeripheralDidDisconnectNotification:  String = "VgcPeripheralDidDisconnectNotification"
 public let VgcPeripheralFoundService:               String = "VgcPeripheralFoundService"
 public let VgcPeripheralLostService:                String = "VgcPeripheralLostService"
+public let VgcSystemMessageNotification:            String = "VgcSystemMessageNotification"
+public let VgcNewPlayerIndexNotification:            String = "VgcNewPlayerIndexNotification"
 
 public class Peripheral: NSObject {
     

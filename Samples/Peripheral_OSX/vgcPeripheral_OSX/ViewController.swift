@@ -21,7 +21,7 @@ class ViewController: NSViewController {
         
         // This is triggered by the developer on the Central side, by setting the playerIndex value on the controller, triggering a
         // system message being sent over the wire to this Peripheral, resulting in this notification.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: "NewPlayerIndexNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
         
         VgcManager.startAs(.Peripheral, customElements: CustomElements(), customMappings: CustomMappings())
 

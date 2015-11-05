@@ -93,7 +93,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             print("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
-            NSNotificationCenter.defaultCenter().postNotificationName("SystemMessageNotification", object: systemMessageType!.rawValue)
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcSystemMessageNotification, object: systemMessageType!.rawValue)
             
             break
             
@@ -109,7 +109,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                     self.peripheral.controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex!)!
                     
                 }
-                NSNotificationCenter.defaultCenter().postNotificationName("NewPlayerIndexNotification", object: playerIndex)
+                NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: playerIndex)
             }
             
         default:
