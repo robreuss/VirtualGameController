@@ -298,7 +298,7 @@ public class VgcManager: NSObject {
         bonjourTypeBridge = "_\(appIdentifier)_bridge._tcp."
         
         // Do any necessary setup in the VgcController class
-        VgcController.setup()
+        if appRole != .Peripheral { VgcController.setup() }
             
         // REQUIRED FOR BRIDGE: Set peripheral device info
         if deviceIsTypeOfBridge() {

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
-        // Publishes the peripheral service
+        // Initialize Peripheral
         VgcManager.startAs(.Peripheral, customElements: CustomElements(), customMappings: CustomMappings())
 
         // Set peripheral device info
