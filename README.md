@@ -1,18 +1,18 @@
 # VirtualGameController
-iOS game controller framework that wraps GCController and supports development of software-based controllers.
+iOS game controller framework that wraps GCController (Apple's **Game Controller** framework) and supports the development of software-based controllers.  
 
 1. [Platform Support](#platform_support)
 1. [Integration](#integration)
 1. [Terminology](#terminology)
 1. [Software-based Peripheral](#usage)
-- [Initialization](#initialization)
-- [Finding Central Services](#finding_services)
-- [Connecting to a Central](#connecting)
-- [Sending Values to a Central](#sending)
-- [Notifications](#notifications)
-- [Player Index](#player_index)
-- [Motion (Accelerometer](#motion)
-1. [Game Integration](#work-with-alamofire)
+	- [Initialization](#initialization)
+	- [Finding Central Services](#finding_services)
+	- [Connecting to a Central](#connecting)
+	- [Sending Values to a Central](#sending)
+	- [Notifications](#notifications)
+	- [Player Index](#player_index)
+	- [Motion (Accelerometer)](#motion)
+1. [Game Integration](#game_integration)
 
 ## Requirements
 
@@ -21,22 +21,46 @@ iOS game controller framework that wraps GCController and supports development o
 
 ## Platform Support
 ## Integration
-## Terminology 
+## Terminology
+
+* **Peripheral**: A software-based game controller.
+* **Central**: Typically a game that supports hardware and software controllers.  The Central utilizes VirtualGameController as a replacement for the Apple Game Controller framework.
+* **Bridge**: Acts as a relay between a Peripheral and a Central, and represents a hybrid of the two.  Key use case is "controller forwarding".
+
 ## Software-based Peripheral
 ####Initialization
 ```swift
 VgcManager.startAs(.Peripheral, customElements: CustomElements(), customMappings: CustomMappings())
 ```
+Pass an empty string to deviceUID to have it be created by the system using NSUUID() and stored to user defaults.  
+
+Pass an empty string to vendorName and the device network name will be used to identify the Peripheral.
+
 ```swift
 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
 ```
 ####Finding Central Services
+Begin the search for Bridges and Centrals:
+
 ```swift
 VgcManager.peripheral.browseForServices()
 ```
+Access the current set of found services:
+
+```swift
+VgcManager.peripheral.availableServices
+```
+
+Receive notifications:
+
+```swift
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
+NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
+```
+        
 ####Connecting to a Central
 ####Sending Values to a Central
 ####Notifications
 ####Player Index
-####Motion
+####Motion (Accelerometer)
 ## Game Integration 

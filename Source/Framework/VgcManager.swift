@@ -297,10 +297,15 @@ public class VgcManager: NSObject {
         bonjourTypeCentral = "_\(appIdentifier)_central._tcp."
         bonjourTypeBridge = "_\(appIdentifier)_bridge._tcp."
         
-        // Do any necessary setup in the VgcController class
+        // Do any necessary setup in the VgcController class if Central or Bridge
         if appRole != .Peripheral { VgcController.setup() }
+
+        // Default device for Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
+        if appRole == .Peripheral {
+            VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+        }
             
-        // REQUIRED FOR BRIDGE: Set peripheral device info
+        // Default device for Bridge, can be overriden by setting the VgcManager.peripheral.deviceInfo property
         if deviceIsTypeOfBridge() {
             VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: VgcManager.appRole.description, attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
         }
