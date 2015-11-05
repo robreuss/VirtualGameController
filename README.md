@@ -1,5 +1,5 @@
 # VirtualGameController
-iOS game controller framework that wraps GCController (Apple's **Game Controller** framework) and supports the development of software-based controllers.  
+iOS game controller framework that wraps GCController and supports the development of software-based controllers.  
 
 1. [Platform Support](#platform_support)
 1. [Integration](#integration)
@@ -16,11 +16,24 @@ iOS game controller framework that wraps GCController (Apple's **Game Controller
 
 ## Requirements
 
-- iOS 7.0+ / Mac OS X 10.9+
+- iOS 9.0+ / Mac OS X 10.9+
 - Xcode 7
 
 ## Platform Support
+
+- iOS
+- tvOS
+- OS X
+- watchOS
+
 ## Integration
+
+Framework projects are included in the workspace.
+
+```swift
+import VirtualGameController
+```
+
 ## Terminology
 
 * **Peripheral**: A software-based game controller.
@@ -59,7 +72,17 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:",
 ```
         
 ####Connecting to a Central
+Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
+
+```swift
+VgcManager.peripheral.connectToService(service)
+```
 ####Sending Values to a Central
+An Element class is provided each instance of which represents a controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the following method.
+
+let element = elements.leftShoulder
+VgcManager.peripheral.sendElementState(element)
+
 ####Notifications
 ####Player Index
 ####Motion (Accelerometer)
