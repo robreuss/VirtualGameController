@@ -265,7 +265,7 @@ public class VgcManager: NSObject {
 
         self.appRole = appRole
         
-        if appIdentifier != "" { self.appIdentifier = appIdentifier }
+        if appIdentifier != "" { self.appIdentifier = appIdentifier } else { print("ERROR: You must set appIdentifier to some string") }
         
         Elements.customElements = customElements
         Elements.customMappings = customMappings
