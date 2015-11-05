@@ -30,6 +30,8 @@ let deviceName = NSHost.currentHost().localizedName!
 // MARK: NetService Peripheral Management
 
 class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, NSStreamDelegate, VgcStreamerDelegate {
+
+    private let elements = VgcManager.peripheral.elements
     
     var peripheral: Peripheral!
     var connectedVgcService: VgcService!

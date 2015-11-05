@@ -9,9 +9,10 @@
 import Foundation
 #if !(os(tvOS))
 import WatchConnectivity
-
+    
 public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDelegate {
 
+    public let elements = Elements()
     var session: WCSession!
     var httpSession: NSURLSession!
     

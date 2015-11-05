@@ -26,6 +26,12 @@ public let VgcPeripheralLostService:                String = "VgcPeripheralLostS
 
 public class Peripheral: NSObject {
     
+    ///
+    /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
+    /// of which have their own set of elements).
+    ///
+    public var elements = Elements()
+    
     private var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
     var playerIndex: GCControllerPlayerIndex!

@@ -112,7 +112,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF881BE56B90004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,13 +133,13 @@
 		207BFA6D1BBB7A210061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207BFA721BBB7A220061A9B0 /* BridgeiOS.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BridgeiOS.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		207BFA781BBB7A220061A9B0 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		207BFA791BBB7A220061A9B0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterfaceController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		207BFA791BBB7A220061A9B0 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InterfaceController.swift; sourceTree = "<group>"; };
 		207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207BFA811BBB7A220061A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		207BFAA31BBB81240061A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; };
+		209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameControllerWatchOS.framework; path = "../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-watchos/VirtualGameControllerWatchOS.framework"; sourceTree = "<group>"; };
 		20AEB9331BE69DCA00F62758 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };

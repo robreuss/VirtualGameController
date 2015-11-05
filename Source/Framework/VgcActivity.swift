@@ -24,6 +24,8 @@ struct ActivityType : OptionSetType {
 
 public class VgcActivity {
     
+    private let elements = VgcManager.peripheral.elements
+    
     let cmActivityManager = CMMotionActivityManager()
     let pedometer = CMPedometer()
     
@@ -81,8 +83,8 @@ public class VgcActivity {
                 if activityTypes.contains(.Cycling)     { print("Cycling") }
                 if activityTypes.contains(.Unknown)     { print("Unknown") }
                 
-                elements.activityType.value = activityTypeBitMask
-                self.sendElementState(elements.activityType)
+                self.elements.activityType.value = activityTypeBitMask
+                self.sendElementState(self.elements.activityType)
                 
             })
         }
@@ -92,26 +94,26 @@ public class VgcActivity {
             self.pedometer.startPedometerUpdatesFromDate(NSDate(), withHandler: { (data, error) -> Void in
                 
                 print("Number of steps: \(data!.numberOfSteps)")
-                elements.activitySteps.value = data!.numberOfSteps
-                self.sendElementState(elements.activitySteps)
+                self.elements.activitySteps.value = data!.numberOfSteps
+                self.sendElementState(self.elements.activitySteps)
                 
                 if data!.distance != nil {
-                    elements.activityDistance.value = data!.distance!.floatValue
-                    self.sendElementState(elements.activityDistance)
+                    self.elements.activityDistance.value = data!.distance!.floatValue
+                    self.sendElementState(self.elements.activityDistance)
                 }
                 
                 if data!.currentPace != nil {
-                    elements.activityPace.value = data!.currentPace!.floatValue
-                    self.sendElementState(elements.activityPace)
+                    self.elements.activityPace.value = data!.currentPace!.floatValue
+                    self.sendElementState(self.elements.activityPace)
                 }
                 if data!.currentCadence != nil {
-                    elements.activityCadence.value = data!.currentCadence!.floatValue
-                    self.sendElementState(elements.activityCadence)
+                    self.elements.activityCadence.value = data!.currentCadence!.floatValue
+                    self.sendElementState(self.elements.activityCadence)
                 }
                 
                 if data!.floorsAscended != nil {
-                    elements.activityFloors.value = data!.floorsAscended!.floatValue
-                    self.sendElementState(elements.activityFloors)
+                    self.elements.activityFloors.value = data!.floorsAscended!.floatValue
+                    self.sendElementState(self.elements.activityFloors)
                 }
 
             })

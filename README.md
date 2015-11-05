@@ -64,7 +64,7 @@ Access the current set of found services:
 VgcManager.peripheral.availableServices
 ```
 
-Receive notifications:
+Related notifications:
 
 ```swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
@@ -78,10 +78,13 @@ Once a reference to a service (either a Central or Bridge) is obtained, it is pa
 VgcManager.peripheral.connectToService(service)
 ```
 ####Sending Values to a Central
-An Element class is provided each instance of which represents a controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the following method.
+An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  For Peripherals, a global variable "elements" contains the entire set of elements.  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the "sendElementState" method.
 
-let element = elements.leftShoulder
-VgcManager.peripheral.sendElementState(element)
+```swift
+let leftShoulder = VgcManager.peripheral.elements.leftShoulder
+leftShoulder.value = 1.0z
+VgcManager.peripheral.sendElementState(leftShoulder)
+```
 
 ####Notifications
 ####Player Index

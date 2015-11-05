@@ -18,8 +18,9 @@ var peripheralManager = VgcManager.peripheral
 
 // A simple mock-up of a game controller (Peripheral)
 public class PeripheralControlPadView: NSObject {
-    
-    var custom = elements.custom
+
+    let elements = VgcManager.peripheral.elements
+    var custom = VgcManager.peripheral.elements.custom
     var parentView: UIView!
     var controlOverlay: UIView!
     var controlLabel: UILabel!
@@ -622,7 +623,8 @@ class VgcStick: UIView {
 }
 
 class VgcAbxyButtonPad: UIView {
-    
+
+    let elements = VgcManager.peripheral.elements
     var aButton: VgcButton!
     var bButton: VgcButton!
     var xButton: VgcButton!
@@ -793,7 +795,7 @@ public class ElementDebugView: UIView {
             return
         }
         
-        for element in elements.elementsForController(controller) {
+        for element in VgcManager.peripheral.elements.elementsForController(controller) {
             
             let elementLabel = UILabel(frame: CGRect(x: 10, y: yPosition, width: frame.size.width * 0.50, height: labelHeight))
             elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleRightMargin]

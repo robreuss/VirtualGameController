@@ -13,8 +13,13 @@ import CoreMotion
 
 public class VgcMotionManager: NSObject {
 
+    #if os(iOS)
+    private let elements = VgcManager.peripheral.elements
+    #endif
+    
     #if os(watchOS)
     public var watchConnectivity: VgcWatchConnectivity!
+    private var elements: Elements!
     #endif
     
     public var deviceSupportsMotion: Bool!
@@ -34,12 +39,17 @@ public class VgcMotionManager: NSObject {
     }
                 
     public override init() {
-         
+
+        #if os(watchOS)
+        elements = watchConnectivity.elements
+        #endif
+        
         super.init()
         
     }
     
     public func start() {
+ 
         #if os(iOS) || os(watchOS)
             
             print("Attempting to start motion detection")
@@ -72,54 +82,54 @@ public class VgcMotionManager: NSObject {
                         
                         //print("Device Motion: \(deviceMotionData!)")
                         
-                        elements.motionAttitudeY.value = Float((deviceMotionData?.attitude.quaternion.y)!)
-                        elements.motionAttitudeX.value = Float((deviceMotionData?.attitude.quaternion.x)!)
-                        elements.motionAttitudeZ.value = Float((deviceMotionData?.attitude.quaternion.z)!)
-                        elements.motionAttitudeW.value = Float((deviceMotionData?.attitude.quaternion.w)!)
+                        self.elements.motionAttitudeY.value = Float((deviceMotionData?.attitude.quaternion.y)!)
+                        self.elements.motionAttitudeX.value = Float((deviceMotionData?.attitude.quaternion.x)!)
+                        self.elements.motionAttitudeZ.value = Float((deviceMotionData?.attitude.quaternion.z)!)
+                        self.elements.motionAttitudeW.value = Float((deviceMotionData?.attitude.quaternion.w)!)
                         
                         // Send data on the custom accelerometer channels
                         if VgcManager.enableMotionAttitude {
-                            self.sendElementState(elements.motionAttitudeY)
-                            self.sendElementState(elements.motionAttitudeX)
-                            self.sendElementState(elements.motionAttitudeZ)
-                            self.sendElementState(elements.motionAttitudeW)
+                            self.sendElementState(self.elements.motionAttitudeY)
+                            self.sendElementState(self.elements.motionAttitudeX)
+                            self.sendElementState(self.elements.motionAttitudeZ)
+                            self.sendElementState(self.elements.motionAttitudeW)
                         }
                         
-                        elements.motionUserAccelerationX.value = Float((deviceMotionData?.userAcceleration.x)!)
-                        elements.motionUserAccelerationY.value = Float((deviceMotionData?.userAcceleration.y)!)
-                        elements.motionUserAccelerationZ.value = Float((deviceMotionData?.userAcceleration.z)!)
+                        self.elements.motionUserAccelerationX.value = Float((deviceMotionData?.userAcceleration.x)!)
+                        self.elements.motionUserAccelerationY.value = Float((deviceMotionData?.userAcceleration.y)!)
+                        self.elements.motionUserAccelerationZ.value = Float((deviceMotionData?.userAcceleration.z)!)
                         
                         // Send data on the custom accelerometer channels
                         if VgcManager.enableMotionUserAcceleration {
-                            self.sendElementState(elements.motionUserAccelerationX)
-                            self.sendElementState(elements.motionUserAccelerationY)
-                            self.sendElementState(elements.motionUserAccelerationZ)
+                            self.sendElementState(self.elements.motionUserAccelerationX)
+                            self.sendElementState(self.elements.motionUserAccelerationY)
+                            self.sendElementState(self.elements.motionUserAccelerationZ)
                         }
                         
                         // Gravity
                         
-                        elements.motionGravityX.value = Float((deviceMotionData?.gravity.x)!)
-                        elements.motionGravityY.value = Float((deviceMotionData?.gravity.y)!)
-                        elements.motionGravityZ.value = Float((deviceMotionData?.gravity.z)!)
+                        self.elements.motionGravityX.value = Float((deviceMotionData?.gravity.x)!)
+                        self.elements.motionGravityY.value = Float((deviceMotionData?.gravity.y)!)
+                        self.elements.motionGravityZ.value = Float((deviceMotionData?.gravity.z)!)
                         
                         if VgcManager.enableMotionGravity {
-                            self.sendElementState(elements.motionGravityX)
-                            self.sendElementState(elements.motionGravityY)
-                            self.sendElementState(elements.motionGravityZ)
+                            self.sendElementState(self.elements.motionGravityX)
+                            self.sendElementState(self.elements.motionGravityY)
+                            self.sendElementState(self.elements.motionGravityZ)
                         }
                         
                         // Rotation Rate
                         
-                        elements.motionRotationRateX.value = Float((deviceMotionData?.rotationRate.x)!)
-                        elements.motionRotationRateY.value = Float((deviceMotionData?.rotationRate.y)!)
-                        elements.motionRotationRateZ.value = Float((deviceMotionData?.rotationRate.z)!)
+                        self.elements.motionRotationRateX.value = Float((deviceMotionData?.rotationRate.x)!)
+                        self.elements.motionRotationRateY.value = Float((deviceMotionData?.rotationRate.y)!)
+                        self.elements.motionRotationRateZ.value = Float((deviceMotionData?.rotationRate.z)!)
                         
                         //print("Rotation: X \( Float((deviceMotionData?.rotationRate.x)!)), Y: \(Float((deviceMotionData?.rotationRate.y)!)), Z: \(Float((deviceMotionData?.rotationRate.z)!))")
                         
                         if VgcManager.enableMotionRotationRate {
-                            self.sendElementState(elements.motionRotationRateX)
-                            self.sendElementState(elements.motionRotationRateY)
-                            self.sendElementState(elements.motionRotationRateZ)
+                            self.sendElementState(self.elements.motionRotationRateX)
+                            self.sendElementState(self.elements.motionRotationRateY)
+                            self.sendElementState(self.elements.motionRotationRateZ)
                         }
                     })
                     
@@ -145,17 +155,17 @@ public class VgcMotionManager: NSObject {
                         self.sendElementValueToBridge(motionAttitudeW)
                         }
                         */
-                        elements.motionUserAccelerationX.value = Float((accelerometerData?.acceleration.x)!)
-                        elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!)
-                        elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!)
+                        self.elements.motionUserAccelerationX.value = Float((accelerometerData?.acceleration.x)!)
+                        self.elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!)
+                        self.elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!)
                         
                         print("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
                         
                         // Send data on the custom accelerometer channels
                         if VgcManager.enableMotionUserAcceleration {
-                            self.sendElementState(elements.motionUserAccelerationX)
-                            self.sendElementState(elements.motionUserAccelerationY)
-                            self.sendElementState(elements.motionUserAccelerationZ)
+                            self.sendElementState(self.elements.motionUserAccelerationX)
+                            self.sendElementState(self.elements.motionUserAccelerationY)
+                            self.sendElementState(self.elements.motionUserAccelerationZ)
                         }
                         
                         /*

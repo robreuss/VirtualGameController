@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         
         // Letting the Central know we are back from background
-        elements.pauseButton.value = 0.0
+        VgcManager.peripheral.elements.pauseButton.value = 0.0
         VgcManager.peripheral.sendElementState(elements.pauseButton)
         
     }

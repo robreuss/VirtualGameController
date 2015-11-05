@@ -24,10 +24,7 @@ import Foundation
 /// each supported element.  
 ///
 
-public var elements = Elements()
-
 public var customElements: CustomElementsSuperclass!
-
 
 ///
 /// appRole:
@@ -216,9 +213,6 @@ public class VgcManager: NSObject {
             */
         }
     }
-    ///
-    ///
-    ///
 
     public static var iCadePeripheral: VgcIcadePeripheral!
     #endif

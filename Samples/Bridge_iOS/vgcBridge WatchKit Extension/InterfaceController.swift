@@ -45,9 +45,9 @@ class InterfaceController: WKInterfaceController {
     
     // Just as a simple example, display a table of the watch profile elements.
     func updateElementsTable() {
-        self.elementsTable.setNumberOfRows(elements.allElementsCollection().count, withRowType: "elementsTableRow")
+        self.elementsTable.setNumberOfRows(watchConnectivity.elements.allElementsCollection().count, withRowType: "elementsTableRow")
         var index = 0 
-        for element in elements.watchProfileElements {
+        for element in watchConnectivity.elements.watchProfileElements {
             
             print("Working on row for \(element.name)")
             
@@ -67,7 +67,7 @@ class InterfaceController: WKInterfaceController {
         // Toggle element.  This implementation could be enhanced by using touches
         // on the component used in the table row (such as a button) so that there
         // are seperate sendElementValueToBridge calls for touch down and up.
-        let element = elements.watchProfileElements[rowIndex]
+        let element = watchConnectivity.elements.watchProfileElements[rowIndex]
         element.value = 1
         watchConnectivity.sendElementValueToBridge(element)
         element.value = 0
