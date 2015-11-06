@@ -433,9 +433,6 @@
                location = "group:ViewController.swift">
             </FileRef>
          </Group>
-         <FileRef
-            location = "group:CentralVirtualGameControllerOSXSample.xcodeproj">
-         </FileRef>
          <Group
             location = "group:CentralVirtualGameControllerOSXSampleTests"
             name = "CentralVirtualGameControllerOSXSampleTests">
