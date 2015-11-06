@@ -13,11 +13,11 @@
 - Works with Apple TV Simulator
 - Unlimited number of controllers on Apple TV (with caveats)
 - Ability to enhance slide-on/form-fitting controllers with motion, Extended profile and custom elements
-- iCade controller support (mapped into _GameController_, so they appear as MFi hardware)
+- iCade controller support (mapped through the *GameController* profiles so they appear as MFi hardware)
 - Easy to implement 3d touch on software controllers
 - Easy to utilize on-screen and Bluetooth keyboards with software controllers
-- Support for snapshots (using Apple format)
-- Use of hardware keyboard with Apple TV (when in combination with a software controller)
+- Support for snapshots (using Apple's format)
+- Use of hardware keyboard with Apple TV (when implemented in combination with a software controller)
 - Developed in Swift
 - Framework-based
 
@@ -48,7 +48,7 @@ Platform-specific framework projects are included in the workspace.  A single fr
 import VirtualGameController
 ```
 
-CocoaPods and Carthage support will be forthcoming.
+CocoaPods and Carthage support will be forthcoming!
 
 ## Sample Projects Notes
 
