@@ -56,6 +56,18 @@ CocoaPods and Carthage support will be forthcoming!
 
 A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
 
+- Unfortunately, the linkage between the frameworks in the sample projects and the frameworks produced by the framework projects is getting broken, so you'll need to re-add those frameworks:
+
+	 1. Build the framework project for the target platform
+    1. Navigate to the sample project source code
+    2. The framework file will appear in red; delete it
+    3. Bring up the project properties and go to the General tab
+    4. Click the plus button under Embedded Binaries
+    5. Find the appropriate framework file for the target platform and add it
+    6. You should be able to run the project now in either the simulator or device
+
+    If you happen to know how I can ensure that the frameworks stay linked to the sample projects, please let me know at <virtualgamecontroller@gmail.com>
+
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 
 
