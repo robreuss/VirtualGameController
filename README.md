@@ -3,7 +3,7 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
 
-# VirtualGameController
+# Virtual Game Controller
 
 ## Features
 
@@ -15,16 +15,14 @@
 - WiFi-based, with Bluetooth fallback
 - Controller-forwarding
 - Works with Apple TV Simulator
-- Unlimited number of controllers on Apple TV (with caveats)
-- Ability to enhance slide-on/form-fitting controllers with motion, Extended profile and custom elements
+- Unlimited number of hardware controllers on Apple TV (using controller forwarding)
+- Ability to enhance slide-on/form-fitting controllers with motion, extended profile elements and custom elements
 - iCade controller support (mapped through the *GameController* profiles so they appear as MFi hardware)
 - Easy to implement 3d touch on software controllers
-- Easy to utilize on-screen and Bluetooth keyboards with software controllers
-- Support for snapshots (using Apple's format)
-- Use of hardware keyboard with Apple TV (when implemented in combination with a software controller)
-- Developed in Swift
+- Leverage on-screen and Bluetooth keyboards using software controllers (including with Apple TV)
+- Support for snapshots (compatible with Apple's snapshot format)
+- Swift 2.0
 - Framework-based
-
 
 ## Requirements
 
