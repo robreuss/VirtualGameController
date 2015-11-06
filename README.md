@@ -1,7 +1,7 @@
 [![Swift 2.0](https://img.shields.io/badge/Swift-2.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
 
 # Virtual Game Controller
 
@@ -188,7 +188,9 @@ The interface for the controller class **VgcController** is the same as that of 
 GCControllerButtonValueChangedHandler
 GCControllerDirectionPadValueChangedHandler
 ```
-If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. The one limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
+If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
+
+For in-depth instructions on using DemoBots as a test, see the [Wiki page](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots).
 
 ####Central versus Bridge
 There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
