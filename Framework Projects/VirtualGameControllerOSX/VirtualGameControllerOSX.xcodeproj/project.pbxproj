@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2023EA3F1BED64BE009AE7F7 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EA3E1BED64BE009AE7F7 /* VgcBrowser.swift */; };
 		202BBFB11BE56C63004D47EC /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFA81BE56C63004D47EC /* VgcCentralPublisher.swift */; };
 		202BBFB31BE56C63004D47EC /* VgcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFAA1BE56C63004D47EC /* VgcController.swift */; };
 		202BBFB41BE56C63004D47EC /* VgcElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFAB1BE56C63004D47EC /* VgcElements.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2023EA3E1BED64BE009AE7F7 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 		202BBFA81BE56C63004D47EC /* VgcCentralPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralPublisher.swift; path = ../../../Source/Framework/VgcCentralPublisher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFAA1BE56C63004D47EC /* VgcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcController.swift; path = ../../../Source/Framework/VgcController.swift; sourceTree = "<group>"; };
 		202BBFAB1BE56C63004D47EC /* VgcElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcElements.swift; path = ../../../Source/Framework/VgcElements.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				202BBFA81BE56C63004D47EC /* VgcCentralPublisher.swift */,
+				2023EA3E1BED64BE009AE7F7 /* VgcBrowser.swift */,
 				202BBFAA1BE56C63004D47EC /* VgcController.swift */,
 				202BBFAB1BE56C63004D47EC /* VgcElements.swift */,
 				202BBFAC1BE56C63004D47EC /* VgcIcadePeripheral.swift */,
@@ -158,6 +161,7 @@
 				202BBFB41BE56C63004D47EC /* VgcElements.swift in Sources */,
 				202BBFB31BE56C63004D47EC /* VgcController.swift in Sources */,
 				202BBFB11BE56C63004D47EC /* VgcCentralPublisher.swift in Sources */,
+				2023EA3F1BED64BE009AE7F7 /* VgcBrowser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

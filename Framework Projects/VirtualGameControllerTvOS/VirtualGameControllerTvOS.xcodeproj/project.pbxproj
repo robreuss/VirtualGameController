@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2023EA3D1BED64BA009AE7F7 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */; };
 		202BBFFE1BE57CE4004D47EC /* VgcActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF31BE57CE4004D47EC /* VgcActivity.swift */; };
 		202BBFFF1BE57CE4004D47EC /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */; };
 		202BC0011BE57CE4004D47EC /* VgcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF61BE57CE4004D47EC /* VgcController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 		202BBFF31BE57CE4004D47EC /* VgcActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcActivity.swift; path = ../../../Source/Framework/VgcActivity.swift; sourceTree = "<group>"; };
 		202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralPublisher.swift; path = ../../../Source/Framework/VgcCentralPublisher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFF61BE57CE4004D47EC /* VgcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcController.swift; path = ../../../Source/Framework/VgcController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				202BBFF31BE57CE4004D47EC /* VgcActivity.swift */,
+				2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */,
 				202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */,
 				202BBFF61BE57CE4004D47EC /* VgcController.swift */,
 				202BBFF71BE57CE4004D47EC /* VgcElements.swift */,
@@ -166,6 +169,7 @@
 				202BC0011BE57CE4004D47EC /* VgcController.swift in Sources */,
 				202BC0021BE57CE4004D47EC /* VgcElements.swift in Sources */,
 				202BC0061BE57CE4004D47EC /* VgcPeripheral.swift in Sources */,
+				2023EA3D1BED64BA009AE7F7 /* VgcBrowser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

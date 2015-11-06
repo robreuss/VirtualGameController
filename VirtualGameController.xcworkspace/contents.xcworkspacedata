@@ -117,6 +117,9 @@
             location = "group:VgcElements.swift">
          </FileRef>
          <FileRef
+            location = "group:VgcBrowser.swift">
+         </FileRef>
+         <FileRef
             location = "group:VgcIcadePeripheral.swift">
          </FileRef>
          <FileRef
