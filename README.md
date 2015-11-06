@@ -11,7 +11,7 @@
 	- [Connecting to a Central](#connecting)
 	- [Sending Values to a Central](#sending)
 	- [System Messages](#system_messages)
-	- [Player Index][]
+	- [Player Index]()
 	- [Motion (Accelerometer)](#motion)
 1. [Game Integration](#game_integration)
  	- [GCController Replacement](#gccontroller)
