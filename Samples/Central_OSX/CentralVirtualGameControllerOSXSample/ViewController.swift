@@ -7,21 +7,15 @@
 //
 
 import Cocoa
-import GameController
 import AppKit
 import VirtualGameController
 
 class ViewController: NSViewController {
-
-    @IBOutlet weak var statusLabel: NSTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        
-        VgcManager.startAs(.Bridge, customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Bridge, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
         
         VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
@@ -30,13 +24,6 @@ class ViewController: NSViewController {
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: "VgcControllerDidConnectNotification", object: nil)
-        
-        /*
-        let scrollview = NSScrollView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        scrollview.autoresizingMask = [NSAutoresizingMaskOptions.ViewHeightSizable, NSAutoresizingMaskOptions.ViewWidthSizable]
-        scrollview.backgroundColor = NSColor.darkGrayColor()
-        self.view.addSubview(scrollview)
-        */
 
     }
     
