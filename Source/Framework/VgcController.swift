@@ -951,8 +951,8 @@ public class VgcMicroGamepad: GCMicroGamepad {
     
     public var vgcController: VgcController?
     
-    private var vgcReportsAbsoluteDpadValues: Bool
-    private var allowsRotation: Bool
+    private var vgcReportsAbsoluteDpadValues: Bool!
+    private var vgcAllowsRotation: Bool!
     
     private var vgcDpad:            VgcControllerDirectionPad
     private var vgcButtonA:         VgcControllerButtonInput
@@ -985,7 +985,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
         get {
             
             if vgcController?.deviceInfo.controllerType == .MFiHardware {
-                return vgcController!.hardwareController.reportsAbsoluteDpadValues
+                return vgcController!.hardwareController.microGamepad!.reportsAbsoluteDpadValues
             } else {
                 return vgcReportsAbsoluteDpadValues
             }
@@ -994,7 +994,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
         set {
             
             if vgcController?.deviceInfo.controllerType == .MFiHardware {
-                vgcController!.hardwareController.reportsAbsoluteDpadValues = newValue
+                vgcController!.hardwareController.microGamepad!.reportsAbsoluteDpadValues = newValue
             } else {
                 vgcReportsAbsoluteDpadValues = newValue
             }
@@ -1006,7 +1006,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
         get {
             
             if vgcController?.deviceInfo.controllerType == .MFiHardware {
-                return vgcController!.hardwareController.allowsRotation
+                return vgcController!.hardwareController.microGamepad!.allowsRotation
             } else {
                 return vgcAllowsRotation
             }
@@ -1015,7 +1015,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
         set {
             
             if vgcController?.deviceInfo.controllerType == .MFiHardware {
-                vgcController!.hardwareController.allowsRotation = newValue
+                vgcController!.hardwareController.microGamepad!.allowsRotation = newValue
             } else {
                 vgcAllowsRotation = newValue
             }
@@ -1986,6 +1986,8 @@ public class VgcGamepadSnapshot: NSObject {
 #if os(tvOS)
 // MARK: - MicroGamepad Snapshot
 public class VgcMicroGamepadSnapshot: NSObject {
+ 
+    private let elements = VgcManager.elements
     
     // Use a custom named version of the snapshot struct
     struct VgcMicroGamepadSnapShotDataV100 {
