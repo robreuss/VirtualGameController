@@ -4,12 +4,13 @@
 ## Features
 
 - Drop-in replacement for Apple's *GameController* framework
-- Software-based controllers on all supported platforms
+- Software-based controllers (that use the MFi profiles) on all supported platforms
 - Device motion support
 - Custom controller elements
 - Custom element mapping
 - WiFi-based
 - Controller-forwarding
+- Works with Apple TV Simulator
 - Unlimited number of controllers on Apple TV (with caveats)
 - Ability to enhance slide-on/form-fitting controllers with motion, Extended profile and custom elements
 - iCade controller support (mapped into _GameController_, so they appear as MFi hardware)
