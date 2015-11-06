@@ -8,7 +8,7 @@
 - Device motion support
 - Custom controller elements
 - Custom element mapping
-- WiFi-based
+- WiFi-based, with Bluetooth fallback
 - Controller-forwarding
 - Works with Apple TV Simulator
 - Unlimited number of controllers on Apple TV (with caveats)
