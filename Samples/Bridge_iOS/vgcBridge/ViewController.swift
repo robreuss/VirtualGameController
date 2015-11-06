@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import GameController
 import VirtualGameController
           
 class ViewController: VgcCentralViewController {
