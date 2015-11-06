@@ -1,23 +1,5 @@
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
 # VirtualGameController
-1. [Features](#features)
-1. [Requirements](#requirements)
-1. [Platform Support](#platform)
-1. [Terminology](#terminology)
-1. [Integration](#integration)
-1. [Sample Projects](#sample)
-1. [Software-based Peripheral](#usage)
-	- [Initialization](#initialization)
-	- [Finding Central Services](#finding)
-	- [Connecting to a Central](#connecting)
-	- [Sending Values to a Central](#sending)
-	- [System Messages](#system_messages)
-	- [Player Index](#player)
-	- [Motion (Accelerometer)](#motion)
-1. [Game Integration](#game)
- 	- [GCController Replacement](#gccontroller)
-	- [Central versus Bridge](#central)
-	- [Extended Functionality](#extended)
-1. [Contributions](#contributions)
 
 ## Features
 
@@ -42,7 +24,7 @@
 ## Requirements
 
 - iOS 9.0+ / Mac OS X 10.9+
-- Xcode 7
+- Xcode 7 / Swift 2.0
 
 ## Platform Support
 
@@ -61,7 +43,7 @@
 ## Integration
 Platform-specific framework projects are included in the workspace.  A single framework file supports both Peripherals (software-based controllers) and Centrals (games, replacement for GCController).
 
-```swift
+``` swift
 import VirtualGameController
 ```
 
@@ -78,7 +60,7 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 ####Initialization
 Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).  `appIdentifier` is for use with Bonjour and should be a short, unique identifier for your app.
 
-```swift
+``` swift
 VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: nil, customMappings: nil)
 ```
 After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  It is not required and the following example settings is the default and should suffice for most purposes.
@@ -87,7 +69,7 @@ Pass an empty string to `deviceUID` to have it be created by the system using `N
 
 Pass an empty string to `vendorName` and the device network name will be used to identify the Peripheral.
 
-```swift
+``` swift
 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
 ```
 ####Finding Central Services
@@ -97,18 +79,18 @@ Things get a bit more complicated if you are using both methods, and the followi
 
 Begin the search for Bridges and Centrals:
 
-```swift
+``` swift
 VgcManager.peripheral.browseForServices()
 ```
 Access the current set of found services:
 
-```swift
+``` swift
 VgcManager.peripheral.availableServices
 ```
 
 Related notifications - both notifications carry a reference to a VgcService as their payload:
 
-```swift
+``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
 ```
@@ -116,19 +98,19 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:",
 ####Connecting to and Disconnecting from a Central
 Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
 
-```swift
+``` swift
 VgcManager.peripheral.connectToService(service)
 ```
 
 To disconnect from a service:
 
-```swift
+``` swift
 VgcManager.peripheral.disconnectFromService()
 ```
 
 Related notifications:
 
-```swift
+``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
 ```
@@ -136,7 +118,7 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidD
 ####Sending Values to a Central
 An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the `sendElementState` method.
 
-```swift
+``` swift
 let leftShoulder = VgcManager.elements.leftShoulder
 leftShoulder.value = 1.0
 VgcManager.peripheral.sendElementState(leftShoulder)
@@ -145,13 +127,13 @@ VgcManager.peripheral.sendElementState(leftShoulder)
 ####System Messages
 The only currently implemented system message relevant to the Peripheral role is a message sent by the Central when it receives an element value from a Peripheral that fails a checksum test.  System messages are enumerated, and the invalid checksum message is of type `.ReceivedInvalidMessage`.  
 
-```swift
+``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
 ```
 
 Example of handling `.ReceivedInvalidMessage`:
 
-```swift
+``` swift
     let systemMessageTypeRaw = notification.object as! Int
     let systemMessageType = SystemMessages(rawValue: systemMessageTypeRaw)
     if systemMessageType == SystemMessages.ReceivedInvalidMessage {        
@@ -161,14 +143,14 @@ Example of handling `.ReceivedInvalidMessage`:
 ####<a name="player">Player Index</a>
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
-```swift
+``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
 ```
 
 ####Motion (Accelerometer)
 Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
 
-```swift
+``` swift
 VgcManager.peripheral.motion.start()
 VgcManager.peripheral.motion.stop()
 ```
@@ -176,19 +158,19 @@ VgcManager.peripheral.motion.stop()
 ####GCController Replacement
 **VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController**:
 
-```swift
+``` swift
 import GameController
 ```
 
 becomes...
 
-```swift
+``` swift
 import VirtualGameController
 ```
 
 The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are a couple of exceptions where **GameController** structures are used and should not be modified:
 
-```swift
+``` swift
 GCControllerButtonValueChangedHandler
 GCControllerDirectionPadValueChangedHandler
 ```
@@ -207,9 +189,30 @@ There are two features supported by a Central that exceed the capabilities of th
 - Custom elements
 - Custom mapping
 
-####Potential App Store Approval Issues
-There is only one feature that I think may cause problems with app approval: snapshots.  *VirtualGameController* not only supports the same snapshot functionality offered by *GameController*, it does so using the same data format, which is private.
+##Donations
+If you like VirtualGameController, please feel free to [donate](https://paypal.me/robreuss) to support it's continued development!
+##Contact
+Reach out using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.
+##License
+The MIT License (MIT)
 
-##Contributions
-If you like VirtualGameController, please feel free to [contribute](http://www.simplyformed.net) to support it's continued development!
+Copyright (c) [2015] [Rob Reuss]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
