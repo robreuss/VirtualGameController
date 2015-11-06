@@ -1,4 +1,11 @@
+<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat" alt="Swift 2 compatible" /></a>
+<a href="https://github.com/robreuss/VirtualGameController/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT"></a>
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
+
+<img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS"/>
+<img src="https://img.shields.io/badge/platform-OSX-blue.svg?style=flat" alt="Platform OSX"/>
+<img src="https://img.shields.io/badge/platform-watchOS-blue.svg?style=flat" alt="Platform watchOS"/>
+<img src="https://img.shields.io/badge/platform-tvOS-blue.svg?style=flat" alt="Platform tvOS"/>
 # VirtualGameController
 
 ## Features
@@ -72,22 +79,19 @@ A simplified form is available if custom mapping and custom elements are not use
 ``` swift
 VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID")
 ```
-Documentation of the custom mapping and custom elements functionality is coming soon, although the combination of the sample projects and class files are probably enough.
+Documentation of the custom mapping and custom elements functionality is coming soon, although the combination of the sample projects and class files are probably enough for you to get going.
 
-After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  It is not required and the following example settings are the default and should suffice for most purposes.
+After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  Doing so is not required as the defaults (shown here) should suffice for most purposes.
 
 ``` swift
 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
 ```
 
-Passing an empty string to `deviceUID` to have it be created by the system using `NSUUID()` and stored to user defaults.  
+Pass an empty string to `deviceUID` to have it be created by the system using `NSUUID()` and stored to user defaults.  
 
-Passing an empty string to `vendorName` and the device network name will be used to identify the Peripheral.
+Pass an empty string to `vendorName` and the device network name will be used to identify the Peripheral.  
 
 ####Finding Central Services
-In the simplest implementation, you'll just be connecting to the first Central service you find, and if you always use a Bridge, you'll be connecting to the first Bridge you find.  In those cases, you'll want to start the search and use the notification to call the `connectToService` method described below.
-
-Things get a bit more complicated if you are using both methods, and the following methods and notifications should be able to handle most scenarios.
 
 Begin the search for Bridges and Centrals:
 
@@ -106,6 +110,9 @@ Related notifications - both notifications carry a reference to a VgcService as 
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
 ```
+In the simplest implementation, you'll be connecting to the first Central service you find, whereas if you always use a Bridge, you'll be connecting to the first Bridge you find.  In those cases, you'll want to start the search and use the `VgcPeripheralFoundService ` notification to call the `connectToService` method.
+
+If you choose to implement a more complex scenario, where you have multiple Peripherals that connect to either a Bridge or Central, the combination of the above methods and notifications should have you covered.  The sample projects implement this type of flexible scenario.
         
 ####Connecting to and Disconnecting from a Central
 Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
