@@ -8,6 +8,88 @@
       location = "group:LICENSE">
    </FileRef>
    <Group
+      location = "group:Framework Projects"
+      name = "Framework Projects">
+      <Group
+         location = "group:VirtualGameControllerIOS"
+         name = "VirtualGameControllerIOS">
+         <Group
+            location = "group:VirtualGameController"
+            name = "VirtualGameController">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameController.h">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:VirtualGameControllerIOS"
+            name = "VirtualGameControllerIOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerIOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:VirtualGameControllerIOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:VirtualGameControllerOSX"
+         name = "VirtualGameControllerOSX">
+         <Group
+            location = "group:VirtualGameControllerOSX"
+            name = "VirtualGameControllerOSX">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerOSX.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:VirtualGameControllerOSX.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:VirtualGameControllerTvOS"
+         name = "VirtualGameControllerTvOS">
+         <Group
+            location = "group:VirtualGameControllerTvOS"
+            name = "VirtualGameControllerTvOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerTvOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:VirtualGameControllerTvOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "group:VirtualGameControllerWatchOS"
+         name = "VirtualGameControllerWatchOS">
+         <Group
+            location = "group:VirtualGameControllerWatchOS"
+            name = "VirtualGameControllerWatchOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerWatchOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:VirtualGameControllerWatchOS.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
       location = "group:Source"
       name = "Source">
       <Group
@@ -64,88 +146,6 @@
          </FileRef>
          <FileRef
             location = "group:VgcActivity.swift">
-         </FileRef>
-      </Group>
-   </Group>
-   <Group
-      location = "group:Bridge/vgcBridge"
-      name = "Framework Projects">
-      <Group
-         location = "group:../../Frameworks/VirtualGameControllerIOS"
-         name = "VirtualGameControllerIOS">
-         <Group
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameController"
-            name = "VirtualGameController">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameController.h">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameControllerIOS"
-            name = "VirtualGameControllerIOS">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameControllerIOS.h">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerIOS/VirtualGameControllerIOS.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "group:../../Frameworks/VirtualGameControllerOSX"
-         name = "VirtualGameControllerOSX">
-         <Group
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerOSX/VirtualGameControllerOSX"
-            name = "VirtualGameControllerOSX">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameControllerOSX.h">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerOSX/VirtualGameControllerOSX.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "group:../../Frameworks/VirtualGameControllerTvOS"
-         name = "VirtualGameControllerTvOS">
-         <Group
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerTvOS/VirtualGameControllerTvOS"
-            name = "VirtualGameControllerTvOS">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameControllerTvOS.h">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerTvOS/VirtualGameControllerTvOS.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
-         location = "group:../../Frameworks/VirtualGameControllerWatchOS"
-         name = "VirtualGameControllerWatchOS">
-         <Group
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS"
-            name = "VirtualGameControllerWatchOS">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameControllerWatchOS.h">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:../../Development/VirtualGameController/Frameworks/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj">
          </FileRef>
       </Group>
    </Group>
@@ -385,9 +385,6 @@
                location = "group:ViewController.swift">
             </FileRef>
          </Group>
-         <FileRef
-            location = "group:CentralVirtualGameControlleriOSSample.xcodeproj">
-         </FileRef>
          <Group
             location = "group:CentralVirtualGameControlleriOSSampleTests"
             name = "CentralVirtualGameControlleriOSSampleTests">
@@ -539,9 +536,6 @@
                location = "group:ViewController.swift">
             </FileRef>
          </Group>
-         <FileRef
-            location = "group:PeripheralVirtualGameControlleriOSSample.xcodeproj">
-         </FileRef>
          <Group
             location = "group:PeripheralVirtualGameControlleriOSSampleTests"
             name = "PeripheralVirtualGameControlleriOSSampleTests">

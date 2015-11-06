@@ -183,6 +183,8 @@ import GameController
 import VirtualGameController
 ```
 
+A framework file specific to your targetted platform must be used, and framework files are provided for each platform.
+
 The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are some exceptions where **GameController** structures are used and these can be left as GC references:
 
 ``` swift
@@ -194,9 +196,10 @@ GCGamepad
 GCExtendedGamepad
 GCMotion
 ```
+
 If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
 
-For in-depth instructions on using DemoBots as a test, see the [Wiki page](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots).
+For in-depth instructions on using DemoBots as a test, see the [Wiki page](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
 
 ####Central versus Bridge
 There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
