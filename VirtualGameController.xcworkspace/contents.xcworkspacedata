@@ -14,16 +14,6 @@
          location = "group:VirtualGameControllerIOS"
          name = "VirtualGameControllerIOS">
          <Group
-            location = "group:VirtualGameController"
-            name = "VirtualGameController">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameController.h">
-            </FileRef>
-         </Group>
-         <Group
             location = "group:VirtualGameControllerIOS"
             name = "VirtualGameControllerIOS">
             <FileRef
