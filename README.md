@@ -1,11 +1,8 @@
-<a href="https://developer.apple.com/swift"><img src="https://img.shields.io/badge/swift2-compatible-4BC51D.svg?style=flat" alt="Swift 2 compatible" /></a>
-<a href="https://github.com/robreuss/VirtualGameController/blob/master/LICENSE"><img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat" alt="License: MIT"></a>
+[![Swift 2.0](https://img.shields.io/badge/Swift-2.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
+[![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
 
-<img src="https://img.shields.io/badge/platform-iOS-blue.svg?style=flat" alt="Platform iOS"/>
-<img src="https://img.shields.io/badge/platform-OSX-blue.svg?style=flat" alt="Platform OSX"/>
-<img src="https://img.shields.io/badge/platform-watchOS-blue.svg?style=flat" alt="Platform watchOS"/>
-<img src="https://img.shields.io/badge/platform-tvOS-blue.svg?style=flat" alt="Platform tvOS"/>
 # VirtualGameController
 
 ## Features
