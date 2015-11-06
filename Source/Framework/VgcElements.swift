@@ -344,14 +344,13 @@ public class Elements: NSObject {
         // Iterate the set to set the identifier and load up the hash
         // used by devs to access the elements
         
-        if Elements.customElements != nil && Elements.customElements.customProfileElements != nil {
-            for customElement in Elements.customElements.customProfileElements {
-                
-                custom[customElement.identifier] = customElement
-                
-            }
-            customProfileElements = Elements.customElements.customProfileElements
+        for customElement in Elements.customElements.customProfileElements {
+            
+            custom[customElement.identifier] = customElement
+            
         }
+        
+        customProfileElements = Elements.customElements.customProfileElements
         
         super.init()
         
@@ -523,7 +522,7 @@ public class CustomElementsSuperclass: NSObject {
     public var valueChangedHandler: VgcCustomProfileValueChangedHandler!
     #endif
     
-    public var customProfileElements: [Element]!
+    public var customProfileElements: [Element] = []
     
     public override init() {
         

@@ -334,11 +334,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
  
     func mapElement(elementToBeMapped: Element) {
         
+        if Elements.customMappings == nil { return }
+
         if let destinationElementIdentifier = Elements.customMappings.mappings[elementToBeMapped.identifier] {
             let destinationElement = elements.elementFromIdentifier(destinationElementIdentifier)
             destinationElement.value = elementToBeMapped.value
             setValue(destinationElement.value, forKeyPath: destinationElement.setterKeypath(self))
         }
+
     }
     
     // Update the controller by mapping the controller element to the

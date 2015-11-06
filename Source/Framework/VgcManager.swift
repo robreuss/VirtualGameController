@@ -259,7 +259,7 @@ public class VgcManager: NSObject {
     
     /// Simplified version of startAs when custom mapping and custom elements are not needed
     public class func startAs(appRole: AppRole, appIdentifier: String) {
-        VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: nil, customMappings: nil)
+        VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass())
     }
     
     ///
