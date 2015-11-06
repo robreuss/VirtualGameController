@@ -1,6 +1,4 @@
 # VirtualGameController
-iOS game controller framework that wraps GCController and supports the development of software-based controllers.  
-
 1. [Features](#features)
 1. [Requirements](#requirements)
 1. [Platform Support](#platform_support)
@@ -23,7 +21,7 @@ iOS game controller framework that wraps GCController and supports the developme
 
 ## Features
 
-- Drop-in replacement (wrapper) for *GameController*
+- Drop-in replacement for Apple's *GameController* framework
 - Software-based controllers on all supported platforms
 - Device motion support
 - Custom controller elements
@@ -78,22 +76,22 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 
 ## Creating a Software-based Peripheral
 ####Initialization
-Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).  **appIdentifier** is for use with Bonjour and should be a short, unique identifier for your app.
+Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects).  `appIdentifier` is for use with Bonjour and should be a short, unique identifier for your app.
 
 ```swift
 VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: nil, customMappings: nil)
 ```
-After calling the **startAs** method, the Peripheral may be defined by setting it's **deviceInfo** property.  It is not required and the following example settings is the default and should suffice for most purposes.
+After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  It is not required and the following example settings is the default and should suffice for most purposes.
 
-Pass an empty string to deviceUID to have it be created by the system using NSUUID() and stored to user defaults.  
+Pass an empty string to `deviceUID` to have it be created by the system using `NSUUID()` and stored to user defaults.  
 
-Pass an empty string to vendorName and the device network name will be used to identify the Peripheral.
+Pass an empty string to `vendorName` and the device network name will be used to identify the Peripheral.
 
 ```swift
 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
 ```
 ####Finding Central Services
-In the simplest implementation, you'll just be connecting to the first Central service you find, and if you always use a Bridge, you'll be connecting to the first Bridge you find.  In those cases, you'll want to start the search and use the notification to call the **connectToService** method described below.
+In the simplest implementation, you'll just be connecting to the first Central service you find, and if you always use a Bridge, you'll be connecting to the first Bridge you find.  In those cases, you'll want to start the search and use the notification to call the `connectToService` method described below.
 
 Things get a bit more complicated if you are using both methods, and the following methods and notifications should be able to handle most scenarios.
 
@@ -136,7 +134,7 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidD
 ```
 
 ####Sending Values to a Central
-An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the "sendElementState" method.
+An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the `sendElementState` method.
 
 ```swift
 let leftShoulder = VgcManager.elements.leftShoulder
@@ -145,13 +143,13 @@ VgcManager.peripheral.sendElementState(leftShoulder)
 ```
 
 ####System Messages
-The only currently implemented system message relevant to the Peripheral role is a message sent by the Central when it receives an element value from a Peripheral that fails a checksum test.  System messages are enumerated, and the invalid checksum message is of type .ReceivedInvalidMessage.  
+The only currently implemented system message relevant to the Peripheral role is a message sent by the Central when it receives an element value from a Peripheral that fails a checksum test.  System messages are enumerated, and the invalid checksum message is of type `.ReceivedInvalidMessage`.  
 
 ```swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
 ```
 
-Example of handling .ReceivedInvalidMessage:
+Example of handling `.ReceivedInvalidMessage`:
 
 ```swift
     let systemMessageTypeRaw = notification.object as! Int
@@ -188,7 +186,7 @@ becomes...
 import VirtualGameController
 ```
 
-The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces **GCC** with **VgcC**.  There are a couple of exceptions where **GameController** structures are used and should not be modified:
+The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are a couple of exceptions where **GameController** structures are used and should not be modified:
 
 ```swift
 GCControllerButtonValueChangedHandler
