@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2023EA521BED66A7009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */; };
 		2023EA531BED66A7009AE7F7 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2023EA5F1BED6F28009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA5E1BED6F28009AE7F7 /* VirtualGameController.framework */; };
+		2023EA671BED713B009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA661BED713B009AE7F7 /* VirtualGameController.framework */; };
 		202BBFA11BE56BDB004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9E1BE56BDB004D47EC /* VgcCustomElements.swift */; };
 		202BBFA21BE56BDB004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9F1BE56BDB004D47EC /* VgcCustomMappings.swift */; };
 		2084DCFE1BD370960041D380 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DCFD1BD370960041D380 /* AppDelegate.swift */; };
@@ -53,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "/Users/robreuss/Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug/VirtualGameController.framework"; sourceTree = "<absolute>"; };
-		2023EA5E1BED6F28009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		2023EA661BED713B009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		202BBF9E1BE56BDB004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF9F1BE56BDB004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		2084DCFA1BD370960041D380 /* Peripheral_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peripheral_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2023EA5F1BED6F28009AE7F7 /* VirtualGameController.framework in Frameworks */,
+				2023EA671BED713B009AE7F7 /* VirtualGameController.framework in Frameworks */,
 				2023EA521BED66A7009AE7F7 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +100,7 @@
 		2084DCF11BD370960041D380 = {
 			isa = PBXGroup;
 			children = (
-				2023EA5E1BED6F28009AE7F7 /* VirtualGameController.framework */,
+				2023EA661BED713B009AE7F7 /* VirtualGameController.framework */,
 				2084DCFC1BD370960041D380 /* vgcPeripheralOSX */,
 				2084DD0E1BD370960041D380 /* vgcPeripheralOSXTests */,
 				2084DD191BD370960041D380 /* vgcPeripheralOSXUITests */,
