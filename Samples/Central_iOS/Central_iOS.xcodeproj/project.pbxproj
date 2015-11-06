@@ -54,7 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2023EA441BED6640009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2023EA441BED6640009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -103,6 +103,7 @@
 		208DFBF31BA7C99800C75E41 = {
 			isa = PBXGroup;
 			children = (
+				2023EA441BED6640009AE7F7 /* VirtualGameController.framework */,
 				208DFBFE1BA7C99800C75E41 /* vgcCentraliOS */,
 				208DFC131BA7C99800C75E41 /* vgcCentraliOSTests */,
 				208DFC1E1BA7C99800C75E41 /* vgcCentraliOSUITests */,
@@ -128,7 +129,6 @@
 				202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */,
 				202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */,
 				208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */,
-				2023EA441BED6640009AE7F7 /* VirtualGameController.framework */,
 				208DFC011BA7C99800C75E41 /* ViewController.swift */,
 				208DFC031BA7C99800C75E41 /* Main.storyboard */,
 				208DFC061BA7C99800C75E41 /* Assets.xcassets */,

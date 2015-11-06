@@ -51,7 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug/VirtualGameController.framework"; sourceTree = "<group>"; };
 		202BBF9E1BE56BDB004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF9F1BE56BDB004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		2084DCFA1BD370960041D380 /* Peripheral_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peripheral_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +97,7 @@
 		2084DCF11BD370960041D380 = {
 			isa = PBXGroup;
 			children = (
+				2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */,
 				2084DCFC1BD370960041D380 /* vgcPeripheralOSX */,
 				2084DD0E1BD370960041D380 /* vgcPeripheralOSXTests */,
 				2084DD191BD370960041D380 /* vgcPeripheralOSXUITests */,
@@ -117,7 +118,6 @@
 		2084DCFC1BD370960041D380 /* vgcPeripheralOSX */ = {
 			isa = PBXGroup;
 			children = (
-				2023EA501BED66A3009AE7F7 /* VirtualGameController.framework */,
 				202BBF9E1BE56BDB004D47EC /* VgcCustomElements.swift */,
 				202BBF9F1BE56BDB004D47EC /* VgcCustomMappings.swift */,
 				2084DCFD1BD370960041D380 /* AppDelegate.swift */,

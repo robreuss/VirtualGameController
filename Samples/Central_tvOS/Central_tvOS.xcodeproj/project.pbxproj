@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2023EA581BED66E2009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA561BED66DE009AE7F7 /* VirtualGameController.framework */; };
-		2023EA591BED66E2009AE7F7 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA561BED66DE009AE7F7 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2023EA5B1BED69DF009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA5A1BED69DF009AE7F7 /* VirtualGameController.framework */; };
+		2023EA5C1BED69DF009AE7F7 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA5A1BED69DF009AE7F7 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2027BCD21BA613FD0097452D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027BCD11BA613FD0097452D /* AppDelegate.swift */; };
 		2027BCD41BA613FD0097452D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027BCD31BA613FD0097452D /* ViewController.swift */; };
 		2027BCD71BA613FD0097452D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2027BCD51BA613FD0097452D /* Main.storyboard */; };
@@ -31,13 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		20DAEB801BE9ADE9003A77B6 /* Embed Frameworks */ = {
+		2023EA5D1BED69DF009AE7F7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2023EA591BED66E2009AE7F7 /* VirtualGameController.framework in Embed Frameworks */,
+				2023EA5C1BED69DF009AE7F7 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		2023EA561BED66DE009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-appletvos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2023EA5A1BED69DF009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VirtualGameController.framework; path = "/Users/robreuss/Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<absolute>"; };
 		2027BCCE1BA613FD0097452D /* Central_tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2027BCD11BA613FD0097452D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2027BCD31BA613FD0097452D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2023EA581BED66E2009AE7F7 /* VirtualGameController.framework in Frameworks */,
+				2023EA5B1BED69DF009AE7F7 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +84,7 @@
 		2027BCC51BA613FD0097452D = {
 			isa = PBXGroup;
 			children = (
+				2023EA5A1BED69DF009AE7F7 /* VirtualGameController.framework */,
 				2027BCD01BA613FD0097452D /* vgcCentral_tvOS */,
 				2027BCE21BA613FE0097452D /* vgcCentral_tvOSTests */,
 				2027BCCF1BA613FD0097452D /* Products */,
@@ -136,7 +138,7 @@
 				2027BCCA1BA613FD0097452D /* Sources */,
 				2027BCCB1BA613FD0097452D /* Frameworks */,
 				2027BCCC1BA613FD0097452D /* Resources */,
-				20DAEB801BE9ADE9003A77B6 /* Embed Frameworks */,
+				2023EA5D1BED69DF009AE7F7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

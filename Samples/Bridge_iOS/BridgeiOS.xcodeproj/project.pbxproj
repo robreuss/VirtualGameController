@@ -113,7 +113,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2023EA421BED6639009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2023EA421BED6639009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF881BE56B90004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -193,6 +193,7 @@
 		207BFA321BBB7A210061A9B0 = {
 			isa = PBXGroup;
 			children = (
+				2023EA421BED6639009AE7F7 /* VirtualGameController.framework */,
 				2033A1BB1BEB3C7C005C5845 /* vgcBridge WatchKit App */,
 				207BFA3D1BBB7A210061A9B0 /* vgcBridge_iOS */,
 				207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */,
@@ -221,7 +222,6 @@
 				202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */,
 				202BBF881BE56B90004D47EC /* VgcSharedViews.swift */,
 				207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */,
-				2023EA421BED6639009AE7F7 /* VirtualGameController.framework */,
 				209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */,
 				207BFA401BBB7A210061A9B0 /* ViewController.swift */,
 				207BFA421BBB7A210061A9B0 /* Main.storyboard */,

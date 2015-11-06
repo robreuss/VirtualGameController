@@ -51,7 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2023EA4E1BED669C009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2023EA4E1BED669C009AE7F7 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug/VirtualGameController.framework"; sourceTree = "<group>"; };
 		202BBFA41BE56BED004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFA51BE56BED004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		20D60C151BB3E8B000C3FAE0 /* Central_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +97,7 @@
 		20D60C0C1BB3E8B000C3FAE0 = {
 			isa = PBXGroup;
 			children = (
+				2023EA4E1BED669C009AE7F7 /* VirtualGameController.framework */,
 				20D60C171BB3E8B000C3FAE0 /* vgcCentralOSX */,
 				20D60C291BB3E8B000C3FAE0 /* vgcCentralOSXTests */,
 				20D60C341BB3E8B000C3FAE0 /* vgcCentralOSXUITests */,
@@ -117,7 +118,6 @@
 		20D60C171BB3E8B000C3FAE0 /* vgcCentralOSX */ = {
 			isa = PBXGroup;
 			children = (
-				2023EA4E1BED669C009AE7F7 /* VirtualGameController.framework */,
 				202BBFA41BE56BED004D47EC /* VgcCustomElements.swift */,
 				202BBFA51BE56BED004D47EC /* VgcCustomMappings.swift */,
 				20D60C181BB3E8B000C3FAE0 /* AppDelegate.swift */,
