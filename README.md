@@ -170,7 +170,7 @@ VgcManager.peripheral.motion.stop()
 ```
 ## Game Integration 
 ####GCController Replacement
-**VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController**:
+**VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
 
 ``` swift
 import GameController
@@ -179,14 +179,20 @@ import GameController
 becomes...
 
 ``` swift
+import GameController
 import VirtualGameController
 ```
 
-The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are a couple of exceptions where **GameController** structures are used and should not be modified:
+The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are some exceptions where **GameController** structures are used and these can be left as GC references:
 
 ``` swift
 GCControllerButtonValueChangedHandler
 GCControllerDirectionPadValueChangedHandler
+GCControllerElement
+GCMicroGamepad
+GCGamepad
+GCExtendedGamepad
+GCMotion
 ```
 If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
 
@@ -231,4 +237,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+
 
