@@ -10,7 +10,8 @@ import Cocoa
 import GameController
 import VirtualGameController
 
-var peripheral = VgcManager.peripheral
+let peripheral = VgcManager.peripheral
+let elements = VgcManager.elements
 
 class ViewController: NSViewController {
     
