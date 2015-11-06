@@ -19,6 +19,7 @@ var peripheralManager = VgcManager.peripheral
 // A simple mock-up of a game controller (Peripheral)
 public class PeripheralControlPadView: NSObject {
 
+    var custom = VgcManager.elements.custom
     var elements = VgcManager.elements
     var parentView: UIView!
     var controlOverlay: UIView!
@@ -85,6 +86,7 @@ public class PeripheralControlPadView: NSObject {
         centerTriggerButton.valueLabel.textAlignment = .Center
         parentView.addSubview(centerTriggerButton)
         */
+
         var yPosition = (buttonHeight * 2) + (buttonSpacing * 2)
         
         let padHeightWidth = parentView.bounds.size.width * 0.50
