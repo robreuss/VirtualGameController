@@ -46,7 +46,7 @@ class VgcCentralViewController: UIViewController {
         } else if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
             self.debugViewWidth = scrollview.bounds.size.width * 0.40
         } else {
-            self.debugViewWidth = scrollview.bounds.size.width * 0.15
+            self.debugViewWidth = scrollview.bounds.size.width * 0.17
         }
         
         #if !os(tvOS)

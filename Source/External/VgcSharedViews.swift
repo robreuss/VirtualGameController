@@ -782,7 +782,7 @@ public class ElementDebugView: UIView {
         scrollView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight]
         self.addSubview(scrollView)
         
-        labelHeight = CGFloat(25.0)
+        labelHeight = CGFloat(22.0)
         yPosition = CGFloat(10.0)
         
         if deviceIsTypeOfBridge() && VgcManager.bridgeRelayOnly {
