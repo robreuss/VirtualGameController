@@ -7,6 +7,9 @@
 //
 
 import Foundation
+#if !(os(watchOS))
+import GameController
+#endif
 #if os(iOS) || os(tvOS) // Need this only for UIDevice
     import UIKit
 #endif
