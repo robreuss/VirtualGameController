@@ -1,21 +1,21 @@
 # VirtualGameController
 1. [Features](#features)
 1. [Requirements](#requirements)
-1. [Platform Support](#platform_support)
+1. [Platform Support](#platform)
 1. [Terminology](#terminology)
 1. [Integration](#integration)
-1. [Sample Projects](#samples)
+1. [Sample Projects](#sample)
 1. [Software-based Peripheral](#usage)
 	- [Initialization](#initialization)
-	- [Finding Central Services](#finding_services)
+	- [Finding Central Services](#finding)
 	- [Connecting to a Central](#connecting)
 	- [Sending Values to a Central](#sending)
 	- [System Messages](#system_messages)
-	- [Player Index]()
+	- [Player Index](#player)
 	- [Motion (Accelerometer)](#motion)
-1. [Game Integration](#game_integration)
+1. [Game Integration](#game)
  	- [GCController Replacement](#gccontroller)
-	- [Central versus Bridge](#central_versus_bridge)
+	- [Central versus Bridge](#central)
 	- [Extended Functionality](#extended)
 1. [Contributions](#contributions)
 
@@ -158,7 +158,7 @@ Example of handling `.ReceivedInvalidMessage`:
 		// Do something
     }
 ```
-####Player Index
+####<a name="player">Player Index</a>
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
 ```swift
