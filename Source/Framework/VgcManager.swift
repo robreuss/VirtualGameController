@@ -257,6 +257,11 @@ public class VgcManager: NSObject {
     public static var centralServiceName = NSHost.currentHost().localizedName
     #endif
     
+    /// Simplified version of startAs when custom mapping and custom elements are not needed
+    public class func startAs(appRole: AppRole, appIdentifier: String) {
+        VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: nil, customMappings: nil)
+    }
+    
     ///
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
