@@ -41,7 +41,7 @@ The user interfaces in the sample projects are designed for documentation, testi
 
 <img src="http://robreuss.squarespace.com/storage/peripheral_central_selector2.png" alt="Selector" width="225"/>
 <img src="http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral"  width="225"/>
-<img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="300"/>
+<img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="275"/>
 
 ## Terminology
 * **Peripheral**: A software-based game controller.
@@ -58,7 +58,7 @@ import VirtualGameController
 
 CocoaPods and Carthage support will be forthcoming!
 
-## Sample Projects Notes
+## Using the Sample Projects
 
 A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
 
@@ -66,15 +66,13 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 
 	 1. Clean and build the framework project for the target platform
     1. Navigate to the sample project source code
-    2. The framework file will appear in red; delete it
-    3. Bring up the project properties and go to the General tab
-    4. Remove the existing framework reference under Embedded Binaries
-    4. Click the plus button under Embedded Binaries
-    5. Find the appropriate framework file for the target platform and add it
-    6. Note that if building the Bridge sample project, you'll also need to add the watchOS framework to the watch extension target.
-    6. You should be able to run the project now in either the simulator or on a device
-
-    If you happen to know how I can ensure that the frameworks stay linked to the sample projects, please let me know at <virtualgamecontroller@gmail.com>.  As it is, they point to DerivedData and lose their connection when cloned to a different machine.  
+    1. The old framework file will appear in red; delete it
+    1. Bring up the project properties and go to the General tab
+    1. Remove the existing framework reference under Embedded Binaries
+    1. Click the plus button under Embedded Binaries
+    1. Find the appropriate framework file for the target platform and add it
+    1. Note that if building the Bridge sample project, you'll also need to add the watchOS framework to the watch extension target.
+    1. You should be able to run the project now in either the simulator or on a device
 
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 
