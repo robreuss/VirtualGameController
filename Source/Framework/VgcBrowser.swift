@@ -302,9 +302,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didRemoveService service: NSNetService, moreComing: Bool) {
         
-        print("Service was removed: \(service.type)")
+        print("Service was removed: \(service.type) isMainThread: \(NSThread.isMainThread())")
         let vgcService = serviceLookup.removeValueForKey(service)
-        print("VgcService was removed: \(vgcService)")
+        print("VgcService was removed: \(vgcService?.fullName)")
         // If VgcService is nil, it means we already removed the service so we do not send the notification
         if vgcService != nil { NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService) }
         

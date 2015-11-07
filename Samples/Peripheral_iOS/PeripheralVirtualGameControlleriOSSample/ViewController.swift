@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         VgcManager.iCadeControllerMode = .Disabled
         
         // Display our basic controller UI for debugging purposes
-        self.peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+        peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
@@ -48,16 +48,16 @@ class ViewController: UIViewController {
     // newly found VgcService object is included with the notification.
     @objc func foundService(notification: NSNotification) {
         let vgcService = notification.object as! VgcService
-        print("Found service: \(vgcService.fullName)")
-        self.peripheralControlPadView.serviceSelectorView.refresh()
+        print("Found service: \(vgcService.fullName) isMainThread: \(NSThread.isMainThread())")
+        peripheralControlPadView.serviceSelectorView.refresh()
     }
  
     // Refresh list of available services because one went offline. 
     // I'm not using here, but the lost VgcService object is included with the notification.
     @objc func lostService(notification: NSNotification) {
         let vgcService = notification.object as? VgcService
-        print("Lost service: \(vgcService!.fullName)")
-        self.peripheralControlPadView.serviceSelectorView.refresh()
+        print("Lost service: \(vgcService!.fullName) isMainThread: \(NSThread.isMainThread())")
+        peripheralControlPadView.serviceSelectorView.refresh()
     }
     
     // There is only one system message, currently, that is relevant to Peripherals,
