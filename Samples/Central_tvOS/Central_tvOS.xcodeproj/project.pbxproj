@@ -16,8 +16,8 @@
 		202BBF9C1BE56BC7004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */; };
 		202BBF9D1BE56BC7004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */; };
 		20AEB9411BE7082C00F62758 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AEB9401BE7082C00F62758 /* VgcCentralViewController.swift */; };
-		20EC20A31BED7EC5007AF2EF /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC20A11BED7EC1007AF2EF /* VirtualGameController.framework */; };
-		20EC20A41BED7EC5007AF2EF /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC20A11BED7EC1007AF2EF /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20EC20A51BED81A0007AF2EF /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC20A11BED7EC1007AF2EF /* VirtualGameController.framework */; };
+		20EC20A61BED81A0007AF2EF /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC20A11BED7EC1007AF2EF /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,13 +31,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2023EA5D1BED69DF009AE7F7 /* Embed Frameworks */ = {
+		20EC20A71BED81A0007AF2EF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20EC20A41BED7EC5007AF2EF /* VirtualGameController.framework in Embed Frameworks */,
+				20EC20A61BED81A0007AF2EF /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20EC20A31BED7EC5007AF2EF /* VirtualGameController.framework in Frameworks */,
+				20EC20A51BED81A0007AF2EF /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 				2027BCCA1BA613FD0097452D /* Sources */,
 				2027BCCB1BA613FD0097452D /* Frameworks */,
 				2027BCCC1BA613FD0097452D /* Resources */,
-				2023EA5D1BED69DF009AE7F7 /* Embed Frameworks */,
+				20EC20A71BED81A0007AF2EF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

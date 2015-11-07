@@ -64,6 +64,7 @@ A number of sample projects are included that demonstrate the app roles (Periphe
     3. Bring up the project properties and go to the General tab
     4. Click the plus button under Embedded Binaries
     5. Find the appropriate framework file for the target platform and add it
+    6. Note that if building the Bridge sample project, you'll also need to add the watchOS framework to the watch extension target.
     6. You should be able to run the project now in either the simulator or device
 
     If you happen to know how I can ensure that the frameworks stay linked to the sample projects, please let me know at <virtualgamecontroller@gmail.com>
