@@ -19,6 +19,7 @@
 		202BBF911BE56BA5004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF8E1BE56BA5004D47EC /* VgcSharedViews.swift */; };
 		20EC209E1BED7E34007AF2EF /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC209C1BED7E28007AF2EF /* VirtualGameController.framework */; };
 		20EC209F1BED7E34007AF2EF /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20EC209C1BED7E28007AF2EF /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20EC20AB1BED9530007AF2EF /* image.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20EC20AA1BED9530007AF2EF /* image.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		202BBF8D1BE56BA5004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF8E1BE56BA5004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		20EC209C1BED7E28007AF2EF /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-ebvkvqvufcpsxnfjrnuczntwoesf/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		20EC20AA1BED9530007AF2EF /* image.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = image.xcassets; path = ../../image.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		2027BCEE1BA6145E0097452D = {
 			isa = PBXGroup;
 			children = (
+				20EC20AA1BED9530007AF2EF /* image.xcassets */,
 				20EC209C1BED7E28007AF2EF /* VirtualGameController.framework */,
 				2027BCF91BA6145E0097452D /* vgcPeripheral_iOS */,
 				2027BD191BA6145F0097452D /* vgcPeripheral_iOSUITests */,
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2027BD051BA6145E0097452D /* LaunchScreen.storyboard in Resources */,
+				20EC20AB1BED9530007AF2EF /* image.xcassets in Resources */,
 				2027BD021BA6145E0097452D /* Assets.xcassets in Resources */,
 				2027BD001BA6145E0097452D /* Main.storyboard in Resources */,
 			);
