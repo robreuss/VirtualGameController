@@ -37,7 +37,9 @@
 - watchOS
 
 ## Screenshots
-![Alt Peripheral](http://robreuss.squarespace.com/storage/peripheral2.png =300x534 "Peripheral")![Alt Central](http://robreuss.squarespace.com/storage/central2.png =300x534 "Central")![Alt Central Selector](http://robreuss.squarespace.com/storage/peripheral_central_selector2.png =300x534 "Central Selector")
+<img src="(http://robreuss.squarespace.com/storage/central_selector2.png" alt="Peripheral" style="width: 300px;"/><img src="(http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral" style="width: 300px;"/><img src="(http://robreuss.squarespace.com/storage/central.png" alt="Central" style="width: 300px;"/>
+
+![Alt Peripheral](http://robreuss.squarespace.com/storage/peripheral2.png =300x)![Alt Central](http://robreuss.squarespace.com/storage/central2.png =300x)![Alt Central Selector](http://robreuss.squarespace.com/storage/peripheral_central_selector2.png =300x)
 
 ## Terminology
 * **Peripheral**: A software-based game controller.
