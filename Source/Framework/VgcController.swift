@@ -231,8 +231,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(base64DecodedData!) as? DeviceInfo)!
                     
                 }
-                
-            } else {
+            } else if element.type == .Custom {
+                elements.custom[element.identifier]?.value = elementValue
+            }
+            if element.type != elements.deviceInfoElement.type {
                 
                 //print("Incoming: \(element.name): id: \(elementIdentifier!), element value: \(element.value)")
                 
@@ -242,7 +244,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 //}
                 
                 // Don't update the controller if we're in bridgeRelayOnly mode
-                if !deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly { updateGameControllerWithValue(element) }
+                if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
                 
                 // If we're a bridge, send along the value to the Central
                 if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil {
@@ -793,9 +795,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     print("Controller already has a peripheral object \(deviceInfo.vendorName)")
                 }
                 peripheral.controller = self
-            } else {
-                print("Assigning controller to global peripheral object")
-                peripheral = Peripheral()
             }
             
             // Make a game controller out of the peripheral

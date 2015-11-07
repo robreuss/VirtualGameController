@@ -346,8 +346,11 @@ public class Elements: NSObject {
         
         for customElement in Elements.customElements.customProfileElements {
             
-            custom[customElement.identifier] = customElement
+            let elementCopy = customElement.copy() as! Element
+            elementCopy.identifier = customElement.identifier
+            custom[elementCopy.identifier] = elementCopy
             
+            print("Copied element: \(elementCopy)")
         }
         
         customProfileElements = Elements.customElements.customProfileElements
