@@ -366,8 +366,10 @@ public class ServiceSelectorView: UIView, UITableViewDataSource, UITableViewDele
     }
     
     public func refresh() {
-        print("Refreshing server selector view")
-        tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+        dispatch_async(dispatch_get_main_queue()) {
+            print("Refreshing server selector view")
+            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

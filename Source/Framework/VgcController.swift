@@ -794,8 +794,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 }
                 peripheral.controller = self
             } else {
-                //print("Assigning controller to global peripheral object")
-                peripheral = VgcManager.peripheral
+                print("Assigning controller to global peripheral object")
+                peripheral = Peripheral()
             }
             
             // Make a game controller out of the peripheral
