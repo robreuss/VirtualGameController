@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2023EA411BED64C2009AE7F7 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EA401BED64C2009AE7F7 /* VgcBrowser.swift */; };
 		202BBF651BE569BD004D47EC /* VirtualGameControllerIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		202BBFD81BE56DA1004D47EC /* VgcActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFCB1BE56DA1004D47EC /* VgcActivity.swift */; };
 		202BBFD91BE56DA1004D47EC /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFCC1BE56DA1004D47EC /* VgcCentralPublisher.swift */; };
@@ -20,10 +19,10 @@
 		202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */; };
 		202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */; };
 		202BBFE41BE56DA1004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */; };
+		20530A2B1BE8695900D99A70 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20530A2A1BE8695900D99A70 /* VgcBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2023EA401BED64C2009AE7F7 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 		202BBF611BE569BD004D47EC /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerIOS.h; sourceTree = "<group>"; };
 		202BBF661BE569BD004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,6 +37,9 @@
 		202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcPeripheral.swift; path = ../../../Source/Framework/VgcPeripheral.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 		202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
+		202BC0101BE698DC004D47EC /* VirtualGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameController.h; sourceTree = "<group>"; };
+		202BC0121BE698DC004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20530A2A1BE8695900D99A70 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcBrowser.swift; path = /Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcBrowser.swift; sourceTree = "<absolute>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				202BBF631BE569BD004D47EC /* VirtualGameControllerIOS */,
+				202BC00F1BE698DC004D47EC /* VirtualGameController */,
 				202BBF621BE569BD004D47EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,8 +79,8 @@
 				202BBFCF1BE56DA1004D47EC /* VgcController.swift */,
 				202BBFD01BE56DA1004D47EC /* VgcElements.swift */,
 				202BBFD11BE56DA1004D47EC /* VgcIcadePeripheral.swift */,
+				20530A2A1BE8695900D99A70 /* VgcBrowser.swift */,
 				202BBFD21BE56DA1004D47EC /* VgcManager.swift */,
-				2023EA401BED64C2009AE7F7 /* VgcBrowser.swift */,
 				202BBFD31BE56DA1004D47EC /* VgcMotion.swift */,
 				202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */,
 				202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */,
@@ -86,6 +89,15 @@
 				202BBF661BE569BD004D47EC /* Info.plist */,
 			);
 			path = VirtualGameControllerIOS;
+			sourceTree = "<group>";
+		};
+		202BC00F1BE698DC004D47EC /* VirtualGameController */ = {
+			isa = PBXGroup;
+			children = (
+				202BC0101BE698DC004D47EC /* VirtualGameController.h */,
+				202BC0121BE698DC004D47EC /* Info.plist */,
+			);
+			path = VirtualGameController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +189,7 @@
 				202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */,
 				202BBFD91BE56DA1004D47EC /* VgcCentralPublisher.swift in Sources */,
 				202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */,
-				2023EA411BED64C2009AE7F7 /* VgcBrowser.swift in Sources */,
+				20530A2B1BE8695900D99A70 /* VgcBrowser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
