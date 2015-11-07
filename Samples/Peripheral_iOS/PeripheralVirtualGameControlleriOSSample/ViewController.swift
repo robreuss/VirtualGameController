@@ -55,8 +55,8 @@ class ViewController: UIViewController {
     // Refresh list of available services because one went offline. 
     // I'm not using here, but the lost VgcService object is included with the notification.
     @objc func lostService(notification: NSNotification) {
-        let vgcService = notification.object as! VgcService
-        print("Lost service: \(vgcService.fullName)")
+        let vgcService = notification.object as? VgcService
+        print("Lost service: \(vgcService!.fullName)")
         self.peripheralControlPadView.serviceSelectorView.refresh()
     }
     
