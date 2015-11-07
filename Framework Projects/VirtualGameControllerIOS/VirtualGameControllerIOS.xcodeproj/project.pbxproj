@@ -19,7 +19,7 @@
 		202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */; };
 		202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */; };
 		202BBFE41BE56DA1004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */; };
-		20530A2B1BE8695900D99A70 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20530A2A1BE8695900D99A70 /* VgcBrowser.swift */; };
+		20EC20A91BED855F007AF2EF /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC20A81BED855F007AF2EF /* VgcBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,7 @@
 		202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
 		202BC0101BE698DC004D47EC /* VirtualGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameController.h; sourceTree = "<group>"; };
 		202BC0121BE698DC004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20530A2A1BE8695900D99A70 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcBrowser.swift; path = /Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcBrowser.swift; sourceTree = "<absolute>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		20EC20A81BED855F007AF2EF /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 				202BBFCD1BE56DA1004D47EC /* VgcCentralPublisherWatch.swift */,
 				202BBFCF1BE56DA1004D47EC /* VgcController.swift */,
 				202BBFD01BE56DA1004D47EC /* VgcElements.swift */,
+				20EC20A81BED855F007AF2EF /* VgcBrowser.swift */,
 				202BBFD11BE56DA1004D47EC /* VgcIcadePeripheral.swift */,
-				20530A2A1BE8695900D99A70 /* VgcBrowser.swift */,
 				202BBFD21BE56DA1004D47EC /* VgcManager.swift */,
 				202BBFD31BE56DA1004D47EC /* VgcMotion.swift */,
 				202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */,
@@ -189,7 +189,7 @@
 				202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */,
 				202BBFD91BE56DA1004D47EC /* VgcCentralPublisher.swift in Sources */,
 				202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */,
-				20530A2B1BE8695900D99A70 /* VgcBrowser.swift in Sources */,
+				20EC20A91BED855F007AF2EF /* VgcBrowser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
