@@ -37,9 +37,9 @@
 - watchOS
 
 ## Screenshots
-<img src="http://robreuss.squarespace.com/storage/peripheral_central_selector2.png" alt="Selector" width="225"/><img src="http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral"  width="225"/><img src="http://robreuss.squarespace.com/storage/central.png" alt="Central"  width="225"/>
+The user interfaces in the sample projects are designed for documentation, testing and debugging purposes, rather than for use in games.  
 
-![Alt Peripheral](http://robreuss.squarespace.com/storage/peripheral2.png =300x)![Alt Central](http://robreuss.squarespace.com/storage/central2.png =300x)![Alt Central Selector](http://robreuss.squarespace.com/storage/peripheral_central_selector2.png =300x)
+<img src="http://robreuss.squarespace.com/storage/peripheral_central_selector2.png" alt="Selector" width="225"/><img src="http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral"  width="225"/><img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="225"/>
 
 ## Terminology
 * **Peripheral**: A software-based game controller.
