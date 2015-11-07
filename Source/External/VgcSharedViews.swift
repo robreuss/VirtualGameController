@@ -141,16 +141,31 @@ public class PeripheralControlPadView: NSObject {
             
         } else {
             
-            let keyboardLabel = UIButton(frame: CGRect(x: marginSize, y: parentView.bounds.size.height - 46, width: 100, height: 44))
-            keyboardLabel.backgroundColor = UIColor(white: CGFloat(0.76), alpha: 1.0)
-            keyboardLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleTopMargin]
-            keyboardLabel.setTitle("Keyboard", forState: .Normal)
-            keyboardLabel.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            keyboardLabel.titleLabel!.font = UIFont(name: keyboardLabel.titleLabel!.font.fontName, size: 18)
-            keyboardLabel.layer.cornerRadius = 2
-            keyboardLabel.addTarget(self, action: "playerTappedToShowKeyboard:", forControlEvents: .TouchUpInside)
-            keyboardLabel.userInteractionEnabled = true
-            parentView.addSubview(keyboardLabel)
+//            let keyboardLabel = UIButton(frame: CGRect(x: marginSize, y: parentView.bounds.size.height - 46, width: 100, height: 44))
+//            keyboardLabel.backgroundColor = UIColor(white: CGFloat(0.76), alpha: 1.0)
+//            keyboardLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleTopMargin]
+//            keyboardLabel.setTitle("Keyboard", forState: .Normal)
+//            keyboardLabel.setTitleColor(UIColor.blackColor(), forState: .Normal)
+//            keyboardLabel.titleLabel!.font = UIFont(name: keyboardLabel.titleLabel!.font.fontName, size: 18)
+//            keyboardLabel.layer.cornerRadius = 2
+//            keyboardLabel.addTarget(self, action: "playerTappedToShowKeyboard:", forControlEvents: .TouchUpInside)
+//            keyboardLabel.userInteractionEnabled = true
+//            parentView.addSubview(keyboardLabel)
+            
+            let keyboardBackground = UIView(frame: CGRect(x: marginSize, y: parentView.bounds.size.height - 49, width: 89, height: 42))
+            keyboardBackground.backgroundColor = UIColor.lightGrayColor()
+            keyboardBackground.layer.cornerRadius = 5
+            parentView.addSubview(keyboardBackground)
+            
+            let keyboardImage = UIImageView(image: UIImage(named: "keyboard"))
+            keyboardImage.contentMode = .ScaleAspectFill
+            keyboardImage.frame = CGRect(x: marginSize - 6, y: parentView.bounds.size.height - 55, width: 100, height: 42)
+            keyboardImage.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleTopMargin]
+            keyboardImage.userInteractionEnabled = true
+            parentView.addSubview(keyboardImage)
+            
+            let gr = UITapGestureRecognizer(target: self, action: "playerTappedToShowKeyboard:")
+            keyboardImage.gestureRecognizers = [gr]
             
         }
         
@@ -167,7 +182,7 @@ public class PeripheralControlPadView: NSObject {
         pauseButtonLabel.userInteractionEnabled = true
         parentView.addSubview(pauseButtonLabel)
         
-        let motionLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width - 52, y: parentView.bounds.size.height - 52, width: 50, height: 25))
+        let motionLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width - 63, y: parentView.bounds.size.height - 58, width: 50, height: 25))
         motionLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleTopMargin]
         motionLabel.text = "Motion"
         motionLabel.textAlignment = .Center
@@ -177,10 +192,12 @@ public class PeripheralControlPadView: NSObject {
         parentView.addSubview(motionLabel)
         
         #if !(os(tvOS))
-            let motionSwitch = UISwitch(frame:CGRect(x: parentView.bounds.size.width - 52, y: parentView.bounds.size.height - 32, width: 45, height: 30))
+            let motionSwitch = UISwitch(frame:CGRect(x: parentView.bounds.size.width - 63, y: parentView.bounds.size.height - 37, width: 45, height: 30))
             motionSwitch.on = false
             //motionSwitch.setOn(true, animated: false);
             motionSwitch.addTarget(self, action: "motionSwitchDidChange:", forControlEvents: .ValueChanged);
+            motionSwitch.backgroundColor = UIColor.lightGrayColor()
+            motionSwitch.layer.cornerRadius = 15
             parentView.addSubview(motionSwitch);
         #endif
         
