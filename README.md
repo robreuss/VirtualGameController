@@ -39,9 +39,9 @@
 ## Screenshots
 The user interfaces in the sample projects are designed for documentation, testing and debugging purposes, rather than for use in games.  
 
-<img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="300"/>
 <img src="http://robreuss.squarespace.com/storage/peripheral_central_selector2.png" alt="Selector" width="225"/>
 <img src="http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral"  width="225"/>
+<img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="300"/>
 
 ## Terminology
 * **Peripheral**: A software-based game controller.
