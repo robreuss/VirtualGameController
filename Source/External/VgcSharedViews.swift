@@ -23,6 +23,7 @@ public class PeripheralControlPadView: NSObject {
     var parentView: UIView!
     var controlOverlay: UIView!
     var controlLabel: UILabel!
+    var motionSwitch : UISwitch!
     var activityIndicator : UIActivityIndicatorView!
     var leftShoulderButton: VgcButton!
     var rightShoulderButton: VgcButton!
@@ -192,7 +193,7 @@ public class PeripheralControlPadView: NSObject {
         parentView.addSubview(motionLabel)
         
         #if !(os(tvOS))
-            let motionSwitch = UISwitch(frame:CGRect(x: parentView.bounds.size.width - 63, y: parentView.bounds.size.height - 37, width: 45, height: 30))
+            motionSwitch = UISwitch(frame:CGRect(x: parentView.bounds.size.width - 63, y: parentView.bounds.size.height - 37, width: 45, height: 30))
             motionSwitch.on = false
             //motionSwitch.setOn(true, animated: false);
             motionSwitch.addTarget(self, action: "motionSwitchDidChange:", forControlEvents: .ValueChanged);
@@ -245,6 +246,7 @@ public class PeripheralControlPadView: NSObject {
             self.controlOverlay.frame = CGRect(x: 0, y: 0, width: self.parentView.bounds.size.width, height: self.parentView.bounds.size.height)
             }, completion: { finished in
                 self.serviceSelectorView.refresh()
+                self.motionSwitch.on = false
         })
     }
     
