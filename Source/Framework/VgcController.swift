@@ -247,7 +247,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
                 
                 // If we're a bridge, send along the value to the Central
-                if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil {
+                if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
                     
                     //print("Bridge forwarding value \(elementValue) for \(element.name) to Central")
                     if element.dataType == .Float {
