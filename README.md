@@ -1,4 +1,4 @@
-[![Swift 2.0](https://img.shields.io/badge/Swift-2.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Swift 2.0](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
@@ -21,7 +21,7 @@
 - Easy to implement 3d touch on software controllers
 - Leverage on-screen and Bluetooth keyboards using software controllers (including with Apple TV)
 - Support for snapshots (compatible with Apple's snapshot format)
-- Swift 2.0
+- Swift 2.1
 - Framework-based
 
 ## Requirements
