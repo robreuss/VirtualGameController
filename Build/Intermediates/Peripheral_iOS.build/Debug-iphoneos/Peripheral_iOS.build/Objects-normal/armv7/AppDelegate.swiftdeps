@@ -6,26 +6,26 @@ provides-nominal:
 provides-member:
 - ["C14Peripheral_iOS11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationDidBecomeActive"
-- "applicationWillResignActive"
 - "applicationWillTerminate"
 - "applicationDidEnterBackground"
 - "window"
 - "application"
 - "applicationWillEnterForeground"
+- "applicationDidBecomeActive"
+- "applicationWillResignActive"
 depends-top-level:
-- "AppDelegate"
-- "UIApplicationDelegate"
-- !private "BooleanLiteralType"
-- "UIApplication"
-- !private "CGRect"
-- "Bool"
 - "AnyObject"
+- "Bool"
 - "UIWindow"
-- "NSObject"
 - !private "UITextField"
 - !private "VgcManager"
+- !private "BooleanLiteralType"
 - "UIResponder"
+- !private "CGRect"
+- "AppDelegate"
+- "UIApplicationDelegate"
+- "UIApplication"
+- "NSObject"
 depends-member:
 - !private ["PSs9AnyObject", "CGRect"]
 - !private ["PSs9AnyObject", "UITextField"]

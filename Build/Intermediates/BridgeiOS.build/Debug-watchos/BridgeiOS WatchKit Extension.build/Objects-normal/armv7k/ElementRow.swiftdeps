@@ -8,9 +8,9 @@ provides-member:
 provides-dynamic-lookup:
 - "elementLabel"
 depends-top-level:
-- "NSObject"
 - "ElementsTableRow"
 - "WKInterfaceLabel"
+- "NSObject"
 depends-member:
 - ["PSs9AnyObject", "elementLabel"]
 - ["PSs9AnyObject", "init"]

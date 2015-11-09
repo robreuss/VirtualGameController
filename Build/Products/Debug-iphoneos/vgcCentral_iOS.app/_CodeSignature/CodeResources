@@ -8,7 +8,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LDZ6HF6HJG0nqTav76l9ss0jJV4=
+			ygBH3oS0+TLQ5hgyyFHT+5O/KXU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -26,7 +26,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wcmS7dmbRQZ+qt5HuIxEtSvN7nI=
+			HUIyU+N8cRf1kCb9/lpjidJY0qI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -35,7 +35,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wKG9U4ni6Vqut3T20rhzNu54cbk=
+			RqTxnKtSk7/2MrV/fjIv1yOuOzI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -53,7 +53,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			E6zhIRfaoC12i5Y+ZKBX08YSDEg=
+			emGRx3IPPFdwjqZDdV6019C2JdE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -64,7 +64,7 @@
 		</data>
 		<key>Frameworks/VirtualGameController.framework/VirtualGameController</key>
 		<data>
-		z+Blkuy5NPRzGUJKRfO5SpESvqc=
+		TAIQ1feS5h2l+etXs91p3j+n6t0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -72,59 +72,59 @@
 		</data>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>
-		rDYNX9PaIiIBxUZggQTXwjzrdV8=
+		yvdQZowJsBcyPKlgA6lL6XkYRrg=
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		1GnfY6Ccotretp9j3N5g3Np4pG8=
+		bpCCa4SEE1g3qJBHOHZfaz4CtKw=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		K/m4t89SiT3c1hPg3G0/jss/Nbk=
+		r1yWayopfDNyr84yxBQida8yYXw=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		QltVi3GEaz7uccsshUvO9UbCNUg=
+		aHbKBRHH/FB/Ed6nqLSLDn58ilY=
 		</data>
 		<key>Frameworks/libswiftCoreBluetooth.dylib</key>
 		<data>
-		olunaAIv4ILEHSRH0/NJdcosHjU=
+		x6m+c+imwDmtzf1E+x8bEpiD7xY=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		ZglduDOCaTDIE5qHLcZLz1aK0tM=
+		3Bx8BXGn3fCBFoTOIwBK/aZP+xY=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		9T3t6ZDE38zil5h0j3rLDFWyBjI=
+		Ssvj6eEIOOHzGFftLaTOZqvVFzs=
 		</data>
 		<key>Frameworks/libswiftCoreMedia.dylib</key>
 		<data>
-		UBXGHgpEPhM7NIr/DP2fPAbMHHE=
+		CXmPFfTdtxrh2vPLElr5fWovzaI=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		8zo05N5n6gAyqPrine6TdmYRkCc=
+		zHwAvRWHhz+iJwqkUoArTXVKmM0=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		pqQKIzjEnftukxeI4K8izoyzjbs=
+		7jp3jxIqzdEU9OOUME8sa7Mg0nA=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		61wkzYJ65xDCQoqP3kytnoBspDg=
+		HrdoNxpLUpobIodhsagvQbAQqr4=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		DIEc1n7HYG7VQGx6txD8124DjK8=
+		q74AJNSFWYQvpqYwCc54rPeqENs=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		9bO2w9fauzGgMOHWpdD7h7Q2XpY=
+		3POwIL1WQ1gkQUYaICFzKfbZZzs=
 		</data>
 		<key>Frameworks/libswiftWatchConnectivity.dylib</key>
 		<data>
-		A0JX92gDrWT7qjaAY5XbKA3vUjk=
+		4co+yLmLzVhJqUjjXChx5+ozOMs=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -145,7 +145,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			LDZ6HF6HJG0nqTav76l9ss0jJV4=
+			ygBH3oS0+TLQ5hgyyFHT+5O/KXU=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -163,7 +163,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wcmS7dmbRQZ+qt5HuIxEtSvN7nI=
+			HUIyU+N8cRf1kCb9/lpjidJY0qI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -172,7 +172,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wKG9U4ni6Vqut3T20rhzNu54cbk=
+			RqTxnKtSk7/2MrV/fjIv1yOuOzI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -190,7 +190,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			E6zhIRfaoC12i5Y+ZKBX08YSDEg=
+			emGRx3IPPFdwjqZDdV6019C2JdE=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -201,7 +201,7 @@
 		</data>
 		<key>Frameworks/VirtualGameController.framework/VirtualGameController</key>
 		<data>
-		z+Blkuy5NPRzGUJKRfO5SpESvqc=
+		TAIQ1feS5h2l+etXs91p3j+n6t0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/_CodeSignature/CodeResources</key>
 		<data>
@@ -209,59 +209,59 @@
 		</data>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>
-		rDYNX9PaIiIBxUZggQTXwjzrdV8=
+		yvdQZowJsBcyPKlgA6lL6XkYRrg=
 		</data>
 		<key>Frameworks/libswiftContacts.dylib</key>
 		<data>
-		1GnfY6Ccotretp9j3N5g3Np4pG8=
+		bpCCa4SEE1g3qJBHOHZfaz4CtKw=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
-		K/m4t89SiT3c1hPg3G0/jss/Nbk=
+		r1yWayopfDNyr84yxBQida8yYXw=
 		</data>
 		<key>Frameworks/libswiftCoreAudio.dylib</key>
 		<data>
-		QltVi3GEaz7uccsshUvO9UbCNUg=
+		aHbKBRHH/FB/Ed6nqLSLDn58ilY=
 		</data>
 		<key>Frameworks/libswiftCoreBluetooth.dylib</key>
 		<data>
-		olunaAIv4ILEHSRH0/NJdcosHjU=
+		x6m+c+imwDmtzf1E+x8bEpiD7xY=
 		</data>
 		<key>Frameworks/libswiftCoreGraphics.dylib</key>
 		<data>
-		ZglduDOCaTDIE5qHLcZLz1aK0tM=
+		3Bx8BXGn3fCBFoTOIwBK/aZP+xY=
 		</data>
 		<key>Frameworks/libswiftCoreImage.dylib</key>
 		<data>
-		9T3t6ZDE38zil5h0j3rLDFWyBjI=
+		Ssvj6eEIOOHzGFftLaTOZqvVFzs=
 		</data>
 		<key>Frameworks/libswiftCoreMedia.dylib</key>
 		<data>
-		UBXGHgpEPhM7NIr/DP2fPAbMHHE=
+		CXmPFfTdtxrh2vPLElr5fWovzaI=
 		</data>
 		<key>Frameworks/libswiftDarwin.dylib</key>
 		<data>
-		8zo05N5n6gAyqPrine6TdmYRkCc=
+		zHwAvRWHhz+iJwqkUoArTXVKmM0=
 		</data>
 		<key>Frameworks/libswiftDispatch.dylib</key>
 		<data>
-		pqQKIzjEnftukxeI4K8izoyzjbs=
+		7jp3jxIqzdEU9OOUME8sa7Mg0nA=
 		</data>
 		<key>Frameworks/libswiftFoundation.dylib</key>
 		<data>
-		61wkzYJ65xDCQoqP3kytnoBspDg=
+		HrdoNxpLUpobIodhsagvQbAQqr4=
 		</data>
 		<key>Frameworks/libswiftObjectiveC.dylib</key>
 		<data>
-		DIEc1n7HYG7VQGx6txD8124DjK8=
+		q74AJNSFWYQvpqYwCc54rPeqENs=
 		</data>
 		<key>Frameworks/libswiftUIKit.dylib</key>
 		<data>
-		9bO2w9fauzGgMOHWpdD7h7Q2XpY=
+		3POwIL1WQ1gkQUYaICFzKfbZZzs=
 		</data>
 		<key>Frameworks/libswiftWatchConnectivity.dylib</key>
 		<data>
-		A0JX92gDrWT7qjaAY5XbKA3vUjk=
+		4co+yLmLzVhJqUjjXChx5+ozOMs=
 		</data>
 		<key>embedded.mobileprovision</key>
 		<data>

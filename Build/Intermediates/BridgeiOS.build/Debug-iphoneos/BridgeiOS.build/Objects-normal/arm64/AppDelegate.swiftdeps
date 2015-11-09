@@ -6,26 +6,26 @@ provides-nominal:
 provides-member:
 - ["C9BridgeiOS11AppDelegate", ""]
 provides-dynamic-lookup:
-- "applicationWillEnterForeground"
+- "applicationDidBecomeActive"
 - "window"
-- "applicationDidEnterBackground"
-- "applicationWillResignActive"
 - "applicationWillTerminate"
 - "application"
-- "applicationDidBecomeActive"
+- "applicationWillEnterForeground"
+- "applicationWillResignActive"
+- "applicationDidEnterBackground"
 depends-top-level:
-- !private "StringLiteralType"
-- "NSObject"
-- "UIApplicationDelegate"
-- "UIResponder"
-- "AppDelegate"
-- "UIWindow"
 - !private "print"
-- !private "BooleanLiteralType"
 - "AnyObject"
+- !private "BooleanLiteralType"
+- "UIResponder"
+- "UIApplicationDelegate"
+- "NSObject"
+- !private "StringLiteralType"
 - "Bool"
-- !private "VgcManager"
+- "UIWindow"
 - "UIApplication"
+- "AppDelegate"
+- !private "VgcManager"
 depends-member:
 - !private ["PSs9AnyObject", "VgcManager"]
 - ["PSs9AnyObject", "application"]

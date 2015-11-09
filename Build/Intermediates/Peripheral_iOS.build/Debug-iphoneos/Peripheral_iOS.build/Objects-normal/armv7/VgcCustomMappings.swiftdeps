@@ -9,8 +9,8 @@ provides-dynamic-lookup:
 depends-top-level:
 - "CustomMappingsSuperclass"
 - !private "ElementType"
-- "CustomMappings"
 - !private "Dictionary"
+- "CustomMappings"
 depends-member:
 - !private ["PSs9AnyObject", "ElementType"]
 - ["PSs9AnyObject", "init"]

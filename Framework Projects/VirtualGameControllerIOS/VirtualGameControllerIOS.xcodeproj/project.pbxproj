@@ -295,6 +295,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerIOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SYMROOT = Build;
 			};
 			name = Debug;
 		};
@@ -312,6 +313,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerIOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SYMROOT = Build;
 			};
 			name = Release;
 		};

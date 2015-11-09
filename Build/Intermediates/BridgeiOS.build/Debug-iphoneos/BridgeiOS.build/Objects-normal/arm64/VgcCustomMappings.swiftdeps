@@ -7,9 +7,9 @@ provides-member:
 - ["C9BridgeiOS14CustomMappings", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "Dictionary"
 - "CustomMappings"
 - "CustomMappingsSuperclass"
+- !private "Dictionary"
 - !private "ElementType"
 depends-member:
 - !private ["PSs9AnyObject", "ElementType"]

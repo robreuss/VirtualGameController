@@ -1,8 +1,0 @@
-version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
-options: "15c41cd2dd9ef5ee2838ca6f88feb0f2"
-build_time: [500347822, 343338000]
-inputs:
-  "/Users/robreuss/Documents/Development/VirtualGameController/Source/External/VgcCustomMappings.swift": [500343192, 0]
-  "/Users/robreuss/Documents/Development/VirtualGameController/Source/External/VgcCustomElements.swift": [500343192, 0]
-  "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Peripheral_OSX/vgcPeripheral_OSX/ViewController.swift": [500080656, 0]
-  "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Peripheral_OSX/vgcPeripheral_OSX/AppDelegate.swift": [499313886, 0]

@@ -1,8 +1,8 @@
 version: "Apple Swift version 2.1 (swiftlang-700.1.101.6 clang-700.1.76)"
 options: "1ed26e1bbde3650ce5d7c75fa6bda6e4"
-build_time: [500347191, 833898000]
+build_time: [500351140, 113635000]
 inputs:
-  "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Bridge_iOS/vgcBridge WatchKit Extension/NotificationController.swift": [496893730, 0]
   "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Bridge_iOS/vgcBridge WatchKit Extension/ElementRow.swift": [499559410, 0]
+  "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Bridge_iOS/vgcBridge WatchKit Extension/NotificationController.swift": [496893730, 0]
   "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Bridge_iOS/vgcBridge WatchKit Extension/InterfaceController.swift": [500022811, 0]
   "/Users/robreuss/Documents/Development/VirtualGameController/Samples/Bridge_iOS/vgcBridge WatchKit Extension/ExtensionDelegate.swift": [496893730, 0]

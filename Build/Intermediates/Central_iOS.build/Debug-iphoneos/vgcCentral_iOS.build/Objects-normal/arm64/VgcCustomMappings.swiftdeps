@@ -7,10 +7,10 @@ provides-member:
 - ["C14vgcCentral_iOS14CustomMappings", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- !private "Dictionary"
-- "CustomMappings"
 - "CustomMappingsSuperclass"
+- !private "Dictionary"
 - !private "ElementType"
+- "CustomMappings"
 depends-member:
 - !private ["PSs9AnyObject", "ElementType"]
 - ["PSs9AnyObject", "init"]
