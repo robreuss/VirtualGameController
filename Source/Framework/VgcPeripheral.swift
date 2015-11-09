@@ -36,11 +36,7 @@ public class Peripheral: NSObject {
     #if !(os(tvOS)) && !(os(OSX))
     public var motion: VgcMotionManager!
     #endif
-    
-    #if os(iOS)
-    public var activity: VgcActivity!
-    #endif
-    
+
     public var haveConnectionToCentral: Bool?
     
     override init() {
@@ -131,8 +127,6 @@ public class Peripheral: NSObject {
                 
                 // Override device info parameter if the hardware doesn't support motion
                 if motion.manager.deviceMotionAvailable == false { deviceInfo.supportsMotion = false } else { deviceInfo.supportsMotion = true }
-                
-                //activity = VgcActivity()
                 
             #endif
             
@@ -244,9 +238,8 @@ public class Peripheral: NSObject {
         
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
-                print("Stopping motion and activity data")
+                print("Stopping motion data")
                 motion.stop()
-                //activity.stop()
             }
         #endif
         

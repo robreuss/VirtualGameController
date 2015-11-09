@@ -107,7 +107,6 @@ public enum ProfileType: Int, CustomStringConvertible {
     case Gamepad
     case ExtendedGamepad
     case Motion
-    case Activity
     case Watch
     
     public var description : String {
@@ -117,7 +116,6 @@ public enum ProfileType: Int, CustomStringConvertible {
         case .Gamepad: return "Gamepad"
         case .ExtendedGamepad: return "ExtendedGamepad"
         case .Motion: return "Motion"
-        case .Activity: return "Activity"
         case .Watch: return "Watch"
         }
     }
@@ -129,7 +127,6 @@ public enum ProfileType: Int, CustomStringConvertible {
         case .Gamepad: return "gamepad"
         case .ExtendedGamepad: return "extendedGamepad"
         case .Motion: return "motion"
-        case .Activity: return "activity"
         case .Watch: return "extendedGamepad"
         }
     }
@@ -141,7 +138,6 @@ public enum ProfileType: Int, CustomStringConvertible {
         case .Gamepad: return "vgcGamepad"
         case .ExtendedGamepad: return "vgcExtendedGamepad"
         case .Motion: return "vgcMotion"
-        case .Activity: return "vgcActivity"
         case .Watch: return "vgcExtendedGamepad"
         }
     }

@@ -85,17 +85,7 @@ public enum ElementType: Int {
     case MotionGravityY
     case MotionGravityZ
     
-    // Pedometer
-    
-    case ActivityType
-    case ActivitySteps
-    case ActivityDistance
-    case ActivityFloors
-    case ActivityPace
-    case ActivityCadence
-    
     // Custom
-    //case Keyboard
     case Custom
     
 }
@@ -284,15 +274,6 @@ public class Elements: NSObject {
         gamepadProfileElements.append(buttonX)
         gamepadProfileElements.append(buttonY)
         
-        /*
-        gamepadProfileElements.append(activityType)
-        gamepadProfileElements.append(activitySteps)
-        gamepadProfileElements.append(activityDistance)
-        gamepadProfileElements.append(activityFloors)
-        gamepadProfileElements.append(activityPace)
-        gamepadProfileElements.append(activityCadence)
-        */
-        
         // Extended profile element collection
         extendedGamepadProfileElements = []
         extendedGamepadProfileElements.append(pauseButton)
@@ -330,16 +311,6 @@ public class Elements: NSObject {
         watchProfileElements.append(leftThumbstickYAxis)
         watchProfileElements.append(rightThumbstickXAxis)
         watchProfileElements.append(rightThumbstickYAxis)
-        
-        /*
-        
-        extendedGamepadProfileElements.append(activityType)
-        extendedGamepadProfileElements.append(activitySteps)
-        extendedGamepadProfileElements.append(activityDistance)
-        extendedGamepadProfileElements.append(activityFloors)
-        extendedGamepadProfileElements.append(activityPace)
-        extendedGamepadProfileElements.append(activityCadence)
-        */
         
         // Iterate the set to set the identifier and load up the hash
         // used by devs to access the elements
@@ -455,13 +426,6 @@ public class Elements: NSObject {
     public var motionAttitudeY: Element = Element(type: .MotionAttitudeY, dataType: .Float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
     public var motionAttitudeZ: Element = Element(type: .MotionAttitudeZ, dataType: .Float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
     public var motionAttitudeW: Element = Element(type: .MotionAttitudeW, dataType: .Float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
-    
-    public var activityType: Element = Element(type: .MotionAttitudeX, dataType: .Float, name: "Type", getterKeypath: "type", setterKeypath: "type")
-    public var activitySteps: Element = Element(type: .MotionAttitudeY, dataType: .Float, name: "Steps", getterKeypath: "steps.value", setterKeypath: "steps.value")
-    public var activityDistance: Element = Element(type: .MotionAttitudeZ, dataType: .Float, name: "Distance", getterKeypath: "distance.value", setterKeypath: "distance.value")
-    public var activityFloors: Element = Element(type: .MotionAttitudeW, dataType: .Float, name: "Floors", getterKeypath: "floors.value", setterKeypath: "floors.value")
-    public var activityPace: Element = Element(type: .MotionAttitudeX, dataType: .Float, name: "Pace", getterKeypath: "pace.value", setterKeypath: "pace.value")
-    public var activityCadence: Element = Element(type: .MotionAttitudeY, dataType: .Float, name: "Cadence", getterKeypath: "cadence.value", setterKeypath: "cadence.value")
     
     // Convience functions for getting a controller element object based on specific properties of the
     // controller element

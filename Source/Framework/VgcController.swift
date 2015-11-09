@@ -53,7 +53,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     private var vgcHandlerQueue: dispatch_queue_t?
     private var vgcControllerPausedHandler: ((VgcController) -> Void)?
     private var vgcMotion: VgcMotionProfile!
-    private var vgcActivity: VgcActivityProfile!
     
     var bluetoothPeripheral: CBPeripheral!
     
@@ -74,7 +73,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         super.init()
         
         vgcMotion = VgcMotionProfile(vgcController: self)
-        vgcActivity = VgcActivityProfile(vgcGameController: self)
         //vgcCustom = VgcCustom(vgcController: self)
         
         #if os(tvOS)
@@ -1389,60 +1387,6 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     }
 }
 
-// MARK: - Activity Profile
-public class VgcActivityProfile: GCControllerElement {
-    
-    ///
-    /// Reference to the VgcController that owns this profile.
-    ///
-    public var vgcController: VgcController?
-    
-    internal typealias VgcActivityValueChangedHandler = (VgcActivityProfile) -> Void
-    
-    private var vgcValueChangedHandler: VgcActivityValueChangedHandler?
-    /*
-    var steps: Float! { didSet { callHandler() } }
-    var distance: Float! { didSet { callHandler() } }
-    var floors: Float! {  didSet { callHandler() } }
-    var pace: Float! { didSet { callHandler() } }
-    var cadence: Float! { didSet { callHandler() } }
-    */
-    
-    var steps: VgcFloatValue! { didSet { callHandler() } }
-    var distance: VgcFloatValue! { didSet { callHandler() } }
-    var floors: VgcFloatValue! { didSet { callHandler() } }
-    var pace: VgcFloatValue! { didSet { callHandler() } }
-    var cadence: VgcFloatValue! { didSet { callHandler() } }
-    
-    
-    init(vgcGameController: VgcController) {
-        
-        vgcController = vgcGameController
-        
-        steps = VgcFloatValue()
-        distance = VgcFloatValue()
-        floors = VgcFloatValue()
-        pace = VgcFloatValue()
-        cadence = VgcFloatValue()
-        
-        super.init()
-        
-    }
-    
-    func callHandler() {
-        if let handler = vgcValueChangedHandler {
-            handler(self)
-            dispatch_async((vgcController?.handlerQueue)!) {
-                handler(self)
-            }
-        }
-    }
-    
-    var valueChangedHandler: VgcActivityValueChangedHandler? { get { return vgcValueChangedHandler! }
-        set { vgcValueChangedHandler = newValue } }
-    
-}
-
 // MARK: - Motion Profile
 public class VgcMotionProfile: GCMotion {
     
@@ -1714,12 +1658,6 @@ func decodeSnapshot<T>(data: NSData) throws -> T {
     
     return pointer.move()
 }
-
-// In contrast to the GCController implementation of snapshots, we
-// do not descend from our VgcExtendedGamepad, and instead create a
-// fresh class that reads from the profile.  Because we read through
-// the public interface, the values are automagically relative to
-// whether it is a software or hardware controller.
 
 // In contrast to the GCController implementation of snapshots, we
 // do not descend from our VgcExtendedGamepad, and instead create a
