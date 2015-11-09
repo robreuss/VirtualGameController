@@ -161,9 +161,9 @@ public class Peripheral: NSObject {
     
     public func browseForServices() {
         
-        print("Browsing for services...")
-        
         browser.reset()
+        
+        print("Browsing for services...")
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidResetBrowser, object: nil)
         

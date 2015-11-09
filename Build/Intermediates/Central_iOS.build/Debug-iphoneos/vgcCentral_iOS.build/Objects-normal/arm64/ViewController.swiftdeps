@@ -8,12 +8,12 @@ provides-member:
 provides-dynamic-lookup:
 - "viewDidLoad"
 depends-top-level:
-- !private "CustomMappings"
+- !private "CustomElements"
 - !private "VgcManager"
 - "VgcCentralViewController"
-- !private "StringLiteralType"
-- !private "CustomElements"
+- !private "CustomMappings"
 - "ViewController"
+- !private "StringLiteralType"
 depends-member:
 - !private ["PSs9AnyObject", "CustomElements"]
 - !private ["PSs9AnyObject", "CustomMappings"]
