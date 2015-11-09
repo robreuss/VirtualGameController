@@ -6,17 +6,17 @@ provides-nominal:
 provides-member:
 - ["C9BridgeiOS14ViewController", ""]
 provides-dynamic-lookup:
-- "viewDidLoad"
 - "peripheralControlPadView"
+- "viewDidLoad"
 depends-top-level:
-- "ViewController"
-- !private "VgcManager"
-- !private "CustomMappings"
-- "PeripheralControlPadView"
-- !private "CustomElements"
-- !private "StringLiteralType"
-- !private "=="
 - "VgcCentralViewController"
+- !private "VgcManager"
+- !private "CustomElements"
+- !private "CustomMappings"
+- !private "StringLiteralType"
+- "PeripheralControlPadView"
+- "ViewController"
+- !private "=="
 depends-member:
 - !private ["PSs9AnyObject", "CustomElements"]
 - !private ["PSs9AnyObject", "CustomMappings"]
