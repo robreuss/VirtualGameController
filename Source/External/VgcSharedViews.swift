@@ -23,7 +23,9 @@ public class PeripheralControlPadView: NSObject {
     var parentView: UIView!
     var controlOverlay: UIView!
     var controlLabel: UILabel!
+    #if !os(tvOS)
     var motionSwitch : UISwitch!
+    #endif
     var activityIndicator : UIActivityIndicatorView!
     var leftShoulderButton: VgcButton!
     var rightShoulderButton: VgcButton!
@@ -240,6 +242,7 @@ public class PeripheralControlPadView: NSObject {
         
     }
     
+    #if !os(tvOS)
     @objc func peripheralDidDisconnect(notification: NSNotification) {
         print("Animating control overlay down")
         UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
@@ -249,6 +252,7 @@ public class PeripheralControlPadView: NSObject {
                 self.motionSwitch.on = false
         })
     }
+    #endif
     
     @objc func gotPlayerIndex(notification: NSNotification) {
         
@@ -335,10 +339,8 @@ public class PeripheralControlPadView: NSObject {
         
         if sender.on == true {
             VgcManager.peripheral.motion.start()
-            //VgcManager.peripheral.activity.start()
         } else {
             VgcManager.peripheral.motion.stop()
-            //VgcManager.peripheral.activity.stop()
         }
         
     }

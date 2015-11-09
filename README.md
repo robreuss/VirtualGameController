@@ -7,8 +7,8 @@
 
 ## Features
 
-- Drop-in replacement for Apple's *GameController* framework
-- Software-based controllers (that use the MFi profiles) on all supported platforms
+- Mimics API for Apple's *GameController* framework (GCController)
+- Create software-based controllers (that use the MFi profiles)
 - Device motion support
 - Custom controller elements
 - Custom element mapping
@@ -16,9 +16,9 @@
 - Controller-forwarding
 - Works with Apple TV Simulator
 - Unlimited number of hardware controllers on Apple TV (using controller forwarding)
-- Ability to enhance slide-on/form-fitting controllers with motion, extended profile elements and custom elements
-- iCade controller support (mapped through the *GameController* profiles so they appear as MFi hardware)
-- Easy to implement 3d touch on software controllers
+- Ability to enhance inexpensive slide-on/form-fitting controllers with motion, extended profile elements and custom elements
+- iCade controller support (mapped through the MFi profiles so they appear as MFi hardware)
+- Easy-to-implement 3d touch on software controllers
 - Leverage on-screen and Bluetooth keyboards using software controllers (including with Apple TV)
 - Support for snapshots (compatible with Apple's snapshot format)
 - Swift 2.1
@@ -186,6 +186,7 @@ Support for motion updates is contingent on Core Motion support for a given plat
 VgcManager.peripheral.motion.start()
 VgcManager.peripheral.motion.stop()
 ```
+
 ## Game Integration 
 ####GCController Replacement
 **VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
@@ -231,6 +232,11 @@ There are two features supported by a Central that exceed the capabilities of th
 
 - Custom elements
 - Custom mapping
+
+#Custom Elements
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
+#Custom Mappings
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
 
 ##Donations
 If you like VirtualGameController, please feel free to [donate](https://paypal.me/robreuss) to support it's continued development!

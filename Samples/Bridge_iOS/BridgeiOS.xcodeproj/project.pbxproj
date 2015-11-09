@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2023EA4C1BED6664009AE7F7 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA421BED6639009AE7F7 /* VirtualGameController.framework */; };
-		2023EA4D1BED6664009AE7F7 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2023EA421BED6639009AE7F7 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		202BBF891BE56B90004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF861BE56B90004D47EC /* VgcCustomElements.swift */; };
 		202BBF8A1BE56B90004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */; };
 		202BBF8B1BE56B90004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF881BE56B90004D47EC /* VgcSharedViews.swift */; };
 		2033A1BE1BEB3C7C005C5845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1BC1BEB3C7C005C5845 /* Assets.xcassets */; };
 		2033A1BF1BEB3C7C005C5845 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1BD1BEB3C7C005C5845 /* Info.plist */; };
 		2033A1C11BEB3C8F005C5845 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1C01BEB3C8F005C5845 /* Interface.storyboard */; };
+		2039E08E1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2039E08D1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework */; };
+		2039E08F1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2039E08D1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2039E0921BF02E3D0059F455 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2039E0911BF02E3D0059F455 /* VirtualGameController.framework */; };
+		2039E0931BF02E3D0059F455 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2039E0911BF02E3D0059F455 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		207BFA3F1BBB7A210061A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */; };
 		207BFA411BBB7A210061A9B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA401BBB7A210061A9B0 /* ViewController.swift */; };
 		207BFA441BBB7A210061A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA421BBB7A210061A9B0 /* Main.storyboard */; };
@@ -29,8 +31,6 @@
 		207BFA7E1BBB7A220061A9B0 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA7D1BBB7A220061A9B0 /* NotificationController.swift */; };
 		207BFA801BBB7A220061A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207BFA7F1BBB7A220061A9B0 /* Assets.xcassets */; };
 		209F634D1BE70F6B00A8FDB3 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209F634C1BE70F6B00A8FDB3 /* VgcCentralViewController.swift */; };
-		20A1216A1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; };
-		20A1216B1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20A121631BDAC0A200E30083 /* VirtualGameControllerWatchOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20F967DC1BBDB5FA00EF2815 /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +66,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		2039E0901BF02E2A0059F455 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2039E08F1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2039E0941BF02E3D0059F455 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2039E0931BF02E3D0059F455 /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		207BFA871BBB7A220061A9B0 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -88,28 +110,6 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20A1216C1BDAC0E100E30083 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				20A1216B1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		20A1216F1BDAC0F300E30083 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2023EA4D1BED6664009AE7F7 /* VirtualGameController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +120,8 @@
 		2033A1BC1BEB3C7C005C5845 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2033A1BD1BEB3C7C005C5845 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2033A1C01BEB3C8F005C5845 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
+		2039E08D1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VirtualGameControllerWatchOS.framework; path = "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-watchos/VirtualGameControllerWatchOS.framework"; sourceTree = "<absolute>"; };
+		2039E0911BF02E3D0059F455 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VirtualGameController.framework; path = "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<absolute>"; };
 		207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207BFA401BBB7A210061A9B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2023EA4C1BED6664009AE7F7 /* VirtualGameController.framework in Frameworks */,
+				2039E0921BF02E3D0059F455 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,7 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20A1216A1BDAC0E100E30083 /* VirtualGameControllerWatchOS.framework in Frameworks */,
+				2039E08E1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,6 +195,8 @@
 		207BFA321BBB7A210061A9B0 = {
 			isa = PBXGroup;
 			children = (
+				2039E0911BF02E3D0059F455 /* VirtualGameController.framework */,
+				2039E08D1BF02E2A0059F455 /* VirtualGameControllerWatchOS.framework */,
 				2023EA421BED6639009AE7F7 /* VirtualGameController.framework */,
 				2033A1BB1BEB3C7C005C5845 /* vgcBridge WatchKit App */,
 				207BFA3D1BBB7A210061A9B0 /* vgcBridge_iOS */,
@@ -297,7 +301,7 @@
 				207BFA381BBB7A210061A9B0 /* Frameworks */,
 				207BFA391BBB7A210061A9B0 /* Resources */,
 				207BFA8B1BBB7A220061A9B0 /* Embed Watch Content */,
-				20A1216F1BDAC0F300E30083 /* Embed Frameworks */,
+				2039E0941BF02E3D0059F455 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -369,7 +373,7 @@
 				207BFA6E1BBB7A220061A9B0 /* Sources */,
 				207BFA6F1BBB7A220061A9B0 /* Frameworks */,
 				207BFA701BBB7A220061A9B0 /* Resources */,
-				20A1216C1BDAC0E100E30083 /* Embed Frameworks */,
+				2039E0901BF02E2A0059F455 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

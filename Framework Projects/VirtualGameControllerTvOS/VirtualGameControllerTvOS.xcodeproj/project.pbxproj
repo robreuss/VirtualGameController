@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2023EA3D1BED64BA009AE7F7 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */; };
-		202BBFFE1BE57CE4004D47EC /* VgcActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF31BE57CE4004D47EC /* VgcActivity.swift */; };
 		202BBFFF1BE57CE4004D47EC /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */; };
 		202BC0011BE57CE4004D47EC /* VgcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF61BE57CE4004D47EC /* VgcController.swift */; };
 		202BC0021BE57CE4004D47EC /* VgcElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFF71BE57CE4004D47EC /* VgcElements.swift */; };
@@ -22,14 +21,13 @@
 
 /* Begin PBXFileReference section */
 		2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
-		202BBFF31BE57CE4004D47EC /* VgcActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcActivity.swift; path = ../../../Source/Framework/VgcActivity.swift; sourceTree = "<group>"; };
 		202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralPublisher.swift; path = ../../../Source/Framework/VgcCentralPublisher.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFF61BE57CE4004D47EC /* VgcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcController.swift; path = ../../../Source/Framework/VgcController.swift; sourceTree = "<group>"; };
 		202BBFF71BE57CE4004D47EC /* VgcElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcElements.swift; path = ../../../Source/Framework/VgcElements.swift; sourceTree = "<group>"; };
 		202BBFF81BE57CE4004D47EC /* VgcIcadePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcIcadePeripheral.swift; path = ../../../Source/Framework/VgcIcadePeripheral.swift; sourceTree = "<group>"; };
 		202BBFF91BE57CE4004D47EC /* VgcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcManager.swift; path = ../../../Source/Framework/VgcManager.swift; sourceTree = "<group>"; };
 		202BBFFA1BE57CE4004D47EC /* VgcMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = ../../../Source/Framework/VgcMotion.swift; sourceTree = "<group>"; };
-		202BBFFB1BE57CE4004D47EC /* VgcPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcPeripheral.swift; path = ../../../Source/Framework/VgcPeripheral.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		202BBFFB1BE57CE4004D47EC /* VgcPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcPeripheral.swift; path = ../../../Source/Framework/VgcPeripheral.swift; sourceTree = "<group>"; };
 		202BBFFD1BE57CE4004D47EC /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 		20A1208B1BDA976000E30083 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A1208E1BDA976000E30083 /* VirtualGameControllerTvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerTvOS.h; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 		20A1208D1BDA976000E30083 /* VirtualGameControllerTvOS */ = {
 			isa = PBXGroup;
 			children = (
-				202BBFF31BE57CE4004D47EC /* VgcActivity.swift */,
 				2023EA3C1BED64BA009AE7F7 /* VgcBrowser.swift */,
 				202BBFF41BE57CE4004D47EC /* VgcCentralPublisher.swift */,
 				202BBFF61BE57CE4004D47EC /* VgcController.swift */,
@@ -164,7 +161,6 @@
 				202BC0041BE57CE4004D47EC /* VgcManager.swift in Sources */,
 				202BC0051BE57CE4004D47EC /* VgcMotion.swift in Sources */,
 				202BBFFF1BE57CE4004D47EC /* VgcCentralPublisher.swift in Sources */,
-				202BBFFE1BE57CE4004D47EC /* VgcActivity.swift in Sources */,
 				202BC0081BE57CE4004D47EC /* VgcStreamer.swift in Sources */,
 				202BC0011BE57CE4004D47EC /* VgcController.swift in Sources */,
 				202BC0021BE57CE4004D47EC /* VgcElements.swift in Sources */,
