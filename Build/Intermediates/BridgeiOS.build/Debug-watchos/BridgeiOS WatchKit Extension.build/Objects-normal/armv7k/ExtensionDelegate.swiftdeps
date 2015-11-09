@@ -6,13 +6,13 @@ provides-nominal:
 provides-member:
 - ["C9BridgeiOS17ExtensionDelegate", ""]
 provides-dynamic-lookup:
+- "applicationDidBecomeActive"
 - "applicationDidFinishLaunching"
 - "applicationWillResignActive"
-- "applicationDidBecomeActive"
 depends-top-level:
+- "ExtensionDelegate"
 - "NSObject"
 - "WKExtensionDelegate"
-- "ExtensionDelegate"
 depends-member:
 - ["PSs9AnyObject", "applicationDidBecomeActive"]
 - ["PSs9AnyObject", "applicationDidFinishLaunching"]

@@ -6,11 +6,11 @@ provides-nominal:
 provides-member:
 - ["C9BridgeiOS22NotificationController", ""]
 provides-dynamic-lookup:
-- "didDeactivate"
 - "willActivate"
+- "didDeactivate"
 depends-top-level:
-- "NotificationController"
 - "WKUserNotificationInterfaceController"
+- "NotificationController"
 depends-member:
 - ["PSs9AnyObject", "didDeactivate"]
 - ["PSs9AnyObject", "init"]

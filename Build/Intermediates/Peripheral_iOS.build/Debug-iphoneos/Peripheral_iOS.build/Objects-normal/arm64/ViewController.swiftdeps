@@ -7,38 +7,39 @@ provides-member:
 - ["C14Peripheral_iOS14ViewController", ""]
 provides-dynamic-lookup:
 - "viewDidLoad"
-- "didReceiveMemoryWarning"
 - "lostService"
-- "peripheralDidDisconnect"
-- "peripheralDidConnect"
-- "peripheralControlPadView"
-- "foundService"
+- "didReceiveMemoryWarning"
 - "receivedSystemMessage"
+- "peripheralDidDisconnect"
+- "foundService"
+- "peripheralControlPadView"
+- "peripheralDidConnect"
 depends-top-level:
-- !private "UIView"
-- "UIViewController"
-- !private "CustomElements"
-- !private "SystemMessages"
-- !private "+"
-- "PeripheralControlPadView"
-- !private "VgcSystemMessageNotification"
-- !private "CustomMappings"
-- !private "VgcPeripheralDidDisconnectNotification"
-- !private "Int"
-- "ViewController"
-- !private "*"
-- !private "VgcPeripheralDidConnectNotification"
-- !private "VgcPeripheralFoundService"
-- !private "VgcManager"
-- "NSNotification"
-- !private "DeviceInfo"
 - !private "=="
-- !private "NSThread"
-- !private "print"
+- "PeripheralControlPadView"
 - !private "NSNotificationCenter"
-- !private "VgcService"
+- !private "VgcPeripheralFoundService"
+- !private "VgcPeripheralDidConnectNotification"
+- !private "Int"
+- !private "CustomElements"
+- !private "+"
+- !private "CustomMappings"
 - !private "StringLiteralType"
+- !private "DeviceInfo"
+- !private "VgcPeripheralDidDisconnectNotification"
+- !private "VgcSystemMessageNotification"
+- "NSNotification"
+- !private "VgcService"
+- !private "SystemMessages"
+- !private "*"
 - !private "VgcPeripheralLostService"
+- !private "NSThread"
+- "ViewController"
+- !private "BooleanLiteralType"
+- !private "print"
+- !private "VgcManager"
+- "UIViewController"
+- !private "UIView"
 depends-member:
 - !private ["PSs9AnyObject", "CustomElements"]
 - !private ["PSs9AnyObject", "CustomMappings"]
@@ -54,16 +55,24 @@ depends-member:
 - !private ["PSs9AnyObject", "VgcPeripheralFoundService"]
 - !private ["PSs9AnyObject", "VgcPeripheralLostService"]
 - !private ["PSs9AnyObject", "VgcSystemMessageNotification"]
+- !private ["PSs9AnyObject", "active"]
 - !private ["PSs9AnyObject", "addObserver"]
 - !private ["PSs9AnyObject", "alpha"]
 - !private ["PSs9AnyObject", "animateWithDuration"]
+- !private ["PSs9AnyObject", "browseForServices"]
 - !private ["PSs9AnyObject", "defaultCenter"]
+- !private ["PSs9AnyObject", "deviceInfo"]
 - ["PSs9AnyObject", "didReceiveMemoryWarning"]
 - !private ["PSs9AnyObject", "flashView"]
 - ["PSs9AnyObject", "foundService"]
+- !private ["PSs9AnyObject", "fullName"]
+- !private ["PSs9AnyObject", "iCadeControllerMode"]
 - ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "isMainThread"]
 - ["PSs9AnyObject", "lostService"]
+- !private ["PSs9AnyObject", "motion"]
 - !private ["PSs9AnyObject", "object"]
+- !private ["PSs9AnyObject", "peripheral"]
 - ["PSs9AnyObject", "peripheralControlPadView"]
 - ["PSs9AnyObject", "peripheralDidConnect"]
 - ["PSs9AnyObject", "peripheralDidDisconnect"]
@@ -71,10 +80,17 @@ depends-member:
 - ["PSs9AnyObject", "receivedSystemMessage"]
 - !private ["PSs9AnyObject", "refresh"]
 - !private ["PSs9AnyObject", "serviceSelectorView"]
+- !private ["PSs9AnyObject", "startAs"]
+- !private ["PSs9AnyObject", "updateInterval"]
 - !private ["PSs9AnyObject", "view"]
 - ["PSs9AnyObject", "viewDidLoad"]
 - ["PSs9AnyObject", ""]
+- !private ["O21VirtualGameController7AppRole", "Peripheral"]
 - !private ["PSs23ArrayLiteralConvertible", "CurveEaseIn"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Sb", "deinit"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
 - !private ["V12CoreGraphics7CGFloat", "deinit"]
 - !private ["PSs11CVarArgType", "CustomElements"]
 - !private ["PSs11CVarArgType", "CustomMappings"]
@@ -90,16 +106,23 @@ depends-member:
 - !private ["PSs11CVarArgType", "VgcPeripheralFoundService"]
 - !private ["PSs11CVarArgType", "VgcPeripheralLostService"]
 - !private ["PSs11CVarArgType", "VgcSystemMessageNotification"]
+- !private ["PSs11CVarArgType", "active"]
 - !private ["PSs11CVarArgType", "addObserver"]
 - !private ["PSs11CVarArgType", "alpha"]
 - !private ["PSs11CVarArgType", "animateWithDuration"]
+- !private ["PSs11CVarArgType", "browseForServices"]
 - !private ["PSs11CVarArgType", "defaultCenter"]
+- !private ["PSs11CVarArgType", "deviceInfo"]
 - ["PSs11CVarArgType", "didReceiveMemoryWarning"]
 - !private ["PSs11CVarArgType", "flashView"]
 - ["PSs11CVarArgType", "foundService"]
+- !private ["PSs11CVarArgType", "iCadeControllerMode"]
 - ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "isMainThread"]
 - ["PSs11CVarArgType", "lostService"]
+- !private ["PSs11CVarArgType", "motion"]
 - !private ["PSs11CVarArgType", "object"]
+- !private ["PSs11CVarArgType", "peripheral"]
 - ["PSs11CVarArgType", "peripheralControlPadView"]
 - ["PSs11CVarArgType", "peripheralDidConnect"]
 - ["PSs11CVarArgType", "peripheralDidDisconnect"]
@@ -107,15 +130,31 @@ depends-member:
 - ["PSs11CVarArgType", "receivedSystemMessage"]
 - !private ["PSs11CVarArgType", "refresh"]
 - !private ["PSs11CVarArgType", "serviceSelectorView"]
+- !private ["PSs11CVarArgType", "startAs"]
+- !private ["PSs11CVarArgType", "updateInterval"]
 - !private ["PSs11CVarArgType", "view"]
 - ["PSs11CVarArgType", "viewDidLoad"]
 - ["PSs11CVarArgType", ""]
+- !private ["VSs9Character", "deinit"]
+- !private ["PSs10Comparable", "init"]
+- !private ["O21VirtualGameController14ControllerType", "Software"]
+- !private ["PSs28CustomDebugStringConvertible", "init"]
+- !private ["C14Peripheral_iOS14CustomElements", "init"]
+- !private ["C21VirtualGameController24CustomElementsSuperclass", "init"]
+- !private ["C14Peripheral_iOS14CustomMappings", "init"]
+- !private ["C21VirtualGameController24CustomMappingsSuperclass", "init"]
 - !private ["PSs23CustomStringConvertible", "CustomElements"]
 - !private ["PSs23CustomStringConvertible", "CustomMappings"]
 - !private ["PSs23CustomStringConvertible", "DeviceInfo"]
+- !private ["PSs23CustomStringConvertible", "Disabled"]
+- !private ["PSs23CustomStringConvertible", "ExtendedGamepad"]
 - !private ["PSs23CustomStringConvertible", "NSNotificationCenter"]
 - !private ["PSs23CustomStringConvertible", "NSThread"]
+- !private ["PSs23CustomStringConvertible", "Peripheral"]
 - !private ["PSs23CustomStringConvertible", "PeripheralControlPadView"]
+- !private ["PSs23CustomStringConvertible", "RawValue"]
+- !private ["PSs23CustomStringConvertible", "ReceivedInvalidMessage"]
+- !private ["PSs23CustomStringConvertible", "Software"]
 - !private ["PSs23CustomStringConvertible", "SystemMessages"]
 - !private ["PSs23CustomStringConvertible", "UIView"]
 - !private ["PSs23CustomStringConvertible", "VgcManager"]
@@ -124,16 +163,24 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralFoundService"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralLostService"]
 - !private ["PSs23CustomStringConvertible", "VgcSystemMessageNotification"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "active"]
 - !private ["PSs23CustomStringConvertible", "addObserver"]
 - !private ["PSs23CustomStringConvertible", "alpha"]
 - !private ["PSs23CustomStringConvertible", "animateWithDuration"]
+- !private ["PSs23CustomStringConvertible", "browseForServices"]
 - !private ["PSs23CustomStringConvertible", "defaultCenter"]
+- !private ["PSs23CustomStringConvertible", "deviceInfo"]
 - ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
 - !private ["PSs23CustomStringConvertible", "flashView"]
 - ["PSs23CustomStringConvertible", "foundService"]
+- !private ["PSs23CustomStringConvertible", "iCadeControllerMode"]
 - ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "isMainThread"]
 - ["PSs23CustomStringConvertible", "lostService"]
+- !private ["PSs23CustomStringConvertible", "motion"]
 - !private ["PSs23CustomStringConvertible", "object"]
+- !private ["PSs23CustomStringConvertible", "peripheral"]
 - ["PSs23CustomStringConvertible", "peripheralControlPadView"]
 - ["PSs23CustomStringConvertible", "peripheralDidConnect"]
 - ["PSs23CustomStringConvertible", "peripheralDidDisconnect"]
@@ -141,16 +188,26 @@ depends-member:
 - ["PSs23CustomStringConvertible", "receivedSystemMessage"]
 - !private ["PSs23CustomStringConvertible", "refresh"]
 - !private ["PSs23CustomStringConvertible", "serviceSelectorView"]
+- !private ["PSs23CustomStringConvertible", "startAs"]
+- !private ["PSs23CustomStringConvertible", "updateInterval"]
 - !private ["PSs23CustomStringConvertible", "view"]
 - ["PSs23CustomStringConvertible", "viewDidLoad"]
 - ["PSs23CustomStringConvertible", ""]
+- !private ["C21VirtualGameController10DeviceInfo", "init"]
+- !private ["Sd", "deinit"]
 - !private ["PSs9Equatable", "CurveEaseIn"]
 - !private ["PSs9Equatable", "CustomElements"]
 - !private ["PSs9Equatable", "CustomMappings"]
 - !private ["PSs9Equatable", "DeviceInfo"]
+- !private ["PSs9Equatable", "Disabled"]
+- !private ["PSs9Equatable", "ExtendedGamepad"]
 - !private ["PSs9Equatable", "NSNotificationCenter"]
 - !private ["PSs9Equatable", "NSThread"]
+- !private ["PSs9Equatable", "Peripheral"]
 - !private ["PSs9Equatable", "PeripheralControlPadView"]
+- !private ["PSs9Equatable", "RawValue"]
+- !private ["PSs9Equatable", "ReceivedInvalidMessage"]
+- !private ["PSs9Equatable", "Software"]
 - !private ["PSs9Equatable", "SystemMessages"]
 - !private ["PSs9Equatable", "UIView"]
 - !private ["PSs9Equatable", "VgcManager"]
@@ -159,16 +216,24 @@ depends-member:
 - !private ["PSs9Equatable", "VgcPeripheralFoundService"]
 - !private ["PSs9Equatable", "VgcPeripheralLostService"]
 - !private ["PSs9Equatable", "VgcSystemMessageNotification"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "active"]
 - !private ["PSs9Equatable", "addObserver"]
 - !private ["PSs9Equatable", "alpha"]
 - !private ["PSs9Equatable", "animateWithDuration"]
+- !private ["PSs9Equatable", "browseForServices"]
 - !private ["PSs9Equatable", "defaultCenter"]
+- !private ["PSs9Equatable", "deviceInfo"]
 - ["PSs9Equatable", "didReceiveMemoryWarning"]
 - !private ["PSs9Equatable", "flashView"]
 - ["PSs9Equatable", "foundService"]
+- !private ["PSs9Equatable", "iCadeControllerMode"]
 - ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "isMainThread"]
 - ["PSs9Equatable", "lostService"]
+- !private ["PSs9Equatable", "motion"]
 - !private ["PSs9Equatable", "object"]
+- !private ["PSs9Equatable", "peripheral"]
 - ["PSs9Equatable", "peripheralControlPadView"]
 - ["PSs9Equatable", "peripheralDidConnect"]
 - ["PSs9Equatable", "peripheralDidDisconnect"]
@@ -176,15 +241,25 @@ depends-member:
 - ["PSs9Equatable", "receivedSystemMessage"]
 - !private ["PSs9Equatable", "refresh"]
 - !private ["PSs9Equatable", "serviceSelectorView"]
+- !private ["PSs9Equatable", "startAs"]
+- !private ["PSs9Equatable", "updateInterval"]
 - !private ["PSs9Equatable", "view"]
 - ["PSs9Equatable", "viewDidLoad"]
 - ["PSs9Equatable", ""]
+- !private ["PSs41ExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Sf", "deinit"]
 - !private ["PSs8Hashable", "CustomElements"]
 - !private ["PSs8Hashable", "CustomMappings"]
 - !private ["PSs8Hashable", "DeviceInfo"]
+- !private ["PSs8Hashable", "Disabled"]
+- !private ["PSs8Hashable", "ExtendedGamepad"]
 - !private ["PSs8Hashable", "NSNotificationCenter"]
 - !private ["PSs8Hashable", "NSThread"]
+- !private ["PSs8Hashable", "Peripheral"]
 - !private ["PSs8Hashable", "PeripheralControlPadView"]
+- !private ["PSs8Hashable", "RawValue"]
+- !private ["PSs8Hashable", "ReceivedInvalidMessage"]
+- !private ["PSs8Hashable", "Software"]
 - !private ["PSs8Hashable", "SystemMessages"]
 - !private ["PSs8Hashable", "UIView"]
 - !private ["PSs8Hashable", "VgcManager"]
@@ -193,16 +268,24 @@ depends-member:
 - !private ["PSs8Hashable", "VgcPeripheralFoundService"]
 - !private ["PSs8Hashable", "VgcPeripheralLostService"]
 - !private ["PSs8Hashable", "VgcSystemMessageNotification"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "active"]
 - !private ["PSs8Hashable", "addObserver"]
 - !private ["PSs8Hashable", "alpha"]
 - !private ["PSs8Hashable", "animateWithDuration"]
+- !private ["PSs8Hashable", "browseForServices"]
 - !private ["PSs8Hashable", "defaultCenter"]
+- !private ["PSs8Hashable", "deviceInfo"]
 - ["PSs8Hashable", "didReceiveMemoryWarning"]
 - !private ["PSs8Hashable", "flashView"]
 - ["PSs8Hashable", "foundService"]
+- !private ["PSs8Hashable", "iCadeControllerMode"]
 - ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "isMainThread"]
 - ["PSs8Hashable", "lostService"]
+- !private ["PSs8Hashable", "motion"]
 - !private ["PSs8Hashable", "object"]
+- !private ["PSs8Hashable", "peripheral"]
 - ["PSs8Hashable", "peripheralControlPadView"]
 - ["PSs8Hashable", "peripheralDidConnect"]
 - ["PSs8Hashable", "peripheralDidDisconnect"]
@@ -210,9 +293,18 @@ depends-member:
 - ["PSs8Hashable", "receivedSystemMessage"]
 - !private ["PSs8Hashable", "refresh"]
 - !private ["PSs8Hashable", "serviceSelectorView"]
+- !private ["PSs8Hashable", "startAs"]
+- !private ["PSs8Hashable", "updateInterval"]
 - !private ["PSs8Hashable", "view"]
 - ["PSs8Hashable", "viewDidLoad"]
 - ["PSs8Hashable", ""]
+- !private ["O21VirtualGameController19IcadeControllerMode", "Disabled"]
+- !private ["Si", "deinit"]
+- !private ["VSs5Int16", "deinit"]
+- !private ["VSs5Int32", "deinit"]
+- !private ["VSs5Int64", "deinit"]
+- !private ["VSs4Int8", "deinit"]
+- !private ["PSs14MirrorPathType", "init"]
 - !private ["PSo8NSCoding", "CustomElements"]
 - !private ["PSo8NSCoding", "CustomMappings"]
 - !private ["PSo8NSCoding", "DeviceInfo"]
@@ -243,6 +335,7 @@ depends-member:
 - !private ["PSo8NSCoding", "view"]
 - ["PSo8NSCoding", "viewDidLoad"]
 - ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
 - !private ["PSo9NSCopying", "object"]
 - !private ["PSo26NSExtensionRequestHandling", "CustomElements"]
 - !private ["PSo26NSExtensionRequestHandling", "CustomMappings"]
@@ -270,6 +363,7 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "view"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
 - ["PSo26NSExtensionRequestHandling", ""]
+- !private ["PSo16NSMutableCopying", "init"]
 - !private ["CSo14NSNotification", "object"]
 - !private ["CSo20NSNotificationCenter", "addObserver"]
 - !private ["CSo20NSNotificationCenter", "defaultCenter"]
@@ -290,16 +384,23 @@ depends-member:
 - !private ["CSo8NSObject", "VgcPeripheralLostService"]
 - !private ["CSo8NSObject", "VgcService"]
 - !private ["CSo8NSObject", "VgcSystemMessageNotification"]
+- !private ["CSo8NSObject", "active"]
 - !private ["CSo8NSObject", "addObserver"]
 - !private ["CSo8NSObject", "alpha"]
 - !private ["CSo8NSObject", "animateWithDuration"]
+- !private ["CSo8NSObject", "browseForServices"]
 - !private ["CSo8NSObject", "defaultCenter"]
+- !private ["CSo8NSObject", "deviceInfo"]
 - ["CSo8NSObject", "didReceiveMemoryWarning"]
 - !private ["CSo8NSObject", "flashView"]
 - ["CSo8NSObject", "foundService"]
+- !private ["CSo8NSObject", "iCadeControllerMode"]
 - ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "isMainThread"]
 - ["CSo8NSObject", "lostService"]
+- !private ["CSo8NSObject", "motion"]
 - !private ["CSo8NSObject", "object"]
+- !private ["CSo8NSObject", "peripheral"]
 - ["CSo8NSObject", "peripheralControlPadView"]
 - ["CSo8NSObject", "peripheralDidConnect"]
 - ["CSo8NSObject", "peripheralDidDisconnect"]
@@ -307,6 +408,8 @@ depends-member:
 - ["CSo8NSObject", "receivedSystemMessage"]
 - !private ["CSo8NSObject", "refresh"]
 - !private ["CSo8NSObject", "serviceSelectorView"]
+- !private ["CSo8NSObject", "startAs"]
+- !private ["CSo8NSObject", "updateInterval"]
 - !private ["CSo8NSObject", "view"]
 - ["CSo8NSObject", "viewDidLoad"]
 - !private ["PSo16NSObjectProtocol", "CustomElements"]
@@ -323,16 +426,23 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralFoundService"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralLostService"]
 - !private ["PSo16NSObjectProtocol", "VgcSystemMessageNotification"]
+- !private ["PSo16NSObjectProtocol", "active"]
 - !private ["PSo16NSObjectProtocol", "addObserver"]
 - !private ["PSo16NSObjectProtocol", "alpha"]
 - !private ["PSo16NSObjectProtocol", "animateWithDuration"]
+- !private ["PSo16NSObjectProtocol", "browseForServices"]
 - !private ["PSo16NSObjectProtocol", "defaultCenter"]
+- !private ["PSo16NSObjectProtocol", "deviceInfo"]
 - ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
 - !private ["PSo16NSObjectProtocol", "flashView"]
 - ["PSo16NSObjectProtocol", "foundService"]
+- !private ["PSo16NSObjectProtocol", "iCadeControllerMode"]
 - ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "isMainThread"]
 - ["PSo16NSObjectProtocol", "lostService"]
+- !private ["PSo16NSObjectProtocol", "motion"]
 - !private ["PSo16NSObjectProtocol", "object"]
+- !private ["PSo16NSObjectProtocol", "peripheral"]
 - ["PSo16NSObjectProtocol", "peripheralControlPadView"]
 - ["PSo16NSObjectProtocol", "peripheralDidConnect"]
 - ["PSo16NSObjectProtocol", "peripheralDidDisconnect"]
@@ -340,17 +450,42 @@ depends-member:
 - ["PSo16NSObjectProtocol", "receivedSystemMessage"]
 - !private ["PSo16NSObjectProtocol", "refresh"]
 - !private ["PSo16NSObjectProtocol", "serviceSelectorView"]
+- !private ["PSo16NSObjectProtocol", "startAs"]
+- !private ["PSo16NSObjectProtocol", "updateInterval"]
 - !private ["PSo16NSObjectProtocol", "view"]
 - ["PSo16NSObjectProtocol", "viewDidLoad"]
 - ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "deinit"]
+- !private ["CSo8NSString", "init"]
+- !private ["CSo8NSThread", "isMainThread"]
 - !private ["PSs13OptionSetType", "CurveEaseIn"]
 - !private ["Sq", "deinit"]
+- !private ["PSs16OutputStreamType", "init"]
+- !private ["C21VirtualGameController10Peripheral", "browseForServices"]
+- !private ["C21VirtualGameController10Peripheral", "deviceInfo"]
+- !private ["C21VirtualGameController10Peripheral", "motion"]
 - !private ["C14Peripheral_iOS24PeripheralControlPadView", "flashView"]
 - !private ["C14Peripheral_iOS24PeripheralControlPadView", "init"]
 - !private ["C14Peripheral_iOS24PeripheralControlPadView", "serviceSelectorView"]
+- !private ["O21VirtualGameController11ProfileType", "ExtendedGamepad"]
 - !private ["PSs16RawRepresentable", "CurveEaseIn"]
+- !private ["PSs16RawRepresentable", "ExtendedGamepad"]
+- !private ["PSs16RawRepresentable", "RawValue"]
+- !private ["PSs16RawRepresentable", "ReceivedInvalidMessage"]
+- !private ["PSs16RawRepresentable", "Software"]
+- !private ["PSs16RawRepresentable", "init"]
+- !private ["V10ObjectiveC8Selector", "deinit"]
 - !private ["C14Peripheral_iOS19ServiceSelectorView", "refresh"]
 - !private ["PSs14SetAlgebraType", "CurveEaseIn"]
+- !private ["PSs10Streamable", "init"]
+- !private ["SS", "init"]
+- !private ["PSs30StringInterpolationConvertible", "init"]
+- !private ["PSs24StringLiteralConvertible", "init"]
+- !private ["O21VirtualGameController14SystemMessages", "RawValue"]
+- !private ["O21VirtualGameController14SystemMessages", "ReceivedInvalidMessage"]
+- !private ["O21VirtualGameController14SystemMessages", "deinit"]
+- !private ["O21VirtualGameController14SystemMessages", "init"]
 - !private ["PSo29UIAccessibilityIdentification", "alpha"]
 - !private ["PSo29UIAccessibilityIdentification", "animateWithDuration"]
 - !private ["PSo29UIAccessibilityIdentification", "refresh"]
@@ -569,6 +704,19 @@ depends-member:
 - !private ["CSo16UIViewController", "view"]
 - ["CSo16UIViewController", "viewDidLoad"]
 - ["CSo16UIViewController", ""]
+- !private ["Su", "deinit"]
+- !private ["VSs6UInt16", "deinit"]
+- !private ["VSs6UInt32", "deinit"]
+- !private ["VSs6UInt64", "deinit"]
+- !private ["VSs5UInt8", "deinit"]
+- !private ["Sc", "deinit"]
+- !private ["PSs31UnicodeScalarLiteralConvertible", "init"]
+- !private ["C21VirtualGameController10VgcManager", "iCadeControllerMode"]
+- !private ["C21VirtualGameController10VgcManager", "peripheral"]
+- !private ["C21VirtualGameController10VgcManager", "startAs"]
+- !private ["C21VirtualGameController16VgcMotionManager", "active"]
+- !private ["C21VirtualGameController16VgcMotionManager", "updateInterval"]
+- !private ["C21VirtualGameController10VgcService", "fullName"]
 - !private ["C14Peripheral_iOS14ViewController", "CustomElements"]
 - !private ["C14Peripheral_iOS14ViewController", "CustomMappings"]
 - !private ["C14Peripheral_iOS14ViewController", "DeviceInfo"]
@@ -598,30 +746,76 @@ depends-member:
 - ["C14Peripheral_iOS14ViewController", "receivedSystemMessage"]
 - !private ["C14Peripheral_iOS14ViewController", "view"]
 - ["C14Peripheral_iOS14ViewController", "viewDidLoad"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["PSs32_BuiltinStringLiteralConvertible", "init"]
+- !private ["PSs37_BuiltinUTF16StringLiteralConvertible", "init"]
+- !private ["PSs39_BuiltinUnicodeScalarLiteralConvertible", "init"]
+- !private ["PSs16_CocoaStringType", "init"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["PSs21_ObjectiveCBridgeable", "init"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
 - !private ["PSs12_Reflectable", "alpha"]
 - !private ["PSs12_Reflectable", "animateWithDuration"]
+- !private ["PSs12_Reflectable", "init"]
 - !private ["PSs12_Reflectable", "refresh"]
 depends-nominal:
 - "PSs9AnyObject"
+- !private "O21VirtualGameController7AppRole"
 - !private "PSs23ArrayLiteralConvertible"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
 - !private "V12CoreGraphics7CGFloat"
 - "PSs11CVarArgType"
+- !private "VSs9Character"
+- !private "PSs10Comparable"
+- !private "O21VirtualGameController14ControllerType"
+- !private "PSs28CustomDebugStringConvertible"
+- !private "C14Peripheral_iOS14CustomElements"
+- !private "C21VirtualGameController24CustomElementsSuperclass"
+- !private "C14Peripheral_iOS14CustomMappings"
+- !private "C21VirtualGameController24CustomMappingsSuperclass"
 - "PSs23CustomStringConvertible"
+- !private "C21VirtualGameController10DeviceInfo"
+- !private "Sd"
 - "PSs9Equatable"
+- !private "PSs41ExtendedGraphemeClusterLiteralConvertible"
+- !private "Sf"
 - "PSs8Hashable"
+- !private "O21VirtualGameController19IcadeControllerMode"
+- !private "Si"
+- !private "VSs5Int16"
+- !private "VSs5Int32"
+- !private "VSs5Int64"
+- !private "VSs4Int8"
+- !private "PSs14MirrorPathType"
 - "PSo8NSCoding"
 - !private "PSo9NSCopying"
 - "PSo26NSExtensionRequestHandling"
+- !private "PSo16NSMutableCopying"
 - !private "CSo14NSNotification"
 - !private "CSo20NSNotificationCenter"
 - "CSo8NSObject"
 - "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "CSo8NSThread"
 - !private "PSs13OptionSetType"
 - !private "Sq"
+- !private "PSs16OutputStreamType"
+- !private "C21VirtualGameController10Peripheral"
 - !private "C14Peripheral_iOS24PeripheralControlPadView"
+- !private "O21VirtualGameController11ProfileType"
 - !private "PSs16RawRepresentable"
+- !private "V10ObjectiveC8Selector"
 - !private "C14Peripheral_iOS19ServiceSelectorView"
 - !private "PSs14SetAlgebraType"
+- !private "PSs10Streamable"
+- !private "SS"
+- !private "PSs30StringInterpolationConvertible"
+- !private "PSs24StringLiteralConvertible"
+- !private "O21VirtualGameController14SystemMessages"
 - !private "PSo29UIAccessibilityIdentification"
 - !private "PSo12UIAppearance"
 - "PSo21UIAppearanceContainer"
@@ -638,7 +832,24 @@ depends-nominal:
 - !private "CSo6UIView"
 - !private "VSC22UIViewAnimationOptions"
 - "CSo16UIViewController"
+- !private "Su"
+- !private "VSs6UInt16"
+- !private "VSs6UInt32"
+- !private "VSs6UInt64"
+- !private "VSs5UInt8"
+- !private "Sc"
+- !private "PSs31UnicodeScalarLiteralConvertible"
+- !private "C21VirtualGameController10VgcManager"
+- !private "C21VirtualGameController16VgcMotionManager"
+- !private "C21VirtualGameController10VgcService"
 - "C14Peripheral_iOS14ViewController"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible"
+- !private "PSs32_BuiltinStringLiteralConvertible"
+- !private "PSs37_BuiltinUTF16StringLiteralConvertible"
+- !private "PSs39_BuiltinUnicodeScalarLiteralConvertible"
+- !private "PSs16_CocoaStringType"
+- !private "PSs21_ObjectiveCBridgeable"
 - !private "PSs12_Reflectable"
 depends-dynamic-lookup:
 depends-external:
@@ -648,8 +859,11 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-iphoneos/VirtualGameController.framework/Modules/VirtualGameController.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreBluetooth.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WatchConnectivity.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
