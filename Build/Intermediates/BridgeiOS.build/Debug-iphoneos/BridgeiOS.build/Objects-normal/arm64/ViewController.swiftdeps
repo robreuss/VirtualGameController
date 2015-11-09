@@ -1,0 +1,266 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ViewController"
+provides-nominal:
+- "C9BridgeiOS14ViewController"
+provides-member:
+- ["C9BridgeiOS14ViewController", ""]
+provides-dynamic-lookup:
+- "viewDidLoad"
+- "peripheralControlPadView"
+depends-top-level:
+- "ViewController"
+- !private "VgcManager"
+- !private "CustomMappings"
+- "PeripheralControlPadView"
+- !private "CustomElements"
+- !private "StringLiteralType"
+- !private "=="
+- "VgcCentralViewController"
+depends-member:
+- !private ["PSs9AnyObject", "CustomElements"]
+- !private ["PSs9AnyObject", "CustomMappings"]
+- !private ["PSs9AnyObject", "PeripheralControlPadView"]
+- !private ["PSs9AnyObject", "VgcManager"]
+- !private ["PSs9AnyObject", "appRole"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "peripheralControlPadView"]
+- !private ["PSs9AnyObject", "startAs"]
+- !private ["PSs9AnyObject", "view"]
+- ["PSs9AnyObject", "viewDidLoad"]
+- ["PSs9AnyObject", ""]
+- !private ["O21VirtualGameController7AppRole", "Bridge"]
+- !private ["O21VirtualGameController7AppRole", "EnhancementBridge"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["PSs11CVarArgType", "CustomElements"]
+- !private ["PSs11CVarArgType", "CustomMappings"]
+- !private ["PSs11CVarArgType", "PeripheralControlPadView"]
+- !private ["PSs11CVarArgType", "VgcManager"]
+- !private ["PSs11CVarArgType", "appRole"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "peripheralControlPadView"]
+- !private ["PSs11CVarArgType", "startAs"]
+- !private ["PSs11CVarArgType", "view"]
+- ["PSs11CVarArgType", "viewDidLoad"]
+- ["PSs11CVarArgType", ""]
+- !private ["C9BridgeiOS14CustomElements", "init"]
+- !private ["C21VirtualGameController24CustomElementsSuperclass", "init"]
+- !private ["C9BridgeiOS14CustomMappings", "init"]
+- !private ["C21VirtualGameController24CustomMappingsSuperclass", "init"]
+- !private ["PSs23CustomStringConvertible", "Bridge"]
+- !private ["PSs23CustomStringConvertible", "CustomElements"]
+- !private ["PSs23CustomStringConvertible", "CustomMappings"]
+- !private ["PSs23CustomStringConvertible", "EnhancementBridge"]
+- !private ["PSs23CustomStringConvertible", "PeripheralControlPadView"]
+- !private ["PSs23CustomStringConvertible", "VgcManager"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs23CustomStringConvertible", "appRole"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "peripheralControlPadView"]
+- !private ["PSs23CustomStringConvertible", "startAs"]
+- !private ["PSs23CustomStringConvertible", "view"]
+- ["PSs23CustomStringConvertible", "viewDidLoad"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["PSs9Equatable", "Bridge"]
+- !private ["PSs9Equatable", "CustomElements"]
+- !private ["PSs9Equatable", "CustomMappings"]
+- !private ["PSs9Equatable", "EnhancementBridge"]
+- !private ["PSs9Equatable", "PeripheralControlPadView"]
+- !private ["PSs9Equatable", "VgcManager"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- !private ["PSs9Equatable", "appRole"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "peripheralControlPadView"]
+- !private ["PSs9Equatable", "startAs"]
+- !private ["PSs9Equatable", "view"]
+- ["PSs9Equatable", "viewDidLoad"]
+- ["PSs9Equatable", ""]
+- !private ["PSs8Hashable", "Bridge"]
+- !private ["PSs8Hashable", "CustomElements"]
+- !private ["PSs8Hashable", "CustomMappings"]
+- !private ["PSs8Hashable", "EnhancementBridge"]
+- !private ["PSs8Hashable", "PeripheralControlPadView"]
+- !private ["PSs8Hashable", "VgcManager"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- !private ["PSs8Hashable", "appRole"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "peripheralControlPadView"]
+- !private ["PSs8Hashable", "startAs"]
+- !private ["PSs8Hashable", "view"]
+- ["PSs8Hashable", "viewDidLoad"]
+- ["PSs8Hashable", ""]
+- !private ["PSo8NSCoding", "CustomElements"]
+- !private ["PSo8NSCoding", "CustomMappings"]
+- !private ["PSo8NSCoding", "PeripheralControlPadView"]
+- !private ["PSo8NSCoding", "VgcManager"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "peripheralControlPadView"]
+- !private ["PSo8NSCoding", "view"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo26NSExtensionRequestHandling", "CustomElements"]
+- !private ["PSo26NSExtensionRequestHandling", "CustomMappings"]
+- !private ["PSo26NSExtensionRequestHandling", "PeripheralControlPadView"]
+- !private ["PSo26NSExtensionRequestHandling", "VgcManager"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "peripheralControlPadView"]
+- !private ["PSo26NSExtensionRequestHandling", "view"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["CSo8NSObject", "CustomElements"]
+- !private ["CSo8NSObject", "CustomMappings"]
+- ["CSo8NSObject", "PeripheralControlPadView"]
+- !private ["CSo8NSObject", "VgcManager"]
+- !private ["CSo8NSObject", "appRole"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "peripheralControlPadView"]
+- !private ["CSo8NSObject", "startAs"]
+- !private ["CSo8NSObject", "view"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "CustomElements"]
+- !private ["PSo16NSObjectProtocol", "CustomMappings"]
+- !private ["PSo16NSObjectProtocol", "PeripheralControlPadView"]
+- !private ["PSo16NSObjectProtocol", "VgcManager"]
+- !private ["PSo16NSObjectProtocol", "appRole"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "peripheralControlPadView"]
+- !private ["PSo16NSObjectProtocol", "startAs"]
+- !private ["PSo16NSObjectProtocol", "view"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["C9BridgeiOS24PeripheralControlPadView", "init"]
+- !private ["PSo21UIAppearanceContainer", "CustomElements"]
+- !private ["PSo21UIAppearanceContainer", "CustomMappings"]
+- !private ["PSo21UIAppearanceContainer", "PeripheralControlPadView"]
+- !private ["PSo21UIAppearanceContainer", "VgcManager"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "peripheralControlPadView"]
+- !private ["PSo21UIAppearanceContainer", "view"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo18UIContentContainer", "CustomElements"]
+- !private ["PSo18UIContentContainer", "CustomMappings"]
+- !private ["PSo18UIContentContainer", "PeripheralControlPadView"]
+- !private ["PSo18UIContentContainer", "VgcManager"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "peripheralControlPadView"]
+- !private ["PSo18UIContentContainer", "view"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo18UIFocusEnvironment", "CustomElements"]
+- !private ["PSo18UIFocusEnvironment", "CustomMappings"]
+- !private ["PSo18UIFocusEnvironment", "PeripheralControlPadView"]
+- !private ["PSo18UIFocusEnvironment", "VgcManager"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "peripheralControlPadView"]
+- !private ["PSo18UIFocusEnvironment", "view"]
+- ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["CSo11UIResponder", "CustomElements"]
+- !private ["CSo11UIResponder", "CustomMappings"]
+- ["CSo11UIResponder", "PeripheralControlPadView"]
+- !private ["CSo11UIResponder", "VgcManager"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "peripheralControlPadView"]
+- !private ["CSo11UIResponder", "view"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo16UIStateRestoring", "CustomElements"]
+- !private ["PSo16UIStateRestoring", "CustomMappings"]
+- !private ["PSo16UIStateRestoring", "PeripheralControlPadView"]
+- !private ["PSo16UIStateRestoring", "VgcManager"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "peripheralControlPadView"]
+- !private ["PSo16UIStateRestoring", "view"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["PSo18UITraitEnvironment", "CustomElements"]
+- !private ["PSo18UITraitEnvironment", "CustomMappings"]
+- !private ["PSo18UITraitEnvironment", "PeripheralControlPadView"]
+- !private ["PSo18UITraitEnvironment", "VgcManager"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "peripheralControlPadView"]
+- !private ["PSo18UITraitEnvironment", "view"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo16UIViewController", "CustomElements"]
+- !private ["CSo16UIViewController", "CustomMappings"]
+- ["CSo16UIViewController", "PeripheralControlPadView"]
+- !private ["CSo16UIViewController", "VgcManager"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "peripheralControlPadView"]
+- !private ["CSo16UIViewController", "view"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- !private ["C9BridgeiOS24VgcCentralViewController", "CustomElements"]
+- !private ["C9BridgeiOS24VgcCentralViewController", "CustomMappings"]
+- ["C9BridgeiOS24VgcCentralViewController", "PeripheralControlPadView"]
+- !private ["C9BridgeiOS24VgcCentralViewController", "VgcManager"]
+- ["C9BridgeiOS24VgcCentralViewController", "init"]
+- ["C9BridgeiOS24VgcCentralViewController", "peripheralControlPadView"]
+- !private ["C9BridgeiOS24VgcCentralViewController", "view"]
+- ["C9BridgeiOS24VgcCentralViewController", "viewDidLoad"]
+- ["C9BridgeiOS24VgcCentralViewController", ""]
+- !private ["C21VirtualGameController10VgcManager", "appRole"]
+- !private ["C21VirtualGameController10VgcManager", "startAs"]
+- !private ["C9BridgeiOS14ViewController", "CustomElements"]
+- !private ["C9BridgeiOS14ViewController", "CustomMappings"]
+- ["C9BridgeiOS14ViewController", "PeripheralControlPadView"]
+- !private ["C9BridgeiOS14ViewController", "VgcManager"]
+- ["C9BridgeiOS14ViewController", "deinit"]
+- ["C9BridgeiOS14ViewController", "init"]
+- ["C9BridgeiOS14ViewController", "peripheralControlPadView"]
+- !private ["C9BridgeiOS14ViewController", "view"]
+- ["C9BridgeiOS14ViewController", "viewDidLoad"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "O21VirtualGameController7AppRole"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- "PSs11CVarArgType"
+- !private "C9BridgeiOS14CustomElements"
+- !private "C21VirtualGameController24CustomElementsSuperclass"
+- !private "C9BridgeiOS14CustomMappings"
+- !private "C21VirtualGameController24CustomMappingsSuperclass"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- "PSs8Hashable"
+- "PSo8NSCoding"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "C9BridgeiOS24PeripheralControlPadView"
+- "PSo21UIAppearanceContainer"
+- "PSo18UIContentContainer"
+- "PSo18UIFocusEnvironment"
+- "CSo11UIResponder"
+- "PSo16UIStateRestoring"
+- "PSo18UITraitEnvironment"
+- "CSo16UIViewController"
+- "C9BridgeiOS24VgcCentralViewController"
+- !private "C21VirtualGameController10VgcManager"
+- "C9BridgeiOS14ViewController"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-iphoneos/VirtualGameController.framework/Modules/VirtualGameController.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreBluetooth.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WatchConnectivity.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
+interface-hash: "b47ec6129a6fa3fc95663681989f195c"

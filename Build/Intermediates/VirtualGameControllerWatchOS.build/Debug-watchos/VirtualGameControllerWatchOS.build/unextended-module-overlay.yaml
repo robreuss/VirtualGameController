@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-watchos/VirtualGameControllerWatchOS.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/robreuss/Documents/Development/VirtualGameController/Build/Intermediates/VirtualGameControllerWatchOS.build/Debug-watchos/VirtualGameControllerWatchOS.build/unextended-module.modulemap',
+    }]
+  }]
+}

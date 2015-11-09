@@ -29,6 +29,22 @@
                   location = "group:BridgeiOS.build"
                   name = "BridgeiOS.build">
                   <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:LaunchScreen.storyboardc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <FileRef
                      location = "group:BridgeiOS-all-non-framework-target-headers.hmap">
                   </FileRef>
                   <FileRef
@@ -44,13 +60,29 @@
                      location = "group:BridgeiOS-project-headers.hmap">
                   </FileRef>
                   <FileRef
+                     location = "group:BridgeiOS.app.xcent">
+                  </FileRef>
+                  <FileRef
                      location = "group:BridgeiOS.hmap">
                   </FileRef>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:BridgeiOS-Swift.h">
+                     </FileRef>
+                  </Group>
                   <FileRef
                      location = "group:dgph">
                   </FileRef>
                   <FileRef
                      location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:LaunchScreen-SBPartialInfo.plist">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
                   </FileRef>
                   <Group
                      location = "group:Objects-normal"
@@ -65,7 +97,16 @@
                            location = "group:AppDelegate.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
                         </FileRef>
                         <FileRef
                            location = "group:BridgeiOS-master.swiftdeps">
@@ -74,7 +115,19 @@
                            location = "group:BridgeiOS-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:BridgeiOS-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:BridgeiOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOS.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOS.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOS_dependency_info.dat">
                         </FileRef>
                         <FileRef
                            location = "group:VgcCentralViewController.d">
@@ -83,7 +136,16 @@
                            location = "group:VgcCentralViewController.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:VgcCentralViewController.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:VgcCentralViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftmodule">
                         </FileRef>
                         <FileRef
                            location = "group:VgcCustomElements.d">
@@ -92,7 +154,16 @@
                            location = "group:VgcCustomElements.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
                         </FileRef>
                         <FileRef
                            location = "group:VgcCustomMappings.d">
@@ -101,7 +172,16 @@
                            location = "group:VgcCustomMappings.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
                         </FileRef>
                         <FileRef
                            location = "group:VgcSharedViews.d">
@@ -110,7 +190,16 @@
                            location = "group:VgcSharedViews.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:VgcSharedViews.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:VgcSharedViews.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftmodule">
                         </FileRef>
                         <FileRef
                            location = "group:ViewController.d">
@@ -119,12 +208,34 @@
                            location = "group:ViewController.dia">
                         </FileRef>
                         <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
                            location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
+                        <FileRef
+                           location = "group:BridgeiOS-OutputFileMap.json">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOS.LinkFileList">
                         </FileRef>
                      </Group>
                   </Group>
                   <FileRef
                      location = "group:swift-overrides.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController.framework.xcent">
                   </FileRef>
                </Group>
                <Group
@@ -157,6 +268,16 @@
                      <Group
                         location = "group:arm64"
                         name = "arm64">
+                        <FileRef
+                           location = "group:BridgeiOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOSTests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
                         <FileRef
                            location = "group:BridgeiOS.LinkFileList">
                         </FileRef>
@@ -199,6 +320,16 @@
                      <Group
                         location = "group:arm64"
                         name = "arm64">
+                        <FileRef
+                           location = "group:BridgeiOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:BridgeiOSUITests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
                         <FileRef
                            location = "group:BridgeiOS.LinkFileList">
                         </FileRef>
@@ -414,6 +545,9 @@
          <Group
             location = "group:Central_iOS.build"
             name = "Central_iOS.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug-iphoneos"
                name = "Debug-iphoneos">
@@ -421,7 +555,39 @@
                   location = "group:vgcCentral_iOS.build"
                   name = "vgcCentral_iOS.build">
                   <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:LaunchScreen.storyboardc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:vgcCentral_iOS-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <FileRef
                      location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:LaunchScreen-SBPartialInfo.plist">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
                   </FileRef>
                   <Group
                      location = "group:Objects-normal"
@@ -429,6 +595,139 @@
                      <Group
                         location = "group:arm64"
                         name = "arm64">
+                        <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS-OutputFileMap.json">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOS_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
                         <FileRef
                            location = "group:vgcCentral_iOS-OutputFileMap.json">
                         </FileRef>
@@ -456,7 +755,13 @@
                      location = "group:vgcCentral_iOS-project-headers.hmap">
                   </FileRef>
                   <FileRef
+                     location = "group:vgcCentral_iOS.app.xcent">
+                  </FileRef>
+                  <FileRef
                      location = "group:vgcCentral_iOS.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController.framework.xcent">
                   </FileRef>
                </Group>
                <Group
@@ -471,6 +776,16 @@
                      <Group
                         location = "group:arm64"
                         name = "arm64">
+                        <FileRef
+                           location = "group:vgcCentral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOSTests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
                         <FileRef
                            location = "group:vgcCentral_iOS.LinkFileList">
                         </FileRef>
@@ -520,6 +835,16 @@
                            location = "group:vgcCentral_iOSUITests-OutputFileMap.json">
                         </FileRef>
                      </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
+                        <FileRef
+                           location = "group:vgcCentral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:vgcCentral_iOSUITests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
                   </Group>
                   <FileRef
                      location = "group:swift-overrides.hmap">
@@ -548,12 +873,28 @@
          <Group
             location = "group:Central_OSX.build"
             name = "Central_OSX.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug"
                name = "Debug">
                <Group
                   location = "group:Central_OSX.build"
                   name = "Central_OSX.build">
+                  <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
                   <FileRef
                      location = "group:Central_OSX-all-non-framework-target-headers.hmap">
                   </FileRef>
@@ -572,8 +913,21 @@
                   <FileRef
                      location = "group:Central_OSX.hmap">
                   </FileRef>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:Central_OSX-Swift.h">
+                     </FileRef>
+                  </Group>
                   <FileRef
                      location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
                   </FileRef>
                   <Group
                      location = "group:Objects-normal"
@@ -582,10 +936,97 @@
                         location = "group:x86_64"
                         name = "x86_64">
                         <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_OSX-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
                            location = "group:Central_OSX-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:Central_OSX-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:Central_OSX.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_OSX.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_OSX.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_OSX_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
                         </FileRef>
                      </Group>
                   </Group>
@@ -682,12 +1123,212 @@
          <Group
             location = "group:Central_tvOS.build"
             name = "Central_tvOS.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug-appletvos"
                name = "Debug-appletvos">
                <Group
                   location = "group:Central_tvOS.build"
                   name = "Central_tvOS.build">
+                  <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:Central_tvOS-all-non-framework-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-all-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-generated-files.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-own-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-project-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS.app.xcent">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS.hmap">
+                  </FileRef>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:Central_tvOS-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Objects-normal"
+                     name = "Objects-normal">
+                     <Group
+                        location = "group:arm64"
+                        name = "arm64">
+                        <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS-OutputFileMap.json">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <FileRef
+                     location = "group:swift-overrides.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController.framework.xcent">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Central_tvOSTests.build"
+                  name = "Central_tvOSTests.build">
                   <FileRef
                      location = "group:Central_tvOS-all-non-framework-target-headers.hmap">
                   </FileRef>
@@ -709,6 +1350,9 @@
                   <FileRef
                      location = "group:dgph">
                   </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
                   <Group
                      location = "group:Objects-normal"
                      name = "Objects-normal">
@@ -716,10 +1360,193 @@
                         location = "group:arm64"
                         name = "arm64">
                         <FileRef
+                           location = "group:Central_tvOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOSTests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <FileRef
+                     location = "group:swift-overrides.hmap">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Debug-appletvsimulator"
+               name = "Debug-appletvsimulator">
+               <Group
+                  location = "group:Central_tvOS.build"
+                  name = "Central_tvOS.build">
+                  <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:Central_tvOS-all-non-framework-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-all-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-generated-files.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-own-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS-project-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Central_tvOS.hmap">
+                  </FileRef>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:Central_tvOS-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Objects-normal"
+                     name = "Objects-normal">
+                     <Group
+                        location = "group:x86_64"
+                        name = "x86_64">
+                        <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
                            location = "group:Central_tvOS-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:Central_tvOS-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:Central_tvOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Central_tvOS_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralViewController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
                         </FileRef>
                      </Group>
                   </Group>
@@ -751,12 +1578,15 @@
                   <FileRef
                      location = "group:dgph">
                   </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
                   <Group
                      location = "group:Objects-normal"
                      name = "Objects-normal">
                      <Group
-                        location = "group:arm64"
-                        name = "arm64">
+                        location = "group:x86_64"
+                        name = "x86_64">
                         <FileRef
                            location = "group:Central_tvOS.LinkFileList">
                         </FileRef>
@@ -774,6 +1604,9 @@
          <Group
             location = "group:Peripheral_iOS.build"
             name = "Peripheral_iOS.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug-iphoneos"
                name = "Debug-iphoneos">
@@ -781,7 +1614,39 @@
                   location = "group:Peripheral_iOS.build"
                   name = "Peripheral_iOS.build">
                   <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:LaunchScreen.storyboardc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:Peripheral_iOS-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <FileRef
                      location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:LaunchScreen-SBPartialInfo.plist">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
                   </FileRef>
                   <Group
                      location = "group:Objects-normal"
@@ -794,6 +1659,121 @@
                         </FileRef>
                         <FileRef
                            location = "group:Peripheral_iOS.LinkFileList">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
+                        <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS-OutputFileMap.json">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOS_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcSharedViews~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
                         </FileRef>
                      </Group>
                   </Group>
@@ -813,10 +1793,16 @@
                      location = "group:Peripheral_iOS-project-headers.hmap">
                   </FileRef>
                   <FileRef
+                     location = "group:Peripheral_iOS.app.xcent">
+                  </FileRef>
+                  <FileRef
                      location = "group:Peripheral_iOS.hmap">
                   </FileRef>
                   <FileRef
                      location = "group:swift-overrides.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController.framework.xcent">
                   </FileRef>
                </Group>
                <Group
@@ -831,6 +1817,16 @@
                      <Group
                         location = "group:arm64"
                         name = "arm64">
+                        <FileRef
+                           location = "group:Peripheral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOSTests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
                         <FileRef
                            location = "group:Peripheral_iOS.LinkFileList">
                         </FileRef>
@@ -880,6 +1876,16 @@
                            location = "group:Peripheral_iOSUITests-OutputFileMap.json">
                         </FileRef>
                      </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
+                        <FileRef
+                           location = "group:Peripheral_iOS.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_iOSUITests-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
                   </Group>
                   <FileRef
                      location = "group:Peripheral_iOS-all-non-framework-target-headers.hmap">
@@ -915,7 +1921,33 @@
                   location = "group:Peripheral_OSX.build"
                   name = "Peripheral_OSX.build">
                   <FileRef
+                     location = "group:assetcatalog_dependencies">
+                  </FileRef>
+                  <FileRef
+                     location = "group:assetcatalog_generated_info.plist">
+                  </FileRef>
+                  <Group
+                     location = "group:Base.lproj"
+                     name = "Base.lproj">
+                     <FileRef
+                        location = "group:Main.storyboardc">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:Peripheral_OSX-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <FileRef
                      location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:Main-SBPartialInfo.plist">
                   </FileRef>
                   <Group
                      location = "group:Objects-normal"
@@ -924,10 +1956,97 @@
                         location = "group:x86_64"
                         name = "x86_64">
                         <FileRef
+                           location = "group:AppDelegate.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:AppDelegate~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_OSX-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
                            location = "group:Peripheral_OSX-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:Peripheral_OSX-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:Peripheral_OSX.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_OSX.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_OSX.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:Peripheral_OSX_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCustomMappings~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:ViewController~partial.swiftmodule">
                         </FileRef>
                      </Group>
                   </Group>
@@ -1302,6 +2421,238 @@
                            location = "group:VirtualGameControllerIOS-OutputFileMap.json">
                         </FileRef>
                      </Group>
+                     <Group
+                        location = "group:armv7"
+                        name = "armv7">
+                        <FileRef
+                           location = "group:VgcBrowser.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisherWatch~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcWatchConnectivity~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameControllerIOS-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameControllerIOS-OutputFileMap.json">
+                        </FileRef>
+                     </Group>
                   </Group>
                   <FileRef
                      location = "group:swift-overrides.hmap">
@@ -1344,6 +2695,9 @@
          <Group
             location = "group:VirtualGameControllerOSX.build"
             name = "VirtualGameControllerOSX.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug"
                name = "Debug">
@@ -1361,6 +2715,9 @@
                      location = "group:dgph">
                   </FileRef>
                   <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
                      location = "group:module.modulemap">
                   </FileRef>
                   <Group
@@ -1370,10 +2727,178 @@
                         location = "group:x86_64"
                         name = "x86_64">
                         <FileRef
+                           location = "group:VgcBrowser.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
                            location = "group:VirtualGameController-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:VirtualGameController-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:VirtualGameController.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.o">
                         </FileRef>
                      </Group>
                   </Group>
@@ -1404,6 +2929,9 @@
          <Group
             location = "group:VirtualGameControllerTvOS.build"
             name = "VirtualGameControllerTvOS.build">
+            <FileRef
+               location = "group:all-product-headers.yaml">
+            </FileRef>
             <Group
                location = "group:Debug-appletvos"
                name = "Debug-appletvos">
@@ -1421,6 +2949,9 @@
                      location = "group:dgph">
                   </FileRef>
                   <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
                      location = "group:module.modulemap">
                   </FileRef>
                   <Group
@@ -1430,10 +2961,441 @@
                         location = "group:arm64"
                         name = "arm64">
                         <FileRef
+                           location = "group:VgcBrowser.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
                            location = "group:VirtualGameController-OutputFileMap.json">
                         </FileRef>
                         <FileRef
+                           location = "group:VirtualGameController-Swift.h">
+                        </FileRef>
+                        <FileRef
                            location = "group:VirtualGameController.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.o">
+                        </FileRef>
+                     </Group>
+                  </Group>
+                  <FileRef
+                     location = "group:swift-overrides.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController-all-non-framework-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController-all-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController-generated-files.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController-own-target-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController-project-headers.hmap">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameController.hmap">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Debug-appletvsimulator"
+               name = "Debug-appletvsimulator">
+               <Group
+                  location = "group:VirtualGameController.build"
+                  name = "VirtualGameController.build">
+                  <Group
+                     location = "group:DerivedSources"
+                     name = "DerivedSources">
+                     <FileRef
+                        location = "group:VirtualGameController_vers.c">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:dgph">
+                  </FileRef>
+                  <FileRef
+                     location = "group:dgph~">
+                  </FileRef>
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+                  <Group
+                     location = "group:Objects-normal"
+                     name = "Objects-normal">
+                     <Group
+                        location = "group:x86_64"
+                        name = "x86_64">
+                        <FileRef
+                           location = "group:VgcBrowser.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcBrowser~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcCentralPublisher~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcController~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcElements~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcIcadePeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcManager~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcMotion~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcPeripheral~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.o">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VgcStreamer~partial.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-master.swiftdeps">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-OutputFileMap.json">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.LinkFileList">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController.swiftmodule">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_dependency_info.dat">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.d">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.dia">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameController_vers.o">
                         </FileRef>
                      </Group>
                   </Group>
@@ -1634,11 +3596,263 @@
          location = "group:Products"
          name = "Products">
          <Group
+            location = "group:Debug"
+            name = "Debug">
+            <FileRef
+               location = "group:Central_OSX.app">
+            </FileRef>
+            <Group
+               location = "group:Central_OSX.swiftmodule"
+               name = "Central_OSX.swiftmodule">
+               <FileRef
+                  location = "group:x86_64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:x86_64.swiftmodule">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Peripheral_OSX.app">
+            </FileRef>
+            <Group
+               location = "group:Peripheral_OSX.swiftmodule"
+               name = "Peripheral_OSX.swiftmodule">
+               <FileRef
+                  location = "group:x86_64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:x86_64.swiftmodule">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:VirtualGameController.framework"
+               name = "VirtualGameController.framework">
+               <FileRef
+                  location = "group:Headers">
+               </FileRef>
+               <FileRef
+                  location = "group:Modules">
+               </FileRef>
+               <FileRef
+                  location = "group:Resources">
+               </FileRef>
+               <Group
+                  location = "group:Versions"
+                  name = "Versions">
+                  <Group
+                     location = "group:A"
+                     name = "A">
+                     <Group
+                        location = "group:_CodeSignature"
+                        name = "_CodeSignature">
+                        <FileRef
+                           location = "group:CodeResources">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Headers"
+                        name = "Headers">
+                        <FileRef
+                           location = "group:VirtualGameController-Swift.h">
+                        </FileRef>
+                        <FileRef
+                           location = "group:VirtualGameControllerOSX.h">
+                        </FileRef>
+                     </Group>
+                     <Group
+                        location = "group:Modules"
+                        name = "Modules">
+                        <FileRef
+                           location = "group:module.modulemap">
+                        </FileRef>
+                        <Group
+                           location = "group:VirtualGameController.swiftmodule"
+                           name = "VirtualGameController.swiftmodule">
+                           <FileRef
+                              location = "group:x86_64.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:x86_64.swiftmodule">
+                           </FileRef>
+                        </Group>
+                     </Group>
+                     <Group
+                        location = "group:Resources"
+                        name = "Resources">
+                        <FileRef
+                           location = "group:Info.plist">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:VirtualGameController">
+                     </FileRef>
+                  </Group>
+                  <FileRef
+                     location = "group:Current">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:VirtualGameController">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Debug-appletvos"
+            name = "Debug-appletvos">
+            <FileRef
+               location = "group:Central_tvOS.app">
+            </FileRef>
+            <Group
+               location = "group:Central_tvOS.swiftmodule"
+               name = "Central_tvOS.swiftmodule">
+               <FileRef
+                  location = "group:arm64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:arm64.swiftmodule">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:VirtualGameController.framework"
+               name = "VirtualGameController.framework">
+               <Group
+                  location = "group:_CodeSignature"
+                  name = "_CodeSignature">
+                  <FileRef
+                     location = "group:CodeResources">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Headers"
+                  name = "Headers">
+                  <FileRef
+                     location = "group:VirtualGameController-Swift.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameControllerTvOS.h">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+               <Group
+                  location = "group:Modules"
+                  name = "Modules">
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+                  <Group
+                     location = "group:VirtualGameController.swiftmodule"
+                     name = "VirtualGameController.swiftmodule">
+                     <FileRef
+                        location = "group:arm64.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:arm64.swiftmodule">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:VirtualGameController">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Debug-appletvsimulator"
+            name = "Debug-appletvsimulator">
+            <FileRef
+               location = "group:Central_tvOS.app">
+            </FileRef>
+            <Group
+               location = "group:Central_tvOS.swiftmodule"
+               name = "Central_tvOS.swiftmodule">
+               <FileRef
+                  location = "group:x86_64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:x86_64.swiftmodule">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:VirtualGameController.framework"
+               name = "VirtualGameController.framework">
+               <Group
+                  location = "group:Headers"
+                  name = "Headers">
+                  <FileRef
+                     location = "group:VirtualGameController-Swift.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:VirtualGameControllerTvOS.h">
+                  </FileRef>
+               </Group>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+               <Group
+                  location = "group:Modules"
+                  name = "Modules">
+                  <FileRef
+                     location = "group:module.modulemap">
+                  </FileRef>
+                  <Group
+                     location = "group:VirtualGameController.swiftmodule"
+                     name = "VirtualGameController.swiftmodule">
+                     <FileRef
+                        location = "group:x86_64.swiftdoc">
+                     </FileRef>
+                     <FileRef
+                        location = "group:x86_64.swiftmodule">
+                     </FileRef>
+                  </Group>
+               </Group>
+               <FileRef
+                  location = "group:VirtualGameController">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
             location = "group:Debug-iphoneos"
             name = "Debug-iphoneos">
             <FileRef
                location = "group:BridgeiOS.app">
             </FileRef>
+            <Group
+               location = "group:BridgeiOS.swiftmodule"
+               name = "BridgeiOS.swiftmodule">
+               <FileRef
+                  location = "group:arm64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:arm64.swiftmodule">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Peripheral_iOS.app">
+            </FileRef>
+            <Group
+               location = "group:Peripheral_iOS.swiftmodule"
+               name = "Peripheral_iOS.swiftmodule">
+               <FileRef
+                  location = "group:arm.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:arm.swiftmodule">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:vgcCentral_iOS.app">
+            </FileRef>
+            <Group
+               location = "group:vgcCentral_iOS.swiftmodule"
+               name = "vgcCentral_iOS.swiftmodule">
+               <FileRef
+                  location = "group:arm64.swiftdoc">
+               </FileRef>
+               <FileRef
+                  location = "group:arm64.swiftmodule">
+               </FileRef>
+            </Group>
             <Group
                location = "group:VirtualGameController.framework"
                name = "VirtualGameController.framework">
@@ -1672,10 +3886,10 @@
                      location = "group:VirtualGameController.swiftmodule"
                      name = "VirtualGameController.swiftmodule">
                      <FileRef
-                        location = "group:arm64.swiftdoc">
+                        location = "group:arm.swiftdoc">
                      </FileRef>
                      <FileRef
-                        location = "group:arm64.swiftmodule">
+                        location = "group:arm.swiftmodule">
                      </FileRef>
                   </Group>
                </Group>

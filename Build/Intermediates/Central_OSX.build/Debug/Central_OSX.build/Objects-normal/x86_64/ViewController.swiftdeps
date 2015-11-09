@@ -1,0 +1,443 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ViewController"
+provides-nominal:
+- "C11Central_OSX14ViewController"
+provides-member:
+- ["C11Central_OSX14ViewController", ""]
+provides-dynamic-lookup:
+- "representedObject"
+- "viewDidAppear"
+- "controllerDidConnect"
+- "viewDidLoad"
+depends-top-level:
+- !private "VgcController"
+- "NSNotification"
+- !private "CustomElements"
+- !private "NSNotificationCenter"
+- !private "CustomMappings"
+- "NSViewController"
+- !private "VgcManager"
+- "ViewController"
+- !private "UnicodeScalarType"
+- "AnyObject"
+- !private "print"
+- !private "StringLiteralType"
+- !private "Void"
+depends-member:
+- !private ["PSs9AnyObject", "CustomElements"]
+- !private ["PSs9AnyObject", "CustomMappings"]
+- !private ["PSs9AnyObject", "NSNotificationCenter"]
+- !private ["PSs9AnyObject", "VgcController"]
+- !private ["PSs9AnyObject", "VgcManager"]
+- !private ["PSs9AnyObject", "addObserver"]
+- !private ["PSs9AnyObject", "appRole"]
+- !private ["PSs9AnyObject", "centralServiceName"]
+- ["PSs9AnyObject", "controllerDidConnect"]
+- !private ["PSs9AnyObject", "defaultCenter"]
+- ["PSs9AnyObject", "init"]
+- !private ["PSs9AnyObject", "print"]
+- ["PSs9AnyObject", "representedObject"]
+- !private ["PSs9AnyObject", "startAs"]
+- !private ["PSs9AnyObject", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSs9AnyObject", "title"]
+- !private ["PSs9AnyObject", "view"]
+- ["PSs9AnyObject", "viewDidAppear"]
+- ["PSs9AnyObject", "viewDidLoad"]
+- !private ["PSs9AnyObject", "window"]
+- ["PSs9AnyObject", ""]
+- !private ["O21VirtualGameController7AppRole", "Bridge"]
+- !private ["O21VirtualGameController7AppRole", "description"]
+- !private ["Sb", "deinit"]
+- !private ["PSs11CVarArgType", "CustomElements"]
+- !private ["PSs11CVarArgType", "CustomMappings"]
+- !private ["PSs11CVarArgType", "NSNotificationCenter"]
+- !private ["PSs11CVarArgType", "VgcController"]
+- !private ["PSs11CVarArgType", "VgcManager"]
+- !private ["PSs11CVarArgType", "addObserver"]
+- !private ["PSs11CVarArgType", "appRole"]
+- !private ["PSs11CVarArgType", "centralServiceName"]
+- ["PSs11CVarArgType", "controllerDidConnect"]
+- !private ["PSs11CVarArgType", "defaultCenter"]
+- ["PSs11CVarArgType", "init"]
+- !private ["PSs11CVarArgType", "print"]
+- ["PSs11CVarArgType", "representedObject"]
+- !private ["PSs11CVarArgType", "startAs"]
+- !private ["PSs11CVarArgType", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSs11CVarArgType", "title"]
+- !private ["PSs11CVarArgType", "view"]
+- ["PSs11CVarArgType", "viewDidAppear"]
+- ["PSs11CVarArgType", "viewDidLoad"]
+- !private ["PSs11CVarArgType", "window"]
+- ["PSs11CVarArgType", ""]
+- !private ["VSs9Character", "deinit"]
+- !private ["PSs10Comparable", "init"]
+- !private ["PSs28CustomDebugStringConvertible", "init"]
+- !private ["C11Central_OSX14CustomElements", "init"]
+- !private ["C21VirtualGameController24CustomElementsSuperclass", "init"]
+- !private ["C11Central_OSX14CustomMappings", "init"]
+- !private ["C21VirtualGameController24CustomMappingsSuperclass", "init"]
+- !private ["PSs23CustomStringConvertible", "Bridge"]
+- !private ["PSs23CustomStringConvertible", "CustomElements"]
+- !private ["PSs23CustomStringConvertible", "CustomMappings"]
+- !private ["PSs23CustomStringConvertible", "NSNotificationCenter"]
+- !private ["PSs23CustomStringConvertible", "VgcController"]
+- !private ["PSs23CustomStringConvertible", "VgcManager"]
+- !private ["PSs23CustomStringConvertible", "addObserver"]
+- !private ["PSs23CustomStringConvertible", "appRole"]
+- !private ["PSs23CustomStringConvertible", "centralServiceName"]
+- ["PSs23CustomStringConvertible", "controllerDidConnect"]
+- !private ["PSs23CustomStringConvertible", "defaultCenter"]
+- !private ["PSs23CustomStringConvertible", "description"]
+- ["PSs23CustomStringConvertible", "init"]
+- !private ["PSs23CustomStringConvertible", "print"]
+- ["PSs23CustomStringConvertible", "representedObject"]
+- !private ["PSs23CustomStringConvertible", "startAs"]
+- !private ["PSs23CustomStringConvertible", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSs23CustomStringConvertible", "title"]
+- !private ["PSs23CustomStringConvertible", "view"]
+- ["PSs23CustomStringConvertible", "viewDidAppear"]
+- ["PSs23CustomStringConvertible", "viewDidLoad"]
+- !private ["PSs23CustomStringConvertible", "window"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["Sd", "deinit"]
+- !private ["PSs9Equatable", "Bridge"]
+- !private ["PSs9Equatable", "CustomElements"]
+- !private ["PSs9Equatable", "CustomMappings"]
+- !private ["PSs9Equatable", "NSNotificationCenter"]
+- !private ["PSs9Equatable", "VgcController"]
+- !private ["PSs9Equatable", "VgcManager"]
+- !private ["PSs9Equatable", "addObserver"]
+- !private ["PSs9Equatable", "appRole"]
+- !private ["PSs9Equatable", "centralServiceName"]
+- ["PSs9Equatable", "controllerDidConnect"]
+- !private ["PSs9Equatable", "defaultCenter"]
+- !private ["PSs9Equatable", "description"]
+- ["PSs9Equatable", "init"]
+- !private ["PSs9Equatable", "print"]
+- ["PSs9Equatable", "representedObject"]
+- !private ["PSs9Equatable", "startAs"]
+- !private ["PSs9Equatable", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSs9Equatable", "title"]
+- !private ["PSs9Equatable", "view"]
+- ["PSs9Equatable", "viewDidAppear"]
+- ["PSs9Equatable", "viewDidLoad"]
+- !private ["PSs9Equatable", "window"]
+- ["PSs9Equatable", ""]
+- !private ["PSs41ExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Sf", "deinit"]
+- !private ["PSs8Hashable", "Bridge"]
+- !private ["PSs8Hashable", "CustomElements"]
+- !private ["PSs8Hashable", "CustomMappings"]
+- !private ["PSs8Hashable", "NSNotificationCenter"]
+- !private ["PSs8Hashable", "VgcController"]
+- !private ["PSs8Hashable", "VgcManager"]
+- !private ["PSs8Hashable", "addObserver"]
+- !private ["PSs8Hashable", "appRole"]
+- !private ["PSs8Hashable", "centralServiceName"]
+- ["PSs8Hashable", "controllerDidConnect"]
+- !private ["PSs8Hashable", "defaultCenter"]
+- !private ["PSs8Hashable", "description"]
+- ["PSs8Hashable", "init"]
+- !private ["PSs8Hashable", "print"]
+- ["PSs8Hashable", "representedObject"]
+- !private ["PSs8Hashable", "startAs"]
+- !private ["PSs8Hashable", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSs8Hashable", "title"]
+- !private ["PSs8Hashable", "view"]
+- ["PSs8Hashable", "viewDidAppear"]
+- ["PSs8Hashable", "viewDidLoad"]
+- !private ["PSs8Hashable", "window"]
+- ["PSs8Hashable", ""]
+- !private ["Si", "deinit"]
+- !private ["VSs5Int16", "deinit"]
+- !private ["VSs5Int32", "deinit"]
+- !private ["VSs5Int64", "deinit"]
+- !private ["VSs4Int8", "deinit"]
+- !private ["PSs14MirrorPathType", "init"]
+- !private ["PSo15NSAccessibility", "title"]
+- !private ["PSo15NSAccessibility", "window"]
+- !private ["PSo30NSAccessibilityElementProtocol", "title"]
+- !private ["PSo30NSAccessibilityElementProtocol", "window"]
+- !private ["PSo29NSAnimatablePropertyContainer", "title"]
+- !private ["PSo29NSAnimatablePropertyContainer", "window"]
+- !private ["PSo25NSAppearanceCustomization", "title"]
+- !private ["PSo25NSAppearanceCustomization", "window"]
+- !private ["PSo8NSCoding", "CustomElements"]
+- !private ["PSo8NSCoding", "CustomMappings"]
+- !private ["PSo8NSCoding", "NSNotificationCenter"]
+- !private ["PSo8NSCoding", "VgcController"]
+- !private ["PSo8NSCoding", "VgcManager"]
+- ["PSo8NSCoding", "controllerDidConnect"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "print"]
+- ["PSo8NSCoding", "representedObject"]
+- !private ["PSo8NSCoding", "title"]
+- !private ["PSo8NSCoding", "view"]
+- ["PSo8NSCoding", "viewDidAppear"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- !private ["PSo8NSCoding", "window"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo21NSDraggingDestination", "window"]
+- !private ["PSo26NSExtensionRequestHandling", "CustomElements"]
+- !private ["PSo26NSExtensionRequestHandling", "CustomMappings"]
+- !private ["PSo26NSExtensionRequestHandling", "NSNotificationCenter"]
+- !private ["PSo26NSExtensionRequestHandling", "VgcController"]
+- !private ["PSo26NSExtensionRequestHandling", "VgcManager"]
+- ["PSo26NSExtensionRequestHandling", "controllerDidConnect"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "print"]
+- ["PSo26NSExtensionRequestHandling", "representedObject"]
+- !private ["PSo26NSExtensionRequestHandling", "view"]
+- ["PSo26NSExtensionRequestHandling", "viewDidAppear"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["PSo20NSNetServiceDelegate", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["CSo20NSNotificationCenter", "addObserver"]
+- !private ["CSo20NSNotificationCenter", "defaultCenter"]
+- ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "CustomElements"]
+- !private ["CSo8NSObject", "CustomMappings"]
+- ["CSo8NSObject", "NSNotification"]
+- !private ["CSo8NSObject", "NSNotificationCenter"]
+- !private ["CSo8NSObject", "VgcController"]
+- !private ["CSo8NSObject", "VgcManager"]
+- !private ["CSo8NSObject", "Void"]
+- !private ["CSo8NSObject", "addObserver"]
+- !private ["CSo8NSObject", "appRole"]
+- !private ["CSo8NSObject", "centralServiceName"]
+- ["CSo8NSObject", "controllerDidConnect"]
+- !private ["CSo8NSObject", "defaultCenter"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "print"]
+- ["CSo8NSObject", "representedObject"]
+- !private ["CSo8NSObject", "startAs"]
+- !private ["CSo8NSObject", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["CSo8NSObject", "title"]
+- !private ["CSo8NSObject", "view"]
+- ["CSo8NSObject", "viewDidAppear"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["CSo8NSObject", "window"]
+- !private ["PSo16NSObjectProtocol", "CustomElements"]
+- !private ["PSo16NSObjectProtocol", "CustomMappings"]
+- !private ["PSo16NSObjectProtocol", "NSNotificationCenter"]
+- !private ["PSo16NSObjectProtocol", "VgcController"]
+- !private ["PSo16NSObjectProtocol", "VgcManager"]
+- !private ["PSo16NSObjectProtocol", "addObserver"]
+- !private ["PSo16NSObjectProtocol", "appRole"]
+- !private ["PSo16NSObjectProtocol", "centralServiceName"]
+- ["PSo16NSObjectProtocol", "controllerDidConnect"]
+- !private ["PSo16NSObjectProtocol", "defaultCenter"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "print"]
+- ["PSo16NSObjectProtocol", "representedObject"]
+- !private ["PSo16NSObjectProtocol", "startAs"]
+- !private ["PSo16NSObjectProtocol", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["PSo16NSObjectProtocol", "title"]
+- !private ["PSo16NSObjectProtocol", "view"]
+- ["PSo16NSObjectProtocol", "viewDidAppear"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "window"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo19NSPasteboardReading", "init"]
+- !private ["PSo19NSPasteboardWriting", "init"]
+- ["CSo11NSResponder", "AnyObject"]
+- !private ["CSo11NSResponder", "CustomElements"]
+- !private ["CSo11NSResponder", "CustomMappings"]
+- ["CSo11NSResponder", "NSNotification"]
+- !private ["CSo11NSResponder", "NSNotificationCenter"]
+- !private ["CSo11NSResponder", "VgcController"]
+- !private ["CSo11NSResponder", "VgcManager"]
+- !private ["CSo11NSResponder", "Void"]
+- ["CSo11NSResponder", "controllerDidConnect"]
+- ["CSo11NSResponder", "init"]
+- !private ["CSo11NSResponder", "print"]
+- ["CSo11NSResponder", "representedObject"]
+- !private ["CSo11NSResponder", "title"]
+- !private ["CSo11NSResponder", "view"]
+- ["CSo11NSResponder", "viewDidAppear"]
+- ["CSo11NSResponder", "viewDidLoad"]
+- !private ["CSo11NSResponder", "window"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo17NSSeguePerforming", "CustomElements"]
+- !private ["PSo17NSSeguePerforming", "CustomMappings"]
+- !private ["PSo17NSSeguePerforming", "NSNotificationCenter"]
+- !private ["PSo17NSSeguePerforming", "VgcController"]
+- !private ["PSo17NSSeguePerforming", "VgcManager"]
+- ["PSo17NSSeguePerforming", "controllerDidConnect"]
+- ["PSo17NSSeguePerforming", "init"]
+- !private ["PSo17NSSeguePerforming", "print"]
+- ["PSo17NSSeguePerforming", "representedObject"]
+- !private ["PSo17NSSeguePerforming", "view"]
+- ["PSo17NSSeguePerforming", "viewDidAppear"]
+- ["PSo17NSSeguePerforming", "viewDidLoad"]
+- ["PSo17NSSeguePerforming", ""]
+- !private ["PSo16NSStreamDelegate", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["CSo8NSString", "init"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "CustomElements"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "CustomMappings"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "NSNotificationCenter"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "VgcController"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "VgcManager"]
+- ["PSo33NSUserInterfaceItemIdentification", "controllerDidConnect"]
+- ["PSo33NSUserInterfaceItemIdentification", "init"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "print"]
+- ["PSo33NSUserInterfaceItemIdentification", "representedObject"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "title"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "view"]
+- ["PSo33NSUserInterfaceItemIdentification", "viewDidAppear"]
+- ["PSo33NSUserInterfaceItemIdentification", "viewDidLoad"]
+- !private ["PSo33NSUserInterfaceItemIdentification", "window"]
+- ["PSo33NSUserInterfaceItemIdentification", ""]
+- !private ["PSo26NSUserInterfaceValidations", "title"]
+- !private ["CSo6NSView", "window"]
+- ["CSo16NSViewController", "AnyObject"]
+- !private ["CSo16NSViewController", "CustomElements"]
+- !private ["CSo16NSViewController", "CustomMappings"]
+- ["CSo16NSViewController", "NSNotification"]
+- !private ["CSo16NSViewController", "NSNotificationCenter"]
+- !private ["CSo16NSViewController", "VgcController"]
+- !private ["CSo16NSViewController", "VgcManager"]
+- !private ["CSo16NSViewController", "Void"]
+- ["CSo16NSViewController", "controllerDidConnect"]
+- ["CSo16NSViewController", "init"]
+- !private ["CSo16NSViewController", "print"]
+- ["CSo16NSViewController", "representedObject"]
+- !private ["CSo16NSViewController", "view"]
+- ["CSo16NSViewController", "viewDidAppear"]
+- ["CSo16NSViewController", "viewDidLoad"]
+- ["CSo16NSViewController", ""]
+- !private ["CSo8NSWindow", "title"]
+- !private ["Sq", "deinit"]
+- !private ["PSs16OutputStreamType", "init"]
+- !private ["V10ObjectiveC8Selector", "deinit"]
+- !private ["PSs10Streamable", "init"]
+- !private ["SS", "init"]
+- !private ["PSs30StringInterpolationConvertible", "init"]
+- !private ["PSs24StringLiteralConvertible", "init"]
+- !private ["Su", "deinit"]
+- !private ["VSs6UInt16", "deinit"]
+- !private ["VSs6UInt32", "deinit"]
+- !private ["VSs6UInt64", "deinit"]
+- !private ["VSs5UInt8", "deinit"]
+- !private ["Sc", "deinit"]
+- !private ["PSs31UnicodeScalarLiteralConvertible", "init"]
+- !private ["C21VirtualGameController13VgcController", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- !private ["C21VirtualGameController10VgcManager", "appRole"]
+- !private ["C21VirtualGameController10VgcManager", "centralServiceName"]
+- !private ["C21VirtualGameController10VgcManager", "startAs"]
+- !private ["P21VirtualGameController19VgcStreamerDelegate", "startWirelessControllerDiscoveryWithCompletionHandler"]
+- ["C11Central_OSX14ViewController", "AnyObject"]
+- !private ["C11Central_OSX14ViewController", "CustomElements"]
+- !private ["C11Central_OSX14ViewController", "CustomMappings"]
+- ["C11Central_OSX14ViewController", "NSNotification"]
+- !private ["C11Central_OSX14ViewController", "NSNotificationCenter"]
+- !private ["C11Central_OSX14ViewController", "VgcController"]
+- !private ["C11Central_OSX14ViewController", "VgcManager"]
+- !private ["C11Central_OSX14ViewController", "Void"]
+- ["C11Central_OSX14ViewController", "controllerDidConnect"]
+- ["C11Central_OSX14ViewController", "deinit"]
+- ["C11Central_OSX14ViewController", "init"]
+- !private ["C11Central_OSX14ViewController", "print"]
+- ["C11Central_OSX14ViewController", "representedObject"]
+- !private ["C11Central_OSX14ViewController", "view"]
+- ["C11Central_OSX14ViewController", "viewDidAppear"]
+- ["C11Central_OSX14ViewController", "viewDidLoad"]
+- !private ["PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["PSs32_BuiltinStringLiteralConvertible", "init"]
+- !private ["PSs37_BuiltinUTF16StringLiteralConvertible", "init"]
+- !private ["PSs39_BuiltinUnicodeScalarLiteralConvertible", "init"]
+- !private ["PSs16_CocoaStringType", "init"]
+- !private ["PSs21_ObjectiveCBridgeable", "init"]
+- !private ["PSs12_Reflectable", "init"]
+- !private ["PSs12_Reflectable", "window"]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "O21VirtualGameController7AppRole"
+- !private "Sb"
+- "PSs11CVarArgType"
+- !private "VSs9Character"
+- !private "PSs10Comparable"
+- !private "PSs28CustomDebugStringConvertible"
+- !private "C11Central_OSX14CustomElements"
+- !private "C21VirtualGameController24CustomElementsSuperclass"
+- !private "C11Central_OSX14CustomMappings"
+- !private "C21VirtualGameController24CustomMappingsSuperclass"
+- "PSs23CustomStringConvertible"
+- !private "Sd"
+- "PSs9Equatable"
+- !private "PSs41ExtendedGraphemeClusterLiteralConvertible"
+- !private "Sf"
+- "PSs8Hashable"
+- !private "Si"
+- !private "VSs5Int16"
+- !private "VSs5Int32"
+- !private "VSs5Int64"
+- !private "VSs4Int8"
+- !private "PSs14MirrorPathType"
+- !private "PSo15NSAccessibility"
+- !private "PSo30NSAccessibilityElementProtocol"
+- !private "PSo29NSAnimatablePropertyContainer"
+- !private "PSo25NSAppearanceCustomization"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo21NSDraggingDestination"
+- "PSo26NSExtensionRequestHandling"
+- !private "PSo16NSMutableCopying"
+- !private "PSo20NSNetServiceDelegate"
+- !private "CSo20NSNotificationCenter"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo19NSPasteboardReading"
+- !private "PSo19NSPasteboardWriting"
+- "CSo11NSResponder"
+- !private "PSo14NSSecureCoding"
+- "PSo17NSSeguePerforming"
+- !private "PSo16NSStreamDelegate"
+- !private "CSo8NSString"
+- "PSo33NSUserInterfaceItemIdentification"
+- !private "PSo26NSUserInterfaceValidations"
+- !private "CSo6NSView"
+- "CSo16NSViewController"
+- !private "CSo8NSWindow"
+- !private "Sq"
+- !private "PSs16OutputStreamType"
+- !private "V10ObjectiveC8Selector"
+- !private "PSs10Streamable"
+- !private "SS"
+- !private "PSs30StringInterpolationConvertible"
+- !private "PSs24StringLiteralConvertible"
+- !private "Su"
+- !private "VSs6UInt16"
+- !private "VSs6UInt32"
+- !private "VSs6UInt64"
+- !private "VSs5UInt8"
+- !private "Sc"
+- !private "PSs31UnicodeScalarLiteralConvertible"
+- !private "C21VirtualGameController13VgcController"
+- !private "C21VirtualGameController10VgcManager"
+- !private "P21VirtualGameController19VgcStreamerDelegate"
+- "C11Central_OSX14ViewController"
+- !private "PSs49_BuiltinExtendedGraphemeClusterLiteralConvertible"
+- !private "PSs32_BuiltinStringLiteralConvertible"
+- !private "PSs37_BuiltinUTF16StringLiteralConvertible"
+- !private "PSs39_BuiltinUnicodeScalarLiteralConvertible"
+- !private "PSs16_CocoaStringType"
+- !private "PSs21_ObjectiveCBridgeable"
+- !private "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug/VirtualGameController.framework/Modules/VirtualGameController.swiftmodule/x86_64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreBluetooth.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/AppKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreData.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreImage.swiftmodule"
+interface-hash: "edd98c6fe28fb2041275ea15dd474d5c"
