@@ -197,8 +197,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         
     }
+
+    func reset() {
+        print("Resetting service browser")
+        serviceLookup.removeAll()
+    }
     
     func browseForCentral() {
+        
         
         print("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
         centralBrowser = NSNetServiceBrowser()

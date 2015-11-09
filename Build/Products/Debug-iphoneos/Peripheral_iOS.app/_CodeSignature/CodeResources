@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		JttxsVaKnj8PlOvaPhwSgz11ex4=
+		bIXavDk2ABImDj0QxhNZNiWG9t0=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
@@ -64,15 +64,15 @@
 		</dict>
 		<key>Frameworks/VirtualGameController.framework/Info.plist</key>
 		<data>
-		n8NYDg3cVLzYEFwhmDk0BIqWhpc=
+		n0Nl/0TJ0hoFciIYWAUsdSUKca0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/VirtualGameController</key>
 		<data>
-		BweaQJeNdma2FrA/A5K8WO3v7ks=
+		9EvXGomXohUEGrfrLg9It3EaZw0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/_CodeSignature/CodeResources</key>
 		<data>
-		OUuXQvtXNGQ9VCjxbn9vlKgxdpU=
+		e1gxEVqU7m86y2kDV+GvItns3CA=
 		</data>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>
@@ -132,7 +132,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		u6b17l36FwHk6lHLgJIBF6athQg=
+		ZuLEJRIHTVtq2SkOiFldCAaCeZU=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -147,7 +147,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		JttxsVaKnj8PlOvaPhwSgz11ex4=
+		bIXavDk2ABImDj0QxhNZNiWG9t0=
 		</data>
 		<key>Base.lproj/LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<dict>
@@ -205,15 +205,15 @@
 		</dict>
 		<key>Frameworks/VirtualGameController.framework/Info.plist</key>
 		<data>
-		n8NYDg3cVLzYEFwhmDk0BIqWhpc=
+		n0Nl/0TJ0hoFciIYWAUsdSUKca0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/VirtualGameController</key>
 		<data>
-		BweaQJeNdma2FrA/A5K8WO3v7ks=
+		9EvXGomXohUEGrfrLg9It3EaZw0=
 		</data>
 		<key>Frameworks/VirtualGameController.framework/_CodeSignature/CodeResources</key>
 		<data>
-		OUuXQvtXNGQ9VCjxbn9vlKgxdpU=
+		e1gxEVqU7m86y2kDV+GvItns3CA=
 		</data>
 		<key>Frameworks/libswiftAVFoundation.dylib</key>
 		<data>

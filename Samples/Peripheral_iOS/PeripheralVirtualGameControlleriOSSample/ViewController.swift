@@ -37,6 +37,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "serviceBrowserReset:", name: VgcPeripheralDidResetBrowser, object: nil)
         
         // Kick off the search for Centrals and Bridges that we can connect to.  When
         // services are found, the VgcPeripheralFoundService will fire.
@@ -57,6 +58,13 @@ class ViewController: UIViewController {
     @objc func lostService(notification: NSNotification) {
         let vgcService = notification.object as? VgcService
         print("Lost service: \(vgcService!.fullName) isMainThread: \(NSThread.isMainThread())")
+        peripheralControlPadView.serviceSelectorView.refresh()
+    }
+    
+    // Notification indicates we should refresh the view
+    @objc func serviceBrowserReset(notification: NSNotification) {
+        let vgcService = notification.object as? VgcService
+        print("Service browser reset, isMainThread: \(NSThread.isMainThread())")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     

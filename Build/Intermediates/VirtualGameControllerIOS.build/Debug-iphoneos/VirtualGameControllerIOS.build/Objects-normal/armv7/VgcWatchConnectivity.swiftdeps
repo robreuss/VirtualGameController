@@ -6,25 +6,25 @@ provides-nominal:
 provides-member:
 - ["C21VirtualGameController20VgcWatchConnectivity", ""]
 provides-dynamic-lookup:
-- "session"
-- "sendElementValueToBridge"
 - "elements"
 - "httpSession"
+- "sendElementValueToBridge"
+- "session"
 depends-top-level:
-- "WCSession"
-- "NSURLSession"
-- "NSURLSessionDelegate"
-- "WCSessionDelegate"
-- "Element"
-- !private "Dictionary"
-- "Elements"
-- !private "String"
 - !private "AnyObject"
-- !private "Void"
-- "VgcWatchConnectivity"
-- "NSObject"
+- "Element"
+- "NSURLSession"
+- "Elements"
+- !private "Dictionary"
+- "NSURLSessionDelegate"
+- "WCSession"
 - !private "print"
+- "VgcWatchConnectivity"
+- !private "String"
+- "WCSessionDelegate"
+- "NSObject"
 - !private "StringLiteralType"
+- !private "Void"
 depends-member:
 - ["PSs9AnyObject", "Elements"]
 - ["PSs9AnyObject", "URLSession"]

@@ -8,77 +8,78 @@ provides-nominal:
 provides-member:
 - ["C21VirtualGameController10VgcBrowser", ""]
 provides-dynamic-lookup:
-- "centralBrowser"
-- "outputStream"
-- "inputStream"
-- "disconnectFromCentral"
 - "sendElementStateOverNetService"
-- "elements"
+- "outputStream"
+- "receivedNetServiceMessage"
+- "inputStream"
 - "localService"
-- "bridgeBrowser"
+- "netServiceBrowser"
+- "netServiceBrowser"
 - "browseForCentral"
-- "disconnect"
-- "netServiceBrowser"
-- "netServiceBrowser"
-- "registeredName"
-- "peripheral"
-- "stopBrowsing"
+- "elements"
 - "closeStreams"
+- "bridgeBrowser"
+- "peripheral"
+- "disconnect"
+- "reset"
+- "stopBrowsing"
+- "centralBrowser"
 - "streamer"
 - "remoteServer"
 - "sendArchivedDeviceInfo"
-- "receivedNetServiceMessage"
+- "disconnectFromCentral"
+- "registeredName"
 depends-top-level:
-- !private "NSThread"
-- "NSStreamDelegate"
-- !private "NSRunLoop"
-- "NSInputStream"
-- "VgcStreamerDelegate"
-- !private "GCControllerPlayerIndex"
-- "Elements"
-- "NSNetServiceDelegate"
-- "UIDevice"
+- !private "-"
+- !private "<"
+- "VgcService"
+- !private "VgcManager"
 - !private "StringLiteralType"
+- !private "NSThread"
 - !private "SystemMessages"
-- "NSOutputStream"
-- "UIColor"
-- "NSNetService"
-- "NSNetServiceBrowserDelegate"
-- "Peripheral"
+- "Elements"
+- !private "NSRunLoop"
+- !private "VgcSystemMessageNotification"
+- !private "&&"
 - "Element"
 - !private "NSNotificationCenter"
-- !private "VgcManager"
-- "Int"
-- "NSString"
-- !private "UnicodeScalarType"
-- "deviceName"
-- !private "print"
-- !private "VgcPeripheralFoundService"
-- !private "VgcSystemMessageNotification"
-- !private "-"
-- !private "VgcNewPlayerIndexNotification"
-- !private "/"
-- !private "=="
+- "NSNetServiceBrowserDelegate"
 - "NSNetServiceBrowser"
-- "peripheralBackgroundColor"
-- !private "+"
-- !private "!="
-- "NSObject"
-- !private "VgcPeripheralLostService"
-- !private "&&"
-- !private "NSDate"
-- !private "!"
-- !private "NSDefaultRunLoopMode"
-- "VgcBrowser"
-- !private "deviceIsTypeOfBridge"
 - "Dictionary"
+- !private "NSDefaultRunLoopMode"
+- !private "!="
+- !private "/"
+- !private "NSDate"
+- !private "Float"
 - "String"
-- "VgcService"
+- !private "print"
+- !private "UnicodeScalarType"
+- "Bool"
+- "NSStreamDelegate"
+- !private "VgcNewPlayerIndexNotification"
+- "VgcStreamerDelegate"
+- "NSInputStream"
+- "NSNetServiceDelegate"
+- !private "GCControllerPlayerIndex"
+- !private "=="
+- !private "VgcPeripheralFoundService"
+- "NSOutputStream"
+- !private "!"
+- "NSObject"
+- "NSString"
+- "peripheralBackgroundColor"
+- "NSNetService"
+- "Peripheral"
+- "UIDevice"
+- !private "VgcPeripheralLostService"
+- "Int"
+- "UIColor"
+- !private "deviceIsTypeOfBridge"
+- !private "+"
+- "VgcBrowser"
+- "deviceName"
 - "VgcStreamer"
 - !private "BooleanLiteralType"
-- !private "Float"
-- !private "<"
-- "Bool"
 depends-member:
 - !private ["PSs16AbsoluteValuable", "init"]
 - ["PSs9AnyObject", "Dictionary"]
@@ -161,6 +162,7 @@ depends-member:
 - ["PSs9AnyObject", "receivedNetServiceMessage"]
 - ["PSs9AnyObject", "registeredName"]
 - ["PSs9AnyObject", "remoteServer"]
+- ["PSs9AnyObject", "reset"]
 - !private ["PSs9AnyObject", "scheduleInRunLoop"]
 - !private ["PSs9AnyObject", "searchForServicesOfType"]
 - ["PSs9AnyObject", "sendArchivedDeviceInfo"]
@@ -285,6 +287,7 @@ depends-member:
 - ["PSs11CVarArgType", "receivedNetServiceMessage"]
 - ["PSs11CVarArgType", "registeredName"]
 - ["PSs11CVarArgType", "remoteServer"]
+- ["PSs11CVarArgType", "reset"]
 - !private ["PSs11CVarArgType", "scheduleInRunLoop"]
 - !private ["PSs11CVarArgType", "searchForServicesOfType"]
 - ["PSs11CVarArgType", "sendArchivedDeviceInfo"]
@@ -420,6 +423,7 @@ depends-member:
 - ["PSs23CustomStringConvertible", "remoteServer"]
 - !private ["PSs23CustomStringConvertible", "removeAll"]
 - !private ["PSs23CustomStringConvertible", "removeValueForKey"]
+- ["PSs23CustomStringConvertible", "reset"]
 - !private ["PSs23CustomStringConvertible", "scheduleInRunLoop"]
 - !private ["PSs23CustomStringConvertible", "searchForServicesOfType"]
 - ["PSs23CustomStringConvertible", "sendArchivedDeviceInfo"]
@@ -552,6 +556,7 @@ depends-member:
 - ["PSs9Equatable", "receivedNetServiceMessage"]
 - ["PSs9Equatable", "registeredName"]
 - ["PSs9Equatable", "remoteServer"]
+- ["PSs9Equatable", "reset"]
 - !private ["PSs9Equatable", "scheduleInRunLoop"]
 - !private ["PSs9Equatable", "searchForServicesOfType"]
 - ["PSs9Equatable", "sendArchivedDeviceInfo"]
@@ -671,6 +676,7 @@ depends-member:
 - ["PSs8Hashable", "receivedNetServiceMessage"]
 - ["PSs8Hashable", "registeredName"]
 - ["PSs8Hashable", "remoteServer"]
+- ["PSs8Hashable", "reset"]
 - !private ["PSs8Hashable", "scheduleInRunLoop"]
 - !private ["PSs8Hashable", "searchForServicesOfType"]
 - ["PSs8Hashable", "sendArchivedDeviceInfo"]
@@ -956,6 +962,7 @@ depends-member:
 - ["CSo8NSObject", "receivedNetServiceMessage"]
 - ["CSo8NSObject", "registeredName"]
 - ["CSo8NSObject", "remoteServer"]
+- ["CSo8NSObject", "reset"]
 - !private ["CSo8NSObject", "scheduleInRunLoop"]
 - !private ["CSo8NSObject", "searchForServicesOfType"]
 - ["CSo8NSObject", "sendArchivedDeviceInfo"]
@@ -1053,6 +1060,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "receivedNetServiceMessage"]
 - ["PSo16NSObjectProtocol", "registeredName"]
 - ["PSo16NSObjectProtocol", "remoteServer"]
+- ["PSo16NSObjectProtocol", "reset"]
 - !private ["PSo16NSObjectProtocol", "scheduleInRunLoop"]
 - !private ["PSo16NSObjectProtocol", "searchForServicesOfType"]
 - ["PSo16NSObjectProtocol", "sendArchivedDeviceInfo"]
@@ -1276,6 +1284,7 @@ depends-member:
 - ["C21VirtualGameController10VgcBrowser", "receivedNetServiceMessage"]
 - ["C21VirtualGameController10VgcBrowser", "registeredName"]
 - ["C21VirtualGameController10VgcBrowser", "remoteServer"]
+- ["C21VirtualGameController10VgcBrowser", "reset"]
 - ["C21VirtualGameController10VgcBrowser", "sendArchivedDeviceInfo"]
 - ["C21VirtualGameController10VgcBrowser", "sendElementStateOverNetService"]
 - ["C21VirtualGameController10VgcBrowser", "serviceLookup"]
@@ -1560,4 +1569,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreBluetooth.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WatchConnectivity.swiftmodule"
-interface-hash: "eaa94bd015ec6ef223b95a0a09db13b9"
+interface-hash: "fc8647a764c32740a249aae1e8d9dbfc"

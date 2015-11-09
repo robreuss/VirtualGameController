@@ -11,14 +11,14 @@ provides-member:
 provides-dynamic-lookup:
 depends-top-level:
 - "CustomElementsSuperclass"
-- "CustomElementType"
-- !private "CustomElement"
-- "Int"
-- !private "StringLiteralType"
-- !private "Array"
-- "CustomElements"
-- "=="
 - !private "~="
+- "=="
+- !private "StringLiteralType"
+- "Int"
+- "CustomElementType"
+- !private "Array"
+- !private "CustomElement"
+- "CustomElements"
 depends-member:
 - !private ["PSs9AnyObject", "CustomElement"]
 - !private ["PSs9AnyObject", "CustomElementType"]

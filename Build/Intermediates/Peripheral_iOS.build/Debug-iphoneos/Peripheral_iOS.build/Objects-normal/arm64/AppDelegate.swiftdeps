@@ -6,25 +6,25 @@ provides-nominal:
 provides-member:
 - ["C14Peripheral_iOS11AppDelegate", ""]
 provides-dynamic-lookup:
-- "application"
-- "applicationWillResignActive"
-- "applicationDidBecomeActive"
 - "window"
 - "applicationWillEnterForeground"
-- "applicationWillTerminate"
 - "applicationDidEnterBackground"
+- "application"
+- "applicationDidBecomeActive"
+- "applicationWillResignActive"
+- "applicationWillTerminate"
 depends-top-level:
 - "AnyObject"
-- "NSObject"
+- "UIApplication"
+- !private "BooleanLiteralType"
+- "UIWindow"
+- !private "CGRect"
 - "UIResponder"
 - "Bool"
-- "UIApplication"
-- "UIWindow"
+- "NSObject"
+- "AppDelegate"
 - !private "UITextField"
 - "UIApplicationDelegate"
-- !private "CGRect"
-- !private "BooleanLiteralType"
-- "AppDelegate"
 - !private "VgcManager"
 depends-member:
 - !private ["PSs9AnyObject", "CGRect"]
@@ -44,6 +44,7 @@ depends-member:
 - ["PSs9AnyObject", "applicationWillResignActive"]
 - ["PSs9AnyObject", "applicationWillTerminate"]
 - !private ["PSs9AnyObject", "becomeFirstResponder"]
+- !private ["PSs9AnyObject", "browseForServices"]
 - !private ["PSs9AnyObject", "deinit"]
 - !private ["PSs9AnyObject", "disconnectFromService"]
 - !private ["PSs9AnyObject", "elements"]
@@ -53,6 +54,7 @@ depends-member:
 - !private ["PSs9AnyObject", "removeFromSuperview"]
 - !private ["PSs9AnyObject", "resignFirstResponder"]
 - !private ["PSs9AnyObject", "sendElementState"]
+- !private ["PSs9AnyObject", "stopBrowsingForServices"]
 - !private ["PSs9AnyObject", "value"]
 - ["PSs9AnyObject", "window"]
 - ["PSs9AnyObject", ""]
@@ -97,6 +99,7 @@ depends-member:
 - ["PSs11CVarArgType", "applicationWillResignActive"]
 - ["PSs11CVarArgType", "applicationWillTerminate"]
 - !private ["PSs11CVarArgType", "becomeFirstResponder"]
+- !private ["PSs11CVarArgType", "browseForServices"]
 - !private ["PSs11CVarArgType", "disconnectFromService"]
 - !private ["PSs11CVarArgType", "elements"]
 - ["PSs11CVarArgType", "init"]
@@ -105,6 +108,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "removeFromSuperview"]
 - !private ["PSs11CVarArgType", "resignFirstResponder"]
 - !private ["PSs11CVarArgType", "sendElementState"]
+- !private ["PSs11CVarArgType", "stopBrowsingForServices"]
 - !private ["PSs11CVarArgType", "value"]
 - ["PSs11CVarArgType", "window"]
 - ["PSs11CVarArgType", ""]
@@ -125,6 +129,7 @@ depends-member:
 - ["PSs23CustomStringConvertible", "applicationWillResignActive"]
 - ["PSs23CustomStringConvertible", "applicationWillTerminate"]
 - !private ["PSs23CustomStringConvertible", "becomeFirstResponder"]
+- !private ["PSs23CustomStringConvertible", "browseForServices"]
 - !private ["PSs23CustomStringConvertible", "disconnectFromService"]
 - !private ["PSs23CustomStringConvertible", "elements"]
 - ["PSs23CustomStringConvertible", "init"]
@@ -133,6 +138,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "removeFromSuperview"]
 - !private ["PSs23CustomStringConvertible", "resignFirstResponder"]
 - !private ["PSs23CustomStringConvertible", "sendElementState"]
+- !private ["PSs23CustomStringConvertible", "stopBrowsingForServices"]
 - !private ["PSs23CustomStringConvertible", "value"]
 - ["PSs23CustomStringConvertible", "window"]
 - ["PSs23CustomStringConvertible", ""]
@@ -156,6 +162,7 @@ depends-member:
 - ["PSs9Equatable", "applicationWillResignActive"]
 - ["PSs9Equatable", "applicationWillTerminate"]
 - !private ["PSs9Equatable", "becomeFirstResponder"]
+- !private ["PSs9Equatable", "browseForServices"]
 - !private ["PSs9Equatable", "disconnectFromService"]
 - !private ["PSs9Equatable", "elements"]
 - ["PSs9Equatable", "init"]
@@ -164,6 +171,7 @@ depends-member:
 - !private ["PSs9Equatable", "removeFromSuperview"]
 - !private ["PSs9Equatable", "resignFirstResponder"]
 - !private ["PSs9Equatable", "sendElementState"]
+- !private ["PSs9Equatable", "stopBrowsingForServices"]
 - !private ["PSs9Equatable", "value"]
 - ["PSs9Equatable", "window"]
 - ["PSs9Equatable", ""]
@@ -184,6 +192,7 @@ depends-member:
 - ["PSs8Hashable", "applicationWillResignActive"]
 - ["PSs8Hashable", "applicationWillTerminate"]
 - !private ["PSs8Hashable", "becomeFirstResponder"]
+- !private ["PSs8Hashable", "browseForServices"]
 - !private ["PSs8Hashable", "disconnectFromService"]
 - !private ["PSs8Hashable", "elements"]
 - ["PSs8Hashable", "init"]
@@ -192,6 +201,7 @@ depends-member:
 - !private ["PSs8Hashable", "removeFromSuperview"]
 - !private ["PSs8Hashable", "resignFirstResponder"]
 - !private ["PSs8Hashable", "sendElementState"]
+- !private ["PSs8Hashable", "stopBrowsingForServices"]
 - !private ["PSs8Hashable", "value"]
 - ["PSs8Hashable", "window"]
 - ["PSs8Hashable", ""]
@@ -222,6 +232,7 @@ depends-member:
 - ["CSo8NSObject", "applicationWillResignActive"]
 - ["CSo8NSObject", "applicationWillTerminate"]
 - !private ["CSo8NSObject", "becomeFirstResponder"]
+- !private ["CSo8NSObject", "browseForServices"]
 - !private ["CSo8NSObject", "disconnectFromService"]
 - !private ["CSo8NSObject", "elements"]
 - ["CSo8NSObject", "init"]
@@ -230,6 +241,7 @@ depends-member:
 - !private ["CSo8NSObject", "removeFromSuperview"]
 - !private ["CSo8NSObject", "resignFirstResponder"]
 - !private ["CSo8NSObject", "sendElementState"]
+- !private ["CSo8NSObject", "stopBrowsingForServices"]
 - !private ["CSo8NSObject", "value"]
 - ["CSo8NSObject", "window"]
 - !private ["PSo16NSObjectProtocol", "CGRect"]
@@ -249,6 +261,7 @@ depends-member:
 - ["PSo16NSObjectProtocol", "applicationWillResignActive"]
 - ["PSo16NSObjectProtocol", "applicationWillTerminate"]
 - !private ["PSo16NSObjectProtocol", "becomeFirstResponder"]
+- !private ["PSo16NSObjectProtocol", "browseForServices"]
 - !private ["PSo16NSObjectProtocol", "disconnectFromService"]
 - !private ["PSo16NSObjectProtocol", "elements"]
 - ["PSo16NSObjectProtocol", "init"]
@@ -257,11 +270,14 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "removeFromSuperview"]
 - !private ["PSo16NSObjectProtocol", "resignFirstResponder"]
 - !private ["PSo16NSObjectProtocol", "sendElementState"]
+- !private ["PSo16NSObjectProtocol", "stopBrowsingForServices"]
 - !private ["PSo16NSObjectProtocol", "value"]
 - ["PSo16NSObjectProtocol", "window"]
 - ["PSo16NSObjectProtocol", ""]
+- !private ["C21VirtualGameController10Peripheral", "browseForServices"]
 - !private ["C21VirtualGameController10Peripheral", "disconnectFromService"]
 - !private ["C21VirtualGameController10Peripheral", "sendElementState"]
+- !private ["C21VirtualGameController10Peripheral", "stopBrowsingForServices"]
 - !private ["PSo29UIAccessibilityIdentification", "addSubview"]
 - !private ["PSo29UIAccessibilityIdentification", "becomeFirstResponder"]
 - !private ["PSo29UIAccessibilityIdentification", "init"]

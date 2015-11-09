@@ -4,6 +4,7 @@ provides-top-level:
 - "VgcPeripheralDidDisconnectNotification"
 - "VgcPeripheralFoundService"
 - "VgcPeripheralLostService"
+- "VgcPeripheralDidResetBrowser"
 - "VgcSystemMessageNotification"
 - "VgcNewPlayerIndexNotification"
 - "Peripheral"
@@ -12,51 +13,52 @@ provides-nominal:
 provides-member:
 - ["C21VirtualGameController10Peripheral", ""]
 provides-dynamic-lookup:
-- "browseForServices"
-- "deviceInfo"
-- "stopBrowsingForServices"
-- "browser"
-- "gotConnectionToCentral"
-- "controller"
-- "sendDeviceInfo"
-- "motion"
-- "bridgePeripheralDeviceInfoToCentral"
-- "mapElement"
 - "disconnectFromService"
+- "sendDeviceInfo"
 - "sendElementState"
+- "browser"
+- "controller"
+- "motion"
+- "browseForServices"
+- "bridgePeripheralDeviceInfoToCentral"
+- "gotConnectionToCentral"
+- "mapElement"
+- "stopBrowsingForServices"
+- "deviceInfo"
 depends-top-level:
+- "VgcNewPlayerIndexNotification"
+- "VgcPeripheralDidResetBrowser"
+- !private "!"
+- "VgcPeripheralDidDisconnectNotification"
+- !private "=="
+- "GCControllerPlayerIndex"
+- !private "VgcManager"
+- !private "NSKeyedArchiver"
+- "StringLiteralType"
+- !private "&&"
+- "NSObject"
+- "VgcPeripheralLostService"
+- "Peripheral"
+- !private "Elements"
+- "Element"
+- !private "deviceIsTypeOfBridge"
+- "VgcController"
+- "Bool"
+- "VgcMotionManager"
+- "VgcSystemMessageNotification"
+- !private "+"
+- !private "NSNotificationCenter"
+- "VgcPeripheralDidConnectNotification"
+- !private "NSDataBase64EncodingOptions"
+- !private "print"
+- !private "||"
 - "VgcService"
 - "VgcPeripheralFoundService"
-- !private "!"
-- "String"
-- !private "print"
-- !private "&&"
-- !private "=="
-- "StringLiteralType"
-- "Peripheral"
-- "NSObject"
-- !private "NSNotificationCenter"
-- "GCControllerPlayerIndex"
-- "Bool"
-- "VgcPeripheralDidConnectNotification"
-- !private "VgcManager"
-- "Element"
-- "VgcMotionManager"
-- !private "Elements"
-- !private "NSKeyedArchiver"
-- !private "!="
-- "VgcController"
-- "VgcSystemMessageNotification"
-- "DeviceInfo"
-- "VgcPeripheralLostService"
-- "VgcBrowser"
 - !private "BooleanLiteralType"
-- !private "||"
-- !private "NSDataBase64EncodingOptions"
-- !private "deviceIsTypeOfBridge"
-- !private "+"
-- "VgcNewPlayerIndexNotification"
-- "VgcPeripheralDidDisconnectNotification"
+- "DeviceInfo"
+- "String"
+- "VgcBrowser"
+- !private "!="
 depends-member:
 - !private ["PSs9AnyObject", "DeviceInfo"]
 - !private ["PSs9AnyObject", "Elements"]
@@ -70,6 +72,7 @@ depends-member:
 - !private ["PSs9AnyObject", "VgcMotionManager"]
 - !private ["PSs9AnyObject", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs9AnyObject", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs9AnyObject", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs9AnyObject", "VgcPeripheralLostService"]
 - !private ["PSs9AnyObject", "VgcService"]
 - !private ["PSs9AnyObject", "appRole"]
@@ -114,6 +117,7 @@ depends-member:
 - !private ["PSs9AnyObject", "postNotificationName"]
 - !private ["PSs9AnyObject", "print"]
 - !private ["PSs9AnyObject", "profileType"]
+- !private ["PSs9AnyObject", "reset"]
 - !private ["PSs9AnyObject", "sendArchivedDeviceInfo"]
 - ["PSs9AnyObject", "sendDeviceInfo"]
 - ["PSs9AnyObject", "sendElementState"]
@@ -164,6 +168,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "VgcMotionManager"]
 - !private ["PSs11CVarArgType", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs11CVarArgType", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs11CVarArgType", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs11CVarArgType", "VgcPeripheralLostService"]
 - !private ["PSs11CVarArgType", "VgcService"]
 - !private ["PSs11CVarArgType", "appRole"]
@@ -208,6 +213,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "postNotificationName"]
 - !private ["PSs11CVarArgType", "print"]
 - !private ["PSs11CVarArgType", "profileType"]
+- !private ["PSs11CVarArgType", "reset"]
 - !private ["PSs11CVarArgType", "sendArchivedDeviceInfo"]
 - ["PSs11CVarArgType", "sendDeviceInfo"]
 - ["PSs11CVarArgType", "sendElementState"]
@@ -279,6 +285,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "VgcMotionManager"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs23CustomStringConvertible", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralLostService"]
 - !private ["PSs23CustomStringConvertible", "VgcService"]
 - !private ["PSs23CustomStringConvertible", "_Element"]
@@ -326,6 +333,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "postNotificationName"]
 - !private ["PSs23CustomStringConvertible", "print"]
 - !private ["PSs23CustomStringConvertible", "profileType"]
+- !private ["PSs23CustomStringConvertible", "reset"]
 - !private ["PSs23CustomStringConvertible", "sendArchivedDeviceInfo"]
 - ["PSs23CustomStringConvertible", "sendDeviceInfo"]
 - ["PSs23CustomStringConvertible", "sendElementState"]
@@ -397,6 +405,7 @@ depends-member:
 - !private ["PSs9Equatable", "VgcMotionManager"]
 - !private ["PSs9Equatable", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs9Equatable", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs9Equatable", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs9Equatable", "VgcPeripheralLostService"]
 - !private ["PSs9Equatable", "VgcService"]
 - !private ["PSs9Equatable", "_DisabledRangeIndex"]
@@ -443,6 +452,7 @@ depends-member:
 - !private ["PSs9Equatable", "postNotificationName"]
 - !private ["PSs9Equatable", "print"]
 - !private ["PSs9Equatable", "profileType"]
+- !private ["PSs9Equatable", "reset"]
 - !private ["PSs9Equatable", "sendArchivedDeviceInfo"]
 - ["PSs9Equatable", "sendDeviceInfo"]
 - ["PSs9Equatable", "sendElementState"]
@@ -489,6 +499,7 @@ depends-member:
 - !private ["PSs8Hashable", "VgcMotionManager"]
 - !private ["PSs8Hashable", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs8Hashable", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs8Hashable", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs8Hashable", "VgcPeripheralLostService"]
 - !private ["PSs8Hashable", "VgcService"]
 - !private ["PSs8Hashable", "_getBuiltinLogicValue"]
@@ -534,6 +545,7 @@ depends-member:
 - !private ["PSs8Hashable", "postNotificationName"]
 - !private ["PSs8Hashable", "print"]
 - !private ["PSs8Hashable", "profileType"]
+- !private ["PSs8Hashable", "reset"]
 - !private ["PSs8Hashable", "sendArchivedDeviceInfo"]
 - ["PSs8Hashable", "sendDeviceInfo"]
 - ["PSs8Hashable", "sendElementState"]
@@ -616,6 +628,7 @@ depends-member:
 - !private ["PSo27NSNetServiceBrowserDelegate", "connectToService"]
 - !private ["PSo27NSNetServiceBrowserDelegate", "disconnectFromCentral"]
 - !private ["PSo27NSNetServiceBrowserDelegate", "init"]
+- !private ["PSo27NSNetServiceBrowserDelegate", "reset"]
 - !private ["PSo27NSNetServiceBrowserDelegate", "sendArchivedDeviceInfo"]
 - !private ["PSo27NSNetServiceBrowserDelegate", "sendElementStateOverNetService"]
 - !private ["PSo27NSNetServiceBrowserDelegate", "serviceLookup"]
@@ -629,6 +642,7 @@ depends-member:
 - !private ["PSo20NSNetServiceDelegate", "enhancedController"]
 - !private ["PSo20NSNetServiceDelegate", "init"]
 - !private ["PSo20NSNetServiceDelegate", "peripheral"]
+- !private ["PSo20NSNetServiceDelegate", "reset"]
 - !private ["PSo20NSNetServiceDelegate", "sendArchivedDeviceInfo"]
 - !private ["PSo20NSNetServiceDelegate", "sendElementStateOverNetService"]
 - !private ["PSo20NSNetServiceDelegate", "serviceLookup"]
@@ -650,6 +664,7 @@ depends-member:
 - ["CSo8NSObject", "VgcMotionManager"]
 - !private ["CSo8NSObject", "VgcPeripheralDidConnectNotification"]
 - !private ["CSo8NSObject", "VgcPeripheralDidDisconnectNotification"]
+- !private ["CSo8NSObject", "VgcPeripheralDidResetBrowser"]
 - !private ["CSo8NSObject", "VgcPeripheralLostService"]
 - ["CSo8NSObject", "VgcService"]
 - !private ["CSo8NSObject", "appRole"]
@@ -695,6 +710,7 @@ depends-member:
 - !private ["CSo8NSObject", "postNotificationName"]
 - !private ["CSo8NSObject", "print"]
 - !private ["CSo8NSObject", "profileType"]
+- !private ["CSo8NSObject", "reset"]
 - !private ["CSo8NSObject", "sendArchivedDeviceInfo"]
 - ["CSo8NSObject", "sendDeviceInfo"]
 - ["CSo8NSObject", "sendElementState"]
@@ -722,6 +738,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "VgcMotionManager"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo16NSObjectProtocol", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralLostService"]
 - !private ["PSo16NSObjectProtocol", "VgcService"]
 - !private ["PSo16NSObjectProtocol", "appRole"]
@@ -766,6 +783,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "postNotificationName"]
 - !private ["PSo16NSObjectProtocol", "print"]
 - !private ["PSo16NSObjectProtocol", "profileType"]
+- !private ["PSo16NSObjectProtocol", "reset"]
 - !private ["PSo16NSObjectProtocol", "sendArchivedDeviceInfo"]
 - ["PSo16NSObjectProtocol", "sendDeviceInfo"]
 - ["PSo16NSObjectProtocol", "sendElementState"]
@@ -792,6 +810,7 @@ depends-member:
 - !private ["PSo16NSStreamDelegate", "enhancedController"]
 - !private ["PSo16NSStreamDelegate", "init"]
 - !private ["PSo16NSStreamDelegate", "peripheral"]
+- !private ["PSo16NSStreamDelegate", "reset"]
 - !private ["PSo16NSStreamDelegate", "sendArchivedDeviceInfo"]
 - !private ["PSo16NSStreamDelegate", "sendElementStateOverNetService"]
 - !private ["PSo16NSStreamDelegate", "serviceLookup"]
@@ -820,6 +839,7 @@ depends-member:
 - ["C21VirtualGameController10Peripheral", "VgcMotionManager"]
 - !private ["C21VirtualGameController10Peripheral", "VgcPeripheralDidConnectNotification"]
 - !private ["C21VirtualGameController10Peripheral", "VgcPeripheralDidDisconnectNotification"]
+- !private ["C21VirtualGameController10Peripheral", "VgcPeripheralDidResetBrowser"]
 - !private ["C21VirtualGameController10Peripheral", "VgcPeripheralLostService"]
 - ["C21VirtualGameController10Peripheral", "VgcService"]
 - ["C21VirtualGameController10Peripheral", "availableServices"]
@@ -901,6 +921,7 @@ depends-member:
 - !private ["C21VirtualGameController10VgcBrowser", "connectToService"]
 - !private ["C21VirtualGameController10VgcBrowser", "disconnectFromCentral"]
 - !private ["C21VirtualGameController10VgcBrowser", "init"]
+- !private ["C21VirtualGameController10VgcBrowser", "reset"]
 - !private ["C21VirtualGameController10VgcBrowser", "sendArchivedDeviceInfo"]
 - !private ["C21VirtualGameController10VgcBrowser", "sendElementStateOverNetService"]
 - !private ["C21VirtualGameController10VgcBrowser", "serviceLookup"]
@@ -928,6 +949,7 @@ depends-member:
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "enhancedController"]
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "init"]
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "peripheral"]
+- !private ["P21VirtualGameController19VgcStreamerDelegate", "reset"]
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "sendArchivedDeviceInfo"]
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "sendElementStateOverNetService"]
 - !private ["P21VirtualGameController19VgcStreamerDelegate", "serviceLookup"]
@@ -1119,4 +1141,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreBluetooth.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WatchConnectivity.swiftmodule"
-interface-hash: "36fd498258dd7e0fdb58d605ba6dfac2"
+interface-hash: "bf619e9fd8a2dc329feddd1d08022d15"

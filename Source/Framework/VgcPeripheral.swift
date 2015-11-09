@@ -23,8 +23,9 @@ public let VgcPeripheralDidConnectNotification:     String = "VgcPeripheralDidCo
 public let VgcPeripheralDidDisconnectNotification:  String = "VgcPeripheralDidDisconnectNotification"
 public let VgcPeripheralFoundService:               String = "VgcPeripheralFoundService"
 public let VgcPeripheralLostService:                String = "VgcPeripheralLostService"
+public let VgcPeripheralDidResetBrowser:            String = "VgcPeripheralDidResetBrowser"
 public let VgcSystemMessageNotification:            String = "VgcSystemMessageNotification"
-public let VgcNewPlayerIndexNotification:            String = "VgcNewPlayerIndexNotification"
+public let VgcNewPlayerIndexNotification:           String = "VgcNewPlayerIndexNotification"
 
 public class Peripheral: NSObject {
     
@@ -161,6 +162,10 @@ public class Peripheral: NSObject {
     public func browseForServices() {
         
         print("Browsing for services...")
+        
+        browser.reset()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidResetBrowser, object: nil)
         
         // If we're a bridge, this peripheral is a controller-specific instance.  If the controller is no
         // longer in the array of controllers, it means it has disconnected and we don't want to advertise it

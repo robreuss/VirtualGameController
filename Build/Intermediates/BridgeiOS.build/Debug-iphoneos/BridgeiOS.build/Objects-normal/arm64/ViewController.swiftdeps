@@ -9,14 +9,14 @@ provides-dynamic-lookup:
 - "viewDidLoad"
 - "peripheralControlPadView"
 depends-top-level:
-- "ViewController"
-- !private "VgcManager"
-- "VgcCentralViewController"
-- !private "StringLiteralType"
-- !private "CustomElements"
-- !private "CustomMappings"
 - "PeripheralControlPadView"
+- !private "CustomMappings"
+- !private "CustomElements"
+- "VgcCentralViewController"
 - !private "=="
+- !private "VgcManager"
+- "ViewController"
+- !private "StringLiteralType"
 depends-member:
 - !private ["PSs9AnyObject", "CustomElements"]
 - !private ["PSs9AnyObject", "CustomMappings"]

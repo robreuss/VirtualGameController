@@ -255,6 +255,7 @@ SWIFT_CLASS("_TtC14Peripheral_iOS14ViewController")
 - (void)viewDidLoad;
 - (void)foundService:(NSNotification * __nonnull)notification;
 - (void)lostService:(NSNotification * __nonnull)notification;
+- (void)serviceBrowserReset:(NSNotification * __nonnull)notification;
 - (void)receivedSystemMessage:(NSNotification * __nonnull)notification;
 - (void)peripheralDidConnect:(NSNotification * __nonnull)notification;
 - (void)peripheralDidDisconnect:(NSNotification * __nonnull)notification;

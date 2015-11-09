@@ -50,6 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         VgcManager.elements.pauseButton.value = 0.0
         VgcManager.peripheral.sendElementState(VgcManager.elements.pauseButton)
         
+        // Reycle service browser
+        VgcManager.peripheral.stopBrowsingForServices()
+        VgcManager.peripheral.browseForServices()
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {

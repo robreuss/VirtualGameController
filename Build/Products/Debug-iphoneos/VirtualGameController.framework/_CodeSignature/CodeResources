@@ -14,15 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		n8NYDg3cVLzYEFwhmDk0BIqWhpc=
+		n0Nl/0TJ0hoFciIYWAUsdSUKca0=
 		</data>
-		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
+		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		7w/3KsE6vDjxFTSN5NTI3PEd4Vg=
+		JqYkI/PJ3XbqmqyIile11gtKYSA=
 		</data>
-		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
+		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		95HiaPl3g4lUSasHTkbrN1F7KWQ=
+		nfmq5VHssDHsz/U728yLawAwSHc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -39,13 +39,13 @@
 		<data>
 		LipTkWcP4oAQNZRYuHG0PL1zuDc=
 		</data>
-		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
+		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		7w/3KsE6vDjxFTSN5NTI3PEd4Vg=
+		JqYkI/PJ3XbqmqyIile11gtKYSA=
 		</data>
-		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
+		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		95HiaPl3g4lUSasHTkbrN1F7KWQ=
+		nfmq5VHssDHsz/U728yLawAwSHc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

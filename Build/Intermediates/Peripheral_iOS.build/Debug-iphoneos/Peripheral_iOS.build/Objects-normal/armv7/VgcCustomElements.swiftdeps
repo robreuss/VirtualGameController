@@ -10,15 +10,15 @@ provides-member:
 - ["C14Peripheral_iOS14CustomElements", ""]
 provides-dynamic-lookup:
 depends-top-level:
-- "=="
-- !private "~="
-- "CustomElementType"
 - "CustomElementsSuperclass"
-- !private "CustomElement"
+- "CustomElementType"
 - !private "StringLiteralType"
 - "Int"
 - !private "Array"
 - "CustomElements"
+- !private "CustomElement"
+- "=="
+- !private "~="
 depends-member:
 - !private ["PSs9AnyObject", "CustomElement"]
 - !private ["PSs9AnyObject", "CustomElementType"]

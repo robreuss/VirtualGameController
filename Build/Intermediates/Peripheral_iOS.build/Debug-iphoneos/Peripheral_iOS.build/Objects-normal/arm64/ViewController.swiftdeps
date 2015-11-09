@@ -6,40 +6,42 @@ provides-nominal:
 provides-member:
 - ["C14Peripheral_iOS14ViewController", ""]
 provides-dynamic-lookup:
-- "viewDidLoad"
 - "lostService"
-- "didReceiveMemoryWarning"
-- "receivedSystemMessage"
-- "peripheralDidDisconnect"
-- "foundService"
 - "peripheralControlPadView"
+- "didReceiveMemoryWarning"
+- "viewDidLoad"
+- "serviceBrowserReset"
+- "peripheralDidDisconnect"
 - "peripheralDidConnect"
+- "receivedSystemMessage"
+- "foundService"
 depends-top-level:
 - !private "=="
-- "PeripheralControlPadView"
-- !private "NSNotificationCenter"
-- !private "VgcPeripheralFoundService"
-- !private "VgcPeripheralDidConnectNotification"
-- !private "Int"
-- !private "CustomElements"
-- !private "+"
-- !private "CustomMappings"
-- !private "StringLiteralType"
-- !private "DeviceInfo"
-- !private "VgcPeripheralDidDisconnectNotification"
-- !private "VgcSystemMessageNotification"
 - "NSNotification"
-- !private "VgcService"
+- "PeripheralControlPadView"
 - !private "SystemMessages"
-- !private "*"
+- !private "VgcSystemMessageNotification"
+- !private "DeviceInfo"
 - !private "VgcPeripheralLostService"
-- !private "NSThread"
 - "ViewController"
-- !private "BooleanLiteralType"
+- !private "Int"
+- !private "CustomMappings"
+- !private "+"
+- !private "VgcPeripheralFoundService"
+- !private "VgcPeripheralDidDisconnectNotification"
+- !private "StringLiteralType"
+- !private "VgcService"
 - !private "print"
+- !private "BooleanLiteralType"
+- !private "NSNotificationCenter"
 - !private "VgcManager"
-- "UIViewController"
+- !private "VgcPeripheralDidConnectNotification"
+- !private "*"
+- !private "CustomElements"
+- !private "VgcPeripheralDidResetBrowser"
+- !private "NSThread"
 - !private "UIView"
+- "UIViewController"
 depends-member:
 - !private ["PSs9AnyObject", "CustomElements"]
 - !private ["PSs9AnyObject", "CustomMappings"]
@@ -52,6 +54,7 @@ depends-member:
 - !private ["PSs9AnyObject", "VgcManager"]
 - !private ["PSs9AnyObject", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs9AnyObject", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs9AnyObject", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs9AnyObject", "VgcPeripheralFoundService"]
 - !private ["PSs9AnyObject", "VgcPeripheralLostService"]
 - !private ["PSs9AnyObject", "VgcSystemMessageNotification"]
@@ -79,6 +82,7 @@ depends-member:
 - !private ["PSs9AnyObject", "print"]
 - ["PSs9AnyObject", "receivedSystemMessage"]
 - !private ["PSs9AnyObject", "refresh"]
+- ["PSs9AnyObject", "serviceBrowserReset"]
 - !private ["PSs9AnyObject", "serviceSelectorView"]
 - !private ["PSs9AnyObject", "startAs"]
 - !private ["PSs9AnyObject", "updateInterval"]
@@ -103,6 +107,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "VgcManager"]
 - !private ["PSs11CVarArgType", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs11CVarArgType", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs11CVarArgType", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs11CVarArgType", "VgcPeripheralFoundService"]
 - !private ["PSs11CVarArgType", "VgcPeripheralLostService"]
 - !private ["PSs11CVarArgType", "VgcSystemMessageNotification"]
@@ -129,6 +134,7 @@ depends-member:
 - !private ["PSs11CVarArgType", "print"]
 - ["PSs11CVarArgType", "receivedSystemMessage"]
 - !private ["PSs11CVarArgType", "refresh"]
+- ["PSs11CVarArgType", "serviceBrowserReset"]
 - !private ["PSs11CVarArgType", "serviceSelectorView"]
 - !private ["PSs11CVarArgType", "startAs"]
 - !private ["PSs11CVarArgType", "updateInterval"]
@@ -160,6 +166,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "VgcManager"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs23CustomStringConvertible", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralFoundService"]
 - !private ["PSs23CustomStringConvertible", "VgcPeripheralLostService"]
 - !private ["PSs23CustomStringConvertible", "VgcSystemMessageNotification"]
@@ -187,6 +194,7 @@ depends-member:
 - !private ["PSs23CustomStringConvertible", "print"]
 - ["PSs23CustomStringConvertible", "receivedSystemMessage"]
 - !private ["PSs23CustomStringConvertible", "refresh"]
+- ["PSs23CustomStringConvertible", "serviceBrowserReset"]
 - !private ["PSs23CustomStringConvertible", "serviceSelectorView"]
 - !private ["PSs23CustomStringConvertible", "startAs"]
 - !private ["PSs23CustomStringConvertible", "updateInterval"]
@@ -213,6 +221,7 @@ depends-member:
 - !private ["PSs9Equatable", "VgcManager"]
 - !private ["PSs9Equatable", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs9Equatable", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs9Equatable", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs9Equatable", "VgcPeripheralFoundService"]
 - !private ["PSs9Equatable", "VgcPeripheralLostService"]
 - !private ["PSs9Equatable", "VgcSystemMessageNotification"]
@@ -240,6 +249,7 @@ depends-member:
 - !private ["PSs9Equatable", "print"]
 - ["PSs9Equatable", "receivedSystemMessage"]
 - !private ["PSs9Equatable", "refresh"]
+- ["PSs9Equatable", "serviceBrowserReset"]
 - !private ["PSs9Equatable", "serviceSelectorView"]
 - !private ["PSs9Equatable", "startAs"]
 - !private ["PSs9Equatable", "updateInterval"]
@@ -265,6 +275,7 @@ depends-member:
 - !private ["PSs8Hashable", "VgcManager"]
 - !private ["PSs8Hashable", "VgcPeripheralDidConnectNotification"]
 - !private ["PSs8Hashable", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSs8Hashable", "VgcPeripheralDidResetBrowser"]
 - !private ["PSs8Hashable", "VgcPeripheralFoundService"]
 - !private ["PSs8Hashable", "VgcPeripheralLostService"]
 - !private ["PSs8Hashable", "VgcSystemMessageNotification"]
@@ -292,6 +303,7 @@ depends-member:
 - !private ["PSs8Hashable", "print"]
 - ["PSs8Hashable", "receivedSystemMessage"]
 - !private ["PSs8Hashable", "refresh"]
+- ["PSs8Hashable", "serviceBrowserReset"]
 - !private ["PSs8Hashable", "serviceSelectorView"]
 - !private ["PSs8Hashable", "startAs"]
 - !private ["PSs8Hashable", "updateInterval"]
@@ -316,6 +328,7 @@ depends-member:
 - !private ["PSo8NSCoding", "VgcManager"]
 - !private ["PSo8NSCoding", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo8NSCoding", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo8NSCoding", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo8NSCoding", "VgcPeripheralFoundService"]
 - !private ["PSo8NSCoding", "VgcPeripheralLostService"]
 - !private ["PSo8NSCoding", "VgcSystemMessageNotification"]
@@ -332,6 +345,7 @@ depends-member:
 - !private ["PSo8NSCoding", "print"]
 - ["PSo8NSCoding", "receivedSystemMessage"]
 - !private ["PSo8NSCoding", "refresh"]
+- ["PSo8NSCoding", "serviceBrowserReset"]
 - !private ["PSo8NSCoding", "view"]
 - ["PSo8NSCoding", "viewDidLoad"]
 - ["PSo8NSCoding", ""]
@@ -348,6 +362,7 @@ depends-member:
 - !private ["PSo26NSExtensionRequestHandling", "VgcManager"]
 - !private ["PSo26NSExtensionRequestHandling", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo26NSExtensionRequestHandling", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo26NSExtensionRequestHandling", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo26NSExtensionRequestHandling", "VgcPeripheralFoundService"]
 - !private ["PSo26NSExtensionRequestHandling", "VgcPeripheralLostService"]
 - !private ["PSo26NSExtensionRequestHandling", "VgcSystemMessageNotification"]
@@ -360,6 +375,7 @@ depends-member:
 - ["PSo26NSExtensionRequestHandling", "peripheralDidDisconnect"]
 - !private ["PSo26NSExtensionRequestHandling", "print"]
 - ["PSo26NSExtensionRequestHandling", "receivedSystemMessage"]
+- ["PSo26NSExtensionRequestHandling", "serviceBrowserReset"]
 - !private ["PSo26NSExtensionRequestHandling", "view"]
 - ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
 - ["PSo26NSExtensionRequestHandling", ""]
@@ -380,6 +396,7 @@ depends-member:
 - !private ["CSo8NSObject", "VgcManager"]
 - !private ["CSo8NSObject", "VgcPeripheralDidConnectNotification"]
 - !private ["CSo8NSObject", "VgcPeripheralDidDisconnectNotification"]
+- !private ["CSo8NSObject", "VgcPeripheralDidResetBrowser"]
 - !private ["CSo8NSObject", "VgcPeripheralFoundService"]
 - !private ["CSo8NSObject", "VgcPeripheralLostService"]
 - !private ["CSo8NSObject", "VgcService"]
@@ -407,6 +424,7 @@ depends-member:
 - !private ["CSo8NSObject", "print"]
 - ["CSo8NSObject", "receivedSystemMessage"]
 - !private ["CSo8NSObject", "refresh"]
+- ["CSo8NSObject", "serviceBrowserReset"]
 - !private ["CSo8NSObject", "serviceSelectorView"]
 - !private ["CSo8NSObject", "startAs"]
 - !private ["CSo8NSObject", "updateInterval"]
@@ -423,6 +441,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "VgcManager"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo16NSObjectProtocol", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralFoundService"]
 - !private ["PSo16NSObjectProtocol", "VgcPeripheralLostService"]
 - !private ["PSo16NSObjectProtocol", "VgcSystemMessageNotification"]
@@ -449,6 +468,7 @@ depends-member:
 - !private ["PSo16NSObjectProtocol", "print"]
 - ["PSo16NSObjectProtocol", "receivedSystemMessage"]
 - !private ["PSo16NSObjectProtocol", "refresh"]
+- ["PSo16NSObjectProtocol", "serviceBrowserReset"]
 - !private ["PSo16NSObjectProtocol", "serviceSelectorView"]
 - !private ["PSo16NSObjectProtocol", "startAs"]
 - !private ["PSo16NSObjectProtocol", "updateInterval"]
@@ -503,6 +523,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "VgcManager"]
 - !private ["PSo21UIAppearanceContainer", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo21UIAppearanceContainer", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo21UIAppearanceContainer", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo21UIAppearanceContainer", "VgcPeripheralFoundService"]
 - !private ["PSo21UIAppearanceContainer", "VgcPeripheralLostService"]
 - !private ["PSo21UIAppearanceContainer", "VgcSystemMessageNotification"]
@@ -518,6 +539,7 @@ depends-member:
 - !private ["PSo21UIAppearanceContainer", "print"]
 - ["PSo21UIAppearanceContainer", "receivedSystemMessage"]
 - !private ["PSo21UIAppearanceContainer", "refresh"]
+- ["PSo21UIAppearanceContainer", "serviceBrowserReset"]
 - !private ["PSo21UIAppearanceContainer", "view"]
 - ["PSo21UIAppearanceContainer", "viewDidLoad"]
 - ["PSo21UIAppearanceContainer", ""]
@@ -532,6 +554,7 @@ depends-member:
 - !private ["PSo18UIContentContainer", "VgcManager"]
 - !private ["PSo18UIContentContainer", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo18UIContentContainer", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo18UIContentContainer", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo18UIContentContainer", "VgcPeripheralFoundService"]
 - !private ["PSo18UIContentContainer", "VgcPeripheralLostService"]
 - !private ["PSo18UIContentContainer", "VgcSystemMessageNotification"]
@@ -544,6 +567,7 @@ depends-member:
 - ["PSo18UIContentContainer", "peripheralDidDisconnect"]
 - !private ["PSo18UIContentContainer", "print"]
 - ["PSo18UIContentContainer", "receivedSystemMessage"]
+- ["PSo18UIContentContainer", "serviceBrowserReset"]
 - !private ["PSo18UIContentContainer", "view"]
 - ["PSo18UIContentContainer", "viewDidLoad"]
 - ["PSo18UIContentContainer", ""]
@@ -564,6 +588,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "VgcManager"]
 - !private ["PSo18UIFocusEnvironment", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo18UIFocusEnvironment", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo18UIFocusEnvironment", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo18UIFocusEnvironment", "VgcPeripheralFoundService"]
 - !private ["PSo18UIFocusEnvironment", "VgcPeripheralLostService"]
 - !private ["PSo18UIFocusEnvironment", "VgcSystemMessageNotification"]
@@ -579,6 +604,7 @@ depends-member:
 - !private ["PSo18UIFocusEnvironment", "print"]
 - ["PSo18UIFocusEnvironment", "receivedSystemMessage"]
 - !private ["PSo18UIFocusEnvironment", "refresh"]
+- ["PSo18UIFocusEnvironment", "serviceBrowserReset"]
 - !private ["PSo18UIFocusEnvironment", "view"]
 - ["PSo18UIFocusEnvironment", "viewDidLoad"]
 - ["PSo18UIFocusEnvironment", ""]
@@ -595,6 +621,7 @@ depends-member:
 - !private ["CSo11UIResponder", "VgcManager"]
 - !private ["CSo11UIResponder", "VgcPeripheralDidConnectNotification"]
 - !private ["CSo11UIResponder", "VgcPeripheralDidDisconnectNotification"]
+- !private ["CSo11UIResponder", "VgcPeripheralDidResetBrowser"]
 - !private ["CSo11UIResponder", "VgcPeripheralFoundService"]
 - !private ["CSo11UIResponder", "VgcPeripheralLostService"]
 - !private ["CSo11UIResponder", "VgcService"]
@@ -611,6 +638,7 @@ depends-member:
 - !private ["CSo11UIResponder", "print"]
 - ["CSo11UIResponder", "receivedSystemMessage"]
 - !private ["CSo11UIResponder", "refresh"]
+- ["CSo11UIResponder", "serviceBrowserReset"]
 - !private ["CSo11UIResponder", "view"]
 - ["CSo11UIResponder", "viewDidLoad"]
 - !private ["PSo20UIScrollViewDelegate", "refresh"]
@@ -625,6 +653,7 @@ depends-member:
 - !private ["PSo16UIStateRestoring", "VgcManager"]
 - !private ["PSo16UIStateRestoring", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo16UIStateRestoring", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo16UIStateRestoring", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo16UIStateRestoring", "VgcPeripheralFoundService"]
 - !private ["PSo16UIStateRestoring", "VgcPeripheralLostService"]
 - !private ["PSo16UIStateRestoring", "VgcSystemMessageNotification"]
@@ -637,6 +666,7 @@ depends-member:
 - ["PSo16UIStateRestoring", "peripheralDidDisconnect"]
 - !private ["PSo16UIStateRestoring", "print"]
 - ["PSo16UIStateRestoring", "receivedSystemMessage"]
+- ["PSo16UIStateRestoring", "serviceBrowserReset"]
 - !private ["PSo16UIStateRestoring", "view"]
 - ["PSo16UIStateRestoring", "viewDidLoad"]
 - ["PSo16UIStateRestoring", ""]
@@ -653,6 +683,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "VgcManager"]
 - !private ["PSo18UITraitEnvironment", "VgcPeripheralDidConnectNotification"]
 - !private ["PSo18UITraitEnvironment", "VgcPeripheralDidDisconnectNotification"]
+- !private ["PSo18UITraitEnvironment", "VgcPeripheralDidResetBrowser"]
 - !private ["PSo18UITraitEnvironment", "VgcPeripheralFoundService"]
 - !private ["PSo18UITraitEnvironment", "VgcPeripheralLostService"]
 - !private ["PSo18UITraitEnvironment", "VgcSystemMessageNotification"]
@@ -668,6 +699,7 @@ depends-member:
 - !private ["PSo18UITraitEnvironment", "print"]
 - ["PSo18UITraitEnvironment", "receivedSystemMessage"]
 - !private ["PSo18UITraitEnvironment", "refresh"]
+- ["PSo18UITraitEnvironment", "serviceBrowserReset"]
 - !private ["PSo18UITraitEnvironment", "view"]
 - ["PSo18UITraitEnvironment", "viewDidLoad"]
 - ["PSo18UITraitEnvironment", ""]
@@ -688,6 +720,7 @@ depends-member:
 - !private ["CSo16UIViewController", "VgcManager"]
 - !private ["CSo16UIViewController", "VgcPeripheralDidConnectNotification"]
 - !private ["CSo16UIViewController", "VgcPeripheralDidDisconnectNotification"]
+- !private ["CSo16UIViewController", "VgcPeripheralDidResetBrowser"]
 - !private ["CSo16UIViewController", "VgcPeripheralFoundService"]
 - !private ["CSo16UIViewController", "VgcPeripheralLostService"]
 - !private ["CSo16UIViewController", "VgcService"]
@@ -701,6 +734,7 @@ depends-member:
 - ["CSo16UIViewController", "peripheralDidDisconnect"]
 - !private ["CSo16UIViewController", "print"]
 - ["CSo16UIViewController", "receivedSystemMessage"]
+- ["CSo16UIViewController", "serviceBrowserReset"]
 - !private ["CSo16UIViewController", "view"]
 - ["CSo16UIViewController", "viewDidLoad"]
 - ["CSo16UIViewController", ""]
@@ -730,6 +764,7 @@ depends-member:
 - !private ["C14Peripheral_iOS14ViewController", "VgcManager"]
 - !private ["C14Peripheral_iOS14ViewController", "VgcPeripheralDidConnectNotification"]
 - !private ["C14Peripheral_iOS14ViewController", "VgcPeripheralDidDisconnectNotification"]
+- !private ["C14Peripheral_iOS14ViewController", "VgcPeripheralDidResetBrowser"]
 - !private ["C14Peripheral_iOS14ViewController", "VgcPeripheralFoundService"]
 - !private ["C14Peripheral_iOS14ViewController", "VgcPeripheralLostService"]
 - !private ["C14Peripheral_iOS14ViewController", "VgcService"]
@@ -744,6 +779,7 @@ depends-member:
 - ["C14Peripheral_iOS14ViewController", "peripheralDidDisconnect"]
 - !private ["C14Peripheral_iOS14ViewController", "print"]
 - ["C14Peripheral_iOS14ViewController", "receivedSystemMessage"]
+- ["C14Peripheral_iOS14ViewController", "serviceBrowserReset"]
 - !private ["C14Peripheral_iOS14ViewController", "view"]
 - ["C14Peripheral_iOS14ViewController", "viewDidLoad"]
 - !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
@@ -867,4 +903,4 @@ depends-external:
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
 - "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
-interface-hash: "b7ec4d5328341fa9e28c8feb27b52e97"
+interface-hash: "40d7316da27241826d234a52b9c97530"
