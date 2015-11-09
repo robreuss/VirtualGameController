@@ -8,6 +8,9 @@
 
 import VirtualGameController
 
+
+// Note that sample apps for both Bridge and Central descend from a common
+// ancestor class that contains much of the functionality.
 class ViewController: VgcCentralViewController {
     
     

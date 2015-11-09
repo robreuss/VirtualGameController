@@ -27,12 +27,12 @@ public class CustomMappings: CustomMappingsSuperclass {
         /// performed, but has the  disadvantage of not supporting hardware control mapping,
         /// which central-side mapping does.
 
-        /*
+
         self.mappings = [
             ElementType.RightThumbstickXAxis.rawValue:  ElementType.DpadXAxis.rawValue,
-            ElementType.RightThumbstickYAxis.rawValue:  ElementType.DpadYAxis.rawValue,
+            ElementType.DpadXAxis.rawValue:  ElementType.RightThumbstickXAxis.rawValue,
         ]
-        */
+
     }
     
 }

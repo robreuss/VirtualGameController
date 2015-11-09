@@ -167,7 +167,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 */
         
         if outputStream == nil {
-            print("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream")
+            if connectedVgcService != nil { print("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream") } else { print("Failed to send element \(element.name) because we don't have an output stream") }
             return
         }
         

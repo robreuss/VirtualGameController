@@ -9,6 +9,10 @@
 import Foundation
 import VirtualGameController
 
+///
+/// Create a case for each one of your custom elements, along with a raw value in
+/// the range shown below (to prevent collisions with the standard elements).
+
 public enum CustomElementType: Int {
     
     case FiddlestickX   = 50
@@ -18,6 +22,9 @@ public enum CustomElementType: Int {
     
 }
 
+///
+/// Your customElements class must descend from CustomElementsSuperclass
+///
 public class CustomElements: CustomElementsSuperclass {
 
     override init() {
