@@ -15,8 +15,7 @@
 		202BBF9B1BE56BC7004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */; };
 		202BBF9C1BE56BC7004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */; };
 		202BBF9D1BE56BC7004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */; };
-		2078710F1BF08B2D004EAC47 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2078710E1BF08B2D004EAC47 /* VirtualGameController.framework */; };
-		207871101BF08B2D004EAC47 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2078710E1BF08B2D004EAC47 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		207871341BF2833B004EAC47 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207871331BF2833B004EAC47 /* VirtualGameController.framework */; };
 		20AEB9411BE7082C00F62758 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AEB9401BE7082C00F62758 /* VgcCentralViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,20 +28,6 @@
 			remoteInfo = CentralVirtualGameControllerTVSample;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		2039E0981BF02E8C0059F455 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				207871101BF08B2D004EAC47 /* VirtualGameController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2027BCCE1BA613FD0097452D /* Central_tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_tvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +42,7 @@
 		202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		2078710E1BF08B2D004EAC47 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = VirtualGameController.framework; path = "/Users/robreuss/Documents/Development/VirtualGameController/Build/Products/Debug-appletvos/VirtualGameController.framework"; sourceTree = "<absolute>"; };
+		207871331BF2833B004EAC47 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		20AEB9401BE7082C00F62758 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -66,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2078710F1BF08B2D004EAC47 /* VirtualGameController.framework in Frameworks */,
+				207871341BF2833B004EAC47 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +68,6 @@
 		2027BCC51BA613FD0097452D = {
 			isa = PBXGroup;
 			children = (
-				2078710E1BF08B2D004EAC47 /* VirtualGameController.framework */,
 				2027BCD01BA613FD0097452D /* vgcCentral_tvOS */,
 				2027BCE21BA613FE0097452D /* vgcCentral_tvOSTests */,
 				2027BCCF1BA613FD0097452D /* Products */,
@@ -102,6 +86,7 @@
 		2027BCD01BA613FD0097452D /* vgcCentral_tvOS */ = {
 			isa = PBXGroup;
 			children = (
+				207871331BF2833B004EAC47 /* VirtualGameController.framework */,
 				2027BCD11BA613FD0097452D /* AppDelegate.swift */,
 				202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */,
 				202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */,
@@ -136,7 +121,6 @@
 				2027BCCA1BA613FD0097452D /* Sources */,
 				2027BCCB1BA613FD0097452D /* Frameworks */,
 				2027BCCC1BA613FD0097452D /* Resources */,
-				2039E0981BF02E8C0059F455 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,6 +338,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
+				);
 				INFOPLIST_FILE = CentralVirtualGameControllerTVSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSample;
@@ -369,6 +357,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
+				);
 				INFOPLIST_FILE = CentralVirtualGameControllerTVSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSample;

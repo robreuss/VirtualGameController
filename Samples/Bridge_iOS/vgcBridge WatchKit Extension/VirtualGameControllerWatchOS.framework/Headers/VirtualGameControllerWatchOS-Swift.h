@@ -220,12 +220,6 @@ SWIFT_CLASS("_TtC28VirtualGameControllerWatchOS8Elements")
 @property (nonatomic, strong) Element * __nonnull motionAttitudeY;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeZ;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeW;
-@property (nonatomic, strong) Element * __nonnull activityType;
-@property (nonatomic, strong) Element * __nonnull activitySteps;
-@property (nonatomic, strong) Element * __nonnull activityDistance;
-@property (nonatomic, strong) Element * __nonnull activityFloors;
-@property (nonatomic, strong) Element * __nonnull activityPace;
-@property (nonatomic, strong) Element * __nonnull activityCadence;
 - (Element * __null_unspecified)elementFromIdentifier:(NSInteger)identifier;
 @end
 
