@@ -60,19 +60,9 @@ CocoaPods and Carthage support will be forthcoming!
 
 ## Using the Sample Projects
 
-A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  A few notes:
+A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
 
-- In order to run the samples, you need to build and add the framework files to the sample project:
-
-	 1. Clean and build the framework project for the target platform
-    1. Navigate to the sample project source code
-    1. The old framework file will appear in red; delete it
-    1. Bring up the project properties and go to the General tab
-    1. Remove the existing framework reference under Embedded Binaries
-    1. Click the plus button under Embedded Binaries
-    1. Find the appropriate framework file for the target platform and add it
-    1. Note that if building the Bridge sample project, you'll also need to add the watchOS framework to the watch extension target.
-    1. You should be able to run the project now in either the simulator or on a device
+Other notes on sample projects:
 
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 
