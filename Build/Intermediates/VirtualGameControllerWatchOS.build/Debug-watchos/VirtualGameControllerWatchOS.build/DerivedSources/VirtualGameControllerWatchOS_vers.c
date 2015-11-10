@@ -1,1 +1,0 @@
- const unsigned char VirtualGameControllerWatchOSVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:VirtualGameControllerWatchOS  PROJECT:VirtualGameControllerWatchOS-1" "\n"; const double VirtualGameControllerWatchOSVersionNumber __attribute__ ((used)) = (double)1.;
