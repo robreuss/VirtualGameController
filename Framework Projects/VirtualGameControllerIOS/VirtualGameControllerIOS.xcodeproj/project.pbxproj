@@ -35,8 +35,6 @@
 		202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcPeripheral.swift; path = ../../../Source/Framework/VgcPeripheral.swift; sourceTree = "<group>"; };
 		202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 		202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
-		202BC0101BE698DC004D47EC /* VirtualGameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameController.h; sourceTree = "<group>"; };
-		202BC0121BE698DC004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20EC20A81BED855F007AF2EF /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -55,7 +53,6 @@
 			isa = PBXGroup;
 			children = (
 				202BBF631BE569BD004D47EC /* VirtualGameControllerIOS */,
-				202BC00F1BE698DC004D47EC /* VirtualGameController */,
 				202BBF621BE569BD004D47EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,15 +83,6 @@
 				202BBF661BE569BD004D47EC /* Info.plist */,
 			);
 			path = VirtualGameControllerIOS;
-			sourceTree = "<group>";
-		};
-		202BC00F1BE698DC004D47EC /* VirtualGameController */ = {
-			isa = PBXGroup;
-			children = (
-				202BC0101BE698DC004D47EC /* VirtualGameController.h */,
-				202BC0121BE698DC004D47EC /* Info.plist */,
-			);
-			path = VirtualGameController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

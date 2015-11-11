@@ -88,8 +88,8 @@ typedef int swift_int4  __attribute__((__ext_vector_type__(4)));
 #if defined(__has_feature) && __has_feature(modules)
 @import ObjectiveC;
 @import Foundation;
-@import GameController;
 @import Dispatch;
+@import GameController;
 @import Foundation.NSURLSession;
 @import WatchConnectivity;
 #endif
@@ -223,12 +223,6 @@ SWIFT_CLASS("_TtC21VirtualGameController8Elements")
 @property (nonatomic, strong) Element * __nonnull motionAttitudeY;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeZ;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeW;
-@property (nonatomic, strong) Element * __nonnull activityType;
-@property (nonatomic, strong) Element * __nonnull activitySteps;
-@property (nonatomic, strong) Element * __nonnull activityDistance;
-@property (nonatomic, strong) Element * __nonnull activityFloors;
-@property (nonatomic, strong) Element * __nonnull activityPace;
-@property (nonatomic, strong) Element * __nonnull activityCadence;
 - (Element * __null_unspecified)elementFromIdentifier:(NSInteger)identifier;
 @end
 
@@ -246,14 +240,6 @@ SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 - (void)disconnectFromService;
 - (void)browseForServices;
 - (void)stopBrowsingForServices;
-@end
-
-
-SWIFT_CLASS("_TtC21VirtualGameController18VgcActivityProfile")
-@interface VgcActivityProfile : GCControllerElement
-
-/// Reference to the VgcController that owns this profile.
-@property (nonatomic, strong) VgcController * __nullable vgcController;
 @end
 
 @class GCMotion;
