@@ -138,7 +138,10 @@ class VgcCentralViewController: UIViewController {
         }
     }
     
-    // Characters are received into the hidden iCadeTextField, which calls this function
+    // iCade controller-generated characters are received into the hidden iCadeTextField, which calls this function.
+    // In turn, the appropriate element can be obtained using elementForCharacter, and then the handlers called on the
+    // controller.  If this were a Peripheral-side implementation, then the element would be used to send the value to
+    // the Central.
     func receivedIcadeInput(sender: AnyObject) {
         
         if VgcManager.iCadeControllerMode != .Disabled && VgcController.iCadeController != nil {
