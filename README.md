@@ -1,7 +1,6 @@
 [![Swift 2.0](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg?style=flat-square)](https://paypal.me/robreuss)
 
 # Virtual Game Controller
 
@@ -228,8 +227,8 @@ See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Cu
 #Custom Mappings
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
 
-##Donations
-If you like VirtualGameController, please feel free to [donate](https://paypal.me/robreuss) to support it's continued development!
+#iCade Controller Support
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
 ##Contact
 Reach out using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.
 ##License
