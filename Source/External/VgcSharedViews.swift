@@ -741,6 +741,7 @@ public class ElementDebugView: UIView {
         self.layer.rasterizationScale = UIScreen.mainScreen().scale
         
         let titleRegion = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 140))
+        titleRegion.autoresizingMask = [UIViewAutoresizing.FlexibleWidth]
         titleRegion.backgroundColor = UIColor.lightGrayColor()
         titleRegion.clipsToBounds = true
         self.addSubview(titleRegion)
@@ -819,14 +820,14 @@ public class ElementDebugView: UIView {
         for element in VgcManager.elements.elementsForController(controller) {
             
             let elementLabel = UILabel(frame: CGRect(x: 10, y: yPosition, width: frame.size.width * 0.50, height: labelHeight))
-            elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleRightMargin]
+            elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin]
             elementLabel.text = "\(element.name):"
             elementLabel.textAlignment = .Right
             elementLabel.font = UIFont(name: controllerVendorName.font.fontName, size: 16)
             scrollView.addSubview(elementLabel)
             
             let elementValue = UILabel(frame: CGRect(x: (frame.size.width * 0.50) + 15, y: yPosition, width: frame.size.width * 0.50, height: labelHeight))
-            elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleRightMargin]
+            elementValue.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleLeftMargin]
             elementValue.text = "0"
             elementValue.font = UIFont(name: controllerVendorName.font.fontName, size: 16)
             scrollView.addSubview(elementValue)
