@@ -133,8 +133,6 @@ public class Peripheral: NSObject {
             
             self.haveConnectionToCentral = false
             
-            if !(deviceIsTypeOfBridge()) { self.browseForServices() }  // Let the Central know we exist, but put it off if we are a bridge
-            
         }
         
     }
