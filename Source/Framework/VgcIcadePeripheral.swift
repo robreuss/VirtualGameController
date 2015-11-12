@@ -51,6 +51,14 @@ public class VgcIcadePeripheral: NSObject {
     let peripheralManager = VgcManager.peripheral
     #endif
     
+    ///
+    /// Return an element in exchange for a character sent by the iCade controller.
+    ///
+    /// - parameter characterString: The character received through a text field in response to an end-user action on an iCade controller.
+    /// - parameter controllerElements: The population of elements that the correct element for the given iCade character should be identified from.  
+    /// For Central/Bridge-based controller implementations, this will be VgcController.iCadeController.elements.  For Peripheral-based implementations,
+    /// it will be the global population of elements contained in VgcManager.elements.  
+    ///
     public func elementForCharacter(characterString: String, controllerElements: Elements) -> (Element!, Int) {
         
         let elementCharacter = characterString.uppercaseString
