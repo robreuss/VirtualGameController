@@ -42,6 +42,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     var streamOpenCount: Int!
     var bridgeBrowser: NSNetServiceBrowser!
     var centralBrowser: NSNetServiceBrowser!
+    var browsing = false
     var streamer: VgcStreamer!
     var serviceLookup = Dictionary<NSNetService, VgcService>()
     
@@ -138,10 +139,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func sendArchivedDeviceInfo(deviceInfoArchivedData: NSString) {
         let encodedDataArray = streamer.encodedMessageWithChecksum(elements.deviceInfoElement.identifier, value: deviceInfoArchivedData)
         if deviceIsTypeOfBridge() {
-            peripheral.controller.toCentralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+            if let controller = peripheral.controller {
+                controller.toCentralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+            } else {
+                print("Not sending device information for lack of a controller (and stream")
+            }
         } else {
             outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
-            
         }
     }
 
@@ -205,6 +209,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func browseForCentral() {
         
+        if browsing {
+        
+            print("Not browsing for central because already browsing")
+            return
+        
+        }
+        
+        browsing = true
         
         print("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
         centralBrowser = NSNetServiceBrowser()
@@ -228,6 +240,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         print("Stopping browse for Bridges")
         if !deviceIsTypeOfBridge() { bridgeBrowser.stop() } // Bridges don't browse for Bridges
         print("Clearing service lookup")
+        browsing = false
         serviceLookup.removeAll()
     }
     
@@ -314,6 +327,15 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         // If VgcService is nil, it means we already removed the service so we do not send the notification
         if vgcService != nil { NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService) }
         
+    }
+
+    func netServiceBrowserDidStopSearch(browser: NSNetServiceBrowser) {
+        browsing = false
+    }
+    
+    func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+        print("Net service browser reports error \(errorDict)")
+        browsing = false
     }
     
 }
