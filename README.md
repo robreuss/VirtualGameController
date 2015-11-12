@@ -229,8 +229,8 @@ See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Cu
 
 #iCade Controller Support
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
-##Contact
-Reach out using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.
+##Contact and Support
+Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.  
 ##License
 The MIT License (MIT)
 
