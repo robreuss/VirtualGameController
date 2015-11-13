@@ -325,8 +325,10 @@ class VgcCentralViewController: UIViewController {
             
             if let elementDebugView = elementDebugViewLookup[controller] {
                 
-                controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
-                playerIndex++
+                if !deviceIsTypeOfBridge() {
+                    controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
+                    playerIndex++
+                }
                 
                 UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
                     
