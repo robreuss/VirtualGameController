@@ -148,6 +148,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             }
 
         } else {
+            guard outputStream != nil else { return }
             outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
         }
     }
