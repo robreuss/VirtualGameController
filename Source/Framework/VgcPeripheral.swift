@@ -44,7 +44,7 @@ public class Peripheral: NSObject {
         
         super.init()
 
-        self.haveConnectionToCentral = false
+        haveConnectionToCentral = false
         
         #if !os(watchOS)
             browser = VgcBrowser(peripheral: self)
@@ -52,7 +52,7 @@ public class Peripheral: NSObject {
         
         print("Setting up motion manager on peripheral")
         #if !os(OSX) && !os(tvOS)
-        self.motion = VgcMotionManager()
+        motion = VgcMotionManager()
         #endif
         
         playerIndex = GCControllerPlayerIndex.IndexUnset
@@ -75,7 +75,7 @@ public class Peripheral: NSObject {
         
         // As a Peripheral, we don't need a connection to send if we're an EnhancementBridge, using instead the
         // stream associated with the hardware controllers VgcController.
-        if self.haveConnectionToCentral == true || VgcManager.appRole == .EnhancementBridge {
+        if haveConnectionToCentral == true || VgcManager.appRole == .EnhancementBridge {
             
             //print("Sending: \(element.name): \(element.value)")
             
@@ -111,16 +111,16 @@ public class Peripheral: NSObject {
     public var deviceInfo: DeviceInfo! {
         
         get {
-            if self.vgcDeviceInfo == nil {
+            if vgcDeviceInfo == nil {
                 print("ERROR: Required value deviceInfo not set")
                 return nil
             }
-            return self.vgcDeviceInfo
+            return vgcDeviceInfo
         }
         
         set {
             
-            self.vgcDeviceInfo = newValue
+            vgcDeviceInfo = newValue
             
             #if os(iOS)
 
@@ -131,7 +131,7 @@ public class Peripheral: NSObject {
                 
             #endif
             
-            self.haveConnectionToCentral = false
+            haveConnectionToCentral = false
             
         }
         
@@ -147,11 +147,11 @@ public class Peripheral: NSObject {
     
     public func disconnectFromService() {
         
-        if self.haveConnectionToCentral == false { return }
+        if haveConnectionToCentral == false { return }
         
         print("Disconnecting from Central")
         
-        self.haveConnectionToCentral = false
+        haveConnectionToCentral = false
         
         browser.disconnectFromCentral()
         
@@ -169,7 +169,7 @@ public class Peripheral: NSObject {
         // longer in the array of controllers, it means it has disconnected and we don't want to advertise it
         // any longer.
         if deviceIsTypeOfBridge() {
-            let (existsAlready, _) = VgcController.controllerAlreadyExists(self.controller)
+            let (existsAlready, _) = VgcController.controllerAlreadyExists(controller)
             if existsAlready == false {
                 print("Refusing to announce Bridge-to-Central peripheral because it's controller no longer exists.  If the controller is MFi, it may have gone to sleep.")
                 return
@@ -200,21 +200,21 @@ public class Peripheral: NSObject {
     
     func gotConnectionToCentral() {
         
-        print("In peripheral mode gotConnection (have connection already: \(self.haveConnectionToCentral)")
+        print("In peripheral mode gotConnection (have connection already: \(haveConnectionToCentral)")
         
-        if (self.haveConnectionToCentral == true) { return }
+        if (haveConnectionToCentral == true) { return }
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
         
-        self.haveConnectionToCentral = true
+        haveConnectionToCentral = true
         
         if deviceIsTypeOfBridge() {
             
-            self.bridgePeripheralDeviceInfoToCentral(controller)
+            bridgePeripheralDeviceInfoToCentral(controller)
             
         } else {
             
-            self.sendDeviceInfo(self.deviceInfo)
+            sendDeviceInfo(deviceInfo)
             
         }
         
@@ -222,22 +222,24 @@ public class Peripheral: NSObject {
     
     func lostConnectionToCentral(vgcService: VgcService) {
         
-        print("Peripheral lost connection to Central")
-        self.haveConnectionToCentral = false
+        print("Peripheral lost connection to \(vgcService.fullName)")
+        haveConnectionToCentral = false
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService)
         
         // Start browsing for a new Central only if the controller still exists (that is, if it
         // hasn't disconnected.  Otherwise, we might create a "ghost" controller on the Central.
-        if deviceIsTypeOfBridge() == false || VgcController.controllers().contains(controller) { browser.browseForCentral() }
-        /*
+        //if deviceIsTypeOfBridge() == false || VgcController.controllers().contains(controller) { browser.browseForCentral() }
+        
+        if deviceIsTypeOfBridge() == false { browser.browseForCentral() }
+        
         // A bit of a delay to clear the browser caches
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-        self.browseForServices()
-        }
-        */
+        //let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
+        //dispatch_after(delayTime, dispatch_get_main_queue()) {
+            if deviceIsTypeOfBridge() == false { browser.browseForCentral() }
+        //}
+
         
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
@@ -250,19 +252,19 @@ public class Peripheral: NSObject {
     
     func sendDeviceInfo(deviceInfo: DeviceInfo) {
         
-        if (self.haveConnectionToCentral == false) {
+        if (haveConnectionToCentral == false) {
             print("No connection to Central so not sending controller device info")
             return
         }
         
-        print("Sending device info for controller \(deviceInfo.vendorName) to Central")
+        print("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
         
         NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
         let archivedDeviceInfoData = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
         let archivedDeviceInfoBase64String = archivedDeviceInfoData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
-        print("Device info: \(deviceInfo)")
+        print("\(deviceInfo)")
         
-        self.browser.sendArchivedDeviceInfo(archivedDeviceInfoBase64String)
+        browser.sendArchivedDeviceInfo(archivedDeviceInfoBase64String)
 
     }
     
@@ -283,7 +285,7 @@ public class Peripheral: NSObject {
         // microGamepad is only supported when running on Apple TV, so we transform to
         // Gamepad when bridging it over to a Central on iOS or OSX
         if deviceInfo.profileType == .MicroGamepad { deviceInfo.profileType = .Gamepad }
-        self.sendDeviceInfo(deviceInfo)
+        sendDeviceInfo(deviceInfo)
         
     }
     
@@ -295,7 +297,7 @@ public class Peripheral: NSObject {
             mappedElement.mappingComplete = true
             print("   Mapping \(elementToBeMapped.name) to \(mappedElement.name)")
             mappedElement.value = elementToBeMapped.value
-            self.sendElementState(mappedElement)
+            sendElementState(mappedElement)
             
         }
     }

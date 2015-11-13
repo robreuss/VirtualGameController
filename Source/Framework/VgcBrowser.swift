@@ -74,6 +74,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func disconnect() {
         print("Browser received disconnect")
         closeStreams()
+        browsing = false
         peripheral.lostConnectionToCentral(connectedVgcService)
         connectedVgcService = nil
     }
@@ -139,11 +140,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func sendArchivedDeviceInfo(deviceInfoArchivedData: NSString) {
         let encodedDataArray = streamer.encodedMessageWithChecksum(elements.deviceInfoElement.identifier, value: deviceInfoArchivedData)
         if deviceIsTypeOfBridge() {
+            
             if let controller = peripheral.controller {
                 controller.toCentralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
             } else {
                 print("Not sending device information for lack of a controller (and stream")
             }
+
         } else {
             outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
         }
@@ -291,9 +294,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 inputStream.open()
                 
             }
-            
-            //if outputStream.status == . { peripheral.gotConnectionToCentral()} else { print("ERROR: Got bad output stream, cancelling connection") }
-            
+
             peripheral.gotConnectionToCentral()
         }
     }
