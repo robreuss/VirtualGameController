@@ -31,6 +31,8 @@ class ViewController: NSViewController {
         
         print(peripheral.deviceInfo)
         
+        VgcManager.peripheral.browseForServices()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
 
     }
