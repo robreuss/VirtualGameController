@@ -242,7 +242,7 @@ SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 - (void)stopBrowsingForServices;
 @end
 
-@class GCMotion;
+@class VgcMotion;
 @class VgcExtendedGamepad;
 @class VgcGamepad;
 
@@ -265,7 +265,7 @@ SWIFT_CLASS("_TtC21VirtualGameController13VgcController")
 - (void)triggerElementHandlers:(Element * __nonnull)element value:(float)value;
 @property (nonatomic, strong) dispatch_queue_t __nonnull handlerQueue;
 @property (nonatomic, copy) void (^ __nullable controllerPausedHandler)(VgcController * __nonnull);
-@property (nonatomic, readonly, strong) GCMotion * __nullable motion;
+@property (nonatomic, readonly, strong) VgcMotion * __nullable motion;
 @property (nonatomic, strong) DeviceInfo * __null_unspecified deviceInfo;
 
 /// Some controllers directly attach to the game-playing iOS device, such as a slide-on controller.
@@ -414,6 +414,19 @@ SWIFT_CLASS("_TtC21VirtualGameController10VgcManager")
 + (void)setCentralServiceName:(NSString * __nonnull)value;
 @end
 
+
+SWIFT_CLASS("_TtC21VirtualGameController9VgcMotion")
+@interface VgcMotion : NSObject
+
+/// Returns a GCController hardware controller, if one is available. vgcController must be used to get a reference to the VgcController, which represents software controllers (as well as being a wrapper around the hardware controller.
+@property (nonatomic, readonly, weak) GCController * __nullable controller;
+@property (nonatomic) GCAcceleration userAcceleration;
+@property (nonatomic) GCQuaternion attitude;
+@property (nonatomic) GCRotationRate rotationRate;
+@property (nonatomic) GCAcceleration gravity;
+@property (nonatomic, copy) void (^ __nullable valueChangedHandler)(VgcMotion * __nonnull);
+@end
+
 @class CMMotionManager;
 
 SWIFT_CLASS("_TtC21VirtualGameController16VgcMotionManager")
@@ -426,19 +439,6 @@ SWIFT_CLASS("_TtC21VirtualGameController16VgcMotionManager")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)start;
 - (void)stop;
-@end
-
-
-SWIFT_CLASS("_TtC21VirtualGameController16VgcMotionProfile")
-@interface VgcMotionProfile : GCMotion
-
-/// Returns a GCController hardware controller, if one is available. vgcController must be used to get a reference to the VgcController, which represents software controllers (as well as being a wrapper around the hardware controller.
-@property (nonatomic, readonly, weak) GCController * __nullable controller;
-@property (nonatomic) GCAcceleration userAcceleration;
-@property (nonatomic) GCQuaternion attitude;
-@property (nonatomic) GCRotationRate rotationRate;
-@property (nonatomic) GCAcceleration gravity;
-@property (nonatomic, copy) GCMotionValueChangedHandler __nullable valueChangedHandler;
 @end
 
 
