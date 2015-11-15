@@ -52,7 +52,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     private var vgcPlayerIndex: GCControllerPlayerIndex
     private var vgcHandlerQueue: dispatch_queue_t?
     private var vgcControllerPausedHandler: ((VgcController) -> Void)?
-    private var vgcMotion: VgcMotionProfile!
+    private var vgcMotion: VgcMotion!
     
     var bluetoothPeripheral: CBPeripheral!
     
@@ -72,7 +72,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
         super.init()
         
-        vgcMotion = VgcMotionProfile(vgcController: self)
+        vgcMotion = VgcMotion(vgcController: self)
         //vgcCustom = VgcCustom(vgcController: self)
         
         #if os(tvOS)
@@ -432,6 +432,22 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // MARK: - Hardware Controller Management
     
+    // Because tvOS only implements a sub-set of the motion profiles, a work-around
+    // required that references to specific motion profile elements be excluded and
+    // so a complete facade was imposed in front of the GCController motion profiles
+    // (VgcMotion).  This function sets up handler forwarding from motion hardware
+    // to the VGC handler.
+    func setupHardwareControllerMotionHandlers() {
+        
+        // This handler will trigger the VGC level motion handler
+        hardwareController.motion?.valueChangedHandler = { (input: GCMotion) in
+
+            self.vgcMotion.callHandler()
+
+        }
+        
+    }
+    
     func setupHardwareControllerForwardingHandlers() {
         
         // We only need these change handlers if we're deal with a
@@ -567,19 +583,20 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             self.elements.motionUserAccelerationZ.value = input.userAcceleration.z
             self.peripheral.sendElementState(self.elements.motionUserAccelerationZ)
             
-            self.elements.motionRotationRateX.value = input.rotationRate.x
-            self.peripheral.sendElementState(self.elements.motionRotationRateX)
-            self.elements.motionRotationRateY.value = input.rotationRate.y
-            self.peripheral.sendElementState(self.elements.motionRotationRateY)
-            self.elements.motionRotationRateZ.value = input.rotationRate.z
-            self.peripheral.sendElementState(self.elements.motionRotationRateX)
-            
             self.elements.motionGravityX.value = input.gravity.x
             self.peripheral.sendElementState(self.elements.motionGravityX)
             self.elements.motionGravityY.value = input.gravity.y
             self.peripheral.sendElementState(self.elements.motionGravityY)
             self.elements.motionGravityZ.value = input.gravity.z
             self.peripheral.sendElementState(self.elements.motionGravityZ)
+            
+            #if !os(tvOS)
+            self.elements.motionRotationRateX.value = input.rotationRate.x
+            self.peripheral.sendElementState(self.elements.motionRotationRateX)
+            self.elements.motionRotationRateY.value = input.rotationRate.y
+            self.peripheral.sendElementState(self.elements.motionRotationRateY)
+            self.elements.motionRotationRateZ.value = input.rotationRate.z
+            self.peripheral.sendElementState(self.elements.motionRotationRateX)
             
             self.elements.motionAttitudeX.value = input.attitude.x
             self.peripheral.sendElementState(self.elements.motionAttitudeX)
@@ -589,7 +606,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             self.peripheral.sendElementState(self.elements.motionAttitudeZ)
             self.elements.motionAttitudeW.value = input.attitude.w
             self.peripheral.sendElementState(self.elements.motionAttitudeW)
-            
+            #endif
         }
         
     }
@@ -742,7 +759,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public var motion: GCMotion? {
+    public var motion: VgcMotion? {
         return vgcMotion
     }
     
@@ -827,6 +844,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             }
             
             if deviceIsTypeOfBridge()  && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerForwardingHandlers() }
+            
+            if !deviceIsTypeOfBridge() && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerMotionHandlers() }
             
             if deviceIsTypeOfBridge() { peripheral.bridgePeripheralDeviceInfoToCentral(self) }
             
@@ -1388,7 +1407,7 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
 }
 
 // MARK: - Motion Profile
-public class VgcMotionProfile: GCMotion {
+public class VgcMotion: NSObject {
     
     private var vgcController: VgcController?
     
@@ -1397,8 +1416,9 @@ public class VgcMotionProfile: GCMotion {
     private var vgcAttitude: GCQuaternion!
     private var vgcRotationRate: GCRotationRate!
     
-    private var vgcValueChangedHandler: GCMotionValueChangedHandler?
-    
+    public typealias VgcMotionValueChangedHandler = (VgcMotion) -> Void
+    private var vgcValueChangedHandler: VgcMotionValueChangedHandler?
+   
     init(vgcController: VgcController) {
         
         self.vgcController = vgcController
@@ -1417,12 +1437,12 @@ public class VgcMotionProfile: GCMotion {
     /// represents software controllers (as well as being a wrapper around the
     /// hardware controller.
     ///
-    public override weak var controller: GCController? {
+    public weak var controller: GCController? {
         if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.motion!.controller } else { return nil }
     }
     
     
-    override public var userAcceleration: GCAcceleration {
+    public var userAcceleration: GCAcceleration {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
         }
@@ -1461,9 +1481,12 @@ public class VgcMotionProfile: GCMotion {
         }
     }
     
-    public override var attitude: GCQuaternion {
+    public var attitude: GCQuaternion {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.attitude)! } else { return vgcAttitude }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
+            #endif
+            return vgcAttitude
         }
         set {
             vgcAttitude = newValue
@@ -1472,7 +1495,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionAttitudeX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) } else { return Float(vgcAttitude.x) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.x)!) }
+            #endif
+            return Float(vgcAttitude.x)
         }
         set {
             vgcAttitude.x = Double(newValue)
@@ -1482,7 +1508,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionAttitudeY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) } else { return Float(vgcAttitude.y) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.y)!) }
+            #endif
+            return Float(vgcAttitude.y)
         }
         set {
             vgcAttitude.y = Double(newValue)
@@ -1492,7 +1521,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionAttitudeZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) } else { return Float(vgcAttitude.z) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.z)!) }
+            #endif
+            return Float(vgcAttitude.z)
         }
         set {
             vgcAttitude.z = Double(newValue)
@@ -1503,7 +1535,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionAttitudeW: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) } else { return Float(vgcAttitude.w) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.w)!) }
+            #endif
+            return Float(vgcAttitude.w)
         }
         set {
             vgcAttitude.w = Double(newValue)
@@ -1512,9 +1547,12 @@ public class VgcMotionProfile: GCMotion {
         }
     }
     
-    public override var rotationRate: GCRotationRate {
+    public var rotationRate: GCRotationRate {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! } else { return vgcRotationRate }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
+            #endif
+            return vgcRotationRate
         }
         set {
             vgcRotationRate = newValue
@@ -1523,7 +1561,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionRotationRateX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) } else { return Float(vgcRotationRate.x) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
+            #endif
+            return Float(vgcRotationRate.x)
         }
         set {
             vgcRotationRate.x = Double(newValue)
@@ -1533,7 +1574,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionRotationRateY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) } else { return Float(vgcRotationRate.y) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
+            #endif
+            return Float(vgcRotationRate.y)
         }
         set {
             vgcRotationRate.y = Double(newValue)
@@ -1543,7 +1587,10 @@ public class VgcMotionProfile: GCMotion {
     
     var motionRotationRateZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) } else { return Float(vgcRotationRate.z) }
+            #if !os(tvOS)
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
+            #endif
+            return Float(vgcRotationRate.z)
         }
         set {
             vgcRotationRate.z = Double(newValue)
@@ -1551,7 +1598,7 @@ public class VgcMotionProfile: GCMotion {
         }
     }
     
-    public override var gravity: GCAcceleration {
+    public var gravity: GCAcceleration {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
             
@@ -1601,16 +1648,12 @@ public class VgcMotionProfile: GCMotion {
         }
     }
     
-    public override var valueChangedHandler: GCMotionValueChangedHandler? {
+    public var valueChangedHandler: VgcMotionValueChangedHandler? {
         get {
             return vgcValueChangedHandler!
         }
         set {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware {
-                vgcController?.hardwareController.motion?.valueChangedHandler = newValue
-            } else {
-                vgcValueChangedHandler = newValue
-            }
+            vgcValueChangedHandler = newValue
         }
     }
 }

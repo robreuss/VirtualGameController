@@ -238,7 +238,7 @@ class VgcCentralViewController: UIViewController {
         var lastMotionRefresh: NSDate = NSDate()
         
         // Refresh on all motion changes
-        controller.motion?.valueChangedHandler = { (input: GCMotion) in
+        controller.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             // Avoid updating too often or the UI will freeze up
             if lastMotionRefresh.timeIntervalSinceNow > -0.05 { return } else { lastMotionRefresh = NSDate() }            
