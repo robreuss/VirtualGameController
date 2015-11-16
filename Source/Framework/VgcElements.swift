@@ -12,7 +12,7 @@ import Foundation
     import GameController
 #endif
 
-#if os(iOS) || os(WatchOS) || os(tvOS)
+#if os(iOS) || os(watchOS) || os(tvOS)
     import UIKit
 #endif
 
