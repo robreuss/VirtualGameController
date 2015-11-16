@@ -53,22 +53,18 @@ public var customElements: CustomElementsSuperclass!
 /// - parameter .EnhancementBridge:  Special Bridge mode for using a form-fitting/slide-on controller
 ///                                 with an iPhone.  Prevents additional Peripherals from connecting.
 ///
-public enum AppRole: CustomStringConvertible {
+@objc public enum AppRole: Int, CustomStringConvertible {
     
-    case Central
-    case Peripheral
-    //case BridgedPeripheral
-    case Bridge
-    //case WatchBridge
-    case EnhancementBridge // Used to add device-based motion and virtual elements to form-fitting hardware controller
+    case Central = 0
+    case Peripheral = 1
+    case Bridge = 2
+    case EnhancementBridge = 3
     
     public var description : String {
         switch self {
         case .Central: return "Central"
         case .Peripheral: return "Peripheral"
-        //case .BridgedPeripheral: return "Bridged Peripheral"
         case .Bridge: return "Bridge"
-        //case .WatchBridge: return "Watch Bridge"
         case .EnhancementBridge: return "Enhancement Bridge"
         }
     }
