@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = 'VirtualGameController'
-s.version = '2.0.0'
+s.version = '0.0.3'
 s.license = { :type => 'MIT', :file => 'LICENSE' }
 s.summary = 'Feature-rich game controller framework for iOS, tvOS, OS X and watchOS in Swift 2.1.'
 
