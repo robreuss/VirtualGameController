@@ -20,13 +20,13 @@
 - Easy-to-implement 3d touch on software controllers
 - Leverage on-screen and Bluetooth keyboards using software controllers (including with Apple TV)
 - Support for snapshots (compatible with Apple's snapshot format)
-- Swift 2.1
+- Swift 2.1 or Objective C
 - Framework-based
 
 ## Requirements
 
 - iOS 9.0+ / Mac OS X 10.9+
-- Xcode 7 / Swift 2.0
+- Xcode 7 / Swift 2.0 / Objective C
 
 ## Platform Support
 
@@ -67,7 +67,7 @@ CocoaPods and Carthage support will be forthcoming!
 
 ## Using the Sample Projects
 
-A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS).  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
+A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS), along with a project that demonstrates the use of Objective C.  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
 
 Other notes on sample projects:
 
@@ -234,6 +234,9 @@ There are two features supported by a Central that exceed the capabilities of th
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
 #Custom Mappings
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
+
+#Objective C Support
+See the Objective C sample project along with the [wiki page](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C).
 
 #iCade Controller Support
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
