@@ -76,7 +76,7 @@ public var customElements: CustomElementsSuperclass!
 /// handling hardware controllers in VgcController.
 ///
 
-public enum ControllerType: Int, CustomStringConvertible {
+@objc public enum ControllerType: Int, CustomStringConvertible {
     case Software
     case MFiHardware
     case ICadeHardware
@@ -96,7 +96,7 @@ public enum ControllerType: Int, CustomStringConvertible {
     }
 }
 
-public enum ProfileType: Int, CustomStringConvertible {
+@objc public enum ProfileType: Int, CustomStringConvertible {
     
     case Unknown
     case MicroGamepad
@@ -144,7 +144,7 @@ public enum ProfileType: Int, CustomStringConvertible {
 let messageValueSeperator = ":"
 
 #if !os(watchOS)
-public class VgcService {
+@objc public class VgcService: NSObject {
     
     public var name: String
     public var type: AppRole
@@ -318,7 +318,7 @@ public func deviceIsTypeOfBridge() -> Bool {
 /// - parameter supportsMotion: Built-in parameter with a hardware controller (the Apple TV remote is the only hardware controller known to support motion). This can be set when defining a software controller, but would be overriden on the basis of the availabiity of Core Motion.  For example, an OSX-based software controller would report supports motion as false.
 ///
 
-public class DeviceInfo: NSObject, NSCoding {
+@objc public class DeviceInfo: NSObject, NSCoding {
     
     internal(set) var deviceUID: String
     internal(set) public var vendorName: String
@@ -327,7 +327,7 @@ public class DeviceInfo: NSObject, NSCoding {
     internal(set) public var controllerType: ControllerType
     internal(set) public var supportsMotion: Bool
     
-    public init(var deviceUID: String, vendorName: String, attachedToDevice: Bool, profileType: ProfileType, controllerType: ControllerType, supportsMotion: Bool) {
+    @objc public init(var deviceUID: String, vendorName: String, attachedToDevice: Bool, profileType: ProfileType, controllerType: ControllerType, supportsMotion: Bool) {
         
         // If no deviceUID is specified, auto-generate a UID and store it to provide
         // a persistent way of identifying the peripheral.
