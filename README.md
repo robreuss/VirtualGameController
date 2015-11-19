@@ -6,7 +6,7 @@
 
 ## Features
 
-- Wraps API for Apple's *GameController* framework (GCController)
+- Wraps Apple's *GameController* framework API (GCController)
 - Create software-based controllers (that use the MFi profiles)
 - Controller forwarding
 - Device motion support
