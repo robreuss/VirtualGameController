@@ -16,7 +16,7 @@ public let animationSpeed = 0.35
 var peripheralManager = VgcManager.peripheral
 
 // A simple mock-up of a game controller (Peripheral)
-public class PeripheralControlPadView: NSObject {
+@objc public class PeripheralControlPadView: NSObject {
 
     var custom = VgcManager.elements.custom
     var elements = VgcManager.elements
@@ -40,8 +40,8 @@ public class PeripheralControlPadView: NSObject {
     
     public var serviceSelectorView: ServiceSelectorView!
     
-    public init (aParentView: UIView) {
-        
+    @objc public init(aParentView: UIView) {
+    
         super.init()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
