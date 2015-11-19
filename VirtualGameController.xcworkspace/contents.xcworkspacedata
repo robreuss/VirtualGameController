@@ -143,6 +143,13 @@
       location = "container:"
       name = "Sample Projects">
       <Group
+         location = "group:Samples/ObjectiveC_iOS"
+         name = "ObjectiveC_iOS">
+         <FileRef
+            location = "group:ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:Samples/Bridge_iOS"
          name = "Bridge_iOS">
          <FileRef

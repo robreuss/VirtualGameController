@@ -10,8 +10,8 @@
 		202BBF951BE56BAE004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */; };
 		202BBF961BE56BAE004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */; };
 		202BBF971BE56BAE004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */; };
-		2062A3A01BFA638B00C2D87E /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2062A39F1BFA638B00C2D87E /* VirtualGameController.framework */; };
-		2062A3A11BFA638B00C2D87E /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2062A39F1BFA638B00C2D87E /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		207908661BFD63AB00D098BC /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 207908651BFD63AB00D098BC /* VirtualGameController.framework */; };
+		207908671BFD63AB00D098BC /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 207908651BFD63AB00D098BC /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		208DFC001BA7C99800C75E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */; };
 		208DFC021BA7C99800C75E41 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208DFC011BA7C99800C75E41 /* ViewController.swift */; };
 		208DFC051BA7C99800C75E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208DFC031BA7C99800C75E41 /* Main.storyboard */; };
@@ -46,7 +46,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2062A3A11BFA638B00C2D87E /* VirtualGameController.framework in Embed Frameworks */,
+				207908671BFD63AB00D098BC /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +57,7 @@
 		202BBF921BE56BAE004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF931BE56BAE004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF941BE56BAE004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		2062A39F1BFA638B00C2D87E /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		207908651BFD63AB00D098BC /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		208DFBFC1BA7C99800C75E41 /* vgcCentral_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vgcCentral_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208DFBFF1BA7C99800C75E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208DFC011BA7C99800C75E41 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2062A3A01BFA638B00C2D87E /* VirtualGameController.framework in Frameworks */,
+				207908661BFD63AB00D098BC /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 		208DFBF31BA7C99800C75E41 = {
 			isa = PBXGroup;
 			children = (
-				2062A39F1BFA638B00C2D87E /* VirtualGameController.framework */,
+				207908651BFD63AB00D098BC /* VirtualGameController.framework */,
 				208DFBFE1BA7C99800C75E41 /* vgcCentraliOS */,
 				208DFC131BA7C99800C75E41 /* vgcCentraliOSTests */,
 				208DFC1E1BA7C99800C75E41 /* vgcCentraliOSUITests */,

@@ -125,6 +125,18 @@ typedef SWIFT_ENUM(NSInteger, AppRole) {
   AppRoleEnhancementBridge = 3,
 };
 
+
+/// ControllerType enumeration: Most values are for informational purposes, except MFiHardware, which is used to trigger the "wrapped" approach to handling hardware controllers in VgcController.
+typedef SWIFT_ENUM(NSInteger, ControllerType) {
+  ControllerTypeSoftware = 0,
+  ControllerTypeMFiHardware = 1,
+  ControllerTypeICadeHardware = 2,
+  ControllerTypeBridgedMFiHardware = 3,
+  ControllerTypeBridgedICadeHardware = 4,
+  ControllerTypeWatch = 5,
+};
+
+enum ElementType : NSInteger;
 @class VgcController;
 @class NSCoder;
 
@@ -152,6 +164,7 @@ typedef SWIFT_ENUM(NSInteger, AppRole) {
 /// \param mappingComplete A state management value used as a part of the peripheral-side element mapping system.
 SWIFT_CLASS("_TtC21VirtualGameController7Element")
 @interface Element : NSObject
+@property (nonatomic) enum ElementType type;
 @property (nonatomic, copy) NSString * __nonnull name;
 @property (nonatomic, strong) id __nonnull value;
 @property (nonatomic, copy) NSString * __nonnull getterKeypath;
@@ -185,6 +198,7 @@ SWIFT_CLASS("_TtC21VirtualGameController24CustomMappingsSuperclass")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+enum ProfileType : NSInteger;
 
 
 /// DeviceInfo contains key properties of a controller, either hardware or software.
@@ -200,12 +214,50 @@ SWIFT_CLASS("_TtC21VirtualGameController10DeviceInfo")
 @interface DeviceInfo : NSObject <NSCoding>
 @property (nonatomic, readonly, copy) NSString * __nonnull vendorName;
 @property (nonatomic, readonly) BOOL attachedToDevice;
+@property (nonatomic, readonly) enum ProfileType profileType;
+@property (nonatomic, readonly) enum ControllerType controllerType;
 @property (nonatomic, readonly) BOOL supportsMotion;
+- (nonnull instancetype)initWithDeviceUID:(NSString * __nonnull)deviceUID vendorName:(NSString * __nonnull)vendorName attachedToDevice:(BOOL)attachedToDevice profileType:(enum ProfileType)profileType controllerType:(enum ControllerType)controllerType supportsMotion:(BOOL)supportsMotion OBJC_DESIGNATED_INITIALIZER;
 @property (nonatomic, readonly, copy) NSString * __nonnull description;
 - (nonnull instancetype)initWithCoder:(NSCoder * __nonnull)decoder;
 - (void)encodeWithCoder:(NSCoder * __nonnull)coder;
 @end
 
+
+typedef SWIFT_ENUM(NSInteger, ElementType) {
+  ElementTypeDeviceInfoElement = 0,
+  ElementTypeSystemMessage = 1,
+  ElementTypePlayerIndex = 2,
+  ElementTypePauseButton = 3,
+  ElementTypeLeftShoulder = 4,
+  ElementTypeRightShoulder = 5,
+  ElementTypeDpadXAxis = 6,
+  ElementTypeDpadYAxis = 7,
+  ElementTypeButtonA = 8,
+  ElementTypeButtonB = 9,
+  ElementTypeButtonX = 10,
+  ElementTypeButtonY = 11,
+  ElementTypeLeftThumbstickXAxis = 12,
+  ElementTypeLeftThumbstickYAxis = 13,
+  ElementTypeRightThumbstickXAxis = 14,
+  ElementTypeRightThumbstickYAxis = 15,
+  ElementTypeLeftTrigger = 16,
+  ElementTypeRightTrigger = 17,
+  ElementTypeMotionUserAccelerationX = 18,
+  ElementTypeMotionUserAccelerationY = 19,
+  ElementTypeMotionUserAccelerationZ = 20,
+  ElementTypeMotionAttitudeX = 21,
+  ElementTypeMotionAttitudeY = 22,
+  ElementTypeMotionAttitudeZ = 23,
+  ElementTypeMotionAttitudeW = 24,
+  ElementTypeMotionRotationRateX = 25,
+  ElementTypeMotionRotationRateY = 26,
+  ElementTypeMotionRotationRateZ = 27,
+  ElementTypeMotionGravityX = 28,
+  ElementTypeMotionGravityY = 29,
+  ElementTypeMotionGravityZ = 30,
+  ElementTypeCustom = 31,
+};
 
 
 
@@ -252,10 +304,12 @@ SWIFT_CLASS("_TtC21VirtualGameController8Elements")
 @property (nonatomic, strong) Element * __nonnull motionAttitudeY;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeZ;
 @property (nonatomic, strong) Element * __nonnull motionAttitudeW;
+- (Element * __null_unspecified)elementFromType:(enum ElementType)type;
 - (Element * __null_unspecified)elementFromIdentifier:(NSInteger)identifier;
 @end
 
 @class VgcMotionManager;
+@class VgcService;
 
 SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 @interface Peripheral : NSObject
@@ -266,10 +320,23 @@ SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 
 /// DeviceInfo for the controller represented by this Peripheral instance.
 @property (nonatomic, strong) DeviceInfo * __null_unspecified deviceInfo;
+
+/// Connect to a Central or Bridge using a VgcService object obtained by browsing the network.
+- (void)connectToService:(VgcService * __nonnull)vgcService;
 - (void)disconnectFromService;
 - (void)browseForServices;
 - (void)stopBrowsingForServices;
+@property (nonatomic, readonly, copy) NSArray<VgcService *> * __nonnull availableServices;
 @end
+
+typedef SWIFT_ENUM(NSInteger, ProfileType) {
+  ProfileTypeUnknown = 0,
+  ProfileTypeMicroGamepad = 1,
+  ProfileTypeGamepad = 2,
+  ProfileTypeExtendedGamepad = 3,
+  ProfileTypeMotion = 4,
+  ProfileTypeWatch = 5,
+};
 
 @class VgcMotion;
 @class VgcExtendedGamepad;
@@ -296,6 +363,9 @@ SWIFT_CLASS("_TtC21VirtualGameController13VgcController")
 @property (nonatomic, copy) void (^ __nullable controllerPausedHandler)(VgcController * __nonnull);
 @property (nonatomic, readonly, strong) VgcMotion * __nullable motion;
 @property (nonatomic, strong) DeviceInfo * __null_unspecified deviceInfo;
+
+/// Convienance function for profile type
+@property (nonatomic, readonly) enum ProfileType profileType;
 
 /// Some controllers directly attach to the game-playing iOS device, such as a slide-on controller.
 @property (nonatomic, readonly) BOOL attachedToDevice;
@@ -476,6 +546,14 @@ SWIFT_CLASS("_TtC21VirtualGameController16VgcMotionManager")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)start;
 - (void)stop;
+@end
+
+
+SWIFT_CLASS("_TtC21VirtualGameController10VgcService")
+@interface VgcService : NSObject
+@property (nonatomic, copy) NSString * __nonnull name;
+@property (nonatomic) enum AppRole type;
+@property (nonatomic, readonly, copy) NSString * __nonnull fullName;
 @end
 
 
