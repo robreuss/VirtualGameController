@@ -27,7 +27,7 @@ public enum CustomElementType: Int {
 ///
 public class CustomElements: CustomElementsSuperclass {
 
-    override init() {
+    public override init() {
         
         super.init()
         
