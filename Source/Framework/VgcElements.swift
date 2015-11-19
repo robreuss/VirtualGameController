@@ -44,7 +44,7 @@ public enum ElementDataType: Int {
 
 // The whole population of system and standard elements
 
-public enum ElementType: Int {
+@objc public enum ElementType: Int {
     
     case DeviceInfoElement
     case SystemMessage
