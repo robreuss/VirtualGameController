@@ -249,11 +249,11 @@ public class Peripheral: NSObject {
         print("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
         
         NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
-        let archivedDeviceInfoData = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
-        let archivedDeviceInfoBase64String = archivedDeviceInfoData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        let element = VgcManager.elements.deviceInfoElement
+        element.value = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
         print("\(deviceInfo)")
         
-        browser.sendArchivedDeviceInfo(archivedDeviceInfoBase64String)
+        browser.sendElementStateOverNetService(element)
 
     }
     
