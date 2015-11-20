@@ -19,7 +19,7 @@ public enum CustomElementType: Int {
     case FiddlestickY   = 51
     case FiddlestickZ   = 52
     case Keyboard       = 53
-    
+    case DebugViewTap = 54
 }
 
 ///
