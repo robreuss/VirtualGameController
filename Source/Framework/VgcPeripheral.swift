@@ -227,8 +227,12 @@ public class Peripheral: NSObject {
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService)
-
-        browser.browseForCentral()
+        
+        // Avoid situation where a "ghost" instance will end up on the Bridge after a Peripheral
+        // disconnects.  This provides support for the situation where a Central disconnects, but
+        // a Peripheral is still connected to the Bridge - when the Central returns the Bridge will
+        // connect any Peripherals to it.
+        if controller != nil { browser.browseForCentral() }
 
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
