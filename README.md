@@ -9,6 +9,7 @@
 - Wraps Apple's *GameController* framework API (GCController)
 - Create software-based controllers (that use the MFi profiles)
 - Controller forwarding
+- Bidirectional communication between software-based controllers and game
 - Device motion support
 - Custom controller elements
 - Custom element mapping
@@ -38,7 +39,7 @@
 ## Some Use Cases
 **VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing games, provide protection in case you need to revert to using Apple's framework, and allow for features that go beyond _Game Controller_ but use the MFi profiles.  A single game-side implementation can work with a wide range of controller scenarios.  **VirtualGameController** may be useful for you in the following cases:
 
-- **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  The API for creating a software-based controller is simple and easy-to-use.  
+- **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.  
 - **Creating a hybrid hardware/software controller using controller forwarding.**  Apple described a feature called "controller forwarding" in a session at WWDC in 2014 (at around _29:00_, [https://developer.apple.com/videos/play/wwdc2014-611/](https://developer.apple.com/videos/play/wwdc2014-611/)) but as far as I know the feature never emerged. *VirtualGameController* supports controller forwarding in roughly the form described in the session, enabling you to enhance form-fitting hardware controllers with a full profile and motion input.
 - **Supporting large numbers of controllers for social games.**  There are no imposed limits on the number of hardware or software controllers that can be used with a game.  The two third-party controller limit on the Apple TV can be exceeded using controller forwarding (bridging), hybrid controllers and software-based controllers. 
 - **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of dictation is demonstrated in the sample projects.
@@ -57,11 +58,13 @@ The user interfaces in the sample projects are designed for documentation, testi
 
 
 ## Integration
-Platform-specific framework projects are included in the workspace.  A single framework file supports both Peripherals (software-based controllers) and Centrals (games, replacement for GCController).
+Platform-specific framework projects are included in the workspace.  A single framework file supports both Peripherals (software-based controllers) and Centrals (that is, your game).
 
 ``` swift
 import VirtualGameController
 ```
+
+Note that you currently need to ````import GameController```` as well.
 
 CocoaPods and Carthage support will be forthcoming!
 
@@ -230,15 +233,19 @@ There are two features supported by a Central that exceed the capabilities of th
 - Custom elements
 - Custom mapping
 
-#Custom Elements
+##Custom Elements
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
-#Custom Mappings
+
+##Custom Mappings
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
 
-#Objective C Support
+##Bidirectional Communication
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bidirectional-Communication).
+
+##Objective C Support
 See the Objective C sample project along with the [wiki page](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C).
 
-#iCade Controller Support
+##iCade Controller Support
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
 ##Contact and Support
 Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.  
