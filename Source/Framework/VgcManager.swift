@@ -47,8 +47,7 @@ public var customElements: CustomElementsSuperclass!
 ///                                 positioned in a slide-on controller will typically function as
 ///                                 as a Bridge (although it can also be a Central).  An iPhone paired
 ///                                 with an Apple Watch that is functioning as a Peripheral will act
-///                                 as a Bridge.  Peripherals much be given the .BridgedPeripheral role
-///                                 in order to be discovered by a .Bridge
+///                                 as a Bridge.  
 ///
 /// - parameter .EnhancementBridge:  Special Bridge mode for using a form-fitting/slide-on controller
 ///                                 with an iPhone.  Prevents additional Peripherals from connecting.
