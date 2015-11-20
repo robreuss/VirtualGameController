@@ -221,16 +221,15 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if element.type == elements.deviceInfoElement.type {
                 
                 print("Received controller device information")
-                let base64DecodedData = NSData(base64EncodedString: elementValue, options: NSDataBase64DecodingOptions(rawValue: 0))
+                element.valueAsBase64String = elementValue
+
+                NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
+                deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as? DeviceInfo)!
                 
-                if base64DecodedData != nil && base64DecodedData!.length > 0 {
-                    
-                    NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-                    deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(base64DecodedData!) as? DeviceInfo)!
-                    
-                }
             } else if element.type == .Custom {
+                
                 elements.custom[element.identifier]?.value = elementValue
+                
             }
             if element.type != elements.deviceInfoElement.type {
                 
@@ -265,10 +264,31 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
     }
     
+    public static func sendElementStateToAllPeripherals(element: Element) {
+        for controller in VgcController.controllers() {
+            if controller.hardwareController == nil {
+                controller.sendElementStateToPeripheral(element)
+            }
+        }
+    }
+    
+    public func sendElementStateToPeripheral(element: Element) {
+        print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
+        let value: AnyObject
+        if element.dataType == .Data {
+            value = element.valueAsBase64String
+        } else {
+            value = element.value
+        }
+        
+        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
+        toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+    }
+    
     // Send a message to the Peripheral that we received an invalid message (based on checksum).
     // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
     // of motion data.
-    func receivedInvalidMessage() {
+    func sendInvalidMessageSystemMessage() {
         let element = elements.systemMessage
         element.value = SystemMessages.ReceivedInvalidMessage.rawValue
         let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
@@ -291,6 +311,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if deviceIsTypeOfBridge() && peripheral != nil {
                 peripheral.browser.disconnectFromCentral()
                 peripheral.haveConnectionToCentral = false
+                peripheral.controller = nil
                 peripheral = nil
             }
             
@@ -324,7 +345,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         // Notify the app there's been a disconnect
         dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidDisconnectNotification", object: self)
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: self)
         }
         
         centralPublisher = nil
@@ -1496,7 +1517,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
             #endif
             return Float(vgcAttitude.x)
         }
@@ -1509,7 +1530,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
             #endif
             return Float(vgcAttitude.y)
         }
@@ -1522,7 +1543,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
             #endif
             return Float(vgcAttitude.z)
         }
@@ -1536,7 +1557,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeW: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.attitude.w)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
             #endif
             return Float(vgcAttitude.w)
         }
@@ -1562,7 +1583,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
             #endif
             return Float(vgcRotationRate.x)
         }
@@ -1575,7 +1596,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
             #endif
             return Float(vgcRotationRate.y)
         }
@@ -1588,7 +1609,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
             #endif
             return Float(vgcRotationRate.z)
         }
@@ -1641,7 +1662,6 @@ public class VgcMotion: NSObject {
     
     func callHandler() {
         if let handler = vgcValueChangedHandler {
-            handler(self)
             dispatch_async((vgcController?.handlerQueue)!) {
                 handler(self)
             }
