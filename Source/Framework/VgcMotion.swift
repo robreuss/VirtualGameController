@@ -76,9 +76,11 @@ public class VgcMotionManager: NSObject {
                 // iOS supports device motion, but the watch only supports direct accelerometer data
                 if self.manager.deviceMotionAvailable {
                     
+                    let motionQueue = NSOperationQueue()
+                    
                     print("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(self.updateInterval)
-                    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void in
+                    manager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: { (deviceMotionData, error) -> Void in
                         
                         //print("Device Motion: \(deviceMotionData!)")
                         
