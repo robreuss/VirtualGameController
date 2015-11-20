@@ -14,7 +14,7 @@ import Foundation
     optional func disconnect()
     optional var deviceInfo: DeviceInfo! {get set}
     optional var centralPublisher: VgcCentralPublisher! {get set}
-    optional func receivedInvalidMessage()
+    optional func sendInvalidMessageSystemMessage()
     
 }
 
@@ -151,7 +151,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                         if "\(checksum)" != "\(expectedChecksum)" {
                             //print("ERROR: Invalid checksum: \(expectedChecksum) v. \(checksum) with msg [\(message)] (\(delegate.deviceInfo.vendorName))")
                             PerformanceVars.invalidChecksums++
-                            delegate.receivedInvalidMessage!()
+                            delegate.sendInvalidMessageSystemMessage!()
                         }
                         
                         if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
