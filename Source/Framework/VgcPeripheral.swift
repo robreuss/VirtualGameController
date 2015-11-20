@@ -227,20 +227,9 @@ public class Peripheral: NSObject {
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService)
-        
-        // Start browsing for a new Central only if the controller still exists (that is, if it
-        // hasn't disconnected.  Otherwise, we might create a "ghost" controller on the Central.
-        //if deviceIsTypeOfBridge() == false || VgcController.controllers().contains(controller) { browser.browseForCentral() }
-        
-        if deviceIsTypeOfBridge() == false { browser.browseForCentral() }
-        
-        // A bit of a delay to clear the browser caches
-        //let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-        //dispatch_after(delayTime, dispatch_get_main_queue()) {
-            if deviceIsTypeOfBridge() == false { browser.browseForCentral() }
-        //}
 
-        
+        browser.browseForCentral()
+
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
                 print("Stopping motion data")
