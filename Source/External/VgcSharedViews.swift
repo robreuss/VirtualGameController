@@ -36,7 +36,7 @@ var peripheralManager = VgcManager.peripheral
     var keyboardTextField: UITextField!
     var keyboardControlView: UIView!
     var keyboardLabel: UILabel!
-    var flashView: UIView!
+    public var flashView: UIView!
     
     public var serviceSelectorView: ServiceSelectorView!
     
@@ -719,6 +719,7 @@ public class ElementDebugView: UIView {
     var elementLabelLookup = Dictionary<Int, UILabel>()
     var controllerVendorName: UILabel!
     var scrollView: UIScrollView!
+    var controller: VgcController!
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -726,9 +727,12 @@ public class ElementDebugView: UIView {
     
     public init(frame: CGRect, controller: VgcController) {
         
-        //self.controller = controller
+        self.controller = controller
         
         super.init(frame: frame)
+        
+        let debugViewTapGR = UITapGestureRecognizer(target: self, action: "receivedDebugViewTap")
+        self.gestureRecognizers = [debugViewTapGR]
         
         self.backgroundColor = UIColor.whiteColor()
         
@@ -839,6 +843,22 @@ public class ElementDebugView: UIView {
         }
         
         scrollView.contentSize = CGSize(width: frame.size.width, height: yPosition + 40)
+        
+    }
+    
+    public func receivedDebugViewTap() {
+
+        // Test archive mode
+        //let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
+        //NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
+        //element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
+        //controller.sendElementStateToPeripheral(element)
+        //VgcController.sendElementStateToAllPeripherals(element)
+        
+        let rightShoulder = controller.elements.rightShoulder
+        rightShoulder.value = 1.0
+        controller.sendElementStateToPeripheral(rightShoulder)
+        //VgcController.sendElementStateToAllPeripherals(rightShoulder)
         
     }
     
