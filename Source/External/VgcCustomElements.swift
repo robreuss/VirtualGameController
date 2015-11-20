@@ -38,14 +38,15 @@ public class CustomElements: CustomElementsSuperclass {
         ///
         /// - parameter name: Human-readable name, used in logging
         /// - parameter dataType: Supported types include .Float, .String and .Int
-        /// - parameter type: Unique identifier, numbered beginning with 100 to keep them out of collision with standard elements
+        /// - parameter type: Unique identifier, numbered beginning with 50 to keep them out of collision with standard elements
         ///
         
         customProfileElements = [
             CustomElement(name: "Fiddlestick X", dataType: .Float, type:CustomElementType.FiddlestickX.rawValue),
             CustomElement(name: "Fiddlestick Y", dataType: .Float, type:CustomElementType.FiddlestickY.rawValue),
             CustomElement(name: "Fiddlestick Z", dataType: .Float, type:CustomElementType.FiddlestickZ.rawValue),
-            CustomElement(name: "Keyboard", dataType: .String, type:CustomElementType.Keyboard.rawValue)
+            CustomElement(name: "Keyboard", dataType: .String, type:CustomElementType.Keyboard.rawValue),
+            CustomElement(name: "DebugView Tap", dataType: .Data, type:CustomElementType.DebugViewTap.rawValue)
         ]
 
     }
