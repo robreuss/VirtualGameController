@@ -39,7 +39,7 @@ public enum ElementDataType: Int {
     case Float
     case String
     case Archive // This may be a general purpose mechanism at some point - is currently used for deviceInfo
-    
+    case Data 
 }
 
 // The whole population of system and standard elements
@@ -130,6 +130,9 @@ public class Element: NSObject {
     public var valueChangedHandler: VgcCustomElementValueChangedHandler!
     #endif
     
+    public typealias VgcCustomProfileValueChangedHandlerForPeripheral = (Element) -> Void
+    public var valueChangedHandlerForPeripheral: VgcCustomProfileValueChangedHandlerForPeripheral!
+    
     // Used as a flag when peripheral-side mapping one element to another, to prevent recursion
     var mappingComplete: Bool!
     
@@ -198,20 +201,39 @@ public class Element: NSObject {
     }
     
     public func encodeWithCoder(coder: NSCoder) {
-        
+    
         coder.encodeInteger(type.rawValue, forKey: "type")
         coder.encodeInteger(dataType.rawValue, forKey: "dataType")
         coder.encodeObject(name, forKey: "name")
         coder.encodeObject(getterKeypath, forKey: "getterKeypath")
         coder.encodeObject(setterKeypath, forKey: "setterKeypath")
-        
+    
     }
     
+    // Used for sending NSData over the wire; for some reason, unarchiving on
+    // the other side fails without sending using Base64 encoding
+    public var valueAsBase64String: String {
+    
+        get {
+            if dataType == .Data {
+                return value.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+            } else {
+                return ""
+            }
+        }
+        set {
+            if dataType == .Data {
+                value = NSData(base64EncodedString: newValue, options: NSDataBase64DecodingOptions(rawValue: 0))!
+            }
+        }
+    
+    }
+
     func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
         return copy
     }
-    
+
     #endif
 }
 
@@ -387,7 +409,7 @@ public class Elements: NSObject {
     #endif
     
     public var systemMessage: Element = Element(type: .SystemMessage, dataType: .Int, name: "System Messages", getterKeypath: "", setterKeypath: "")
-    public var deviceInfoElement: Element = Element(type: .DeviceInfoElement, dataType: .Archive, name: "Device Info", getterKeypath: "", setterKeypath: "")
+    public var deviceInfoElement: Element = Element(type: .DeviceInfoElement, dataType: .Data, name: "Device Info", getterKeypath: "", setterKeypath: "")
     public var playerIndex: Element = Element(type: .PlayerIndex, dataType: .Int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
     public var pauseButton: Element = Element(type: .PauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
     

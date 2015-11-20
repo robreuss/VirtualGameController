@@ -268,7 +268,8 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         let stringLength = "\(identifier)\(messageValueSeperator)\(value)".characters.count
         var checksum: Float
-        if identifier != elements.deviceInfoElement.identifier && !(value is String)  {
+        let element = VgcManager.elements.elementFromIdentifier(identifier)
+        if element.dataType != .Data && !(value is String)  {
             checksum = value as! Float + Float(identifier) + Float(stringLength)
         } else {
             checksum = Float(identifier) + Float(stringLength)

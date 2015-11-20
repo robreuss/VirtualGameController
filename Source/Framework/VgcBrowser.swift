@@ -115,14 +115,38 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             }
             
         default:
-            break
+            
+            switch (element.dataType) {
+                
+            case .Float:
+                
+                element.value = Float(elementValue)!
+                
+            case .Data:
+                
+                element.valueAsBase64String = elementValue
+            
+            default:
+                
+                element.value = elementValue
+                
+            }
+            
+            if !deviceIsTypeOfBridge() {
+                
+                // Call the handler set on the global object
+                if let handler = element.valueChangedHandlerForPeripheral {
+                    handler(element)
+                }
+            }
             
         }
         
         // If we're a bridge, send along the value to the Central
         if deviceIsTypeOfBridge() && element.type != .PlayerIndex {
             
-            peripheral.browser.sendElementStateOverNetService(element)
+            //peripheral.browser.sendElementStateOverNetService(element)
+            peripheral.controller.sendElementStateToPeripheral(element)
             
         }
         
@@ -137,8 +161,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         closeStreams()
     }
     
-    func sendArchivedDeviceInfo(deviceInfoArchivedData: NSString) {
-        let encodedDataArray = streamer.encodedMessageWithChecksum(elements.deviceInfoElement.identifier, value: deviceInfoArchivedData)
+    /*
+    func sendDeviceInfoElement(element: Element) {
+        let encodedDataArray = streamer.encodedMessageWithChecksum(elements.deviceInfoElement.identifier, value: element.valueAsBase64String)
         if deviceIsTypeOfBridge() {
             
             if let controller = peripheral.controller {
@@ -151,6 +176,12 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             guard outputStream != nil else { return }
             outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
         }
+    }
+*/
+    
+    // This is triggered by the Streamer if it receives a malformed message.  We just log it here.
+    func sendInvalidMessageSystemMessage() {
+        print("Peripheral received invalid checksum message from Central")
     }
 
     func sendElementStateOverNetService(let element: Element!) {
@@ -179,7 +210,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             return
         }
         
-        if outputStream.hasSpaceAvailable == false { return }
+        if outputStream.hasSpaceAvailable == false {
+            print("OutputStream has no space")
+            //return
+        }
         
         // Using a struct this way enables us to initalize our variables
         // only once
@@ -197,11 +231,17 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 PerformanceVars.lastPublicationOfPerformance = NSDate()
             }
         }
-        
-        //dispatch_sync(lockQueueNetService) {
-        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
+
+        let value: AnyObject
+        if element.dataType == .Data {
+            value = element.valueAsBase64String
+        } else {
+            value = element.value
+        }
+
+        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
         outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
-        //}
+
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         
     }
