@@ -38,7 +38,6 @@ public enum ElementDataType: Int {
     case Int
     case Float
     case String
-    case Archive // This may be a general purpose mechanism at some point - is currently used for deviceInfo
     case Data 
 }
 
