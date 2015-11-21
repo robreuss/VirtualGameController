@@ -43,6 +43,39 @@ class ViewController: UIViewController {
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
+        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.DebugViewTap.rawValue) {
+       
+            element.valueChangedHandlerForPeripheral = { (element: Element) in
+                
+                print("Custom element handler fired for \(element.name)")
+                
+                self.peripheralControlPadView.flashView.backgroundColor = UIColor.blueColor()
+                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveEaseIn, animations: {
+                    self.peripheralControlPadView.flashView!.alpha = 1
+                    }, completion: { finished in
+                        self.peripheralControlPadView.flashView!.alpha = 0
+                })
+                
+            }
+        }
+        
+        if let element: Element = VgcManager.elements.rightShoulder {
+            
+            element.valueChangedHandlerForPeripheral = { (element: Element) in
+                
+                print("Custom element handler fired for \(element.name) with value \(element.value)")
+                
+                self.peripheralControlPadView.flashView.backgroundColor = UIColor.greenColor()
+                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveEaseIn, animations: {
+                    self.peripheralControlPadView.flashView!.alpha = 1
+                    }, completion: { finished in
+                        self.peripheralControlPadView.flashView!.alpha = 0
+                })
+                
+            }
+        }
+
+        
     }
 
     // Add new service to our list of available services.  I'm not using here, but the
@@ -63,7 +96,6 @@ class ViewController: UIViewController {
     
     // Notification indicates we should refresh the view
     @objc func serviceBrowserReset(notification: NSNotification) {
-        let vgcService = notification.object as? VgcService
         print("Service browser reset, isMainThread: \(NSThread.isMainThread())")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
@@ -89,6 +121,7 @@ class ViewController: UIViewController {
             }
             
             // Flash the UI red to indicate bad messages being sent
+            self.peripheralControlPadView.flashView.backgroundColor = UIColor.redColor()
             UIView.animateWithDuration(0.1, delay: 0.0, options: .CurveEaseIn, animations: {
                 self.peripheralControlPadView.flashView!.alpha = 1
                 }, completion: { finished in

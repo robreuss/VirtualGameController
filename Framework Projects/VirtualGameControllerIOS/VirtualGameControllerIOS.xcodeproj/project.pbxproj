@@ -35,6 +35,17 @@
 		202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcPeripheral.swift; path = ../../../Source/Framework/VgcPeripheral.swift; sourceTree = "<group>"; };
 		202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 		202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
+		20561D7F1BFDDF7E008D56F2 /* GameController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameController.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GameController.h"; sourceTree = "<group>"; };
+		20561D801BFDDF7E008D56F2 /* GCController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCController.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCController.h"; sourceTree = "<group>"; };
+		20561D811BFDDF7E008D56F2 /* GCControllerAxisInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCControllerAxisInput.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCControllerAxisInput.h"; sourceTree = "<group>"; };
+		20561D821BFDDF7E008D56F2 /* GCControllerButtonInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCControllerButtonInput.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCControllerButtonInput.h"; sourceTree = "<group>"; };
+		20561D831BFDDF7E008D56F2 /* GCControllerDirectionPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCControllerDirectionPad.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCControllerDirectionPad.h"; sourceTree = "<group>"; };
+		20561D841BFDDF7E008D56F2 /* GCControllerElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCControllerElement.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCControllerElement.h"; sourceTree = "<group>"; };
+		20561D851BFDDF7E008D56F2 /* GCExtendedGamepad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCExtendedGamepad.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCExtendedGamepad.h"; sourceTree = "<group>"; };
+		20561D861BFDDF7E008D56F2 /* GCExtendedGamepadSnapshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCExtendedGamepadSnapshot.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCExtendedGamepadSnapshot.h"; sourceTree = "<group>"; };
+		20561D871BFDDF7E008D56F2 /* GCGamepad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCGamepad.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCGamepad.h"; sourceTree = "<group>"; };
+		20561D881BFDDF7E008D56F2 /* GCGamepadSnapshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCGamepadSnapshot.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCGamepadSnapshot.h"; sourceTree = "<group>"; };
+		20561D891BFDDF7E008D56F2 /* GCMotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCMotion.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCMotion.h"; sourceTree = "<group>"; };
 		20EC20A81BED855F007AF2EF /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +63,17 @@
 		202BBF571BE569BC004D47EC = {
 			isa = PBXGroup;
 			children = (
+				20561D7F1BFDDF7E008D56F2 /* GameController.h */,
+				20561D801BFDDF7E008D56F2 /* GCController.h */,
+				20561D811BFDDF7E008D56F2 /* GCControllerAxisInput.h */,
+				20561D821BFDDF7E008D56F2 /* GCControllerButtonInput.h */,
+				20561D831BFDDF7E008D56F2 /* GCControllerDirectionPad.h */,
+				20561D841BFDDF7E008D56F2 /* GCControllerElement.h */,
+				20561D851BFDDF7E008D56F2 /* GCExtendedGamepad.h */,
+				20561D861BFDDF7E008D56F2 /* GCExtendedGamepadSnapshot.h */,
+				20561D871BFDDF7E008D56F2 /* GCGamepad.h */,
+				20561D881BFDDF7E008D56F2 /* GCGamepadSnapshot.h */,
+				20561D891BFDDF7E008D56F2 /* GCMotion.h */,
 				202BBF631BE569BD004D47EC /* VirtualGameControllerIOS */,
 				202BBF621BE569BD004D47EC /* Products */,
 			);

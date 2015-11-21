@@ -13,18 +13,18 @@
 		207908911BFD652700D098BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2079088F1BFD652700D098BC /* Main.storyboard */; };
 		207908931BFD652700D098BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207908921BFD652700D098BC /* Assets.xcassets */; };
 		207908961BFD652700D098BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207908941BFD652700D098BC /* LaunchScreen.storyboard */; };
-		2079089E1BFD655400D098BC /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2079089D1BFD655400D098BC /* VirtualGameController.framework */; };
-		2079089F1BFD655400D098BC /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2079089D1BFD655400D098BC /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20B04AC81C00E0CB00BCFE43 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B04AC71C00E0CB00BCFE43 /* VirtualGameController.framework */; };
+		20B04AC91C00E0CB00BCFE43 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20B04AC71C00E0CB00BCFE43 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		207908A01BFD655500D098BC /* Embed Frameworks */ = {
+		20B04ACA1C00E0CC00BCFE43 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2079089F1BFD655400D098BC /* VirtualGameController.framework in Embed Frameworks */,
+				20B04AC91C00E0CB00BCFE43 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,7 +42,7 @@
 		207908921BFD652700D098BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		207908951BFD652700D098BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		207908971BFD652700D098BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2079089D1BFD655400D098BC /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		20B04AC71C00E0CB00BCFE43 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2079089E1BFD655400D098BC /* VirtualGameController.framework in Frameworks */,
+				20B04AC81C00E0CB00BCFE43 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +60,7 @@
 		2079087A1BFD652700D098BC = {
 			isa = PBXGroup;
 			children = (
-				2079089D1BFD655400D098BC /* VirtualGameController.framework */,
+				20B04AC71C00E0CB00BCFE43 /* VirtualGameController.framework */,
 				207908851BFD652700D098BC /* ObjectiveC_iOS */,
 				207908841BFD652700D098BC /* Products */,
 			);
@@ -108,7 +108,7 @@
 				2079087F1BFD652700D098BC /* Sources */,
 				207908801BFD652700D098BC /* Frameworks */,
 				207908811BFD652700D098BC /* Resources */,
-				207908A01BFD655500D098BC /* Embed Frameworks */,
+				20B04ACA1C00E0CC00BCFE43 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,7 +283,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -300,7 +299,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -332,6 +330,7 @@
 				2079089C1BFD652700D098BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
