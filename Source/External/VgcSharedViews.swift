@@ -846,6 +846,10 @@ public class ElementDebugView: UIView {
         
     }
     
+    // Demonstrate bidirectional communication using a simple tap on the
+    // Central debug view to send a message to one or all Peripherals.
+    // Use of a custom element is also demonstrated; both standard and custom
+    // are supported.
     public func receivedDebugViewTap() {
 
         // Test archive mode
@@ -855,10 +859,11 @@ public class ElementDebugView: UIView {
         //controller.sendElementStateToPeripheral(element)
         //VgcController.sendElementStateToAllPeripherals(element)
         
+        // Test simple float mode
         let rightShoulder = controller.elements.rightShoulder
         rightShoulder.value = 1.0
-        controller.sendElementStateToPeripheral(rightShoulder)
-        //VgcController.sendElementStateToAllPeripherals(rightShoulder)
+        //controller.sendElementStateToPeripheral(rightShoulder)
+        VgcController.sendElementStateToAllPeripherals(rightShoulder)
         
     }
     
