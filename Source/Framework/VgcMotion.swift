@@ -56,8 +56,8 @@ public class VgcMotionManager: NSObject {
     func setupFilterConstant()
     {
         
-        let dt = VgcManager.peripheral.motion.updateInterval
-        let RC = 1.0 / VgcManager.peripheral.motion.cutOffFrequency
+        let dt = updateInterval
+        let RC = 1.0 / cutOffFrequency
         filterConstant = dt / (dt + RC)
         
     }
@@ -207,11 +207,11 @@ public class VgcMotionManager: NSObject {
                         print("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
                         
                         // Send data on the custom accelerometer channels
-                        if VgcManager.peripheral.motion.enableUserAcceleration {
+                        //if VgcManager.peripheral.motion.enableUserAcceleration {
                             self.sendElementState(self.elements.motionUserAccelerationX)
                             self.sendElementState(self.elements.motionUserAccelerationY)
                             self.sendElementState(self.elements.motionUserAccelerationZ)
-                        }
+                        //}
                         
                         /*
                         // Rotation Rate
