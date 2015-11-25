@@ -337,6 +337,7 @@ var peripheralManager = VgcManager.peripheral
         print("User modified motion switch: \(sender.on)")
         
         if sender.on == true {
+
             VgcManager.peripheral.motion.start()
         } else {
             VgcManager.peripheral.motion.stop()
@@ -732,7 +733,12 @@ public class ElementDebugView: UIView {
         super.init(frame: frame)
         
         let debugViewTapGR = UITapGestureRecognizer(target: self, action: "receivedDebugViewTap")
-        self.gestureRecognizers = [debugViewTapGR]
+        
+        let debugViewDoubleTapGR = UITapGestureRecognizer(target: self, action: "receivedDebugViewDoubleTap")
+        debugViewDoubleTapGR.numberOfTapsRequired = 2
+        self.gestureRecognizers = [debugViewTapGR, debugViewDoubleTapGR]
+        
+        debugViewTapGR.requireGestureRecognizerToFail(debugViewDoubleTapGR)
         
         self.backgroundColor = UIColor.whiteColor()
         
@@ -848,22 +854,32 @@ public class ElementDebugView: UIView {
     
     // Demonstrate bidirectional communication using a simple tap on the
     // Central debug view to send a message to one or all Peripherals.
-    // Use of a custom element is also demonstrated; both standard and custom
+    // Use of a custom element is demonstrated; both standard and custom
     // are supported.
     public func receivedDebugViewTap() {
 
         // Test archive mode
-        //let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
-        //NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
-        //element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
-        //controller.sendElementStateToPeripheral(element)
+        let element = controller.elements.custom[CustomElementType.VibrateDevice.rawValue]!
+        element.value = 1
+        VgcController.sendElementStateToAllPeripherals(element)
+        
+    }
+    
+    public func receivedDebugViewDoubleTap() {
+
+        
+        // Test archive mode
+        let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
+        NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
+        element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
+        controller.sendElementStateToPeripheral(element)
         //VgcController.sendElementStateToAllPeripherals(element)
         
         // Test simple float mode
-        let rightShoulder = controller.elements.rightShoulder
-        rightShoulder.value = 1.0
+        //let rightShoulder = controller.elements.rightShoulder
+        //rightShoulder.value = 1.0
         //controller.sendElementStateToPeripheral(rightShoulder)
-        VgcController.sendElementStateToAllPeripherals(rightShoulder)
+        //VgcController.sendElementStateToAllPeripherals(rightShoulder)
         
     }
     
