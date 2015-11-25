@@ -182,10 +182,24 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayer
 ####Motion (Accelerometer)
 Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
 
+Key methods that should be self-explanatory:
+
 ``` swift
 VgcManager.peripheral.motion.start()
 VgcManager.peripheral.motion.stop()
+
+VgcManager.peripheral.motion.enableUserAcceleration = true
+VgcManager.peripheral.motion.enableGravity = true
+VgcManager.peripheral.motion.enableRotationRate = true
+VgcManager.peripheral.motion.enableAttitude = true
+
+VgcManager.peripheral.motion.updateInterval = 1/60
+
+VgcManager.peripheral.motion.enableAdaptiveFilter = true
+VgcManager.peripheral.motion.enableLowPassFilter = true
 ```
+
+It is important for performance reasons to reduce updateInterval as much as you can, and to disable motion inputs that are not used in your game.
 
 ## Game Integration 
 ####GCController Replacement
