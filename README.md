@@ -70,11 +70,12 @@ CocoaPods and Carthage support will be forthcoming!
 
 ## Using the Sample Projects
 
-A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS), along with a project that demonstrates the use of Objective C.  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
+A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS), along with projects that demonstrates the use of Objective C and SceneKit.  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
 
 Other notes on sample projects:
 
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
+- Checking out the SceneKit sample project is a great way to evaluate the motion capabilities of the framework, as well as being fun.  
 
 
 ## Creating a Software-based Peripheral
