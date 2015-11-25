@@ -8,6 +8,8 @@
 import UIKit
 import GameController
 import VirtualGameController
+//import <AudioToolbox/AudioServices.h>
+import AudioToolbox
 
 class ViewController: UIViewController {
 
@@ -43,6 +45,18 @@ class ViewController: UIViewController {
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
+        VgcManager.includesPeerToPeer = false
+        
+        VgcManager.peripheral.motion.updateInterval = 1/60
+        
+        VgcManager.peripheral.motion.enableAttitude = true
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
+        VgcManager.peripheral.motion.enableUserAcceleration = true
+        
+        VgcManager.peripheral.motion.enableAdaptiveFilter = true
+        VgcManager.peripheral.motion.enableLowPassFilter = true
+        
         if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.DebugViewTap.rawValue) {
        
             element.valueChangedHandlerForPeripheral = { (element: Element) in
@@ -71,6 +85,17 @@ class ViewController: UIViewController {
                     }, completion: { finished in
                         self.peripheralControlPadView.flashView!.alpha = 0
                 })
+                
+            }
+        }
+        
+        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.VibrateDevice.rawValue) {
+            
+            element.valueChangedHandlerForPeripheral = { (element: Element) in
+                
+                print("Custom element handler fired for \(element.name) with value \(element.value)")
+                
+                AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
                 
             }
         }
@@ -134,6 +159,7 @@ class ViewController: UIViewController {
     @objc func peripheralDidConnect(notification: NSNotification) {
         
         print("Got VgcPeripheralDidConnectNotification notification")
+        VgcManager.peripheral.stopBrowsingForServices()
         
     }
     
