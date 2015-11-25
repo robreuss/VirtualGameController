@@ -13,8 +13,8 @@
 		20AD46E01C06699A002A48A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46DE1C06699A002A48A9 /* Main.storyboard */; };
 		20AD46E21C06699A002A48A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46E11C06699A002A48A9 /* Assets.xcassets */; };
 		20AD46E51C06699A002A48A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46E31C06699A002A48A9 /* LaunchScreen.storyboard */; };
-		20AD46ED1C0669D7002A48A9 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46EC1C0669D7002A48A9 /* VirtualGameController.framework */; };
-		20AD46EE1C0669D7002A48A9 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46EC1C0669D7002A48A9 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20AD46F11C067039002A48A9 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46F01C067039002A48A9 /* VirtualGameController.framework */; };
+		20AD46F21C067039002A48A9 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46F01C067039002A48A9 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20AD46EE1C0669D7002A48A9 /* VirtualGameController.framework in Embed Frameworks */,
+				20AD46F21C067039002A48A9 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,7 +40,7 @@
 		20AD46E11C06699A002A48A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20AD46E41C06699A002A48A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20AD46E61C06699A002A48A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20AD46EC1C0669D7002A48A9 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		20AD46F01C067039002A48A9 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AD46ED1C0669D7002A48A9 /* VirtualGameController.framework in Frameworks */,
+				20AD46F11C067039002A48A9 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,7 @@
 		20AD46CC1C06699A002A48A9 = {
 			isa = PBXGroup;
 			children = (
-				20AD46EC1C0669D7002A48A9 /* VirtualGameController.framework */,
+				20AD46F01C067039002A48A9 /* VirtualGameController.framework */,
 				20AD46D71C06699A002A48A9 /* SceneKitDemo_iOS */,
 				20AD46D61C06699A002A48A9 /* Products */,
 			);

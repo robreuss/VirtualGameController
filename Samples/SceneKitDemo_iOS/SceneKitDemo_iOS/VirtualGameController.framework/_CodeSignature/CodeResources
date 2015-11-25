@@ -14,7 +14,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		lnLo2mzBqVkiWBCPZ6Z6faEAQs0=
+		gAwrBHg8fg76VdbQtPIvrRxwNKw=
+		</data>
+		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
+		<data>
+		1Uxn+eA/xhyQ7kNZmpY1hotlOlo=
+		</data>
+		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
+		<data>
+		+HwnVv4VKMsdkI1C8llyBVOZt0k=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -38,6 +46,14 @@
 		<key>Headers/VirtualGameControllerIOS.h</key>
 		<data>
 		LipTkWcP4oAQNZRYuHG0PL1zuDc=
+		</data>
+		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
+		<data>
+		1Uxn+eA/xhyQ7kNZmpY1hotlOlo=
+		</data>
+		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
+		<data>
+		+HwnVv4VKMsdkI1C8llyBVOZt0k=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
