@@ -60,7 +60,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
         self.localService.delegate = self
-        self.localService.includesPeerToPeer = true
+        self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
         
     }
     
