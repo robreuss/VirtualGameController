@@ -217,16 +217,11 @@ public class VgcManager: NSObject {
     ///
     public static var usePeripheralSideMapping: Bool = false
 
-    public static var netServiceBufferSize = 256
+    public static var netServiceBufferSize = 2048
     
-    ///
-    /// Don't enable these unless they are really needed because they produce
-    /// tons of data to be transmitted and clog the channels.
-    ///
-    public static var enableMotionUserAcceleration = true
-    public static var enableMotionRotationRate = true
-    public static var enableMotionAttitude = true
-    public static var enableMotionGravity = true
+    // Enable this if you want fallback to Bluetooth, but know it has an impact on network
+    // performance.
+    public static var includesPeerToPeer = false
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console

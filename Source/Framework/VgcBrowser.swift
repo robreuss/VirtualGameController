@@ -212,7 +212,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         if outputStream.hasSpaceAvailable == false {
             print("OutputStream has no space")
-            //return
         }
         
         // Using a struct this way enables us to initalize our variables
@@ -238,7 +237,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         } else {
             value = element.value
         }
-
+        
         let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
         outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
 
@@ -264,7 +263,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         print("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
         centralBrowser = NSNetServiceBrowser()
-        centralBrowser.includesPeerToPeer = true
+        centralBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
         centralBrowser.delegate = self
         centralBrowser.searchForServicesOfType(VgcManager.bonjourTypeCentral, inDomain: "local")
         
@@ -272,7 +271,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         if !deviceIsTypeOfBridge() {
             print("Searching for Bridges on \(VgcManager.bonjourTypeBridge)")
             bridgeBrowser = NSNetServiceBrowser()
-            bridgeBrowser.includesPeerToPeer = true
+            bridgeBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
             bridgeBrowser.delegate = self
             bridgeBrowser.searchForServicesOfType(VgcManager.bonjourTypeBridge, inDomain: "local")
         }
