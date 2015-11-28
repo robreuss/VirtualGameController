@@ -133,8 +133,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // is "set", and the developer is responsible for implementing
         // our version instead of the GCController version:
         // "VgcControllerDidConnectNotification"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: "GCControllerDidConnectNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: "GCControllerDidDisconnectNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: GCControllerDidConnectNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: GCControllerDidDisconnectNotification, object: nil)
         
         // Kick off publishing the availability of our service
         // if we have a Central function (note, a Bridge has both
