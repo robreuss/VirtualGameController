@@ -277,7 +277,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         } else {
             value = element.value
         }
-        
         let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
         toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
     }
@@ -1064,7 +1063,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
     
     override public var buttonA: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonA.value == 0 { return vgcController!.hardwareController.microGamepad!.buttonA } else { return vgcButtonA } } }
     public override var buttonX: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonX.value == 0 { return vgcController!.hardwareController.microGamepad!.buttonX } else { return vgcButtonX } } }
-    
+
     
     public override var valueChangedHandler: GCMicroGamepadValueChangedHandler? {
         get {
@@ -1072,7 +1071,14 @@ public class VgcMicroGamepad: GCMicroGamepad {
         }
         set {
             vgcValueChangedHandler = newValue
-            if (vgcController?.hardwareController != nil) { vgcController?.hardwareController.microGamepad?.valueChangedHandler = newValue }
+            if (vgcController?.hardwareController != nil) {
+                
+                vgcController?.hardwareController.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in
+                
+                self.callValueChangedHandler(element)
+                
+                }
+            }
         }
     }
     
