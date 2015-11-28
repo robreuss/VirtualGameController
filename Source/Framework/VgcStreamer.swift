@@ -136,7 +136,15 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     let messageString = "\(elementID)\(messageValueSeperator)\(elementValue)"
                     let stringLength = messageString.characters.count
                     
-                    let expectedChecksum = (elementValue as NSString).floatValue + Float(elementIdentifier!) + Float(stringLength)
+                    let element = elements.elementFromIdentifier(elementIdentifier!)
+                    
+                    var expectedChecksum: Float
+                    
+                    if element.dataType == .String {
+                        expectedChecksum = Float(elementIdentifier!) + Float(stringLength)
+                    } else {
+                        expectedChecksum = (elementValue as NSString).floatValue + Float(elementIdentifier!) + Float(stringLength)
+                    }
                     
                     // Performance testing is about calculating elements received per second
                     // By sending motion data, it can be easily compared to expected rates.
@@ -269,7 +277,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         let stringLength = "\(identifier)\(messageValueSeperator)\(value)".characters.count
         var checksum: Float
         let element = VgcManager.elements.elementFromIdentifier(identifier)
-        if element.dataType != .Data && !(value is String)  {
+        if element.dataType != .Data && element.dataType != .String  {
             checksum = value as! Float + Float(identifier) + Float(stringLength)
         } else {
             checksum = Float(identifier) + Float(stringLength)
