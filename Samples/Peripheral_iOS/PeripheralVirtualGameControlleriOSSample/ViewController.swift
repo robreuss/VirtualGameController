@@ -73,6 +73,22 @@ class ViewController: UIViewController {
             }
         }
         
+        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.Keyboard.rawValue) {
+            
+            element.valueChangedHandlerForPeripheral = { (element: Element) in
+                
+                print("Custom element handler fired for \(element.name) with value \(element.value)")
+                
+                self.peripheralControlPadView.flashView.backgroundColor = UIColor.brownColor()
+                UIView.animateWithDuration(0.05, delay: 0.0, options: .CurveEaseIn, animations: {
+                    self.peripheralControlPadView.flashView!.alpha = 1
+                    }, completion: { finished in
+                        self.peripheralControlPadView.flashView!.alpha = 0
+                })
+                
+            }
+        }
+        
         if let element: Element = VgcManager.elements.rightShoulder {
             
             element.valueChangedHandlerForPeripheral = { (element: Element) in
