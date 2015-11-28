@@ -867,12 +867,11 @@ public class ElementDebugView: UIView {
     
     public func receivedDebugViewDoubleTap() {
 
-        
         // Test archive mode
-        let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
-        NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
-        element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
-        controller.sendElementStateToPeripheral(element)
+        //let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
+        //NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
+        //element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
+        //controller.sendElementStateToPeripheral(element)
         //VgcController.sendElementStateToAllPeripherals(element)
         
         // Test simple float mode
@@ -880,6 +879,13 @@ public class ElementDebugView: UIView {
         //rightShoulder.value = 1.0
         //controller.sendElementStateToPeripheral(rightShoulder)
         //VgcController.sendElementStateToAllPeripherals(rightShoulder)
+        
+        // Test string mode
+        let keyboard = controller.elements.custom[CustomElementType.Keyboard.rawValue]!
+        keyboard.value = "1 2 3 4 5 6 7 8"
+        keyboard.value = "Before newline\nAfter newline\n\n\n"
+        controller.sendElementStateToPeripheral(keyboard)
+        //VgcController.sendElementStateToAllPeripherals(keyboard)
         
     }
     
