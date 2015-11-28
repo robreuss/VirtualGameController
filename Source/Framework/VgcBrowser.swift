@@ -161,24 +161,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         closeStreams()
     }
     
-    /*
-    func sendDeviceInfoElement(element: Element) {
-        let encodedDataArray = streamer.encodedMessageWithChecksum(elements.deviceInfoElement.identifier, value: element.valueAsBase64String)
-        if deviceIsTypeOfBridge() {
-            
-            if let controller = peripheral.controller {
-                controller.toCentralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
-            } else {
-                print("Not sending device information for lack of a controller (and stream")
-            }
-
-        } else {
-            guard outputStream != nil else { return }
-            outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
-        }
-    }
-*/
-    
     // This is triggered by the Streamer if it receives a malformed message.  We just log it here.
     func sendInvalidMessageSystemMessage() {
         print("Peripheral received invalid checksum message from Central")

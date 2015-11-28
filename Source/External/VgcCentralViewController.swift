@@ -213,7 +213,7 @@ import VirtualGameController
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
             elementDebugView.refresh(controller)
         })
-        
+
         // Refresh on all extended gamepad changes (Global handler)
         controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
@@ -227,7 +227,7 @@ import VirtualGameController
             self.refreshDebugViewForController(controller)
             
         }
-        
+
         #if os(tvOS)
             // Refresh on all micro gamepad changes (Global handler)
             controller.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in

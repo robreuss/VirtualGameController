@@ -234,11 +234,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if element.type != elements.deviceInfoElement.type {
                 
                 //print("Incoming: \(element.name): id: \(elementIdentifier!), element value: \(element.value)")
-                
-                // Update the game controller!
-                //dispatch_sync(lockQueue) {
+
                 element.value = elementValue
-                //}
                 
                 // Don't update the controller if we're in bridgeRelayOnly mode
                 if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
