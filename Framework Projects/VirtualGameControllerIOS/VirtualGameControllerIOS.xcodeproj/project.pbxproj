@@ -18,6 +18,7 @@
 		202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD41BE56DA1004D47EC /* VgcPeripheral.swift */; };
 		202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD61BE56DA1004D47EC /* VgcStreamer.swift */; };
 		202BBFE41BE56DA1004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFD71BE56DA1004D47EC /* VgcWatchConnectivity.swift */; };
+		206AD99E1C0A7B4C003D7721 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206AD99D1C0A7B4C003D7721 /* VgcPeripheralSetup.swift */; };
 		20EC20A91BED855F007AF2EF /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EC20A81BED855F007AF2EF /* VgcBrowser.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		20561D871BFDDF7E008D56F2 /* GCGamepad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCGamepad.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCGamepad.h"; sourceTree = "<group>"; };
 		20561D881BFDDF7E008D56F2 /* GCGamepadSnapshot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCGamepadSnapshot.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCGamepadSnapshot.h"; sourceTree = "<group>"; };
 		20561D891BFDDF7E008D56F2 /* GCMotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GCMotion.h; path = "../../../../../../../Applications/Xcode-beta.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/GameController.framework/Headers/GCMotion.h"; sourceTree = "<group>"; };
+		206AD99D1C0A7B4C003D7721 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = /Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<absolute>"; };
 		20EC20A81BED855F007AF2EF /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 		202BBF571BE569BC004D47EC = {
 			isa = PBXGroup;
 			children = (
+				206AD99D1C0A7B4C003D7721 /* VgcPeripheralSetup.swift */,
 				20561D7F1BFDDF7E008D56F2 /* GameController.h */,
 				20561D801BFDDF7E008D56F2 /* GCController.h */,
 				20561D811BFDDF7E008D56F2 /* GCControllerAxisInput.h */,
@@ -194,6 +197,7 @@
 				202BBFE41BE56DA1004D47EC /* VgcWatchConnectivity.swift in Sources */,
 				202BBFE11BE56DA1004D47EC /* VgcPeripheral.swift in Sources */,
 				202BBFD91BE56DA1004D47EC /* VgcCentralPublisher.swift in Sources */,
+				206AD99E1C0A7B4C003D7721 /* VgcPeripheralSetup.swift in Sources */,
 				202BBFE31BE56DA1004D47EC /* VgcStreamer.swift in Sources */,
 				20EC20A91BED855F007AF2EF /* VgcBrowser.swift in Sources */,
 			);

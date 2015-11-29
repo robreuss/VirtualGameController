@@ -38,6 +38,7 @@ class ViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPeripheralSetup:", name: VgcPeripheralSetupNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "lostService:", name: VgcPeripheralLostService, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "serviceBrowserReset:", name: VgcPeripheralDidResetBrowser, object: nil)
         
@@ -123,6 +124,12 @@ class ViewController: UIViewController {
     @objc func serviceBrowserReset(notification: NSNotification) {
         print("Service browser reset, isMainThread: \(NSThread.isMainThread())")
         peripheralControlPadView.serviceSelectorView.refresh()
+    }
+    
+    // Notification indicates we should refresh the view
+    @objc func receivedPeripheralSetup(notification: NSNotification) {
+        peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
+        print(VgcManager.peripheralSetup)
     }
     
     // There is only one system message, currently, that is relevant to Peripherals,
