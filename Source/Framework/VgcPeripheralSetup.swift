@@ -25,6 +25,7 @@ public class VgcPeripheralSetup: NSObject {
         super.init()
     }
     
+    
     required convenience public init(coder decoder: NSCoder) {
         
         let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! UIColor
@@ -44,6 +45,8 @@ public class VgcPeripheralSetup: NSObject {
         return result
         
     }
+    
+    // Test
     
     public func encodeWithCoder(coder: NSCoder) {
         
