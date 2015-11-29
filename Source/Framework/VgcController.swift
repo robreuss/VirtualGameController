@@ -54,6 +54,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     private var vgcControllerPausedHandler: ((VgcController) -> Void)?
     private var vgcMotion: VgcMotion!
     
+    public var isHardwareController: Bool { get { return self.hardwareController != nil } }
+    
     var bluetoothPeripheral: CBPeripheral!
     
     // Each controller gets it's own set of streams
@@ -873,6 +875,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
                 
             }
+            
         }
     }
     
