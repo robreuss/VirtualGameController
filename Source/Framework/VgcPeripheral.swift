@@ -205,9 +205,9 @@ public class Peripheral: NSObject {
         
         if (haveConnectionToCentral == true) { return }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
-        
         haveConnectionToCentral = true
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
         
         if deviceIsTypeOfBridge() {
             

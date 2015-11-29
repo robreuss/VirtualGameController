@@ -62,6 +62,9 @@ var peripheralManager = VgcManager.peripheral
         let buttonSpacing: CGFloat = 1.0
         let buttonHeight: CGFloat = (0.15 * parentView.bounds.size.height)
         
+        let stickSideSize = parentView.bounds.size.height * 0.25
+        var marginSize: CGFloat = parentView.bounds.size.width * 0.03
+        
         if VgcManager.peripheral.deviceInfo.profileType != .MicroGamepad {
         
             leftShoulderButton = VgcButton(frame: CGRect(x: 0, y: 0, width: (parentView.bounds.width * 0.50) - buttonSpacing, height: buttonHeight), element: elements.leftShoulder)
@@ -106,8 +109,6 @@ var peripheralManager = VgcManager.peripheral
             dpadPad.controlView.layer.cornerRadius = 0
             parentView.addSubview(dpadPad)
             
-            let stickSideSize = parentView.bounds.size.height * 0.25
-            let marginSize: CGFloat = parentView.bounds.size.width * 0.03
             yPosition += padHeightWidth + 10
             
             let leftThumbstickPad = VgcStick(frame: CGRect(x: marginSize, y: yPosition, width: stickSideSize , height: stickSideSize), xElement: elements.leftThumbstickXAxis, yElement: elements.leftThumbstickYAxis)
@@ -204,6 +205,28 @@ var peripheralManager = VgcManager.peripheral
                 motionSwitch.layer.cornerRadius = 15
                 parentView.addSubview(motionSwitch);
             #endif
+            
+        } else {
+            
+            marginSize = 15
+            
+            let leftThumbstickPad = VgcStick(frame: CGRect(x: marginSize, y: 24, width: parentView.bounds.size.width - (marginSize * 2) , height: parentView.bounds.size.width - (marginSize * 2)), xElement: elements.dpadXAxis, yElement: elements.dpadYAxis)
+            leftThumbstickPad.nameLabel.text = "dpad"
+            parentView.addSubview(leftThumbstickPad)
+            
+            let buttonHeight = parentView.bounds.size.height * 0.20
+            
+            let aButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - (buttonHeight * 2) - 2, width: (parentView.bounds.width) - buttonSpacing, height: buttonHeight), element: elements.buttonA)
+            aButton.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleRightMargin]
+            aButton.nameLabel.font = UIFont(name: aButton.nameLabel.font.fontName, size: 20)
+            parentView.addSubview(aButton)
+            
+            let xButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - buttonHeight - 1, width: parentView.bounds.width, height: buttonHeight), element: elements.buttonX)
+            xButton.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleTopMargin]
+            xButton.valueLabel.textAlignment = .Center
+            xButton.nameLabel.font = UIFont(name: xButton.nameLabel.font.fontName, size: 20)
+            parentView.addSubview(xButton)
+
         }
         
         controlOverlay = UIView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.size.width, height: parentView.bounds.size.height))
@@ -251,7 +274,7 @@ var peripheralManager = VgcManager.peripheral
             self.controlOverlay.frame = CGRect(x: 0, y: 0, width: self.parentView.bounds.size.width, height: self.parentView.bounds.size.height)
             }, completion: { finished in
                 self.serviceSelectorView.refresh()
-                self.motionSwitch.on = false
+                if self.motionSwitch != nil { self.motionSwitch.on = false }
         })
     }
     #endif
@@ -259,7 +282,7 @@ var peripheralManager = VgcManager.peripheral
     @objc func gotPlayerIndex(notification: NSNotification) {
         
         let playerIndex: Int = notification.object as! Int
-        playerIndexLabel.text = "Player \(playerIndex + 1)"
+        if playerIndexLabel != nil { playerIndexLabel.text = "Player \(playerIndex + 1)" }
     }
     
     @objc func playerTappedToPause(sender: AnyObject) {

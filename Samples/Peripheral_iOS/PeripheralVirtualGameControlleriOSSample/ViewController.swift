@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
         // Set peripheral device info
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
-        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .MicroGamepad, controllerType: .Software, supportsMotion: true)
         
         // This property needs to be set to a specific iCade controller to enable the functionality.  This
         // cannot be done by automatically discovering the identity of the controller; rather, it requires
@@ -146,6 +146,8 @@ class ViewController: UIViewController {
     @objc func receivedPeripheralSetup(notification: NSNotification) {
         peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
         print(VgcManager.peripheralSetup)
+        //peripheralControlPadView.parentView.removeFromSuperview()
+        //peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
     }
     
     // There is only one system message, currently, that is relevant to Peripherals,
@@ -183,6 +185,18 @@ class ViewController: UIViewController {
         
         print("Got VgcPeripheralDidConnectNotification notification")
         VgcManager.peripheral.stopBrowsingForServices()
+        
+        #if !os(tvOS)
+            if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
+                
+                // We're mimicing the Apple TV remote here, which starts with motion turned on
+                VgcManager.peripheral.motion.enableAttitude = false
+                VgcManager.peripheral.motion.enableUserAcceleration = true
+                VgcManager.peripheral.motion.enableGravity = true
+                VgcManager.peripheral.motion.enableRotationRate = false
+                VgcManager.peripheral.motion.start()
+            }
+        #endif
         
     }
     
