@@ -98,6 +98,7 @@ public var customElements: CustomElementsSuperclass!
 @objc public enum ProfileType: Int, CustomStringConvertible {
     
     case Unknown
+    case GenericGamepad
     case MicroGamepad
     case Gamepad
     case ExtendedGamepad
@@ -107,6 +108,7 @@ public var customElements: CustomElementsSuperclass!
     public var description : String {
         switch self {
         case .Unknown: return "Unknown"
+        case .GenericGamepad: return "GenericGamepad"
         case .MicroGamepad: return "MicroGamepad"
         case .Gamepad: return "Gamepad"
         case .ExtendedGamepad: return "ExtendedGamepad"
@@ -118,6 +120,7 @@ public var customElements: CustomElementsSuperclass!
     var pathComponentRead : String {
         switch self {
         case .Unknown: return ""
+        case .GenericGamepad: return ""
         case .MicroGamepad: return "microGamepad"
         case .Gamepad: return "gamepad"
         case .ExtendedGamepad: return "extendedGamepad"
@@ -129,6 +132,7 @@ public var customElements: CustomElementsSuperclass!
     var pathComponentWrite : String {
         switch self {
         case .Unknown: return ""
+        case .GenericGamepad: return ""
         case .MicroGamepad: return "vgcMicroGamepad"
         case .Gamepad: return "vgcGamepad"
         case .ExtendedGamepad: return "vgcExtendedGamepad"
@@ -167,6 +171,10 @@ public class VgcManager: NSObject {
 
     // Default to being a Peripheral
     public static var appRole: AppRole = .Peripheral
+    
+    /// Used by the Central to configure a software controller, in terms of profile type, background
+    /// color and such
+    public static var peripheralSetup: VgcPeripheralSetup!
     
     ///
     /// Shared set of elements (in contrast to controllers on a Central/Bridge, each

@@ -25,6 +25,7 @@ public let VgcPeripheralFoundService:               String = "VgcPeripheralFound
 public let VgcPeripheralLostService:                String = "VgcPeripheralLostService"
 public let VgcPeripheralDidResetBrowser:            String = "VgcPeripheralDidResetBrowser"
 public let VgcSystemMessageNotification:            String = "VgcSystemMessageNotification"
+public let VgcPeripheralSetupNotification:           String = "VgcPeripheralSetupNotification"
 public let VgcNewPlayerIndexNotification:           String = "VgcNewPlayerIndexNotification"
 
 public class Peripheral: NSObject {

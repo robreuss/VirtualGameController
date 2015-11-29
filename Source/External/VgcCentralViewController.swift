@@ -22,7 +22,7 @@ import VirtualGameController
     public override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+      
         self.view.backgroundColor = UIColor.darkGrayColor()
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 20, width: self.view.bounds.size.width, height: 60))
@@ -64,10 +64,10 @@ import VirtualGameController
             print("SAMPLE: Discovery completion handler executed")
             
         }
-        
+
         // Disable peer-to-peer (Bluetooth) for better network performance
         VgcManager.includesPeerToPeer = false
-        
+
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
@@ -203,6 +203,25 @@ import VirtualGameController
         let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: controller)
         elementDebugView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin]
         scrollview.addSubview(elementDebugView)
+        
+        if !controller.isHardwareController {
+            
+            // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL
+            // Set a random color on the Peripheral and Debug View
+            var randomRed = (CGFloat(arc4random()) / CGFloat(UInt32.max))
+            var randomGreen = (CGFloat(arc4random()) / CGFloat(UInt32.max))
+            var randomBlue = (CGFloat(arc4random()) / CGFloat(UInt32.max))
+            let minColorValue = CGFloat(0.60)
+            if randomRed < minColorValue { randomRed -= 0.40 }
+            if randomGreen < minColorValue { randomGreen -= 0.40 }
+            if randomBlue < minColorValue { randomBlue -= 0.40 }
+            let peripheralBackgroundColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+            VgcManager.peripheralSetup = VgcPeripheralSetup(profileType: .MicroGamepad, backgroundColor: peripheralBackgroundColor)
+            VgcManager.peripheralSetup.sendToController(controller)
+            
+            elementDebugView.controllerVendorName.backgroundColor = peripheralBackgroundColor
+            elementDebugView.controllerVendorName.textColor = UIColor.darkGrayColor()
+        }
         
         elementDebugViewLookup[controller] = elementDebugView
         

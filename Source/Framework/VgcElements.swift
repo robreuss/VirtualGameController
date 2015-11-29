@@ -48,6 +48,7 @@ public enum ElementDataType: Int {
     case DeviceInfoElement
     case SystemMessage
     case PlayerIndex
+    case PeripheralSetup
     
     // .Standard elements
     case PauseButton
@@ -255,6 +256,7 @@ public class Elements: NSObject {
         systemElements.append(systemMessage)
         systemElements.append(deviceInfoElement)
         systemElements.append(pauseButton)
+        systemElements.append(peripheralSetup)
         
         motionProfileElements = []
         motionProfileElements.append(motionUserAccelerationX)
@@ -411,6 +413,7 @@ public class Elements: NSObject {
     public var deviceInfoElement: Element = Element(type: .DeviceInfoElement, dataType: .Data, name: "Device Info", getterKeypath: "", setterKeypath: "")
     public var playerIndex: Element = Element(type: .PlayerIndex, dataType: .Int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
     public var pauseButton: Element = Element(type: .PauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
+    public var peripheralSetup: Element = Element(type: .PeripheralSetup, dataType: .Data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
     
     public var leftShoulder: Element = Element(type: .LeftShoulder, dataType: .Float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
     public var rightShoulder: Element = Element(type: .RightShoulder, dataType: .Float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")

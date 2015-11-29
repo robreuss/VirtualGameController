@@ -99,6 +99,19 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             break
             
+        case .PeripheralSetup:
+            
+            element.valueAsBase64String = elementValue
+            
+            NSKeyedUnarchiver.setClass(VgcPeripheralSetup.self, forClassName: "VgcPeripheralSetup")
+            VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as! VgcPeripheralSetup)
+
+            print("Central sent peripheral setup: \(VgcManager.peripheralSetup)")
+
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralSetupNotification, object: nil)
+
+            break
+            
         case .PlayerIndex:
             
             let playerIndex = Int(elementValue)
