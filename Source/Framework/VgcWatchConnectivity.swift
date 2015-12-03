@@ -7,7 +7,7 @@
 //
 
 import Foundation
-#if !(os(tvOS))
+#if !(os(tvOS)) && !(os(OSX))
 import WatchConnectivity
     
 public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDelegate {
