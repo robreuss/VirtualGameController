@@ -36,7 +36,7 @@ var peripheralManager = VgcManager.peripheral
     var keyboardTextField: UITextField!
     var keyboardControlView: UIView!
     var keyboardLabel: UILabel!
-    public var flashView: UIView!
+    public var flashView: UIImageView!
     
     public var serviceSelectorView: ServiceSelectorView!
     
@@ -53,7 +53,7 @@ var peripheralManager = VgcManager.peripheral
         
         parentView.backgroundColor = UIColor.darkGrayColor()
         
-        flashView = UIView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.size.width, height: parentView.bounds.size.height))
+        flashView = UIImageView(frame: CGRect(x: 0, y: 0, width: parentView.bounds.size.width, height: parentView.bounds.size.height))
         flashView.backgroundColor = UIColor.redColor()
         flashView.alpha = 0
         flashView.userInteractionEnabled = false
@@ -208,23 +208,42 @@ var peripheralManager = VgcManager.peripheral
             
         } else {
             
-            marginSize = 15
+            marginSize = 10
             
-            let leftThumbstickPad = VgcStick(frame: CGRect(x: marginSize, y: 24, width: parentView.bounds.size.width - (marginSize * 2) , height: parentView.bounds.size.width - (marginSize * 2)), xElement: elements.dpadXAxis, yElement: elements.dpadYAxis)
+            parentView.backgroundColor = UIColor.blackColor()
+            
+            let dpadSize = parentView.bounds.size.height * 0.50
+            let lightBlackColor = UIColor.init(red: 0.08, green: 0.08, blue: 0.08, alpha: 1.0)
+            
+            let leftThumbstickPad = VgcStick(frame: CGRect(x: (parentView.bounds.size.width - dpadSize) * 0.50, y: 24, width: dpadSize, height: parentView.bounds.size.height * 0.50), xElement: elements.dpadXAxis, yElement: elements.dpadYAxis)
             leftThumbstickPad.nameLabel.text = "dpad"
+            leftThumbstickPad.nameLabel.textColor = UIColor.lightGrayColor()
+            leftThumbstickPad.nameLabel.font = UIFont(name: leftThumbstickPad.nameLabel.font.fontName, size: 15)
+            leftThumbstickPad.valueLabel.textColor = UIColor.lightGrayColor()
+            leftThumbstickPad.valueLabel.font = UIFont(name: leftThumbstickPad.nameLabel.font.fontName, size: 15)
+            leftThumbstickPad.backgroundColor = lightBlackColor
+            leftThumbstickPad.controlView.backgroundColor = lightBlackColor
             parentView.addSubview(leftThumbstickPad)
             
             let buttonHeight = parentView.bounds.size.height * 0.20
             
-            let aButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - (buttonHeight * 2) - 2, width: (parentView.bounds.width) - buttonSpacing, height: buttonHeight), element: elements.buttonA)
+            let aButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - (buttonHeight * 2) - 20, width: (parentView.bounds.width) - buttonSpacing, height: buttonHeight), element: elements.buttonA)
             aButton.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleRightMargin]
-            aButton.nameLabel.font = UIFont(name: aButton.nameLabel.font.fontName, size: 20)
+            aButton.nameLabel.font = UIFont(name: aButton.nameLabel.font.fontName, size: 40)
+            aButton.valueLabel.font = UIFont(name: aButton.valueLabel.font.fontName, size: 20)
+            aButton.baseGrayShade = 0.08
+            aButton.nameLabel.textColor = UIColor.lightGrayColor()
+            aButton.valueLabel.textColor = UIColor.lightGrayColor()
             parentView.addSubview(aButton)
             
-            let xButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - buttonHeight - 1, width: parentView.bounds.width, height: buttonHeight), element: elements.buttonX)
+            let xButton = VgcButton(frame: CGRect(x: 0, y: parentView.bounds.size.height - buttonHeight - 10, width: parentView.bounds.width, height: buttonHeight), element: elements.buttonX)
             xButton.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleBottomMargin, UIViewAutoresizing.FlexibleLeftMargin, UIViewAutoresizing.FlexibleTopMargin]
-            xButton.valueLabel.textAlignment = .Center
-            xButton.nameLabel.font = UIFont(name: xButton.nameLabel.font.fontName, size: 20)
+            xButton.valueLabel.textAlignment = .Right
+            xButton.nameLabel.font = UIFont(name: xButton.nameLabel.font.fontName, size: 40)
+            xButton.valueLabel.font = UIFont(name: xButton.valueLabel.font.fontName, size: 20)
+            xButton.baseGrayShade = 0.08
+            xButton.nameLabel.textColor = UIColor.lightGrayColor()
+            xButton.valueLabel.textColor = UIColor.lightGrayColor()
             parentView.addSubview(xButton)
 
         }
@@ -506,7 +525,7 @@ class VgcButton: UIView {
             valueLabel.text = "\(element.value)"
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
-        VgcManager.peripheral.sendElementState(element)
+        //VgcManager.peripheral.sendElementState(element)
         
     }
     
@@ -525,15 +544,25 @@ class VgcButton: UIView {
             valueLabel.text = "\(element.value)"
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
-        VgcManager.peripheral.sendElementState(element)
+
+        //VgcManager.peripheral.sendElementState(element)
         
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
+
+        let image = UIImage(named: "digit_sm.jpg")
+        let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
+        let imageData = UIImageJPEGRepresentation(image!, 1.0)
+        imageElement.value = imageData!
+        VgcManager.peripheral.sendElementState(imageElement)
+        return
+ 
+            
         element.value = 0.0
         valueLabel.text = "\(element.value)"
-        VgcManager.peripheral.sendElementState(element)
+        //VgcManager.peripheral.sendElementState(element)
         self.backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
         
     }
@@ -548,6 +577,7 @@ class VgcStick: UIView {
     var nameLabel: UILabel!
     var valueLabel: UILabel!
     var controlView: UIView!
+    var touchesView: UIView!
     
     var value: Float {
         get {
@@ -588,6 +618,16 @@ class VgcStick: UIView {
         self.layer.cornerRadius = frame.width / 2
         
         self.centerController()
+        
+        if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
+            touchesView = self
+            controlView.userInteractionEnabled = false
+            controlView.hidden = true
+        } else {
+            touchesView = controlView
+            controlView.userInteractionEnabled = true
+            controlView.hidden = false
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -607,7 +647,7 @@ class VgcStick: UIView {
     
     func processTouch(touch: UITouch!) {
         
-        if touch!.view == controlView {
+        if touch!.view == touchesView {
             
             // Avoid updating too often
             if lastMotionRefresh.timeIntervalSinceNow > -(1 / 60) { return } else { lastMotionRefresh = NSDate() }
@@ -650,7 +690,7 @@ class VgcStick: UIView {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first
-        if touch!.view == controlView {
+        if touch!.view == touchesView {
             self.centerController()
         }
         xElement.value = Float(0)
@@ -893,7 +933,15 @@ public class ElementDebugView: UIView {
     }
     
     public func receivedDebugViewDoubleTap() {
-
+        
+        
+        // Test Image Send
+        let image = UIImage(named: "digit.jpg")
+        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
+        let imageData = UIImageJPEGRepresentation(image!, 1.0)
+        element.value = imageData!
+        controller.sendElementStateToPeripheral(element)
+        return
         // Test archive mode
         //let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
         //NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)

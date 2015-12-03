@@ -79,7 +79,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         connectedVgcService = nil
     }
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: String) {
+    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: AnyObject) {
         
         // Get the element in the message using the hash value reference
         guard let element = elements.elementFromIdentifier(elementIdentifier) else {
@@ -87,11 +87,17 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             return
         }
         
+        //print("Received net service message")
+        
+        var elementValueAsString: String = ""
+        
+        if element.dataType != .Data && element.dataType != .String { elementValueAsString = elementValue as! String }
+        
         switch (element.type) {
             
         case .SystemMessage:
             
-            let systemMessageType = SystemMessages(rawValue: Int(elementValue)!)
+            let systemMessageType = SystemMessages(rawValue: Int(elementValueAsString)!)
             
             print("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
@@ -101,7 +107,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
         case .PeripheralSetup:
             
-            element.valueAsBase64String = elementValue
+            element.valueAsBase64String = elementValueAsString
             
             NSKeyedUnarchiver.setClass(VgcPeripheralSetup.self, forClassName: "VgcPeripheralSetup")
             VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as! VgcPeripheralSetup)
@@ -114,7 +120,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
         case .PlayerIndex:
             
-            let playerIndex = Int(elementValue)
+            let playerIndex = Int(elementValueAsString)
             if (playerIndex != nil) {
                 //print ("Player index raw is \(playerIndex)")
                 peripheral.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex!)!
@@ -133,12 +139,16 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 
             case .Float:
                 
-                element.value = Float(elementValue)!
+                element.value = Float(elementValueAsString)!
                 
             case .Data:
                 
-                element.valueAsBase64String = elementValue
-            
+                element.value = elementValue
+                
+            case .String:
+                
+                element.value = NSString(data: elementValue as! NSData, encoding: NSUTF8StringEncoding) as! String
+                
             default:
                 
                 element.value = elementValue
@@ -226,15 +236,21 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             }
         }
 
-        let value: AnyObject
-        if element.dataType == .Data {
-            value = element.valueAsBase64String
+        if element.dataType == .Data || element.dataType == .String {
+            
+            streamer.streamNSDataForElement(element, stream: outputStream)
+            
         } else {
-            value = element.value
+            
+            if streamer.largeDataTransferBusy == true {
+                print("Ignoring small data because busy")
+                //sendElementStateOverNetService(element)
+            }
+            
+            let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
+            outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+            
         }
-        
-        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
-        outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
 
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         

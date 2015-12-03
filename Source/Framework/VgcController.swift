@@ -211,7 +211,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
     }
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: String) {
+    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: AnyObject) {
+        
+        //print("Received net service message")
         
         // Get the element in the message using the hash value reference
         let element = elements.elementFromIdentifier(elementIdentifier)
@@ -223,7 +225,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if element.type == elements.deviceInfoElement.type {
                 
                 print("Received controller device information")
-                element.valueAsBase64String = elementValue
+                //element.valueAsBase64String = elementValue as! String
+                element.value = elementValue
 
                 NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
                 deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as? DeviceInfo)!
@@ -247,7 +250,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     
                     //print("Bridge forwarding value \(elementValue) for \(element.name) to Central")
                     if element.dataType == .Float {
-                        element.value = Float(elementValue)!
+                        element.value = Float(elementValue as! String)!
                     } else {
                         element.value = elementValue
                     }
@@ -272,15 +275,40 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     public func sendElementStateToPeripheral(element: Element) {
-        print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
-        let value: AnyObject
-        if element.dataType == .Data {
-            value = element.valueAsBase64String
+        //print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
+
+        if element.dataType == .Data || element.dataType == .String {
+            
+            streamer.streamNSDataForElement(element, stream: toPeripheralOutputStream)
+            
+            /*
+            let completeData = NSMutableData()
+            completeData.appendData(element.value as! NSData)
+            let totalBytesToWrite = (element.value as! NSData).length
+            var bytesWritten: NSInteger = 0
+            
+            print("Total data to send to peripheral:\((element.value as! NSData).length)")
+            
+            while (completeData.length > bytesWritten) {
+                let write = toPeripheralOutputStream.write(UnsafePointer<UInt8>(completeData.bytes) + bytesWritten, maxLength: completeData.length - bytesWritten)
+                if write == -1 {
+                    print("Error sending data for: \(element.value)")
+                } else {
+                    bytesWritten += write
+                    print("Central has sent \(bytesWritten) bytes")
+                }
+                if bytesWritten == totalBytesToWrite {
+                    print("Sending termination message to Peripheral (Bytes written: \(bytesWritten), current write: \(write)")
+                    // Send complete - we need to send a termination message
+                    let encodedArray = streamer.encodedMessageWithChecksum(element.identifier, value: "_VGCDataComplete_")
+                    toPeripheralOutputStream.write(encodedArray, maxLength: encodedArray.count)
+                }
+            }
+*/
         } else {
-            value = element.value
+            let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
+            toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
         }
-        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: value)
-        toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
     }
     
     // Send a message to the Peripheral that we received an invalid message (based on checksum).
@@ -371,7 +399,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // Value could be either a string or a float
         var valueAsString: String = ""
         var valueAsFloat: Float = 0.0
-        
+         
         if element.value is NSNumber {
             valueAsString = element.value.stringValue
             valueAsFloat = element.value as! Float
@@ -408,7 +436,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         case .Custom:
             
             // Call the element-level change handler
-            if let handler = element.valueChangedHandler {
+            
+            if let handler = elements.custom[element.identifier]!.valueChangedHandler {
                 dispatch_async((handlerQueue)) {
                     handler(self, element)
                 }
@@ -436,7 +465,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         if elements.elementsForController(self).contains(element) {
             
-            //print("Setting value \(valueAsFloat) on Keypath \(keypath)")
+            //print("Setting value \(value) on Keypath \(element.setterKeypath(self))")
             
             setValue(value, forKeyPath: element.setterKeypath(self))
             

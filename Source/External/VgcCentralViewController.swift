@@ -18,6 +18,7 @@ import VirtualGameController
     var scrollview: UIScrollView!
     var debugViewWidth: CGFloat!
     var iCadeTextField: UITextField!
+    var imageView: UIImageView!
     
     public override func viewDidLoad() {
         
@@ -40,6 +41,15 @@ import VirtualGameController
         scrollview.backgroundColor = UIColor.grayColor()
         self.view.addSubview(scrollview)
         
+        imageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.size.width  * 0.20, self.view.bounds.size.height * 0.20))
+        imageView.center = self.view.center
+        imageView.userInteractionEnabled = true
+        imageView.backgroundColor = UIColor.clearColor()
+        self.view.addSubview(imageView)
+        
+        let gr = UITapGestureRecognizer(target: self, action: "clearImage")
+        imageView.gestureRecognizers = [gr]
+
         // Make debug view width suitable for a given device type
         if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
             self.debugViewWidth = scrollview.bounds.size.width * 0.80
@@ -183,6 +193,10 @@ import VirtualGameController
         
     }
     
+    func clearImage() {
+        imageView.image = nil
+    }
+    
     @objc func gotPlayerIndex(notification: NSNotification) {
         
         refreshAllDebugViews()
@@ -206,6 +220,7 @@ import VirtualGameController
         
         if !controller.isHardwareController {
             
+/*
             // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL
             // Set a random color on the Peripheral and Debug View
             var randomRed = (CGFloat(arc4random()) / CGFloat(UInt32.max))
@@ -221,6 +236,8 @@ import VirtualGameController
             
             elementDebugView.controllerVendorName.backgroundColor = peripheralBackgroundColor
             elementDebugView.controllerVendorName.textColor = UIColor.darkGrayColor()
+*/
+            
         }
         
         elementDebugViewLookup[controller] = elementDebugView
@@ -263,7 +280,7 @@ import VirtualGameController
         controller.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             // Avoid updating too often or the UI will freeze up
-            if lastMotionRefresh.timeIntervalSinceNow > -0.05 { return } else { lastMotionRefresh = NSDate() }            
+            if lastMotionRefresh.timeIntervalSinceNow > -0.15 { return } else { lastMotionRefresh = NSDate() }
             self.refreshDebugViewForController(controller)
             
         }
@@ -286,8 +303,17 @@ import VirtualGameController
             
         }
         
+        // Test receiving an image
+        controller.elements.custom[CustomElementType.SendImage.rawValue]!.valueChangedHandler = { (controller, element) in
+            
+            print("Custom element handler fired for Send Image")
+            
+            self.imageView.image = UIImage(data: element.value as! NSData)
+            
+        }
+        
         // Test of custom element "keyboard" handler
-        controller.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (input, value) in
+        controller.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (controller, element) in
             
             let stringValue = String(controller.elements.custom[CustomElementType.Keyboard.rawValue]!.value)
             if stringValue.characters.count > 1 {
