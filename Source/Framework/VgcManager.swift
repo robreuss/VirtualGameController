@@ -174,7 +174,7 @@ public class VgcManager: NSObject {
     
     /// Used by the Central to configure a software controller, in terms of profile type, background
     /// color and such
-    public static var peripheralSetup: VgcPeripheralSetup!
+    public static var peripheralSetup = VgcPeripheralSetup()
     
     ///
     /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
@@ -325,7 +325,7 @@ public func deviceIsTypeOfBridge() -> Bool {
     internal(set) var deviceUID: String
     internal(set) public var vendorName: String
     internal(set) public var attachedToDevice: Bool
-    internal(set) public var profileType: ProfileType
+    public var profileType: ProfileType
     internal(set) public var controllerType: ControllerType
     internal(set) public var supportsMotion: Bool
     

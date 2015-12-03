@@ -167,7 +167,7 @@ public class Element: NSObject {
         
         switch (type) {
             
-        case .SystemMessage, .PlayerIndex, .PauseButton, .DeviceInfoElement: return ""
+        case .SystemMessage, .PlayerIndex, .PauseButton, .DeviceInfoElement, .PeripheralSetup: return ""
             
         case .MotionAttitudeX, .MotionAttitudeW, .MotionAttitudeY, .MotionAttitudeZ, .MotionGravityX, .MotionGravityY, .MotionGravityZ, .MotionRotationRateX, .MotionRotationRateY, .MotionRotationRateZ, .MotionUserAccelerationX, .MotionUserAccelerationY, .MotionUserAccelerationZ:
             
@@ -180,7 +180,7 @@ public class Element: NSObject {
     public func setterKeypath(controller: VgcController) -> String {
         
         switch (type) {
-        case .SystemMessage, .PlayerIndex, .DeviceInfoElement: return ""
+        case .SystemMessage, .PlayerIndex, .DeviceInfoElement, .PeripheralSetup: return ""
         case .MotionAttitudeX, .MotionAttitudeW, .MotionAttitudeY, .MotionAttitudeZ, .MotionGravityX, .MotionGravityY, .MotionGravityZ, .MotionRotationRateX, .MotionRotationRateY, .MotionRotationRateZ, .MotionUserAccelerationX, .MotionUserAccelerationY, .MotionUserAccelerationZ:
             
             return "motion." + setterKeypath
