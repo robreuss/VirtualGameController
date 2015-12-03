@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
         // Set peripheral device info
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
-        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .MicroGamepad, controllerType: .Software, supportsMotion: true)
+        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
         
         // This property needs to be set to a specific iCade controller to enable the functionality.  This
         // cannot be done by automatically discovering the identity of the controller; rather, it requires
@@ -51,8 +51,8 @@ class ViewController: UIViewController {
         VgcManager.peripheral.motion.updateInterval = 1/30
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = false
-        VgcManager.peripheral.motion.enableRotationRate = false
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
         VgcManager.peripheral.motion.enableUserAcceleration = true
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
@@ -71,6 +71,19 @@ class ViewController: UIViewController {
                         self.peripheralControlPadView.flashView!.alpha = 0
                 })
                 
+            }
+        }
+        
+        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.SendImage.rawValue) {
+            
+            element.valueChangedHandlerForPeripheral = { (element: Element) in
+                
+                print("Custom element handler fired for Send Image")
+                self.peripheralControlPadView.flashView.image = nil
+                self.peripheralControlPadView.flashView.image = UIImage(data: element.value as! NSData)
+                self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.Bottom
+                self.peripheralControlPadView.flashView.alpha = 1.0
+                self.peripheralControlPadView.flashView.backgroundColor = UIColor.clearColor()
             }
         }
         
@@ -145,9 +158,13 @@ class ViewController: UIViewController {
     // Notification indicates we should refresh the view
     @objc func receivedPeripheralSetup(notification: NSNotification) {
         peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
+        VgcManager.peripheral.deviceInfo.profileType = VgcManager.peripheralSetup.profileType
         print(VgcManager.peripheralSetup)
-        //peripheralControlPadView.parentView.removeFromSuperview()
-        //peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+        for view in peripheralControlPadView.parentView.subviews {
+            view.removeFromSuperview()
+        }
+        peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+        peripheralControlPadView.controlOverlay.frame = CGRect(x: 0, y: -peripheralControlPadView.parentView.bounds.size.height, width: peripheralControlPadView.parentView.bounds.size.width, height: peripheralControlPadView.parentView.bounds.size.height)
     }
     
     // There is only one system message, currently, that is relevant to Peripherals,

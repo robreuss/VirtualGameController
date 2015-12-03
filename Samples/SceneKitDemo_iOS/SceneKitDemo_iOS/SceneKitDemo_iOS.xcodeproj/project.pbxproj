@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202D5CA81C0AC132006F782A /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 202D5CA71C0AC132006F782A /* VirtualGameController.framework */; };
+		202D5CA91C0AC132006F782A /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 202D5CA71C0AC132006F782A /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20AD46D91C06699A002A48A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD46D81C06699A002A48A9 /* AppDelegate.swift */; };
 		20AD46DB1C06699A002A48A9 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46DA1C06699A002A48A9 /* art.scnassets */; };
 		20AD46DD1C06699A002A48A9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD46DC1C06699A002A48A9 /* GameViewController.swift */; };
 		20AD46E01C06699A002A48A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46DE1C06699A002A48A9 /* Main.storyboard */; };
 		20AD46E21C06699A002A48A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46E11C06699A002A48A9 /* Assets.xcassets */; };
 		20AD46E51C06699A002A48A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46E31C06699A002A48A9 /* LaunchScreen.storyboard */; };
-		20AD46F11C067039002A48A9 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46F01C067039002A48A9 /* VirtualGameController.framework */; };
-		20AD46F21C067039002A48A9 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46F01C067039002A48A9 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20AD46F21C067039002A48A9 /* VirtualGameController.framework in Embed Frameworks */,
+				202D5CA91C0AC132006F782A /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -32,6 +32,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		202D5CA71C0AC132006F782A /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		20AD46D51C06699A002A48A9 /* SceneKitDemo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AD46D81C06699A002A48A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20AD46DA1C06699A002A48A9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		20AD46E11C06699A002A48A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20AD46E41C06699A002A48A9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20AD46E61C06699A002A48A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20AD46F01C067039002A48A9 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AD46F11C067039002A48A9 /* VirtualGameController.framework in Frameworks */,
+				202D5CA81C0AC132006F782A /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +58,7 @@
 		20AD46CC1C06699A002A48A9 = {
 			isa = PBXGroup;
 			children = (
-				20AD46F01C067039002A48A9 /* VirtualGameController.framework */,
+				202D5CA71C0AC132006F782A /* VirtualGameController.framework */,
 				20AD46D71C06699A002A48A9 /* SceneKitDemo_iOS */,
 				20AD46D61C06699A002A48A9 /* Products */,
 			);
@@ -320,6 +320,7 @@
 				20AD46EB1C06699A002A48A9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

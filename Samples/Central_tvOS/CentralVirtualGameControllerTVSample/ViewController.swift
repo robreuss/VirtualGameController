@@ -14,10 +14,11 @@ class ViewController: VgcCentralViewController {
         
         // Publishes the central service
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
-        
+
         super.viewDidLoad()
         
     }
 
 }
+
 
