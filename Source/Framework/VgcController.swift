@@ -279,35 +279,12 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
         if element.dataType == .Data || element.dataType == .String {
             
-            streamer.streamNSDataForElement(element, stream: toPeripheralOutputStream)
-            
-            /*
-            let completeData = NSMutableData()
-            completeData.appendData(element.value as! NSData)
-            let totalBytesToWrite = (element.value as! NSData).length
-            var bytesWritten: NSInteger = 0
-            
-            print("Total data to send to peripheral:\((element.value as! NSData).length)")
-            
-            while (completeData.length > bytesWritten) {
-                let write = toPeripheralOutputStream.write(UnsafePointer<UInt8>(completeData.bytes) + bytesWritten, maxLength: completeData.length - bytesWritten)
-                if write == -1 {
-                    print("Error sending data for: \(element.value)")
-                } else {
-                    bytesWritten += write
-                    print("Central has sent \(bytesWritten) bytes")
-                }
-                if bytesWritten == totalBytesToWrite {
-                    print("Sending termination message to Peripheral (Bytes written: \(bytesWritten), current write: \(write)")
-                    // Send complete - we need to send a termination message
-                    let encodedArray = streamer.encodedMessageWithChecksum(element.identifier, value: "_VGCDataComplete_")
-                    toPeripheralOutputStream.write(encodedArray, maxLength: encodedArray.count)
-                }
-            }
-*/
+            streamer.writeElementWithNSData(element, toStream: toPeripheralOutputStream)
+
         } else {
-            let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
-            toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+            
+            streamer.writeElement(element, toStream:toPeripheralOutputStream)
+            
         }
     }
     
@@ -317,8 +294,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     func sendInvalidMessageSystemMessage() {
         let element = elements.systemMessage
         element.value = SystemMessages.ReceivedInvalidMessage.rawValue
-        let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
-        toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+        streamer.writeElement(element, toStream:toPeripheralOutputStream)
     }
 
     public func disconnect() {
@@ -958,8 +934,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     let playerIndexElement = elements.playerIndex
                     playerIndexElement.value = playerIndex.rawValue
                     
-                    let encodedDataArray = streamer.encodedMessageWithChecksum(playerIndexElement.identifier, value: playerIndexElement.value)
-                    toPeripheralOutputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+                    streamer.writeElement(playerIndexElement, toStream: toPeripheralOutputStream)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: self)
                     

@@ -238,17 +238,11 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 
         if element.dataType == .Data || element.dataType == .String {
             
-            streamer.streamNSDataForElement(element, stream: outputStream)
+            streamer.writeElementWithNSData(element, toStream: outputStream)
             
         } else {
             
-            if streamer.largeDataTransferBusy == true {
-                print("Ignoring small data because busy")
-                //sendElementStateOverNetService(element)
-            }
-            
-            let encodedDataArray = streamer.encodedMessageWithChecksum(element.identifier, value: element.value)
-            outputStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+            streamer.writeElement(element, toStream:outputStream)
             
         }
 

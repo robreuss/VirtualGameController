@@ -30,7 +30,6 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var dataMessageExpectedLength: Int = 0
     var elementIdentifier: Int!
     var transferType: TransferType = .Unknown
-    internal var largeDataTransferBusy: Bool = false
     
     enum TransferType: Int, CustomStringConvertible {
         
@@ -61,9 +60,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         print("Streamer deinitalized")
     }
     
-    func streamNSDataForElement(element: Element, stream: NSOutputStream) {
-        
-        largeDataTransferBusy = true
+    func writeElementWithNSData(element: Element, toStream:NSOutputStream) {
         
         var elementValueData: NSData!
         
@@ -72,13 +69,6 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         } else {
             elementValueData = element.value as! NSData
         }
-        
-        // DATA- 5 bytes
-        // element identifier: 4 bytes
-        // data length string: 13 bytes
-        //
-        // total message header length is 22
-        // terminator is 9
         
         let elementIdentifierString = "\(element.identifier)".stringByPaddingToLength(3, withString: " ", startingAtIndex: 0)
         let lengthOfDataString = "\(elementValueData.length)".stringByPaddingToLength(13, withString: " ", startingAtIndex: 0)
@@ -102,35 +92,28 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         while (completeData.length > bytesWritten) {
             
-            let write = stream.write(UnsafePointer<UInt8>(completeData.bytes) + bytesWritten, maxLength: completeData.length - bytesWritten)
+            let write = toStream.write(UnsafePointer<UInt8>(completeData.bytes) + bytesWritten, maxLength: completeData.length - bytesWritten)
             if write == -1 {
                 print("    Error sending data for: \(element.name)")
-                largeDataTransferBusy = false
                 return
             } else {
                 bytesWritten += write
                 //print("    Sent \(bytesWritten) bytes")
             }
             
-            // If we've sent all the bytes, send terminator
-            if bytesWritten == completeData.length {
-                // Need a slight delay here or the message will not properly send on faster hardware
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-                dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    //print("    Sending termination message (Bytes written: \(bytesWritten))")
-                    //let encodedArray = self.encodedMessageWithChecksum(element.identifier, value: VgcManager.netServiceDataTerminator)
-                    //stream.write(encodedArray, maxLength: encodedArray.count)
-
-                }
-
-            }
         }
         
         if completeData.length > bytesWritten {
             print("Got data transfer mismatch")
         }
+
+    }
+    
+    func writeElement(element: Element, toStream: NSOutputStream) {
         
-        largeDataTransferBusy = false
+        let encodedDataArray = encodedMessageWithChecksum(element.identifier, value: element.value)
+        toStream.write(encodedDataArray, maxLength: encodedDataArray.count)
+        
     }
     
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {

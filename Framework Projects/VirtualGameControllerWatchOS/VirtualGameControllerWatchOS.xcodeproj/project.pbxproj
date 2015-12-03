@@ -12,6 +12,7 @@
 		202BBFF11BE57419004D47EC /* VgcMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFEC1BE57419004D47EC /* VgcMotion.swift */; };
 		202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */; };
 		20A120BE1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20C91F931C10107000D99D88 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		20A120BA1BDA97BF00E30083 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameControllerWatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerWatchOS.h; sourceTree = "<group>"; };
 		20A120BF1BDA97BF00E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = /Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				202BBFEC1BE57419004D47EC /* VgcMotion.swift */,
 				202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */,
 				20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */,
+				20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */,
 				20A120BF1BDA97BF00E30083 /* Info.plist */,
 			);
 			path = VirtualGameControllerWatchOS;
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */,
+				20C91F931C10107000D99D88 /* VgcPeripheralSetup.swift in Sources */,
 				202BBFF11BE57419004D47EC /* VgcMotion.swift in Sources */,
 				202BBFF01BE57419004D47EC /* VgcManager.swift in Sources */,
 				202BBFEF1BE57419004D47EC /* VgcElements.swift in Sources */,
