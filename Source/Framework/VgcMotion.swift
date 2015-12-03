@@ -103,7 +103,7 @@ public class VgcMotionManager: NSObject {
                     
                     setupFilterConstant()
                     
-                    let motionQueue = NSOperationQueue()
+                    let motionQueue = NSOperationQueue.currentQueue()!
                     
                     print("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
