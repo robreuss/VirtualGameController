@@ -172,15 +172,18 @@ import VirtualGameController
         }
     }
     
+    //let lockQueueRefreshDebugView = dispatch_queue_create("net.simplyformed.lockRefreshDebugView", nil)
+
     // This will result in a given debug view having all of it's values updated.
     func refreshDebugViewForController(controller: VgcController) {
         
-        dispatch_async(dispatch_get_main_queue()) {
-            if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
-                elementDebugView.refresh(controller)
+        //dispatch_sync(lockQueueRefreshDebugView) {
+            dispatch_async(dispatch_get_main_queue()) {
+                if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
+                    elementDebugView.refresh(controller)
+                }
             }
-        }
-        
+        //}
     }
     
     // Call refresh on all of the debug views
@@ -361,9 +364,10 @@ import VirtualGameController
     
     func refreshElementDebugViewPositions() {
         
+   
         let controllerCount = CGFloat(VgcController.controllers().count)
         
-        print("Refreshing debug view positions with controller count of \(controllerCount), debug view count \(elementDebugViewLookup.count)")
+        print("Refreshing debug view positions with controller count of \(controllerCount), debug view count \(self.elementDebugViewLookup.count)")
         
         let elementViewSpacing = CGFloat(20.0)
         var xPosition = CGFloat(5)
@@ -371,7 +375,7 @@ import VirtualGameController
         
         for controller in VgcController.controllers() {
             
-            if let elementDebugView = elementDebugViewLookup[controller] {
+            if let elementDebugView = self.elementDebugViewLookup[controller] {
                 
                 if !deviceIsTypeOfBridge() {
                     controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
@@ -383,7 +387,7 @@ import VirtualGameController
                     elementDebugView.frame = CGRect(x: xPosition, y: 5, width: self.debugViewWidth, height: self.scrollview.bounds.size.height - 20)
                     
                     }, completion: { finished in
-
+                        
                 })
                 xPosition += self.debugViewWidth + elementViewSpacing
                 
@@ -393,8 +397,8 @@ import VirtualGameController
             
         }
         
-        scrollview.contentSize = CGSize(width: (self.debugViewWidth + elementViewSpacing) * controllerCount, height: scrollview.bounds.size.height - 120)
-        
+        self.scrollview.contentSize = CGSize(width: (self.debugViewWidth + elementViewSpacing) * controllerCount, height: self.scrollview.bounds.size.height - 120)
+
     }
     
     public override func didReceiveMemoryWarning() {

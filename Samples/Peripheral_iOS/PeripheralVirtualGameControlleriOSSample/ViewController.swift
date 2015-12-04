@@ -182,8 +182,8 @@ class ViewController: UIViewController {
             if VgcManager.peripheral.motion.active == true {
                 
                 // Decrease motion update interval to prevent invalid messages
-                VgcManager.peripheral.motion.updateInterval = VgcManager.peripheral.motion.updateInterval + (VgcManager.peripheral.motion.updateInterval * 0.05)
-                print("Modifying motion update interval to \(VgcManager.peripheral.motion.updateInterval)")
+                //VgcManager.peripheral.motion.updateInterval = VgcManager.peripheral.motion.updateInterval + (VgcManager.peripheral.motion.updateInterval * 0.05)
+                //print("Modifying motion update interval to \(VgcManager.peripheral.motion.updateInterval)")
                 
             }
             

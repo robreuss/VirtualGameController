@@ -552,7 +552,7 @@ class VgcButton: UIView {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
 
-        let image = UIImage(named: "digit_sm.jpg")
+        let image = UIImage(named: "digit.jpg")
         let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         imageElement.value = imageData!

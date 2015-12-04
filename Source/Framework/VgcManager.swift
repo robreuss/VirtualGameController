@@ -227,6 +227,8 @@ public class VgcManager: NSObject {
 
     public static var netServiceBufferSize = 2048
     
+    static var netServiceHeaderLength = 22
+    
     // Enable this if you want fallback to Bluetooth, but know it has an impact on network
     // performance.
     public static var includesPeerToPeer = false
