@@ -68,6 +68,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         print("Closing streams")
         if inputStream != nil { inputStream.close() }
         if outputStream != nil { outputStream.close() }
+        //if peripheral.controller.toCentralOutputStream != nil { peripheral.controller.toCentralOutputStream.close() }
+        //if peripheral.controller.fromCentralInputStream != nil { peripheral.controller.fromCentralInputStream.close() }
     }
     
     // This is a callback from the streamer
@@ -215,10 +217,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             return
         }
         
-        if outputStream.hasSpaceAvailable == false {
-            print("OutputStream has no space")
-        }
-        
         // Using a struct this way enables us to initalize our variables
         // only once
         struct PerformanceVars {
@@ -238,7 +236,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 
         if element.dataType == .Data || element.dataType == .String {
             
-            streamer.writeElementWithNSData(element, toStream: outputStream)
+            streamer.writeElementAsNSData(element, toStream: outputStream)
             
         } else {
             
@@ -339,8 +337,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 inputStream.open()
                 
             }
+            
+            // Slight delay for the streams to get ready
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.peripheral.gotConnectionToCentral()
+            }
 
-            peripheral.gotConnectionToCentral()
         }
     }
     

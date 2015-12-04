@@ -279,7 +279,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
         if element.dataType == .Data || element.dataType == .String {
             
-            streamer.writeElementWithNSData(element, toStream: toPeripheralOutputStream)
+            streamer.writeElementAsNSData(element, toStream: toPeripheralOutputStream)
 
         } else {
             
@@ -747,8 +747,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             index++
         }
     }
-    
-    
+
     // Defaults the handler queue to main and exposes the hardware version of the
     // handler queue for hardware devices
     public var handlerQueue:dispatch_queue_t {

@@ -30,6 +30,8 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var dataMessageExpectedLength: Int = 0
     var elementIdentifier: Int!
     var transferType: TransferType = .Unknown
+    var nsStringBuffer: NSString = ""
+    var cycleCount: Int = 0
     
     enum TransferType: Int, CustomStringConvertible {
         
@@ -60,7 +62,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         print("Streamer deinitalized")
     }
     
-    func writeElementWithNSData(element: Element, toStream:NSOutputStream) {
+    func writeElementAsNSData(element: Element, toStream:NSOutputStream) {
         
         var elementValueData: NSData!
         
@@ -77,66 +79,121 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         print("Header length: \(messageHeaderString.characters.count)")
 
         let messageHeaderData = messageHeaderString.dataUsingEncoding(NSUTF8StringEncoding)
-        
+       
         //let messageHeaderData = "DATA".dataUsingEncoding(NSUTF8StringEncoding)
         print("Message header data: \(messageHeaderData)")
         
         print("Message Header data length \(messageHeaderData!.length), message header string length \(messageHeaderString.characters.count), element value length: \(elementValueData.length), header string: \(messageHeaderString)")
 
-        let completeData = NSMutableData()
-        completeData.appendData(messageHeaderData!)
-        completeData.appendData(elementValueData)
-        var bytesWritten: NSInteger = 0
+        let messageData = NSMutableData()
+        messageData.appendData(messageHeaderData!)
+        messageData.appendData(elementValueData)
         
-        print("Sending Data for \(element.name):\(completeData.length) bytes")
+        print("Sending Data for \(element.name):\(messageData.length) bytes")
         
-        while (completeData.length > bytesWritten) {
-            
-            let write = toStream.write(UnsafePointer<UInt8>(completeData.bytes) + bytesWritten, maxLength: completeData.length - bytesWritten)
-            if write == -1 {
-                print("    Error sending data for: \(element.name)")
-                return
-            } else {
-                bytesWritten += write
-                //print("    Sent \(bytesWritten) bytes")
-            }
-            
-        }
-        
-        if completeData.length > bytesWritten {
-            print("Got data transfer mismatch")
-        }
-
+        writeData(messageData, toStream: toStream)
+ 
     }
     
     func writeElement(element: Element, toStream: NSOutputStream) {
         
-        let encodedDataArray = encodedMessageWithChecksum(element.identifier, value: element.value)
-        toStream.write(encodedDataArray, maxLength: encodedDataArray.count)
-        
+        var stringToSend: String
+        let stringLength = "\(element.identifier)\(messageValueSeperator)\(element.value)".characters.count
+        if element.dataType != .Data && element.dataType != .String  {
+            let checksum: Float = element.value as! Float + Float(element.identifier) + Float(stringLength)
+            stringToSend = "\(checksum)\(messageValueSeperator)\(element.identifier)\(messageValueSeperator)\(element.value)\n"
+        } else {
+            stringToSend = "\(stringLength)\(messageValueSeperator)\(element.identifier)\(messageValueSeperator)\(element.value)\n"
+        }
+        let messageData = stringToSend.dataUsingEncoding(NSUTF8StringEncoding)
+        if !toStream.hasSpaceAvailable {
+            print("No space: \(element.name)")
+        }
+        writeData(messageData!, toStream: toStream)
     }
+    
+    var dataSendQueue = NSMutableData()
+    let lockQueueWriteData = dispatch_queue_create("net.simplyformed.lockQueueWriteData", nil)
+    var streamerIsBusy: Bool = false
+    
+    func writeData(var data: NSData, toStream: NSOutputStream) {
+
+
+        /*
+        if (streamerIsBusy || !toStream.hasSpaceAvailable) {
+            print("Output stream has space available: \(toStream.hasSpaceAvailable)")
+            print("OutputStream has no space/streamer is busy: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
+            dispatch_sync(self.lockQueueWriteData) {
+                self.dataSendQueue.appendData(data)
+            }
+            print("Appended dataSendQueue, length: \(self.dataSendQueue.length)")
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.writeData(NSData(), toStream: toStream)
+            }
+       }
+
+        if dataSendQueue.length > 0 {
+            print("Processing dataSendQueue, length: \(dataSendQueue.length)")
+            dataSendQueue.appendData(data)
+            data = dataSendQueue
+            dataSendQueue = NSMutableData()
+        }
+        */
+        streamerIsBusy = true
+
+        var bytesWritten: NSInteger = 0
+        while (data.length > bytesWritten) {
+            
+            let writeResult = toStream.write(UnsafePointer<UInt8>(data.bytes) + bytesWritten, maxLength: data.length - bytesWritten)
+            if writeResult == -1 {
+                print("    Error sending data")
+                return
+            } else {
+                bytesWritten += writeResult
+                //print("    Sent \(bytesWritten) bytes")
+            }
+            
+        }
+        if data.length != bytesWritten {
+            print("Got data transfer size mismatch")
+        }
+        streamerIsBusy = false
+    }
+
+    let dataFlagExpected = "DATA".dataUsingEncoding(NSUTF8StringEncoding)
     
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         
         switch (eventCode){
-
+ 
         case NSStreamEvent.HasBytesAvailable:
+            
+            //print("Stream status: \(aStream.streamStatus.rawValue)")
             
             //print("Operating on thread: \(NSThread.currentThread()) (\(transferType))")
             
             if transferType == .Unknown { transferType = .Ready }
             
+            if transferType == .Ready {
+                nsStringBuffer = "" as NSString
+                cycleCount = 1
+            } else {
+                cycleCount++
+            }
+            
+            var bufferLoops = 0
+            
             let inputStream = aStream as! NSInputStream
             
             var buffer = Array<UInt8>(count: VgcManager.netServiceBufferSize, repeatedValue: 0)
             
-            var nsStringBuffer: NSString = ""
-            
-            var cycleCount = 1
-            
             // Loop through and get a complete message in case the message is passed
             // in fragments - we look for a terminating newline
             while inputStream.hasBytesAvailable {
+                
+                bufferLoops++
+                if bufferLoops > 1 { print("Buffer size is \(nsStringBuffer.length) (Cycle count: \(cycleCount)) ((Buffer loops: \(bufferLoops))") }
                 
                 let len = inputStream.read(&buffer, maxLength: buffer.count)
                 
@@ -151,11 +208,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     if transferType == .Ready {
 
                         if testData.length >= 22 {
-                            let messageHeaderData = testData.subdataWithRange(NSRange.init(location: 0, length: 22))
-                            let dataFlag = messageHeaderData.subdataWithRange(NSRange.init(location: 0, length: 4))
-                            let dataFlagExpected = "DATA".dataUsingEncoding(NSUTF8StringEncoding)
+                            let dataFlag = testData.subdataWithRange(NSRange.init(location: 0, length: 4))
                             if dataFlag == dataFlagExpected {
-                            
+                                let messageHeaderData = testData.subdataWithRange(NSRange.init(location: 0, length: 22))
                                 print("Message header data: \(messageHeaderData) (\(transferType))")
                                 messageHeaderString = NSString(data: messageHeaderData, encoding: NSUTF8StringEncoding)!
                                 let messageHeaderComponents = messageHeaderString.componentsSeparatedByString("-")
@@ -180,29 +235,35 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                                         print("Large transfer expected data length: \(dataMessageExpectedLength) (\(transferType))")
                                         
                                     }
+                                } else {
+                                    print("Unable to componentize large data header")
+                                    transferType = .Ready
+                                    return
                                 }
                             }
                         }
                     }
                     
-                    if transferType == .Ready {
+                    if transferType == .Ready || transferType == .SmallData {
                         
                         transferType = .SmallData
-                        //print("Confirmed small data incoming (\(transferType))")
 
                         if var rawContentsNSString = NSString(bytes: &buffer, length: len, encoding: NSUTF8StringEncoding) {
                             rawContentsNSString = rawContentsNSString.stringByReplacingOccurrencesOfString("\0", withString: "", options: NSStringCompareOptions.LiteralSearch, range: NSMakeRange(0, rawContentsNSString.length))
                             
                             nsStringBuffer = "\(nsStringBuffer)\(rawContentsNSString)" as NSString
                             
-                            cycleCount++
+                        } else {
+                            print("ERROR: Unable to stringify incoming data")
+                            transferType = .Ready
+                            return
                         }
                         
                     } else if transferType == .LargeData {
                     
                         //print("Message header: \(messageHeaderString), dataBuffer: \(dataBuffer.length), Working on data: \(workingOnBigData), Test Data Length: \(testData.length), Expected Length: \(dataMessageExpectedLength)")
                         
-                        //print("Processing large data (\(dataBuffer.length) of \(dataMessageExpectedLength)) (\(transferType))")
+                        print("Processing large data (\(dataBuffer.length) of \(dataMessageExpectedLength)) (\(transferType))")
                         
                        var messageData = NSData()
                         
@@ -231,31 +292,43 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                             
                             if dataBuffer.length > dataMessageExpectedLength {
                                 print("ERROR: Recieved more bytes than expected (by \(dataBuffer.length - dataMessageExpectedLength)")
-                                print("")
+                                let debugData = dataBuffer.subdataWithRange(NSRange.init(location: dataMessageExpectedLength, length: dataBuffer.length - dataMessageExpectedLength))
+                                let debugString = NSString(data: debugData, encoding: NSUTF8StringEncoding)!
+                                nsStringBuffer = "\(debugString)" as NSString
+                                print("Extraneous Data: \(debugString)")
+                                transferType = .SmallData
+                                dataBuffer =  NSMutableData(data: dataBuffer.subdataWithRange(NSRange.init(location: 0, length: dataMessageExpectedLength)))
+                                
                             }
                             
                             let element = elements.elementFromIdentifier(elementIdentifier!)
                             
-                            //print("Got element: \(element)")
-                            
-                            if element.dataType == .String {
-                                
-                                let valueString = NSString(data: dataBuffer, encoding: NSUTF8StringEncoding) // NSUTF8StringEncoding
-                                delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: valueString!)
-                                
+                            if element == nil {
+                                print("ERROR: Unrecognized element")
                             } else {
                                 
-                                delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: dataBuffer)
+                                //print("Got element: \(element)")
                                 
+                                if element.dataType == .String || element.dataType == .Float {
+                                    
+                                    let valueString = NSString(data: dataBuffer, encoding: NSUTF8StringEncoding) // NSUTF8StringEncoding
+                                    delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: valueString!)
+                                    
+                                } else {
+                                    
+                                    delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: dataBuffer)
+                                    
+                                }
                             }
                             
                             dataBuffer = NSMutableData()
-                            transferType = .Ready
+                            // Only reset if we haven't obtained some small data above
+                            if transferType == .LargeData { transferType = .Ready }
                             elementIdentifier = nil
                             dataMessageExpectedLength = 0
                             
                             return
-                    }
+                        }
 
                     }
 
@@ -266,20 +339,16 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             }
             
             if transferType == .LargeData {
-                //print("Returning for more large data (\(transferType))")
+                print("Returning for more large data (\(transferType))")
                 return
             }
-            
-            //print("Running main small data processing (\(transferType))")
-            
-            transferType = .Ready // Reset this for when we're done processing small data below
-            
-            cycleCount = 1
-            
+
             // Do we have a message or messages?
             if nsStringBuffer.length > 0 {
                 
                 var messageToProcess = nsStringBuffer as String
+                
+                //print("String size is \(messageToProcess.characters.count) (Cycle count: \(cycleCount))")
                 
                 //nsStringBuffer = ""
                 
@@ -292,17 +361,23 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     messageToProcess = String(messageToProcess.characters.dropFirst())
                 }
                 
-                if messageToProcess == "" { break }
+                //if messageToProcess == "" { break }
                 
                 // Same thing - we don't want a message seperator at the end
-                guard let lastCharacter = messageToProcess.characters.last else { break }
+                let lastCharacter = messageToProcess.characters.last
+                //guard let lastCharacter = messageToProcess.characters.last else { break }
                 if lastCharacter == "\n" {
                     messageToProcess = String(messageToProcess.characters.dropLast())  // Must not have trailing /n or array will have no members
+                    transferType = .Ready
+                    //print("Integrated message set (Cycle count: \(cycleCount))")
+                } else {
+                    print("Broken last message, looking for more data (Cycle count: \(cycleCount))")
+                    return
                 }
                 
-                // Create an array of indvidiual messages
+                // Create an array of individual messages
                 var messages = messageToProcess.componentsSeparatedByString("\n")
-                
+        
                 totalMessageCount++
                 
                 // If we don't get any members in the array, it means a single value
@@ -312,16 +387,19 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     messages.append(messageToProcess)
                 }
                 
+                //print("Last message: \(messages.last) (Cycle count: \(cycleCount))")
+                
                 // Iterate through the messages in the array
                 while messages.count > 0 {
-                    
+
                     // Grab the most recent message off the array for processing
                     let message = messages.removeFirst()
                     
                     // Split the message between the element reference and the element value
                     let messageParts = message.componentsSeparatedByString(messageValueSeperator)
                     if messageParts.count != 3 {
-                        //print("Incomplete message: \(message)")
+                        print("Incomplete message: \(message)")
+                        transferType = .Ready
                         return
                     }
                     let checksum = (messageParts.first! as NSString).floatValue
@@ -355,7 +433,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                         }
                         
                         if "\(checksum)" != "\(expectedChecksum)" {
-                            //print("ERROR: Invalid checksum: \(expectedChecksum) v. \(checksum) with msg [\(message)] (\(delegate.deviceInfo.vendorName))")
+                            print("ERROR: Invalid checksum: \(expectedChecksum) v. \(checksum) with msg [\(message)] (\(delegate.deviceInfo!.vendorName))")
                             PerformanceVars.invalidChecksums++
                             delegate.sendInvalidMessageSystemMessage!()
                         }
@@ -372,14 +450,16 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                         }
                     }
                     
-                    if "\(checksum)" != "\(expectedChecksum)" { continue }
+                    if "\(checksum)" != "\(expectedChecksum)" {
+                        print("Continuing because of invalid checksum")
+                        continue
+                    }
                     
                     // If we have a well-formed message, continue
                     if elementIdentifier != nil && messageParts.count == 3 {
                         
-                        delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: elementValue)
-                        
-                        
+                        self.delegate.receivedNetServiceMessage(elementIdentifier!, elementValue: elementValue)
+                   
                     } else { // Malformed because it did not result in two components or was nil
                         
                         //print("ERROR: Got malformed message (\(delegate.deviceInfo.vendorName): [\(messageToProcess)] [\(message)]")
@@ -397,6 +477,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     }
                     
                 }
+
+            } else {
+                print("Got empty string buffer")
             }
             
             break
@@ -470,20 +553,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     func netServiceDidStop(sender: NSNetService) {
         print("CENTRAL: netServiceDidStop")
     }
-    
-    func encodedMessageWithChecksum(identifier: Int, value: AnyObject) -> [UInt8] {
-        
-        let stringLength = "\(identifier)\(messageValueSeperator)\(value)".characters.count
-        let element = VgcManager.elements.elementFromIdentifier(identifier)
-        if element.dataType != .Data && element.dataType != .String  {
-            let checksum = value as! Float + Float(identifier) + Float(stringLength)
-            return [UInt8]("\(checksum)\(messageValueSeperator)\(identifier)\(messageValueSeperator)\(value)\n".utf8)
-        } else {
-            let checksum = stringLength // trim the terminating three equal signs from the count
-            return [UInt8]("\(checksum)\(messageValueSeperator)\(identifier)\(messageValueSeperator)\(value)\n".utf8)
-        }
-        
-    }
+
     
     
 }
