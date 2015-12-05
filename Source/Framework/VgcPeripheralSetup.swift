@@ -7,12 +7,19 @@
 //
 
 import Foundation
+#if os(iOS) || os(tvOS)
 import UIKit
+#endif
+#if os(OSX)
+    import AppKit
+#endif
 
 public class VgcPeripheralSetup: NSObject {
     
-    public var backgroundColor: UIColor!
     public var profileType: ProfileType!
+    
+#if os(iOS) || os(tvOS)
+    public var backgroundColor: UIColor!
     
     public override init() {
         // my init
@@ -34,6 +41,32 @@ public class VgcPeripheralSetup: NSObject {
         self.init(profileType: profileType!, backgroundColor: backgroundColor)
         
     }
+#endif
+    
+#if os(OSX)
+    public var backgroundColor: NSColor!
+    
+    public override init() {
+    // my init
+    self.backgroundColor = NSColor.darkGrayColor()
+    }
+    
+    public init(profileType: ProfileType, backgroundColor: NSColor) {
+    self.profileType = profileType
+    self.backgroundColor = backgroundColor
+    super.init()
+    }
+    
+    
+    required convenience public init(coder decoder: NSCoder) {
+    
+    let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! NSColor
+    let profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
+    
+    self.init(profileType: profileType!, backgroundColor: backgroundColor)
+    
+    }
+#endif
     
     public override var description: String {
         
