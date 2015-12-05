@@ -167,10 +167,15 @@ public class Element: NSObject {
             switch self.dataType {
                 
             case .Int:
-                return NSData(bytes: &self.value, length: sizeof(Int))
-                
+    
+                var value: Int = self.value as! Int
+                return NSData(bytes: &value, length: sizeof(Int))
+    
             case .Float:
-                return NSMutableData(data: (self.value as! String).dataUsingEncoding(NSUTF8StringEncoding)!)
+                
+                var value: Float = self.value as! Float
+                return NSData(bytes: &value, length: sizeof(Float))
+                
             case .Data:
                 return self.value as! NSData
             case .String:
@@ -183,12 +188,13 @@ public class Element: NSObject {
             switch self.dataType {
                 
             case .Int:
-                var valueAsInt: Int = 0
-                //newValue.getBytes(&valueAsInt, range: NSMakeRange(0, newValue.length))
-                newValue.getBytes(&valueAsInt, length: sizeof(Float))
-                self.value = valueAsInt
+                var value: Int = 0
+                newValue.getBytes(&value, length: sizeof(Int))
+                self.value = value
             case .Float:
-                self.value = (NSString(data: newValue, encoding: NSUTF8StringEncoding))!.floatValue
+                var value: Float = 0.0
+                newValue.getBytes(&value, length: sizeof(Float))
+                self.value = value
             case .Data:
                 self.value = newValue
             case .String:
