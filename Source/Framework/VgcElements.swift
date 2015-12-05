@@ -161,6 +161,43 @@ public class Element: NSObject {
     
     #if os(iOS) || os(OSX) || os(tvOS)
     
+    public var valueAsNSData: NSData {
+        
+        get {
+            switch self.dataType {
+                
+            case .Int:
+                return NSData(bytes: &self.value, length: sizeof(Int))
+                
+            case .Float:
+                return NSMutableData(data: (self.value as! String).dataUsingEncoding(NSUTF8StringEncoding)!)
+            case .Data:
+                return self.value as! NSData
+            case .String:
+                return NSMutableData(data: (self.value as! String).dataUsingEncoding(NSUTF8StringEncoding)!)
+                
+            }
+        }
+        
+        set {
+            switch self.dataType {
+                
+            case .Int:
+                var valueAsInt: Int = 0
+                //newValue.getBytes(&valueAsInt, range: NSMakeRange(0, newValue.length))
+                newValue.getBytes(&valueAsInt, length: sizeof(Float))
+                self.value = valueAsInt
+            case .Float:
+                self.value = (NSString(data: newValue, encoding: NSUTF8StringEncoding))!.floatValue
+            case .Data:
+                self.value = newValue
+            case .String:
+                self.value = String(data: newValue, encoding: NSUTF8StringEncoding)!
+                
+            }
+        }
+    }
+    
     // Provides calculated keypaths for access to game controller elements
     
     public func getterKeypath(controller: VgcController) -> String {
@@ -207,25 +244,6 @@ public class Element: NSObject {
         coder.encodeObject(name, forKey: "name")
         coder.encodeObject(getterKeypath, forKey: "getterKeypath")
         coder.encodeObject(setterKeypath, forKey: "setterKeypath")
-    
-    }
-    
-    // Used for sending NSData over the wire; for some reason, unarchiving on
-    // the other side fails without sending using Base64 encoding
-    public var valueAsBase64String: String {
-    
-        get {
-            if dataType == .Data {
-                return value.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
-            } else {
-                return ""
-            }
-        }
-        set {
-            if dataType == .Data {
-                value = NSData(base64EncodedString: newValue, options: NSDataBase64DecodingOptions(rawValue: 0))!
-            }
-        }
     
     }
 
