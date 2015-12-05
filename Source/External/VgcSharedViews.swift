@@ -552,7 +552,7 @@ class VgcButton: UIView {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         
 
-        let image = UIImage(named: "digit.jpg")
+        let image = UIImage(named: "digit_sm.jpg")
         let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         imageElement.value = imageData!
@@ -982,12 +982,15 @@ public class ElementDebugView: UIView {
         self.controllerVendorName.text = controller.deviceInfo.vendorName
         
         for element in controller.elements.elementsForController(controller) {
-            
             if let label = self.elementLabelLookup[element.identifier] {
                 let keypath = element.getterKeypath(controller)
                 var value: AnyObject
                 if element.type == .Custom {
-                    value = (controller.elements.custom[element.identifier]?.value)!
+                    if element.dataType == .Data {
+                        value = ""
+                    } else {
+                        value = (controller.elements.custom[element.identifier]?.value)!
+                    }
                     if element.dataType == .String && value as! NSObject == 0 { value = "" }
                 } else if keypath != "" {
                     value = controller.valueForKeyPath(keypath)!

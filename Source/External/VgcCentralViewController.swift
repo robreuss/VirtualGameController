@@ -253,13 +253,15 @@ import VirtualGameController
             elementDebugView.refresh(controller)
         })
 
+
         // Refresh on all extended gamepad changes (Global handler)
         controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
             self.refreshDebugViewForController(controller)
             
         }
-        
+
+
         // Refresh on all gamepad changes (Global handler)
         controller.gamepad?.valueChangedHandler = { (gamepad: GCGamepad, element: GCControllerElement) in
             
@@ -283,7 +285,7 @@ import VirtualGameController
         controller.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             // Avoid updating too often or the UI will freeze up
-            if lastMotionRefresh.timeIntervalSinceNow > -0.15 { return } else { lastMotionRefresh = NSDate() }
+            //if lastMotionRefresh.timeIntervalSinceNow > -0.15 { return } else { lastMotionRefresh = NSDate() }
             self.refreshDebugViewForController(controller)
             
         }
@@ -336,8 +338,7 @@ import VirtualGameController
             self.refreshDebugViewForController(controller)
             
         }
-        
-        
+
     }
     
     @objc func controllerDidDisconnect(notification: NSNotification) {

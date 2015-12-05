@@ -225,9 +225,9 @@ public class VgcManager: NSObject {
     ///
     public static var usePeripheralSideMapping: Bool = false
 
-    public static var netServiceBufferSize = 2048
+    public static var netServiceBufferSize = 512
     
-    static var netServiceHeaderLength = 22
+    static var netServiceHeaderLength = 18
     
     // Enable this if you want fallback to Bluetooth, but know it has an impact on network
     // performance.

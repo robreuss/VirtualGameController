@@ -32,6 +32,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var transferType: TransferType = .Unknown
     var nsStringBuffer: NSString = ""
     var cycleCount: Int = 0
+    let logging = false
     
     enum TransferType: Int, CustomStringConvertible {
         
@@ -73,28 +74,28 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         } else if element.dataType == .Data  {
             elementValueData = element.value as! NSData
         } else {
-            print("Data type unsupported by writeElementAsNSData: \(element.dataType)")
+            if logging { print("Data type unsupported by writeElementAsNSData: \(element.dataType)") }
             return
         }
         
         let elementIdentifierString = "\(element.identifier)".stringByPaddingToLength(3, withString: " ", startingAtIndex: 0)
-        let lengthOfDataString = "\(elementValueData.length)".stringByPaddingToLength(13, withString: " ", startingAtIndex: 0)
+        let lengthOfDataString = "\(elementValueData.length)".stringByPaddingToLength(9, withString: " ", startingAtIndex: 0)
         let messageHeaderString = "DATA-\(elementIdentifierString)-\(lengthOfDataString)"
         
-        print("Header length: \(messageHeaderString.characters.count)")
+        if logging { print("Header length: \(messageHeaderString.characters.count)") }
 
         let messageHeaderData = messageHeaderString.dataUsingEncoding(NSUTF8StringEncoding)
        
         //let messageHeaderData = "DATA".dataUsingEncoding(NSUTF8StringEncoding)
-        print("Message header data: \(messageHeaderData)")
+        if logging { print("Message header data: \(messageHeaderData)") }
         
-        print("Message Header data length \(messageHeaderData!.length), message header string length \(messageHeaderString.characters.count), element value length: \(elementValueData.length), header string: \(messageHeaderString)")
+        if logging { print("Message Header data length \(messageHeaderData!.length), message header string length \(messageHeaderString.characters.count), element value length: \(elementValueData.length), header string: \(messageHeaderString)") }
 
         let messageData = NSMutableData()
         messageData.appendData(messageHeaderData!)
         messageData.appendData(elementValueData)
         
-        print("Sending Data for \(element.name):\(messageData.length) bytes")
+        if logging { print("Sending Data for \(element.name):\(messageData.length) bytes") }
         
         writeData(messageData, toStream: toStream)
  
@@ -102,7 +103,11 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     
     func writeElement(element: Element, toStream: NSOutputStream) {
         
-        writeElementAsNSData(element, toStream: toStream)
+        //let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+        //dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.writeElementAsNSData(element, toStream: toStream)
+        //}
+
         
     }
     
@@ -134,7 +139,6 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         if data.length == 0 { return }
 
         if (streamerIsBusy || !toStream.hasSpaceAvailable) {
-            print("Output stream has space available: \(toStream.hasSpaceAvailable)")
             print("OutputStream has no space/streamer is busy: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
             dispatch_sync(self.lockQueueWriteData) {
                 self.dataSendQueue.appendData(data)
@@ -176,16 +180,14 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
 
     let dataFlagExpected = "DATA".dataUsingEncoding(NSUTF8StringEncoding)
     var foundMessageHeader = false
-    
-    let logging = true
-    
+
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
         
         switch (eventCode){
  
         case NSStreamEvent.HasBytesAvailable:
             
-            //print("Stream status: \(aStream.streamStatus.rawValue)")
+            if logging { print("Stream status: \(aStream.streamStatus.rawValue)") }
             
             //print("Operating on thread: \(NSThread.currentThread()) (\(transferType))")
 
@@ -204,6 +206,10 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 bufferLoops++
                
                 let len = inputStream.read(&buffer, maxLength: buffer.count)
+                
+                if len <= 0 { return }
+                
+                if logging { print("Length of buffer: \(len)") }
 
                 messageHeaderString = ""
                 
@@ -248,7 +254,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 
                 var individualMessageData = NSData()
 
-                if dataBuffer.length < (dataMessageExpectedLength + 22) {
+                if dataBuffer.length < (dataMessageExpectedLength + VgcManager.netServiceHeaderLength) {
                     if logging { print("Incomplete message, getting more data \(dataBuffer.length)") }
                     if logging { print("Data buffer: [\(NSString(data: dataBuffer, encoding: NSUTF8StringEncoding))]") }
                     if logging { print("BREAKING, REQUIRE ANOTHER PASS") }
