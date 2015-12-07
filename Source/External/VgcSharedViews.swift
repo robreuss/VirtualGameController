@@ -37,16 +37,19 @@ var peripheralManager = VgcManager.peripheral
     var keyboardControlView: UIView!
     var keyboardLabel: UILabel!
     public var flashView: UIImageView!
+    public var viewController: UIViewController!
     
     public var serviceSelectorView: ServiceSelectorView!
     
-    @objc public init(aParentView: UIView) {
+    @objc public init(vc: UIViewController) {
     
         super.init()
-
+        
+        viewController = vc
+        parentView = viewController.view
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)        
-        parentView = aParentView
         
         // Notification that a player index has been set
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
@@ -120,14 +123,29 @@ var peripheralManager = VgcManager.peripheral
             parentView.addSubview(rightThumbstickPad)
             
             
-            playerIndexLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width * 0.50 - 50, y: parentView.bounds.size.height - 25, width: 100, height: 25))
-            playerIndexLabel.text = "Player 0"
+            let cameraBackground = UIView(frame: CGRect(x: parentView.bounds.size.width * 0.50 - 25, y: parentView.bounds.size.height - 49, width: 50, height: 40))
+            cameraBackground.backgroundColor = UIColor.lightGrayColor()
+            cameraBackground.layer.cornerRadius = 5
+            parentView.addSubview(cameraBackground)
+            
+            let cameraImage = UIImageView(image: UIImage(named: "camera"))
+            cameraImage.contentMode = .Center
+            cameraImage.frame = CGRect(x: parentView.bounds.size.width * 0.50 - 25, y: parentView.bounds.size.height - 49, width: 50, height: 40)
+            cameraImage.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleTopMargin]
+            cameraImage.userInteractionEnabled = true
+            parentView.addSubview(cameraImage)
+            
+            let gr = UITapGestureRecognizer(target: vc, action: "displayPhotoPicker:")
+            cameraImage.gestureRecognizers = [gr]
+
+            playerIndexLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width * 0.50 - 50, y: parentView.bounds.size.height - 75, width: 100, height: 25))
+            playerIndexLabel.text = "Player: 0"
             playerIndexLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleTopMargin]
             playerIndexLabel.textColor = UIColor.grayColor()
             playerIndexLabel.textAlignment = .Center
             playerIndexLabel.font = UIFont(name: playerIndexLabel.font.fontName, size: 14)
             parentView.addSubview(playerIndexLabel)
-            
+
             
             // This is hidden because it is only used to display the keyboard below in playerTappedToShowKeyboard
             keyboardTextField = UITextField(frame: CGRect(x: -10, y: parentView.bounds.size.height + 30, width: 10, height: 10))
@@ -173,9 +191,11 @@ var peripheralManager = VgcManager.peripheral
                 keyboardImage.gestureRecognizers = [gr]
                 
             }
+
+            /* Uncomment to sample software-based controller pause behavior, and comment out camera image
+               above since the two icons occupy the same space.
             
             let pauseButtonSize = CGFloat(64.0)
-            
             let pauseButtonLabel = UIButton(frame: CGRect(x: (parentView.bounds.size.width * 0.50) - (pauseButtonSize * 0.50), y: parentView.bounds.size.height - (parentView.bounds.size.height * 0.15), width: pauseButtonSize, height: pauseButtonSize))
             pauseButtonLabel.backgroundColor = UIColor(white: CGFloat(0.76), alpha: 1.0)
             pauseButtonLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleTopMargin]
@@ -186,6 +206,7 @@ var peripheralManager = VgcManager.peripheral
             pauseButtonLabel.addTarget(self, action: "playerTappedToPause:", forControlEvents: .TouchUpInside)
             pauseButtonLabel.userInteractionEnabled = true
             parentView.addSubview(pauseButtonLabel)
+            */
             
             let motionLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width - 63, y: parentView.bounds.size.height - 58, width: 50, height: 25))
             motionLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth , UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleTopMargin]
@@ -525,7 +546,7 @@ class VgcButton: UIView {
             valueLabel.text = "\(element.value)"
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
-        //VgcManager.peripheral.sendElementState(element)
+        VgcManager.peripheral.sendElementState(element)
         
     }
     
@@ -545,24 +566,27 @@ class VgcButton: UIView {
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
 
-        //VgcManager.peripheral.sendElementState(element)
+        VgcManager.peripheral.sendElementState(element)
         
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        
-
-        let image = UIImage(named: "digit_sm.jpg")
+       
+// Uncomment to test sending an image from a Peripheral to a Central by tapping any of the
+// buttons on the Peripheral sample app
+/*
+        let image = UIImage(named: "digit.jpg")
         let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         imageElement.value = imageData!
         VgcManager.peripheral.sendElementState(imageElement)
+        self.backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
         return
- 
+*/
             
         element.value = 0.0
         valueLabel.text = "\(element.value)"
-        //VgcManager.peripheral.sendElementState(element)
+        VgcManager.peripheral.sendElementState(element)
         self.backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
         
     }
@@ -788,6 +812,7 @@ public class ElementDebugView: UIView {
     var scrollView: UIScrollView!
     var controller: VgcController!
     var titleRegion: UIView!
+    var imageView: UIImageView!
     
     public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -822,6 +847,10 @@ public class ElementDebugView: UIView {
         titleRegion.backgroundColor = UIColor.lightGrayColor()
         titleRegion.clipsToBounds = true
         self.addSubview(titleRegion)
+        
+        imageView = UIImageView(frame: CGRect(x: self.bounds.size.width - 110, y: 150, width: 100, height: 100))
+        imageView.contentMode = .ScaleAspectFit
+        self.addSubview(imageView)
         
         controllerVendorName = UILabel(frame: CGRect(x: 0, y: 0, width: titleRegion.frame.size.width, height: 50))
         controllerVendorName.backgroundColor = UIColor.lightGrayColor()
@@ -948,6 +977,31 @@ public class ElementDebugView: UIView {
         //element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
         //controller.sendElementStateToPeripheral(element)
         //VgcController.sendElementStateToAllPeripherals(element)
+        
+        // Test simple float mode
+        //let rightShoulder = controller.elements.rightShoulder
+        //rightShoulder.value = 1.0
+        //controller.sendElementStateToPeripheral(rightShoulder)
+        //VgcController.sendElementStateToAllPeripherals(rightShoulder)
+        
+        // Test string mode
+        let keyboard = controller.elements.custom[CustomElementType.Keyboard.rawValue]!
+        keyboard.value = "1 2 3 4 5 6 7 8"
+        keyboard.value = "Before newline\nAfter newline\n\n\n"
+        controller.sendElementStateToPeripheral(keyboard)
+        //VgcController.sendElementStateToAllPeripherals(keyboard)
+        
+    }
+    
+    public func receivedDebugViewTripleTap() {
+        
+        
+        // Test Image Send
+        let image = UIImage(named: "digit.jpg")
+        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
+        let imageData = UIImageJPEGRepresentation(image!, 1.0)
+        element.value = imageData!
+        controller.sendElementStateToPeripheral(element)
         
         // Test simple float mode
         //let rightShoulder = controller.elements.rightShoulder

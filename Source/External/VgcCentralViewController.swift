@@ -312,7 +312,9 @@ import VirtualGameController
             
             print("Custom element handler fired for Send Image")
             
-            self.imageView.image = UIImage(data: element.value as! NSData)
+            if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
+                elementDebugView.imageView.image = UIImage(data: element.value as! NSData)
+            }
             
         }
         
