@@ -39,7 +39,7 @@ public class Peripheral: NSObject {
     public var motion: VgcMotionManager!
     #endif
 
-    public var haveConnectionToCentral: Bool?
+    public var haveConnectionToCentral: Bool = false
     
     override init() {
         
