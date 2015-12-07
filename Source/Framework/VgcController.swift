@@ -753,6 +753,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                         }
                     }
                 }
+                vgcControllerPausedHandler = controllerPausedHandler
             }
         }
     }
