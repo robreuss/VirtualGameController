@@ -17,13 +17,32 @@ import UIKit
 public class VgcPeripheralSetup: NSObject {
     
     public var profileType: ProfileType!
+    public var motionActive = false
+    public var enableMotionUserAcceleration = true
+    public var enableMotionRotationRate = true
+    public var enableMotionAttitude = true
+    public var enableMotionGravity = true
+    
+    /*
+    public var motionActive: Bool! {
+        didSet {
+            if VgcManager.appRole == .Peripheral {
+                if self.motionActive == true {
+                    VgcManager.peripheral.motion.start()
+                } else {
+                    VgcManager.peripheral.motion.stop()
+                }
+            }
+        }
+    }
+    */
     
 #if os(iOS) || os(tvOS)
     public var backgroundColor: UIColor!
     
     public override init() {
-        // my init
-        self.backgroundColor = UIColor.darkGrayColor()
+        self.profileType = .ExtendedGamepad
+        self.backgroundColor = UIColor.clearColor() // Background color should be ignored
     }
     
     public init(profileType: ProfileType, backgroundColor: UIColor) {
@@ -31,16 +50,7 @@ public class VgcPeripheralSetup: NSObject {
         self.backgroundColor = backgroundColor
         super.init()
     }
-    
-    
-    required convenience public init(coder decoder: NSCoder) {
-        
-        let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! UIColor
-        let profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
-        
-        self.init(profileType: profileType!, backgroundColor: backgroundColor)
-        
-    }
+
 #endif
     
 #if os(OSX)
@@ -48,33 +58,51 @@ public class VgcPeripheralSetup: NSObject {
     
     public override init() {
     // my init
-    self.backgroundColor = NSColor.darkGrayColor()
+    self.backgroundColor = NSColor.clearColor() // Background color should be ignored
     }
     
     public init(profileType: ProfileType, backgroundColor: NSColor) {
-    self.profileType = profileType
-    self.backgroundColor = backgroundColor
-    super.init()
-    }
-    
-    
-    required convenience public init(coder decoder: NSCoder) {
-    
-    let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! NSColor
-    let profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
-    
-    self.init(profileType: profileType!, backgroundColor: backgroundColor)
-    
+        self.profileType = profileType
+        self.backgroundColor = backgroundColor
+        super.init()
     }
 #endif
+    
+required convenience public init(coder decoder: NSCoder) {
+    
+    self.init()
+
+    #if os(OSX)
+    self.backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! NSColor
+    #endif
+    
+    #if os(iOS) || os(tvOS)
+    self.backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! UIColor
+    #endif
+    
+    self.profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
+
+    self.motionActive = decoder.decodeBoolForKey("motionActive")
+    self.enableMotionUserAcceleration = decoder.decodeBoolForKey("enableMotionUserAcceleration")
+    self.enableMotionAttitude = decoder.decodeBoolForKey("enableMotionAttitude")
+    self.enableMotionGravity = decoder.decodeBoolForKey("enableMotionGravity")
+    self.enableMotionRotationRate = decoder.decodeBoolForKey("enableMotionRotationRate")
+
+}
+
     
     public override var description: String {
         
         var result: String = "\n"
         result += "Peripheral Setup:\n\n"
-        result += "Profile Type:        \(self.profileType)\n"
-        result += "Background Color:    \(self.backgroundColor)\n"
-
+        result += "Profile Type:             \(self.profileType)\n"
+        result += "Background Color:         \(self.backgroundColor)\n"
+        result += "Motion:"
+        result += "  Active:                 \(self.motionActive)\n"
+        result += "  User Acceleration:      \(self.enableMotionUserAcceleration)\n"
+        result += "  Gravity:                \(self.enableMotionGravity)\n"
+        result += "  Rotation Rate:          \(self.enableMotionRotationRate)\n"
+        result += "  Attitude:               \(self.enableMotionAttitude)\n"
         return result
         
     }
@@ -85,7 +113,11 @@ public class VgcPeripheralSetup: NSObject {
         
         coder.encodeInteger(self.profileType.rawValue, forKey: "profileType")
         coder.encodeObject(self.backgroundColor, forKey: "backgroundColor")
-        
+        coder.encodeBool(self.motionActive, forKey: "motionActive")
+        coder.encodeBool(self.enableMotionUserAcceleration, forKey: "enableMotionUserAcceleration")
+        coder.encodeBool(self.enableMotionAttitude, forKey: "enableMotionAttitude")
+        coder.encodeBool(self.enableMotionGravity, forKey: "enableMotionGravity")
+        coder.encodeBool(self.enableMotionRotationRate, forKey: "enableMotionRotationRate")
     }
     
     // A copy of the deviceInfo object is made when forwarding it through a Bridge.
@@ -112,3 +144,24 @@ public class VgcPeripheralSetup: NSObject {
     
     
 }
+
+
+
+/*
+required convenience public init(coder decoder: NSCoder) {
+
+#if os(OSX)
+let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! NSColor
+#endif
+
+#if os(iOS) || os(tvOS)
+let backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! UIColor
+#endif
+
+let profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
+
+self.init(profileType: profileType!, backgroundColor: backgroundColor)
+
+}
+
+*/

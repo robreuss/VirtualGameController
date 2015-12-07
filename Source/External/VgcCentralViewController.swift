@@ -223,23 +223,29 @@ import VirtualGameController
         
         if !controller.isHardwareController {
             
-/*
-            // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL
-            // Set a random color on the Peripheral and Debug View
-            var randomRed = (CGFloat(arc4random()) / CGFloat(UInt32.max))
-            var randomGreen = (CGFloat(arc4random()) / CGFloat(UInt32.max))
-            var randomBlue = (CGFloat(arc4random()) / CGFloat(UInt32.max))
-            let minColorValue = CGFloat(0.60)
-            if randomRed < minColorValue { randomRed -= 0.40 }
-            if randomGreen < minColorValue { randomGreen -= 0.40 }
-            if randomBlue < minColorValue { randomBlue -= 0.40 }
+            // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL ON CONNECTION
+            // Set a random color on the Peripheral and Debug View,
+            // turn on motion automatically - setup to work with iOS Centeral sample
+            // app and the Scenekit sample app
+            
+            /*
+            // Generate a dark color...
+            let randomRed = CGFloat(Float(arc4random()) / (Float(UINT32_MAX))) / 2.0
+            let randomGreen = CGFloat(Float(arc4random()) / (Float(UINT32_MAX))) / 2.0
+            let randomBlue = CGFloat(Float(arc4random()) / (Float(UINT32_MAX))) / 2.0
             let peripheralBackgroundColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-            VgcManager.peripheralSetup = VgcPeripheralSetup(profileType: .MicroGamepad, backgroundColor: peripheralBackgroundColor)
+            VgcManager.peripheralSetup = VgcPeripheralSetup(profileType: .ExtendedGamepad, backgroundColor: peripheralBackgroundColor)
+            
+            // Turn on motion to demonstrate that
+            VgcManager.peripheralSetup.motionActive = true
             VgcManager.peripheralSetup.sendToController(controller)
             
+            // Set debug view to reflect same color
             elementDebugView.controllerVendorName.backgroundColor = peripheralBackgroundColor
-            elementDebugView.controllerVendorName.textColor = UIColor.darkGrayColor()
-*/
+            
+            // Use light color to contrast with dark background
+            elementDebugView.controllerVendorName.textColor = UIColor.lightGrayColor()
+            */
             
         }
         
