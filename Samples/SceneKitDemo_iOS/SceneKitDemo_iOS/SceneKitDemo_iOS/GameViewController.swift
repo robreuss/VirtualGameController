@@ -15,19 +15,21 @@ import VirtualGameController
 var ship: SCNNode!
 var lightNode: SCNNode!
 var cameraNode: SCNNode!
+var scene: SCNScene!
 
 class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VgcManager.startAs(.Central, appIdentifier: "vgc")
+        VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
+
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: VgcControllerDidDisconnectNotification, object: nil)
         
         // create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        scene = SCNScene(named: "art.scnassets/ship.scn")!
         
         // create and add a camera to the scene
         cameraNode = SCNNode()
@@ -83,13 +85,23 @@ class GameViewController: UIViewController {
         // If we're enhancing a hardware controller, we should display the Peripheral UI
         // instead of the debug view UI
         if VgcManager.appRole == .EnhancementBridge { return }
-        
+      
         guard let controller: VgcController = notification.object as? VgcController else {
             print("Got nil controller in controllerDidConnect")
             return
         }
         
         if controller.deviceInfo.controllerType == .MFiHardware { return }
+        
+        // We only need attitude motion data
+        VgcManager.peripheralSetup = VgcPeripheralSetup()
+        VgcManager.peripheralSetup.motionActive = false // Let the user turn this on so they can orient the device, pointing it at the screen
+        VgcManager.peripheralSetup.enableMotionAttitude = true
+        VgcManager.peripheralSetup.enableMotionGravity = false
+        VgcManager.peripheralSetup.enableMotionRotationRate = false
+        VgcManager.peripheralSetup.enableMotionUserAcceleration = false
+        VgcManager.peripheralSetup.sendToController(controller)
+        
         
         // Dpad adjusts lighting position
         controller.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in
@@ -134,6 +146,44 @@ class GameViewController: UIViewController {
             
         }
         
+        // Right trigger draws the plane toward the user
+        controller.extendedGamepad?.rightTrigger.valueChangedHandler = { (input, value, pressed) in
+            
+            self.scaleShipByValue(-(CGFloat((controller.extendedGamepad?.rightTrigger.value)!)))
+            
+        }
+        
+        // Get an image and apply it to the ship (image is set to my dog Digit, you'll see the fur)
+        controller.elements.custom[CustomElementType.SendImage.rawValue]!.valueChangedHandler = { (controller, element) in
+            
+            //print("Custom element handler fired for Send Image: \(element.value)")
+            
+            let image = UIImage(data: element.value as! NSData)
+            
+            // get its material
+            let material = ship.childNodeWithName("shipMesh", recursively: true)!.geometry?.firstMaterial!
+            
+            // highlight it
+            SCNTransaction.begin()
+            SCNTransaction.setAnimationDuration(0.5)
+            
+            // on completion - unhighlight
+            SCNTransaction.setCompletionBlock {
+                SCNTransaction.begin()
+                SCNTransaction.setAnimationDuration(0.5)
+                
+                material!.emission.contents = UIColor.blackColor()
+                
+                SCNTransaction.commit()
+            }
+            
+            print("Material: \(material)")
+            
+            material!.diffuse.contents = image
+            
+            SCNTransaction.commit()
+        }
+        
         // Position ship at a solid origin
         ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1.3), count: 1))
         
@@ -148,6 +198,8 @@ class GameViewController: UIViewController {
             let y = -(input.attitude.z) * amplify
             let z = -(input.attitude.y) * amplify
             
+            // Increase the duration value if you want to smooth out the motion of the ship,
+            // so that hand shake is not reflected
             ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
             
             //ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat(x) * 4.0, CGFloat(y) * 4.0, CGFloat(z) * 4.0), duration: 0.3))

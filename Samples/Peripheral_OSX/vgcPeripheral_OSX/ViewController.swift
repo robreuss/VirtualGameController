@@ -67,7 +67,7 @@ class ViewController: NSViewController {
     @objc func gotPlayerIndex(notification: NSNotification) {
         
         let playerIndex: Int = notification.object as! Int
-        playerIndexLabel.stringValue = "Player \(playerIndex + 1)"
+        playerIndexLabel.stringValue = "Player: \(playerIndex + 1)"
         
     }
     

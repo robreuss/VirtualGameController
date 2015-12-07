@@ -11,10 +11,11 @@ import VirtualGameController
 //import <AudioToolbox/AudioServices.h>
 import AudioToolbox
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var peripheralControlPadView: PeripheralControlPadView!
-  
+    var imagePicker: UIImagePickerController!
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class ViewController: UIViewController {
         VgcManager.iCadeControllerMode = .Disabled
         
         // Display our basic controller UI for debugging purposes
-        peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+        peripheralControlPadView = PeripheralControlPadView(vc: self)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
-        VgcManager.includesPeerToPeer = false
+        VgcManager.includesPeerToPeer = true
         
         VgcManager.peripheral.motion.updateInterval = 1/30
         
@@ -132,6 +133,23 @@ class ViewController: UIViewController {
 
         
     }
+    
+    @objc func displayPhotoPicker(sender: AnyObject) {
+        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        imageElement.value = imageData!
+        VgcManager.peripheral.sendElementState(imageElement)
+    }
 
     // Add new service to our list of available services.  I'm not using here, but the
     // newly found VgcService object is included with the notification.
@@ -157,16 +175,30 @@ class ViewController: UIViewController {
     
     // Notification indicates we should refresh the view
     @objc func receivedPeripheralSetup(notification: NSNotification) {
-        peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
+        print("Setting peripheral background color to: \(VgcManager.peripheralSetup.backgroundColor)")
+      
+        if VgcManager.peripheralSetup.motionActive {
+            VgcManager.peripheral.motion.start()
+        } else {
+            VgcManager.peripheral.motion.stop()
+        }
+        VgcManager.peripheral.motion.enableUserAcceleration = VgcManager.peripheralSetup.enableMotionUserAcceleration
+        VgcManager.peripheral.motion.enableGravity = VgcManager.peripheralSetup.enableMotionGravity
+        VgcManager.peripheral.motion.enableRotationRate = VgcManager.peripheralSetup.enableMotionRotationRate
+        VgcManager.peripheral.motion.enableAttitude = VgcManager.peripheralSetup.enableMotionAttitude
+        
         VgcManager.peripheral.deviceInfo.profileType = VgcManager.peripheralSetup.profileType
         print(VgcManager.peripheralSetup)
         for view in peripheralControlPadView.parentView.subviews {
             view.removeFromSuperview()
         }
-        peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+        peripheralControlPadView = PeripheralControlPadView(vc: self)
         peripheralControlPadView.controlOverlay.frame = CGRect(x: 0, y: -peripheralControlPadView.parentView.bounds.size.height, width: peripheralControlPadView.parentView.bounds.size.width, height: peripheralControlPadView.parentView.bounds.size.height)
+
+        peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
     }
     
+
     // There is only one system message, currently, that is relevant to Peripherals,
     // .ReceivedInvalidMessage, which comes from the Central when the Central receives a
     // malformed element value message.  This is only known to happen when attempting to
