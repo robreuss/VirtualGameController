@@ -76,7 +76,7 @@ import VirtualGameController
         }
 
         // Disable peer-to-peer (Bluetooth) for better network performance
-        VgcManager.includesPeerToPeer = false
+        VgcManager.includesPeerToPeer = true
 
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
