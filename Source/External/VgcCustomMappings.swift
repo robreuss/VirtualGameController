@@ -28,9 +28,10 @@ public class CustomMappings: CustomMappingsSuperclass {
         /// which central-side mapping does.
 
 
-        //self.mappings = []
-            //ElementType.RightThumbstickXAxis.rawValue:  ElementType.DpadXAxis.rawValue,
-            //ElementType.DpadXAxis.rawValue:  ElementType.RightThumbstickXAxis.rawValue,
+        //self.mappings = [
+        //    ElementType.RightThumbstickXAxis.rawValue:  ElementType.DpadXAxis.rawValue,
+        //    ElementType.DpadXAxis.rawValue:  ElementType.RightThumbstickXAxis.rawValue,
+        //
         //]
 
     }

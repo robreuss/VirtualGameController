@@ -38,7 +38,8 @@ public enum ElementDataType: Int {
     case Int
     case Float
     case String
-    case Data 
+    case Data
+    
 }
 
 // The whole population of system and standard elements
@@ -167,20 +168,18 @@ public class Element: NSObject {
             switch self.dataType {
                 
             case .Int:
-    
                 var value: Int = self.value as! Int
                 return NSData(bytes: &value, length: sizeof(Int))
     
             case .Float:
-                
                 var value: Float = self.value as! Float
                 return NSData(bytes: &value, length: sizeof(Float))
                 
             case .Data:
                 return self.value as! NSData
+    
             case .String:
                 return NSMutableData(data: (self.value as! String).dataUsingEncoding(NSUTF8StringEncoding)!)
-                
             }
         }
         
@@ -191,12 +190,15 @@ public class Element: NSObject {
                 var value: Int = 0
                 newValue.getBytes(&value, length: sizeof(Int))
                 self.value = value
+    
             case .Float:
                 var value: Float = 0.0
                 newValue.getBytes(&value, length: sizeof(Float))
                 self.value = value
+    
             case .Data:
                 self.value = newValue
+    
             case .String:
                 self.value = String(data: newValue, encoding: NSUTF8StringEncoding)!
                 
@@ -485,12 +487,14 @@ public class Elements: NSObject {
             if element.type == type { return element }
         }
         return nil
+        
     }
     
     public func elementFromIdentifier(identifier: Int) -> Element! {
         
         guard let element = elementsByHashValue[identifier] else { return nil }
         return element
+        
     }
     
 }

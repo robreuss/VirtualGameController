@@ -1048,8 +1048,6 @@ public class ElementDebugView: UIView {
                     if element.dataType == .String && value as! NSObject == 0 { value = "" }
                 } else if keypath != "" {
                     value = controller.valueForKeyPath(keypath)!
-                    // TODO: Will throw an exception right here if an attempt is made to
-                    // set an element that is not supported on the profile in use.
                 } else {
                     value = ""
                 }
