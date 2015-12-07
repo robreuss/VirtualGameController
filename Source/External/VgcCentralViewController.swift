@@ -285,7 +285,7 @@ import VirtualGameController
         controller.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             // Avoid updating too often or the UI will freeze up
-            //if lastMotionRefresh.timeIntervalSinceNow > -0.15 { return } else { lastMotionRefresh = NSDate() }
+            if lastMotionRefresh.timeIntervalSinceNow > -0.01 { return } else { lastMotionRefresh = NSDate() }
             self.refreshDebugViewForController(controller)
             
         }
@@ -293,8 +293,7 @@ import VirtualGameController
         // Toggle pause button display value.  Note that the toggle state of the pause button is the
         // responsibility of the app (the game) to manage
         controller.controllerPausedHandler = { (controller: VgcController) in
-            
-            print("Pause handler fired")
+
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
                 elementDebugView.togglePauseState()
             }
