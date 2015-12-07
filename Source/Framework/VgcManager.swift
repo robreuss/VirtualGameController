@@ -227,11 +227,14 @@ public class VgcManager: NSObject {
 
     public static var netServiceBufferSize = 512
     
-    static var netServiceHeaderLength = 18
+    // The header length of all messages
+    static var netServiceHeaderLength = 9
     
-    // Enable this if you want fallback to Bluetooth, but know it has an impact on network
-    // performance.
-    public static var includesPeerToPeer = false
+    // Indicator of start of header
+    static var headerIdentifier: UInt32 = 2584594329 // Random UInt32
+    
+    // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
+    public static var includesPeerToPeer = true
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console

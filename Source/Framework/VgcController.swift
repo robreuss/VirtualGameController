@@ -211,53 +211,28 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
     }
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: AnyObject) {
+    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
         
         //print("Received net service message")
         
-        // Get the element in the message using the hash value reference
         let element = elements.elementFromIdentifier(elementIdentifier)
         
         // Element is non-nil on success
         if (element != nil) {
+
+            element.valueAsNSData = elementValue
             
-            // Special handling if this is the device info archive
-            if element.type == elements.deviceInfoElement.type {
+            // Don't update the controller if we're in bridgeRelayOnly mode
+            if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
+            
+            // If we're a bridge, send along the value to the Central
+            if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
                 
-                print("Received controller device information")
-                //element.valueAsBase64String = elementValue as! String
-                element.value = elementValue
-
-                NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-                deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as? DeviceInfo)!
-                
-            } else if element.type == .Custom {
-                
-                elements.custom[element.identifier]?.value = elementValue
+                element.valueAsNSData = elementValue
+                peripheral.browser.sendElementStateOverNetService(element)
                 
             }
-            if element.type != elements.deviceInfoElement.type {
-                
-                //print("Incoming: \(element.name): id: \(elementIdentifier!), element value: \(element.value)")
 
-                element.value = elementValue
-                
-                // Don't update the controller if we're in bridgeRelayOnly mode
-                if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
-                
-                // If we're a bridge, send along the value to the Central
-                if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
-                    
-                    //print("Bridge forwarding value \(elementValue) for \(element.name) to Central")
-                    if element.dataType == .Float {
-                        element.value = Float(elementValue as! String)!
-                    } else {
-                        element.value = elementValue
-                    }
-                    peripheral.browser.sendElementStateOverNetService(element)
-                    
-                }
-            }
             
         } else {
             print("ERROR: Got nil element: \(elementIdentifier)")
@@ -277,15 +252,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     public func sendElementStateToPeripheral(element: Element) {
         //print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
 
-        if element.dataType == .Data || element.dataType == .String {
-            
-            streamer.writeElementAsNSData(element, toStream: toPeripheralOutputStream)
+        streamer.writeElement(element, toStream:toPeripheralOutputStream)
 
-        } else {
-            
-            streamer.writeElement(element, toStream:toPeripheralOutputStream)
-            
-        }
     }
     
     // Send a message to the Peripheral that we received an invalid message (based on checksum).
@@ -377,11 +345,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         var valueAsFloat: Float = 0.0
          
         if element.value is NSNumber {
-            valueAsString = element.value.stringValue
-            valueAsFloat = element.value as! Float
+            valueAsFloat = (element.value as! NSNumber).floatValue
         } else if element.value is NSString {
             valueAsString = element.value as! String
-            valueAsFloat = (valueAsString as NSString).floatValue
         }
         
         switch(element.type) {
@@ -397,20 +363,28 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
                 // A Bridge uses the Disconnect system message to notify it's Central
                 // that it's Peripheral has disconnected
-            case .Disconnect:
-                
-                disconnect()
-                
-            case .ReceivedInvalidMessage:
-                break
+                case .Disconnect:
+                    
+                    disconnect()
+                    
+                case .ReceivedInvalidMessage:
+                    break
                 
             }
             
-        case .DeviceInfoElement, .PlayerIndex:
+        case .DeviceInfoElement:
+            
+            NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
+            deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as? DeviceInfo)!
+            
+        case .PlayerIndex:
+            
             break
 
         case .Custom:
-            
+
+            elements.custom[element.identifier]?.valueAsNSData = element.valueAsNSData
+
             // Call the element-level change handler
             
             if let handler = elements.custom[element.identifier]!.valueChangedHandler {
@@ -430,6 +404,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             break
             
+        // All of the standard input elements fall through to here
         default:
 
             triggerElementHandlers(element, value: valueAsFloat)

@@ -81,7 +81,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         connectedVgcService = nil
     }
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: AnyObject) {
+    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
         
         // Get the element in the message using the hash value reference
         guard let element = elements.elementFromIdentifier(elementIdentifier) else {
@@ -89,17 +89,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             return
         }
         
-        //print("Received net service message")
-        
-        var elementValueAsString: String = ""
-        
-        if element.dataType != .Data && element.dataType != .String { elementValueAsString = elementValue as! String }
+        element.valueAsNSData = elementValue
         
         switch (element.type) {
             
         case .SystemMessage:
             
-            let systemMessageType = SystemMessages(rawValue: Int(elementValueAsString)!)
+            let systemMessageType = SystemMessages(rawValue: Int(element.value as! NSNumber))
             
             print("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
@@ -109,10 +105,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
         case .PeripheralSetup:
             
-            element.valueAsBase64String = elementValueAsString
-            
             NSKeyedUnarchiver.setClass(VgcPeripheralSetup.self, forClassName: "VgcPeripheralSetup")
-            VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.value as! NSData) as! VgcPeripheralSetup)
+            VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as! VgcPeripheralSetup)
 
             print("Central sent peripheral setup: \(VgcManager.peripheralSetup)")
 
@@ -121,42 +115,19 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             break
             
         case .PlayerIndex:
+
+            let playerIndex = Int(element.value as! NSNumber)
+            peripheral.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
             
-            let playerIndex = Int(elementValueAsString)
-            if (playerIndex != nil) {
-                //print ("Player index raw is \(playerIndex)")
-                peripheral.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex!)!
+            if deviceIsTypeOfBridge(){
                 
-                if deviceIsTypeOfBridge(){
-                    
-                    self.peripheral.controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex!)!
-                    
-                }
-                NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: playerIndex)
+                self.peripheral.controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
+                
             }
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: playerIndex)
             
         default:
-            
-            switch (element.dataType) {
-                
-            case .Float:
-                
-                element.value = Float(elementValueAsString)!
-                
-            case .Data:
-                
-                element.value = elementValue
-                
-            case .String:
-                
-                element.value = NSString(data: elementValue as! NSData, encoding: NSUTF8StringEncoding) as! String
-                
-            default:
-                
-                element.value = elementValue
-                
-            }
-            
+
             if !deviceIsTypeOfBridge() {
                 
                 // Call the handler set on the global object
@@ -205,13 +176,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         } else if deviceIsTypeOfBridge() {
             outputStream = peripheral.controller.toCentralOutputStream
         }
-        
-        /* This can cause a loop
-        if (outputStream == nil || peripheral.haveConnectionToCentral == false) && (element.type != elements.systemMessage.type) {
-            if deviceIsTypeOfBridge() { disconnectFromCentral() }
-        }
-*/
-        
+    
         if outputStream == nil {
             if connectedVgcService != nil { print("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream") } else { print("Failed to send element \(element.name) because we don't have an output stream") }
             return
@@ -234,16 +199,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             }
         }
 
-        if element.dataType == .Data || element.dataType == .String {
-            
-            streamer.writeElementAsNSData(element, toStream: outputStream)
-            
-        } else {
-            
-            streamer.writeElement(element, toStream:outputStream)
-            
-        }
-
+        streamer.writeElement(element, toStream:outputStream)
+        
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         
     }
