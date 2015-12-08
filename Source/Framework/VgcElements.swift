@@ -284,7 +284,7 @@ public class Element: NSObject {
     
     }
 
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    public func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
         return copy
     }
