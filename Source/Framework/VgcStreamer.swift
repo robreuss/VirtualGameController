@@ -64,32 +64,17 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     }
     
     
-    // Header identifier is a random pre-generated 32-bit integer
-    let headerIdentifierAsNSData = NSData(bytes: &VgcManager.headerIdentifier, length: sizeof(UInt32))
-    
     func writeElement(element: Element, toStream:NSOutputStream) {
-
-        let elementValueAsNSData = element.valueAsNSData
         
-        var elementIdentifierAsUInt8: UInt8 = UInt8(element.identifier)
-        let elementIdentifierAsNSData = NSData(bytes: &elementIdentifierAsUInt8, length: sizeof(UInt8))
-        
-        var valueLengthAsUInt32: UInt32 = UInt32(elementValueAsNSData.length)
-        let valueLengthAsNSData = NSData(bytes: &valueLengthAsUInt32, length: sizeof(UInt32))
-
-        let messageData = NSMutableData()
-        
-        // Message header
-        messageData.appendData(headerIdentifierAsNSData)  // 4 bytes:   indicates the start of an individual message, random 32-bit int
-        messageData.appendData(elementIdentifierAsNSData) // 1 byte:    identifies the type of the element
-        messageData.appendData(valueLengthAsNSData)       // 4 bytes:   length of the message
-        
-        // Body of message
-        messageData.appendData(elementValueAsNSData)      // Variable:  the message itself, 4 for Floats, 4 for Int, variable for NSData
+        let messageData = element.dataMessage
         
         if logging { print("Sending Data for \(element.name):\(messageData.length) bytes") }
         
         writeData(messageData, toStream: toStream)
+        
+        if element.clearValueAfterTransfer {
+            element.value = 0
+        }
  
     }
     
@@ -98,6 +83,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var dataSendQueue = NSMutableData()
     let lockQueueWriteData = dispatch_queue_create("net.simplyformed.lockQueueWriteData", nil)
     var streamerIsBusy: Bool = false
+    var totalBusyTime: Float = 0.0
     
     func writeData(var data: NSData, toStream: NSOutputStream) {
 
@@ -105,6 +91,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             print("Attempt to write without peripheral object setup, exiting")
             return
         }
+        
         // If no connection, clean-up queue and exit
         if VgcManager.appRole == .Peripheral && VgcManager.peripheral.haveConnectionToCentral == false {
             print("No connection so clearing write queue")
@@ -113,7 +100,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         }
 
         if streamerIsBusy || !toStream.hasSpaceAvailable {
-            print("OutputStream has no space/streamer is busy, data to send: \(NSString(data: data, encoding: NSUTF8StringEncoding))")
+            print("OutputStream has no space/streamer is busy")
             if data.length > 0 {
                 dispatch_sync(self.lockQueueWriteData) {
                     self.dataSendQueue.appendData(data)
@@ -121,9 +108,19 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 print("Appended data queue, length: \(self.dataSendQueue.length)")
             }
             if self.dataSendQueue.length > 0 {
+                
+                // Avoid looping with lost connection
+                totalBusyTime += 0.1
+                if totalBusyTime > 2.0 {
+                    print("Clearing data queue because of timeout")
+                    totalBusyTime = 0
+                    dataSendQueue = NSMutableData()
+                    return
+                }
                 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
                 dispatch_after(delayTime, dispatch_get_main_queue()) {
                     
+                    print("Recursively calling writeData to process queue")
                     // Send a trigger re-attempting the write request
                     self.writeData(NSData(), toStream: toStream)
                     
@@ -156,9 +153,11 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             }
             
         }
+        
         if data.length != bytesWritten {
             print("ERROR: Got data transfer size mismatch")
         }
+        
         streamerIsBusy = false
     }
 
