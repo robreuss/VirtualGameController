@@ -15,6 +15,7 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     public let elements = Elements()
     var session: WCSession!
     var httpSession: NSURLSession!
+    public var motion: VgcMotionManager!
     
     public override init() {
       
@@ -24,6 +25,14 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         session.delegate = self
         session.activateSession()
         
+        #if os(watchOS)
+        motion = VgcMotionManager()
+        motion.elements = VgcManager.elements
+        motion.deviceSupportsMotion = true
+        //motion.updateInterval = 1.0 / 30
+        
+        motion.watchConnectivity = self
+        #endif
     }
     
     public func sendElementValueToBridge(element: Element) {
