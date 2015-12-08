@@ -15,8 +15,8 @@
 		2084DD051BD370960041D380 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2084DD031BD370960041D380 /* Main.storyboard */; };
 		2084DD101BD370960041D380 /* vgcPeripheral_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DD0F1BD370960041D380 /* vgcPeripheral_OSXTests.swift */; };
 		2084DD1B1BD370960041D380 /* vgcPeripheral_OSXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DD1A1BD370960041D380 /* vgcPeripheral_OSXUITests.swift */; };
-		20AD46C31C06595B002A48A9 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46C21C06595B002A48A9 /* VirtualGameController.framework */; };
-		20AD46C41C06595B002A48A9 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46C21C06595B002A48A9 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20ED44CE1C17819A00166D37 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED44CD1C17819900166D37 /* VirtualGameController.framework */; };
+		20ED44CF1C17819A00166D37 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED44CD1C17819900166D37 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +37,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		20E676681BFFEC33005B5E7B /* Embed Frameworks */ = {
+		20ED44D01C17819A00166D37 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20AD46C41C06595B002A48A9 /* VirtualGameController.framework in Embed Frameworks */,
+				20ED44CF1C17819A00166D37 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +65,7 @@
 		2084DD161BD370960041D380 /* Peripheral_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Peripheral_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2084DD1A1BD370960041D380 /* vgcPeripheral_OSXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vgcPeripheral_OSXUITests.swift; sourceTree = "<group>"; };
 		2084DD1C1BD370960041D380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20AD46C21C06595B002A48A9 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		20ED44CD1C17819900166D37 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AD46C31C06595B002A48A9 /* VirtualGameController.framework in Frameworks */,
+				20ED44CE1C17819A00166D37 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +97,7 @@
 		2084DCF11BD370960041D380 = {
 			isa = PBXGroup;
 			children = (
-				20AD46C21C06595B002A48A9 /* VirtualGameController.framework */,
+				20ED44CD1C17819900166D37 /* VirtualGameController.framework */,
 				2084DCFC1BD370960041D380 /* vgcPeripheralOSX */,
 				2084DD0E1BD370960041D380 /* vgcPeripheralOSXTests */,
 				2084DD191BD370960041D380 /* vgcPeripheralOSXUITests */,
@@ -160,7 +160,7 @@
 				2084DCF61BD370960041D380 /* Sources */,
 				2084DCF71BD370960041D380 /* Frameworks */,
 				2084DCF81BD370960041D380 /* Resources */,
-				20E676681BFFEC33005B5E7B /* Embed Frameworks */,
+				20ED44D01C17819A00166D37 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
