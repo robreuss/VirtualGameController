@@ -295,11 +295,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 
             }
             
-            // Slight delay for the streams to get ready
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
-                self.peripheral.gotConnectionToCentral()
-            }
+            self.peripheral.gotConnectionToCentral()
 
         }
     }
