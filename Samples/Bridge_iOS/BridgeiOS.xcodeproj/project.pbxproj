@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200B43CE1C17A40E000E8002 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B43CC1C17A409000E8002 /* VirtualGameController.framework */; };
+		200B43CF1C17A40E000E8002 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 200B43CC1C17A409000E8002 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		202BBF891BE56B90004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF861BE56B90004D47EC /* VgcCustomElements.swift */; };
 		202BBF8A1BE56B90004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */; };
 		202BBF8B1BE56B90004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF881BE56B90004D47EC /* VgcSharedViews.swift */; };
@@ -16,8 +18,6 @@
 		2033A1C11BEB3C8F005C5845 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2033A1C01BEB3C8F005C5845 /* Interface.storyboard */; };
 		205B7E821C16DDD40027ACBB /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */; };
 		205C6D341C1796D50085A39B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D331C1796D50085A39B /* VirtualGameController.framework */; };
-		205C6D371C1796FE0085A39B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D351C1796FA0085A39B /* VirtualGameController.framework */; };
-		205C6D381C1796FE0085A39B /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D351C1796FA0085A39B /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		205C6D391C17972E0085A39B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D331C1796D50085A39B /* VirtualGameController.framework */; };
 		205C6D3A1C17972E0085A39B /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D331C1796D50085A39B /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		207BFA3F1BBB7A210061A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */; };
@@ -97,7 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				205C6D381C1796FE0085A39B /* VirtualGameController.framework in Embed Frameworks */,
+				200B43CF1C17A40E000E8002 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		200B43CC1C17A409000E8002 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		202BBF861BE56B90004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF871BE56B90004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF881BE56B90004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -123,7 +124,6 @@
 		2033A1BD1BEB3C7C005C5845 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2033A1C01BEB3C8F005C5845 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		205C6D331C1796D50085A39B /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
-		205C6D351C1796FA0085A39B /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		207BFA3B1BBB7A210061A9B0 /* BridgeiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BridgeiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207BFA3E1BBB7A210061A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207BFA401BBB7A210061A9B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				205C6D371C1796FE0085A39B /* VirtualGameController.framework in Frameworks */,
+				200B43CE1C17A40E000E8002 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +260,7 @@
 		207BFA761BBB7A220061A9B0 /* vgcBridge_iOS WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				205C6D351C1796FA0085A39B /* VirtualGameController.framework */,
+				200B43CC1C17A409000E8002 /* VirtualGameController.framework */,
 				207BFA791BBB7A220061A9B0 /* InterfaceController.swift */,
 				20F967DB1BBDB5FA00EF2815 /* ElementRow.swift */,
 				207BFA7B1BBB7A220061A9B0 /* ExtensionDelegate.swift */,
@@ -653,6 +653,9 @@
 					"$(PROJECT_DIR)/vgcBridge",
 					WatchKit,
 					Extension,
+					"$(PROJECT_DIR)/vgcBridge",
+					WatchKit,
+					Extension,
 				);
 				INFOPLIST_FILE = "vgcBridge WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -674,6 +677,9 @@
 					WatchKit,
 					Extension,
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/vgcBridge",
+					WatchKit,
+					Extension,
 					"$(PROJECT_DIR)/vgcBridge",
 					WatchKit,
 					Extension,
