@@ -208,6 +208,7 @@ public class Peripheral: NSObject {
         haveConnectionToCentral = true
         
         dispatch_async(dispatch_get_main_queue()) {
+            
             NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
 
         }

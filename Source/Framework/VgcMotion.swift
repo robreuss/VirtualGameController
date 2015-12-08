@@ -19,7 +19,7 @@ public class VgcMotionManager: NSObject {
     
     #if os(watchOS)
     public var watchConnectivity: VgcWatchConnectivity!
-    private var elements: Elements!
+    public var elements: Elements!
     #endif
     
     public var deviceSupportsMotion: Bool!
@@ -59,17 +59,6 @@ public class VgcMotionManager: NSObject {
         let dt = updateInterval
         let RC = 1.0 / cutOffFrequency
         filterConstant = dt / (dt + RC)
-        
-    }
-                
-    public override init() {
-
-        #if os(watchOS)
-        elements = watchConnectivity.elements
-        #endif
-
-        
-        super.init()
         
     }
     
