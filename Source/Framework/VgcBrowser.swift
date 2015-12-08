@@ -193,13 +193,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
                 let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
-                print("\(messagesPerSecond) msgs/sec sent (Buffer has space: \(outputStream.hasSpaceAvailable))")
+                print("\(messagesPerSecond) msgs/sec sent")
                 PerformanceVars.messagesSent = 1
                 PerformanceVars.lastPublicationOfPerformance = NSDate()
             }
         }
 
-        streamer.writeElement(element, toStream:outputStream)
+        // Prevent writes without a connect except deviceInfo
+        if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer.writeElement(element, toStream:outputStream) }
         
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         
