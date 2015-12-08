@@ -78,7 +78,7 @@
             </FileRef>
          </Group>
          <FileRef
-            location = "group:VirtualGameControllerWatchOS.xcodeproj">
+            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerWatchOS/VirtualGameController.xcodeproj">
          </FileRef>
       </Group>
    </Group>

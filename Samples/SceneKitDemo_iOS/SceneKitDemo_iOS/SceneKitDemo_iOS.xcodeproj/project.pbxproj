@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		202D5CA71C0AC132006F782A /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
-		208FF1C51C139281001499DD /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		208FF1C51C139281001499DD /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		208FF1C71C1393C9001499DD /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		20AD46D51C06699A002A48A9 /* SceneKitDemo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20AD46D81C06699A002A48A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

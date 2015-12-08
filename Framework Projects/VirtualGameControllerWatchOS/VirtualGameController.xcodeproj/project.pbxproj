@@ -12,7 +12,6 @@
 		202BBFF11BE57419004D47EC /* VgcMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFEC1BE57419004D47EC /* VgcMotion.swift */; };
 		202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */; };
 		20A120BE1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20C91F931C10107000D99D88 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +19,9 @@
 		202BBFEB1BE57419004D47EC /* VgcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcManager.swift; path = ../../../Source/Framework/VgcManager.swift; sourceTree = "<group>"; };
 		202BBFEC1BE57419004D47EC /* VgcMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = ../../../Source/Framework/VgcMotion.swift; sourceTree = "<group>"; };
 		202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
-		20A120BA1BDA97BF00E30083 /* VirtualGameControllerWatchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameControllerWatchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20A120BA1BDA97BF00E30083 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerWatchOS.h; sourceTree = "<group>"; };
 		20A120BF1BDA97BF00E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = /Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,7 +46,7 @@
 		20A120BB1BDA97BF00E30083 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				20A120BA1BDA97BF00E30083 /* VirtualGameControllerWatchOS.framework */,
+				20A120BA1BDA97BF00E30083 /* VirtualGameController.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,7 +59,6 @@
 				202BBFEC1BE57419004D47EC /* VgcMotion.swift */,
 				202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */,
 				20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */,
-				20C91F921C10107000D99D88 /* VgcPeripheralSetup.swift */,
 				20A120BF1BDA97BF00E30083 /* Info.plist */,
 			);
 			path = VirtualGameControllerWatchOS;
@@ -81,9 +78,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		20A120B91BDA97BF00E30083 /* VirtualGameControllerWatchOS */ = {
+		20A120B91BDA97BF00E30083 /* VirtualGameController */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20A120C21BDA97BF00E30083 /* Build configuration list for PBXNativeTarget "VirtualGameControllerWatchOS" */;
+			buildConfigurationList = 20A120C21BDA97BF00E30083 /* Build configuration list for PBXNativeTarget "VirtualGameController" */;
 			buildPhases = (
 				20A120B51BDA97BF00E30083 /* Sources */,
 				20A120B61BDA97BF00E30083 /* Frameworks */,
@@ -94,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = VirtualGameControllerWatchOS;
+			name = VirtualGameController;
 			productName = VirtualGameControllerWatchOS;
-			productReference = 20A120BA1BDA97BF00E30083 /* VirtualGameControllerWatchOS.framework */;
+			productReference = 20A120BA1BDA97BF00E30083 /* VirtualGameController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 20A120B41BDA97BF00E30083 /* Build configuration list for PBXProject "VirtualGameControllerWatchOS" */;
+			buildConfigurationList = 20A120B41BDA97BF00E30083 /* Build configuration list for PBXProject "VirtualGameController" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -125,7 +122,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				20A120B91BDA97BF00E30083 /* VirtualGameControllerWatchOS */,
+				20A120B91BDA97BF00E30083 /* VirtualGameController */,
 			);
 		};
 /* End PBXProject section */
@@ -146,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */,
-				20C91F931C10107000D99D88 /* VgcPeripheralSetup.swift in Sources */,
 				202BBFF11BE57419004D47EC /* VgcMotion.swift in Sources */,
 				202BBFF01BE57419004D47EC /* VgcManager.swift in Sources */,
 				202BBFEF1BE57419004D47EC /* VgcElements.swift in Sources */,
@@ -255,7 +251,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -272,7 +268,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -280,7 +276,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20A120B41BDA97BF00E30083 /* Build configuration list for PBXProject "VirtualGameControllerWatchOS" */ = {
+		20A120B41BDA97BF00E30083 /* Build configuration list for PBXProject "VirtualGameController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20A120C01BDA97BF00E30083 /* Debug */,
@@ -289,7 +285,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20A120C21BDA97BF00E30083 /* Build configuration list for PBXNativeTarget "VirtualGameControllerWatchOS" */ = {
+		20A120C21BDA97BF00E30083 /* Build configuration list for PBXNativeTarget "VirtualGameController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20A120C31BDA97BF00E30083 /* Debug */,

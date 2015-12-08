@@ -148,6 +148,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
         let imageData = UIImageJPEGRepresentation(image, 1.0)
         imageElement.value = imageData!
+        
+        // Discard image data after transfering
+        imageElement.clearValueAfterTransfer = true
         VgcManager.peripheral.sendElementState(imageElement)
     }
 

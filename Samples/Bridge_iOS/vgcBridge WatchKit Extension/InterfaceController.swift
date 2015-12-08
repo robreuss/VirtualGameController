@@ -9,24 +9,22 @@
 import WatchKit
 import Foundation
 import WatchConnectivity
-import VirtualGameControllerWatchOS
+import VirtualGameController
 
 class InterfaceController: WKInterfaceController {
     
     @IBOutlet var elementsTable: WKInterfaceTable!
     
-    let motion: VgcMotionManager!
     let watchConnectivity: VgcWatchConnectivity!
     var session : WCSession!
     
     override init() {
         
-        motion = VgcMotionManager()
-        motion.deviceSupportsMotion = true
-        //motion.updateInterval = 1.0 / 30
+        VgcManager.startAs(.Peripheral, appIdentifier: "", customElements: CustomElements(), customMappings: CustomMappings())
         
-        watchConnectivity = VgcWatchConnectivity()
-        motion.watchConnectivity = watchConnectivity
+        print("Successfully ran startAs")
+        
+        watchConnectivity = VgcWatchConnectivity() 
         
     }
     
@@ -37,9 +35,9 @@ class InterfaceController: WKInterfaceController {
     // issue.
     @IBAction func motionSwitch(value: Bool) {
         if value == true {
-            motion.start()
+            watchConnectivity.motion.start()
         } else {
-            motion.stop()
+            watchConnectivity.motion.stop()
         }
     }
     

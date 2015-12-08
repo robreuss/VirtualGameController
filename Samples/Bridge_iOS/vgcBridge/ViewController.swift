@@ -27,7 +27,7 @@ class ViewController: VgcCentralViewController {
 
         if VgcManager.appRole == .EnhancementBridge {
             
-            self.peripheralControlPadView = PeripheralControlPadView(aParentView: self.view)
+            self.peripheralControlPadView = PeripheralControlPadView(vc: self)
             
         }
 
