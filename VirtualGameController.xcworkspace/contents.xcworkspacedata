@@ -67,6 +67,9 @@
       <Group
          location = "group:VirtualGameControllerWatchOS"
          name = "VirtualGameControllerWatchOS">
+         <FileRef
+            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj">
+         </FileRef>
          <Group
             location = "group:VirtualGameControllerWatchOS"
             name = "VirtualGameControllerWatchOS">
