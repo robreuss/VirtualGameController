@@ -417,8 +417,59 @@
          location = "group:Samples/Central_OSX"
          name = "Central_OSX">
          <FileRef
-            location = "group:Central_OSX/Central_OSX.xcodeproj">
+            location = "group:Central_OSX.xcodeproj">
          </FileRef>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSample"
+            name = "CentralVirtualGameControllerOSXSample">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:ViewController.swift">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSampleTests"
+            name = "CentralVirtualGameControllerOSXSampleTests">
+            <FileRef
+               location = "group:CentralVirtualGameControllerOSXSampleTests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:CentralVirtualGameControllerOSXSampleUITests"
+            name = "CentralVirtualGameControllerOSXSampleUITests">
+            <FileRef
+               location = "group:CentralVirtualGameControllerOSXSampleUITests.swift">
+            </FileRef>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
       </Group>
       <Group
          location = "group:Samples/Peripheral_iOS"

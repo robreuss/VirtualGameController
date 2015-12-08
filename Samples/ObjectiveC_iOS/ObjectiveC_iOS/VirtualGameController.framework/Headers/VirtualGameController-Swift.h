@@ -137,8 +137,6 @@ typedef SWIFT_ENUM(NSInteger, ControllerType) {
 
 enum ElementType : NSInteger;
 @class VgcController;
-@class NSMutableData;
-@class NSData;
 @class NSCoder;
 
 
@@ -170,19 +168,14 @@ SWIFT_CLASS("_TtC21VirtualGameController7Element")
 @property (nonatomic, strong) id __nonnull value;
 @property (nonatomic, copy) NSString * __nonnull getterKeypath;
 @property (nonatomic, copy) NSString * __nonnull setterKeypath;
-
-/// Automatically clear out value after transfering
-@property (nonatomic) BOOL clearValueAfterTransfer;
 @property (nonatomic, copy) void (^ __null_unspecified valueChangedHandler)(VgcController * __nonnull, Element * __nonnull);
 @property (nonatomic, copy) void (^ __null_unspecified valueChangedHandlerForPeripheral)(Element * __nonnull);
 @property (nonatomic, readonly) NSInteger hashValue;
-@property (nonatomic, readonly, strong) NSMutableData * __nonnull dataMessage;
-@property (nonatomic, strong) NSData * __nonnull valueAsNSData;
 - (NSString * __nonnull)getterKeypath:(VgcController * __nonnull)controller;
 - (NSString * __nonnull)setterKeypath:(VgcController * __nonnull)controller;
 - (nonnull instancetype)initWithCoder:(NSCoder * __nonnull)decoder;
 - (void)encodeWithCoder:(NSCoder * __nonnull)coder;
-- (id __nonnull)copyWithZone:(NSZone * __null_unspecified)zone;
+@property (nonatomic, copy) NSString * __nonnull valueAsBase64String;
 @end
 
 
@@ -222,7 +215,7 @@ SWIFT_CLASS("_TtC21VirtualGameController10DeviceInfo")
 @interface DeviceInfo : NSObject <NSCoding>
 @property (nonatomic, readonly, copy) NSString * __nonnull vendorName;
 @property (nonatomic, readonly) BOOL attachedToDevice;
-@property (nonatomic) enum ProfileType profileType;
+@property (nonatomic, readonly) enum ProfileType profileType;
 @property (nonatomic, readonly) enum ControllerType controllerType;
 @property (nonatomic, readonly) BOOL supportsMotion;
 - (nonnull instancetype)initWithDeviceUID:(NSString * __nonnull)deviceUID vendorName:(NSString * __nonnull)vendorName attachedToDevice:(BOOL)attachedToDevice profileType:(enum ProfileType)profileType controllerType:(enum ControllerType)controllerType supportsMotion:(BOOL)supportsMotion OBJC_DESIGNATED_INITIALIZER;
@@ -236,36 +229,35 @@ typedef SWIFT_ENUM(NSInteger, ElementType) {
   ElementTypeDeviceInfoElement = 0,
   ElementTypeSystemMessage = 1,
   ElementTypePlayerIndex = 2,
-  ElementTypePeripheralSetup = 3,
-  ElementTypePauseButton = 4,
-  ElementTypeLeftShoulder = 5,
-  ElementTypeRightShoulder = 6,
-  ElementTypeDpadXAxis = 7,
-  ElementTypeDpadYAxis = 8,
-  ElementTypeButtonA = 9,
-  ElementTypeButtonB = 10,
-  ElementTypeButtonX = 11,
-  ElementTypeButtonY = 12,
-  ElementTypeLeftThumbstickXAxis = 13,
-  ElementTypeLeftThumbstickYAxis = 14,
-  ElementTypeRightThumbstickXAxis = 15,
-  ElementTypeRightThumbstickYAxis = 16,
-  ElementTypeLeftTrigger = 17,
-  ElementTypeRightTrigger = 18,
-  ElementTypeMotionUserAccelerationX = 19,
-  ElementTypeMotionUserAccelerationY = 20,
-  ElementTypeMotionUserAccelerationZ = 21,
-  ElementTypeMotionAttitudeX = 22,
-  ElementTypeMotionAttitudeY = 23,
-  ElementTypeMotionAttitudeZ = 24,
-  ElementTypeMotionAttitudeW = 25,
-  ElementTypeMotionRotationRateX = 26,
-  ElementTypeMotionRotationRateY = 27,
-  ElementTypeMotionRotationRateZ = 28,
-  ElementTypeMotionGravityX = 29,
-  ElementTypeMotionGravityY = 30,
-  ElementTypeMotionGravityZ = 31,
-  ElementTypeCustom = 32,
+  ElementTypePauseButton = 3,
+  ElementTypeLeftShoulder = 4,
+  ElementTypeRightShoulder = 5,
+  ElementTypeDpadXAxis = 6,
+  ElementTypeDpadYAxis = 7,
+  ElementTypeButtonA = 8,
+  ElementTypeButtonB = 9,
+  ElementTypeButtonX = 10,
+  ElementTypeButtonY = 11,
+  ElementTypeLeftThumbstickXAxis = 12,
+  ElementTypeLeftThumbstickYAxis = 13,
+  ElementTypeRightThumbstickXAxis = 14,
+  ElementTypeRightThumbstickYAxis = 15,
+  ElementTypeLeftTrigger = 16,
+  ElementTypeRightTrigger = 17,
+  ElementTypeMotionUserAccelerationX = 18,
+  ElementTypeMotionUserAccelerationY = 19,
+  ElementTypeMotionUserAccelerationZ = 20,
+  ElementTypeMotionAttitudeX = 21,
+  ElementTypeMotionAttitudeY = 22,
+  ElementTypeMotionAttitudeZ = 23,
+  ElementTypeMotionAttitudeW = 24,
+  ElementTypeMotionRotationRateX = 25,
+  ElementTypeMotionRotationRateY = 26,
+  ElementTypeMotionRotationRateZ = 27,
+  ElementTypeMotionGravityX = 28,
+  ElementTypeMotionGravityY = 29,
+  ElementTypeMotionGravityZ = 30,
+  ElementTypeCustom = 31,
 };
 
 
@@ -286,7 +278,6 @@ SWIFT_CLASS("_TtC21VirtualGameController8Elements")
 @property (nonatomic, strong) Element * __nonnull deviceInfoElement;
 @property (nonatomic, strong) Element * __nonnull playerIndex;
 @property (nonatomic, strong) Element * __nonnull pauseButton;
-@property (nonatomic, strong) Element * __nonnull peripheralSetup;
 @property (nonatomic, strong) Element * __nonnull leftShoulder;
 @property (nonatomic, strong) Element * __nonnull rightShoulder;
 @property (nonatomic, strong) Element * __nonnull dpadXAxis;
@@ -324,7 +315,6 @@ SWIFT_CLASS("_TtC21VirtualGameController8Elements")
 SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 @interface Peripheral : NSObject
 @property (nonatomic, strong) VgcMotionManager * __null_unspecified motion;
-@property (nonatomic) BOOL haveConnectionToCentral;
 
 /// Key method used to send a change in an element's state to the Central or Bridge that we're currently connected to with this Peripheral.  "State" in this case refers to the Element "value" property.
 - (void)sendElementState:(Element * __nonnull)element;
@@ -342,12 +332,11 @@ SWIFT_CLASS("_TtC21VirtualGameController10Peripheral")
 
 typedef SWIFT_ENUM(NSInteger, ProfileType) {
   ProfileTypeUnknown = 0,
-  ProfileTypeGenericGamepad = 1,
-  ProfileTypeMicroGamepad = 2,
-  ProfileTypeGamepad = 3,
-  ProfileTypeExtendedGamepad = 4,
-  ProfileTypeMotion = 5,
-  ProfileTypeWatch = 6,
+  ProfileTypeMicroGamepad = 1,
+  ProfileTypeGamepad = 2,
+  ProfileTypeExtendedGamepad = 3,
+  ProfileTypeMotion = 4,
+  ProfileTypeWatch = 5,
 };
 
 @class VgcMotion;
@@ -360,7 +349,6 @@ SWIFT_CLASS("_TtC21VirtualGameController13VgcController")
 @interface VgcController : NSObject <NSNetServiceDelegate, NSStreamDelegate>
 @property (nonatomic, weak) Peripheral * __null_unspecified peripheral;
 @property (nonatomic, strong) Elements * __null_unspecified elements;
-@property (nonatomic, readonly) BOOL isHardwareController;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (VgcController * __null_unspecified)iCadeController;
 + (void)setICadeController:(VgcController * __null_unspecified)value;
@@ -419,6 +407,7 @@ SWIFT_CLASS("_TtC21VirtualGameController18VgcExtendedGamepad")
 - (VgcExtendedGamepadSnapshot * __nonnull)vgcSaveSnapshot;
 @end
 
+@class NSData;
 
 SWIFT_CLASS("_TtC21VirtualGameController26VgcExtendedGamepadSnapshot")
 @interface VgcExtendedGamepadSnapshot : NSObject
@@ -484,16 +473,11 @@ SWIFT_CLASS("_TtC21VirtualGameController18VgcIcadePeripheral")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class VgcPeripheralSetup;
 
 SWIFT_CLASS("_TtC21VirtualGameController10VgcManager")
 @interface VgcManager : NSObject
 + (enum AppRole)appRole;
 + (void)setAppRole:(enum AppRole)value;
-
-/// Used by the Central to configure a software controller, in terms of profile type, background color and such
-+ (VgcPeripheralSetup * __nonnull)peripheralSetup;
-+ (void)setPeripheralSetup:(VgcPeripheralSetup * __nonnull)value;
 
 /// Shared set of elements (in contrast to controllers on a Central/Bridge, each of which have their own set of elements).
 + (Elements * __nonnull)elements;
@@ -563,27 +547,9 @@ SWIFT_CLASS("_TtC21VirtualGameController16VgcMotionManager")
 
 /// System can handle 60 updates/sec but only if a subset of motion factors are enabled, not all four.  If all four inputs are needed, update frequency should be reduced.
 @property (nonatomic) double updateInterval;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)start;
 - (void)stop;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class UIColor;
-
-SWIFT_CLASS("_TtC21VirtualGameController18VgcPeripheralSetup")
-@interface VgcPeripheralSetup : NSObject
-@property (nonatomic) BOOL motionActive;
-@property (nonatomic) BOOL enableMotionUserAcceleration;
-@property (nonatomic) BOOL enableMotionRotationRate;
-@property (nonatomic) BOOL enableMotionAttitude;
-@property (nonatomic) BOOL enableMotionGravity;
-@property (nonatomic, strong) UIColor * __null_unspecified backgroundColor;
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithProfileType:(enum ProfileType)profileType backgroundColor:(UIColor * __nonnull)backgroundColor OBJC_DESIGNATED_INITIALIZER;
-- (nonnull instancetype)initWithCoder:(NSCoder * __nonnull)decoder;
-@property (nonatomic, readonly, copy) NSString * __nonnull description;
-- (void)encodeWithCoder:(NSCoder * __nonnull)coder;
-- (void)sendToController:(VgcController * __nonnull)controller;
 @end
 
 
@@ -598,7 +564,6 @@ SWIFT_CLASS("_TtC21VirtualGameController10VgcService")
 SWIFT_CLASS("_TtC21VirtualGameController20VgcWatchConnectivity")
 @interface VgcWatchConnectivity : NSObject <NSURLSessionDelegate, WCSessionDelegate>
 @property (nonatomic, readonly, strong) Elements * __nonnull elements;
-@property (nonatomic, strong) VgcMotionManager * __null_unspecified motion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 - (void)sendElementValueToBridge:(Element * __nonnull)element;
 @end

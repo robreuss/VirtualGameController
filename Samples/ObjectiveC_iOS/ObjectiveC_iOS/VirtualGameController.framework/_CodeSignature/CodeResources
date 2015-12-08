@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/VirtualGameController-Swift.h</key>
 		<data>
-		Ljwqa6Pya/hIedSBroTu4Vyk0x0=
+		ImKz5R7dfgrcw09P8odojO1M7HA=
 		</data>
 		<key>Headers/VirtualGameControllerIOS.h</key>
 		<data>
@@ -18,19 +18,19 @@
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
 		<data>
-		RSvHOo0a3CPiVzjS9XY04dh62Bw=
+		1Uxn+eA/xhyQ7kNZmpY1hotlOlo=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
 		<data>
-		wa+Nr0W+F5iDvYgPHgBs1ECtws0=
+		+HwnVv4VKMsdkI1C8llyBVOZt0k=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		zqzESSPetzNvXcyscDwduYIqtls=
+		SUXyGSiro/q8UQm/HfIJrGSlOes=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		/iLVXGwfbB6g/q+QON/unyhG7kE=
+		ETQgAvgSh2Cntoua2fMHWCXBtHA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -41,7 +41,7 @@
 	<dict>
 		<key>Headers/VirtualGameController-Swift.h</key>
 		<data>
-		Ljwqa6Pya/hIedSBroTu4Vyk0x0=
+		ImKz5R7dfgrcw09P8odojO1M7HA=
 		</data>
 		<key>Headers/VirtualGameControllerIOS.h</key>
 		<data>
@@ -49,19 +49,19 @@
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm.swiftdoc</key>
 		<data>
-		RSvHOo0a3CPiVzjS9XY04dh62Bw=
+		1Uxn+eA/xhyQ7kNZmpY1hotlOlo=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm.swiftmodule</key>
 		<data>
-		wa+Nr0W+F5iDvYgPHgBs1ECtws0=
+		+HwnVv4VKMsdkI1C8llyBVOZt0k=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		zqzESSPetzNvXcyscDwduYIqtls=
+		SUXyGSiro/q8UQm/HfIJrGSlOes=
 		</data>
 		<key>Modules/VirtualGameController.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		/iLVXGwfbB6g/q+QON/unyhG7kE=
+		ETQgAvgSh2Cntoua2fMHWCXBtHA=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>

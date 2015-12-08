@@ -1,3 +1,0 @@
-framework module VirtualGameController {
-    header "VirtualGameController-Swift.h"
-}
