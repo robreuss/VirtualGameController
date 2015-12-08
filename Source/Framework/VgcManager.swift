@@ -172,9 +172,11 @@ public class VgcManager: NSObject {
     // Default to being a Peripheral
     public static var appRole: AppRole = .Peripheral
     
+    #if !os(watchOS)
     /// Used by the Central to configure a software controller, in terms of profile type, background
     /// color and such
     public static var peripheralSetup = VgcPeripheralSetup()
+    #endif
     
     ///
     /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
