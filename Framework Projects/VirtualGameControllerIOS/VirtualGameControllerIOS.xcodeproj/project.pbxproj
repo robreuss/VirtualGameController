@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200B43C71C179B98000E8002 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B43C61C179B98000E8002 /* VgcPeripheralSetup.swift */; };
 		202BBF651BE569BD004D47EC /* VirtualGameControllerIOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		202BBFD91BE56DA1004D47EC /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFCC1BE56DA1004D47EC /* VgcCentralPublisher.swift */; };
 		202BBFDA1BE56DA1004D47EC /* VgcCentralPublisherWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFCD1BE56DA1004D47EC /* VgcCentralPublisherWatch.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		200B43C61C179B98000E8002 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = ../../Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<group>"; };
 		202BBF611BE569BD004D47EC /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerIOS.h; sourceTree = "<group>"; };
 		202BBF661BE569BD004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				20561D831BFDDF7E008D56F2 /* GCControllerDirectionPad.h */,
 				20561D841BFDDF7E008D56F2 /* GCControllerElement.h */,
 				20561D851BFDDF7E008D56F2 /* GCExtendedGamepad.h */,
+				200B43C61C179B98000E8002 /* VgcPeripheralSetup.swift */,
 				20561D861BFDDF7E008D56F2 /* GCExtendedGamepadSnapshot.h */,
 				20561D871BFDDF7E008D56F2 /* GCGamepad.h */,
 				20561D881BFDDF7E008D56F2 /* GCGamepadSnapshot.h */,
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				200B43C71C179B98000E8002 /* VgcPeripheralSetup.swift in Sources */,
 				202BBFDD1BE56DA1004D47EC /* VgcElements.swift in Sources */,
 				202BBFDE1BE56DA1004D47EC /* VgcIcadePeripheral.swift in Sources */,
 				202BBFDC1BE56DA1004D47EC /* VgcController.swift in Sources */,
