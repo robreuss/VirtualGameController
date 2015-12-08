@@ -322,6 +322,8 @@ import VirtualGameController
                 elementDebugView.imageView.image = UIImage(data: element.value as! NSData)
             }
             
+            element.value = NSData()
+            
         }
         
         // Test of custom element "keyboard" handler
