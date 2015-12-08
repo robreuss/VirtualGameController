@@ -91,6 +91,9 @@ public enum ElementDataType: Int {
     
 }
 
+// Message header identifier is a random pre-generated 32-bit integer
+let headerIdentifierAsNSData = NSData(bytes: &VgcManager.headerIdentifier, length: sizeof(UInt32))
+
 ///
 /// Element is a class that represents each element/control on a controller, such as Button A or dpad.
 /// Along with describing the controller element in terms of name and data type,and providing a
@@ -163,7 +166,28 @@ public class Element: NSObject {
         super.init()
     }
     
-    #if os(iOS) || os(OSX) || os(tvOS)
+    public var dataMessage: NSMutableData {
+        
+        let elementValueAsNSData = valueAsNSData
+        
+        var elementIdentifierAsUInt8: UInt8 = UInt8(identifier)
+        let elementIdentifierAsNSData = NSData(bytes: &elementIdentifierAsUInt8, length: sizeof(UInt8))
+        
+        var valueLengthAsUInt32: UInt32 = UInt32(elementValueAsNSData.length)
+        let valueLengthAsNSData = NSData(bytes: &valueLengthAsUInt32, length: sizeof(UInt32))
+        
+        let messageData = NSMutableData()
+        
+        // Message header
+        messageData.appendData(headerIdentifierAsNSData)  // 4 bytes:   indicates the start of an individual message, random 32-bit int
+        messageData.appendData(elementIdentifierAsNSData) // 1 byte:    identifies the type of the element
+        messageData.appendData(valueLengthAsNSData)       // 4 bytes:   length of the message
+        
+        // Body of message
+        messageData.appendData(elementValueAsNSData)      // Variable:  the message itself, 4 for Floats, 4 for Int, variable for NSData
+        
+        return messageData
+    }
     
     public var valueAsNSData: NSData {
         
@@ -173,14 +197,14 @@ public class Element: NSObject {
             case .Int:
                 var value: Int = self.value as! Int
                 return NSData(bytes: &value, length: sizeof(Int))
-    
+                
             case .Float:
                 var value: Float = self.value as! Float
                 return NSData(bytes: &value, length: sizeof(Float))
                 
             case .Data:
                 return self.value as! NSData
-    
+                
             case .String:
                 return NSMutableData(data: (self.value as! String).dataUsingEncoding(NSUTF8StringEncoding)!)
             }
@@ -193,15 +217,15 @@ public class Element: NSObject {
                 var value: Int = 0
                 newValue.getBytes(&value, length: sizeof(Int))
                 self.value = value
-    
+                
             case .Float:
                 var value: Float = 0.0
                 newValue.getBytes(&value, length: sizeof(Float))
                 self.value = value
-    
+                
             case .Data:
                 self.value = newValue
-    
+                
             case .String:
                 self.value = String(data: newValue, encoding: NSUTF8StringEncoding)!
                 
@@ -209,6 +233,8 @@ public class Element: NSObject {
         }
     }
     
+    #if os(iOS) || os(OSX) || os(tvOS)
+       
     // Provides calculated keypaths for access to game controller elements
     
     public func getterKeypath(controller: VgcController) -> String {
