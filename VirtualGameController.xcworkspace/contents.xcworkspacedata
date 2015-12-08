@@ -14,6 +14,212 @@
       location = "group:Framework Projects"
       name = "Framework Projects">
       <Group
+         location = "group:VirtualGameControllerWatchOS"
+         name = "VirtualGameControllerWatchOS">
+         <Group
+            location = "group:build"
+            name = "build">
+            <Group
+               location = "group:Debug-watchos"
+               name = "Debug-watchos">
+               <Group
+                  location = "group:VirtualGameControllerWatchOS.framework"
+                  name = "VirtualGameControllerWatchOS.framework">
+                  <Group
+                     location = "group:Headers"
+                     name = "Headers">
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-Swift.h">
+                     </FileRef>
+                  </Group>
+                  <Group
+                     location = "group:Modules"
+                     name = "Modules">
+                     <Group
+                        location = "group:VirtualGameControllerWatchOS.swiftmodule"
+                        name = "VirtualGameControllerWatchOS.swiftmodule">
+                        <FileRef
+                           location = "group:arm.swiftdoc">
+                        </FileRef>
+                        <FileRef
+                           location = "group:arm.swiftmodule">
+                        </FileRef>
+                     </Group>
+                  </Group>
+               </Group>
+            </Group>
+            <Group
+               location = "group:VirtualGameControllerWatchOS.build"
+               name = "VirtualGameControllerWatchOS.build">
+               <FileRef
+                  location = "group:all-product-headers.yaml">
+               </FileRef>
+               <Group
+                  location = "group:Debug-watchos"
+                  name = "Debug-watchos">
+                  <Group
+                     location = "group:VirtualGameControllerWatchOS.build"
+                     name = "VirtualGameControllerWatchOS.build">
+                     <Group
+                        location = "group:DerivedSources"
+                        name = "DerivedSources">
+                        <FileRef
+                           location = "group:VirtualGameControllerWatchOS_vers.c">
+                        </FileRef>
+                     </Group>
+                     <FileRef
+                        location = "group:dgph">
+                     </FileRef>
+                     <FileRef
+                        location = "group:dgph~">
+                     </FileRef>
+                     <FileRef
+                        location = "group:module.modulemap">
+                     </FileRef>
+                     <Group
+                        location = "group:Objects-normal"
+                        name = "Objects-normal">
+                        <Group
+                           location = "group:armv7k"
+                           name = "armv7k">
+                           <FileRef
+                              location = "group:VgcElements.d">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcElements.dia">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcElements.o">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcElements.swiftdeps">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcElements~partial.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcElements~partial.swiftmodule">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager.d">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager.dia">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager.o">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager.swiftdeps">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager~partial.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcManager~partial.swiftmodule">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion.d">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion.dia">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion.o">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion.swiftdeps">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion~partial.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcMotion~partial.swiftmodule">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity.d">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity.dia">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity.o">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity.swiftdeps">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity~partial.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VgcWatchConnectivity~partial.swiftmodule">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS-master.swiftdeps">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS-OutputFileMap.json">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS-Swift.h">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS.LinkFileList">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS.swiftdoc">
+                           </FileRef>
+                           <FileRef
+                              location = "group:VirtualGameControllerWatchOS.swiftmodule">
+                           </FileRef>
+                        </Group>
+                     </Group>
+                     <FileRef
+                        location = "group:swift-overrides.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:unextended-module-overlay.yaml">
+                     </FileRef>
+                     <FileRef
+                        location = "group:unextended-module.modulemap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-all-non-framework-target-headers.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-all-target-headers.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-generated-files.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-own-target-headers.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS-project-headers.hmap">
+                     </FileRef>
+                     <FileRef
+                        location = "group:VirtualGameControllerWatchOS.hmap">
+                     </FileRef>
+                  </Group>
+               </Group>
+            </Group>
+         </Group>
+         <Group
+            location = "group:VirtualGameControllerWatchOS"
+            name = "VirtualGameControllerWatchOS">
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+            <FileRef
+               location = "group:VirtualGameControllerWatchOS.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:VirtualGameControllerWatchOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:VirtualGameControllerIOS"
          name = "VirtualGameControllerIOS">
          <Group
@@ -63,23 +269,6 @@
          <FileRef
             location = "group:VirtualGameControllerTvOS.xcodeproj">
          </FileRef>
-      </Group>
-      <Group
-         location = "group:VirtualGameControllerWatchOS"
-         name = "VirtualGameControllerWatchOS">
-         <FileRef
-            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj">
-         </FileRef>
-         <Group
-            location = "group:VirtualGameControllerWatchOS"
-            name = "VirtualGameControllerWatchOS">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:VirtualGameControllerWatchOS.h">
-            </FileRef>
-         </Group>
       </Group>
    </Group>
    <Group
