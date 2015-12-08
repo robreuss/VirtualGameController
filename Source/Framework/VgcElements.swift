@@ -122,6 +122,9 @@ public class Element: NSObject {
     public var getterKeypath: String
     public var setterKeypath: String
     
+    /// Automatically clear out value after transfering
+    public var clearValueAfterTransfer: Bool = false
+    
     // Unique identifier is based on the element type
     public var identifier: Int!
     
