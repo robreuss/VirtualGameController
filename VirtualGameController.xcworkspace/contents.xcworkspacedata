@@ -105,6 +105,9 @@
          location = "group:Framework"
          name = "Framework">
          <FileRef
+            location = "group:VgcPeripheralSetup.swift">
+         </FileRef>
+         <FileRef
             location = "group:VgcManager.swift">
          </FileRef>
          <FileRef
@@ -130,9 +133,6 @@
          </FileRef>
          <FileRef
             location = "group:VgcPeripheral.swift">
-         </FileRef>
-         <FileRef
-            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Source/Framework/VgcPeripheralSetup.swift">
          </FileRef>
          <FileRef
             location = "group:VgcStreamer.swift">
