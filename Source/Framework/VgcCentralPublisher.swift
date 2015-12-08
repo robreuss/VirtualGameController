@@ -74,7 +74,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         
         self.haveConnectionToPeripheral = true
         
-        print("A peripheral has connected to us!")
+        print("A peripheral has connected")
         
         // We initalize the controller, but wait for device info before we add it to the
         // controllers array or send the didConnect notification
