@@ -213,9 +213,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
         
-        //print("Received net service message")
-        
         let element = elements.elementFromIdentifier(elementIdentifier)
+        
+        // If deviceInfo isn't set yet, we're not ready to handle incoming data
+        if deviceInfo == nil && element.type != .DeviceInfoElement {
+            print("Received data before device is configured")
+            return
+        }
         
         // Element is non-nil on success
         if (element != nil) {
