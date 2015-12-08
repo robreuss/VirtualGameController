@@ -77,9 +77,6 @@
                location = "group:VirtualGameControllerWatchOS.h">
             </FileRef>
          </Group>
-         <FileRef
-            location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerWatchOS/VirtualGameController.xcodeproj">
-         </FileRef>
       </Group>
    </Group>
    <Group
