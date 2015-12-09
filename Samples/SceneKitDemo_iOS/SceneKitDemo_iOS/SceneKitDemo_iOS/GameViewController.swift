@@ -23,7 +23,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
-
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: VgcControllerDidDisconnectNotification, object: nil)
@@ -97,9 +96,9 @@ class GameViewController: UIViewController {
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         VgcManager.peripheralSetup.motionActive = false // Let the user turn this on so they can orient the device, pointing it at the screen
         VgcManager.peripheralSetup.enableMotionAttitude = true
-        VgcManager.peripheralSetup.enableMotionGravity = false
-        VgcManager.peripheralSetup.enableMotionRotationRate = false
-        VgcManager.peripheralSetup.enableMotionUserAcceleration = false
+        VgcManager.peripheralSetup.enableMotionGravity = true
+        VgcManager.peripheralSetup.enableMotionRotationRate = true
+        VgcManager.peripheralSetup.enableMotionUserAcceleration = true
         VgcManager.peripheralSetup.sendToController(controller)
         
         
