@@ -42,7 +42,7 @@ public class VgcPeripheralSetup: NSObject {
     
     public override init() {
         self.profileType = .ExtendedGamepad
-        self.backgroundColor = UIColor.clearColor() // Background color should be ignored
+        self.backgroundColor = UIColor.darkGrayColor()
     }
     
     public init(profileType: ProfileType, backgroundColor: UIColor) {
@@ -57,8 +57,8 @@ public class VgcPeripheralSetup: NSObject {
     public var backgroundColor: NSColor!
     
     public override init() {
-    // my init
-    self.backgroundColor = NSColor.clearColor() // Background color should be ignored
+        self.profileType = .ExtendedGamepad
+        self.backgroundColor = NSColor.darkGrayColor()
     }
     
     public init(profileType: ProfileType, backgroundColor: NSColor) {

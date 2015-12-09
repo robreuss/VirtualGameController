@@ -227,7 +227,7 @@ public class VgcManager: NSObject {
     ///
     public static var usePeripheralSideMapping: Bool = false
 
-    public static var netServiceBufferSize = 512
+    public static var netServiceBufferSize = 2048
     
     // The header length of all messages
     static var netServiceHeaderLength = 9
