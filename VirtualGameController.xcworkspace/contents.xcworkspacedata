@@ -335,6 +335,54 @@
       location = "container:"
       name = "Sample Projects">
       <Group
+         location = "group:Samples/SceneKitDemo"
+         name = "SceneKitDemo">
+         <Group
+            location = "group:SceneKitDemo"
+            name = "SceneKitDemo">
+            <FileRef
+               location = "group:AppDelegate.swift">
+            </FileRef>
+            <Group
+               location = "group:art.scnassets"
+               name = "art.scnassets">
+               <FileRef
+                  location = "group:ship.scn">
+               </FileRef>
+               <FileRef
+                  location = "group:texture.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Assets.xcassets"
+               name = "Assets.xcassets">
+               <Group
+                  location = "group:AppIcon.appiconset"
+                  name = "AppIcon.appiconset">
+                  <FileRef
+                     location = "group:Contents.json">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Base.lproj"
+               name = "Base.lproj">
+               <FileRef
+                  location = "group:LaunchScreen.storyboard">
+               </FileRef>
+               <FileRef
+                  location = "group:Main.storyboard">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Info.plist">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:SceneKitDemo.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "group:Samples/SceneKitDemo_iOS"
          name = "SceneKitDemo_iOS">
          <FileRef
