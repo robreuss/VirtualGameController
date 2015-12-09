@@ -97,7 +97,7 @@ required convenience public init(coder decoder: NSCoder) {
         result += "Peripheral Setup:\n\n"
         result += "Profile Type:             \(self.profileType)\n"
         result += "Background Color:         \(self.backgroundColor)\n"
-        result += "Motion:"
+        result += "Motion:\n"
         result += "  Active:                 \(self.motionActive)\n"
         result += "  User Acceleration:      \(self.enableMotionUserAcceleration)\n"
         result += "  Gravity:                \(self.enableMotionGravity)\n"

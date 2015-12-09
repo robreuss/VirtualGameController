@@ -243,7 +243,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 
                 if elementValueData.length == expectedLength {
                     
-                    if logging { print("Got completed data transfer (\(elementValueData.length) of \(expectedLength))") }
+                    //if logging { print("Got completed data transfer (\(elementValueData.length) of \(expectedLength))") }
                 
                     let element = elements.elementFromIdentifier(elementIdentifier!)
                     
@@ -279,7 +279,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                         }
                     }
                     
-                    if logging { print(" ") }
+                    //if logging { print(" ") }
                     
                 } else {
                     if logging { print("Streamer fetching additional data") }
