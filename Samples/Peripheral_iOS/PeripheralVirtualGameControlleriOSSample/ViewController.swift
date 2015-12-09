@@ -47,7 +47,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
-        VgcManager.includesPeerToPeer = true
+        VgcManager.includesPeerToPeer = false
         
         VgcManager.peripheral.motion.updateInterval = 1/30
         
