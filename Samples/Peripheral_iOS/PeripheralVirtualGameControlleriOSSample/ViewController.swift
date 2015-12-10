@@ -144,14 +144,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        imagePicker.dismissViewControllerAnimated(true, completion: nil)
-        let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
-        imageElement.value = imageData!
         
-        // Discard image data after transfering
-        imageElement.clearValueAfterTransfer = true
-        VgcManager.peripheral.sendElementState(imageElement)
+        imagePicker.dismissViewControllerAnimated(true) { () -> Void in
+            
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                imageElement.value = imageData!
+                
+                // Discard image data after transfering
+                imageElement.clearValueAfterTransfer = true
+                VgcManager.peripheral.sendElementState(imageElement)
+            }
+            
+        }
+        
+
+        
+
+
     }
 
     // Add new service to our list of available services.  I'm not using here, but the
