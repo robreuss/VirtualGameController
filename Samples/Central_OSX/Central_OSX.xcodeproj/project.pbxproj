@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		202BBFA61BE56BED004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFA41BE56BED004D47EC /* VgcCustomElements.swift */; };
 		202BBFA71BE56BED004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFA51BE56BED004D47EC /* VgcCustomMappings.swift */; };
-		20AD46C61C065963002A48A9 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46C51C065963002A48A9 /* VirtualGameController.framework */; };
-		20AD46C71C065963002A48A9 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD46C51C065963002A48A9 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20855CEF1C192E3700F82CED /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CEC1C192E1600F82CED /* VirtualGameController.framework */; };
+		20855CF01C192E3700F82CED /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CEC1C192E1600F82CED /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20D60C191BB3E8B000C3FAE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D60C181BB3E8B000C3FAE0 /* AppDelegate.swift */; };
 		20D60C1B1BB3E8B000C3FAE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D60C1A1BB3E8B000C3FAE0 /* ViewController.swift */; };
 		20D60C1D1BB3E8B000C3FAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D60C1C1BB3E8B000C3FAE0 /* Assets.xcassets */; };
@@ -20,6 +20,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		20855CEB1C192E1600F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20A1217A1BDAED5B00E30083;
+			remoteInfo = VirtualGameController;
+		};
+		20855CED1C192E1E00F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A121791BDAED5B00E30083;
+			remoteInfo = VirtualGameController;
+		};
+		20855CF11C192E3700F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A121791BDAED5B00E30083;
+			remoteInfo = VirtualGameController;
+		};
 		20D60C271BB3E8B000C3FAE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20D60C0D1BB3E8B000C3FAE0 /* Project object */;
@@ -43,7 +64,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20AD46C71C065963002A48A9 /* VirtualGameController.framework in Embed Frameworks */,
+				20855CF01C192E3700F82CED /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,7 +74,7 @@
 /* Begin PBXFileReference section */
 		202BBFA41BE56BED004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBFA51BE56BED004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
-		20AD46C51C065963002A48A9 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerOSX.xcodeproj; path = "../../Framework Projects/VirtualGameControllerOSX/VirtualGameControllerOSX.xcodeproj"; sourceTree = "<group>"; };
 		20D60C151BB3E8B000C3FAE0 /* Central_OSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_OSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D60C181BB3E8B000C3FAE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20D60C1A1BB3E8B000C3FAE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20AD46C61C065963002A48A9 /* VirtualGameController.framework in Frameworks */,
+				20855CEF1C192E3700F82CED /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +115,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20855CE81C192E1600F82CED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20855CEC1C192E1600F82CED /* VirtualGameController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		20D60C0C1BB3E8B000C3FAE0 = {
 			isa = PBXGroup;
 			children = (
-				20AD46C51C065963002A48A9 /* VirtualGameController.framework */,
+				20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */,
 				20D60C171BB3E8B000C3FAE0 /* vgcCentralOSX */,
 				20D60C291BB3E8B000C3FAE0 /* vgcCentralOSXTests */,
 				20D60C341BB3E8B000C3FAE0 /* vgcCentralOSXUITests */,
@@ -165,6 +194,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				20855CEE1C192E1E00F82CED /* PBXTargetDependency */,
+				20855CF21C192E3700F82CED /* PBXTargetDependency */,
 			);
 			name = Central_OSX;
 			productName = CentralVirtualGameControllerOSXSample;
@@ -240,6 +271,12 @@
 			mainGroup = 20D60C0C1BB3E8B000C3FAE0;
 			productRefGroup = 20D60C161BB3E8B000C3FAE0 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 20855CE81C192E1600F82CED /* Products */;
+					ProjectRef = 20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				20D60C141BB3E8B000C3FAE0 /* Central_OSX */,
@@ -248,6 +285,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		20855CEC1C192E1600F82CED /* VirtualGameController.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VirtualGameController.framework;
+			remoteRef = 20855CEB1C192E1600F82CED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		20D60C131BB3E8B000C3FAE0 /* Resources */ = {
@@ -306,6 +353,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		20855CEE1C192E1E00F82CED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 20855CED1C192E1E00F82CED /* PBXContainerItemProxy */;
+		};
+		20855CF21C192E3700F82CED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 20855CF11C192E3700F82CED /* PBXContainerItemProxy */;
+		};
 		20D60C281BB3E8B000C3FAE0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 20D60C141BB3E8B000C3FAE0 /* Central_OSX */;
@@ -417,6 +474,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerOSXSample",
@@ -437,6 +495,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerOSXSample",

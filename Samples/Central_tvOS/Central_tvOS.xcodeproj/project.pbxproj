@@ -15,8 +15,8 @@
 		202BBF9B1BE56BC7004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */; };
 		202BBF9C1BE56BC7004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */; };
 		202BBF9D1BE56BC7004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */; };
-		205C6D311C17969A0085A39B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D301C17969A0085A39B /* VirtualGameController.framework */; };
-		205C6D321C17969A0085A39B /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 205C6D301C17969A0085A39B /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20855CD71C192DBE00F82CED /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CD41C192D9E00F82CED /* VirtualGameController.framework */; };
+		20855CD81C192DBE00F82CED /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CD41C192D9E00F82CED /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20AEB9411BE7082C00F62758 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AEB9401BE7082C00F62758 /* VgcCentralViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +28,27 @@
 			remoteGlobalIDString = 2027BCCD1BA613FD0097452D;
 			remoteInfo = CentralVirtualGameControllerTVSample;
 		};
+		20855CD31C192D9E00F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20A1208B1BDA976000E30083;
+			remoteInfo = VirtualGameController;
+		};
+		20855CD51C192DA700F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A1208A1BDA976000E30083;
+			remoteInfo = VirtualGameController;
+		};
+		20855CD91C192DBE00F82CED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A1208A1BDA976000E30083;
+			remoteInfo = VirtualGameController;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,7 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				205C6D321C17969A0085A39B /* VirtualGameController.framework in Embed Frameworks */,
+				20855CD81C192DBE00F82CED /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -57,7 +78,7 @@
 		202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		205C6D301C17969A0085A39B /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerTvOS.xcodeproj; path = "../../Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS.xcodeproj"; sourceTree = "<group>"; };
 		20AEB9401BE7082C00F62758 /* VgcCentralViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralViewController.swift; path = ../../../Source/External/VgcCentralViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -66,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				205C6D311C17969A0085A39B /* VirtualGameController.framework in Frameworks */,
+				20855CD71C192DBE00F82CED /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +104,7 @@
 		2027BCC51BA613FD0097452D = {
 			isa = PBXGroup;
 			children = (
-				205C6D301C17969A0085A39B /* VirtualGameController.framework */,
+				20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */,
 				2027BCD01BA613FD0097452D /* vgcCentral_tvOS */,
 				2027BCE21BA613FE0097452D /* vgcCentral_tvOSTests */,
 				2027BCCF1BA613FD0097452D /* Products */,
@@ -126,6 +147,14 @@
 			path = CentralVirtualGameControllerTVSampleTests;
 			sourceTree = "<group>";
 		};
+		20855CD01C192D9E00F82CED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20855CD41C192D9E00F82CED /* VirtualGameController.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,6 +170,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				20855CD61C192DA700F82CED /* PBXTargetDependency */,
+				20855CDA1C192DBE00F82CED /* PBXTargetDependency */,
 			);
 			name = Central_tvOS;
 			productName = CentralVirtualGameControllerTVSample;
@@ -195,6 +226,12 @@
 			mainGroup = 2027BCC51BA613FD0097452D;
 			productRefGroup = 2027BCCF1BA613FD0097452D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 20855CD01C192D9E00F82CED /* Products */;
+					ProjectRef = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2027BCCD1BA613FD0097452D /* Central_tvOS */,
@@ -202,6 +239,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		20855CD41C192D9E00F82CED /* VirtualGameController.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = VirtualGameController.framework;
+			remoteRef = 20855CD31C192D9E00F82CED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2027BCCC1BA613FD0097452D /* Resources */ = {
@@ -251,6 +298,16 @@
 			isa = PBXTargetDependency;
 			target = 2027BCCD1BA613FD0097452D /* Central_tvOS */;
 			targetProxy = 2027BCE01BA613FE0097452D /* PBXContainerItemProxy */;
+		};
+		20855CD61C192DA700F82CED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 20855CD51C192DA700F82CED /* PBXContainerItemProxy */;
+		};
+		20855CDA1C192DBE00F82CED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 20855CD91C192DBE00F82CED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -354,6 +411,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
@@ -374,6 +432,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
