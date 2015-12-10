@@ -49,7 +49,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         VgcManager.includesPeerToPeer = false
         
-        VgcManager.peripheral.motion.updateInterval = 1/30
+        VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
         VgcManager.peripheral.motion.enableGravity = true
@@ -248,12 +248,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
 
-    // There is only one system message, currently, that is relevant to Peripherals,
-    // .ReceivedInvalidMessage, which comes from the Central when the Central receives a
-    // malformed element value message.  This is only known to happen when attempting to
-    // send too much motion data on a slower device like the iPhone 4s.  I'm using the 
-    // message in this case to throttle back the amount of motion data being sent from
-    // the device.
     @objc func receivedSystemMessage(notification: NSNotification) {
         
         let systemMessageTypeRaw = notification.object as! Int
