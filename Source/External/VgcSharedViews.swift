@@ -808,6 +808,7 @@ class VgcAbxyButtonPad: UIView {
 public class ElementDebugView: UIView {
     
     var elementLabelLookup = Dictionary<Int, UILabel>()
+    var elementBackgroundLookup = Dictionary<Int, UIView>()
     var controllerVendorName: UILabel!
     var scrollView: UIScrollView!
     var controller: VgcController!
@@ -925,6 +926,11 @@ public class ElementDebugView: UIView {
         
         for element in VgcManager.elements.elementsForController(controller) {
             
+            let elementBackground = UIView(frame: CGRect(x: (frame.size.width * 0.50) + 15, y: yPosition, width: 0, height: labelHeight))
+            elementBackground.backgroundColor = UIColor.lightGrayColor()
+            elementBackground.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleLeftMargin]
+            scrollView.addSubview(elementBackground)
+            
             let elementLabel = UILabel(frame: CGRect(x: 10, y: yPosition, width: frame.size.width * 0.50, height: labelHeight))
             elementLabel.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleRightMargin]
             elementLabel.text = "\(element.name):"
@@ -937,6 +943,8 @@ public class ElementDebugView: UIView {
             elementValue.text = "0"
             elementValue.font = UIFont(name: controllerVendorName.font.fontName, size: 16)
             scrollView.addSubview(elementValue)
+            
+            elementBackgroundLookup[element.identifier] = elementBackground
             
             elementLabelLookup[element.identifier] = elementValue
             
@@ -1066,21 +1074,36 @@ public class ElementDebugView: UIView {
                 if element.dataType == .Float {
                     
                     let valFloat = Float(stringValue)! as Float
+                    
+                    /*
                     if valFloat != 0 {
                         label.backgroundColor = UIColor.lightGrayColor()
                     } else {
                         label.backgroundColor = UIColor.clearColor()
                     }
+                    */
+                    
+                    if let backgroundView = self.elementBackgroundLookup[element.identifier] {
+                        var width = label.bounds.size.width * CGFloat(valFloat)
+                        if (width > 0 && width < 0.1) || (width < 0 && width > -0.1) { width = 0 }
+                        backgroundView.frame = CGRect(x: (label.bounds.size.width) + 15, y: backgroundView.frame.origin.y, width: width, height: backgroundView.bounds.size.height)
+                    }
                     
                 } else if element.dataType == .Int {
-                    
-                    let vatInt = Int(stringValue)! as Int
+
+                    let valInt = Int(stringValue)! as Int
+                    /*
                     if vatInt > 0 {
                         label.backgroundColor = UIColor.lightGrayColor()
                     } else {
                         label.backgroundColor = UIColor.clearColor()
                     }
-                    
+                    */
+                    if let backgroundView = self.elementBackgroundLookup[element.identifier] {
+                        var width = label.bounds.size.width * CGFloat(valInt)
+                        if (width > 0 && width < 0.1) || (width < 0 && width > -0.1) { width = 0 }
+                        backgroundView.frame = CGRect(x: (label.bounds.size.width) + 15, y: backgroundView.frame.origin.y, width: width, height: backgroundView.bounds.size.height)
+                    }
                 } else if element.dataType == .String {
                     
                     if stringValue != "" {
