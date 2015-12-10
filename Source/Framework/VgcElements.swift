@@ -46,11 +46,19 @@ public enum ElementDataType: Int {
 
 // The type of data that will be sent for a given
 // element.
-public enum StreamDataType: Int {
+public enum StreamDataType: Int, CustomStringConvertible {
     
     case SmallData
     case LargeData
     
+    public var description : String {
+        
+        switch self {
+        case .SmallData: return "Small Data"
+        case .LargeData: return "Large Data"
+            
+        }
+    }
 }
 
 // The whole population of system and standard elements

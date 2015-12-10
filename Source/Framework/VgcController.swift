@@ -333,25 +333,23 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 index++
             }
             
+            print("After disconnect controller count is \(VgcController.vgcControllers.count)")
+            
+            // Notify the app there's been a disconnect
+            dispatch_async(dispatch_get_main_queue()) {
+                NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: self)
+            }
+            
+            centralPublisher = nil
+            streamer[.LargeData] = nil
+            streamer[.SmallData] = nil
+            
         } else {
             
-            print("Attempted to remove controller but it's deviceInfo was nil.  Doing so using alternative method.")
-            
-            let index = VgcController.vgcControllers.indexOf(self)
-            if index != nil { VgcController.vgcControllers.removeAtIndex(index!) }
+            print("Attempted to remove controller but it's deviceInfo was nil.  Controller count is \(VgcController.vgcControllers.count)")
             
         }
-        
-        print("After disconnect controller count is \(VgcController.vgcControllers.count)")
-        
-        // Notify the app there's been a disconnect
-        dispatch_async(dispatch_get_main_queue()) {
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: self)
-        }
-        
-        centralPublisher = nil
-        streamer[.LargeData] = nil
-        streamer[.SmallData] = nil
+
     }
  
     func mapElement(elementToBeMapped: Element) {

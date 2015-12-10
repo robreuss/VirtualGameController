@@ -35,7 +35,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     var peripheral: Peripheral!
     var connectedVgcService: VgcService!
     var localService: NSNetService!
-    var remoteServer: NSNetService!
     var inputStream: [StreamDataType: NSInputStream] = [:]
     var outputStream: [StreamDataType: NSOutputStream] = [:]
     var registeredName: String!
@@ -280,15 +279,19 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func openStreamsFor(streamDataType: StreamDataType, vgcService: VgcService) {
 
-        print("Attempting to open streams for: \(vgcService.fullName)")
+        print("Attempting to open \(streamDataType) streams for: \(vgcService.fullName)")
         var success: Bool
         var inStream: NSInputStream?
         var outStream: NSOutputStream?
-        success = remoteServer.getInputStream(&inStream, outputStream: &outStream)
+        success = vgcService.netService.getInputStream(&inStream, outputStream: &outStream)
         if ( !success ) {
+            
             print("Something went wrong connecting to service: \(vgcService.fullName)")
+            // TODO: Need to generate a connect failure notification here
+            
         } else {
-            print("Successfully connected to service: \(vgcService.fullName)")
+            
+            print("Successfully opened \(streamDataType) streams to service: \(vgcService.fullName)")
             
             connectedVgcService = vgcService
             

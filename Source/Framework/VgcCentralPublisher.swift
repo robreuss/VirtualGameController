@@ -78,23 +78,30 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         
         self.haveConnectionToPeripheral = true
         
-        print("A peripheral has connected")
-        
+        // This delegate method will be called twice, once for large and once for small data.  We only setup the network services
+        // once we receive both requests.
         if unusedInputStream != nil {
-            
+
+            print("A peripheral has connected with second set of streams (Input: \(inputStream), Output: \(outputStream))")
+
             // We initalize the controller, but wait for device info before we add it to the
             // controllers array or send the didConnect notification
             let controller = VgcController()
             controller.centralPublisher = self
-            controller.setupNetworkService(.LargeData, service: service, inputStream: unusedInputStream, outputStream: unusedOutputStream)
-            controller.setupNetworkService(.SmallData, service: service, inputStream: inputStream, outputStream: outputStream)
+            controller.openstreams(.LargeData, inputStream: unusedInputStream, outputStream: unusedOutputStream)
+            controller.openstreams(.SmallData, inputStream: inputStream, outputStream: outputStream)
             
             unusedOutputStream = nil
             unusedInputStream = nil 
             
         } else {
+            
+            print("A peripheral has connected with first set of streams (Input: \(inputStream), Output: \(outputStream))")
+            
+            print("Setting first set of new streams to temporary vars")
             unusedInputStream = inputStream
             unusedOutputStream = outputStream
+            
         }
     }
     
