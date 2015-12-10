@@ -126,7 +126,7 @@ class SharedCode: NSObject {
             
             // get its material
             let material = self.ship.childNodeWithName("shipMesh", recursively: true)!.geometry?.firstMaterial!
-            
+            /*
             // highlight it
             SCNTransaction.begin()
             SCNTransaction.setAnimationDuration(0.5)
@@ -143,14 +143,12 @@ class SharedCode: NSObject {
                     material!.emission.contents = UIColor.blackColor()
                 #endif
                 
-                
-                
                 SCNTransaction.commit()
             }
+            */
+            material!.diffuse.contents = image
             
-            //material!.diffuse.contents = image
-            
-            SCNTransaction.commit()
+            //SCNTransaction.commit()
         }
         
         // Position ship at a solid origin
