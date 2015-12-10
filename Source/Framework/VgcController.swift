@@ -284,11 +284,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
     // of motion data.
     func sendConnectionAcknowledgement() {
-        
         let element = elements.systemMessage
         element.value = SystemMessages.ConnectionAcknowledgement.rawValue
-        streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
-        
+        if let inStream = streamer[.SmallData] {
+            if let outStream = toPeripheralOutputStream[.SmallData] {
+                inStream.writeElement(element, toStream: outStream)
+            }
+        }
     }
 
     public func disconnect() {
