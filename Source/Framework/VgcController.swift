@@ -399,6 +399,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 case .ReceivedInvalidMessage:
                     break
                 
+                case .ConnectionAcknowledgement:
+                    break
+                
             }
             
         case .DeviceInfoElement:
@@ -880,12 +883,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             if deviceIsTypeOfBridge() { peripheral.browseForServices() }  // Now that we have a peripheral, let the Central know we can act as a peripheral (forwarding)
             
+            sendConnectionAcknowledgement()
+            
             dispatch_async(dispatch_get_main_queue()) {
                 
                 NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
                 
             }
-            
         }
     }
     
