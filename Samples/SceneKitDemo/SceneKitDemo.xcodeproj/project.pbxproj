@@ -33,11 +33,29 @@
 		200B445F1C17F2D7000E8002 /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B445D1C17F2D7000E8002 /* SharedCode.swift */; };
 		200B44601C17F2D7000E8002 /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B445D1C17F2D7000E8002 /* SharedCode.swift */; };
 		200B44611C17F5E8000E8002 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200B44331C17AABF000E8002 /* GameViewController.swift */; };
+		202A58251C19343B00FE7414 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149DE1C19212800F6EB93 /* VirtualGameController.framework */; };
+		202A58261C19343B00FE7414 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149DE1C19212800F6EB93 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		202A58291C19344800FE7414 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149D61C19210D00F6EB93 /* VirtualGameController.framework */; };
+		202A582A1C19344800FE7414 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149D61C19210D00F6EB93 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20D149E31C1922F600F6EB93 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149CE1C1920F100F6EB93 /* VirtualGameController.framework */; };
 		20D149E41C1922F600F6EB93 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20D149CE1C1920F100F6EB93 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		202A58271C19343B00FE7414 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20D149D91C19212800F6EB93 /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A121791BDAED5B00E30083;
+			remoteInfo = VirtualGameController;
+		};
+		202A582B1C19344800FE7414 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20D149D11C19210C00F6EB93 /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 20A1208A1BDA976000E30083;
+			remoteInfo = VirtualGameController;
+		};
 		20D149CD1C1920F100F6EB93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20D149C91C1920F100F6EB93 /* VirtualGameControllerIOS.xcodeproj */;
@@ -107,6 +125,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				202A582A1C19344800FE7414 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +136,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				202A58261C19343B00FE7414 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202A58291C19344800FE7414 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				202A58251C19343B00FE7414 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +329,7 @@
 			);
 			dependencies = (
 				20D149D81C19211700F6EB93 /* PBXTargetDependency */,
+				202A582C1C19344800FE7414 /* PBXTargetDependency */,
 			);
 			name = SceneKitDemotvOS;
 			productName = SceneKitDemotvOS;
@@ -326,6 +349,7 @@
 			);
 			dependencies = (
 				20D149E01C19212F00F6EB93 /* PBXTargetDependency */,
+				202A58281C19343B00FE7414 /* PBXTargetDependency */,
 			);
 			name = SceneKitDemoOSX;
 			productName = SceneKitDemoOSX;
@@ -486,6 +510,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		202A58281C19343B00FE7414 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 202A58271C19343B00FE7414 /* PBXContainerItemProxy */;
+		};
+		202A582C1C19344800FE7414 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = VirtualGameController;
+			targetProxy = 202A582B1C19344800FE7414 /* PBXContainerItemProxy */;
+		};
 		20D149D81C19211700F6EB93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VirtualGameController;
@@ -666,6 +700,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)_iOS/SceneKitDemo_iOS/SceneKitDemo_iOS/Frameworks/tvOS/../../../../../../../Build/Products/Debug-appletvos",
@@ -685,6 +720,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)_iOS/SceneKitDemo_iOS/SceneKitDemo_iOS/Frameworks/tvOS/../../../../../../../Build/Products/Debug-appletvos",
@@ -705,6 +741,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)_iOS/SceneKitDemo_iOS/SceneKitDemo_iOS/Frameworks/OSX/../../../../../../../Build/Products/Debug",
@@ -724,6 +761,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)_iOS/SceneKitDemo_iOS/SceneKitDemo_iOS/Frameworks/OSX/../../../../../../../Build/Products/Debug",
