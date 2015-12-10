@@ -134,6 +134,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             dataSendQueue.appendData(data)
             data = dataSendQueue
             dataSendQueue = NSMutableData()
+            totalBusyTime = 0
         }
 
         streamerIsBusy = true
