@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		200B445A1C17E6F1000E8002 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 200B44591C17E6F1000E8002 /* VirtualGameController.framework */; };
-		200B445B1C17E6F1000E8002 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 200B44591C17E6F1000E8002 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		208FF1C61C139281001499DD /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208FF1C51C139281001499DD /* VgcCustomElements.swift */; };
 		208FF1C81C1393C9001499DD /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208FF1C71C1393C9001499DD /* VgcCustomMappings.swift */; };
 		20AD46D91C06699A002A48A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD46D81C06699A002A48A9 /* AppDelegate.swift */; };
@@ -19,26 +17,10 @@
 		20AD46E51C06699A002A48A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20AD46E31C06699A002A48A9 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		200B445C1C17E6F1000E8002 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				200B445B1C17E6F1000E8002 /* VirtualGameController.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		200B43D41C17A980000E8002 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../../Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		200B43D61C17A98E000E8002 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../../../../Build/Products/Debug-appletvos/VirtualGameController.framework"; sourceTree = "<group>"; };
 		200B43D91C17A9BD000E8002 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = ../../../../../../../Build/Products/Debug/VirtualGameController.framework; sourceTree = "<group>"; };
-		200B44591C17E6F1000E8002 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
-		205C6D221C17958E0085A39B /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 		208FF1C51C139281001499DD /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		208FF1C71C1393C9001499DD /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		20AD46D51C06699A002A48A9 /* SceneKitDemo_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemo_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,7 +38,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				200B445A1C17E6F1000E8002 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,8 +81,6 @@
 		20AD46CC1C06699A002A48A9 = {
 			isa = PBXGroup;
 			children = (
-				200B44591C17E6F1000E8002 /* VirtualGameController.framework */,
-				205C6D221C17958E0085A39B /* VirtualGameController.framework */,
 				20AD46D71C06699A002A48A9 /* SceneKitDemo_iOS */,
 				20AD46D61C06699A002A48A9 /* Products */,
 			);
@@ -142,7 +121,6 @@
 				20AD46D11C06699A002A48A9 /* Sources */,
 				20AD46D21C06699A002A48A9 /* Frameworks */,
 				20AD46D31C06699A002A48A9 /* Resources */,
-				200B445C1C17E6F1000E8002 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
