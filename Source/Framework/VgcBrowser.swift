@@ -106,6 +106,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             if systemMessageType == .ConnectionAcknowledgement {
                 
                 dispatch_async(dispatch_get_main_queue()) {
+
+                    if self.peripheral.connectionAcknowledgementWaitTimeout != nil { self.peripheral.connectionAcknowledgementWaitTimeout.invalidate() }
                     
                     self.peripheral.haveConnectionToCentral = true
                     
@@ -287,7 +289,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         if ( !success ) {
             
             print("Something went wrong connecting to service: \(vgcService.fullName)")
-            // TODO: Need to generate a connect failure notification here
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralConnectionFailedNotification, object: nil)
             
         } else {
             

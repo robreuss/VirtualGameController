@@ -19,14 +19,15 @@ import Foundation
     import UIKit
 #endif
 
-public let VgcPeripheralDidConnectNotification:     String = "VgcPeripheralDidConnectNotification"
-public let VgcPeripheralDidDisconnectNotification:  String = "VgcPeripheralDidDisconnectNotification"
-public let VgcPeripheralFoundService:               String = "VgcPeripheralFoundService"
-public let VgcPeripheralLostService:                String = "VgcPeripheralLostService"
-public let VgcPeripheralDidResetBrowser:            String = "VgcPeripheralDidResetBrowser"
-public let VgcSystemMessageNotification:            String = "VgcSystemMessageNotification"
+public let VgcPeripheralDidConnectNotification:      String = "VgcPeripheralDidConnectNotification"
+public let VgcPeripheralConnectionFailedNotification:String = "VgcPeripheralConnectionFailed"
+public let VgcPeripheralDidDisconnectNotification:   String = "VgcPeripheralDidDisconnectNotification"
+public let VgcPeripheralFoundService:                String = "VgcPeripheralFoundService"
+public let VgcPeripheralLostService:                 String = "VgcPeripheralLostService"
+public let VgcPeripheralDidResetBrowser:             String = "VgcPeripheralDidResetBrowser"
+public let VgcSystemMessageNotification:             String = "VgcSystemMessageNotification"
 public let VgcPeripheralSetupNotification:           String = "VgcPeripheralSetupNotification"
-public let VgcNewPlayerIndexNotification:           String = "VgcNewPlayerIndexNotification"
+public let VgcNewPlayerIndexNotification:            String = "VgcNewPlayerIndexNotification"
 
 public class Peripheral: NSObject {
     
@@ -41,6 +42,7 @@ public class Peripheral: NSObject {
 
     public var haveConnectionToCentral: Bool = false
     var haveOpenStreamsToCentral: Bool = false
+    var connectionAcknowledgementWaitTimeout: NSTimer!
     
     override init() {
         
@@ -200,6 +202,16 @@ public class Peripheral: NSObject {
         }
     }
     
+    func gotConnectionAcknowledgementTimeout() {
+
+        browser.disconnect()
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralConnectionFailedNotification, object: nil)
+        
+        connectionAcknowledgementWaitTimeout.invalidate()
+        
+    }
+    
     func gotConnectionToCentral() {
         
         print("Got connection to Central (Already? \(haveConnectionToCentral))")
@@ -207,6 +219,8 @@ public class Peripheral: NSObject {
         if (haveOpenStreamsToCentral == true) { return }
         
         haveOpenStreamsToCentral = true
+        
+        connectionAcknowledgementWaitTimeout = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "gotConnectionAcknowledgementTimeout", userInfo: nil, repeats: false)
         
         if deviceIsTypeOfBridge() {
             

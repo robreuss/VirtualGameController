@@ -37,6 +37,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidConnect:", name: VgcPeripheralDidConnectNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralConnectionFailed:", name: VgcPeripheralConnectionFailedNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPeripheralSetup:", name: VgcPeripheralSetupNotification, object: nil)
@@ -219,6 +220,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // Notification indicates we should refresh the view
     @objc func serviceBrowserReset(notification: NSNotification) {
         print("Service browser reset, isMainThread: \(NSThread.isMainThread())")
+        peripheralControlPadView.serviceSelectorView.refresh()
+    }
+    
+    // Notification indicates connection failed
+    @objc func peripheralConnectionFailed(notification: NSNotification) {
+        print("Peripheral connect failed, isMainThread: \(NSThread.isMainThread())")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
