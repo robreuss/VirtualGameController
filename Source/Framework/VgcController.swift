@@ -279,6 +279,17 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
 
     }
+    
+    // Send a message to the Peripheral that we received an invalid message (based on checksum).
+    // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
+    // of motion data.
+    func sendConnectionAcknowledgement() {
+        
+        let element = elements.systemMessage
+        element.value = SystemMessages.ConnectionAcknowledgement.rawValue
+        streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+        
+    }
 
     public func disconnect() {
         

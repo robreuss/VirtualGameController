@@ -73,6 +73,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         if outputStream[.SmallData] != nil { outputStream[.SmallData]!.close() }
         if outputStream[.LargeData] != nil { outputStream[.LargeData]!.close() }
         
+        peripheral.haveOpenStreamsToCentral = false
+        
     }
     
     // This is a callback from the streamer
@@ -102,7 +104,21 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             print("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcSystemMessageNotification, object: systemMessageType!.rawValue)
+            if systemMessageType == .ConnectionAcknowledgement {
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    
+                    self.peripheral.haveConnectionToCentral = true
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
+                    
+                }
+                
+            } else {
+            
+                NSNotificationCenter.defaultCenter().postNotificationName(VgcSystemMessageNotification, object: systemMessageType!.rawValue)
+                
+            }
             
             break
             
@@ -301,34 +317,27 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 inputStream[streamDataType]!.open()
                 
             }
-
+            
+            // SmallData comes second, so we wait for it before sending deviceInfo
             if streamDataType == .SmallData {
-                self.peripheral.gotConnectionToCentral()
+                
+                peripheral.gotConnectionToCentral()
+                
             }
-            /*
-            else {
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
-                dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    self.openStreamsFor(.SmallData, vgcService: vgcService)
-                }
-            }
-*/
             
         }
+
         
     }
     
     func connectToService(vgcService: VgcService) {
-        
-        let service = vgcService.netService
-        
+       
         if (peripheral.haveConnectionToCentral == true) {
             print("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
             return
         }
         
         print("Attempting to connect to service: \(vgcService.fullName)")
-        remoteServer = service
         
         openStreamsFor(.LargeData, vgcService: vgcService)
         openStreamsFor(.SmallData, vgcService: vgcService)

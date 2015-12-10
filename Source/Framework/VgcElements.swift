@@ -18,12 +18,14 @@ import Foundation
 
 public enum SystemMessages: Int, CustomStringConvertible {
     
-    case Disconnect = 100
-    case ReceivedInvalidMessage = 101
+    case ConnectionAcknowledgement = 100
+    case Disconnect = 101
+    case ReceivedInvalidMessage = 102
     
     public var description : String {
         
         switch self {
+        case .ConnectionAcknowledgement: return "ConnectionAcknowledgement"
         case .Disconnect: return "Disconnect"
         case .ReceivedInvalidMessage: return "Received invalid message"
             

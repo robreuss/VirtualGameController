@@ -40,6 +40,7 @@ public class Peripheral: NSObject {
     #endif
 
     public var haveConnectionToCentral: Bool = false
+    var haveOpenStreamsToCentral: Bool = false
     
     override init() {
         
@@ -201,17 +202,11 @@ public class Peripheral: NSObject {
     
     func gotConnectionToCentral() {
         
-        print("In peripheral mode gotConnection (have connection already: \(haveConnectionToCentral)")
+        print("Got connection to Central (Already? \(haveConnectionToCentral))")
         
-        if (haveConnectionToCentral == true) { return }
+        if (haveOpenStreamsToCentral == true) { return }
         
-        haveConnectionToCentral = true
-        
-        dispatch_async(dispatch_get_main_queue()) {
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
-
-        }
+        haveOpenStreamsToCentral = true
         
         if deviceIsTypeOfBridge() {
             
@@ -250,8 +245,8 @@ public class Peripheral: NSObject {
     
     func sendDeviceInfo(deviceInfo: DeviceInfo) {
         
-        if (haveConnectionToCentral == false) {
-            print("No connection to Central so not sending controller device info")
+        if (haveOpenStreamsToCentral == false) {
+            print("No streams to Central so not sending controller device info")
             return
         }
         

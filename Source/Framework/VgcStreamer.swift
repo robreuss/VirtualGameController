@@ -93,7 +93,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         }
         
         // If no connection, clean-up queue and exit
-        if VgcManager.appRole == .Peripheral && VgcManager.peripheral.haveConnectionToCentral == false {
+        if VgcManager.appRole == .Peripheral && VgcManager.peripheral.haveOpenStreamsToCentral == false {
             print("No connection so clearing write queue")
             dataSendQueue = NSMutableData()
             return
