@@ -176,8 +176,6 @@ class GameViewController: UIViewController {
                 SCNTransaction.commit()
             }
             
-            print("Material: \(material)")
-            
             material!.diffuse.contents = image
             
             SCNTransaction.commit()

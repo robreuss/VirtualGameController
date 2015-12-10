@@ -148,9 +148,7 @@ class SharedCode: NSObject {
                 SCNTransaction.commit()
             }
             
-            print("Material: \(material)")
-            
-            material!.diffuse.contents = image
+            //material!.diffuse.contents = image
             
             SCNTransaction.commit()
         }

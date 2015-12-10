@@ -42,6 +42,15 @@ public enum ElementDataType: Int {
     
 }
 
+// The type of data that will be sent for a given
+// element.
+public enum StreamDataType: Int {
+    
+    case SmallData
+    case LargeData
+    
+}
+
 // The whole population of system and standard elements
 
 @objc public enum ElementType: Int {

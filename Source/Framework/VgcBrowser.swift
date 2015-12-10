@@ -36,14 +36,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     var connectedVgcService: VgcService!
     var localService: NSNetService!
     var remoteServer: NSNetService!
-    var inputStream: NSInputStream!
-    var outputStream: NSOutputStream!
+    var inputStream: [StreamDataType: NSInputStream] = [:]
+    var outputStream: [StreamDataType: NSOutputStream] = [:]
     var registeredName: String!
     var streamOpenCount: Int!
     var bridgeBrowser: NSNetServiceBrowser!
     var centralBrowser: NSNetServiceBrowser!
     var browsing = false
-    var streamer: VgcStreamer!
+    var streamer: [StreamDataType: VgcStreamer] = [:]
     var serviceLookup = Dictionary<NSNetService, VgcService>()
     
     init(peripheral: Peripheral) {
@@ -54,7 +54,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         elements = VgcManager.elements
         
-        self.streamer = VgcStreamer(delegate: self, delegateName: "Browser")
+        self.streamer[.LargeData] = VgcStreamer(delegate: self, delegateName: "Browser")
+        self.streamer[.SmallData] = VgcStreamer(delegate: self, delegateName: "Browser")
         
         print("Setting up NSNetService for browsing")
         
@@ -65,11 +66,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
     func closeStreams() {
+        
         print("Closing streams")
-        if inputStream != nil { inputStream.close() }
-        if outputStream != nil { outputStream.close() }
-        //if peripheral.controller.toCentralOutputStream != nil { peripheral.controller.toCentralOutputStream.close() }
-        //if peripheral.controller.fromCentralInputStream != nil { peripheral.controller.fromCentralInputStream.close() }
+        if inputStream[.SmallData] != nil { inputStream[.SmallData]!.close() }
+        if inputStream[.LargeData] != nil { inputStream[.LargeData]!.close() }
+        if outputStream[.SmallData] != nil { outputStream[.SmallData]!.close() }
+        if outputStream[.LargeData] != nil { outputStream[.LargeData]!.close() }
+        
     }
     
     // This is a callback from the streamer
@@ -172,9 +175,17 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         var outputStream: NSOutputStream!
         
         if VgcManager.appRole == .Peripheral {
-            outputStream = self.outputStream
+            if element.dataType == .Data {
+                outputStream = self.outputStream[.LargeData]
+            } else {
+                outputStream = self.outputStream[.SmallData]
+            }
         } else if deviceIsTypeOfBridge() {
-            outputStream = peripheral.controller.toCentralOutputStream
+            if element.dataType == .Data {
+                outputStream = peripheral.controller.toCentralOutputStream[.LargeData]
+            } else {
+                outputStream = peripheral.controller.toCentralOutputStream[.SmallData]
+            }
         }
     
         if outputStream == nil {
@@ -200,8 +211,11 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         }
 
         // Prevent writes without a connect except deviceInfo
-        if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer.writeElement(element, toStream:outputStream) }
-        
+        if element.dataType == .Data {
+            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
+        } else {
+            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
+        }
         PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
         
     }
@@ -248,17 +262,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         serviceLookup.removeAll()
     }
     
-    func connectToService(vgcService: VgcService) {
-        
-        let service = vgcService.netService
-        
-        if (peripheral.haveConnectionToCentral == true) {
-            print("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
-            return
-        }
-        
-        print("Attempting to connect to service: \(vgcService.fullName)")
-        remoteServer = service
+    func openStreamsFor(streamDataType: StreamDataType, vgcService: VgcService) {
+
+        print("Attempting to open streams for: \(vgcService.fullName)")
         var success: Bool
         var inStream: NSInputStream?
         var outStream: NSOutputStream?
@@ -272,33 +278,60 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             if deviceIsTypeOfBridge() && peripheral.controller != nil {
                 
-                peripheral.controller.toCentralOutputStream = outStream;
-                peripheral.controller.toCentralOutputStream.delegate = streamer
-                peripheral.controller.toCentralOutputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-                peripheral.controller.toCentralOutputStream.open()
+                peripheral.controller.toCentralOutputStream[streamDataType] = outStream;
+                peripheral.controller.toCentralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
+                peripheral.controller.toCentralOutputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                peripheral.controller.toCentralOutputStream[streamDataType]!.open()
                 
-                peripheral.controller.fromCentralInputStream = inStream
-                peripheral.controller.fromCentralInputStream.delegate = streamer
-                peripheral.controller.fromCentralInputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-                peripheral.controller.fromCentralInputStream.open()
+                peripheral.controller.fromCentralInputStream[streamDataType] = inStream
+                peripheral.controller.fromCentralInputStream[streamDataType]!.delegate = streamer[streamDataType]
+                peripheral.controller.fromCentralInputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                peripheral.controller.fromCentralInputStream[streamDataType]!.open()
                 
             } else {
                 
-                outputStream = outStream;
-                outputStream.delegate = streamer
-                outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-                outputStream.open()
+                outputStream[streamDataType] = outStream;
+                outputStream[streamDataType]!.delegate = streamer[streamDataType]
+                outputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                outputStream[streamDataType]!.open()
                 
-                inputStream = inStream
-                inputStream.delegate = streamer
-                inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-                inputStream.open()
+                inputStream[streamDataType] = inStream
+                inputStream[streamDataType]!.delegate = streamer[streamDataType]
+                inputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                inputStream[streamDataType]!.open()
                 
             }
-            
-            self.peripheral.gotConnectionToCentral()
 
+            if streamDataType == .SmallData {
+                self.peripheral.gotConnectionToCentral()
+            }
+            /*
+            else {
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    self.openStreamsFor(.SmallData, vgcService: vgcService)
+                }
+            }
+*/
+            
         }
+        
+    }
+    
+    func connectToService(vgcService: VgcService) {
+        
+        let service = vgcService.netService
+        
+        if (peripheral.haveConnectionToCentral == true) {
+            print("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
+            return
+        }
+        
+        print("Attempting to connect to service: \(vgcService.fullName)")
+        remoteServer = service
+        
+        openStreamsFor(.LargeData, vgcService: vgcService)
+        openStreamsFor(.SmallData, vgcService: vgcService)
     }
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didFindService service: NSNetService, moreComing: Bool) {
