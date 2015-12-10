@@ -67,6 +67,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     public override init() {
         
+        print("Initializing new Controller")
+        
         vgcPlayerIndex = .IndexUnset
         
         // Each controller gets their own instance of standard elements that
@@ -194,12 +196,15 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // MARK: - Network Service
 
     func openstreams(streamDataType: StreamDataType, inputStream: NSInputStream, outputStream: NSOutputStream) {
-        
+       
         streamer[streamDataType] = VgcStreamer(delegate: self, delegateName: "Controller")
         
         fromPeripheraInputlStream[streamDataType] = inputStream
         toPeripheralOutputStream[streamDataType] = outputStream
-        
+
+        print("Opening Peripheral-bound streams for stream data type: \(streamDataType)")
+
+        // Open our Peripheral-bound streams
         toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
         toPeripheralOutputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
         toPeripheralOutputStream[streamDataType]!.open()
@@ -207,15 +212,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType]
         fromPeripheraInputlStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
         fromPeripheraInputlStream[streamDataType]!.open()
-        
     }
-    func setupNetworkService(streamDataType: StreamDataType, service: NSNetService, inputStream: NSInputStream, outputStream: NSOutputStream) {
-        
-        print("Setting up network services on newly initialized controller")
-        
-        openstreams(streamDataType, inputStream: inputStream, outputStream: outputStream)
-    }
+
     
+
     func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
         
         let element = elements.elementFromIdentifier(elementIdentifier)

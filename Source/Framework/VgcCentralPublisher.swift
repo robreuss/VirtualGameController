@@ -28,6 +28,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     
     override init() {
         
+        print("Initializing Central Publisher")
+        
         self.haveConnectionToPeripheral = false
         
         super.init()

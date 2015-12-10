@@ -223,12 +223,13 @@ import VirtualGameController
         
         if !controller.isHardwareController {
             
+            /*
             // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL ON CONNECTION
             // Set a random color on the Peripheral and Debug View,
             // turn on motion automatically - setup to work with iOS Centeral sample
             // app and the Scenekit sample app
             
-            /*
+
             // Generate a dark color...
             let randomRed = CGFloat(Float(arc4random()) / (Float(UINT32_MAX))) / 2.0
             let randomGreen = CGFloat(Float(arc4random()) / (Float(UINT32_MAX))) / 2.0
@@ -236,7 +237,7 @@ import VirtualGameController
             let peripheralBackgroundColor = UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
             VgcManager.peripheralSetup = VgcPeripheralSetup(profileType: .ExtendedGamepad, backgroundColor: peripheralBackgroundColor)
             
-            // Turn on motion to demonstrate that
+            // Turn on motion to demonstrate that it can be done remotely
             VgcManager.peripheralSetup.motionActive = true
             VgcManager.peripheralSetup.sendToController(controller)
             
@@ -245,7 +246,7 @@ import VirtualGameController
             
             // Use light color to contrast with dark background
             elementDebugView.controllerVendorName.textColor = UIColor.lightGrayColor()
-            */
+*/
             
         }
         
