@@ -20,6 +20,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     var registeredName: String!
     var streamOpenCount: Int!
     var haveConnectionToPeripheral: Bool
+    var unusedInputStream: NSInputStream!
+    var unusedOutputStream: NSOutputStream!
     #if os(iOS)
     var centralPublisherWatch: CentralPublisherWatch!
     #endif
@@ -76,12 +78,22 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         
         print("A peripheral has connected")
         
-        // We initalize the controller, but wait for device info before we add it to the
-        // controllers array or send the didConnect notification
-        let controller = VgcController()
-        controller.centralPublisher = self
-        controller.setupNetworkService(service, inputStream: inputStream, outputStream: outputStream)
-        
+        if unusedInputStream != nil {
+            
+            // We initalize the controller, but wait for device info before we add it to the
+            // controllers array or send the didConnect notification
+            let controller = VgcController()
+            controller.centralPublisher = self
+            controller.setupNetworkService(.LargeData, service: service, inputStream: unusedInputStream, outputStream: unusedOutputStream)
+            controller.setupNetworkService(.SmallData, service: service, inputStream: inputStream, outputStream: outputStream)
+            
+            unusedOutputStream = nil
+            unusedInputStream = nil 
+            
+        } else {
+            unusedInputStream = inputStream
+            unusedOutputStream = outputStream
+        }
     }
     
     internal func netService(sender: NSNetService, didUpdateTXTRecordData data: NSData) {

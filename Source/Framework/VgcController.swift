@@ -33,7 +33,7 @@ public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDi
 public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSNetServiceDelegate  {
     
     weak public var peripheral: Peripheral!
-    var streamer: VgcStreamer!
+    var streamer: [StreamDataType: VgcStreamer] = [:]
     
     // Each controller gets it's own copy of a set of elements appropriate to
     // it's profile, and these are used as a backing store for all element/control
@@ -59,11 +59,12 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     var bluetoothPeripheral: CBPeripheral!
     
     // Each controller gets it's own set of streams
-    var fromCentralInputStream: NSInputStream!
-    var toCentralOutputStream: NSOutputStream!
-    var fromPeripheraInputlStream: NSInputStream! // These two are only required for a bridged controller
-    var toPeripheralOutputStream: NSOutputStream!
-
+    var fromCentralInputStream: [StreamDataType: NSInputStream] = [:]
+    var toCentralOutputStream: [StreamDataType: NSOutputStream] = [:]
+    var fromPeripheraInputlStream: [StreamDataType: NSInputStream] = [:] // These two are only required for a bridged controller
+    var toPeripheralOutputStream: [StreamDataType: NSOutputStream] = [:]
+    var setupLargeDataStream = false
+    
     public override init() {
         
         vgcPlayerIndex = .IndexUnset
@@ -192,23 +193,27 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // MARK: - Network Service
 
-    func setupNetworkService(service: NSNetService, inputStream: NSInputStream, outputStream: NSOutputStream) {
+    func openstreams(streamDataType: StreamDataType, inputStream: NSInputStream, outputStream: NSOutputStream) {
+        
+        streamer[streamDataType] = VgcStreamer(delegate: self, delegateName: "Controller")
+        
+        fromPeripheraInputlStream[streamDataType] = inputStream
+        toPeripheralOutputStream[streamDataType] = outputStream
+        
+        toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
+        toPeripheralOutputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        toPeripheralOutputStream[streamDataType]!.open()
+        
+        fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType]
+        fromPeripheraInputlStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        fromPeripheraInputlStream[streamDataType]!.open()
+        
+    }
+    func setupNetworkService(streamDataType: StreamDataType, service: NSNetService, inputStream: NSInputStream, outputStream: NSOutputStream) {
         
         print("Setting up network services on newly initialized controller")
         
-        streamer = VgcStreamer(delegate: self, delegateName: "Controller")
-
-        fromPeripheraInputlStream = inputStream
-        toPeripheralOutputStream = outputStream
-        
-        toPeripheralOutputStream.delegate = streamer
-        toPeripheralOutputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-        toPeripheralOutputStream.open()
-        
-        fromPeripheraInputlStream.delegate = streamer
-        fromPeripheraInputlStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-        fromPeripheraInputlStream.open()
-        
+        openstreams(streamDataType, inputStream: inputStream, outputStream: outputStream)
     }
     
     func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
@@ -216,7 +221,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         let element = elements.elementFromIdentifier(elementIdentifier)
         
         // If deviceInfo isn't set yet, we're not ready to handle incoming data
-        if deviceInfo == nil && element.type != .DeviceInfoElement {
+        if self.deviceInfo == nil && element.type != .DeviceInfoElement {
             print("Received data before device is configured")
             return
         }
@@ -256,7 +261,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     public func sendElementStateToPeripheral(element: Element) {
         //print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
 
-        streamer.writeElement(element, toStream:toPeripheralOutputStream)
+        if element.dataType == .Data {
+            streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
+        } else {
+            streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+        }
 
     }
     
@@ -264,9 +273,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
     // of motion data.
     func sendInvalidMessageSystemMessage() {
+        
         let element = elements.systemMessage
         element.value = SystemMessages.ReceivedInvalidMessage.rawValue
-        streamer.writeElement(element, toStream:toPeripheralOutputStream)
+        streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+
     }
 
     public func disconnect() {
@@ -277,8 +288,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // a watch
         if deviceInfo != nil && deviceInfo.controllerType != .Watch {
             
-            fromPeripheraInputlStream.close()
-            fromPeripheraInputlStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            fromPeripheraInputlStream[.LargeData]!.close()
+            fromPeripheraInputlStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            fromPeripheraInputlStream[.SmallData]!.close()
+            fromPeripheraInputlStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
             
             // If we're a Bridge, pass along the disconnect notice to the Central, and
             // put our peripheral identity into a non-connected state
@@ -289,10 +302,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 peripheral = nil
             }
             
-            toPeripheralOutputStream.close()
-            toPeripheralOutputStream.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            
+            toPeripheralOutputStream[.LargeData]!.close()
+            toPeripheralOutputStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            toPeripheralOutputStream[.SmallData]!.close()
+            toPeripheralOutputStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
         }
+        
+        setupLargeDataStream = false
         
         if let deviceInfo = self.deviceInfo {
         
@@ -323,8 +339,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
         
         centralPublisher = nil
-        streamer = nil
-        
+        streamer[.LargeData] = nil
+        streamer[.SmallData] = nil
     }
  
     func mapElement(elementToBeMapped: Element) {
@@ -799,6 +815,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             let (existsAlready, index) = VgcController.controllerAlreadyExists(self)
             if existsAlready {
             
+                print("Controller exists already, removing")
                 dispatch_sync(self.lockQueueVgcController) {
                     VgcController.vgcControllers.removeAtIndex(index)
                 }
@@ -906,14 +923,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
             } else  {
                 
-                if centralPublisher != nil && centralPublisher.haveConnectionToPeripheral && toPeripheralOutputStream != nil {
+                if centralPublisher != nil && centralPublisher.haveConnectionToPeripheral && toPeripheralOutputStream[.SmallData] != nil {
                     
                     print("Sending player index \(newValue.rawValue + 1) to controller \(deviceInfo.vendorName)")
                     
                     let playerIndexElement = elements.playerIndex
                     playerIndexElement.value = playerIndex.rawValue
                     
-                    streamer.writeElement(playerIndexElement, toStream: toPeripheralOutputStream)
+                    streamer[.SmallData]!.writeElement(playerIndexElement, toStream: toPeripheralOutputStream[.SmallData]!)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: self)
                     
