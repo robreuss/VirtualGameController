@@ -203,6 +203,8 @@ public class Peripheral: NSObject {
     }
     
     func gotConnectionAcknowledgementTimeout() {
+        
+        print("Got connection acknowledgement timeout")
 
         browser.disconnect()
         
@@ -220,7 +222,7 @@ public class Peripheral: NSObject {
         
         haveOpenStreamsToCentral = true
         
-        connectionAcknowledgementWaitTimeout = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "gotConnectionAcknowledgementTimeout", userInfo: nil, repeats: false)
+        connectionAcknowledgementWaitTimeout = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "gotConnectionAcknowledgementTimeout", userInfo: nil, repeats: false)
         
         if deviceIsTypeOfBridge() {
             
