@@ -209,32 +209,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             if connectedVgcService != nil { print("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream") } else { print("Failed to send element \(element.name) because we don't have an output stream") }
             return
         }
-        
-        // Using a struct this way enables us to initalize our variables
-        // only once
-        struct PerformanceVars {
-            static var messagesSent: Float = 0
-            static var lastPublicationOfPerformance = NSDate()
-        }
-        
-        if VgcManager.performanceSamplingEnabled {
-            
-            if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
-                let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
-                print("\(messagesPerSecond) msgs/sec sent")
-                PerformanceVars.messagesSent = 1
-                PerformanceVars.lastPublicationOfPerformance = NSDate()
-            }
-        }
 
         // Prevent writes without a connect except deviceInfo
         if element.dataType == .Data {
-            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
+        if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
         } else {
             if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
         }
-        PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
-        
+       
     }
 
     func reset() {
