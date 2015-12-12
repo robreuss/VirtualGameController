@@ -78,12 +78,20 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
  
     }
     
+    func delayedWriteData(timer: NSTimer) {
+        let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
+        queueRetryTimer.invalidate()
+        let outputStream = (userInfo["stream"] as! NSOutputStream)
+        print("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream)")
+        self.writeData(NSData(), toStream: outputStream)
+    }
+    
     // Two indicators for handling a busy send queue, both of which result in the message being appended
     // to an NSMutableData var
     var dataSendQueue = NSMutableData()
     let lockQueueWriteData = dispatch_queue_create("net.simplyformed.lockQueueWriteData", nil)
     var streamerIsBusy: Bool = false
-    var totalBusyTime: Float = 0.0
+    var queueRetryTimer: NSTimer!
     
     func writeData(var data: NSData, toStream: NSOutputStream) {
 
@@ -94,60 +102,82 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         // If no connection, clean-up queue and exit
         if VgcManager.appRole == .Peripheral && VgcManager.peripheral.haveOpenStreamsToCentral == false {
-            print("No connection so clearing write queue")
+            print("No connection so clearing write queue (\(self.dataSendQueue.length) bytes)")
             dataSendQueue = NSMutableData()
             return
         }
+        
+        struct PerformanceVars {
+            static var messagesSent: Float = 0
+            static var bytesSent: Int = 0
+            static var messagesQueued: Int = 0
+            static var lastPublicationOfPerformance = NSDate()
+        }
 
-        if streamerIsBusy || !toStream.hasSpaceAvailable {
-            print("OutputStream has no space/streamer is busy")
+        if !toStream.hasSpaceAvailable {
+            if logging { print("OutputStream has no space/streamer is busy (Status: \(toStream.streamStatus.rawValue))") }
             if data.length > 0 {
                 dispatch_sync(self.lockQueueWriteData) {
+                    PerformanceVars.messagesQueued++
                     self.dataSendQueue.appendData(data)
                 }
-                print("Appended data queue, length: \(self.dataSendQueue.length)")
+                
+                if logging { print("Appended data queue (\(self.dataSendQueue.length) bytes)") }
             }
             if self.dataSendQueue.length > 0 {
-                
-                // Avoid looping with lost connection
-                totalBusyTime += 0.1
-                if totalBusyTime > 2.0 {
-                    print("Clearing data queue because of timeout")
-                    totalBusyTime = 0
-                    dataSendQueue = NSMutableData()
-                    return
+
+                if queueRetryTimer == nil || !queueRetryTimer.valid {
+                    if logging { print("Setting data queue retry timer") }
+                    queueRetryTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
                 }
-                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
-                dispatch_after(delayTime, dispatch_get_main_queue()) {
-                    
-                    print("Recursively calling writeData to process queue")
-                    // Send a trigger re-attempting the write request
-                    self.writeData(NSData(), toStream: toStream)
-                    
-                }
+
             }
             return
        }
 
-        if dataSendQueue.length > 0 {
-            print("Processing data queue, length: \(dataSendQueue.length)")
-            dataSendQueue.appendData(data)
-            data = dataSendQueue
-            dataSendQueue = NSMutableData()
-            totalBusyTime = 0
+        if self.dataSendQueue.length > 0 {
+            if logging { print("Processing data queue (\(self.dataSendQueue.length) bytes)") }
+
+            dispatch_sync(self.lockQueueWriteData) {
+                self.dataSendQueue.appendData(data)
+                data = self.dataSendQueue
+                self.dataSendQueue = NSMutableData()
+            }
+            if queueRetryTimer != nil { queueRetryTimer.invalidate() }
+
+        }
+        
+        if data.length > 0 { PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0 }
+        
+        PerformanceVars.bytesSent += data.length
+        
+        if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
+            let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
+            let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
+            print("\(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) kb/sec sent")
+            PerformanceVars.messagesSent = 0
+            PerformanceVars.lastPublicationOfPerformance = NSDate()
+            PerformanceVars.bytesSent = 0
+            PerformanceVars.messagesQueued = 0
         }
 
         streamerIsBusy = true
 
         var bytesWritten: NSInteger = 0
+        
+        if data.length == 0 {
+            print("ERROR: Attempt to send an empty buffer, exiting")
+            dispatch_sync(self.lockQueueWriteData) {
+                self.dataSendQueue = NSMutableData()
+            }
+            return
+        }
+
         while (data.length > bytesWritten) {
             
             let writeResult = toStream.write(UnsafePointer<UInt8>(data.bytes) + bytesWritten, maxLength: data.length - bytesWritten)
             if writeResult == -1 {
                 print("ERROR: NSOutputStream returned -1")
-                dispatch_sync(self.lockQueueWriteData) {
-                    self.dataSendQueue = NSMutableData()
-                }
                 return
             } else {
                 bytesWritten += writeResult
@@ -157,12 +187,21 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         if data.length != bytesWritten {
             print("ERROR: Got data transfer size mismatch")
+        } else {
+            if data.length > 300 { print("Large message sent (\(data.length) bytes, \(data.length / 1000) kb)") }
         }
         
         streamerIsBusy = false
     }
 
     func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+        
+         struct PerformanceVars {
+            static var messagesReceived: Float = 0
+            static var bytesReceived: Int = 0
+            static var lastPublicationOfPerformance = NSDate()
+            static var invalidMessages: Float = 0
+        }
         
         switch (eventCode){
  
@@ -185,7 +224,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 let len = inputStream.read(&buffer, maxLength: buffer.count)
                 
                 if len <= 0 { return }
-                
+
+                PerformanceVars.bytesReceived += len
+               
                 if logging { print("Length of buffer: \(len)") }
                 
                 dataBuffer.appendData(NSData(bytes: &buffer, length: len))
@@ -193,13 +234,14 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             }
             
             if logging == true { print("Buffer size is \(dataBuffer.length) (Cycle count: \(cycleCount)) ((Buffer loops: \(bufferLoops))") }
-            
+        
             while dataBuffer.length > 0 {
                 
                 // This shouldn't happen
                 if dataBuffer.length <= headerLength {
                     dataBuffer = NSMutableData()
-                    print("ERROR: Streamer received data too short to have a header")
+                    print("ERROR: Streamer received data too short to have a header (\(dataBuffer.length) bytes)")
+                    PerformanceVars.invalidMessages++
                     return
                 }
 
@@ -220,13 +262,15 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     
                     // This shouldn't happen
                     dataBuffer = NSMutableData()
-                    print("ERROR: Streamer expected header but found no header identifier")
+                    print("ERROR: Streamer expected header but found no header identifier (\(dataBuffer.length) bytes)")
+                    PerformanceVars.invalidMessages++
                     return
                 }
                 
                 if expectedLength == 0 {
                     dataBuffer = NSMutableData()
                     print("ERROR: Streamer got expected length of zero")
+                    PerformanceVars.invalidMessages++
                     return
                 }
 
@@ -244,6 +288,26 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 
                 if elementValueData.length == expectedLength {
                     
+                    // Performance testing is about calculating elements received per second
+                    // By sending motion data, it can be  compared to expected rates.
+                    
+                    PerformanceVars.messagesReceived = PerformanceVars.messagesReceived + 1.0
+                    
+                    if VgcManager.performanceSamplingEnabled {
+                        
+                        if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
+                            let messagesPerSecond: Float = PerformanceVars.messagesReceived / VgcManager.performanceSamplingDisplayFrequency
+                            let kbPerSecond: Float = (Float(PerformanceVars.bytesReceived) / VgcManager.performanceSamplingDisplayFrequency) / 1000
+                            //let invalidChecksumsPerSec: Float = (PerformanceVars.invalidChecksums / VgcManager.performanceSamplingDisplayFrequency)
+                            
+                            print("\(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) invalid messages, \(kbPerSecond) kb/sec received")
+                            PerformanceVars.messagesReceived = 0
+                            PerformanceVars.invalidMessages = 0
+                            PerformanceVars.lastPublicationOfPerformance = NSDate()
+                            PerformanceVars.bytesReceived = 0
+                        }
+                    }
+                    
                     //if logging { print("Got completed data transfer (\(elementValueData.length) of \(expectedLength))") }
                 
                     let element = elements.elementFromIdentifier(elementIdentifier!)
@@ -258,29 +322,6 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
 
                     elementIdentifier = nil
                     expectedLength = 0
-                    
-                    // Performance testing is about calculating elements received per second
-                    // By sending motion data, it can be  compared to expected rates.
-                    if VgcManager.performanceSamplingEnabled {
-                        
-                        struct PerformanceVars {
-                            static var messagesSent: Float = 0
-                            static var lastPublicationOfPerformance = NSDate()
-                            static var invalidChecksums: Float = 0
-                        }
-                        
-                        if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
-                            let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
-                            print("\(messagesPerSecond) msgs/sec received")
-                            PerformanceVars.messagesSent = 1
-                            PerformanceVars.invalidChecksums = 0
-                            PerformanceVars.lastPublicationOfPerformance = NSDate()
-                        } else {
-                            PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0
-                        }
-                    }
-                    
-                    //if logging { print(" ") }
                     
                 } else {
                     if logging { print("Streamer fetching additional data") }
