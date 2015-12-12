@@ -288,6 +288,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         element.value = SystemMessages.ConnectionAcknowledgement.rawValue
         if let inStream = streamer[.SmallData] {
             if let outStream = toPeripheralOutputStream[.SmallData] {
+                print("Sending connection acknowledgement to \(deviceInfo.vendorName)")
                 inStream.writeElement(element, toStream: outStream)
             }
         }
