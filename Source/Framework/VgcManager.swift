@@ -236,7 +236,7 @@ public class VgcManager: NSObject {
     static var headerIdentifier: UInt32 = 2584594329 // Random UInt32
     
     // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
-    public static var includesPeerToPeer = true
+    public static var includesPeerToPeer = false
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console
