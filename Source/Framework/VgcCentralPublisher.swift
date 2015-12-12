@@ -149,6 +149,21 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         localService.stop()
     }
     
+    func updateMatchingStreamTimer() {
+        
+        if pendingStreams.count == 0 && streamMatchingTimer.valid {
+            print("Invalidating matching stream timer")
+            streamMatchingTimer.invalidate()
+            streamMatchingTimer = nil
+        } else if pendingStreams.count > 0 && streamMatchingTimer == nil {
+            print("Setting matching stream timer")
+            streamMatchingTimer = NSTimer.scheduledTimerWithTimeInterval(VgcManager.maxTimeForMatchingStreams, target: self, selector: "testForMatchingStreams", userInfo: nil, repeats: false)
+        }
+        
+    }
+    
+    let lockQueuePendingStreams = dispatch_queue_create("net.simplyformed.lockQueuePendingStreams", nil)
+    
     func testForMatchingStreams() {
         
         var pendingStream1: VgcPendingStream!
@@ -156,7 +171,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         
         dispatch_sync(lockQueuePendingStreams) {
             
-            print("Testing for matching streams among \(self.pendingStreams.count) pending streams")
+            if self.pendingStreams.count > 0 { print("Testing for matching streams among \(self.pendingStreams.count) pending streams") }
             
             for comparisonStream in self.pendingStreams {
                 if pendingStream1 == nil {
@@ -199,12 +214,10 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
             }
 
         }
-        
-        if pendingStreams.count == 0 { streamMatchingTimer.invalidate() }
+
+        updateMatchingStreamTimer()
 
     }
-    
-    let lockQueuePendingStreams = dispatch_queue_create("net.simplyformed.lockQueuePendingStreams", nil)
     
     internal func netService(service: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
 
@@ -221,8 +234,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         }
         pendingStream.openstreams()
         
-        // Tests for orphan pending stream objects
-        streamMatchingTimer = NSTimer.scheduledTimerWithTimeInterval(VgcManager.maxTimeForMatchingStreams, target: self, selector: "testForMatchingStreams", userInfo: nil, repeats: true)
+        updateMatchingStreamTimer()
         
     }
     
