@@ -264,6 +264,22 @@ public class VgcManager: NSObject {
     public static var centralServiceName = NSHost.currentHost().localizedName
     #endif
     
+    public class func publishCentralService() {
+        if appRole == .Central {
+            VgcController.centralPublisher.publishService()
+        } else {
+            print("ERROR: Refused to publish Central service because appRole is not Central")
+        }
+    }
+    
+    public class func unpublishCentralService() {
+        if appRole == .Central {
+            VgcController.centralPublisher.unpublishService()
+        } else {
+            print("ERROR: Refused to unpublish Central service because appRole is not Central")
+        }
+    }
+    
     /// Simplified version of startAs when custom mapping and custom elements are not needed
     public class func startAs(appRole: AppRole, appIdentifier: String) {
         VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass())
