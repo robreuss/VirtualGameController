@@ -81,7 +81,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         print("Browser received disconnect")
         closeStreams()
         browsing = false
-        peripheral.lostConnectionToCentral(connectedVgcService)
+        if connectedVgcService != nil { peripheral.lostConnectionToCentral(connectedVgcService) }
         connectedVgcService = nil
     }
     
@@ -337,7 +337,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             }
             
         }
-
         
     }
     
