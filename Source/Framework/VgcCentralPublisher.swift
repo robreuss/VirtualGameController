@@ -14,14 +14,24 @@ import Foundation
     import GameController
 #endif
 
+struct  VgcPendingStream {
+    
+    var inputStream: NSInputStream
+    var outputStream: NSOutputStream
+    var streamer: VgcStreamer
+    
+}
+
 internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     
     var localService: NSNetService!
+    var remoteService: NSNetService!
     var registeredName: String!
     var streamOpenCount: Int!
     var haveConnectionToPeripheral: Bool
     var unusedInputStream: NSInputStream!
     var unusedOutputStream: NSOutputStream!
+    var streamMatchingTimeout: NSDate!
     #if os(iOS)
     var centralPublisherWatch: CentralPublisherWatch!
     #endif
@@ -76,7 +86,18 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     
     internal func netService(service: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
         
+        remoteService = service
+        remoteService.resolveWithTimeout(10.0)
+
         self.haveConnectionToPeripheral = true
+        
+        // Only a certain amount of time is permitted for the second stream request to arrive, and
+        // otherwise the stream is treated as the initial stream again
+        if streamMatchingTimeout != nil && streamMatchingTimeout.timeIntervalSinceNow > 0.1 {
+            print("ERROR: Clearing initial stream information because of stream matching timeout")
+            unusedInputStream = nil
+            unusedOutputStream = nil
+        }
         
         // This delegate method will be called twice, once for large and once for small data.  We only setup the network services
         // once we receive both requests.
@@ -92,8 +113,10 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
             controller.openstreams(.SmallData, inputStream: inputStream, outputStream: outputStream)
             
             unusedOutputStream = nil
-            unusedInputStream = nil 
+            unusedInputStream = nil
             
+            streamMatchingTimeout = nil
+
         } else {
             
             print("A peripheral has connected with first set of streams (Input: \(inputStream), Output: \(outputStream))")
@@ -101,6 +124,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
             print("Setting first set of new streams to temporary vars")
             unusedInputStream = inputStream
             unusedOutputStream = outputStream
+            
+            streamMatchingTimeout = NSDate()
             
         }
     }
@@ -134,7 +159,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     }
     
     internal func netService(sender: NSNetService, didNotResolve errorDict: [String : NSNumber]) {
-        print("CENTRAL: netService didNotResolve")
+        print("CENTRAL: netService didNotResolve: \(errorDict)")
     }
     
     internal func netServiceDidResolveAddress(sender: NSNetService) {
