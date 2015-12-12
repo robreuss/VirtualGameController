@@ -978,26 +978,6 @@ public class ElementDebugView: UIView {
         let imageData = UIImageJPEGRepresentation(image!, 1.0)
         element.value = imageData!
         controller.sendElementStateToPeripheral(element)
-        return
-        // Test archive mode
-        //let element = controller.elements.custom[CustomElementType.DebugViewTap.rawValue]!
-        //NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
-        //element.value = NSKeyedArchiver.archivedDataWithRootObject(controller.deviceInfo)
-        //controller.sendElementStateToPeripheral(element)
-        //VgcController.sendElementStateToAllPeripherals(element)
-        
-        // Test simple float mode
-        //let rightShoulder = controller.elements.rightShoulder
-        //rightShoulder.value = 1.0
-        //controller.sendElementStateToPeripheral(rightShoulder)
-        //VgcController.sendElementStateToAllPeripherals(rightShoulder)
-        
-        // Test string mode
-        let keyboard = controller.elements.custom[CustomElementType.Keyboard.rawValue]!
-        keyboard.value = "1 2 3 4 5 6 7 8"
-        keyboard.value = "Before newline\nAfter newline\n\n\n"
-        controller.sendElementStateToPeripheral(keyboard)
-        //VgcController.sendElementStateToAllPeripherals(keyboard)
         
     }
     
@@ -1069,19 +1049,10 @@ public class ElementDebugView: UIView {
                 
                 // Pause will be empty
                 if stringValue == "" { continue }
-                
-                //print("Element id \(element.identifier) is \(element.name) with value \(element.value) with label \(label!.text) at keypath \(keypath)")
+
                 if element.dataType == .Float {
                     
                     let valFloat = Float(stringValue)! as Float
-                    
-                    /*
-                    if valFloat != 0 {
-                        label.backgroundColor = UIColor.lightGrayColor()
-                    } else {
-                        label.backgroundColor = UIColor.clearColor()
-                    }
-                    */
                     
                     if let backgroundView = self.elementBackgroundLookup[element.identifier] {
                         var width = label.bounds.size.width * CGFloat(valFloat)
@@ -1092,13 +1063,7 @@ public class ElementDebugView: UIView {
                 } else if element.dataType == .Int {
 
                     let valInt = Int(stringValue)! as Int
-                    /*
-                    if vatInt > 0 {
-                        label.backgroundColor = UIColor.lightGrayColor()
-                    } else {
-                        label.backgroundColor = UIColor.clearColor()
-                    }
-                    */
+
                     if let backgroundView = self.elementBackgroundLookup[element.identifier] {
                         var width = label.bounds.size.width * CGFloat(valInt)
                         if (width > 0 && width < 0.1) || (width < 0 && width > -0.1) { width = 0 }
