@@ -92,14 +92,16 @@ public class VgcMotionManager: NSObject {
                     
                     setupFilterConstant()
                     
-                    let motionQueue = NSOperationQueue.currentQueue()!
+                    let motionQueue = NSOperationQueue()
                     
                     print("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
                     
                     manager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: { (deviceMotionData, error) -> Void in
                         
-                        //print("Device Motion: \(deviceMotionData!)")
+                        if error != nil {
+                            print("Got device motion error: \(error)")
+                        }
                         
                         var x, y, z, w: Double
                         
