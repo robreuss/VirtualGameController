@@ -14,15 +14,78 @@ import Foundation
     import GameController
 #endif
 
-struct  VgcPendingStream {
+@objc internal protocol VgcPendingStreamDelegate {
     
-    var inputStream: NSInputStream
-    var outputStream: NSOutputStream
-    var streamer: VgcStreamer
+    func testForMatchingStreams()
     
 }
 
-internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDelegate {
+class VgcPendingStream: NSObject, VgcStreamerDelegate {
+    
+    weak var delegate: VgcPendingStreamDelegate?
+    var inputStream: NSInputStream
+    var outputStream: NSOutputStream
+    var streamer: VgcStreamer!
+    var deviceInfo: DeviceInfo!
+    
+    init(inputStream: NSInputStream, outputStream: NSOutputStream, delegate: VgcPendingStreamDelegate) {
+        
+        self.delegate = delegate
+        self.inputStream = inputStream
+        self.outputStream = outputStream
+        
+        super.init()
+    }
+    
+    
+    func disconnect() {
+        print("ERROR: Got disconnect from pending stream streamer")
+    }
+
+    
+    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
+        
+        let element = VgcManager.elements.elementFromIdentifier(elementIdentifier)
+        
+        if element.type == .DeviceInfoElement {
+            
+            element.valueAsNSData = elementValue
+            NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
+            deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as? DeviceInfo)!
+            
+            delegate?.testForMatchingStreams()
+            
+        }
+    }
+    
+    func openstreams() {
+        
+        print("Opening pending streams")
+
+        outputStream.delegate = streamer
+        outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        outputStream.open()
+        
+        inputStream.delegate = streamer
+        inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        inputStream.open()
+        
+    }
+
+    // Make class hashable - function to make it equatable appears below outside the class definition
+    override var hashValue: Int {
+        return inputStream.hashValue
+    }
+
+}
+
+// Make class equatable
+func ==(lhs: VgcPendingStream, rhs: VgcPendingStream) -> Bool {
+    return lhs.inputStream.hashValue == rhs.inputStream.hashValue
+}
+
+
+internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDelegate, VgcPendingStreamDelegate {
     
     var localService: NSNetService!
     var remoteService: NSNetService!
@@ -32,6 +95,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     var unusedInputStream: NSInputStream!
     var unusedOutputStream: NSOutputStream!
     var streamMatchingTimeout: NSDate!
+    var pendingStreams = Set<VgcPendingStream>()
     #if os(iOS)
     var centralPublisherWatch: CentralPublisherWatch!
     #endif
@@ -84,50 +148,67 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         localService.stop()
     }
     
-    internal func netService(service: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
+    func testForMatchingStreams() {
         
-        remoteService = service
-        remoteService.resolveWithTimeout(10.0)
+        var pendingStream1: VgcPendingStream!
+        var pendingStream2: VgcPendingStream!
+        
+        dispatch_sync(lockQueuePendingStreams) {
+            
+            print("Testing for matching streams among \(self.pendingStreams.count) pending streams")
+            
+            for comparisonStream in self.pendingStreams {
+                if pendingStream1 == nil {
+                    for testStream in self.pendingStreams {
+                        if pendingStream1 == nil && (testStream.deviceInfo != nil && comparisonStream.deviceInfo != nil) && (testStream.deviceInfo.deviceUID == comparisonStream.deviceInfo.deviceUID) && testStream != comparisonStream {
+                            print("Found matching stream for deviceUID: \(comparisonStream.deviceInfo.deviceUID)")
+                            pendingStream1 = testStream
+                            pendingStream2 = comparisonStream
+                            continue
+                        }
+                    }
+                }
+            }
+            
+            if pendingStream1 != nil {
+                
+                self.pendingStreams.remove(pendingStream1)
+                self.pendingStreams.remove(pendingStream2)
+                
+                print("\(self.pendingStreams.count) pending streams remain in set")
+                
+                let controller = VgcController()
+                controller.centralPublisher = self
+                pendingStream1.streamer.delegate = controller
+                pendingStream2.streamer.delegate = controller
+                controller.openstreams(.LargeData, inputStream: pendingStream1.inputStream, outputStream: pendingStream1.outputStream, streamStreamer: pendingStream1.streamer)
+                controller.openstreams(.SmallData, inputStream: pendingStream2.inputStream, outputStream: pendingStream2.outputStream, streamStreamer: pendingStream2.streamer)
+                
+                // Use of pendingStream1 is arbitrary - both streams have same deviceInfo
+                controller.deviceInfo = pendingStream1.deviceInfo
+            }
 
+        }
+
+    }
+    
+    let lockQueuePendingStreams = dispatch_queue_create("net.simplyformed.lockQueuePendingStreams", nil)
+    
+    internal func netService(service: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
+
+        print("Assigning input/output streams to pending stream object")
+        
         self.haveConnectionToPeripheral = true
         
-        // Only a certain amount of time is permitted for the second stream request to arrive, and
-        // otherwise the stream is treated as the initial stream again
-        if streamMatchingTimeout != nil && streamMatchingTimeout.timeIntervalSinceNow > 0.1 {
-            print("ERROR: Clearing initial stream information because of stream matching timeout")
-            unusedInputStream = nil
-            unusedOutputStream = nil
+        let pendingStream = VgcPendingStream(inputStream: inputStream, outputStream: outputStream, delegate: self)
+
+        pendingStream.streamer = VgcStreamer(delegate: pendingStream, delegateName:"Central Publisher")
+
+        dispatch_sync(lockQueuePendingStreams) {
+            self.pendingStreams.insert(pendingStream)
         }
+        pendingStream.openstreams() 
         
-        // This delegate method will be called twice, once for large and once for small data.  We only setup the network services
-        // once we receive both requests.
-        if unusedInputStream != nil {
-
-            print("A peripheral has connected with second set of streams (Input: \(inputStream), Output: \(outputStream))")
-
-            // We initalize the controller, but wait for device info before we add it to the
-            // controllers array or send the didConnect notification
-            let controller = VgcController()
-            controller.centralPublisher = self
-            controller.openstreams(.LargeData, inputStream: unusedInputStream, outputStream: unusedOutputStream)
-            controller.openstreams(.SmallData, inputStream: inputStream, outputStream: outputStream)
-            
-            unusedOutputStream = nil
-            unusedInputStream = nil
-            
-            streamMatchingTimeout = nil
-
-        } else {
-            
-            print("A peripheral has connected with first set of streams (Input: \(inputStream), Output: \(outputStream))")
-            
-            print("Setting first set of new streams to temporary vars")
-            unusedInputStream = inputStream
-            unusedOutputStream = outputStream
-            
-            streamMatchingTimeout = NSDate()
-            
-        }
     }
     
     internal func netService(sender: NSNetService, didUpdateTXTRecordData data: NSData) {

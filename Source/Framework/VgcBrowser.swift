@@ -181,6 +181,30 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func sendInvalidMessageSystemMessage() {
         print("Peripheral received invalid checksum message from Central")
     }
+    
+    func sendDeviceInfoElement(let element: Element!) {
+        
+        if element == nil {
+            print("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
+            return
+        }
+        
+        var outputStreamLarge: NSOutputStream!
+        var outputStreamSmall: NSOutputStream!
+        
+        if VgcManager.appRole == .Peripheral {
+            outputStreamLarge = self.outputStream[.LargeData]
+            outputStreamSmall = self.outputStream[.SmallData]
+        } else if deviceIsTypeOfBridge() {
+            outputStreamLarge = peripheral.controller.toCentralOutputStream[.LargeData]
+            outputStreamSmall = peripheral.controller.toCentralOutputStream[.SmallData]
+        }
+        
+        if peripheral.haveOpenStreamsToCentral {
+            streamer[.LargeData]!.writeElement(element, toStream:outputStreamLarge)
+            streamer[.SmallData]!.writeElement(element, toStream:outputStreamSmall)
+        }
+    }
 
     func sendElementStateOverNetService(let element: Element!) {
         
@@ -210,9 +234,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             return
         }
 
-        // Prevent writes without a connect except deviceInfo
+        // Prevent writes without a connection except deviceInfo
         if element.dataType == .Data {
-        if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
+            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
         } else {
             if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
         }

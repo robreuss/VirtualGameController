@@ -195,9 +195,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // MARK: - Network Service
 
-    func openstreams(streamDataType: StreamDataType, inputStream: NSInputStream, outputStream: NSOutputStream) {
+    func openstreams(streamDataType: StreamDataType, inputStream: NSInputStream, outputStream: NSOutputStream, streamStreamer: VgcStreamer) {
        
-        streamer[streamDataType] = VgcStreamer(delegate: self, delegateName: "Controller")
+        streamer[streamDataType] = streamStreamer
         
         fromPeripheraInputlStream[streamDataType] = inputStream
         toPeripheralOutputStream[streamDataType] = outputStream

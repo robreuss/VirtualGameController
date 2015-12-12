@@ -273,7 +273,7 @@ public class Peripheral: NSObject {
         element.value = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
         print("\(deviceInfo)")
         
-        browser.sendElementStateOverNetService(element)
+        browser.sendDeviceInfoElement(element)
 
     }
     
