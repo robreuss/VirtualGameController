@@ -235,6 +235,9 @@ public class VgcManager: NSObject {
     // Indicator of start of header
     static var headerIdentifier: UInt32 = 2584594329 // Random UInt32
     
+    // Maximum time to wait for both the small and large data streams to be opened, in seconds
+    static var maxTimeForMatchingStreams = 5.0
+    
     // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
     public static var includesPeerToPeer = false
     

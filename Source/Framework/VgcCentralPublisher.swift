@@ -23,6 +23,7 @@ import Foundation
 class VgcPendingStream: NSObject, VgcStreamerDelegate {
     
     weak var delegate: VgcPendingStreamDelegate?
+    var createTime = NSDate()
     var inputStream: NSInputStream
     var outputStream: NSOutputStream
     var streamer: VgcStreamer!
@@ -94,7 +95,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     var haveConnectionToPeripheral: Bool
     var unusedInputStream: NSInputStream!
     var unusedOutputStream: NSOutputStream!
-    var streamMatchingTimeout: NSDate!
+    var streamMatchingTimer: NSTimer!
     var pendingStreams = Set<VgcPendingStream>()
     #if os(iOS)
     var centralPublisherWatch: CentralPublisherWatch!
@@ -168,6 +169,15 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
                         }
                     }
                 }
+                
+                // Test primarily for the situation where we only get one of the two required
+                // stream sets, and therefore there are potential orphans
+                if fabs(comparisonStream.createTime.timeIntervalSinceNow) > VgcManager.maxTimeForMatchingStreams {
+                    print("Removing expired pending streams and closing")
+                    comparisonStream.inputStream.close()
+                    comparisonStream.outputStream.close()
+                    self.pendingStreams.remove(comparisonStream)
+                }
             }
             
             if pendingStream1 != nil {
@@ -189,6 +199,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
             }
 
         }
+        
+        if pendingStreams.count == 0 { streamMatchingTimer.invalidate() }
 
     }
     
@@ -207,7 +219,10 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         dispatch_sync(lockQueuePendingStreams) {
             self.pendingStreams.insert(pendingStream)
         }
-        pendingStream.openstreams() 
+        pendingStream.openstreams()
+        
+        // Tests for orphan pending stream objects
+        streamMatchingTimer = NSTimer.scheduledTimerWithTimeInterval(VgcManager.maxTimeForMatchingStreams, target: self, selector: "testForMatchingStreams", userInfo: nil, repeats: true)
         
     }
     
