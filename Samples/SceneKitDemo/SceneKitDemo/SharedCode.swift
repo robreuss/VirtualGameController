@@ -46,6 +46,11 @@ class SharedCode: NSObject {
             return
         }
         
+        if VgcController.controllers().count > 1 {
+            controller.disconnect()
+            return
+        }
+        
         if controller.deviceInfo.controllerType == .MFiHardware { return }
         
         VgcManager.peripheralSetup = VgcPeripheralSetup()
