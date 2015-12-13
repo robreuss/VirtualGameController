@@ -17,6 +17,7 @@ import Foundation
 
 #if os(iOS)
     import UIKit
+    import AudioToolbox
 #endif
 
 public let VgcPeripheralDidConnectNotification:      String = "VgcPeripheralDidConnectNotification"
@@ -309,6 +310,12 @@ public class Peripheral: NSObject {
             sendElementState(mappedElement)
             
         }
+    }
+    
+    func vibrateDevice() {
+        #if os(iOS)
+        AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
+        #endif
     }
 
     

@@ -962,11 +962,15 @@ public class ElementDebugView: UIView {
     // are supported.
     public func receivedDebugViewTap() {
 
-        // Test archive mode
+        // Test vibrate using standard system element
+        controller.vibrateDevice()
+        
+        // Test vibrate using custom element
+        /*
         let element = controller.elements.custom[CustomElementType.VibrateDevice.rawValue]!
         element.value = 1
         VgcController.sendElementStateToAllPeripherals(element)
-        
+        */
     }
     
     public func receivedDebugViewDoubleTap() {

@@ -464,6 +464,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
+    public func vibrateDevice() {
+        let element = VgcManager.elements.elementFromIdentifier(ElementType.VibrateDevice.rawValue)
+        element.value = 1
+        sendElementStateToPeripheral(element)
+        element.value = 0
+        sendElementStateToPeripheral(element)
+    }
+    
     // MARK: - Hardware Controller Management
     
     // Because tvOS only implements a sub-set of the motion profiles, a work-around

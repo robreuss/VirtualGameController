@@ -134,6 +134,12 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 
             break
             
+        case .VibrateDevice:
+            
+            peripheral.vibrateDevice()
+            
+            break
+            
         case .PlayerIndex:
 
             let playerIndex = Int(element.value as! NSNumber)
