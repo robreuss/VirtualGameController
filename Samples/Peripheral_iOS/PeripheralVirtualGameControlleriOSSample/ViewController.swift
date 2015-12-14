@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         
         // Initialize Peripheral
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", includesPeerToPeer: true)
 
         // Set peripheral device info
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
-        VgcManager.includesPeerToPeer = false
+        VgcManager.includesPeerToPeer = true
         
         VgcManager.peripheral.motion.updateInterval = 1/40
         

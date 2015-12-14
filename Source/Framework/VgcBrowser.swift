@@ -83,6 +83,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         browsing = false
         if connectedVgcService != nil { peripheral.lostConnectionToCentral(connectedVgcService) }
         connectedVgcService = nil
+        browseForCentral()
     }
     
     func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
@@ -283,7 +284,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func stopBrowsing() {
         print("Stopping browse for Centrals")
-        centralBrowser.stop()
+        if centralBrowser != nil { centralBrowser.stop() } else {
+            print("ERROR: stopBrowsing() called before browser started")
+            return
+        }
         print("Stopping browse for Bridges")
         if !deviceIsTypeOfBridge() { bridgeBrowser.stop() } // Bridges don't browse for Bridges
         print("Clearing service lookup")
@@ -357,6 +361,16 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         openStreamsFor(.LargeData, vgcService: vgcService)
         openStreamsFor(.SmallData, vgcService: vgcService)
+        
+        stopBrowsing()
+    }
+    
+    func netServiceBrowserWillSearch(browser: NSNetServiceBrowser) {
+        print("Browser will search")
+    }
+    
+    func netServiceDidResolveAddress(sender: NSNetService) {
+        print("Browser did resolve address")
     }
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didFindService service: NSNetService, moreComing: Bool) {

@@ -30,11 +30,11 @@
     
     if (centralMode) {
         
-        [VgcManager startAs:AppRoleCentral appIdentifier:@"vgc"];
+        [VgcManager startAs:AppRoleCentral appIdentifier:@"vgc" includesPeerToPeer: true];
         
     } else {
         
-        [VgcManager startAs:AppRolePeripheral appIdentifier:@"vgc"];
+        [VgcManager startAs:AppRolePeripheral appIdentifier:@"vgc" includesPeerToPeer: true];
         DeviceInfo * deviceInfo = [[DeviceInfo alloc] initWithDeviceUID:@"" vendorName:@"" attachedToDevice:NO profileType:ProfileTypeExtendedGamepad controllerType:ControllerTypeSoftware supportsMotion:YES];
         [[VgcManager peripheral] setDeviceInfo:deviceInfo];
         

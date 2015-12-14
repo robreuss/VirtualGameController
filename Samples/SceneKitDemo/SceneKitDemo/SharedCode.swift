@@ -25,7 +25,7 @@ class SharedCode: NSObject {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: VgcControllerDidDisconnectNotification, object: nil)
         
-        VgcManager.includesPeerToPeer = false
+        VgcManager.includesPeerToPeer = true
         
     }
     

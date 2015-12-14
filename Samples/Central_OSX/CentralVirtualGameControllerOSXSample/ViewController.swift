@@ -15,7 +15,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VgcManager.startAs(.Bridge, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Bridge, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
         
         VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             

@@ -66,7 +66,9 @@ import VirtualGameController
 
 Note that you currently need to ````import GameController```` as well.
 
-CocoaPods and Carthage support will be forthcoming!
+See the [instructions on the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C) for utilizing Objective C.
+
+Or use [CocoaPods](https://cocoapods.org/?q=virtualgamecontroller).
 
 ## Using the Sample Projects
 
@@ -76,6 +78,7 @@ Other notes on sample projects:
 
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 - Checking out the SceneKit sample project is a great way to evaluate the motion capabilities of the framework, as well as being fun.  
+- There are also instructions on the Wiki for testing using [DemoBots](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots) (in Swift) and [SceneKitVehicle](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-SceneKitVehicle) (in Objective C) sample projects from Apple.
 
 
 ## Creating a Software-based Peripheral
@@ -233,7 +236,7 @@ GCMotion
 
 If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
 
-For in-depth instructions on using DemoBots as a test, see the [Wiki page](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
+For in-depth instructions on using DemoBots as a test, see the [Wiki article](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
 
 ####Central versus Bridge
 There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.

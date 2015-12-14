@@ -239,6 +239,8 @@ public class VgcManager: NSObject {
     static var maxTimeForMatchingStreams = 5.0
     
     // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
+    // NOTE: This property cannot be set after startAs is called.  Instead, use the version of
+    // startAs that includes the includesPeerToPeer parameter.
     public static var includesPeerToPeer = false
     
     ///
@@ -283,6 +285,17 @@ public class VgcManager: NSObject {
     /// Simplified version of startAs when custom mapping and custom elements are not needed
     public class func startAs(appRole: AppRole, appIdentifier: String) {
         VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass())
+    }
+    
+    /// Simplified version of startAs when custom mapping and custom elements are not needed, but includesPeerToPeer is
+    public class func startAs(appRole: AppRole, appIdentifier: String, includesPeerToPeer: Bool) {
+        VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass(), includesPeerToPeer: includesPeerToPeer)
+    }
+    
+    /// Must use this startAs method to turn on peer to peer functionality (Bluetooth)
+    public class func startAs(appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool) {
+        VgcManager.includesPeerToPeer = includesPeerToPeer
+        startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
     }
     
     ///

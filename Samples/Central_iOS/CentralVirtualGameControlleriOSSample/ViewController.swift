@@ -17,7 +17,7 @@ class ViewController: VgcCentralViewController {
     override func viewDidLoad() {
         
          // Publishes the central service
-        VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
         super.viewDidLoad()
         
     }

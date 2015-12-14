@@ -24,7 +24,7 @@ class ViewController: NSViewController {
         // system message being sent over the wire to this Peripheral, resulting in this notification.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
         
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
 
         // REQUIRED: Set device info
         peripheral.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: false)

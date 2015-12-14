@@ -138,7 +138,6 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     // So that peripherals will be able to see us over NetServices
     func publishService() {
         print("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
-        self.localService.publishWithOptions(.ListenForConnections)
         #if os(iOS)
             centralPublisherWatch.scanForWatchController()
         #endif
