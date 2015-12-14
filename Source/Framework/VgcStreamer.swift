@@ -110,7 +110,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
 
                 if queueRetryTimer[toStream] == nil || !queueRetryTimer[toStream]!.valid {
                     print("Setting data queue retry timer (Stream: \(toStream))")
-                    queueRetryTimer[toStream] = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
+                    queueRetryTimer[toStream] = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
                 }
 
             }
