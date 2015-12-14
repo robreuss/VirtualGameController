@@ -80,9 +80,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     
     func delayedWriteData(timer: NSTimer) {
         let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
-        queueRetryTimer.invalidate()
         let outputStream = (userInfo["stream"] as! NSOutputStream)
-        print("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream)")
+        queueRetryTimer[outputStream]!.invalidate()
+        print("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(NSDate().timeIntervalSince1970)]")
         self.writeData(NSData(), toStream: outputStream)
     }
     
@@ -91,7 +91,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var dataSendQueue = NSMutableData()
     let lockQueueWriteData = dispatch_queue_create("net.simplyformed.lockQueueWriteData", nil)
     var streamerIsBusy: Bool = false
-    var queueRetryTimer: NSTimer!
+    var queueRetryTimer: [NSOutputStream: NSTimer] = [:]
     
     func writeData(var data: NSData, toStream: NSOutputStream) {
 
@@ -126,9 +126,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             }
             if self.dataSendQueue.length > 0 {
 
-                if queueRetryTimer == nil || !queueRetryTimer.valid {
-                    if logging { print("Setting data queue retry timer") }
-                    queueRetryTimer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
+                if queueRetryTimer[toStream] == nil || !queueRetryTimer[toStream]!.valid {
+                    print("Setting data queue retry timer (Stream: \(toStream))")
+                    queueRetryTimer[toStream] = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
                 }
 
             }
@@ -143,7 +143,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 data = self.dataSendQueue
                 self.dataSendQueue = NSMutableData()
             }
-            if queueRetryTimer != nil { queueRetryTimer.invalidate() }
+            if queueRetryTimer[toStream] != nil { queueRetryTimer[toStream]!.invalidate() }
 
         }
         
