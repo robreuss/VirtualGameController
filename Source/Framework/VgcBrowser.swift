@@ -63,13 +63,22 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
     }
     
+    func closeStream(streamDataType: StreamDataType) {
+
+        streamer[streamDataType]?.delegate = nil
+        streamer[streamDataType] = nil
+        
+        if inputStream[streamDataType] != nil { inputStream[streamDataType]!.close() }
+        if outputStream[streamDataType] != nil { outputStream[streamDataType]!.close() }
+        
+    }
+    
     func closeStreams() {
         
         print("Closing streams")
-        if inputStream[.SmallData] != nil { inputStream[.SmallData]!.close() }
-        if inputStream[.LargeData] != nil { inputStream[.LargeData]!.close() }
-        if outputStream[.SmallData] != nil { outputStream[.SmallData]!.close() }
-        if outputStream[.LargeData] != nil { outputStream[.LargeData]!.close() }
+        
+        closeStream(.LargeData)
+        closeStream(.SmallData)
         
         peripheral.haveOpenStreamsToCentral = false
         
