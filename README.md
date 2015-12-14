@@ -9,7 +9,7 @@
 - Wraps Apple's *GameController* framework API (GCController)
 - Create software-based controllers (that use the MFi profiles)
 - Controller forwarding
-- Bidirectional communication between software-based controllers and game
+- Bidirectional communication between software-based controllers and game, including larger files such as images represented as NSData (on a seperate channel)
 - Device motion support
 - Custom controller elements
 - Custom element mapping
@@ -86,7 +86,7 @@ Other notes on sample projects:
 Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects). 
 
 ``` swift
- VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: CustomElements(), customMappings: CustomMappings())
+ VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
 ```
 
 The parameter `appIdentifier` is for use with Bonjour and should be a short, unique identifier for your app.
@@ -94,9 +94,11 @@ The parameter `appIdentifier` is for use with Bonjour and should be a short, uni
 A simplified form is available if custom mapping and custom elements are not used:
 
 ``` swift
-VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID")
+VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", includesPeerToPeer: true)
 ```
 Documentation of the custom mapping and custom elements functionality is coming soon, although the combination of the sample projects and class files are probably enough for you to get going.
+
+The `includesPeerToPeer` parameter is passed through to NSNetServices.  It provides the functionality for connectivity to fallback to Bluetooth or WiFi peer-to-peer.  See the NSNetServices documentation for more information.
 
 After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  Doing so is not required as the defaults (shown here) should suffice for most purposes.
 
@@ -176,7 +178,7 @@ Example of handling `.ReceivedInvalidMessage`:
 		// Do something
     }
 ```
-####<a name="player">Player Index</a>
+####Player Index
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
 ``` swift
