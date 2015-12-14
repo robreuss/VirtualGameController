@@ -64,9 +64,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
     func closeStream(streamDataType: StreamDataType) {
-
-        streamer[streamDataType]?.delegate = nil
-        streamer[streamDataType] = nil
         
         if inputStream[streamDataType] != nil { inputStream[streamDataType]!.close() }
         if outputStream[streamDataType] != nil { outputStream[streamDataType]!.close() }
@@ -251,9 +248,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 
         // Prevent writes without a connection except deviceInfo
         if element.dataType == .Data {
-            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
+            if (peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement) && streamer[.LargeData] != nil { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
         } else {
-            if peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
+            if (peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement) && streamer[.SmallData] != nil { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
         }
        
     }
