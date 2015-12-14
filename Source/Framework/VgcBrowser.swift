@@ -38,7 +38,6 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     var inputStream: [StreamDataType: NSInputStream] = [:]
     var outputStream: [StreamDataType: NSOutputStream] = [:]
     var registeredName: String!
-    var streamOpenCount: Int!
     var bridgeBrowser: NSNetServiceBrowser!
     var centralBrowser: NSNetServiceBrowser!
     var browsing = false

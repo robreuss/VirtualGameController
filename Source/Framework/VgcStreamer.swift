@@ -29,27 +29,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var dataBuffer: NSMutableData = NSMutableData()
     var expectedLength: Int = 0
     var elementIdentifier: Int!
-    var transferType: TransferType = .Unknown
     var nsStringBuffer: NSString = ""
     var cycleCount: Int = 0
     let logging = false
-    
-    enum TransferType: Int, CustomStringConvertible {
-        
-        case Unknown
-        case Ready
-        case SmallData
-        case LargeData
-        
-        var description : String {
-            switch self {
-            case .Unknown: return "Unknown"
-            case .Ready: return "Ready"
-            case .SmallData: return "SmallData"
-            case .LargeData: return "LargeData"
-            }
-        }
-    }
     
     init(delegate: VgcStreamerDelegate, delegateName: String) {
         

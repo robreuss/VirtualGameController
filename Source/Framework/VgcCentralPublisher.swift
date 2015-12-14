@@ -91,7 +91,6 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     var localService: NSNetService!
     var remoteService: NSNetService!
     var registeredName: String!
-    var streamOpenCount: Int!
     var haveConnectionToPeripheral: Bool
     var unusedInputStream: NSInputStream!
     var unusedOutputStream: NSOutputStream!

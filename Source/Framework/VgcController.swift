@@ -56,14 +56,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     public var isHardwareController: Bool { get { return self.hardwareController != nil } }
     
-    var bluetoothPeripheral: CBPeripheral!
-    
     // Each controller gets it's own set of streams
     var fromCentralInputStream: [StreamDataType: NSInputStream] = [:]
     var toCentralOutputStream: [StreamDataType: NSOutputStream] = [:]
     var fromPeripheraInputlStream: [StreamDataType: NSInputStream] = [:] // These two are only required for a bridged controller
     var toPeripheralOutputStream: [StreamDataType: NSOutputStream] = [:]
-    var setupLargeDataStream = false
     
     public override init() {
         
@@ -86,7 +83,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         //vgcGamepad = VgcGamepad(vgcGameController: self)
         //vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
-        
         
     }
     
