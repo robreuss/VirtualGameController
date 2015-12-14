@@ -303,7 +303,7 @@ public class VgcManager: NSObject {
     /// called early in the application launch process.
     ///
     public class func startAs(appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
-
+        
         self.appRole = appRole
         
         if appIdentifier != "" { self.appIdentifier = appIdentifier } else { print("ERROR: You must set appIdentifier to some string") }
@@ -312,6 +312,7 @@ public class VgcManager: NSObject {
         Elements.customMappings = customMappings
         
         print("Setting up as a \(VgcManager.appRole.description.uppercaseString)")
+        print("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
 
         #if !os(watchOS)
             

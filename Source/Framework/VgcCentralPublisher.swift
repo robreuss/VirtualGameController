@@ -211,6 +211,9 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
                 
                 // Use of pendingStream1 is arbitrary - both streams have same deviceInfo
                 controller.deviceInfo = pendingStream1.deviceInfo
+                
+                pendingStream1.streamer = nil
+                pendingStream2.streamer = nil 
             }
 
         }
