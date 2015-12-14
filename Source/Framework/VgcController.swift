@@ -300,8 +300,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             fromPeripheraInputlStream[.LargeData]!.close()
             fromPeripheraInputlStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            fromPeripheraInputlStream[.LargeData]!.delegate = nil
             fromPeripheraInputlStream[.SmallData]!.close()
             fromPeripheraInputlStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            fromPeripheraInputlStream[.SmallData]!.delegate = nil
             
             // If we're a Bridge, pass along the disconnect notice to the Central, and
             // put our peripheral identity into a non-connected state
@@ -314,11 +316,12 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             toPeripheralOutputStream[.LargeData]!.close()
             toPeripheralOutputStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            toPeripheralOutputStream[.LargeData]!.delegate = nil
             toPeripheralOutputStream[.SmallData]!.close()
             toPeripheralOutputStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+            toPeripheralOutputStream[.SmallData]!.delegate = nil
+            
         }
-        
-        setupLargeDataStream = false
         
         if let deviceInfo = self.deviceInfo {
         
