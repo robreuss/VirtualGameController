@@ -277,7 +277,8 @@ public class VgcManager: NSObject {
     #if os(OSX)
     public static var centralServiceName = NSHost.currentHost().localizedName
     #endif
-    
+
+    #if !os(watchOS)
     public class func publishCentralService() {
         if appRole == .Central {
             VgcController.centralPublisher.publishService()
@@ -293,6 +294,7 @@ public class VgcManager: NSObject {
             print("ERROR: Refused to unpublish Central service because appRole is not Central")
         }
     }
+    #endif
     
     /// Simplified version of startAs when custom mapping and custom elements are not needed
     public class func startAs(appRole: AppRole, appIdentifier: String) {
