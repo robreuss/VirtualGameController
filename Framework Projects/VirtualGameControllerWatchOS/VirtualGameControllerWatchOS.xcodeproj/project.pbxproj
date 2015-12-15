@@ -15,12 +15,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		200B43E11C17A9E2000E8002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		200B43E31C17A9E2000E8002 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		200B43E51C17A9E2000E8002 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		200B43E81C17A9E2000E8002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		200B43EA1C17A9E2000E8002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		200B43EC1C17A9E2000E8002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		202BBFEA1BE57419004D47EC /* VgcElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcElements.swift; path = ../../../Source/Framework/VgcElements.swift; sourceTree = "<group>"; };
 		202BBFEB1BE57419004D47EC /* VgcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcManager.swift; path = ../../../Source/Framework/VgcManager.swift; sourceTree = "<group>"; };
 		202BBFEC1BE57419004D47EC /* VgcMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = ../../../Source/Framework/VgcMotion.swift; sourceTree = "<group>"; };
@@ -41,24 +35,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		200B43E01C17A9E2000E8002 /* SceneKitDemo_tvOS */ = {
-			isa = PBXGroup;
-			children = (
-				200B43E11C17A9E2000E8002 /* AppDelegate.swift */,
-				200B43E31C17A9E2000E8002 /* art.scnassets */,
-				200B43E51C17A9E2000E8002 /* GameViewController.swift */,
-				200B43E71C17A9E2000E8002 /* Main.storyboard */,
-				200B43EA1C17A9E2000E8002 /* Assets.xcassets */,
-				200B43EC1C17A9E2000E8002 /* Info.plist */,
-			);
-			path = SceneKitDemo_tvOS;
-			sourceTree = "<group>";
-		};
 		20A120B01BDA97BF00E30083 = {
 			isa = PBXGroup;
 			children = (
 				20A120BC1BDA97BF00E30083 /* VirtualGameControllerWatchOS */,
-				200B43E01C17A9E2000E8002 /* SceneKitDemo_tvOS */,
 				20A120BB1BDA97BF00E30083 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,17 +152,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		200B43E71C17A9E2000E8002 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				200B43E81C17A9E2000E8002 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		20A120C01BDA97BF00E30083 /* Debug */ = {
