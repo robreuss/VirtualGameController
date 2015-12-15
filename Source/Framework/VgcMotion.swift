@@ -97,7 +97,7 @@ public class VgcMotionManager: NSObject {
                     print("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
                     
-                    manager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: { (deviceMotionData, error) -> Void in
+                    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void in
                         
                         if error != nil {
                             print("Got device motion error: \(error)")
