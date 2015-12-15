@@ -196,13 +196,20 @@ public class Element: NSObject {
         var valueLengthAsUInt32: UInt32 = UInt32(elementValueAsNSData.length)
         let valueLengthAsNSData = NSData(bytes: &valueLengthAsUInt32, length: sizeof(UInt32))
         
+        //var timestamp: Double = Double(NSDate().timeIntervalSince1970)
+        //let timestampAsNSData = NSData(bytes: &timestamp, length: sizeof(Double))
+        
+        var timestamp: Double = NSDate().timeIntervalSince1970 
+        let timestampAsNSData = NSData(bytes: &timestamp, length: sizeof(Double))
+        
         let messageData = NSMutableData()
         
         // Message header
         messageData.appendData(headerIdentifierAsNSData)  // 4 bytes:   indicates the start of an individual message, random 32-bit int
         messageData.appendData(elementIdentifierAsNSData) // 1 byte:    identifies the type of the element
         messageData.appendData(valueLengthAsNSData)       // 4 bytes:   length of the message
-        
+        if VgcManager.netServiceLatencyLogging { messageData.appendData(timestampAsNSData) } // 8 bytes:  For latency testing
+            
         // Body of message
         messageData.appendData(elementValueAsNSData)      // Variable:  the message itself, 4 for Floats, 4 for Int, variable for NSData
         
@@ -212,6 +219,7 @@ public class Element: NSObject {
     public var valueAsNSData: NSData {
         
         get {
+
             switch self.dataType {
                 
             case .Int:

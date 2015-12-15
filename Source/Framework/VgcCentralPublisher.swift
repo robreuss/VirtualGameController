@@ -165,8 +165,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     
     func testForMatchingStreams() {
         
-        var pendingStream1: VgcPendingStream!
-        var pendingStream2: VgcPendingStream!
+        var pendingStream1: VgcPendingStream! = nil
+        var pendingStream2: VgcPendingStream! = nil
         
         dispatch_sync(lockQueuePendingStreams) {
             

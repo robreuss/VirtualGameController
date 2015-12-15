@@ -229,8 +229,20 @@ public class VgcManager: NSObject {
 
     public static var netServiceBufferSize = 2048
     
-    // The header length of all messages
-    static var netServiceHeaderLength = 9
+    public static var netServiceLatencyLogging = true
+    
+    // The header length of messages
+    static var netServiceHeaderLength: Int {
+        
+        get {
+            if VgcManager.netServiceLatencyLogging {
+                return 17
+            } else {
+                return 9
+            }
+        }
+        
+    }
     
     // Indicator of start of header
     static var headerIdentifier: UInt32 = 2584594329 // Random UInt32

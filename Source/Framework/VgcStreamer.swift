@@ -131,18 +131,21 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         if data.length > 0 { PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0 }
         
-        PerformanceVars.bytesSent += data.length
-        
-        if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
-            let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
-            let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
-            print("\(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) kb/sec sent")
-            PerformanceVars.messagesSent = 0
-            PerformanceVars.lastPublicationOfPerformance = NSDate()
-            PerformanceVars.bytesSent = 0
-            PerformanceVars.messagesQueued = 0
+        if VgcManager.performanceSamplingEnabled {
+            
+            PerformanceVars.bytesSent += data.length
+            
+            if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
+                let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
+                let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
+                print("\(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) kb/sec sent")
+                PerformanceVars.messagesSent = 0
+                PerformanceVars.lastPublicationOfPerformance = NSDate()
+                PerformanceVars.bytesSent = 0
+                PerformanceVars.messagesQueued = 0
+            }
         }
-
+        
         streamerIsBusy = true
 
         var bytesWritten: NSInteger = 0
@@ -183,6 +186,9 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             static var bytesReceived: Int = 0
             static var lastPublicationOfPerformance = NSDate()
             static var invalidMessages: Float = 0
+            static var totalTransitTimeMeasurements: Double = 0
+            static var totalTransitTime: Double = 0
+            static var averageTransitTime: Double = 0
         }
         
         switch (eventCode){
@@ -239,6 +245,21 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     let valueLengthNSData = dataBuffer.subdataWithRange(NSRange.init(location: 5, length: 4))
                     valueLengthNSData.getBytes(&expectedLengthUInt32, length: sizeof(UInt32))
                     expectedLength = Int(expectedLengthUInt32)
+                    
+                    var timestampDouble: Double = 0
+                    let timestampNSData = dataBuffer.subdataWithRange(NSRange.init(location: 9, length: 8))
+                    timestampNSData.getBytes(&timestampDouble, length: sizeof(Double))
+                    
+                    if VgcManager.netServiceLatencyLogging {
+                        let transitTime = round(1000 * (NSDate().timeIntervalSince1970 - timestampDouble))
+                        PerformanceVars.totalTransitTime += transitTime
+                        PerformanceVars.totalTransitTimeMeasurements++
+                        let averageTransitTime = PerformanceVars.totalTransitTime / PerformanceVars.totalTransitTimeMeasurements
+                        let aboveAverageTransitTime = transitTime - averageTransitTime
+                        var percentageAboveAverage = (averageTransitTime / transitTime) * 100
+                        percentageAboveAverage = 451
+                        if percentageAboveAverage > 450 { print("Above average transit time: \(transitTime)ms by \(aboveAverageTransitTime), \(percentageAboveAverage)% above avg (Avg: \(averageTransitTime))") }
+                    }
                     
                 } else {
                     
