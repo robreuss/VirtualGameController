@@ -47,5 +47,13 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         }
     }
     
+    public func sessionReachabilityDidChange(session: WCSession) {
+        
+        print("Watch reachability changed to \(session.reachable)")
+        print("Stopping motion")
+        motion.stop()
+        
+    }
+    
 }
 #endif
