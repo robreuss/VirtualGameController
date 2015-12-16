@@ -362,6 +362,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             print("Attempted to remove controller but it's deviceInfo was nil.  Controller count is \(VgcController.vgcControllers.count)")
             
         }
+        disconnecting = false
 
     }
  
