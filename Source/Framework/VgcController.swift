@@ -47,6 +47,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     var vgcMicroGamepad: VgcMicroGamepad!
     #endif
     
+    // Flag to prevent performing two disconnects at the same time
+    var disconnecting: Bool = false
+    
     // This acts as a reference to one of the three profiles, for convienance
     private var profile: AnyObject!
     private var vgcPlayerIndex: GCControllerPlayerIndex
@@ -295,6 +298,12 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         print("Running disconnect function")
         
+        if disconnecting {
+            print("Refusing to run disconnect because already running")
+            return
+        }
+        disconnecting = true
+        
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
         if deviceInfo != nil && deviceInfo.controllerType != .Watch {
@@ -321,6 +330,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             toPeripheralOutputStream[.SmallData]!.close()
             toPeripheralOutputStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
             toPeripheralOutputStream[.SmallData]!.delegate = nil
+
+            streamer[.LargeData] = nil
+            streamer[.SmallData] = nil
             
         }
         
@@ -344,8 +356,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             }
             
             centralPublisher = nil
-            streamer[.LargeData] = nil
-            streamer[.SmallData] = nil
             
         } else {
             
@@ -759,7 +769,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if controller.deviceInfo.deviceUID == deviceHash {
                 print("Removing controller from controllers array: \(hardwareController)")
                 VgcController.vgcControllers.removeAtIndex(index)
-                NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidDisconnectNotification", object: controller)
+                NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: controller)
                 return
             }
             index++
