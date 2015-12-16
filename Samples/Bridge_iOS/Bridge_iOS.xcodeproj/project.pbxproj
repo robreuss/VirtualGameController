@@ -24,13 +24,13 @@
 		203191C21C20D46300EDD9EC /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191BE1C20D46300EDD9EC /* ElementRow.swift */; };
 		203191C31C20D46300EDD9EC /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191BF1C20D46300EDD9EC /* ExtensionDelegate.swift */; };
 		203191C41C20D46300EDD9EC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191C01C20D46300EDD9EC /* NotificationController.swift */; };
-		203191C61C20D47900EDD9EC /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 203191C51C20D47900EDD9EC /* Interface.storyboard */; };
 		203191CD1C20D4AF00EDD9EC /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; };
 		203191CE1C20D4AF00EDD9EC /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		203191D41C20D50500EDD9EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191D21C20D50500EDD9EC /* VgcCustomElements.swift */; };
 		203191D51C20D50500EDD9EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191D31C20D50500EDD9EC /* VgcCustomMappings.swift */; };
 		203191DC1C20D62B00EDD9EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191DA1C20D62B00EDD9EC /* VgcCustomElements.swift */; };
 		203191DD1C20D62B00EDD9EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191DB1C20D62B00EDD9EC /* VgcCustomMappings.swift */; };
+		20D1A3721C20E96B0032EC10 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D1A3711C20E96B0032EC10 /* Interface.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,12 +148,12 @@
 		203191BE1C20D46300EDD9EC /* ElementRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
 		203191BF1C20D46300EDD9EC /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		203191C01C20D46300EDD9EC /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		203191C51C20D47900EDD9EC /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		203191C71C20D48C00EDD9EC /* VirtualGameControllerWatchOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerWatchOS.xcodeproj; path = "../../../Framework Projects/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj"; sourceTree = "<group>"; };
 		203191D21C20D50500EDD9EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
 		203191D31C20D50500EDD9EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		203191DA1C20D62B00EDD9EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
 		203191DB1C20D62B00EDD9EC /* VgcCustomMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
+		20D1A3711C20E96B0032EC10 /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,7 +219,7 @@
 		203191701C20D29200EDD9EC /* Bridge_iOS WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
-				203191C51C20D47900EDD9EC /* Interface.storyboard */,
+				20D1A3711C20E96B0032EC10 /* Interface.storyboard */,
 				203191741C20D29200EDD9EC /* Assets.xcassets */,
 				203191761C20D29200EDD9EC /* Info.plist */,
 			);
@@ -409,7 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				203191C61C20D47900EDD9EC /* Interface.storyboard in Resources */,
+				20D1A3721C20E96B0032EC10 /* Interface.storyboard in Resources */,
 				203191751C20D29200EDD9EC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,12 +580,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
+				SDKROOT = watchos2.1;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridge_iOS WatchKit Extension/Bridge_iOS WatchKit Extension-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -598,11 +598,11 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS.watchkitapp.watchkitextension";
 				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
+				SDKROOT = watchos2.1;
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "Bridge_iOS WatchKit Extension/Bridge_iOS WatchKit Extension-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -615,10 +615,10 @@
 				INFOPLIST_FILE = "Bridge_iOS WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos2.1;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -631,10 +631,10 @@
 				INFOPLIST_FILE = "Bridge_iOS WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
+				SDKROOT = watchos2.1;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -644,6 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -656,6 +657,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";

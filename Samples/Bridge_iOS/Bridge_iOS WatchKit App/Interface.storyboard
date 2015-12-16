@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
@@ -8,7 +8,7 @@
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="BridgeiOS">
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Bridge_iOS_WatchKit_Extension">
                     <items>
                         <switch width="1" alignment="left" title="Motion" id="Dgc-A2-rwt" userLabel="Motion">
                             <connections>
@@ -17,21 +17,21 @@
                         </switch>
                         <table alignment="left" id="oN1-g9-nph">
                             <items>
-                                <tableRow identifier="elementsTableRow" id="yjk-FI-deQ" customClass="ElementsTableRow" customModule="vgcBridge">
+                                <tableRow identifier="elementsTableRow" id="yjk-FI-deQ" customClass="ElementsTableRow" customModule="Bridge_iOS_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="ENb-87-HZa">
                                         <items>
                                             <label alignment="left" text="Label" id="DOE-ll-T1A" userLabel="Element Label"/>
                                         </items>
                                     </group>
                                     <connections>
-                                        <outlet property="elementLabel" destination="DOE-ll-T1A" id="vSB-Lh-1uo"/>
+                                        <outlet property="elementLabel" destination="DOE-ll-T1A" id="agq-mv-NKm"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
-                        <outlet property="elementsTable" destination="oN1-g9-nph" id="oQO-CI-KN3"/>
+                        <outlet property="elementsTable" destination="oN1-g9-nph" id="P8D-0J-AiD"/>
                     </connections>
                 </controller>
             </objects>
@@ -56,7 +56,7 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="vgcBridge"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="BridgeiOS"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>

@@ -278,6 +278,12 @@
          location = "group:External"
          name = "External">
          <FileRef
+            location = "group:VgcCustomElements.swift">
+         </FileRef>
+         <FileRef
+            location = "group:VgcCustomMappings.swift">
+         </FileRef>
+         <FileRef
             location = "group:VgcSharedViews.swift">
          </FileRef>
          <FileRef
@@ -331,97 +337,6 @@
       <Group
          location = "group:Samples/Bridge_iOS"
          name = "Bridge_iOS">
-         <Group
-            location = "group:Bridge_iOS"
-            name = "Bridge_iOS">
-            <FileRef
-               location = "group:AppDelegate.swift">
-            </FileRef>
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-               <FileRef
-                  location = "group:LaunchScreen.storyboard">
-               </FileRef>
-               <FileRef
-                  location = "group:Main.storyboard">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:ViewController.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Bridge_iOS WatchKit App"
-            name = "Bridge_iOS WatchKit App">
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-               <FileRef
-                  location = "group:Interface.storyboard">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:Bridge_iOS WatchKit Extension"
-            name = "Bridge_iOS WatchKit Extension">
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <FileRef
-                  location = "group:README__ignoredByTemplate__">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:ExtensionDelegate.swift">
-            </FileRef>
-            <FileRef
-               location = "group:../../../Source/External/VgcCustomElements.swift">
-            </FileRef>
-            <FileRef
-               location = "group:../../../Source/External/VgcCustomMappings.swift">
-            </FileRef>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:InterfaceController.swift">
-            </FileRef>
-            <FileRef
-               location = "group:NotificationController.swift">
-            </FileRef>
-            <FileRef
-               location = "group:PushNotificationPayload.apns">
-            </FileRef>
-         </Group>
          <FileRef
             location = "group:Bridge_iOS.xcodeproj">
          </FileRef>

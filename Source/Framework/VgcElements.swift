@@ -424,9 +424,9 @@ public class Elements: NSObject {
         
         for customElement in Elements.customElements.customProfileElements {
             
-            let elementCopy = customElement.copy() as! Element
-            elementCopy.identifier = customElement.identifier
-            custom[elementCopy.identifier] = elementCopy
+            //let elementCopy = customElement.copy() as! Element
+            //elementCopy.identifier = customElement.identifier
+            custom[customElement.identifier] = customElement
         }
         
         customProfileElements = Elements.customElements.customProfileElements
@@ -573,7 +573,7 @@ public class CustomElement: Element {
     required convenience public init(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
 }
 
 // A stub, to support creation of a custom mappings class external to a framework
