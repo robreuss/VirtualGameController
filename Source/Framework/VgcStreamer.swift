@@ -32,6 +32,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     var nsStringBuffer: NSString = ""
     var cycleCount: Int = 0
     let logging = false
+    var lastTimeStamp = 0.0
     
     init(delegate: VgcStreamerDelegate, delegateName: String) {
         
@@ -246,18 +247,21 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     valueLengthNSData.getBytes(&expectedLengthUInt32, length: sizeof(UInt32))
                     expectedLength = Int(expectedLengthUInt32)
                     
-                    var timestampDouble: Double = 0
-                    let timestampNSData = dataBuffer.subdataWithRange(NSRange.init(location: 9, length: 8))
-                    timestampNSData.getBytes(&timestampDouble, length: sizeof(Double))
-                    
                     if VgcManager.netServiceLatencyLogging {
+
+                        var timestampDouble: Double = 0
+                        let timestampNSData = dataBuffer.subdataWithRange(NSRange.init(location: 9, length: 8))
+                        timestampNSData.getBytes(&timestampDouble, length: sizeof(Double))
+                        
                         let transitTime = round(1000 * (NSDate().timeIntervalSince1970 - timestampDouble))
+                        //if timestampDouble < lastTimeStamp { print("Time problem") }
+                        //lastTimeStamp = timestampDouble
                         PerformanceVars.totalTransitTime += transitTime
                         PerformanceVars.totalTransitTimeMeasurements++
                         let averageTransitTime = PerformanceVars.totalTransitTime / PerformanceVars.totalTransitTimeMeasurements
                         let aboveAverageTransitTime = transitTime - averageTransitTime
                         let percentageAboveAverage = (averageTransitTime / transitTime) * 100
-                        if percentageAboveAverage > 40 { print("Above average transit time: \(transitTime)ms by \(aboveAverageTransitTime), \(percentageAboveAverage)% above avg (Avg: \(averageTransitTime))") }
+                        //if percentageAboveAverage > 40 { print("Above average transit time: \(transitTime)ms by \(aboveAverageTransitTime), \(percentageAboveAverage)% above avg (Avg: \(averageTransitTime))") }
                     }
                     
                 } else {
@@ -293,7 +297,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     // Performance testing is about calculating elements received per second
                     // By sending motion data, it can be  compared to expected rates.
                     
-                    PerformanceVars.messagesReceived = PerformanceVars.messagesReceived + 1.0
+                    PerformanceVars.messagesReceived++
                     
                     if VgcManager.performanceSamplingEnabled {
                         
