@@ -257,12 +257,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     public func sendElementStateToPeripheral(element: Element) {
         //print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
 
-        if element.dataType == .Data {
-            streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
-        } else {
-            streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+        if self.deviceInfo.controllerType != .Watch {
+            if element.dataType == .Data {
+                streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
+            } else {
+                streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+            }
         }
-
     }
     
     // Send a message to the Peripheral that we received an invalid message (based on checksum).
@@ -840,6 +841,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 print("Controller exists already, removing")
                 dispatch_sync(self.lockQueueVgcController) {
                     VgcController.vgcControllers.removeAtIndex(index)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        
+                        NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
+                        
+                    }
                 }
             
             }

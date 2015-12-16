@@ -82,6 +82,9 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
             let element = self.watchController.elements.elementFromIdentifier(Int(elementTypeString)!)
             element.value = message[elementTypeString]!
             self.watchController.updateGameControllerWithValue(element)
+            self.watchController.peripheral.browser.sendElementStateOverNetService(element)
+            //watchController.sendElementStateToPeripheral(element)
+
             
         }
     }    
