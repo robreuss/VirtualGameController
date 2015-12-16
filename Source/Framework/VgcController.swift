@@ -258,16 +258,23 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     public func sendElementStateToPeripheral(element: Element) {
-        //print("Sending element state to Peripheral \(deviceInfo.vendorName) for element \(element.name) = \(element.value)")
-
         if self.deviceInfo.controllerType != .Watch {
-            if element.dataType == .Data {
-                streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
+                if element.dataType == .Data {
+                if streamer[.LargeData] != nil {
+                    streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
+                } else {
+                    print("nil stream LargeData error caught");
+                }
             } else {
-                streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+                if streamer[.SmallData] != nil {
+                    streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+                } else {
+                    print("nil stream SmallData error caught");
+                }
             }
         }
     }
+
     
     // Send a message to the Peripheral that we received an invalid message (based on checksum).
     // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
