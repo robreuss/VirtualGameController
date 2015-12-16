@@ -313,7 +313,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
-        if deviceInfo != nil && deviceInfo.controllerType != .Watch {
+        if deviceInfo != nil && (deviceInfo.controllerType != .Watch && !deviceIsTypeOfBridge()) {
+            
+            print("Closing streams for controller \(deviceInfo.vendorName)")
             
             fromPeripheraInputlStream[.LargeData]!.close()
             fromPeripheraInputlStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
@@ -345,7 +347,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         if let deviceInfo = self.deviceInfo {
         
-            // Make sure we are getting any accidental duplicates of the controller
+            // Make sure we aren't getting any accidental duplicates of the controller
             var index = 0
             for controller in VgcController.vgcControllers {
                 if controller.deviceInfo.deviceUID == deviceInfo.deviceUID {
