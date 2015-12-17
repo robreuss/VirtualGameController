@@ -74,7 +74,7 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
         if session.reachable {
             self.scanForWatchController()
         } else {
-            if watchController != nil { watchController.disconnect() }
+            //if watchController != nil { watchController.disconnect() } // Commented out because we want to maintain the controller even if watch goes background
         }
         
     }
