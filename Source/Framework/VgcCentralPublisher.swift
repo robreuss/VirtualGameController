@@ -130,7 +130,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
         
         #if os(iOS)
-            self.centralPublisherWatch = CentralPublisherWatch()
+            self.centralPublisherWatch = CentralPublisherWatch(centralPublisher: self)
         #endif
     }
     

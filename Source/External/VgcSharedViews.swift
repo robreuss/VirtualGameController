@@ -974,14 +974,17 @@ public class ElementDebugView: UIView {
     }
     
     public func receivedDebugViewDoubleTap() {
-        
-        
-        // Test Image Send
-        let image = UIImage(named: "digit.jpg")
-        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
-        let imageData = UIImageJPEGRepresentation(image!, 1.0)
-        element.value = imageData!
+
+        let element = controller.elements.rightTrigger
+        element.value = 1.0
         controller.sendElementStateToPeripheral(element)
+        
+//        // Test Image Send
+//        let image = UIImage(named: "digit.jpg")
+//        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
+//        let imageData = UIImageJPEGRepresentation(image!, 1.0)
+//        element.value = imageData!
+//        controller.sendElementStateToPeripheral(element)
         
     }
     

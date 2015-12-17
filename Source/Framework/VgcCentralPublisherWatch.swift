@@ -13,8 +13,11 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
     
     var wcSession: WCSession!
     var watchController: VgcController!
+    var centralPublisher: VgcCentralPublisher!
     
-    override init() {
+    init(centralPublisher: VgcCentralPublisher) {
+        
+        self.centralPublisher = centralPublisher
         
         super.init()
         
@@ -54,6 +57,8 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
                 
                 watchController.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "Watch", attachedToDevice: false, profileType: .Watch, controllerType: .Watch, supportsMotion: true)
                 
+                watchController.centralPublisher = centralPublisher
+                
             } else {
                 print("Watch is not reachable")
             }
@@ -87,5 +92,18 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
 
             
         }
-    }    
+    }
+    
+    func sendElementState(element: Element) {
+        
+        if wcSession != nil && wcSession.reachable {
+            let message = ["\(element.identifier)": element.value]
+            wcSession.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
+                print("Watch Connectivity: Our counterpart sent something back. This is optional")
+                }, errorHandler: {  (error ) -> Void in
+                    print("Watch Connectivity: We got an error from our paired device : \(error)")
+            })
+        }
+        
+    }
 }

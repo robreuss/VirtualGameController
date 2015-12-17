@@ -258,8 +258,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     public func sendElementStateToPeripheral(element: Element) {
-        if self.deviceInfo.controllerType != .Watch {
-                if element.dataType == .Data {
+        if deviceIsTypeOfBridge() && deviceInfo.controllerType == .Watch && centralPublisher != nil {
+            
+            centralPublisher.centralPublisherWatch.sendElementState(element)
+            
+        } else {
+
+            if element.dataType == .Data {
                 if streamer[.LargeData] != nil {
                     streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
                 } else {
@@ -272,6 +277,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     print("nil stream SmallData error caught");
                 }
             }
+            
         }
     }
 
@@ -313,7 +319,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
-        if deviceInfo != nil && (deviceInfo.controllerType != .Watch && !deviceIsTypeOfBridge()) {
+        if deviceInfo != nil && deviceInfo.controllerType != .Watch {
             
             print("Closing streams for controller \(deviceInfo.vendorName)")
             
