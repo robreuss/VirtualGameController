@@ -863,6 +863,21 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             print("Confirming controller doesn't already exist among \(VgcController.controllers().count) controllers")
             
+            
+            if deviceIsTypeOfBridge() {
+                if peripheral == nil {
+                    print("Setting up a controller-specific peripheral object for controller \(deviceInfo.vendorName)")
+                    peripheral = Peripheral()
+                } else {
+                    print("Controller already has a peripheral object \(deviceInfo.vendorName)")
+                }
+                peripheral.controller = self
+                #if os(iOS)
+                peripheral.motion.controller = self
+                #endif
+            }
+            
+            
             let (existsAlready, index) = VgcController.controllerAlreadyExists(self)
             if existsAlready {
             
@@ -876,16 +891,6 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     }
                 }
             
-            }
-
-            if deviceIsTypeOfBridge() {
-                if peripheral == nil {
-                    print("Setting up a controller-specific peripheral object for controller \(deviceInfo.vendorName)")
-                    peripheral = Peripheral()
-                } else {
-                    print("Controller already has a peripheral object \(deviceInfo.vendorName)")
-                }
-                peripheral.controller = self
             }
             
             // Make a game controller out of the peripheral

@@ -15,6 +15,7 @@ public class VgcMotionManager: NSObject {
 
     #if os(iOS)
     private let elements = VgcManager.elements
+    var controller: VgcController!
     #endif
     
     #if os(watchOS)
@@ -69,9 +70,17 @@ public class VgcMotionManager: NSObject {
             print("Attempting to start motion detection")
             
             #if os(iOS)
-                if (VgcManager.peripheral.haveConnectionToCentral == false && VgcManager.appRole != .EnhancementBridge) || (VgcManager.appRole == .EnhancementBridge && VgcController.enhancedController.peripheral.haveConnectionToCentral == false) {
-                    print("Not starting motion because no connection")
-                    return
+                if !deviceIsTypeOfBridge() {
+                    if  VgcManager.peripheral.haveConnectionToCentral == false {
+                        print("Not starting motion because no connection")
+                        return
+                    }
+                }
+                if VgcManager.appRole == .EnhancementBridge {
+                    if VgcController.enhancedController.peripheral.haveConnectionToCentral == false {
+                        print("Not starting motion because no connection")
+                        return
+                    }
                 }
             #endif
             
@@ -83,7 +92,7 @@ public class VgcMotionManager: NSObject {
             
             print("Device supports: \(self.deviceSupportsMotion), motion available: \(self.manager.deviceMotionAvailable), accelerometer available: \(self.manager.accelerometerAvailable)")
             
-            if self.deviceSupportsMotion == true {
+            if deviceIsTypeOfBridge() || self.deviceSupportsMotion == true {
                 
                 active = true
                 
@@ -250,7 +259,12 @@ public class VgcMotionManager: NSObject {
     func sendElementState(element: Element) {
         
         #if os(iOS)
-            VgcManager.peripheral.sendElementState(element)
+            if deviceIsTypeOfBridge() {
+                controller.peripheral.sendElementState(element)
+            } else {
+                VgcManager.peripheral.sendElementState(element)
+            }
+
         #endif
         
         #if os(watchOS)

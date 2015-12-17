@@ -80,7 +80,7 @@ public class Peripheral: NSObject {
         
         // As a Peripheral, we don't need a connection to send if we're an EnhancementBridge, using instead the
         // stream associated with the hardware controllers VgcController.
-        if haveConnectionToCentral == true || VgcManager.appRole == .EnhancementBridge {
+        if haveConnectionToCentral == true || deviceIsTypeOfBridge() {
             
             //print("Sending: \(element.name): \(element.value)")
             
@@ -290,7 +290,7 @@ public class Peripheral: NSObject {
             deviceInfo.profileType = .ExtendedGamepad
             deviceInfo.supportsMotion = true
         }
-        if VgcManager.appRole == .EnhancementBridge { deviceInfo.supportsMotion = true }
+        if deviceIsTypeOfBridge() { deviceInfo.supportsMotion = true }
         
         // microGamepad is only supported when running on Apple TV, so we transform to
         // Gamepad when bridging it over to a Central on iOS or OSX

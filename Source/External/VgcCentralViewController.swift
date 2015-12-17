@@ -249,7 +249,7 @@ import VirtualGameController
 */
             
         }
-        
+     
         elementDebugViewLookup[controller] = elementDebugView
         
         self.refreshElementDebugViewPositions()
@@ -355,7 +355,7 @@ import VirtualGameController
             print("Got right trigger")
             
         }
-
+        
     }
     
     @objc func controllerDidDisconnect(notification: NSNotification) {
