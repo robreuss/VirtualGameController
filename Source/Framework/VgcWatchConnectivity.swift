@@ -36,15 +36,19 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     }
     
     public func sendElementValueToBridge(element: Element) {
-
+        
         if session.reachable {
-            let message = ["\(element.type.rawValue)": element.value]
+            let message = ["\(element.identifier)": element.value]
             session.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
                 print("Phone: Our counterpart sent something back. This is optional")
                 }, errorHandler: {  (error ) -> Void in
                     print("Phone: We got an error from our paired device : \(error)")
             })
         }
+    }
+    
+    public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        print("Watch did receive message: \(message)")
     }
     
     public func sessionReachabilityDidChange(session: WCSession) {
