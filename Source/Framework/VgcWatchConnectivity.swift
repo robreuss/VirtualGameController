@@ -17,6 +17,9 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     var httpSession: NSURLSession!
     public var motion: VgcMotionManager!
     
+    public typealias VgcValueChangedHandler = (Element) -> Void
+    public var valueChangedHandler: VgcValueChangedHandler!
+    
     public override init() {
       
         super.init()
@@ -33,6 +36,8 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         
         motion.watchConnectivity = self
         #endif
+        
+        
     }
     
     public func sendElementValueToBridge(element: Element) {
@@ -49,6 +54,16 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         print("Watch did receive message: \(message)")
+        for elementTypeString: String in message.keys {
+            
+            let element = elements.elementFromIdentifier(Int(elementTypeString)!)
+            element.value = message[elementTypeString]!
+        
+            if let handler = valueChangedHandler {
+                handler(element)
+            }
+            
+        }
     }
     
     public func sessionReachabilityDidChange(session: WCSession) {

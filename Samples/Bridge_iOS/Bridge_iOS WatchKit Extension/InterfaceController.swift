@@ -24,7 +24,13 @@ class InterfaceController: WKInterfaceController {
         
         print("Successfully ran startAs")
         
-        watchConnectivity = VgcWatchConnectivity() 
+        watchConnectivity = VgcWatchConnectivity()
+        
+        watchConnectivity.valueChangedHandler = { (element: Element) in
+            
+            print("Watch handler fired for \(element.name) with value \(element.value)")
+            
+        }
         
     }
     
