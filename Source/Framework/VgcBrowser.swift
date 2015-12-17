@@ -159,13 +159,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: playerIndex)
             
         default:
-
-            if !deviceIsTypeOfBridge() {
-                
-                // Call the handler set on the global object
-                if let handler = element.valueChangedHandlerForPeripheral {
-                    handler(element)
-                }
+          
+            // Call the handler set on the global object
+            if let handler = element.valueChangedHandlerForPeripheral {
+                handler(element)
             }
             
         }
