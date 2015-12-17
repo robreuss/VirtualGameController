@@ -227,7 +227,7 @@ public class Peripheral: NSObject {
         
         if deviceIsTypeOfBridge() {
             
-            bridgePeripheralDeviceInfoToCentral(controller)
+            if controller != nil { bridgePeripheralDeviceInfoToCentral(controller) }
             
         } else {
             
