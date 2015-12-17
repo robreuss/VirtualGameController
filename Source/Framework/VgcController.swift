@@ -886,7 +886,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     VgcController.vgcControllers.removeAtIndex(index)
                     dispatch_async(dispatch_get_main_queue()) {
                         
-                        NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
+                        //NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
                         
                     }
                 }
