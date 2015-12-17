@@ -391,7 +391,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralFoundService, object: vgcService)
             
-            if deviceIsTypeOfBridge() && vgcService.type == .Central { connectToService(vgcService) }
+            if deviceIsTypeOfBridge() && vgcService.type == .Central && connectedVgcService != vgcService { connectToService(vgcService) }
         }
         
     }
