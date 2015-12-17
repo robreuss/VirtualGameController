@@ -253,7 +253,7 @@ public class VgcManager: NSObject {
     // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
     // NOTE: This property cannot be set after startAs is called.  Instead, use the version of
     // startAs that includes the includesPeerToPeer parameter.
-    public static var includesPeerToPeer = false
+    public static var includesPeerToPeer = true
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console

@@ -9,12 +9,14 @@
 import Foundation
 import SceneKit
 import VirtualGameController
+import CoreMotion
 
 class SharedCode: NSObject {
     
     var ship: SCNNode!
     var lightNode: SCNNode!
     var cameraNode: SCNNode!
+    public let manager = CMMotionManager()
     
     func setup(ship: SCNNode, lightNode: SCNNode, cameraNode: SCNNode) {
         
@@ -56,7 +58,7 @@ class SharedCode: NSObject {
         // Turn on motion to demonstrate that
         VgcManager.peripheralSetup.motionActive = false
         VgcManager.peripheralSetup.enableMotionAttitude = true
-        VgcManager.peripheralSetup.enableMotionGravity = false
+        VgcManager.peripheralSetup.enableMotionGravity = true
         VgcManager.peripheralSetup.enableMotionUserAcceleration = false
         VgcManager.peripheralSetup.enableMotionRotationRate = false
         VgcManager.peripheralSetup.sendToController(controller)
@@ -157,18 +159,47 @@ class SharedCode: NSObject {
         // Position ship at a solid origin
         ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1.3), count: 1))
         
-        // Refresh on all motion changes
+        /* USE LOCAL CORE MOTION...
+        manager.deviceMotionUpdateInterval = 1/30
+        manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void  in
+            let amplify = 3.14158
+            let x = -(deviceMotionData!.attitude.quaternion.x) * amplify
+            let y = -(deviceMotionData!.attitude.quaternion.z) * amplify
+            let z = -(deviceMotionData!.attitude.quaternion.y) * amplify
+            
+            
+            self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.0), count: 1))
+        })
+        */
+        
+
+        // USE VGC REMOTE INPUT...
         controller.motion?.valueChangedHandler = { (input: VgcMotion) in
             
-            let amplify = 3.14158
+            let amplify = 1.0
             
             // Invert these because we want to be able to have the ship display in a way
             // that mirrors the position of the iOS device
-            let x = -(input.attitude.x) * amplify
-            let y = -(input.attitude.z) * amplify
-            let z = -(input.attitude.y) * amplify
+            //let x = (input.attitude.x) - (input.gravity.x * 0.5) * amplify
+            //let y = (input.attitude.z) - (input.gravity.z * 0.5)
+            //let z = (input.attitude.y) - (input.gravity.y * 0.5) * amplify
             
-            self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
+            //let x = -(round(input.attitude.x * 10000) / 10000) + amplify
+            //let y = -(round(input.attitude.z * 10000) / 10000) + amplify
+            //let z = -(round(input.attitude.y * 10000) / 10000) + amplify
+            
+            // that mirrors the position of the iOS device -> WORKS
+            let x = -(input.attitude.z) * amplify
+            let y = -(input.attitude.y) * amplify
+            let z = -(input.attitude.x) * amplify
+            
+            //let x = -(input.attitude.z) * amplify
+            //let y = -(input.attitude.x) * amplify
+            //let z = -(input.attitude.y) * amplify
+            
+            //round(xValue * 100.0) / 100
+            
+            self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.03), count: 1))
             
             //ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat(x) * 4.0, CGFloat(y) * 4.0, CGFloat(z) * 4.0), duration: 0.3))
             // The following will give the ship a bit of "float" that relates to the up/down motion of the iOS device.
@@ -187,6 +218,7 @@ class SharedCode: NSObject {
             ship.runAction(SCNAction.moveTo(SCNVector3.init(xValue, yValue, CGFloat( ship.position.z)), duration: 1.6))
             */
         }
+
         /*
         // Refresh on all motion changes
         controller.motion?.valueChangedHandler = { (input: VgcMotion) in

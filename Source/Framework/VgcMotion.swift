@@ -92,14 +92,15 @@ public class VgcMotionManager: NSObject {
                     
                     setupFilterConstant()
                     
-                    //let motionQueue = NSOperationQueue()
+                    let motionQueue = NSOperationQueue()  // NSOperationQueue.mainQueue()
+                    motionQueue.maxConcurrentOperationCount = 20
                     
                     print("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
                     
-                    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void in
+                    manager.startDeviceMotionUpdatesToQueue(motionQueue, withHandler: { (deviceMotionData, error) -> Void in
                         
-                        if error != nil {
+                       if error != nil {
                             print("Got device motion error: \(error)")
                         }
                         
@@ -108,7 +109,7 @@ public class VgcMotionManager: NSObject {
                         // Send data on the custom accelerometer channels
                         if self.enableAttitude {
                             
-                            (x, y, z, w) = self.filterX(((deviceMotionData?.attitude.quaternion.x)!), y: ((deviceMotionData?.attitude.quaternion.y)!), z: ((deviceMotionData?.attitude.quaternion.z)!), w: ((deviceMotionData?.attitude.quaternion.w)!))
+                            (x, y, z, w) = self.filterX(((deviceMotionData?.attitude.roll)!), y: ((deviceMotionData?.attitude.pitch)!), z: ((deviceMotionData?.attitude.yaw)!), w: ((deviceMotionData?.attitude.quaternion.w)!))
                             
                             //print("Old double: \(deviceMotionData?.attitude.quaternion.x), new float: \(x)")
                             
@@ -167,7 +168,8 @@ public class VgcMotionManager: NSObject {
                             self.sendElementState(self.elements.motionRotationRateY)
                             self.sendElementState(self.elements.motionRotationRateZ)
                         }
-                    })
+                        })
+                    
                     
                 } else if self.manager.accelerometerAvailable {
                     
