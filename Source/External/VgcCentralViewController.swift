@@ -348,6 +348,13 @@ import VirtualGameController
             self.refreshDebugViewForController(controller)
             
         }
+        
+        // Demonstrates receiving a message as a Bridge from a Central
+        VgcManager.elements.rightTrigger.valueChangedHandlerForPeripheral = { (element) in
+            
+            print("Got right trigger")
+            
+        }
 
     }
     
