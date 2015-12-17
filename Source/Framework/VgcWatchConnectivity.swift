@@ -37,7 +37,6 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         motion.watchConnectivity = self
         #endif
         
-        
     }
     
     public func sendElementValueToBridge(element: Element) {
@@ -45,20 +44,26 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         if session.reachable {
             let message = ["\(element.identifier)": element.value]
             session.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
-                print("Phone: Our counterpart sent something back. This is optional")
+                // Response to message shows up here
                 }, errorHandler: {  (error ) -> Void in
-                    print("Phone: We got an error from our paired device : \(error)")
+                    print("ERROR: Received an error while attempt to send element \(element) to bridge: \(error)")
             })
+        } else {
+            print("ERROR: Unable to send element \(element) because bridge is unreachable")
         }
     }
     
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-        print("Watch did receive message: \(message)")
+        
+        print("Received message: \(message)")
+        
         for elementTypeString: String in message.keys {
             
             let element = elements.elementFromIdentifier(Int(elementTypeString)!)
             element.value = message[elementTypeString]!
-        
+
+            print("Calling handler with element: \(element.identifier): \(element.value)")
+            
             if let handler = valueChangedHandler {
                 handler(element)
             }
@@ -68,9 +73,12 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     
     public func sessionReachabilityDidChange(session: WCSession) {
         
-        print("Watch reachability changed to \(session.reachable)")
-        print("Stopping motion")
-        motion.stop()
+        print("Reachability changed to \(session.reachable)")
+
+        if session.reachable == false {
+            print("Stopping motion")
+            motion.stop()
+        }
         
     }
     
