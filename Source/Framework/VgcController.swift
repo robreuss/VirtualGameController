@@ -260,7 +260,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     public func sendElementStateToPeripheral(element: Element) {
         if deviceIsTypeOfBridge() && deviceInfo.controllerType == .Watch && centralPublisher != nil {
             
+            #if os(iOS)
             centralPublisher.centralPublisherWatch.sendElementState(element)
+            #endif
             
         } else {
 
