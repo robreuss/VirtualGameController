@@ -121,15 +121,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         
-        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.VibrateDevice.rawValue) {
+        // Handle element messages from watch.  No need to forward to Central, which is handled
+        // automatically - only here for other processing.
+        VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
             
-            element.valueChangedHandlerForPeripheral = { (element: Element) in
-                
-                print("Custom element handler fired for \(element.name) with value \(element.value)")
-                
-                AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
-                
-            }
+            print("Value changed handler received element state from watch: \(element.name) with value \(element.value)")
+            
         }
 
         

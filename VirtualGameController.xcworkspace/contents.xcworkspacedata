@@ -324,6 +324,9 @@
             location = "group:VgcPeripheral.swift">
          </FileRef>
          <FileRef
+            location = "group:VgcWatch.swift">
+         </FileRef>
+         <FileRef
             location = "group:VgcStreamer.swift">
          </FileRef>
          <FileRef
@@ -679,96 +682,6 @@
          </Group>
       </Group>
       <Group
-         location = "group:Samples/Peripheral_iOS"
-         name = "Peripheral_iOS">
-         <FileRef
-            location = "group:Peripheral_iOS.xcodeproj">
-         </FileRef>
-         <Group
-            location = "group:PeripheralVirtualGameControlleriOSSample"
-            name = "PeripheralVirtualGameControlleriOSSample">
-            <FileRef
-               location = "group:AppDelegate.swift">
-            </FileRef>
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:116-controller.imageset"
-                  name = "116-controller.imageset">
-                  <FileRef
-                     location = "group:116-controller.png">
-                  </FileRef>
-                  <FileRef
-                     location = "group:116-controller@2x.png">
-                  </FileRef>
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-               <Group
-                  location = "group:17-pause.imageset"
-                  name = "17-pause.imageset">
-                  <FileRef
-                     location = "group:17-pause.png">
-                  </FileRef>
-                  <FileRef
-                     location = "group:17-pause@2x.png">
-                  </FileRef>
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-               <FileRef
-                  location = "group:Contents.json">
-               </FileRef>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-               <FileRef
-                  location = "group:LaunchScreen.storyboard">
-               </FileRef>
-               <FileRef
-                  location = "group:Main.storyboard">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:ViewController.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:PeripheralVirtualGameControlleriOSSampleTests"
-            name = "PeripheralVirtualGameControlleriOSSampleTests">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:PeripheralVirtualGameControlleriOSSampleTests.swift">
-            </FileRef>
-         </Group>
-         <Group
-            location = "group:PeripheralVirtualGameControlleriOSSampleUITests"
-            name = "PeripheralVirtualGameControlleriOSSampleUITests">
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:PeripheralVirtualGameControlleriOSSampleUITests.swift">
-            </FileRef>
-         </Group>
-      </Group>
-      <Group
          location = "group:Samples/Peripheral_OSX"
          name = "Peripheral_OSX">
          <FileRef
@@ -826,5 +739,8 @@
             </FileRef>
          </Group>
       </Group>
+      <FileRef
+         location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
+      </FileRef>
    </Group>
 </Workspace>

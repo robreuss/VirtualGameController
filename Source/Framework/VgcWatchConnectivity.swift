@@ -40,10 +40,11 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         
     }
     
-    public func sendElementValueToBridge(element: Element) {
+    public func sendElementState(element: Element) {
         
         if session.reachable {
             let message = ["\(element.identifier)": element.value]
+            print("Watch connectivity sending message: \(message) for element \(element.name) with value \(element.value)")
             session.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
                 // Response to message shows up here
                 }, errorHandler: {  (error ) -> Void in

@@ -268,7 +268,7 @@ public class VgcMotionManager: NSObject {
         #endif
         
         #if os(watchOS)
-            watchConnectivity.sendElementValueToBridge(element)
+            watchConnectivity.sendElementState(element)
         #endif
         
     }

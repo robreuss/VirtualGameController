@@ -30,10 +30,11 @@ public let VgcSystemMessageNotification:             String = "VgcSystemMessageN
 public let VgcPeripheralSetupNotification:           String = "VgcPeripheralSetupNotification"
 public let VgcNewPlayerIndexNotification:            String = "VgcNewPlayerIndexNotification"
 
-public class Peripheral: NSObject {
+public class Peripheral: NSObject, VgcWatchDelegate {
     
     private var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
+    public var watch: VgcWatch!
     var playerIndex: GCControllerPlayerIndex!
     weak var controller: VgcController!
     
@@ -53,6 +54,10 @@ public class Peripheral: NSObject {
         
         #if !os(watchOS)
             browser = VgcBrowser(peripheral: self)
+        #endif
+        
+        #if os(iOS)
+            watch = VgcWatch(delegate: self)
         #endif
         
         print("Setting up motion manager on peripheral")
@@ -276,6 +281,11 @@ public class Peripheral: NSObject {
         
         browser.sendDeviceInfoElement(element)
 
+    }
+    
+    func receivedWatchMessage(element: Element) {
+        print("Received element \(element.name) with value \(element.value) from watch, forwarding to Central or Bridge")
+        sendElementState(element)
     }
     
     func bridgePeripheralDeviceInfoToCentral(controller: VgcController) {
