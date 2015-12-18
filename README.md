@@ -207,6 +207,71 @@ VgcManager.peripheral.motion.enableLowPassFilter = true
 
 It is important for performance reasons to reduce updateInterval as much as you can, and to disable motion inputs that are not used in your game.
 
+## Integrating the Apple Watch
+#### Sample Project
+See the iOS Peripheral sample project for additional guidance.
+#### Project Setup
+In order to integrate watch functionality into your project, it is recommended you start the project using Apple's template for "iOS App with WatchKit App".  That will enable you to create a WatchKit Extension for your app.
+
+Your iOS project must import the iOS version of the framework and the WatchKit Extension must import the watchOS version.
+
+#### Launching your Watch Extension
+Your Watch Extension should use the startAs method to launch as a Peripheral, and set an instance variable for the VgcWatchConnectivity class, which the watchOS framework publishes:
+
+````swift
+    VgcManager.startAs(.Peripheral, appIdentifier: "", customElements: CustomElements(), customMappings: CustomMappings())
+    watchConnectivity = VgcWatchConnectivity()    
+````
+
+#### Sending Values from the Watch
+Within your watch extension, use the following method on your VgcWatchConnectivity instance variable to send an element value to both your iOS app (living on your phone) and the Central (forwarded from the iOS app automatically):
+
+````swift
+let element = watchConnectivity.elements.rightShoulder
+element.value = 1.0
+watchConnectivity.sendElementState(element)
+element.value = 0.0
+watchConnectivity.sendElementState(element)
+
+````
+
+#### Recieving Values from the Watch
+When your watch sends values as described in the previous section, those values will be automatically forwarded to the Central, but they can also be reacted to on the iOS Peripheral app, by setting a valueChangedHandler like so:
+
+````swift
+VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
+	print("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
+}
+````
+
+
+####Sending Values to the Watch
+To send a value to a watch from your Peripheral iOS app, you can use the following method:
+
+````swift
+VgcManager.peripheral.watch.sendElementState(element)
+
+````
+
+####Receiving Values on the Watch
+If a watch is paired with your iPhone iOS app, values received by the iOS app from a Central will be forwarded to the watch, and you can react to those values by setting a valueChangedHandler on your watchConnectivity instance:
+
+````swift
+watchConnectivity.valueChangedHandler = { (element: Element) in
+	print("Watch handler fired for \(element.name) with value \(element.value)")
+}
+````
+
+Note that the same handler will fire if your Peripheral sends a value to the watch as described above.
+
+#### Starting Motion from the Watch
+You can send motion values from the watch, but please note that the performance is not great:
+
+````swift
+watchConnectivity.motion.start()
+watchConnectivity.motion.stop()
+````
+
 ## Game Integration 
 ####GCController Replacement
 **VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
@@ -252,6 +317,9 @@ There are two features supported by a Central that exceed the capabilities of th
 
 - Custom elements
 - Custom mapping
+
+####Other
+There is a method provided on instances of VgcController called ````controller.vibrateDevice```` that will vibrate an iPhone, and if a watch app is integrated with that phone, the vibrate request will be forwarded to the watch as well, resulting in haptic feedback (wrist click).
 
 ##Custom Elements
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
