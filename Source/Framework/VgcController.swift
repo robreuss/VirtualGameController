@@ -258,29 +258,21 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     public func sendElementStateToPeripheral(element: Element) {
-        if deviceIsTypeOfBridge() && deviceInfo.controllerType == .Watch && centralPublisher != nil {
-            
-            #if os(iOS)
-            centralPublisher.centralPublisherWatch.sendElementState(element)
-            #endif
-            
-        } else {
-
-            if element.dataType == .Data {
-                if streamer[.LargeData] != nil {
-                    streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
-                } else {
-                    print("nil stream LargeData error caught");
-                }
+        
+        if element.dataType == .Data {
+            if streamer[.LargeData] != nil {
+                streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
             } else {
-                if streamer[.SmallData] != nil {
-                    streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
-                } else {
-                    print("nil stream SmallData error caught");
-                }
+                print("nil stream LargeData error caught");
             }
-            
+        } else {
+            if streamer[.SmallData] != nil {
+                streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+            } else {
+                print("nil stream SmallData error caught");
+            }
         }
+        
     }
 
     

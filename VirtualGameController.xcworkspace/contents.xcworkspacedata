@@ -303,9 +303,6 @@
             location = "group:VgcCentralPublisher.swift">
          </FileRef>
          <FileRef
-            location = "group:VgcCentralPublisherWatch.swift">
-         </FileRef>
-         <FileRef
             location = "group:VgcController.swift">
          </FileRef>
          <FileRef

@@ -10,7 +10,6 @@
 		201C2CB71C20C927004B4826 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAB1C20C927004B4826 /* VgcPeripheralSetup.swift */; };
 		201C2CB81C20C927004B4826 /* VgcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAC1C20C927004B4826 /* VgcManager.swift */; };
 		201C2CB91C20C927004B4826 /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAD1C20C927004B4826 /* VgcCentralPublisher.swift */; };
-		201C2CBA1C20C927004B4826 /* VgcCentralPublisherWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAE1C20C927004B4826 /* VgcCentralPublisherWatch.swift */; };
 		201C2CBB1C20C927004B4826 /* VgcController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAF1C20C927004B4826 /* VgcController.swift */; };
 		201C2CBC1C20C927004B4826 /* VgcElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CB01C20C927004B4826 /* VgcElements.swift */; };
 		201C2CBD1C20C927004B4826 /* VgcBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CB11C20C927004B4826 /* VgcBrowser.swift */; };
@@ -27,7 +26,6 @@
 		201C2CAB1C20C927004B4826 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = ../../../Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<group>"; };
 		201C2CAC1C20C927004B4826 /* VgcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcManager.swift; path = ../../../Source/Framework/VgcManager.swift; sourceTree = "<group>"; };
 		201C2CAD1C20C927004B4826 /* VgcCentralPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCentralPublisher.swift; path = ../../../Source/Framework/VgcCentralPublisher.swift; sourceTree = "<group>"; };
-		201C2CAE1C20C927004B4826 /* VgcCentralPublisherWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCentralPublisherWatch.swift; path = ../../../Source/Framework/VgcCentralPublisherWatch.swift; sourceTree = "<group>"; };
 		201C2CAF1C20C927004B4826 /* VgcController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcController.swift; path = ../../../Source/Framework/VgcController.swift; sourceTree = "<group>"; };
 		201C2CB01C20C927004B4826 /* VgcElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcElements.swift; path = ../../../Source/Framework/VgcElements.swift; sourceTree = "<group>"; };
 		201C2CB11C20C927004B4826 /* VgcBrowser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcBrowser.swift; path = ../../../Source/Framework/VgcBrowser.swift; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 				201C2CAB1C20C927004B4826 /* VgcPeripheralSetup.swift */,
 				201C2CAC1C20C927004B4826 /* VgcManager.swift */,
 				201C2CAD1C20C927004B4826 /* VgcCentralPublisher.swift */,
-				201C2CAE1C20C927004B4826 /* VgcCentralPublisherWatch.swift */,
 				201C2CAF1C20C927004B4826 /* VgcController.swift */,
 				201C2CB01C20C927004B4826 /* VgcElements.swift */,
 				201C2CB11C20C927004B4826 /* VgcBrowser.swift */,
@@ -180,7 +177,6 @@
 				201C2CBE1C20C927004B4826 /* VgcIcadePeripheral.swift in Sources */,
 				201C2CB91C20C927004B4826 /* VgcCentralPublisher.swift in Sources */,
 				201C2CC01C20C927004B4826 /* VgcPeripheral.swift in Sources */,
-				201C2CBA1C20C927004B4826 /* VgcCentralPublisherWatch.swift in Sources */,
 				20D1A3831C20F2260032EC10 /* VgcStreamer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
