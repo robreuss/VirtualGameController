@@ -13,6 +13,9 @@ import GameController
 #if os(iOS) || os(tvOS) // Need this only for UIDevice
     import UIKit
 #endif
+#if os(watchOS)
+    import WatchKit
+#endif
 
 /// The "elements" global should be considered private from the Central development side of things.
 /// In that context, it provides the backing state of the software controller for
@@ -414,6 +417,9 @@ public func deviceIsTypeOfBridge() -> Bool {
             #endif
             #if os(OSX)
                 self.vendorName = NSHost.currentHost().localizedName!
+            #endif
+            #if os(watchOS)
+                self.vendorName = WKInterfaceDevice.currentDevice().name
             #endif
         }
         if self.vendorName == "" {
