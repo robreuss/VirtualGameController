@@ -24,12 +24,12 @@
 		203191C21C20D46300EDD9EC /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191BE1C20D46300EDD9EC /* ElementRow.swift */; };
 		203191C31C20D46300EDD9EC /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191BF1C20D46300EDD9EC /* ExtensionDelegate.swift */; };
 		203191C41C20D46300EDD9EC /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191C01C20D46300EDD9EC /* NotificationController.swift */; };
-		203191CD1C20D4AF00EDD9EC /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; };
-		203191CE1C20D4AF00EDD9EC /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		203191D41C20D50500EDD9EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191D21C20D50500EDD9EC /* VgcCustomElements.swift */; };
 		203191D51C20D50500EDD9EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191D31C20D50500EDD9EC /* VgcCustomMappings.swift */; };
 		203191DC1C20D62B00EDD9EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191DA1C20D62B00EDD9EC /* VgcCustomElements.swift */; };
 		203191DD1C20D62B00EDD9EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203191DB1C20D62B00EDD9EC /* VgcCustomMappings.swift */; };
+		2047C45D1C23BF3900842944 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; };
+		2047C45E1C23BF3900842944 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 203191CC1C20D48C00EDD9EC /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20D1A3721C20E96B0032EC10 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D1A3711C20E96B0032EC10 /* Interface.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +69,7 @@
 			remoteGlobalIDString = 20A120BA1BDA97BF00E30083;
 			remoteInfo = VirtualGameControllerWatchOS;
 		};
-		203191CF1C20D4AF00EDD9EC /* PBXContainerItemProxy */ = {
+		2047C45F1C23BF3900842944 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 203191C71C20D48C00EDD9EC /* VirtualGameControllerWatchOS.xcodeproj */;
 			proxyType = 1;
@@ -112,13 +112,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		203191D11C20D4AF00EDD9EC /* Embed Frameworks */ = {
+		2047C4611C23BF3900842944 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				203191CE1C20D4AF00EDD9EC /* VirtualGameController.framework in Embed Frameworks */,
+				2047C45E1C23BF3900842944 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				203191CD1C20D4AF00EDD9EC /* VirtualGameController.framework in Frameworks */,
+				2047C45D1C23BF3900842944 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,12 +314,12 @@
 				203191771C20D29200EDD9EC /* Sources */,
 				203191781C20D29200EDD9EC /* Frameworks */,
 				203191791C20D29200EDD9EC /* Resources */,
-				203191D11C20D4AF00EDD9EC /* Embed Frameworks */,
+				2047C4611C23BF3900842944 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				203191D01C20D4AF00EDD9EC /* PBXTargetDependency */,
+				2047C4601C23BF3900842944 /* PBXTargetDependency */,
 			);
 			name = "Bridge_iOS WatchKit Extension";
 			productName = "Bridge_iOS WatchKit Extension";
@@ -469,10 +469,10 @@
 			name = VirtualGameControllerIOS;
 			targetProxy = 203191B91C20D3F400EDD9EC /* PBXContainerItemProxy */;
 		};
-		203191D01C20D4AF00EDD9EC /* PBXTargetDependency */ = {
+		2047C4601C23BF3900842944 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VirtualGameControllerWatchOS;
-			targetProxy = 203191CF1C20D4AF00EDD9EC /* PBXContainerItemProxy */;
+			targetProxy = 2047C45F1C23BF3900842944 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
