@@ -7,7 +7,9 @@
 //
 
 import Foundation
+#if os(iOS)
 import WatchConnectivity
+#endif
 
 @objc internal protocol VgcWatchDelegate {
     
@@ -15,6 +17,7 @@ import WatchConnectivity
     
 }
 
+#if os(iOS)
 public class VgcWatch: NSObject, WCSessionDelegate {
     
     var delegate: VgcWatchDelegate!
@@ -105,3 +108,4 @@ public class VgcWatch: NSObject, WCSessionDelegate {
         
     }
 }
+#endif

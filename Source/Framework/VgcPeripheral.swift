@@ -34,7 +34,9 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     
     private var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
+    #if os(iOS)
     public var watch: VgcWatch!
+    #endif
     var playerIndex: GCControllerPlayerIndex!
     weak var controller: VgcController!
     
