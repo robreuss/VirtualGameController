@@ -66,7 +66,9 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
             
             if element.identifier == elements.vibrateDevice.identifier {
                 
-                WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
+                #if os(watchOS)
+                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
+                #endif
                 
             } else {
 

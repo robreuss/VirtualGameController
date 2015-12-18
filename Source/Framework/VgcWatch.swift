@@ -17,6 +17,9 @@ import WatchConnectivity
     
 }
 
+public let VgcWatchDidConnectNotification:     String = "VgcWatchDidConnectNotification"
+public let VgcWatchDidDisconnectNotification:  String = "VgcWatchDidDisconnectNotification"
+
 #if os(iOS)
 public class VgcWatch: NSObject, WCSessionDelegate {
     
@@ -63,6 +66,8 @@ public class VgcWatch: NSObject, WCSessionDelegate {
                 print("Watch is reachable")
                 reachable = wcSession.reachable
                 
+                NSNotificationCenter.defaultCenter().postNotificationName(VgcWatchDidConnectNotification, object: nil)
+                
             } else {
                 print("Watch is not reachable")
             }
@@ -76,6 +81,16 @@ public class VgcWatch: NSObject, WCSessionDelegate {
         
         print("Watch reachability changed to \(session.reachable)")
         reachable = wcSession.reachable
+        
+        if reachable {
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcWatchDidConnectNotification, object: nil)
+
+        } else {
+            
+            NSNotificationCenter.defaultCenter().postNotificationName(VgcWatchDidDisconnectNotification, object: nil)
+
+        }
         
     }
     

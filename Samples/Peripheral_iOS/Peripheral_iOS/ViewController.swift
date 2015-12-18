@@ -20,6 +20,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "watchDidConnect:", name: VgcWatchDidConnectNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "watchDidDisconnect:", name: VgcWatchDidDisconnectNotification, object: nil)
+        
         // Initialize Peripheral
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
 
@@ -212,6 +215,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let vgcService = notification.object as? VgcService
         print("Lost service: \(vgcService!.fullName) isMainThread: \(NSThread.isMainThread())")
         peripheralControlPadView.serviceSelectorView.refresh()
+    }
+    
+    // Watch reachability changed
+    @objc func watchDidConnect(notification: NSNotification) {
+        print("Got watch did connect notification")
+    }
+    
+    // Watch reachability changed
+    @objc func watchDidDisconnect(notification: NSNotification) {
+        print("Got watch did disconnect notification")
     }
     
     // Notification indicates we should refresh the view
