@@ -51,13 +51,8 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
             }
             if self.wcSession.reachable == true {
                 
-                print("Watch is reachable, creating controller")
-                
-                watchController = VgcController()
-                
-                watchController.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "Watch", attachedToDevice: false, profileType: .Watch, controllerType: .Watch, supportsMotion: true)
-                
-                watchController.centralPublisher = centralPublisher
+                print("Watch is reachable")
+                setupWatchController()
                 
             } else {
                 print("Watch is not reachable")
@@ -79,18 +74,30 @@ class CentralPublisherWatch: NSObject, WCSessionDelegate {
         
     }
     
+    func setupWatchController() {
+        
+        print("Setting up watchController")
+        
+        watchController = VgcController()
+        
+        watchController.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "Watch", attachedToDevice: false, profileType: .Watch, controllerType: .Watch, supportsMotion: true)
+        
+        watchController.centralPublisher = centralPublisher
+        
+    }
+    
     internal func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         
         print("Watch connectivity received message: " + message.description)
         for elementTypeString: String in message.keys {
             
+            if self.watchController == nil { setupWatchController() }
+
             let element = self.watchController.elements.elementFromIdentifier(Int(elementTypeString)!)
             element.value = message[elementTypeString]!
             self.watchController.updateGameControllerWithValue(element)
             self.watchController.peripheral.browser.sendElementStateOverNetService(element)
-            //watchController.sendElementStateToPeripheral(element)
-
-            
+          
         }
     }
     
