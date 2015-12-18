@@ -8,6 +8,7 @@
 
 import Foundation
 #if !(os(tvOS)) && !(os(OSX))
+import WatchKit
 import WatchConnectivity
     
 public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDelegate {
@@ -52,7 +53,7 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
             print("ERROR: Unable to send element \(element) because bridge is unreachable")
         }
     }
-    
+
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         
         print("Received message: \(message)")
@@ -61,11 +62,19 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
             
             let element = elements.elementFromIdentifier(Int(elementTypeString)!)
             element.value = message[elementTypeString]!
-
-            print("Calling handler with element: \(element.identifier): \(element.value)")
             
-            if let handler = valueChangedHandler {
-                handler(element)
+            if element.identifier == elements.vibrateDevice.identifier {
+                
+                WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
+                
+            } else {
+
+                print("Calling handler with element: \(element.identifier): \(element.value)")
+                
+                if let handler = valueChangedHandler {
+                    handler(element)
+                }
+                
             }
             
         }
