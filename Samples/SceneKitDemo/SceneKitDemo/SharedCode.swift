@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 import VirtualGameController
 
-class SharedCode: NSObject {
+class SharedCode: NSObject, SCNSceneRendererDelegate {
     
     var ship: SCNNode!
     var lightNode: SCNNode!
@@ -33,6 +33,42 @@ class SharedCode: NSObject {
         ship.runAction(SCNAction.scaleTo(scaleValue, duration: 1.0))
     }
     
+    /* IMPLEMENTATION USING RENDER LOOP
+    func renderer(renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: NSTimeInterval) {
+        
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didApplyAnimationsAtTime time: NSTimeInterval) {
+        
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didRenderScene scene: SCNScene, atTime time: NSTimeInterval) {
+        
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, didSimulatePhysicsAtTime time: NSTimeInterval) {
+        
+    }
+    
+    func renderer(renderer: SCNSceneRenderer, updateAtTime time: NSTimeInterval) {
+        
+        if VgcController.controllers().count > 0 {
+            let controller = VgcController.controllers()[0]
+            let input = controller.motion!
+            
+            let amplify = 2.0
+            
+            let x = -(input.attitude.x) * amplify
+            let y = -(input.attitude.z) * amplify
+            let z = -(input.attitude.y) * amplify
+            
+            ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.03), count: 1))
+            ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat( ship.position.x), CGFloat(-(input.gravity.y * 6.0)), CGFloat( ship.position.z)), duration: 1.0))
+            
+        }
+    }
+    */
+    
     @objc func controllerDidConnect(notification: NSNotification) {
         
         // If we're enhancing a hardware controller, we should display the Peripheral UI
@@ -44,10 +80,7 @@ class SharedCode: NSObject {
             return
         }
         
-        if VgcController.controllers().count > 1 {
-            controller.disconnect()
-            return
-        }
+        if controller.isHardwareController { return }
         
         if controller.deviceInfo.controllerType == .MFiHardware { return }
         
@@ -56,7 +89,7 @@ class SharedCode: NSObject {
         // Turn on motion to demonstrate that
         VgcManager.peripheralSetup.motionActive = false
         VgcManager.peripheralSetup.enableMotionAttitude = true
-        VgcManager.peripheralSetup.enableMotionGravity = false
+        VgcManager.peripheralSetup.enableMotionGravity = true
         VgcManager.peripheralSetup.enableMotionUserAcceleration = false
         VgcManager.peripheralSetup.enableMotionRotationRate = false
         VgcManager.peripheralSetup.sendToController(controller)

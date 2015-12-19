@@ -82,7 +82,8 @@ class GameViewController: UIViewController {
 
         sharedCode = SharedCode()
         sharedCode.setup(ship, lightNode: lightNode, cameraNode: cameraNode)
-        
+ 
+        scnView.delegate = sharedCode
     }
     
 }

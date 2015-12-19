@@ -391,6 +391,8 @@ import VirtualGameController
         var xPosition = CGFloat(5)
         var playerIndex = 0
         
+        
+        
         for controller in VgcController.controllers() {
             
             if let elementDebugView = self.elementDebugViewLookup[controller] {

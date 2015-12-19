@@ -641,7 +641,7 @@ class VgcStick: UIView {
         self.backgroundColor = peripheralBackgroundColor
         self.layer.cornerRadius = frame.width / 2
         
-        self.centerController()
+        self.centerController(0.0)
         
         if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
             touchesView = self
@@ -715,7 +715,7 @@ class VgcStick: UIView {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch = touches.first
         if touch!.view == touchesView {
-            self.centerController()
+            self.centerController(0.1)
         }
         xElement.value = Float(0)
         yElement.value = Float(0)
@@ -724,8 +724,8 @@ class VgcStick: UIView {
     }
     
     // Re-center the control element
-    func centerController() {
-        UIView.animateWithDuration(0.1, delay: 0.0, options: .CurveEaseIn, animations: {
+    func centerController(duration: Double) {
+        UIView.animateWithDuration(duration, delay: 0.0, options: .CurveEaseIn, animations: {
             self.controlView.center = CGPoint(x: ((self.bounds.size.height * 0.50)), y: ((self.bounds.size.width * 0.50)))
             }, completion: { finished in
                 self.valueLabel.text = "0/0"

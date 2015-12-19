@@ -335,13 +335,6 @@
       location = "container:"
       name = "Sample Projects">
       <Group
-         location = "group:Samples/Bridge_iOS"
-         name = "Bridge_iOS">
-         <FileRef
-            location = "group:Bridge_iOS.xcodeproj">
-         </FileRef>
-      </Group>
-      <Group
          location = "group:Samples/SceneKitDemo"
          name = "SceneKitDemo">
          <Group
@@ -738,6 +731,9 @@
       </Group>
       <FileRef
          location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Samples/Bridge_iOS/Bridge_iOS.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>
