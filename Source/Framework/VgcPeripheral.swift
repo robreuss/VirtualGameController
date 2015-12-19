@@ -58,13 +58,9 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             browser = VgcBrowser(peripheral: self)
         #endif
         
-        #if os(iOS)
-            watch = VgcWatch(delegate: self)
-        #endif
-        
         print("Setting up motion manager on peripheral")
         #if !os(OSX) && !os(tvOS)
-        motion = VgcMotionManager()
+            motion = VgcMotionManager()
         #endif
         
         playerIndex = GCControllerPlayerIndex.IndexUnset

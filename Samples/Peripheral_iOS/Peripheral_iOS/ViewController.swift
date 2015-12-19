@@ -219,7 +219,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Watch reachability changed
     @objc func watchDidConnect(notification: NSNotification) {
-        print("Got watch did connect notification")
+        print("Got watch did connect notification \(VgcManager.peripheral)")
     }
     
     // Watch reachability changed

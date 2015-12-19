@@ -342,6 +342,10 @@ public class VgcManager: NSObject {
                 // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
                 VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
             
+                #if os(iOS)
+                    VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)
+                #endif
+            
             case .Central:
                 VgcController.setup()
             
