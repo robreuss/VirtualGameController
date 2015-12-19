@@ -13,8 +13,6 @@
 		2084DD001BD370960041D380 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DCFF1BD370960041D380 /* ViewController.swift */; };
 		2084DD021BD370960041D380 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2084DD011BD370960041D380 /* Assets.xcassets */; };
 		2084DD051BD370960041D380 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2084DD031BD370960041D380 /* Main.storyboard */; };
-		2084DD101BD370960041D380 /* vgcPeripheral_OSXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DD0F1BD370960041D380 /* vgcPeripheral_OSXTests.swift */; };
-		2084DD1B1BD370960041D380 /* vgcPeripheral_OSXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2084DD1A1BD370960041D380 /* vgcPeripheral_OSXUITests.swift */; };
 		20855D071C192EAB00F82CED /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20855D041C192E9A00F82CED /* VirtualGameController.framework */; };
 		20855D081C192EAB00F82CED /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20855D041C192E9A00F82CED /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -81,11 +79,7 @@
 		2084DD041BD370960041D380 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2084DD061BD370960041D380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2084DD0B1BD370960041D380 /* Peripheral_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Peripheral_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2084DD0F1BD370960041D380 /* vgcPeripheral_OSXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vgcPeripheral_OSXTests.swift; sourceTree = "<group>"; };
-		2084DD111BD370960041D380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2084DD161BD370960041D380 /* Peripheral_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Peripheral_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2084DD1A1BD370960041D380 /* vgcPeripheral_OSXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = vgcPeripheral_OSXUITests.swift; sourceTree = "<group>"; };
-		2084DD1C1BD370960041D380 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20855CFF1C192E9900F82CED /* VirtualGameControllerOSX.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerOSX.xcodeproj; path = "../../Framework Projects/VirtualGameControllerOSX/VirtualGameControllerOSX.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,8 +114,6 @@
 			children = (
 				20855CFF1C192E9900F82CED /* VirtualGameControllerOSX.xcodeproj */,
 				2084DCFC1BD370960041D380 /* vgcPeripheralOSX */,
-				2084DD0E1BD370960041D380 /* vgcPeripheralOSXTests */,
-				2084DD191BD370960041D380 /* vgcPeripheralOSXUITests */,
 				2084DCFB1BD370960041D380 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -149,26 +141,6 @@
 			);
 			name = vgcPeripheralOSX;
 			path = vgcPeripheral_OSX;
-			sourceTree = "<group>";
-		};
-		2084DD0E1BD370960041D380 /* vgcPeripheralOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				2084DD0F1BD370960041D380 /* vgcPeripheral_OSXTests.swift */,
-				2084DD111BD370960041D380 /* Info.plist */,
-			);
-			name = vgcPeripheralOSXTests;
-			path = vgcPeripheral_OSXTests;
-			sourceTree = "<group>";
-		};
-		2084DD191BD370960041D380 /* vgcPeripheralOSXUITests */ = {
-			isa = PBXGroup;
-			children = (
-				2084DD1A1BD370960041D380 /* vgcPeripheral_OSXUITests.swift */,
-				2084DD1C1BD370960041D380 /* Info.plist */,
-			);
-			name = vgcPeripheralOSXUITests;
-			path = vgcPeripheral_OSXUITests;
 			sourceTree = "<group>";
 		};
 		20855D001C192E9900F82CED /* Products */ = {
@@ -339,7 +311,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2084DD101BD370960041D380 /* vgcPeripheral_OSXTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2084DD1B1BD370960041D380 /* vgcPeripheral_OSXUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

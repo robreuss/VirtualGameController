@@ -15,8 +15,6 @@
 		20D60C1B1BB3E8B000C3FAE0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D60C1A1BB3E8B000C3FAE0 /* ViewController.swift */; };
 		20D60C1D1BB3E8B000C3FAE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20D60C1C1BB3E8B000C3FAE0 /* Assets.xcassets */; };
 		20D60C201BB3E8B000C3FAE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20D60C1E1BB3E8B000C3FAE0 /* Main.storyboard */; };
-		20D60C2B1BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D60C2A1BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleTests.swift */; };
-		20D60C361BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D60C351BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,11 +80,7 @@
 		20D60C1F1BB3E8B000C3FAE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20D60C211BB3E8B000C3FAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D60C261BB3E8B000C3FAE0 /* Central_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Central_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20D60C2A1BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVirtualGameControllerOSXSampleTests.swift; sourceTree = "<group>"; };
-		20D60C2C1BB3E8B000C3FAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20D60C311BB3E8B000C3FAE0 /* Central_OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Central_OSX.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20D60C351BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVirtualGameControllerOSXSampleUITests.swift; sourceTree = "<group>"; };
-		20D60C371BB3E8B000C3FAE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +122,6 @@
 			children = (
 				20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */,
 				20D60C171BB3E8B000C3FAE0 /* vgcCentralOSX */,
-				20D60C291BB3E8B000C3FAE0 /* vgcCentralOSXTests */,
-				20D60C341BB3E8B000C3FAE0 /* vgcCentralOSXUITests */,
 				20D60C161BB3E8B000C3FAE0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -157,26 +149,6 @@
 			);
 			name = vgcCentralOSX;
 			path = CentralVirtualGameControllerOSXSample;
-			sourceTree = "<group>";
-		};
-		20D60C291BB3E8B000C3FAE0 /* vgcCentralOSXTests */ = {
-			isa = PBXGroup;
-			children = (
-				20D60C2A1BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleTests.swift */,
-				20D60C2C1BB3E8B000C3FAE0 /* Info.plist */,
-			);
-			name = vgcCentralOSXTests;
-			path = CentralVirtualGameControllerOSXSampleTests;
-			sourceTree = "<group>";
-		};
-		20D60C341BB3E8B000C3FAE0 /* vgcCentralOSXUITests */ = {
-			isa = PBXGroup;
-			children = (
-				20D60C351BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleUITests.swift */,
-				20D60C371BB3E8B000C3FAE0 /* Info.plist */,
-			);
-			name = vgcCentralOSXUITests;
-			path = CentralVirtualGameControllerOSXSampleUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D60C2B1BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,7 +317,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D60C361BB3E8B000C3FAE0 /* CentralVirtualGameControllerOSXSampleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
