@@ -73,7 +73,7 @@ class GameViewController: NSViewController {
         sharedCode = SharedCode()
         sharedCode.setup(ship, lightNode: lightNode, cameraNode: cameraNode)
         
-        scnView.delegate = sharedCode
+        //scnView.delegate = sharedCode
     }
     
 }
