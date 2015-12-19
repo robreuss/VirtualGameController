@@ -165,6 +165,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 handler(element)
             }
             
+            #if os(iOS)
+                if VgcManager.peripheral.watch != nil { VgcManager.peripheral.watch.sendElementState(element) }
+            #endif
+            
         }
         
         // If we're a bridge, send along the value to the Central
@@ -174,10 +178,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             peripheral.controller.sendElementStateToPeripheral(element)
             
         }
-        
-        #if os(iOS)
-        if VgcManager.peripheral.watch != nil { VgcManager.peripheral.watch.sendElementState(element) }
-        #endif
+
     }
     
     // Used by a Bridge to tell the Central that a Peripheral has disconnected.
