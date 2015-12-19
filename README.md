@@ -236,12 +236,17 @@ watchConnectivity.sendElementState(element)
 ````
 
 #### Recieving Values from the Watch
-When your watch sends values as described in the previous section, those values will be automatically forwarded to the Central, but they can also be reacted to on the iOS Peripheral app, by setting a valueChangedHandler like so:
+When your watch sends values as described in the previous section, there are two approaches to handling those messages.  If you do nothing, the values will be automatically forwarded to the Central.  If you want to do handling on the Peripheral, and either forward or not forward, you can set the valuChangedHandler like so:
 
 ````swift
 VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
 	print("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
 }
+````
+If the valueChangedHandler is non-nil, values will no longer be automatically forwarded to the Central, and so if you wish those values to be forwarded, you must do so yourself:
+
+````swift
+VgcManager.peripheral.sendElementState(element)
 ````
 
 

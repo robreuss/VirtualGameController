@@ -101,10 +101,12 @@ public class VgcWatch: NSObject, WCSessionDelegate {
             
             let element = VgcManager.elements.elementFromIdentifier(Int(elementTypeString)!)
             element.value = message[elementTypeString]!
-            delegate.receivedWatchMessage(element)
+            
             
             if let handler = valueChangedHandler {
                 handler(element)
+            } else {
+                delegate.receivedWatchMessage(element)
             }
             
         }
