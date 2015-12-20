@@ -77,9 +77,11 @@ A number of sample projects are included that demonstrate the app roles (Periphe
 Other notes on sample projects:
 
 - To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
-- Checking out the SceneKit sample project is a great way to evaluate the motion capabilities of the framework, as well as being fun.  
+- Checking out the SceneKit sample project is a great way to evaluate the motion capabilities of the framework, as well as being fun.  It is implemented as a single project with shared code for targetting iOS, OSX and tvOS.
 - There are also instructions on the Wiki for testing using [DemoBots](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots) (in Swift) and [SceneKitVehicle](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-SceneKitVehicle) (in Objective C) sample projects from Apple.
 
+## Working with MFi Hardware-based Controllers
+VirtualGameController is designed to be interface compatible with Apple's Game Controller framework, and so working with hardware controllers with VGC is largely the same as it is with the [Game Controller framework](https://developer.apple.com/library/tvos/documentation/GameController/Reference/GCController_Ref/index.html).  See the Game Integration section below and the sample projects for additional details.
 
 ## Creating a Software-based Peripheral
 ####Initialization
@@ -162,22 +164,6 @@ leftShoulder.value = 1.0
 VgcManager.peripheral.sendElementState(leftShoulder)
 ```
 
-####System Messages
-The only currently implemented system message relevant to the Peripheral role is a message sent by the Central when it receives an element value from a Peripheral that fails a checksum test.  System messages are enumerated, and the invalid checksum message is of type `.ReceivedInvalidMessage`.  
-
-``` swift
-NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedSystemMessage:", name: VgcSystemMessageNotification, object: nil)
-```
-
-Example of handling `.ReceivedInvalidMessage`:
-
-``` swift
-    let systemMessageTypeRaw = notification.object as! Int
-    let systemMessageType = SystemMessages(rawValue: systemMessageTypeRaw)
-    if systemMessageType == SystemMessages.ReceivedInvalidMessage {        
-		// Do something
-    }
-```
 ####Player Index
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
@@ -185,7 +171,7 @@ When a Central assigns a player index, it triggers the following notification wh
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
 ```
 
-####Motion (Accelerometer)
+####Device Motion
 Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
 
 Key methods that should be self-explanatory:
@@ -206,6 +192,58 @@ VgcManager.peripheral.motion.enableLowPassFilter = true
 ```
 
 It is important for performance reasons to reduce updateInterval as much as you can, and to disable motion inputs that are not used in your game.
+
+## Game Integration (Central)
+####GCController Replacement
+**VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
+
+``` swift
+import GameController
+```
+
+becomes...
+
+``` swift
+import GameController
+import VirtualGameController
+```
+
+A framework file specific to your targetted platform must be used, and framework files are provided for each platform.
+
+The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are some exceptions where **GameController** structures are used and these can be left as GC references:
+
+``` swift
+GCControllerButtonValueChangedHandler
+GCControllerDirectionPadValueChangedHandler
+GCControllerElement
+GCMicroGamepad
+GCGamepad
+GCExtendedGamepad
+GCMotion
+```
+
+If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
+
+For in-depth instructions on using DemoBots as a test, see the [Wiki article](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
+
+####Central versus Bridge
+There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
+
+A **Central** is exactly what you expect in terms of game integration: your Central is your game and there should only be one implemented at a time.  
+
+A **Bridge** combines the behavior of a Central and a Peripheral; it is a Peripheral in relation to your Central, and it is a Central in relation to your Peripheral(s).  Another name for it would be a *controller forwarder*, because it's primary function is to forward/relay values sent by one or more Peripherals to the Central.  The Peripheral could be a MFi hardware controller, an iCade hardware controller, an *Apple Watch* or a software-based virtual controller (assuming the Bridge is deployed on an iPhone paired to the watch).  If the bridge is implemented on a device with device motion support (an iOS device) the Bridge can extend the capabilities of a Peripheral to include motion support.  For example, a MFi or iCade controller can appear to the Central to implement the motion profile.  
+
+####Extended Functionality
+There are a few features supported by a Central that exceed the capabilities of the Apple *GameController* framework:
+
+- [Custom Elements](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements)
+- [Custom Mapping](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings)
+- [Peripheral Setup from the Central](https://github.com/robreuss/VirtualGameController/wiki/Peripheral-Setup-from-the-Central)
+
+
+
+####Other
+There is a method provided on instances of VgcController called ````controller.vibrateDevice```` that will vibrate an iPhone, and if a watch app is integrated with that phone, the vibrate request will be forwarded to the watch as well, resulting in haptic feedback (wrist click).
 
 ## Integrating the Apple Watch
 #### Sample Project
@@ -276,55 +314,6 @@ You can send motion values from the watch, but please note that the performance 
 watchConnectivity.motion.start()
 watchConnectivity.motion.stop()
 ````
-
-## Game Integration 
-####GCController Replacement
-**VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
-
-``` swift
-import GameController
-```
-
-becomes...
-
-``` swift
-import GameController
-import VirtualGameController
-```
-
-A framework file specific to your targetted platform must be used, and framework files are provided for each platform.
-
-The interface for the controller class **VgcController** is the same as that of **GCController**, and for the most part an existing game can be transitioned by doing a global search that replaces "**GCC**" with "**VgcC**".  There are some exceptions where **GameController** structures are used and these can be left as GC references:
-
-``` swift
-GCControllerButtonValueChangedHandler
-GCControllerDirectionPadValueChangedHandler
-GCControllerElement
-GCMicroGamepad
-GCGamepad
-GCExtendedGamepad
-GCMotion
-```
-
-If you wish to test integration of the framework, it is proven to work with the Apple [DemoBots](https://developer.apple.com/library/prerelease/ios/samplecode/DemoBots/Introduction/Intro.html) sample project. One limitation is that when using the Apple TV version, you must use the Remote to start the game because of issues related to how *DemoBots* implements [this functionality](https://developer.apple.com/library/prerelease/ios/documentation/ServicesDiscovery/Conceptual/GameControllerPG/ControllingInputontvOS/ControllingInputontvOS.html#//apple_ref/doc/uid/TP40013276-CH7-DontLinkElementID_13) (see the last paragraph on that page).
-
-For in-depth instructions on using DemoBots as a test, see the [Wiki article](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
-
-####Central versus Bridge
-There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
-
-A **Central** is exactly what you expect in terms of game integration: your Central is your game and there should only be one implemented at a time.  
-
-A **Bridge** combines the behavior of a Central and a Peripheral; it is a Peripheral in relation to your Central, and it is a Central in relation to your Peripheral(s).  Another name for it would be a *controller forwarder*, because it's primary function is to forward/relay values sent by one or more Peripherals to the Central.  The Peripheral could be a MFi hardware controller, an iCade hardware controller, an *Apple Watch* or a software-based virtual controller (assuming the Bridge is deployed on an iPhone paired to the watch).  If the bridge is implemented on a device with device motion support (an iOS device) the Bridge can extend the capabilities of a Peripheral to include motion support.  For example, a MFi or iCade controller can appear to the Central to implement the motion profile.  
-
-####Extended Functionality
-There are two features supported by a Central that exceed the capabilities of the Apple *GameController* framework, and should be used with caution if you want to make reverting to that framework easy:
-
-- Custom elements
-- Custom mapping
-
-####Other
-There is a method provided on instances of VgcController called ````controller.vibrateDevice```` that will vibrate an iPhone, and if a watch app is integrated with that phone, the vibrate request will be forwarded to the watch as well, resulting in haptic feedback (wrist click).
 
 ##Custom Elements
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
