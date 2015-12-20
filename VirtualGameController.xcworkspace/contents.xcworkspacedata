@@ -68,6 +68,9 @@
          <FileRef
             location = "group:VgcWatchConnectivity.swift">
          </FileRef>
+         <FileRef
+            location = "group:VgcLogger.swift">
+         </FileRef>
       </Group>
    </Group>
    <Group

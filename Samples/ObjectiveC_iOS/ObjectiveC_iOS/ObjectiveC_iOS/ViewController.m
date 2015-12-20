@@ -159,15 +159,15 @@
         NSLog(@"Got value change on LEFT SHOULDER: %@", [NSNumber numberWithFloat:value]);
     }];
     
-    [controller.extendedGamepad.leftShoulder setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
+    [controller.extendedGamepad.rightShoulder setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
         NSLog(@"Got value change on RIGHT SHOULDER: %@", [NSNumber numberWithFloat:value]);
     }];
     
-    [controller.extendedGamepad.leftShoulder setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
+    [controller.extendedGamepad.leftTrigger setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
         NSLog(@"Got value change on LEFT TRIGGER: %@", [NSNumber numberWithFloat:value]);
     }];
     
-    [controller.extendedGamepad.leftShoulder setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
+    [controller.extendedGamepad.rightTrigger setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
         NSLog(@"Got value change on RIGHT TRIGGER: %@", [NSNumber numberWithFloat:value]);
     }];
     

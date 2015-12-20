@@ -239,15 +239,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
-    // Notification indicates we should refresh the view
+    // The Central has sent PeripheralSetup information
     @objc func receivedPeripheralSetup(notification: NSNotification) {
-        print("Setting peripheral background color to: \(VgcManager.peripheralSetup.backgroundColor)")
       
         if VgcManager.peripheralSetup.motionActive {
             VgcManager.peripheral.motion.start()
         } else {
             VgcManager.peripheral.motion.stop()
         }
+        
         VgcManager.peripheral.motion.enableUserAcceleration = VgcManager.peripheralSetup.enableMotionUserAcceleration
         VgcManager.peripheral.motion.enableGravity = VgcManager.peripheralSetup.enableMotionGravity
         VgcManager.peripheral.motion.enableRotationRate = VgcManager.peripheralSetup.enableMotionRotationRate
