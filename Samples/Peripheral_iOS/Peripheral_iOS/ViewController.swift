@@ -24,11 +24,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "watchDidDisconnect:", name: VgcWatchDidDisconnectNotification, object: nil)
         
         // Use a compiler flag to control the logging level, dropping it to just errors if this
-        // is a release build.  You must set the compiler flag for your project.
+        // is a release build.
         #if Release
-        VgcManager.loggerLogLevel = .Error
+        VgcManager.loggerLogLevel = .Error // Minimal logging
         #else
-        VgcManager.loggerLogLevel = .Debug
+        VgcManager.loggerLogLevel = .Debug // Robust logging
         #endif
         
         VgcManager.loggerUseNSLog = true
