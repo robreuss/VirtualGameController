@@ -458,8 +458,10 @@ public class ServiceSelectorView: UIView, UITableViewDataSource, UITableViewDele
     }
     
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let service = VgcManager.peripheral.availableServices[indexPath.row]
-        VgcManager.peripheral.connectToService(service)
+        if VgcManager.peripheral.availableServices.count > 0 {
+            let service = VgcManager.peripheral.availableServices[indexPath.row]
+            VgcManager.peripheral.connectToService(service)
+        }
     }
     
     public required init?(coder aDecoder: NSCoder) {

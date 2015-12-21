@@ -298,7 +298,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         if !deviceIsTypeOfBridge() { bridgeBrowser.stop() } // Bridges don't browse for Bridges
         vgcLogDebug("Clearing service lookup")
         browsing = false
-        serviceLookup.removeAll()
+        if serviceLookup.count > 0 { serviceLookup.removeAll() }
     }
     
     func openStreamsFor(streamDataType: StreamDataType, vgcService: VgcService) {
