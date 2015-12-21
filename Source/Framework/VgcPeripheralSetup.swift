@@ -129,11 +129,11 @@ required convenience public init(coder decoder: NSCoder) {
     public func sendToController(controller: VgcController) {
         
         if controller.hardwareController != nil {
-            print("Refusing to send peripheral setup to hardware controller")
+            vgcLogDebug("Refusing to send peripheral setup to hardware controller")
             return
         }
         
-        print("Sending Peripheral Setup to Peripheral:")
+        vgcLogDebug("Sending Peripheral Setup to Peripheral:")
         print(self)
         
         NSKeyedArchiver.setClassName("VgcPeripheralSetup", forClass: VgcPeripheralSetup.self)

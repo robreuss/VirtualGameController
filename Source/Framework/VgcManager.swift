@@ -187,6 +187,20 @@ public class VgcManager: NSObject {
     ///
     public static var elements = Elements()
     
+    /// Log Level "Debug" is a standard level of logging for debugging - set to "Error" for release
+    @objc public static var loggerLogLevel: LogLevel = LogLevel.Debug {
+        didSet {
+            vgcLogDebug("Set logLevel: \(VgcManager.loggerLogLevel)")
+        }
+    }
+    
+    /// Use either NSLog or Swift "print" for logging - NSLog gives more detail
+    @objc public static var loggerUseNSLog: Bool = false {
+        didSet {
+            vgcLogDebug("Set NSLog logging to: \(VgcManager.loggerUseNSLog)")
+        }
+    }
+    
     ///
     /// Used as a component of the bonjour names for the various app types.
     /// This should be set to something that uniquely identifies your app.
@@ -286,7 +300,7 @@ public class VgcManager: NSObject {
         if appRole == .Central {
             VgcController.centralPublisher.publishService()
         } else {
-            print("ERROR: Refused to publish Central service because appRole is not Central")
+            vgcLogError("Refused to publish Central service because appRole is not Central")
         }
     }
     
@@ -294,7 +308,7 @@ public class VgcManager: NSObject {
         if appRole == .Central {
             VgcController.centralPublisher.unpublishService()
         } else {
-            print("ERROR: Refused to unpublish Central service because appRole is not Central")
+            vgcLogError("Refused to unpublish Central service because appRole is not Central")
         }
     }
     #endif
@@ -323,13 +337,13 @@ public class VgcManager: NSObject {
         
         self.appRole = appRole
         
-        if appIdentifier != "" { self.appIdentifier = appIdentifier } else { print("ERROR: You must set appIdentifier to some string") }
+        if appIdentifier != "" { self.appIdentifier = appIdentifier } else { vgcLogError("You must set appIdentifier to some string") }
         
         Elements.customElements = customElements
         Elements.customMappings = customMappings
         
-        print("Setting up as a \(VgcManager.appRole.description.uppercaseString)")
-        print("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
+        vgcLogDebug("Setting up as a \(VgcManager.appRole.description.uppercaseString)")
+        vgcLogDebug("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
 
         #if !os(watchOS)
             
@@ -397,11 +411,11 @@ public func deviceIsTypeOfBridge() -> Bool {
         if deviceUID == "" {
             let defaults = NSUserDefaults.standardUserDefaults()
             if let existingDeviceUID = defaults.stringForKey("deviceUID") {
-                print("Found existing UID for device: \(existingDeviceUID)")
+                vgcLogDebug("Found existing UID for device: \(existingDeviceUID)")
                 deviceUID = existingDeviceUID
             } else {
                 deviceUID = NSUUID().UUIDString
-                print("Created new UID for device: \(deviceUID)")
+                vgcLogDebug("Created new UID for device: \(deviceUID)")
                 defaults.setObject(deviceUID, forKey: "deviceUID")
             }
         }
@@ -431,7 +445,7 @@ public func deviceIsTypeOfBridge() -> Bool {
         }
         
         if profileType == .MicroGamepad {
-            print("ERROR: The use of the .MicroGamepad profile for software-based controllers will lead to unpredictable results.")
+            vgcLogError("The use of the .MicroGamepad profile for software-based controllers will lead to unpredictable results.")
         }
         
     }

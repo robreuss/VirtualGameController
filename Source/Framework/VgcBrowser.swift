@@ -55,7 +55,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         self.streamer[.LargeData] = VgcStreamer(delegate: self, delegateName: "Browser")
         self.streamer[.SmallData] = VgcStreamer(delegate: self, delegateName: "Browser")
         
-        print("Setting up NSNetService for browsing")
+        vgcLogDebug("Setting up NSNetService for browsing")
         
         self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
         self.localService.delegate = self
@@ -72,7 +72,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func closeStreams() {
         
-        print("Closing streams")
+        vgcLogDebug("Closing streams")
         
         closeStream(.LargeData)
         closeStream(.SmallData)
@@ -83,7 +83,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     // This is a callback from the streamer
     func disconnect() {
-        print("Browser received disconnect")
+        vgcLogDebug("Browser received disconnect")
         closeStreams()
         browsing = false
         if connectedVgcService != nil { peripheral.lostConnectionToCentral(connectedVgcService) }
@@ -95,7 +95,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         // Get the element in the message using the hash value reference
         guard let element = elements.elementFromIdentifier(elementIdentifier) else {
-            print("ERROR: Received unknown element identifier: \(elementIdentifier) from \(connectedVgcService.fullName)")
+            vgcLogError("Received unknown element identifier: \(elementIdentifier) from \(connectedVgcService.fullName)")
             return
         }
         
@@ -107,7 +107,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             
             let systemMessageType = SystemMessages(rawValue: Int(element.value as! NSNumber))
             
-            print("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
+            vgcLogDebug("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
             if systemMessageType == .ConnectionAcknowledgement {
                 
@@ -134,7 +134,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
             NSKeyedUnarchiver.setClass(VgcPeripheralSetup.self, forClassName: "VgcPeripheralSetup")
             VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as! VgcPeripheralSetup)
 
-            print("Central sent peripheral setup: \(VgcManager.peripheralSetup)")
+            vgcLogDebug("Central sent peripheral setup: \(VgcManager.peripheralSetup)")
 
             NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralSetupNotification, object: nil)
 
@@ -184,7 +184,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     // Used by a Bridge to tell the Central that a Peripheral has disconnected.
     func disconnectFromCentral() {
         if connectedVgcService == nil { return }
-        print("Browser sending system message Disconnect to \(connectedVgcService.fullName) from \(peripheral.controller.deviceInfo.vendorName)")
+        vgcLogDebug("Browser sending system message Disconnect to \(connectedVgcService.fullName) from \(peripheral.controller.deviceInfo.vendorName)")
         elements.systemMessage.value = SystemMessages.Disconnect.rawValue
         sendElementStateOverNetService(elements.systemMessage)
         closeStreams()
@@ -192,13 +192,13 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     // This is triggered by the Streamer if it receives a malformed message.  We just log it here.
     func sendInvalidMessageSystemMessage() {
-        print("Peripheral received invalid checksum message from Central")
+        vgcLogDebug("Peripheral received invalid checksum message from Central")
     }
     
     func sendDeviceInfoElement(let element: Element!) {
         
         if element == nil {
-            print("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
+            vgcLogDebug("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
             return
         }
         
@@ -222,7 +222,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func sendElementStateOverNetService(let element: Element!) {
         
         if element == nil {
-            print("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
+            vgcLogDebug("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
             return
         }
         
@@ -243,7 +243,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         }
     
         if outputStream == nil {
-            if connectedVgcService != nil { print("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream") } else { print("Failed to send element \(element.name) because we don't have an output stream") }
+            if connectedVgcService != nil { vgcLogDebug("\(connectedVgcService.fullName) failed to send element \(element.name) because we don't have an output stream") } else { vgcLogDebug("Failed to send element \(element.name) because we don't have an output stream") }
             return
         }
 
@@ -257,7 +257,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
 
     func reset() {
-        print("Resetting service browser")
+        vgcLogDebug("Resetting service browser")
         serviceLookup.removeAll()
     }
     
@@ -265,14 +265,14 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         if browsing {
         
-            print("Not browsing for central because already browsing")
+            vgcLogDebug("Not browsing for central because already browsing")
             return
         
         }
         
         browsing = true
         
-        print("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
+        vgcLogDebug("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
         centralBrowser = NSNetServiceBrowser()
         centralBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
         centralBrowser.delegate = self
@@ -280,7 +280,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         // We only searches for bridges if we are not type bridge (bridges don't connect to bridges)
         if !deviceIsTypeOfBridge() {
-            print("Searching for Bridges on \(VgcManager.bonjourTypeBridge)")
+            vgcLogDebug("Searching for Bridges on \(VgcManager.bonjourTypeBridge)")
             bridgeBrowser = NSNetServiceBrowser()
             bridgeBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
             bridgeBrowser.delegate = self
@@ -289,33 +289,33 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
     func stopBrowsing() {
-        print("Stopping browse for Centrals")
+        vgcLogDebug("Stopping browse for Centrals")
         if centralBrowser != nil { centralBrowser.stop() } else {
-            print("ERROR: stopBrowsing() called before browser started")
+            vgcLogError("stopBrowsing() called before browser started")
             return
         }
-        print("Stopping browse for Bridges")
+        vgcLogDebug("Stopping browse for Bridges")
         if !deviceIsTypeOfBridge() { bridgeBrowser.stop() } // Bridges don't browse for Bridges
-        print("Clearing service lookup")
+        vgcLogDebug("Clearing service lookup")
         browsing = false
         serviceLookup.removeAll()
     }
     
     func openStreamsFor(streamDataType: StreamDataType, vgcService: VgcService) {
 
-        print("Attempting to open \(streamDataType) streams for: \(vgcService.fullName)")
+        vgcLogDebug("Attempting to open \(streamDataType) streams for: \(vgcService.fullName)")
         var success: Bool
         var inStream: NSInputStream?
         var outStream: NSOutputStream?
         success = vgcService.netService.getInputStream(&inStream, outputStream: &outStream)
         if ( !success ) {
             
-            print("Something went wrong connecting to service: \(vgcService.fullName)")
+            vgcLogDebug("Something went wrong connecting to service: \(vgcService.fullName)")
             NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralConnectionFailedNotification, object: nil)
             
         } else {
             
-            print("Successfully opened \(streamDataType) streams to service: \(vgcService.fullName)")
+            vgcLogDebug("Successfully opened \(streamDataType) streams to service: \(vgcService.fullName)")
             
             connectedVgcService = vgcService
             
@@ -359,11 +359,11 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func connectToService(vgcService: VgcService) {
        
         if (peripheral.haveConnectionToCentral == true) {
-            print("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
+            vgcLogDebug("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
             return
         }
         
-        print("Attempting to connect to service: \(vgcService.fullName)")
+        vgcLogDebug("Attempting to connect to service: \(vgcService.fullName)")
         
         openStreamsFor(.LargeData, vgcService: vgcService)
         openStreamsFor(.SmallData, vgcService: vgcService)
@@ -372,18 +372,18 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
     func netServiceBrowserWillSearch(browser: NSNetServiceBrowser) {
-        print("Browser will search")
+        vgcLogDebug("Browser will search")
     }
     
     func netServiceDidResolveAddress(sender: NSNetService) {
-        print("Browser did resolve address")
+        vgcLogDebug("Browser did resolve address")
     }
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didFindService service: NSNetService, moreComing: Bool) {
         if (service == localService) {
-            print("Ignoring service because it is our own: \(service.name)")
+            vgcLogDebug("Ignoring service because it is our own: \(service.name)")
         } else {
-            print("Found service of type \(service.type) at \(service.name)")
+            vgcLogDebug("Found service of type \(service.type) at \(service.name)")
             var vgcService: VgcService
             if service.type == VgcManager.bonjourTypeBridge {
                 vgcService = VgcService(name: service.name, type:.Bridge, netService: service)
@@ -402,9 +402,9 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didRemoveService service: NSNetService, moreComing: Bool) {
         
-        print("Service was removed: \(service.type) isMainThread: \(NSThread.isMainThread())")
+        vgcLogDebug("Service was removed: \(service.type) isMainThread: \(NSThread.isMainThread())")
         let vgcService = serviceLookup.removeValueForKey(service)
-        print("VgcService was removed: \(vgcService?.fullName)")
+        vgcLogDebug("VgcService was removed: \(vgcService?.fullName)")
         // If VgcService is nil, it means we already removed the service so we do not send the notification
         if vgcService != nil { NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService) }
         
@@ -415,7 +415,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
     func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
-        print("Net service browser reports error \(errorDict)")
+        vgcLogDebug("Net service browser reports error \(errorDict)")
         browsing = false
     }
     

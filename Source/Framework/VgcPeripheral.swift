@@ -58,7 +58,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             browser = VgcBrowser(peripheral: self)
         #endif
         
-        print("Setting up motion manager on peripheral")
+        vgcLogDebug("Setting up motion manager on peripheral")
         #if !os(OSX) && !os(tvOS)
             motion = VgcMotionManager()
         #endif
@@ -68,7 +68,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     }
     
     deinit {
-        print("Peripheral deinitalized")
+        vgcLogDebug("Peripheral deinitalized")
         if controller != nil { controller.peripheral = nil }
         controller = nil
     }
@@ -85,7 +85,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         // stream associated with the hardware controllers VgcController.
         if haveConnectionToCentral == true || deviceIsTypeOfBridge() {
             
-            //print("Sending: \(element.name): \(element.value)")
+            //vgcLogDebug("Sending: \(element.name): \(element.value)")
             
             // If we're enhancing a hardware controller with virtual elements, we pass values through to the controller
             // so they appear to the Central as coming from the hardware controller
@@ -95,7 +95,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
                 browser.sendElementStateOverNetService(element)
             }
             
-            //print("Element to be mapped: \(element.name)")
+            //vgcLogDebug("Element to be mapped: \(element.name)")
             if VgcManager.usePeripheralSideMapping == true {
                 // Only map an element if it isn't the result of a mapping
                 if (element.mappingComplete == false) {
@@ -107,7 +107,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             
         } else {
             
-            print("ERROR: Attempted to send without a connection: \(element.name): \(element.value)")
+            vgcLogError("Attempted to send without a connection: \(element.name): \(element.value)")
             
         }
         
@@ -120,7 +120,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
         get {
             if vgcDeviceInfo == nil {
-                print("ERROR: Required value deviceInfo not set")
+                vgcLogError("Required value deviceInfo not set")
                 return nil
             }
             return vgcDeviceInfo
@@ -157,7 +157,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
         if haveConnectionToCentral == false { return }
         
-        print("Disconnecting from Central")
+        vgcLogDebug("Disconnecting from Central")
         
         haveConnectionToCentral = false
         
@@ -169,7 +169,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
         browser.reset()
         
-        print("Browsing for services...")
+        vgcLogDebug("Browsing for services...")
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidResetBrowser, object: nil)
         
@@ -179,7 +179,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         if deviceIsTypeOfBridge() {
             let (existsAlready, _) = VgcController.controllerAlreadyExists(controller)
             if existsAlready == false {
-                print("Refusing to announce Bridge-to-Central peripheral because it's controller no longer exists.  If the controller is MFi, it may have gone to sleep.")
+                vgcLogDebug("Refusing to announce Bridge-to-Central peripheral because it's controller no longer exists.  If the controller is MFi, it may have gone to sleep.")
                 return
             }
         }
@@ -191,9 +191,9 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     public func stopBrowsingForServices() {
         
         if deviceIsTypeOfBridge() {
-            print("Refusing to stop browsing for service because I am a BRIDGE")
+            vgcLogDebug("Refusing to stop browsing for service because I am a BRIDGE")
         } else {
-            print("Stopping browsing for services")
+            vgcLogDebug("Stopping browsing for services")
         }
         browser.stopBrowsing()
         
@@ -208,7 +208,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     
     func gotConnectionAcknowledgementTimeout(timer: NSTimer) {
         
-        print("Got connection acknowledgement timeout")
+        vgcLogDebug("Got connection acknowledgement timeout")
 
         browser.disconnect()
         
@@ -220,7 +220,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     
     func gotConnectionToCentral() {
         
-        print("Got connection to Central (Already? \(haveConnectionToCentral))")
+        vgcLogDebug("Got connection to Central (Already? \(haveConnectionToCentral))")
         
         if (haveOpenStreamsToCentral == true) { return }
         
@@ -242,7 +242,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     
     func lostConnectionToCentral(vgcService: VgcService) {
         
-        print("Peripheral lost connection to \(vgcService.fullName)")
+        vgcLogDebug("Peripheral lost connection to \(vgcService.fullName)")
         haveConnectionToCentral = false
         
         NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidDisconnectNotification, object: nil)
@@ -256,7 +256,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
 
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
-                print("Stopping motion data")
+                vgcLogDebug("Stopping motion data")
                 motion.stop()
             }
         #endif
@@ -266,29 +266,29 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     func sendDeviceInfo(deviceInfo: DeviceInfo) {
         
         if (haveOpenStreamsToCentral == false) {
-            print("No streams to Central so not sending controller device info")
+            vgcLogDebug("No streams to Central so not sending controller device info")
             return
         }
         
-        print("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
+        vgcLogDebug("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
         
         NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
         let element = VgcManager.elements.deviceInfoElement
         element.value = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
-        print("\(deviceInfo)")
+        vgcLogDebug("\(deviceInfo)")
         
         browser.sendDeviceInfoElement(element)
 
     }
     
     func receivedWatchMessage(element: Element) {
-        print("Received element \(element.name) with value \(element.value) from watch, forwarding to Central or Bridge")
+        vgcLogDebug("Received element \(element.name) with value \(element.value) from watch, forwarding to Central or Bridge")
         sendElementState(element)
     }
     
     func bridgePeripheralDeviceInfoToCentral(controller: VgcController) {
         
-        print("Forwarding controller \(controller.deviceInfo.vendorName) to Central")
+        vgcLogDebug("Forwarding controller \(controller.deviceInfo.vendorName) to Central")
         
         let deviceInfo = controller.deviceInfo.copy() as! DeviceInfo
         deviceInfo.vendorName = deviceInfo.vendorName + " (Bridged)"
@@ -313,7 +313,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             
             let mappedElement = VgcManager.elements.elementFromIdentifier(mappedElementIdentifier)
             mappedElement.mappingComplete = true
-            print("   Mapping \(elementToBeMapped.name) to \(mappedElement.name)")
+            vgcLogDebug("   Mapping \(elementToBeMapped.name) to \(mappedElement.name)")
             mappedElement.value = elementToBeMapped.value
             sendElementState(mappedElement)
             

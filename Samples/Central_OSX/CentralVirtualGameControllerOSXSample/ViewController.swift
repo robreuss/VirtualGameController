@@ -19,7 +19,7 @@ class ViewController: NSViewController {
         
         VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
-            print("SAMPLE: Discovery completion handler executed")
+            vgcLogDebug("SAMPLE: Discovery completion handler executed")
             
         }
         

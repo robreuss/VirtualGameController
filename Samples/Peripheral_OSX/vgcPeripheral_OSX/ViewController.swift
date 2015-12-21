@@ -40,7 +40,7 @@ class ViewController: NSViewController {
     @objc func foundService(notification: NSNotification) {
         if VgcManager.peripheral.haveConnectionToCentral == true { return }
         let service = notification.object as! VgcService
-        print("Automatically connecting to service \(service.fullName) because Central-selecting functionality is not implemented in this project")
+        vgcLogDebug("Automatically connecting to service \(service.fullName) because Central-selecting functionality is not implemented in this project")
         VgcManager.peripheral.connectToService(service)
     }
     

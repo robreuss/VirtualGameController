@@ -22,13 +22,13 @@ class InterfaceController: WKInterfaceController {
         
         VgcManager.startAs(.Peripheral, appIdentifier: "", customElements: CustomElements(), customMappings: CustomMappings())
         
-        print("Successfully ran startAs")
+        vgcLogDebug("Successfully ran startAs")
         
         watchConnectivity = VgcWatchConnectivity()
         
         watchConnectivity.valueChangedHandler = { (element: Element) in
             
-            print("Watch handler fired for \(element.name) with value \(element.value)")
+            vgcLogDebug("Watch handler fired for \(element.name) with value \(element.value)")
             
         }
         
@@ -49,12 +49,12 @@ class InterfaceController: WKInterfaceController {
     
     // Just as a simple example, display a table of the watch profile elements.
     func updateElementsTable() {
-        print("Number of element rows: \(watchConnectivity.elements.allElementsCollection().count)")
+        vgcLogDebug("Number of element rows: \(watchConnectivity.elements.allElementsCollection().count)")
         self.elementsTable.setNumberOfRows(watchConnectivity.elements.allElementsCollection().count, withRowType: "elementsTableRow")
         var index = 0
         for element in watchConnectivity.elements.watchProfileElements {
             
-            print("Working on row for \(element.name)")
+            vgcLogDebug("Working on row for \(element.name)")
             
             if let row = elementsTable.rowControllerAtIndex(index) as? ElementsTableRow {
                 row.elementLabel.setText(element.name)

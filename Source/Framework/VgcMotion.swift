@@ -67,18 +67,18 @@ public class VgcMotionManager: NSObject {
   
         #if os(iOS) || os(watchOS)
             
-            print("Attempting to start motion detection")
+            vgcLogDebug("Attempting to start motion detection")
             
             #if os(iOS)
                 if !deviceIsTypeOfBridge() {
                     if  VgcManager.peripheral.haveConnectionToCentral == false {
-                        print("Not starting motion because no connection")
+                        vgcLogDebug("Not starting motion because no connection")
                         return
                     }
                 }
                 if VgcManager.appRole == .EnhancementBridge {
                     if VgcController.enhancedController.peripheral.haveConnectionToCentral == false {
-                        print("Not starting motion because no connection")
+                        vgcLogDebug("Not starting motion because no connection")
                         return
                     }
                 }
@@ -86,11 +86,11 @@ public class VgcMotionManager: NSObject {
             
             // No need to start if already active
             if manager.deviceMotionActive {
-                print("Not starting motion because already active")
+                vgcLogDebug("Not starting motion because already active")
                 return
             }
             
-            print("Device supports: \(self.deviceSupportsMotion), motion available: \(self.manager.deviceMotionAvailable), accelerometer available: \(self.manager.accelerometerAvailable)")
+            vgcLogDebug("Device supports: \(self.deviceSupportsMotion), motion available: \(self.manager.deviceMotionAvailable), accelerometer available: \(self.manager.accelerometerAvailable)")
             
             if deviceIsTypeOfBridge() || self.deviceSupportsMotion == true {
                 
@@ -103,13 +103,13 @@ public class VgcMotionManager: NSObject {
                     
                     //let motionQueue = NSOperationQueue()
                     
-                    print("Starting device motion updating")
+                    vgcLogDebug("Starting device motion updating")
                     manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
                     
                     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void in
                         
                         if error != nil {
-                            print("Got device motion error: \(error)")
+                            vgcLogDebug("Got device motion error: \(error)")
                         }
                         
                         var x, y, z, w: Double
@@ -119,7 +119,7 @@ public class VgcMotionManager: NSObject {
                             
                             (x, y, z, w) = self.filterX(((deviceMotionData?.attitude.quaternion.x)!), y: ((deviceMotionData?.attitude.quaternion.y)!), z: ((deviceMotionData?.attitude.quaternion.z)!), w: ((deviceMotionData?.attitude.quaternion.w)!))
                             
-                            //print("Old double: \(deviceMotionData?.attitude.quaternion.x), new float: \(x)")
+                            //vgcLogDebug("Old double: \(deviceMotionData?.attitude.quaternion.x), new float: \(x)")
                             
                             self.elements.motionAttitudeX.value = Float(x)
                             self.elements.motionAttitudeY.value = Float(y)
@@ -180,12 +180,12 @@ public class VgcMotionManager: NSObject {
                     
                 } else if self.manager.accelerometerAvailable {
                     
-                    print("Starting accelerometer detection (for the Watch)")
+                    vgcLogDebug("Starting accelerometer detection (for the Watch)")
                     self.manager.accelerometerUpdateInterval = NSTimeInterval(self.updateInterval)
                     self.manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelerometerData, error) -> Void in
                         
                         /*
-                        //print("Device Motion: \(deviceMotionData!)")
+                        //vgcLogDebug("Device Motion: \(deviceMotionData!)")
                         
                         motionAttitudeY.value = Float((deviceMotionData?.attitude.quaternion.y)!)
                         motionAttitudeX.value = Float((deviceMotionData?.attitude.quaternion.x)!)
@@ -204,7 +204,7 @@ public class VgcMotionManager: NSObject {
                         self.elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!)
                         self.elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!)
                         
-                        print("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
+                        vgcLogDebug("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
                         
                         // Send data on the custom accelerometer channels
                         //if VgcManager.peripheral.motion.enableUserAcceleration {
@@ -220,7 +220,7 @@ public class VgcMotionManager: NSObject {
                         motionRotationRateY.value = Float((deviceMotionData?.rotationRate.y)!)
                         motionRotationRateZ.value = Float((deviceMotionData?.rotationRate.z)!)
                         
-                        print("Rotation: X \( Float((deviceMotionData?.rotationRate.x)!)), Y: \(Float((deviceMotionData?.rotationRate.y)!)), Z: \(Float((deviceMotionData?.rotationRate.z)!))")
+                        vgcLogDebug("Rotation: X \( Float((deviceMotionData?.rotationRate.x)!)), Y: \(Float((deviceMotionData?.rotationRate.y)!)), Z: \(Float((deviceMotionData?.rotationRate.z)!))")
                         
                         if enableRotationRate {
                         self.sendElementValueToBridge(motionRotationRateX)
@@ -250,7 +250,7 @@ public class VgcMotionManager: NSObject {
 
     public func stop() {
         #if os(iOS) || os(watchOS)
-            print("Stopping motion detection")
+            vgcLogDebug("Stopping motion detection")
             manager.stopDeviceMotionUpdates()
             active = false
         #endif

@@ -46,40 +46,40 @@ public class VgcWatch: NSObject, WCSessionDelegate {
 
         
         if WCSession.isSupported() {
-            print("Watch connectivity is supported, activating")
+            vgcLogDebug("Watch connectivity is supported, activating")
             if self.wcSession == nil {
-                print("Setting up watch session")
+                vgcLogDebug("Setting up watch session")
                 self.wcSession = WCSession.defaultSession()
                 self.wcSession.delegate = self
             }
             self.wcSession.activateSession()
             if self.wcSession.paired == false {
-                print("There is no watch paired with this device")
+                vgcLogDebug("There is no watch paired with this device")
                 return
             }
             if self.wcSession.watchAppInstalled == false {
-                print("The watch app is not installed")
+                vgcLogDebug("The watch app is not installed")
                 return
             }
             if self.wcSession.reachable == true {
                 
-                print("Watch is reachable")
+                vgcLogDebug("Watch is reachable")
                 reachable = wcSession.reachable
                 
                 NSNotificationCenter.defaultCenter().postNotificationName(VgcWatchDidConnectNotification, object: nil)
                 
             } else {
-                print("Watch is not reachable")
+                vgcLogDebug("Watch is not reachable")
             }
         } else {
-            print("Watch connectivity is not supported on this platform")
+            vgcLogDebug("Watch connectivity is not supported on this platform")
         }
         
     }
     
     public func sessionReachabilityDidChange(session: WCSession) {
         
-        print("Watch reachability changed to \(session.reachable)")
+        vgcLogDebug("Watch reachability changed to \(session.reachable)")
         reachable = wcSession.reachable
         
         if reachable {
@@ -96,7 +96,7 @@ public class VgcWatch: NSObject, WCSessionDelegate {
     
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         
-        print("Watch connectivity received message: " + message.description)
+        vgcLogDebug("Watch connectivity received message: " + message.description)
         for elementTypeString: String in message.keys {
             
             let element = VgcManager.elements.elementFromIdentifier(Int(elementTypeString)!)
@@ -116,9 +116,9 @@ public class VgcWatch: NSObject, WCSessionDelegate {
         if wcSession != nil && wcSession.reachable {
             let message = ["\(element.identifier)": element.value]
             wcSession.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
-                print("Watch Connectivity: Our counterpart sent something back. This is optional")
+                vgcLogDebug("Watch Connectivity: Our counterpart sent something back. This is optional")
                 }, errorHandler: {  (error ) -> Void in
-                    print("Watch Connectivity: We got an error from our paired device : \(error)")
+                    vgcLogDebug("Watch Connectivity: We got an error from our paired device : \(error)")
             })
         }
         

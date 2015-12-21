@@ -297,7 +297,7 @@ var peripheralManager = VgcManager.peripheral
     }
     
     @objc func peripheralDidConnect(notification: NSNotification) {
-        print("Animating control overlay up")
+        vgcLogDebug("Animating control overlay up")
         UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
             self.controlOverlay.frame = CGRect(x: 0, y: -self.parentView.bounds.size.height, width: self.parentView.bounds.size.width, height: self.parentView.bounds.size.height)
             }, completion: { finished in
@@ -309,7 +309,7 @@ var peripheralManager = VgcManager.peripheral
     
     #if !os(tvOS)
     @objc func peripheralDidDisconnect(notification: NSNotification) {
-        print("Animating control overlay down")
+        vgcLogDebug("Animating control overlay down")
         UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
             self.controlOverlay.frame = CGRect(x: 0, y: 0, width: self.parentView.bounds.size.width, height: self.parentView.bounds.size.height)
             }, completion: { finished in
@@ -376,7 +376,7 @@ var peripheralManager = VgcManager.peripheral
         
         if VgcManager.iCadeControllerMode != .Disabled {
             
-            print("Sending iCade character: \(keyboardTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
+            vgcLogDebug("Sending iCade character: \(keyboardTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
 
             var element: Element!
             var value: Int
@@ -400,7 +400,7 @@ var peripheralManager = VgcManager.peripheral
     #if !(os(tvOS))
     func motionSwitchDidChange(sender:UISwitch!) {
         
-        print("User modified motion switch: \(sender.on)")
+        vgcLogDebug("User modified motion switch: \(sender.on)")
         
         if sender.on == true {
 
@@ -436,7 +436,7 @@ public class ServiceSelectorView: UIView, UITableViewDataSource, UITableViewDele
     }
     
     public func refresh() {
-        print("Refreshing server selector view")
+        vgcLogDebug("Refreshing server selector view")
         self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     

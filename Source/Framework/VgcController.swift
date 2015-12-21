@@ -67,7 +67,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     public override init() {
         
-        print("Initializing new Controller")
+        vgcLogDebug("Initializing new Controller")
         
         vgcPlayerIndex = .IndexUnset
         
@@ -90,7 +90,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     deinit {
-        print("Controller deinitalized")
+        vgcLogDebug("Controller deinitalized")
         NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: GCControllerDidConnectNotification)
         NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: GCControllerDidDisconnectNotification)
     }
@@ -178,7 +178,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // hardware controllers over bluetooth.
     public class func startWirelessControllerDiscoveryWithCompletionHandler(_completionHandler: (() -> Void)?) {
         
-        print("Starting discovery process for MFi hardware controllers")
+        vgcLogDebug("Starting discovery process for MFi hardware controllers")
         GCController.startWirelessControllerDiscoveryWithCompletionHandler(_completionHandler)
         
     }
@@ -187,7 +187,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // of hardware devices
     public class func stopWirelessControllerDiscovery() {
         
-        print("Stopping wireless controller discovery")
+        vgcLogDebug("Stopping wireless controller discovery")
         GCController.stopWirelessControllerDiscovery()
         
     }
@@ -201,7 +201,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         fromPeripheraInputlStream[streamDataType] = inputStream
         toPeripheralOutputStream[streamDataType] = outputStream
 
-        print("Opening Peripheral-bound streams for stream data type: \(streamDataType)")
+        vgcLogDebug("Opening Peripheral-bound streams for stream data type: \(streamDataType)")
 
         // Open our Peripheral-bound streams
         toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
@@ -221,7 +221,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         // If deviceInfo isn't set yet, we're not ready to handle incoming data
         if self.deviceInfo == nil && element.type != .DeviceInfoElement {
-            print("Received data before device is configured")
+            vgcLogDebug("Received data before device is configured")
             return
         }
         
@@ -243,7 +243,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
             
         } else {
-            print("ERROR: Got nil element: \(elementIdentifier)")
+            vgcLogError("Got nil element: \(elementIdentifier)")
         }
         
         
@@ -263,13 +263,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if streamer[.LargeData] != nil {
                 streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
             } else {
-                print("nil stream LargeData error caught");
+                vgcLogDebug("nil stream LargeData error caught");
             }
         } else {
             if streamer[.SmallData] != nil {
                 streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
             } else {
-                print("nil stream SmallData error caught");
+                vgcLogDebug("nil stream SmallData error caught");
             }
         }
         
@@ -295,7 +295,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         element.value = SystemMessages.ConnectionAcknowledgement.rawValue
         if let inStream = streamer[.SmallData] {
             if let outStream = toPeripheralOutputStream[.SmallData] {
-                print("Sending connection acknowledgement to \(deviceInfo.vendorName)")
+                vgcLogDebug("Sending connection acknowledgement to \(deviceInfo.vendorName)")
                 inStream.writeElement(element, toStream: outStream)
             }
         }
@@ -303,10 +303,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
     public func disconnect() {
         
-        print("Running disconnect function")
+        vgcLogDebug("Running disconnect function")
         
         if disconnecting {
-            print("Refusing to run disconnect because already running")
+            vgcLogDebug("Refusing to run disconnect because already running")
             return
         }
         disconnecting = true
@@ -315,7 +315,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // a watch
         if deviceInfo != nil && deviceInfo.controllerType != .Watch {
             
-            print("Closing streams for controller \(deviceInfo.vendorName)")
+            vgcLogDebug("Closing streams for controller \(deviceInfo.vendorName)")
             
             fromPeripheraInputlStream[.LargeData]!.close()
             fromPeripheraInputlStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
@@ -351,13 +351,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             var index = 0
             for controller in VgcController.vgcControllers {
                 if controller.deviceInfo.deviceUID == deviceInfo.deviceUID {
-                    print("Removing controller \(controller.deviceInfo.vendorName) from controllers array")
+                    vgcLogDebug("Removing controller \(controller.deviceInfo.vendorName) from controllers array")
                     VgcController.vgcControllers.removeAtIndex(index)
                 }
                 index++
             }
             
-            print("After disconnect controller count is \(VgcController.vgcControllers.count)")
+            vgcLogDebug("After disconnect controller count is \(VgcController.vgcControllers.count)")
             
             // Notify the app there's been a disconnect
             dispatch_async(dispatch_get_main_queue()) {
@@ -368,7 +368,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
         } else {
             
-            print("Attempted to remove controller but it's deviceInfo was nil.  Controller count is \(VgcController.vgcControllers.count)")
+            vgcLogDebug("Attempted to remove controller but it's deviceInfo was nil.  Controller count is \(VgcController.vgcControllers.count)")
             
         }
         disconnecting = false
@@ -409,7 +409,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if valueAsFloat < 1 { return } // Unknown system message
             let messageType = SystemMessages(rawValue: Int(valueAsFloat))!
             
-            print("Peripheral sent system message: \(messageType.description)")
+            vgcLogDebug("Peripheral sent system message: \(messageType.description)")
             
             switch messageType {
                 
@@ -471,7 +471,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         if elements.elementsForController(self).contains(element) {
             
-            //print("Setting value \(value) on Keypath \(element.setterKeypath(self))")
+            //vgcLogDebug("Setting value \(value) on Keypath \(element.setterKeypath(self))")
             
             setValue(value, forKeyPath: element.setterKeypath(self))
             
@@ -479,7 +479,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
         } else {
             
-            print("ERROR: Attempt to update an unsupported element \(element.name) on controller \(deviceInfo.vendorName) using keypath \(element.setterKeypath).  Check to confirm profiles match.")
+            vgcLogError("Attempt to update an unsupported element \(element.name) on controller \(deviceInfo.vendorName) using keypath \(element.setterKeypath).  Check to confirm profiles match.")
             
         }
     }
@@ -518,7 +518,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         if deviceInfo.controllerType != .MFiHardware { return }
         
-        print("Setting up hardware controller forwarding")
+        vgcLogDebug("Setting up hardware controller forwarding")
         
         // Define our change handlers as variables so we can assign them differentially below
         // based on the use of gamepad versus extended gamepad
@@ -688,7 +688,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             // Ignore hardware controller connections to iOS device if it is
             // configured to be in the .Peripheral role.
             if VgcManager.appRole == .Peripheral {
-                print("Ignoring hardware device \(controller.hardwareController.vendorName) because we are configured as a Peripheral")
+                vgcLogDebug("Ignoring hardware device \(controller.hardwareController.vendorName) because we are configured as a Peripheral")
                 return
             }
             
@@ -702,13 +702,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
                 if existingController.deviceInfo != nil {
                     if existingController.deviceInfo.deviceUID == deviceHash {
-                        print("Refusing to add hardware controller because it is already in controllers array \(deviceHash)")
+                        vgcLogDebug("Refusing to add hardware controller because it is already in controllers array \(deviceHash)")
                         return
                     }
                 }
             }
             
-            print("Adding hardware controller \(controller.hardwareController.vendorName!)")
+            vgcLogDebug("Adding hardware controller \(controller.hardwareController.vendorName!)")
             
             var profileType: ProfileType
             
@@ -738,7 +738,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 }
             #endif
             
-            print("Profile type set to: \(profileType.description)")
+            vgcLogDebug("Profile type set to: \(profileType.description)")
             
             // Assume devices do not support motion.  When configuring deviceInfo for a custom software
             // peripheral, you can indicate motion support (which would be true for all iOS devices)
@@ -765,7 +765,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // send our custom disconnect notification
     @objc class func controllerDidDisconnect(notification: NSNotification) {
         
-        print("Got hardware didDisconnect notification: \(notification)")
+        vgcLogDebug("Got hardware didDisconnect notification: \(notification)")
         
         let hardwareController = notification.object as! GCController
         
@@ -775,9 +775,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // remove it from said array
         var index: Int = 0
         for controller in VgcController.controllers() {
-            print("Comparing UUID \(controller.deviceInfo.deviceUID) to \(deviceHash)")
+            vgcLogDebug("Comparing UUID \(controller.deviceInfo.deviceUID) to \(deviceHash)")
             if controller.deviceInfo.deviceUID == deviceHash {
-                print("Removing controller from controllers array: \(hardwareController)")
+                vgcLogDebug("Removing controller from controllers array: \(hardwareController)")
                 VgcController.vgcControllers.removeAtIndex(index)
                 NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: controller)
                 return
@@ -829,10 +829,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         var index = 0
         for existingController in VgcController.controllers() {
-            print("Comparing existing device \(existingController.deviceInfo.vendorName) to new device \(newController.deviceInfo.vendorName)")
-            //print("Comparing existing device ID \(existingController.deviceInfo.deviceUID) to new device ID \(deviceInfo.deviceUID)")
+            vgcLogDebug("Comparing existing device \(existingController.deviceInfo.vendorName) to new device \(newController.deviceInfo.vendorName)")
+            //vgcLogDebug("Comparing existing device ID \(existingController.deviceInfo.deviceUID) to new device ID \(deviceInfo.deviceUID)")
             if existingController.deviceInfo.deviceUID == newController.deviceInfo.deviceUID {
-                print("Found matching existing controller so disconnecting new controller")
+                vgcLogDebug("Found matching existing controller so disconnecting new controller")
                 return (true, index)
             }
             index++
@@ -849,19 +849,19 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         didSet {
             
-            print("Device info set on controller")
+            vgcLogDebug("Device info set on controller")
             
             print(deviceInfo)
             
-            print("Confirming controller doesn't already exist among \(VgcController.controllers().count) controllers")
+            vgcLogDebug("Confirming controller doesn't already exist among \(VgcController.controllers().count) controllers")
             
             
             if deviceIsTypeOfBridge() {
                 if peripheral == nil {
-                    print("Setting up a controller-specific peripheral object for controller \(deviceInfo.vendorName)")
+                    vgcLogDebug("Setting up a controller-specific peripheral object for controller \(deviceInfo.vendorName)")
                     peripheral = Peripheral()
                 } else {
-                    print("Controller already has a peripheral object \(deviceInfo.vendorName)")
+                    vgcLogDebug("Controller already has a peripheral object \(deviceInfo.vendorName)")
                 }
                 peripheral.controller = self
                 #if os(iOS)
@@ -873,7 +873,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             let (existsAlready, index) = VgcController.controllerAlreadyExists(self)
             if existsAlready {
             
-                print("Controller exists already, removing")
+                vgcLogDebug("Controller exists already, removing")
                 dispatch_sync(self.lockQueueVgcController) {
                     VgcController.vgcControllers.removeAtIndex(index)
                     dispatch_async(dispatch_get_main_queue()) {
@@ -886,7 +886,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             }
             
             // Make a game controller out of the peripheral
-            print("Appending controller \(deviceInfo.vendorName) to vControllers (\(VgcController.controllers().count + 1) controllers with new controller)")
+            vgcLogDebug("Appending controller \(deviceInfo.vendorName) to vControllers (\(VgcController.controllers().count + 1) controllers with new controller)")
             
             dispatch_sync(lockQueueVgcController) {
                 VgcController.vgcControllers.append(self)
@@ -912,7 +912,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
                 
             default:
-                print("ERROR: Device profile unknown: \(deviceInfo.profileType.description)")
+                vgcLogError("Device profile unknown: \(deviceInfo.profileType.description)")
                 
             }
             
@@ -979,7 +979,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
                 if centralPublisher != nil && centralPublisher.haveConnectionToPeripheral && toPeripheralOutputStream[.SmallData] != nil {
                     
-                    print("Sending player index \(newValue.rawValue + 1) to controller \(deviceInfo.vendorName)")
+                    vgcLogDebug("Sending player index \(newValue.rawValue + 1) to controller \(deviceInfo.vendorName)")
                     
                     let playerIndexElement = elements.playerIndex
                     playerIndexElement.value = playerIndex.rawValue
@@ -989,7 +989,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                     NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: self)
                     
                 } else {
-                    print("PERIPHERAL: Cannot send player index, no connection, no netservice manager or no open stream")
+                    vgcLogDebug("PERIPHERAL: Cannot send player index, no connection, no netservice manager or no open stream")
                 }
 
             }

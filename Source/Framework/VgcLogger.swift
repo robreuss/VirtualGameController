@@ -8,31 +8,29 @@
 
 import Foundation
 
-// Default to error for release mode
-public var logLevel = LogLevel.Error
-public var useNSLog = false
+@objc public enum LogLevel: Int, CustomStringConvertible {
 
-public enum LogLevel: Int, CustomStringConvertible {
-    
-    case Verbose
-    case Debug
-    case Error
+    case Error = 0
+    case Debug = 1
+    case Verbose = 2
     
     public var description : String {
         
         switch self {
-        case .Verbose: return "Verbose"
-        case .Debug: return "Debug"
-        case .Error: return "Error"
+            
+            case .Error: return "Error"
+            case .Debug: return "Debug"
+            case .Verbose: return "Verbose"
+            
         }
     }
 }
 
 func logAtLevel(priority: LogLevel, logLine: String ) {
     
-    if logLevel == priority {
+    if priority.rawValue >= VgcManager.loggerLogLevel.rawValue  {
         
-        if useNSLog {
+        if VgcManager.loggerUseNSLog {
             NSLog(logLine)
         } else {
             print(logLine)
@@ -56,6 +54,6 @@ public func vgcLogDebug(logLine: String) {
 
 public func vgcLogError(logLine: String) {
 
-    logAtLevel(.Error, logLine: logLine)
+    logAtLevel(.Error, logLine: "<<< ERROR >>> \(logLine)")
     
 }

@@ -44,20 +44,20 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         
         if session.reachable {
             let message = ["\(element.identifier)": element.value]
-            print("Watch connectivity sending message: \(message) for element \(element.name) with value \(element.value)")
+            vgcLogDebug("Watch connectivity sending message: \(message) for element \(element.name) with value \(element.value)")
             session.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
                 // Response to message shows up here
                 }, errorHandler: {  (error ) -> Void in
-                    print("ERROR: Received an error while attempt to send element \(element) to bridge: \(error)")
+                    vgcLogError("Received an error while attempt to send element \(element) to bridge: \(error)")
             })
         } else {
-            print("ERROR: Unable to send element \(element) because bridge is unreachable")
+            vgcLogError("Unable to send element \(element) because bridge is unreachable")
         }
     }
 
     public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         
-        print("Received message: \(message)")
+        vgcLogDebug("Received message: \(message)")
         
         for elementTypeString: String in message.keys {
             
@@ -72,7 +72,7 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
                 
             } else {
 
-                print("Calling handler with element: \(element.identifier): \(element.value)")
+                vgcLogDebug("Calling handler with element: \(element.identifier): \(element.value)")
                 
                 if let handler = valueChangedHandler {
                     handler(element)
@@ -85,10 +85,10 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     
     public func sessionReachabilityDidChange(session: WCSession) {
         
-        print("Reachability changed to \(session.reachable)")
+        vgcLogDebug("Reachability changed to \(session.reachable)")
 
         if session.reachable == false {
-            print("Stopping motion")
+            vgcLogDebug("Stopping motion")
             motion.stop()
         }
         

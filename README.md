@@ -278,7 +278,7 @@ When your watch sends values as described in the previous section, there are two
 
 ````swift
 VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
-	print("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
+	vgcLogDebug("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
 }
 ````
 If the valueChangedHandler is non-nil, values will no longer be automatically forwarded to the Central, and so if you wish those values to be forwarded, you must do so yourself:
@@ -301,7 +301,7 @@ If a watch is paired with your iPhone iOS app, values received by the iOS app fr
 
 ````swift
 watchConnectivity.valueChangedHandler = { (element: Element) in
-	print("Watch handler fired for \(element.name) with value \(element.value)")
+	vgcLogDebug("Watch handler fired for \(element.name) with value \(element.value)")
 }
 ````
 

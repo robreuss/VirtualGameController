@@ -32,6 +32,9 @@
         
         [VgcManager startAs:AppRoleCentral appIdentifier:@"vgc" includesPeerToPeer: true];
         
+        VgcManager.loggerLogLevel = LogLevelError;
+        VgcManager.loggerUseNSLog = @YES;
+        
     } else {
         
         [VgcManager startAs:AppRolePeripheral appIdentifier:@"vgc" includesPeerToPeer: true];

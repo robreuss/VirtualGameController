@@ -76,7 +76,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         if VgcManager.appRole == .EnhancementBridge { return }
         
         guard let controller: VgcController = notification.object as? VgcController else {
-            print("Got nil controller in controllerDidConnect")
+            vgcLogDebug("Got nil controller in controllerDidConnect")
             return
         }
         
@@ -151,7 +151,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         // Get an image and apply it to the ship (image is set to my dog Digit, you'll see the fur)
         controller.elements.custom[CustomElementType.SendImage.rawValue]!.valueChangedHandler = { (controller, element) in
             
-            //print("Custom element handler fired for Send Image: \(element.value)")
+            //vgcLogDebug("Custom element handler fired for Send Image: \(element.value)")
             
             #if os(OSX)
                 let image = NSImage(data: element.value as! NSData)
