@@ -994,11 +994,7 @@ public class ElementDebugView: UIView {
         
         
         // Test Image Send
-        let image = UIImage(named: "digit.jpg")
-        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
-        let imageData = UIImageJPEGRepresentation(image!, 1.0)
-        element.value = imageData!
-        controller.sendElementStateToPeripheral(element)
+        controller.sendImage(UIImage(named: "digit.jpg")!)
         
         // Test simple float mode
         //let rightShoulder = controller.elements.rightShoulder

@@ -70,6 +70,7 @@ public enum StreamDataType: Int, CustomStringConvertible {
     case PlayerIndex
     case PeripheralSetup
     case VibrateDevice
+    case SendImage
     
     // .Standard elements
     case PauseButton
@@ -271,7 +272,7 @@ public class Element: NSObject {
         
         switch (type) {
             
-        case .SystemMessage, .PlayerIndex, .PauseButton, .DeviceInfoElement, .PeripheralSetup, .VibrateDevice: return ""
+        case .SystemMessage, .PlayerIndex, .PauseButton, .DeviceInfoElement, .PeripheralSetup, .VibrateDevice, .SendImage: return ""
             
         case .MotionAttitudeX, .MotionAttitudeW, .MotionAttitudeY, .MotionAttitudeZ, .MotionGravityX, .MotionGravityY, .MotionGravityZ, .MotionRotationRateX, .MotionRotationRateY, .MotionRotationRateZ, .MotionUserAccelerationX, .MotionUserAccelerationY, .MotionUserAccelerationZ:
             
@@ -284,7 +285,7 @@ public class Element: NSObject {
     public func setterKeypath(controller: VgcController) -> String {
         
         switch (type) {
-        case .SystemMessage, .PlayerIndex, .DeviceInfoElement, .PeripheralSetup, .VibrateDevice: return ""
+        case .SystemMessage, .PlayerIndex, .DeviceInfoElement, .PeripheralSetup, .VibrateDevice, .SendImage: return ""
         case .MotionAttitudeX, .MotionAttitudeW, .MotionAttitudeY, .MotionAttitudeZ, .MotionGravityX, .MotionGravityY, .MotionGravityZ, .MotionRotationRateX, .MotionRotationRateY, .MotionRotationRateZ, .MotionUserAccelerationX, .MotionUserAccelerationY, .MotionUserAccelerationZ:
             
             return "motion." + setterKeypath
@@ -343,6 +344,7 @@ public class Elements: NSObject {
         systemElements.append(pauseButton)
         systemElements.append(peripheralSetup)
         systemElements.append(vibrateDevice)
+        systemElements.append(sendImage)
         
         motionProfileElements = []
         motionProfileElements.append(motionUserAccelerationX)
@@ -501,6 +503,7 @@ public class Elements: NSObject {
     public var pauseButton: Element = Element(type: .PauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
     public var peripheralSetup: Element = Element(type: .PeripheralSetup, dataType: .Data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
     public var vibrateDevice: Element = Element(type: .VibrateDevice, dataType: .Int, name: "Vibrate Device", getterKeypath: "", setterKeypath: "")
+    public var sendImage: Element = Element(type: .SendImage, dataType: .Data, name: "Send Image", getterKeypath: "image.value", setterKeypath: "image.value")
     
     public var leftShoulder: Element = Element(type: .LeftShoulder, dataType: .Float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
     public var rightShoulder: Element = Element(type: .RightShoulder, dataType: .Float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")

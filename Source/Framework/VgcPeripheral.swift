@@ -325,6 +325,16 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         #endif
     }
+    
+    public func sendImage(image: UIImage) {
+        
+        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.SendImage.rawValue)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        imageElement.value = imageData!
+        imageElement.clearValueAfterTransfer = true
+        VgcManager.peripheral.sendElementState(imageElement)
+        
+    }
 
     
 }

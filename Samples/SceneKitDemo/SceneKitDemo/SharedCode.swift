@@ -148,8 +148,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             
         }
         
-        // Get an image and apply it to the ship (image is set to my dog Digit, you'll see the fur)
-        controller.elements.custom[CustomElementType.SendImage.rawValue]!.valueChangedHandler = { (controller, element) in
+        controller.elements.sendImage.valueChangedHandler = { (controller, element) in
             
             //vgcLogDebug("Custom element handler fired for Send Image: \(element.value)")
             

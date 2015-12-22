@@ -435,6 +435,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         case .PlayerIndex:
             
             break
+            
+        case .SendImage:
+            
+            if let handler = element.valueChangedHandler {
+                dispatch_async((self.handlerQueue)) {
+                    handler(self, element)
+                }
+            }
 
         case .Custom:
 
@@ -490,6 +498,16 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         sendElementStateToPeripheral(element)
         element.value = 0
         sendElementStateToPeripheral(element)
+    }
+    
+    public func sendImage(image: UIImage) {
+
+        let imageElement = elements.elementFromIdentifier(ElementType.SendImage.rawValue)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        imageElement.value = imageData!
+        imageElement.clearValueAfterTransfer = true
+        sendElementStateToPeripheral(imageElement)
+        
     }
     
     // MARK: - Hardware Controller Management
