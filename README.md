@@ -1,4 +1,5 @@
-[![Swift 2.0](https://img.shields.io/badge/Swift-2.1-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Language](https://img.shields.io/badge/Language-Swift%202.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Language](https://img.shields.io/badge/Language-Objective%20C-orange.svg?style=flat)](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210-CH1-SW1)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 
@@ -278,7 +279,7 @@ When your watch sends values as described in the previous section, there are two
 
 ````swift
 VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
-	vgcLogDebug("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
+	print("iOS iPhone watch handler fired for \(element.name) with value \(element.value)")
 }
 ````
 If the valueChangedHandler is non-nil, values will no longer be automatically forwarded to the Central, and so if you wish those values to be forwarded, you must do so yourself:
@@ -301,7 +302,7 @@ If a watch is paired with your iPhone iOS app, values received by the iOS app fr
 
 ````swift
 watchConnectivity.valueChangedHandler = { (element: Element) in
-	vgcLogDebug("Watch handler fired for \(element.name) with value \(element.value)")
+	print("Watch handler fired for \(element.name) with value \(element.value)")
 }
 ````
 
