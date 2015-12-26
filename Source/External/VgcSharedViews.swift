@@ -573,18 +573,6 @@ class VgcButton: UIView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       
-// Uncomment to test sending an image from a Peripheral to a Central by tapping any of the
-// buttons on the Peripheral sample app
-/*
-        let image = UIImage(named: "digit.jpg")
-        let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
-        let imageData = UIImageJPEGRepresentation(image!, 1.0)
-        imageElement.value = imageData!
-        VgcManager.peripheral.sendElementState(imageElement)
-        self.backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)
-        return
-*/
             
         element.value = 0.0
         valueLabel.text = "\(element.value)"
@@ -976,25 +964,28 @@ public class ElementDebugView: UIView {
     }
     
     public func receivedDebugViewDoubleTap() {
+        
+        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.Image.rawValue)
+        let imageData = UIImageJPEGRepresentation(UIImage(named: "digit.jpg")!, 1.0)
+        imageElement.value = imageData!
+        imageElement.clearValueAfterTransfer = true
+        controller.sendElementStateToPeripheral(imageElement)
+        
+        return
 
         let element = controller.elements.rightTrigger
         element.value = 1.0
         controller.sendElementStateToPeripheral(element)
         
-//        // Test Image Send
-//        let image = UIImage(named: "digit.jpg")
-//        let element = controller.elements.custom[CustomElementType.SendImage.rawValue]!
-//        let imageData = UIImageJPEGRepresentation(image!, 1.0)
-//        element.value = imageData!
-//        controller.sendElementStateToPeripheral(element)
-        
     }
     
     public func receivedDebugViewTripleTap() {
         
-        
-        // Test Image Send
-        controller.sendImage(UIImage(named: "digit.jpg")!)
+        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.Image.rawValue)
+        let imageData = UIImageJPEGRepresentation(UIImage(named: "digit.jpg")!, 1.0)
+        imageElement.value = imageData!
+        imageElement.clearValueAfterTransfer = true
+        controller.sendElementStateToPeripheral(imageElement)
         
         // Test simple float mode
         //let rightShoulder = controller.elements.rightShoulder

@@ -433,7 +433,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             break
             
-        case .SendImage:
+        case .Image:
             
             if let handler = element.valueChangedHandler {
                 dispatch_async((self.handlerQueue)) {
@@ -496,33 +496,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         element.value = 0
         sendElementStateToPeripheral(element)
     }
-  
-    #if os(iOS) || os(tvOS)
-    public func sendImage(image: UIImage) {
-    
-    let imageElement = elements.elementFromIdentifier(ElementType.SendImage.rawValue)
-    let imageData = UIImageJPEGRepresentation(image, 1.0)
-    imageElement.value = imageData!
-    imageElement.clearValueAfterTransfer = true
-    sendElementStateToPeripheral(imageElement)
-    }
-    #endif
-    
-    #if os(OSX)
-    public func sendImage(image: NSImage) {
 
-        var imageData = image.TIFFRepresentation
-        let imageRep = NSBitmapImageRep(data:imageData!)
-        let imageProperties = [NSImageCompressionFactor: 1.0]
-        imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSJPEGFileType, properties: imageProperties)
-        let imageElement = elements.elementFromIdentifier(ElementType.SendImage.rawValue)
-        imageElement.value = imageData!
-        imageElement.clearValueAfterTransfer = true
-        sendElementStateToPeripheral(imageElement)
-        
-    }
-    #endif
-    
     // MARK: - Hardware Controller Management
     
     // Because tvOS only implements a sub-set of the motion profiles, a work-around

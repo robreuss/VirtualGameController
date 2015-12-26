@@ -330,31 +330,5 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         #endif
     }
 
-    #if os(iOS) || os(tvOS)
-    public func sendImage(image: UIImage) {
-        
-        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.SendImage.rawValue)
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
-        imageElement.value = imageData!
-        imageElement.clearValueAfterTransfer = true
-        VgcManager.peripheral.sendElementState(imageElement)
-    }
-    #endif
-    
-    #if os(OSX)
-    public func sendImage(image: NSImage) {
-        
-        var imageData = image.TIFFRepresentation
-        let imageRep = NSBitmapImageRep(data:imageData!)
-        let compression = 0.9
-        let imageProperties = [NSImageCompressionFactor: compression]
-        imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSJPEGFileType, properties: imageProperties)
-        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.SendImage.rawValue)
-        imageElement.value = imageData!
-        imageElement.clearValueAfterTransfer = true
-        VgcManager.peripheral.sendElementState(imageElement)
-        
-    }
-    #endif
 }
 

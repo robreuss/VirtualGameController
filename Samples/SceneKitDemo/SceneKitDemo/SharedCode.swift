@@ -148,7 +148,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             
         }
         
-        controller.elements.sendImage.valueChangedHandler = { (controller, element) in
+        controller.elements.image.valueChangedHandler = { (controller, element) in
             
             //vgcLogDebug("Custom element handler fired for Send Image: \(element.value)")
             

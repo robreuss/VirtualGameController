@@ -315,7 +315,7 @@ import VirtualGameController
         }
         
         // Test receiving an image
-        controller.elements.sendImage.valueChangedHandler = { (controller, element) in
+        controller.elements.image.valueChangedHandler = { (controller, element) in
             
             vgcLogDebug("Handler fired for Send Image")
             

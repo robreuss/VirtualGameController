@@ -89,7 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         
-        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.SendImage.rawValue) {
+        if let element: Element = VgcManager.elements.image {
             
             element.valueChangedHandlerForPeripheral = { (element: Element) in
                 
@@ -146,34 +146,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @objc func displayPhotoPicker(sender: AnyObject) {
-        
-        /*
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            
-            let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
-            let image = UIImage(named: "digit.jpg")
-            let imageData = UIImageJPEGRepresentation(image!, 1.0)
-            imageElement.value = imageData!
-            
-            // Discard image data after transfering
-            imageElement.clearValueAfterTransfer = true
-            VgcManager.peripheral.sendElementState(imageElement)
-        }
 
-        return
-        let imageElement = VgcManager.elements.custom[CustomElementType.SendImage.rawValue]!
-        let image = UIImage(named: "digit.jpg")
-        let imageData = UIImageJPEGRepresentation(image!, 1.0)
-        imageElement.value = imageData!
-        
-        // Discard image data after transfering
-        imageElement.clearValueAfterTransfer = true
-        VgcManager.peripheral.sendElementState(imageElement)
-        
-        return
-
-*/
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .Camera
@@ -185,7 +158,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePicker.dismissViewControllerAnimated(true) { () -> Void in
             
-            VgcManager.peripheral.sendImage(image)
+            let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.Image.rawValue)
+            let imageData = UIImageJPEGRepresentation(image, 1.0)
+            imageElement.value = imageData!
+            imageElement.clearValueAfterTransfer = true
+            VgcManager.peripheral.sendElementState(imageElement)
             
         }
 

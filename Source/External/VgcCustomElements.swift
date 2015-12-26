@@ -21,7 +21,7 @@ public enum CustomElementType: Int {
     case Keyboard       = 53
     case DebugViewTap = 54
     case VibrateDevice = 56
-    case SendImage = 57
+    case Image = 57
 }
 
 ///
@@ -49,8 +49,6 @@ public class CustomElements: CustomElementsSuperclass {
             CustomElement(name: "Fiddlestick Z", dataType: .Float, type:CustomElementType.FiddlestickZ.rawValue),
             CustomElement(name: "Keyboard", dataType: .String, type:CustomElementType.Keyboard.rawValue),
             CustomElement(name: "DebugView Tap", dataType: .Data, type:CustomElementType.DebugViewTap.rawValue),
-            CustomElement(name: "Vibrate Device", dataType: .Int, type:CustomElementType.VibrateDevice.rawValue),
-            CustomElement(name: "SendImage", dataType: .Data, type:CustomElementType.SendImage.rawValue)
         ]
 
     }
