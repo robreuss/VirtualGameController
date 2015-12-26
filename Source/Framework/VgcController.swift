@@ -393,13 +393,10 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     func updateGameControllerWithValue(element: Element) {
         
         // Value could be either a string or a float
-        var valueAsString: String = ""
         var valueAsFloat: Float = 0.0
          
         if element.value is NSNumber {
             valueAsFloat = (element.value as! NSNumber).floatValue
-        } else if element.value is NSString {
-            valueAsString = element.value as! String
         }
         
         switch(element.type) {
@@ -499,16 +496,32 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         element.value = 0
         sendElementStateToPeripheral(element)
     }
-    
+  
+    #if os(iOS) || os(tvOS)
     public func sendImage(image: UIImage) {
+    
+    let imageElement = elements.elementFromIdentifier(ElementType.SendImage.rawValue)
+    let imageData = UIImageJPEGRepresentation(image, 1.0)
+    imageElement.value = imageData!
+    imageElement.clearValueAfterTransfer = true
+    sendElementStateToPeripheral(imageElement)
+    }
+    #endif
+    
+    #if os(OSX)
+    public func sendImage(image: NSImage) {
 
+        var imageData = image.TIFFRepresentation
+        let imageRep = NSBitmapImageRep(data:imageData!)
+        let imageProperties = [NSImageCompressionFactor: 1.0]
+        imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSJPEGFileType, properties: imageProperties)
         let imageElement = elements.elementFromIdentifier(ElementType.SendImage.rawValue)
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
         imageElement.value = imageData!
         imageElement.clearValueAfterTransfer = true
         sendElementStateToPeripheral(imageElement)
         
     }
+    #endif
     
     // MARK: - Hardware Controller Management
     

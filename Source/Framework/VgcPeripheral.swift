@@ -15,7 +15,11 @@ import Foundation
     import GameController
 #endif
 
-#if os(iOS)
+#if os(OSX)
+    import AppKit
+#endif
+
+#if os(iOS) || os(tvOS)
     import UIKit
     import AudioToolbox
 #endif
@@ -325,7 +329,8 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         AudioServicesPlayAlertSound(UInt32(kSystemSoundID_Vibrate))
         #endif
     }
-    
+
+    #if os(iOS) || os(tvOS)
     public func sendImage(image: UIImage) {
         
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.SendImage.rawValue)
@@ -333,9 +338,23 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         imageElement.value = imageData!
         imageElement.clearValueAfterTransfer = true
         VgcManager.peripheral.sendElementState(imageElement)
+    }
+    #endif
+    
+    #if os(OSX)
+    public func sendImage(image: NSImage) {
+        
+        var imageData = image.TIFFRepresentation
+        let imageRep = NSBitmapImageRep(data:imageData!)
+        let compression = 0.9
+        let imageProperties = [NSImageCompressionFactor: compression]
+        imageData = imageRep!.representationUsingType(NSBitmapImageFileType.NSJPEGFileType, properties: imageProperties)
+        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.SendImage.rawValue)
+        imageElement.value = imageData!
+        imageElement.clearValueAfterTransfer = true
+        VgcManager.peripheral.sendElementState(imageElement)
         
     }
-
-    
+    #endif
 }
 
