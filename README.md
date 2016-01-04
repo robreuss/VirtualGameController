@@ -2,6 +2,7 @@
 [![Language](https://img.shields.io/badge/Language-Objective%20C-orange.svg?style=flat)](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210-CH1-SW1)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
+[![Carthage](https://github.com/Carthage/Carthage)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 
 # Virtual Game Controller
 
