@@ -36,6 +36,9 @@
             location = "group:VgcPeripheralSetup.swift">
          </FileRef>
          <FileRef
+            location = "group:VgcMotion.swift">
+         </FileRef>
+         <FileRef
             location = "group:VgcManager.swift">
          </FileRef>
          <FileRef
@@ -52,9 +55,6 @@
          </FileRef>
          <FileRef
             location = "group:VgcIcadePeripheral.swift">
-         </FileRef>
-         <FileRef
-            location = "group:VgcMotion.swift">
          </FileRef>
          <FileRef
             location = "group:VgcPeripheral.swift">
