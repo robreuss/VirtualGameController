@@ -28,6 +28,8 @@
 		2031E0421C24A37C00EE5FCA /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0411C24A37C00EE5FCA /* ElementRow.swift */; };
 		208E55871C24A4D10050D8AD /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; };
 		208E55881C24A4D10050D8AD /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20A490501C3A00B000E66788 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */; };
+		20A490511C3A00B000E66788 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,9 +198,9 @@
 				2031E02E1C24A21500EE5FCA /* VirtualGameControllerIOS.xcodeproj */,
 				2031E02A1C24A1B900EE5FCA /* AppDelegate.swift */,
 				2031E02B1C24A1B900EE5FCA /* ViewController.swift */,
-				2031DFF21C24A19000EE5FCA /* Main.storyboard */,
 				2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */,
 				2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */,
+				2031DFF21C24A19000EE5FCA /* Main.storyboard */,
 				2031E03B1C24A25100EE5FCA /* VgcSharedViews.swift */,
 				2031DFF51C24A19000EE5FCA /* Assets.xcassets */,
 				2031DFF71C24A19000EE5FCA /* LaunchScreen.storyboard */,
@@ -434,6 +436,8 @@
 			files = (
 				2031E0181C24A19100EE5FCA /* NotificationController.swift in Sources */,
 				2031E0421C24A37C00EE5FCA /* ElementRow.swift in Sources */,
+				20A490501C3A00B000E66788 /* VgcCustomElements.swift in Sources */,
+				20A490511C3A00B000E66788 /* VgcCustomMappings.swift in Sources */,
 				2031E0161C24A19100EE5FCA /* ExtensionDelegate.swift in Sources */,
 				2031E0141C24A19100EE5FCA /* InterfaceController.swift in Sources */,
 			);

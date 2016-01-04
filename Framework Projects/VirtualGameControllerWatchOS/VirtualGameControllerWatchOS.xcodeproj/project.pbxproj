@@ -13,8 +13,6 @@
 		202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBFED1BE57419004D47EC /* VgcWatchConnectivity.swift */; };
 		207A78C11C276DA800529768 /* VgcLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A78C01C276DA800529768 /* VgcLogger.swift */; };
 		20A120BE1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20D1A3751C20EBCA0032EC10 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1A3731C20EBCA0032EC10 /* VgcCustomElements.swift */; };
-		20D1A3761C20EBCA0032EC10 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1A3741C20EBCA0032EC10 /* VgcCustomMappings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,8 +24,6 @@
 		20A120BA1BDA97BF00E30083 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A120BD1BDA97BF00E30083 /* VirtualGameControllerWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerWatchOS.h; sourceTree = "<group>"; };
 		20A120BF1BDA97BF00E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20D1A3731C20EBCA0032EC10 /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
-		20D1A3741C20EBCA0032EC10 /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,8 +40,6 @@
 		20A120B01BDA97BF00E30083 = {
 			isa = PBXGroup;
 			children = (
-				20D1A3731C20EBCA0032EC10 /* VgcCustomElements.swift */,
-				20D1A3741C20EBCA0032EC10 /* VgcCustomMappings.swift */,
 				20A120BC1BDA97BF00E30083 /* VirtualGameControllerWatchOS */,
 				20A120BB1BDA97BF00E30083 /* Products */,
 			);
@@ -153,11 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20D1A3761C20EBCA0032EC10 /* VgcCustomMappings.swift in Sources */,
 				202BBFF21BE57419004D47EC /* VgcWatchConnectivity.swift in Sources */,
 				207A78C11C276DA800529768 /* VgcLogger.swift in Sources */,
 				202BBFF11BE57419004D47EC /* VgcMotion.swift in Sources */,
-				20D1A3751C20EBCA0032EC10 /* VgcCustomElements.swift in Sources */,
 				202BBFF01BE57419004D47EC /* VgcManager.swift in Sources */,
 				202BBFEF1BE57419004D47EC /* VgcElements.swift in Sources */,
 			);
