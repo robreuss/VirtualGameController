@@ -8,6 +8,8 @@
 
 import Foundation
 
+#if !os(watchOS)
+
 public enum IcadeControllerMode: CustomStringConvertible {
  
     case Disabled
@@ -47,9 +49,7 @@ public enum IcadeControllerMode: CustomStringConvertible {
 
 public class VgcIcadePeripheral: NSObject {
     
-    #if !os(watchOS)
     let peripheralManager = VgcManager.peripheral
-    #endif
     
     ///
     /// Return an element in exchange for a character sent by the iCade controller.
@@ -386,4 +386,4 @@ func set5678ABXYButtons(elementCharacter: String, controllerElements: Elements) 
     }
 }
 
-
+#endif

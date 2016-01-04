@@ -19,6 +19,8 @@ import Foundation
     import AudioToolbox
 #endif
 
+#if !os(watchOS)
+
 public let VgcPeripheralDidConnectNotification:      String = "VgcPeripheralDidConnectNotification"
 public let VgcPeripheralConnectionFailedNotification:String = "VgcPeripheralConnectionFailed"
 public let VgcPeripheralDidDisconnectNotification:   String = "VgcPeripheralDidDisconnectNotification"
@@ -326,4 +328,4 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     }
 
 }
-
+#endif

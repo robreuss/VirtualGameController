@@ -8,6 +8,8 @@
 
 import Foundation
 
+#if !os(watchOS)
+
 @objc internal protocol VgcStreamerDelegate {
     
     func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData)
@@ -418,3 +420,4 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     
 }
 
+#endif

@@ -11,6 +11,8 @@ import Foundation
 import WatchConnectivity
 #endif
 
+#if !os(watchOS)
+
 @objc internal protocol VgcWatchDelegate {
     
     func receivedWatchMessage(element: Element)
@@ -124,4 +126,5 @@ public class VgcWatch: NSObject, WCSessionDelegate {
         
     }
 }
+#endif
 #endif

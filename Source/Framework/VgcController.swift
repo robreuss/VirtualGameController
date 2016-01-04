@@ -13,6 +13,8 @@ import Foundation
     import CoreBluetooth
 #endif
 
+#if !os(watchOS)
+
 public let VgcControllerDidConnectNotification:     String = "VgcControllerDidConnectNotification"
 public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDisconnectNotification"
 
@@ -2346,6 +2348,8 @@ class VgcFloatValue: NSObject {
     var value: Float = 0.0
     
 }
+
+#endif
 
 
 

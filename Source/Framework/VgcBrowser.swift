@@ -27,6 +27,8 @@ let deviceName = NSHost.currentHost().localizedName!
     public let peripheralBackgroundColor = NSColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 #endif
 
+#if !os(watchOS)
+
 // MARK: NetService Peripheral Management
 
 class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, NSStreamDelegate, VgcStreamerDelegate {
@@ -420,3 +422,5 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     }
     
 }
+
+#endif

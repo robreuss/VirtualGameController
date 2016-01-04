@@ -14,6 +14,8 @@ import Foundation
     import GameController
 #endif
 
+#if !os(watchOS)
+
 @objc internal protocol VgcPendingStreamDelegate {
     
     func testForMatchingStreams()
@@ -274,3 +276,5 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     
     
 }
+
+#endif

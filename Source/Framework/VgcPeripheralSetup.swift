@@ -10,9 +10,12 @@ import Foundation
 #if os(iOS) || os(tvOS)
 import UIKit
 #endif
+
 #if os(OSX)
     import AppKit
 #endif
+
+#if !os(watchOS)
 
 public class VgcPeripheralSetup: NSObject {
     
@@ -145,7 +148,7 @@ required convenience public init(coder decoder: NSCoder) {
     
 }
 
-
+#endif
 
 /*
 required convenience public init(coder decoder: NSCoder) {
