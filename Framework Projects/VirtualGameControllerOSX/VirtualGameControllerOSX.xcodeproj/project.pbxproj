@@ -19,6 +19,7 @@
 		207A78BF1C276D9E00529768 /* VgcLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A78BE1C276D9E00529768 /* VgcLogger.swift */; };
 		208E55991C24BC4F0050D8AD /* VgcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E55981C24BC4F0050D8AD /* VgcWatch.swift */; };
 		20A1217E1BDAED5B00E30083 /* VirtualGameControllerOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A1217D1BDAED5B00E30083 /* VirtualGameControllerOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		20A4904D1C399DEF00E66788 /* VgcMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4904C1C399DEF00E66788 /* VgcMotion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		20A1217A1BDAED5B00E30083 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A1217D1BDAED5B00E30083 /* VirtualGameControllerOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerOSX.h; sourceTree = "<group>"; };
 		20A1217F1BDAED5B00E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20A4904C1C399DEF00E66788 /* VgcMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = "/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS/../../../Source/Framework/VgcMotion.swift"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				202BBFAA1BE56C63004D47EC /* VgcController.swift */,
 				202BBFAB1BE56C63004D47EC /* VgcElements.swift */,
 				202BBFAC1BE56C63004D47EC /* VgcIcadePeripheral.swift */,
+				20A4904C1C399DEF00E66788 /* VgcMotion.swift */,
 				207A78BE1C276D9E00529768 /* VgcLogger.swift */,
 				202BBFAD1BE56C63004D47EC /* VgcManager.swift */,
 				200B43CA1C179C2B000E8002 /* VgcPeripheralSetup.swift */,
@@ -171,6 +174,7 @@
 				208E55991C24BC4F0050D8AD /* VgcWatch.swift in Sources */,
 				202BBFB61BE56C63004D47EC /* VgcManager.swift in Sources */,
 				202BBFB41BE56C63004D47EC /* VgcElements.swift in Sources */,
+				20A4904D1C399DEF00E66788 /* VgcMotion.swift in Sources */,
 				202BBFB31BE56C63004D47EC /* VgcController.swift in Sources */,
 				202BBFB11BE56C63004D47EC /* VgcCentralPublisher.swift in Sources */,
 				2023EA3F1BED64BE009AE7F7 /* VgcBrowser.swift in Sources */,

@@ -39,6 +39,7 @@
 		2047C4641C23BFEC00842944 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
 		207A78BA1C276D8200529768 /* VgcLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcLogger.swift; path = ../../../Source/Framework/VgcLogger.swift; sourceTree = "<group>"; };
 		208E558C1C24A8080050D8AD /* VgcWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = ../../Source/Framework/VgcWatch.swift; sourceTree = "<group>"; };
+		20A4904E1C399E3800E66788 /* VgcWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = "/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS/../../../Source/Framework/VgcWatch.swift"; sourceTree = "<absolute>"; };
 		20D1A3821C20F2260032EC10 /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -83,6 +84,7 @@
 				201C2CB01C20C927004B4826 /* VgcElements.swift */,
 				201C2CB11C20C927004B4826 /* VgcBrowser.swift */,
 				201C2CB21C20C927004B4826 /* VgcIcadePeripheral.swift */,
+				20A4904E1C399E3800E66788 /* VgcWatch.swift */,
 				201C2CB31C20C927004B4826 /* VgcMotion.swift */,
 				201C2CB41C20C927004B4826 /* VgcPeripheral.swift */,
 				202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */,
