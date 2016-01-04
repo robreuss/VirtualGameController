@@ -1,8 +1,8 @@
-[![Language](https://img.shields.io/badge/Language-Swift%202.0-orange.svg?style=flat)](https://developer.apple.com/swift/)
-[![Language](https://img.shields.io/badge/Language-Objective%20C-orange.svg?style=flat)](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html#//apple_ref/doc/uid/TP40011210-CH1-SW1)
+[![Language](https://img.shields.io/badge/Language-Swift%202.0%20%7C%20Obj%20C-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
-[![Carthage](https://github.com/Carthage/Carthage)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
+[![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![CocoaPods](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/?q=virtualgamecontroller)
 
 # Virtual Game Controller
 
@@ -70,7 +70,7 @@ Note that you currently need to ````import GameController```` as well.
 
 See the [instructions on the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C) for utilizing Objective C.
 
-Or use [CocoaPods](https://cocoapods.org/?q=virtualgamecontroller).
+Support is in place for [CocoaPods](https://cocoapods.org/?q=virtualgamecontroller) and Carthage.
 
 ## Using the Sample Projects
 
