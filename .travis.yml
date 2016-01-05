@@ -15,3 +15,7 @@ matrix:
     exclude:
     - xcode_sdk: iphonesimulator9.2
     xcode_scheme: VirtualGameControllerOSX
+    - xcode_sdk: iphonesimulator9.2
+    xcode_scheme: VirtualGameControllerTvOS
+    - xcode_sdk: iphonesimulator9.2
+    xcode_scheme: VirtualGameControllerTvOS
