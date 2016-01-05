@@ -12,29 +12,10 @@ xcode_sdk:
 - tvos9.0
 - watchos2.0
 matrix:
-    exclude:
-        - xcode_scheme: VirtualGameControllerIOS
-          xcode_sdk: macosx10.11
-        - xcode_scheme: VirtualGameControllerIOS
-        xcode_sdk: tvos9.0
-        - xcode_scheme: VirtualGameControllerIOS
-        xcode_sdk: watchos2.0
-        - xcode_scheme: VirtualGameControllerOSX
-        xcode_sdk: iphonesimulator9.2
-        - xcode_scheme: VirtualGameControllerOSX
-        xcode_sdk: tvos9.0
-        - xcode_scheme: VirtualGameControllerOSX
-        xcode_sdk: watchos2.0
-        - xcode_scheme: VirtualGameControllerTvOS
-        xcode_sdk: iphonesimulator9.2
-        - xcode_scheme: VirtualGameControllerTvOS
-        xcode_sdk: macosx10.11
-        - xcode_scheme: VirtualGameControllerTvOS
-        xcode_sdk: watchos2.0
-        - xcode_scheme: VirtualGameControllerWatchOS
-        xcode_sdk: iphonesimulator9.2
-        - xcode_scheme: VirtualGameControllerWatchOS
-        xcode_sdk: macosx10.11
-        - xcode_scheme: VirtualGameControllerWatchOS
-        xcode_sdk: iphonesimulator9.2
-
+exclude:
+- xcode_scheme: VirtualGameControllerIOS
+xcode_sdk: macosx10.11
+- xcode_scheme: VirtualGameControllerIOS
+xcode_sdk: tvos9.0
+- xcode_scheme: VirtualGameControllerIOS
+xcode_sdk: watchos2.0
