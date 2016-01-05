@@ -6,5 +6,5 @@ xcode_sdk:
 - macosx10.11
 - tvos9.0
 - watchos2.0
-env:
-- xcode_scheme=VirtualGameControllerIOS xcode_scheme=VirtualGameControllerOSX xcode_scheme=VirtualGameControllerTvOS xcode_scheme=VirtualGameControllerWatchOS
+xcode_scheme:
+- VirtualGameControllerIOS VirtualGameControllerOSX VirtualGameControllerTvOS VirtualGameControllerWatchOS
