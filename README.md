@@ -26,7 +26,7 @@
 - Swift 2.1 or Objective C
 - Framework-based
 
-## Requirements
+## Requirements 
 
 - iOS 9.0+ / Mac OS X 10.9+
 - Xcode 7 / Swift 2.0 / Objective C
