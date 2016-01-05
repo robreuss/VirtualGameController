@@ -1,7 +1,9 @@
 language: objective-c
 osx_image: xcode7.2
 xcode_workspace: VirtualGameController.xcworkspace
-xcode_scheme: VirtualGameControllerIOS
-xcode_sdk: iphonesimulator9.2
-#xcode_scheme: VirtualGameControllerOSX
-#xcode_sdk: macosx10.11
+xcode_scheme:
+- VirtualGameControllerIOS
+- VirtualGameControllerOSX
+xcode_sdk:
+- iphonesimulator9.2
+- macosx10.11
