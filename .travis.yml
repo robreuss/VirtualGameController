@@ -14,11 +14,4 @@ xcode_scheme:
 matrix:
     exclude:
     - xcode_sdk: iphonesimulator9.2
-    env: xcode_scheme=VirtualGameControllerOSX
-    - xcode_sdk: macosx10.11
-        xcode_scheme: VirtualGameControllerIOS
-    - xcode_sdk: tvos9.0
-        xcode_scheme: VirtualGameControllerOSX
-    - xcode_sdk: watchos2.0
-        xcode_scheme: VirtualGameControllerOSX
-
+    xcode_scheme: VirtualGameControllerOSX
