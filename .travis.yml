@@ -4,6 +4,10 @@ xcode_workspace: VirtualGameController.xcworkspace
 xcode_scheme:
 - VirtualGameControllerIOS
 - VirtualGameControllerOSX
+- VirtualGameControllerTvOS
+- VirtualGameControllerWatchOS
 xcode_sdk:
 - iphonesimulator9.2
 - macosx10.11
+- tvos9.0
+- watchos2.0
