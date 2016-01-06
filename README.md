@@ -92,16 +92,16 @@ carthage update --platform watchOS
 
 ## Using the Sample Projects
 
-A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS), along with projects that demonstrates the use of Objective C and SceneKit.  They are delivered with the framework files *copied* into the project rather than referring to the build product of the framework projects.  To switch to using the build products of the framework file, [follow these instructions from the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Setup-Frameworks-in-Sample-Projects).
+A number of sample projects are included that demonstrate the app roles (Peripheral, Bridge and Central) for different platforms (iOS, tvOS, OS X, watchOS), along with projects that demonstrates the use of Objective C and SceneKit.  They are delivered with the framework projects as submodules.  
 
 Other notes on sample projects:
 
-- To explore using your _Apple Watch_ as a controller, use the __iOS Bridge__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
+- To explore using your _Apple Watch_ as a controller, use the __iOS Peripheral__ sample, which is setup as a watchOS project.  A watch can interact with the iPhone it is paired to as either a Bridge (forwarding values to some other Central) or as a Central (displaying the game interface directly on the paired iPhone).  Discovery of paired watches is automatic.
 - Checking out the SceneKit sample project is a great way to evaluate the motion capabilities of the framework, as well as being fun.  It is implemented as a single project with shared code for targetting iOS, OSX and tvOS.
 - There are also instructions on the Wiki for testing using [DemoBots](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots) (in Swift) and [SceneKitVehicle](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-SceneKitVehicle) (in Objective C) sample projects from Apple.
 
 ## Working with MFi Hardware-based Controllers
-VirtualGameController is designed to be interface compatible with Apple's Game Controller framework, and so working with hardware controllers with VGC is largely the same as it is with the [Game Controller framework](https://developer.apple.com/library/tvos/documentation/GameController/Reference/GCController_Ref/index.html).  See the Game Integration section below and the sample projects for additional details.
+VirtualGameController is a wrapper around Apple's Game Controller framework, and so working with hardware controllers with VGC is the same as it is with the [Game Controller framework](https://developer.apple.com/library/tvos/documentation/GameController/Reference/GCController_Ref/index.html).  See the Game Integration section below and the sample projects for additional details.
 
 ## Creating a Software-based Peripheral
 ####Initialization
@@ -139,7 +139,7 @@ Begin the search for Bridges and Centrals:
 ``` swift
 VgcManager.peripheral.browseForServices()
 ```
-Access the current set of found services:
+Access the current set of available services:
 
 ``` swift
 VgcManager.peripheral.availableServices
