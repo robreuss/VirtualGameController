@@ -71,7 +71,24 @@ Note that you currently need to ````import GameController```` as well.
 
 See the [instructions on the Wiki](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C) for utilizing Objective C.
 
-Support is in place for [CocoaPods](https://cocoapods.org/?q=virtualgamecontroller) and Carthage.
+#### CocoaPods
+Preliminary support is in place for [CocoaPods](https://cocoapods.org/?q=virtualgamecontroller).
+
+#### Carthage
+In order to integrate using Carthage, add VGC to your Cartfile:
+
+````
+github "robreuss/VirtualGameController"
+````
+
+Then use platform-specific commands to create the build products that you need to add to your project:
+
+````
+carthage update --platform iOS
+carthage update --platform OSX
+carthage update --platform tvOS
+carthage update --platform watchOS
+````
 
 ## Using the Sample Projects
 
