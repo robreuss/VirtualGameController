@@ -187,6 +187,23 @@ public class Element: NSObject {
         super.init()
     }
     
+    public func clearValue() {
+        switch self.dataType {
+            
+        case .Int:
+            value = 0
+            
+        case .Float:
+            value = 0.0
+            
+        case .Data:
+            value = NSData()
+            
+        case .String:
+            value = ""
+        }
+    }
+    
     public var dataMessage: NSMutableData {
         
         let elementValueAsNSData = valueAsNSData

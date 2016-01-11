@@ -58,7 +58,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         writeData(messageData, toStream: toStream)
         
         if element.clearValueAfterTransfer {
-            element.value = 0
+            element.clearValue()
         }
  
     }
