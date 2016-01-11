@@ -252,10 +252,24 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     
     public static func sendElementStateToAllPeripherals(element: Element) {
+        
+        // Test if element is generic from VGCManager
+        let genericElement = VgcManager.elements.elementFromIdentifier(element.identifier)
+        
         for controller in VgcController.controllers() {
             if controller.hardwareController == nil {
-                controller.sendElementStateToPeripheral(element)
-            }
+  
+                // If element is generic, convert it to controller-specific
+                if element == genericElement {
+                    let controllerSpecificElement = controller.elements.elementFromIdentifier(element.identifier)
+                    controllerSpecificElement.value = element.value
+                    controllerSpecificElement.clearValueAfterTransfer = element.clearValueAfterTransfer
+                    controller.sendElementStateToPeripheral(controllerSpecificElement)
+                } else {
+                    controller.sendElementStateToPeripheral(element)
+                }
+                
+             }
         }
     }
     
