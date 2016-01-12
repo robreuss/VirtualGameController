@@ -66,9 +66,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = true
-        VgcManager.peripheral.motion.enableRotationRate = true
-        VgcManager.peripheral.motion.enableUserAcceleration = true
+        VgcManager.peripheral.motion.enableGravity = false
+        VgcManager.peripheral.motion.enableRotationRate = false
+        VgcManager.peripheral.motion.enableUserAcceleration = false
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
