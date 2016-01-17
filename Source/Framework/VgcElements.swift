@@ -444,13 +444,12 @@ public class Elements: NSObject {
         // used by devs to access the elements
         
         for customElement in Elements.customElements.customProfileElements {
+            let elementCopy = customElement.copy() as! Element
+            elementCopy.identifier = customElement.identifier
+            custom[elementCopy.identifier] = elementCopy
+            customProfileElements.append(elementCopy)
             
-            //let elementCopy = customElement.copy() as! Element
-            //elementCopy.identifier = customElement.identifier
-            custom[customElement.identifier] = customElement
         }
-        
-        customProfileElements = Elements.customElements.customProfileElements
         
         super.init()
         
