@@ -52,7 +52,7 @@
 		20A491171C3A1E4E00E66788 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = ../../Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<group>"; };
 		20A491181C3A1E4E00E66788 /* VgcStreamer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcStreamer.swift; path = ../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 		20A491191C3A1E4E00E66788 /* VgcWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = ../../Source/Framework/VgcWatch.swift; sourceTree = "<group>"; };
-		20A4911A1C3A1E4E00E66788 /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; };
+		20A4911A1C3A1E4E00E66788 /* VgcWatchConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatchConnectivity.swift; path = ../../Source/Framework/VgcWatchConnectivity.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
