@@ -75,14 +75,14 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         // instead of the debug view UI
         if VgcManager.appRole == .EnhancementBridge { return }
         
-        guard let controller: VgcController = notification.object as? VgcController else {
+        guard let newController: VgcController = notification.object as? VgcController else {
             vgcLogDebug("Got nil controller in controllerDidConnect")
             return
         }
         
-        if controller.isHardwareController { return }
+        if newController.isHardwareController { return }
         
-        if controller.deviceInfo.controllerType == .MFiHardware { return }
+        if newController.deviceInfo.controllerType == .MFiHardware { return }
         
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         
@@ -92,12 +92,12 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         VgcManager.peripheralSetup.enableMotionGravity = true
         VgcManager.peripheralSetup.enableMotionUserAcceleration = false
         VgcManager.peripheralSetup.enableMotionRotationRate = false
-        VgcManager.peripheralSetup.sendToController(controller)
+        VgcManager.peripheralSetup.sendToController(newController)
         
         // Dpad adjusts lighting position
         
         #if os(iOS) || os(tvOS)
-        controller.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in
+        newController.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in
             
             self.lightNode.position = SCNVector3(x: Float(xValue * 10), y: Float(yValue * 20), z: Float(yValue * 30) + 10)
             
@@ -105,7 +105,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         #endif
         
         #if os(OSX)
-            controller.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in
+            newController.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in
                 
                 self.lightNode.position = SCNVector3(x: CGFloat(xValue * 10), y: CGFloat(yValue * 20), z: CGFloat(yValue * 30) + 10)
                 
@@ -114,41 +114,41 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         
         
         // Left thumbstick controls move the plane left/right and up/down
-        controller.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
+        newController.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
             
             self.ship.runAction(SCNAction.moveTo(SCNVector3.init(xValue * 5, yValue * 5, 0.0), duration: 0.3))
             
         }
         
         // Right thumbstick Y axis controls plane scale
-        controller.extendedGamepad?.rightThumbstick.yAxis.valueChangedHandler = { (input, value) in
+        newController.extendedGamepad?.rightThumbstick.yAxis.valueChangedHandler = { (input, value) in
             
-            self.scaleShipByValue(CGFloat((controller.extendedGamepad?.rightThumbstick.yAxis.value)!))
+            self.scaleShipByValue(CGFloat((newController.extendedGamepad?.rightThumbstick.yAxis.value)!))
             
         }
         
         // Right Shoulder pushes the ship away from the user
-        controller.extendedGamepad?.rightShoulder.valueChangedHandler = { (input, value, pressed) in
+        newController.extendedGamepad?.rightShoulder.valueChangedHandler = { (input, value, pressed) in
             
-            self.scaleShipByValue(CGFloat((controller.extendedGamepad?.rightShoulder.value)!))
+            self.scaleShipByValue(CGFloat((newController.extendedGamepad?.rightShoulder.value)!))
             
         }
         
         // Left Shoulder resets the reference frame
-        controller.extendedGamepad?.leftShoulder.valueChangedHandler = { (input, value, pressed) in
+        newController.extendedGamepad?.leftShoulder.valueChangedHandler = { (input, value, pressed) in
             
             self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 10.0), count: 1))
             
         }
         
         // Right trigger draws the plane toward the user
-        controller.extendedGamepad?.rightTrigger.valueChangedHandler = { (input, value, pressed) in
+        newController.extendedGamepad?.rightTrigger.valueChangedHandler = { (input, value, pressed) in
             
-            self.scaleShipByValue(-(CGFloat((controller.extendedGamepad?.rightTrigger.value)!)))
+            self.scaleShipByValue(-(CGFloat((newController.extendedGamepad?.rightTrigger.value)!)))
             
         }
         
-        controller.elements.image.valueChangedHandler = { (controller, element) in
+        newController.elements.image.valueChangedHandler = { (controller, element) in
             
             //vgcLogDebug("Custom element handler fired for Send Image: \(element.value)")
             
@@ -190,7 +190,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1.3), count: 1))
         
         // Refresh on all motion changes
-        controller.motion?.valueChangedHandler = { (input: VgcMotion) in
+        newController.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             let amplify = 3.14158
             

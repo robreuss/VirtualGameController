@@ -212,16 +212,16 @@ import VirtualGameController
         // instead of the debug view UI
         if VgcManager.appRole == .EnhancementBridge { return }
         
-        guard let controller: VgcController = notification.object as? VgcController else {
+        guard let newController: VgcController = notification.object as? VgcController else {
             vgcLogDebug("Got nil controller in controllerDidConnect")
             return
         }
         
-        let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: controller)
+        let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: newController)
         elementDebugView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin]
         scrollview.addSubview(elementDebugView)
         
-        if !controller.isHardwareController {
+        if !newController.isHardwareController {
             
             /*
             // DEMONSTRATES SENDING CONFIGURATION INFO TO THE PERIPHERAL ON CONNECTION
@@ -250,37 +250,37 @@ import VirtualGameController
             
         }
      
-        elementDebugViewLookup[controller] = elementDebugView
+        elementDebugViewLookup[newController] = elementDebugView
         
         self.refreshElementDebugViewPositions()
         
         // Update the debug view after giving the player index time to arrive
         let triggerTime = (Int64(NSEC_PER_SEC) * 6)
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
-            elementDebugView.refresh(controller)
+            elementDebugView.refresh(newController)
         })
 
 
         // Refresh on all extended gamepad changes (Global handler)
-        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+        newController.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
-            self.refreshDebugViewForController(controller)
+            self.refreshDebugViewForController(newController)
             
         }
 
 
         // Refresh on all gamepad changes (Global handler)
-        controller.gamepad?.valueChangedHandler = { (gamepad: GCGamepad, element: GCControllerElement) in
+        newController.gamepad?.valueChangedHandler = { (gamepad: GCGamepad, element: GCControllerElement) in
             
-            self.refreshDebugViewForController(controller)
+            self.refreshDebugViewForController(newController)
             
         }
 
         #if os(tvOS)
             // Refresh on all micro gamepad changes (Global handler)
-            controller.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in
+            newController.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in
                 
-                self.refreshDebugViewForController(controller)
+                self.refreshDebugViewForController(newController)
                 
             }
         #endif
@@ -289,17 +289,17 @@ import VirtualGameController
         var lastMotionRefresh: NSDate = NSDate()
         
         // Refresh on all motion changes
-        controller.motion?.valueChangedHandler = { (input: VgcMotion) in
+        newController.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             // Avoid updating too often or the UI will freeze up
             if lastMotionRefresh.timeIntervalSinceNow > -0.01 { return } else { lastMotionRefresh = NSDate() }
-            self.refreshDebugViewForController(controller)
+            self.refreshDebugViewForController(newController)
             
         }
         
         // Toggle pause button display value.  Note that the toggle state of the pause button is the
         // responsibility of the app (the game) to manage
-        controller.controllerPausedHandler = { (controller: VgcController) in
+        newController.controllerPausedHandler = { (controller: VgcController) in
 
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
                 elementDebugView.togglePauseState()
@@ -315,7 +315,7 @@ import VirtualGameController
         }
         
         // Test receiving an image
-        controller.elements.image.valueChangedHandler = { (controller, element) in
+        newController.elements.image.valueChangedHandler = { (controller, element) in
             
             vgcLogDebug("Handler fired for Send Image")
             
@@ -328,7 +328,7 @@ import VirtualGameController
         }
         
         // Test of custom element "keyboard" handler
-        controller.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (controller, element) in
+        newController.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (controller, element) in
             
             let stringValue = String(controller.elements.custom[CustomElementType.Keyboard.rawValue]!.value)
             if stringValue.characters.count > 1 {
@@ -343,7 +343,7 @@ import VirtualGameController
         }
         
         // Another custom element test
-        controller.elements.custom[CustomElementType.FiddlestickX.rawValue]!.valueChangedHandler = { (controller, element) in
+        newController.elements.custom[CustomElementType.FiddlestickX.rawValue]!.valueChangedHandler = { (controller, element) in
             
             self.refreshDebugViewForController(controller)
             
