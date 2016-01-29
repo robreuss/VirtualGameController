@@ -28,7 +28,7 @@ import Foundation
 
 func logAtLevel(priority: LogLevel, logLine: String ) {
     
-    if priority.rawValue >= VgcManager.loggerLogLevel.rawValue  {
+    if priority.rawValue <= VgcManager.loggerLogLevel.rawValue  {
         
         if VgcManager.loggerUseNSLog {
             NSLog(logLine)
