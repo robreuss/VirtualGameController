@@ -331,13 +331,14 @@ public class Element: NSObject {
         coder.encodeObject(setterKeypath, forKey: "setterKeypath")
     
     }
-
+    
+    #endif
+    
     public func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
         return copy
     }
 
-    #endif
 }
 
 #if os(iOS) || os(OSX) || os(tvOS)
