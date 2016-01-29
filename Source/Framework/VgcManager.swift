@@ -246,7 +246,7 @@ public class VgcManager: NSObject {
 
     public static var netServiceBufferSize = 2048
     
-    public static var netServiceLatencyLogging = false
+    public static var netServiceLatencyLogging = true
     
     // The header length of messages
     static var netServiceHeaderLength: Int {
