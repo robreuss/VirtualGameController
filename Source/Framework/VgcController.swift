@@ -2208,8 +2208,6 @@ class VgcControllerButtonInput: GCControllerButtonInput {
                 vgcButtonPressed = false
             }
 
-            // Pressed is a calculated value based on the float value being greater than 0 (some pressure),
-            // but should only be called once per press sequence
             if let pressedChangedHandler = vgcPressedChangedHandler {
 
                 dispatch_async((vgcGameController?.handlerQueue)!) {
@@ -2218,7 +2216,9 @@ class VgcControllerButtonInput: GCControllerButtonInput {
             }
             
             if let valueHandler = vgcValueChangedHandler {
-                valueHandler(self, (self.element.value).floatValue, vgcButtonPressed)
+                dispatch_async((vgcGameController?.handlerQueue)!) {
+                    valueHandler(self, (self.element.value).floatValue, self.vgcButtonPressed)
+                }
             }
             
             vgcGameController?.callProfileLevelChangeHandler(self)
