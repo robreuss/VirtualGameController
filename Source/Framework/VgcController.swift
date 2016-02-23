@@ -2175,7 +2175,7 @@ class VgcControllerButtonInput: GCControllerButtonInput {
     private var element: Element!
     private var vgcValueChangedHandler: GCControllerButtonValueChangedHandler?
     private var vgcPressedChangedHandler: GCControllerButtonValueChangedHandler?
-    private var calledPressedHandler: Bool = false
+    private var vgcButtonPressed: Bool = false
     
     //internal typealias VgcControllerButtonValueChangedHandler = (VgcControllerButtonInput, Float, Bool) -> Void
     
@@ -2188,13 +2188,10 @@ class VgcControllerButtonInput: GCControllerButtonInput {
         
     }
     
+
     override var pressed: Bool {
         get {
-            if (element.value).floatValue > 0 {
-                return true
-            } else {
-                return false
-            }
+            return vgcButtonPressed
         }
     }
     
@@ -2205,23 +2202,23 @@ class VgcControllerButtonInput: GCControllerButtonInput {
         }
         set {
             
-            //element.value = newValue
-            
-            if (newValue == 0) { calledPressedHandler = false }
-            
-            if let valueHandler = vgcValueChangedHandler {
-                valueHandler(self, (self.element.value).floatValue, self.pressed)
+            if !vgcButtonPressed && element.value.floatValue != 0.0 {
+                vgcButtonPressed = true
+            } else if vgcButtonPressed && element.value.floatValue == 0.0 {
+                vgcButtonPressed = false
             }
-            
+
             // Pressed is a calculated value based on the float value being greater than 0 (some pressure),
             // but should only be called once per press sequence
             if let pressedChangedHandler = vgcPressedChangedHandler {
-                if (((element.value).floatValue! > 0) && (calledPressedHandler == false)) {
-                    calledPressedHandler = true
-                    dispatch_async((vgcGameController?.handlerQueue)!) {
-                        pressedChangedHandler(self, (self.element.value).floatValue, self.pressed)
-                    }
+
+                dispatch_async((vgcGameController?.handlerQueue)!) {
+                    pressedChangedHandler(self, (self.element.value).floatValue, self.vgcButtonPressed)
                 }
+            }
+            
+            if let valueHandler = vgcValueChangedHandler {
+                valueHandler(self, (self.element.value).floatValue, vgcButtonPressed)
             }
             
             vgcGameController?.callProfileLevelChangeHandler(self)
