@@ -2202,16 +2202,21 @@ class VgcControllerButtonInput: GCControllerButtonInput {
         }
         set {
             
+            var buttonPressedChanged = false
+            
             if !vgcButtonPressed && element.value.floatValue != 0.0 {
                 vgcButtonPressed = true
+                buttonPressedChanged = true
             } else if vgcButtonPressed && element.value.floatValue == 0.0 {
                 vgcButtonPressed = false
+                buttonPressedChanged = true
             }
 
-            if let pressedChangedHandler = vgcPressedChangedHandler {
-
-                dispatch_async((vgcGameController?.handlerQueue)!) {
-                    pressedChangedHandler(self, (self.element.value).floatValue, self.vgcButtonPressed)
+            if buttonPressedChanged {
+                if let pressedChangedHandler = vgcPressedChangedHandler {
+                    dispatch_async((vgcGameController?.handlerQueue)!) {
+                        pressedChangedHandler(self, (self.element.value).floatValue, self.vgcButtonPressed)
+                    }
                 }
             }
             
