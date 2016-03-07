@@ -200,6 +200,13 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
+    public var connectedService: VgcService? {
+        get {
+            guard let service = browser.connectedVgcService else { return nil }
+            return service
+        }
+    }
+    
     public var availableServices: [VgcService] {
         get {
             let services = [VgcService](browser.serviceLookup.values)
