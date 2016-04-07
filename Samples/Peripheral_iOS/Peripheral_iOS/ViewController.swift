@@ -33,6 +33,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         VgcManager.loggerUseNSLog = true
         
+        //VgcManager.netServiceLatencyLogging = true
+        
         // Initialize Peripheral
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
 
