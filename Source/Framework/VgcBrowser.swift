@@ -183,10 +183,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
 
     }
     
-    // Used by a Bridge to tell the Central that a Peripheral has disconnected.
+    // Used to disconnect a peripheral from a center
     func disconnectFromCentral() {
         if connectedVgcService == nil { return }
-        vgcLogDebug("Browser sending system message Disconnect to \(connectedVgcService.fullName)")
+        vgcLogDebug("Browser sending system message Disconnect)")
         elements.systemMessage.value = SystemMessages.Disconnect.rawValue
         sendElementStateOverNetService(elements.systemMessage)
         closeStreams()
