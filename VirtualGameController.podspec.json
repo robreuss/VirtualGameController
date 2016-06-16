@@ -22,7 +22,10 @@
     "osx": "10.10"
   },
   "tvos": {
-    "exclude_files": "Source/**/VgcCentralPublisherWatch.swift"
+    "exclude_files": [
+      "Source/**/VgcCentralPublisherWatch.swift",
+      "Source/**/VgcCentralViewController.swift"
+    ]
   },
   "osx": {
     "exclude_files": [
