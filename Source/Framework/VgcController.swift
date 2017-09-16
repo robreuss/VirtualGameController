@@ -32,15 +32,15 @@ public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDi
 /// maps it's properties to it's own.  This provides a single interface
 /// to both custom/software controllers and hardware controllers.
 
-public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSNetServiceDelegate  {
+open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServiceDelegate  {
     
-    weak public var peripheral: Peripheral!
+    weak open var peripheral: Peripheral!
     var streamer: [StreamDataType: VgcStreamer] = [:]
     
     // Each controller gets it's own copy of a set of elements appropriate to
     // it's profile, and these are used as a backing store for all element/control
     // values.
-    public var elements: Elements!
+    open var elements: Elements!
     var centralPublisher: VgcCentralPublisher!
     var hardwareController: GCController!
     var vgcExtendedGamepad: VgcExtendedGamepad!
@@ -53,25 +53,25 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     var disconnecting: Bool = false
     
     // This acts as a reference to one of the three profiles, for convienance
-    private var profile: AnyObject!
-    private var vgcPlayerIndex: GCControllerPlayerIndex
-    private var vgcHandlerQueue: dispatch_queue_t?
-    private var vgcControllerPausedHandler: ((VgcController) -> Void)?
-    private var vgcMotion: VgcMotion!
+    fileprivate var profile: AnyObject!
+    fileprivate var vgcPlayerIndex: GCControllerPlayerIndex
+    fileprivate var vgcHandlerQueue: DispatchQueue?
+    fileprivate var vgcControllerPausedHandler: ((VgcController) -> Void)?
+    fileprivate var vgcMotion: VgcMotion!
     
-    public var isHardwareController: Bool { get { return self.hardwareController != nil } }
+    open var isHardwareController: Bool { get { return self.hardwareController != nil } }
     
     // Each controller gets it's own set of streams
-    var fromCentralInputStream: [StreamDataType: NSInputStream] = [:]
-    var toCentralOutputStream: [StreamDataType: NSOutputStream] = [:]
-    var fromPeripheraInputlStream: [StreamDataType: NSInputStream] = [:] // These two are only required for a bridged controller
-    var toPeripheralOutputStream: [StreamDataType: NSOutputStream] = [:]
+    var fromCentralInputStream: [StreamDataType: InputStream] = [:]
+    var toCentralOutputStream: [StreamDataType: OutputStream] = [:]
+    var fromPeripheraInputlStream: [StreamDataType: InputStream] = [:] // These two are only required for a bridged controller
+    var toPeripheralOutputStream: [StreamDataType: OutputStream] = [:]
     
     public override init() {
         
         vgcLogDebug("Initializing new Controller")
         
-        vgcPlayerIndex = .IndexUnset
+        vgcPlayerIndex = .indexUnset
         
         // Each controller gets their own instance of standard elements that
         // act as a virtual set of hardware elements that profiles map to
@@ -93,8 +93,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     deinit {
         vgcLogDebug("Controller deinitalized")
-        NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: GCControllerDidConnectNotification)
-        NSNotificationCenter.defaultCenter().removeObserver(self, forKeyPath: GCControllerDidDisconnectNotification)
+        NotificationCenter.default.removeObserver(self, forKeyPath: NSNotification.Name.GCControllerDidConnect.rawValue)
+        NotificationCenter.default.removeObserver(self, forKeyPath: NSNotification.Name.GCControllerDidDisconnect.rawValue)
     }
     
     // MARK: - Class Properties and Functions
@@ -110,7 +110,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // A Central can have it's own iCade controller, but only one, because it requires that
     // a text field be exposed on the UI to receive the keyboard input an iCade controller
     // generates.
-    public static var iCadeController: VgcController!
+    open static var iCadeController: VgcController!
     
     // Provide access to the single controller used when in .EnhancementBridge mode, so that
     // the "peripheral" component can send values through this controller to the Central.
@@ -120,13 +120,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // Hardware controllers have a unique device hash, but it's hidden in the
     // object description string.  This function extracts it.
-    class func deviceHashFromController(controller: GCController) -> String {
-        let components: Array = controller.description.componentsSeparatedByString(" ")
+    class func deviceHashFromController(_ controller: GCController) -> String {
+        let components: Array = controller.description.components(separatedBy: " ")
         let deviceHashComponent: String = components.last!
-        let keyValueArray: Array = deviceHashComponent.componentsSeparatedByString("=")
+        let keyValueArray: Array = deviceHashComponent.components(separatedBy: "=")
         var deviceHash = keyValueArray.last!
-        let trimSet = NSCharacterSet(charactersInString: ">")
-        deviceHash = deviceHash.stringByTrimmingCharactersInSet(trimSet)
+        let trimSet = CharacterSet(charactersIn: ">")
+        deviceHash = deviceHash.trimmingCharacters(in: trimSet)
         return deviceHash
     }
     
@@ -139,14 +139,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // is "set", and the developer is responsible for implementing
         // our version instead of the GCController version:
         // "VgcControllerDidConnectNotification"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: GCControllerDidConnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: GCControllerDidDisconnectNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidConnect(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidDisconnect(_:)), name: NSNotification.Name.GCControllerDidDisconnect, object: nil)
         
         // Kick off publishing the availability of our service
         // if we have a Central function (note, a Bridge has both
         // a Central and Peripheral role)
         
-        if VgcManager.appRole == .Central || deviceIsTypeOfBridge() {
+        if VgcManager.appRole == .central || deviceIsTypeOfBridge() {
             centralPublisher = VgcCentralPublisher()
             centralPublisher.publishService()
         }
@@ -161,33 +161,33 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     /// Peripheral-side iCade controllers are also supported and allow for multiple controllers, 
     /// but require the use of an iOS device (in Peripheral mode)
     ///
-    public class func enableIcadeController() {
+    open class func enableIcadeController() {
         
         iCadeController = VgcController()
-        iCadeController.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: false)
+        iCadeController.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .extendedGamepad, controllerType: .software, supportsMotion: false)
         
     }
     
     // An array of currently connected controllers, that mimics the same
     // class function on GCCController, combining both software/virtual controllers
     // with hardware controllers
-    public class func controllers() -> [VgcController] {
+    open class func controllers() -> [VgcController] {
         return vgcControllers
     }
     
     
     // Acts as a pass-through to the same-named method on GCController, for pairing of
     // hardware controllers over bluetooth.
-    public class func startWirelessControllerDiscoveryWithCompletionHandler(_completionHandler: (() -> Void)?) {
+    open class func startWirelessControllerDiscoveryWithCompletionHandler(_ _completionHandler: (() -> Void)?) {
         
         vgcLogDebug("Starting discovery process for MFi hardware controllers")
-        GCController.startWirelessControllerDiscoveryWithCompletionHandler(_completionHandler)
+        GCController.startWirelessControllerDiscovery(completionHandler: _completionHandler)
         
     }
     
     // This is also just a pass-through to GCController to stop discovery
     // of hardware devices
-    public class func stopWirelessControllerDiscovery() {
+    open class func stopWirelessControllerDiscovery() {
         
         vgcLogDebug("Stopping wireless controller discovery")
         GCController.stopWirelessControllerDiscovery()
@@ -196,7 +196,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // MARK: - Network Service
 
-    func openstreams(streamDataType: StreamDataType, inputStream: NSInputStream, outputStream: NSOutputStream, streamStreamer: VgcStreamer) {
+    func openstreams(_ streamDataType: StreamDataType, inputStream: InputStream, outputStream: OutputStream, streamStreamer: VgcStreamer) {
        
         streamer[streamDataType] = streamStreamer
         
@@ -206,23 +206,23 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         vgcLogDebug("Opening Peripheral-bound streams for stream data type: \(streamDataType)")
 
         // Open our Peripheral-bound streams
-        toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
-        toPeripheralOutputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+        toPeripheralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         toPeripheralOutputStream[streamDataType]!.open()
         
-        fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType]
-        fromPeripheraInputlStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+        fromPeripheraInputlStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         fromPeripheraInputlStream[streamDataType]!.open()
     }
 
     
 
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
+    func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
         
         let element = elements.elementFromIdentifier(elementIdentifier)
         
         // If deviceInfo isn't set yet, we're not ready to handle incoming data
-        if self.deviceInfo == nil && element.type != .DeviceInfoElement {
+        if self.deviceInfo == nil && element?.type != .deviceInfoElement {
             vgcLogDebug("Received data before device is configured")
             return
         }
@@ -230,15 +230,15 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // Element is non-nil on success
         if (element != nil) {
 
-            element.valueAsNSData = elementValue
+            element?.valueAsNSData = elementValue
             
             // Don't update the controller if we're in bridgeRelayOnly mode
-            if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element) }
+            if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element!) }
             
             // If we're a bridge, send along the value to the Central
-            if deviceIsTypeOfBridge() && element.type != .PlayerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
+            if deviceIsTypeOfBridge() && element?.type != .playerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
                 
-                element.valueAsNSData = elementValue
+                element?.valueAsNSData = elementValue
                 peripheral.browser.sendElementStateOverNetService(element)
                 
             }
@@ -251,7 +251,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
     }
     
-    public static func sendElementStateToAllPeripherals(element: Element) {
+    open static func sendElementStateToAllPeripherals(_ element: Element) {
         
         // Test if element is generic from VGCManager
         let genericElement = VgcManager.elements.elementFromIdentifier(element.identifier)
@@ -262,9 +262,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 // If element is generic, convert it to controller-specific
                 if element == genericElement {
                     let controllerSpecificElement = controller.elements.elementFromIdentifier(element.identifier)
-                    controllerSpecificElement.value = element.value
-                    controllerSpecificElement.clearValueAfterTransfer = element.clearValueAfterTransfer
-                    controller.sendElementStateToPeripheral(controllerSpecificElement)
+                    controllerSpecificElement?.value = element.value
+                    controllerSpecificElement?.clearValueAfterTransfer = element.clearValueAfterTransfer
+                    controller.sendElementStateToPeripheral(controllerSpecificElement!)
                 } else {
                     controller.sendElementStateToPeripheral(element)
                 }
@@ -273,17 +273,17 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public func sendElementStateToPeripheral(element: Element) {
+    open func sendElementStateToPeripheral(_ element: Element) {
         
-        if element.dataType == .Data {
-            if streamer[.LargeData] != nil {
-                streamer[.LargeData]!.writeElement(element, toStream:toPeripheralOutputStream[.LargeData]!)
+        if element.dataType == .data {
+            if streamer[.largeData] != nil {
+                streamer[.largeData]!.writeElement(element, toStream:toPeripheralOutputStream[.largeData]!)
             } else {
                 vgcLogDebug("nil stream LargeData error caught");
             }
         } else {
-            if streamer[.SmallData] != nil {
-                streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+            if streamer[.smallData] != nil {
+                streamer[.smallData]!.writeElement(element, toStream:toPeripheralOutputStream[.smallData]!)
             } else {
                 vgcLogDebug("nil stream SmallData error caught");
             }
@@ -298,8 +298,8 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     func sendInvalidMessageSystemMessage() {
         
         let element = elements.systemMessage
-        element.value = SystemMessages.ReceivedInvalidMessage.rawValue
-        streamer[.SmallData]!.writeElement(element, toStream:toPeripheralOutputStream[.SmallData]!)
+        element.value = SystemMessages.receivedInvalidMessage.rawValue as AnyObject
+        streamer[.smallData]!.writeElement(element, toStream:toPeripheralOutputStream[.smallData]!)
 
     }
     
@@ -308,16 +308,16 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // of motion data.
     func sendConnectionAcknowledgement() {
         let element = elements.systemMessage
-        element.value = SystemMessages.ConnectionAcknowledgement.rawValue
-        if let inStream = streamer[.SmallData] {
-            if let outStream = toPeripheralOutputStream[.SmallData] {
+        element.value = SystemMessages.connectionAcknowledgement.rawValue as AnyObject
+        if let inStream = streamer[.smallData] {
+            if let outStream = toPeripheralOutputStream[.smallData] {
                 vgcLogDebug("Sending connection acknowledgement to \(deviceInfo.vendorName)")
                 inStream.writeElement(element, toStream: outStream)
             }
         }
     }
 
-    public func disconnect() {
+    open func disconnect() {
         
         vgcLogDebug("Running disconnect function")
         
@@ -329,16 +329,16 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
-        if deviceInfo != nil && deviceInfo.controllerType != .Watch {
+        if deviceInfo != nil && deviceInfo.controllerType != .watch {
             
             vgcLogDebug("Closing streams for controller \(deviceInfo.vendorName)")
             
-            fromPeripheraInputlStream[.LargeData]!.close()
-            fromPeripheraInputlStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            fromPeripheraInputlStream[.LargeData]!.delegate = nil
-            fromPeripheraInputlStream[.SmallData]!.close()
-            fromPeripheraInputlStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            fromPeripheraInputlStream[.SmallData]!.delegate = nil
+            fromPeripheraInputlStream[.largeData]!.close()
+            fromPeripheraInputlStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            fromPeripheraInputlStream[.largeData]!.delegate = nil
+            fromPeripheraInputlStream[.smallData]!.close()
+            fromPeripheraInputlStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            fromPeripheraInputlStream[.smallData]!.delegate = nil
             
             // If we're a Bridge, pass along the disconnect notice to the Central, and
             // put our peripheral identity into a non-connected state
@@ -349,15 +349,15 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 peripheral = nil
             }
             
-            toPeripheralOutputStream[.LargeData]!.close()
-            toPeripheralOutputStream[.LargeData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            toPeripheralOutputStream[.LargeData]!.delegate = nil
-            toPeripheralOutputStream[.SmallData]!.close()
-            toPeripheralOutputStream[.SmallData]!.removeFromRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
-            toPeripheralOutputStream[.SmallData]!.delegate = nil
+            toPeripheralOutputStream[.largeData]!.close()
+            toPeripheralOutputStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            toPeripheralOutputStream[.largeData]!.delegate = nil
+            toPeripheralOutputStream[.smallData]!.close()
+            toPeripheralOutputStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            toPeripheralOutputStream[.smallData]!.delegate = nil
 
-            streamer[.LargeData] = nil
-            streamer[.SmallData] = nil
+            streamer[.largeData] = nil
+            streamer[.smallData] = nil
             
         }
         
@@ -368,16 +368,16 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             for controller in VgcController.vgcControllers {
                 if controller.deviceInfo.deviceUID == deviceInfo.deviceUID {
                     vgcLogDebug("Removing controller \(controller.deviceInfo.vendorName) from controllers array")
-                    VgcController.vgcControllers.removeAtIndex(index)
+                    VgcController.vgcControllers.remove(at: index)
                 }
-                index++
+                index += 1
             }
             
             vgcLogDebug("After disconnect controller count is \(VgcController.vgcControllers.count)")
             
             // Notify the app there's been a disconnect
-            dispatch_async(dispatch_get_main_queue()) {
-                NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: self)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: VgcControllerDidDisconnectNotification), object: self)
             }
             
             centralPublisher = nil
@@ -391,14 +391,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
 
     }
  
-    func mapElement(elementToBeMapped: Element) {
+    func mapElement(_ elementToBeMapped: Element) {
         
         if Elements.customMappings == nil { return }
 
         if let destinationElementIdentifier = Elements.customMappings.mappings[elementToBeMapped.identifier] {
             let destinationElement = elements.elementFromIdentifier(destinationElementIdentifier)
-            destinationElement.value = elementToBeMapped.value
-            setValue(destinationElement.value, forKeyPath: destinationElement.setterKeypath(self))
+            destinationElement?.value = elementToBeMapped.value
+            setValue(destinationElement?.value, forKeyPath: (destinationElement?.setterKeypath(self))!)
         }
 
     }
@@ -406,7 +406,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // Update the controller by mapping the controller element to the
     // associated controller property and setting the value
     
-    func updateGameControllerWithValue(element: Element) {
+    func updateGameControllerWithValue(_ element: Element) {
         
         // Value could be either a string or a float
         var valueAsFloat: Float = 0.0
@@ -417,7 +417,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         
         switch(element.type) {
             
-        case .SystemMessage:
+        case .systemMessage:
             
             if valueAsFloat < 1 { return } // Unknown system message
             let messageType = SystemMessages(rawValue: Int(valueAsFloat))!
@@ -428,50 +428,50 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
                 // A Bridge uses the Disconnect system message to notify it's Central
                 // that it's Peripheral has disconnected
-                case .Disconnect:
+                case .disconnect:
                     
                     disconnect()
                     
-                case .ReceivedInvalidMessage:
+                case .receivedInvalidMessage:
                     break
                 
-                case .ConnectionAcknowledgement:
+                case .connectionAcknowledgement:
                     break
                 
             }
             
-        case .DeviceInfoElement:
+        case .deviceInfoElement:
             
             NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-            deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as? DeviceInfo)!
+            deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData as Data) as? DeviceInfo)!
             
-        case .PlayerIndex:
+        case .playerIndex:
             
             break
             
-        case .Image:
+        case .image:
             
             if let handler = element.valueChangedHandler {
-                dispatch_async((self.handlerQueue)) {
+                (self.handlerQueue).async {
                     handler(self, element)
                 }
             }
 
-        case .Custom:
+        case .custom:
 
             elements.custom[element.identifier]?.valueAsNSData = element.valueAsNSData
 
             // Call the element-level change handler
             
             if let handler = elements.custom[element.identifier]!.valueChangedHandler {
-                dispatch_async((handlerQueue)) {
+                (handlerQueue).async {
                     handler(self, element)
                 }
             }
             
             // Call the profile-level change handler
             if let handler = Elements.customElements.valueChangedHandler {
-                dispatch_async((handlerQueue)) {
+                (handlerQueue).async {
                     handler(self, element)
                 }
             }
@@ -488,7 +488,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public func triggerElementHandlers(element: Element, value: Float) {
+    open func triggerElementHandlers(_ element: Element, value: Float) {
         
         if elements.elementsForController(self).contains(element) {
             
@@ -505,12 +505,12 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public func vibrateDevice() {
-        let element = VgcManager.elements.elementFromIdentifier(ElementType.VibrateDevice.rawValue)
-        element.value = 1
-        sendElementStateToPeripheral(element)
-        element.value = 0
-        sendElementStateToPeripheral(element)
+    open func vibrateDevice() {
+        let element = VgcManager.elements.elementFromIdentifier(ElementType.vibrateDevice.rawValue)
+        element?.value = 1
+        sendElementStateToPeripheral(element!)
+        element?.value = 0
+        sendElementStateToPeripheral(element!)
     }
 
     // MARK: - Hardware Controller Management
@@ -537,70 +537,70 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // hardware controller.  For software controllers, the mapping is handled when
         // dealing with NSNetService stream data.
         
-        if deviceInfo.controllerType != .MFiHardware { return }
+        if deviceInfo.controllerType != .mFiHardware { return }
         
         vgcLogDebug("Setting up hardware controller forwarding")
         
         // Define our change handlers as variables so we can assign them differentially below
         // based on the use of gamepad versus extended gamepad
         let dpadValueChangedHandler = { (input: GCControllerDirectionPad!, x: Float, y: Float) in
-            self.elements.dpadXAxis.value = x
-            self.elements.dpadYAxis.value = y
+            self.elements.dpadXAxis.value = x as AnyObject
+            self.elements.dpadYAxis.value = y as AnyObject
             self.peripheral.sendElementState(self.elements.dpadXAxis)
             self.peripheral.sendElementState(self.elements.dpadYAxis)
         }
         
         let leftThumbstickChangedHandler = { (input: GCControllerDirectionPad!, x: Float, y: Float) in
-            self.elements.leftThumbstickXAxis.value = x
-            self.elements.leftThumbstickYAxis.value = y
+            self.elements.leftThumbstickXAxis.value = x as AnyObject
+            self.elements.leftThumbstickYAxis.value = y as AnyObject
             self.peripheral.sendElementState(self.elements.leftThumbstickXAxis)
             self.peripheral.sendElementState(self.elements.leftThumbstickYAxis)
         }
         
         let rightThumbstickChangedHandler = { (input: GCControllerDirectionPad!, x: Float, y: Float) in
-            self.elements.rightThumbstickXAxis.value = x
-            self.elements.rightThumbstickYAxis.value = y
+            self.elements.rightThumbstickXAxis.value = x as AnyObject
+            self.elements.rightThumbstickYAxis.value = y as AnyObject
             self.peripheral.sendElementState(self.elements.rightThumbstickXAxis)
             self.peripheral.sendElementState(self.elements.rightThumbstickYAxis)
         }
         
         let buttonAChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.buttonA.value = value
+            self.elements.buttonA.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.buttonA)
         }
         
         let buttonBChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.buttonB.value = value
+            self.elements.buttonB.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.buttonB)
         }
         
         let buttonXChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.buttonX.value = value
+            self.elements.buttonX.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.buttonX)
         }
         
         let buttonYChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.buttonY.value = value
+            self.elements.buttonY.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.buttonY)
         }
         
         let leftShoulderChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.leftShoulder.value = value
+            self.elements.leftShoulder.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.leftShoulder)
         }
         
         let rightShoulderChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.rightShoulder.value = value
+            self.elements.rightShoulder.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.rightShoulder)
         }
         
         let leftTriggerChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.leftTrigger.value = value
+            self.elements.leftTrigger.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.leftTrigger)
         }
         
         let rightTriggerChangedHandler = { (input: GCControllerButtonInput!, value: Float, pressed: Bool) in
-            self.elements.rightTrigger.value = value
+            self.elements.rightTrigger.value = value as AnyObject
             self.peripheral.sendElementState(self.elements.rightTrigger)
         }
         
@@ -614,7 +614,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             }
         #endif
         
-        if profileType == .Gamepad || profileType == .ExtendedGamepad {
+        if profileType == .gamepad || profileType == .extendedGamepad {
             
             gamepad!.dpad.valueChangedHandler           = dpadValueChangedHandler
             gamepad!.buttonA.valueChangedHandler        = buttonAChangedHandler
@@ -626,7 +626,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
         }
         
-        if profileType == .ExtendedGamepad {
+        if profileType == .extendedGamepad {
             
             extendedGamepad!.dpad.valueChangedHandler               = dpadValueChangedHandler
             extendedGamepad!.leftThumbstick.valueChangedHandler     = leftThumbstickChangedHandler
@@ -647,9 +647,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // to indicate a button push.
         controllerPausedHandler = { (controller: VgcController) in
             
-            self.elements.pauseButton.value = 1.0
+            self.elements.pauseButton.value = 1.0 as AnyObject
             self.peripheral.sendElementState(self.elements.pauseButton)
-            self.elements.pauseButton.value = 0.0
+            self.elements.pauseButton.value = 0.0 as AnyObject
             self.peripheral.sendElementState(self.elements.pauseButton)
             
         }
@@ -659,35 +659,35 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         // the handler and it would over-write this.
         hardwareController.motion?.valueChangedHandler = { (input: GCMotion) in
             
-            self.elements.motionUserAccelerationX.value = input.userAcceleration.x
+            self.elements.motionUserAccelerationX.value = input.userAcceleration.x as AnyObject
             self.peripheral.sendElementState(self.elements.motionUserAccelerationX)
-            self.elements.motionUserAccelerationY.value = input.userAcceleration.y
+            self.elements.motionUserAccelerationY.value = input.userAcceleration.y as AnyObject
             self.peripheral.sendElementState(self.elements.motionUserAccelerationY)
-            self.elements.motionUserAccelerationZ.value = input.userAcceleration.z
+            self.elements.motionUserAccelerationZ.value = input.userAcceleration.z as AnyObject
             self.peripheral.sendElementState(self.elements.motionUserAccelerationZ)
             
-            self.elements.motionGravityX.value = input.gravity.x
+            self.elements.motionGravityX.value = input.gravity.x as AnyObject
             self.peripheral.sendElementState(self.elements.motionGravityX)
-            self.elements.motionGravityY.value = input.gravity.y
+            self.elements.motionGravityY.value = input.gravity.y as AnyObject
             self.peripheral.sendElementState(self.elements.motionGravityY)
-            self.elements.motionGravityZ.value = input.gravity.z
+            self.elements.motionGravityZ.value = input.gravity.z as AnyObject
             self.peripheral.sendElementState(self.elements.motionGravityZ)
             
             #if !os(tvOS)
-            self.elements.motionRotationRateX.value = input.rotationRate.x
+            self.elements.motionRotationRateX.value = input.rotationRate.x as AnyObject
             self.peripheral.sendElementState(self.elements.motionRotationRateX)
-            self.elements.motionRotationRateY.value = input.rotationRate.y
+            self.elements.motionRotationRateY.value = input.rotationRate.y as AnyObject
             self.peripheral.sendElementState(self.elements.motionRotationRateY)
-            self.elements.motionRotationRateZ.value = input.rotationRate.z
+            self.elements.motionRotationRateZ.value = input.rotationRate.z as AnyObject
             self.peripheral.sendElementState(self.elements.motionRotationRateX)
             
-            self.elements.motionAttitudeX.value = input.attitude.x
+            self.elements.motionAttitudeX.value = input.attitude.x as AnyObject
             self.peripheral.sendElementState(self.elements.motionAttitudeX)
-            self.elements.motionAttitudeY.value = input.attitude.y
+            self.elements.motionAttitudeY.value = input.attitude.y as AnyObject
             self.peripheral.sendElementState(self.elements.motionAttitudeY)
-            self.elements.motionAttitudeZ.value = input.attitude.z
+            self.elements.motionAttitudeZ.value = input.attitude.z as AnyObject
             self.peripheral.sendElementState(self.elements.motionAttitudeZ)
-            self.elements.motionAttitudeW.value = input.attitude.w
+            self.elements.motionAttitudeW.value = input.attitude.w as AnyObject
             self.peripheral.sendElementState(self.elements.motionAttitudeW)
             #endif
         }
@@ -698,7 +698,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // and then pass them along using our custom notification name ("vgcControllerDidConnect").  This allows
     // us to "capture" a hardware controller being connected, and create a
     // VgcController facade object around it.
-    @objc class func controllerDidConnect(notification: NSNotification) {
+    @objc class func controllerDidConnect(_ notification: Notification) {
         
         if notification.object is GCController {
             
@@ -708,7 +708,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             // Ignore hardware controller connections to iOS device if it is
             // configured to be in the .Peripheral role.
-            if VgcManager.appRole == .Peripheral {
+            if VgcManager.appRole == .peripheral {
                 vgcLogDebug("Ignoring hardware device \(controller.hardwareController.vendorName) because we are configured as a Peripheral")
                 return
             }
@@ -719,7 +719,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
                 // If we're in .EnhancementBridge mode, we do not allow more than one hardware
                 // controller to connect.
-                if existingController.deviceInfo.controllerType == .MFiHardware && VgcManager.appRole == .EnhancementBridge { return }
+                if existingController.deviceInfo.controllerType == .mFiHardware && VgcManager.appRole == .enhancementBridge { return }
                 
                 if existingController.deviceInfo != nil {
                     if existingController.deviceInfo.deviceUID == deviceHash {
@@ -736,11 +736,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             // Unless we're on tvOS, we're not interested in the microGamepad
             #if !(os(tvOS))
                 if controller.hardwareController.extendedGamepad != nil {
-                    profileType = .ExtendedGamepad
+                    profileType = .extendedGamepad
                 } else if (controller.hardwareController.gamepad != nil) {
-                    profileType = .Gamepad
+                    profileType = .gamepad
                 } else {
-                    profileType = .Unknown
+                    profileType = .unknown
                 }
             #endif
             
@@ -777,14 +777,14 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             //VgcController.vgcControllers.append(controller)
             
             // Setting the deviceInfo property here will trigger the "VgcControllerDidConnectNotification".
-            controller.deviceInfo = DeviceInfo(deviceUID: deviceHash, vendorName: controller.hardwareController.vendorName!, attachedToDevice: controller.hardwareController.attachedToDevice, profileType: profileType, controllerType: .MFiHardware, supportsMotion: supportsMotion)
+            controller.deviceInfo = DeviceInfo(deviceUID: deviceHash, vendorName: controller.hardwareController.vendorName!, attachedToDevice: controller.hardwareController.isAttachedToDevice, profileType: profileType, controllerType: .mFiHardware, supportsMotion: supportsMotion)
             
         }
     }
     
     // A hardware controller disconnected - we capture this, handle it and
     // send our custom disconnect notification
-    @objc class func controllerDidDisconnect(notification: NSNotification) {
+    @objc class func controllerDidDisconnect(_ notification: Notification) {
         
         vgcLogDebug("Got hardware didDisconnect notification: \(notification)")
         
@@ -799,20 +799,20 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             vgcLogDebug("Comparing UUID \(controller.deviceInfo.deviceUID) to \(deviceHash)")
             if controller.deviceInfo.deviceUID == deviceHash {
                 vgcLogDebug("Removing controller from controllers array: \(hardwareController)")
-                VgcController.vgcControllers.removeAtIndex(index)
-                NSNotificationCenter.defaultCenter().postNotificationName(VgcControllerDidDisconnectNotification, object: controller)
+                VgcController.vgcControllers.remove(at: index)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: VgcControllerDidDisconnectNotification), object: controller)
                 return
             }
-            index++
+            index += 1
         }
     }
 
     // Defaults the handler queue to main and exposes the hardware version of the
     // handler queue for hardware devices
-    public var handlerQueue:dispatch_queue_t {
+    open var handlerQueue:DispatchQueue {
         get {
             if (vgcHandlerQueue == nil) {
-                return dispatch_get_main_queue()
+                return DispatchQueue.main
             } else {
                 return vgcHandlerQueue!
             }
@@ -824,15 +824,15 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     
     // Handler for the pause button.  It is the responsibility of
     // the game side to maintain the state of pause at the app level.
-    public var controllerPausedHandler: ((VgcController) -> Void)? {
+    open var controllerPausedHandler: ((VgcController) -> Void)? {
         didSet {
             // Create a forwarding handler for the pause button
-            if deviceInfo.controllerType == .MFiHardware {
+            if deviceInfo.controllerType == .mFiHardware {
                 
                 hardwareController.controllerPausedHandler = { [unowned self] _ in
                     
                     if let handler = self.vgcControllerPausedHandler {
-                        dispatch_async((self.handlerQueue)) {
+                        (self.handlerQueue).async {
                             handler(self)
                         }
                     }
@@ -842,11 +842,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public var motion: VgcMotion? {
+    open var motion: VgcMotion? {
         return vgcMotion
     }
     
-    static func controllerAlreadyExists(newController: VgcController) -> (Bool, Int) {
+    static func controllerAlreadyExists(_ newController: VgcController) -> (Bool, Int) {
         
         var index = 0
         for existingController in VgcController.controllers() {
@@ -856,17 +856,17 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 vgcLogDebug("Found matching existing controller so disconnecting new controller")
                 return (true, index)
             }
-            index++
+            index += 1
         }
         return (false, -1)
     }
     
-    let lockQueueVgcController = dispatch_queue_create("net.simplyformed.lockVgcController", nil)
+    let lockQueueVgcController = DispatchQueue(label: "net.simplyformed.lockVgcController", attributes: [])
     
     // When deviceInfo arrives from the peripheral and this property is set
     // we send the VgcControllerDidConnectNotification notification because
     // the controller is now properly identified and ready to be used.
-    public var deviceInfo: DeviceInfo! {
+    open var deviceInfo: DeviceInfo! {
         
         didSet {
             
@@ -895,9 +895,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             if existsAlready {
             
                 vgcLogDebug("Controller exists already, removing")
-                dispatch_sync(self.lockQueueVgcController) {
-                    VgcController.vgcControllers.removeAtIndex(index)
-                    dispatch_async(dispatch_get_main_queue()) {
+                self.lockQueueVgcController.sync {
+                    VgcController.vgcControllers.remove(at: index)
+                    DispatchQueue.main.async {
                         
                         //NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
                         
@@ -909,26 +909,26 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             // Make a game controller out of the peripheral
             vgcLogDebug("Appending controller \(deviceInfo.vendorName) to vControllers (\(VgcController.controllers().count + 1) controllers with new controller)")
             
-            dispatch_sync(lockQueueVgcController) {
+            lockQueueVgcController.sync {
                 VgcController.vgcControllers.append(self)
             }
             
             switch (deviceInfo.profileType) {
                 
-            case .MicroGamepad:
+            case .microGamepad:
                 #if os(tvOS)
                     vgcMicroGamepad = VgcMicroGamepad(vgcGameController: self)
                 #endif
                 break
                 
-            case .Gamepad:
+            case .gamepad:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 
-            case .ExtendedGamepad:
+            case .extendedGamepad:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
                 
-            case.Watch:
+            case.watch:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
                 
@@ -937,9 +937,9 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
                 
             }
             
-            if deviceIsTypeOfBridge()  && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerForwardingHandlers() }
+            if deviceIsTypeOfBridge()  && deviceInfo.controllerType == .mFiHardware { setupHardwareControllerForwardingHandlers() }
             
-            if !deviceIsTypeOfBridge() && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerMotionHandlers() }
+            if !deviceIsTypeOfBridge() && deviceInfo.controllerType == .mFiHardware { setupHardwareControllerMotionHandlers() }
             
             if deviceIsTypeOfBridge() { peripheral.bridgePeripheralDeviceInfoToCentral(self) }
             
@@ -947,26 +947,26 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             sendConnectionAcknowledgement()
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "VgcControllerDidConnectNotification"), object: self)
                 
             }
         }
     }
     
     /// Convienance function for profile type
-    public var profileType: ProfileType {
+    open var profileType: ProfileType {
         if deviceInfo != nil {
             return deviceInfo.profileType
         } else {
-            return .ExtendedGamepad
+            return .extendedGamepad
         }
     }
     
     /// Some controllers directly attach to the game-playing iOS device, such as
     /// a slide-on controller.
-    public var attachedToDevice: Bool {
+    open var attachedToDevice: Bool {
         if deviceInfo != nil {
             return deviceInfo.attachedToDevice
         } else {
@@ -974,7 +974,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
         }
     }
     
-    public var vendorName: String {
+    open var vendorName: String {
         return deviceInfo.vendorName
     }
     
@@ -982,7 +982,7 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // to the user.  This is the only case in GCController when data moves from Central
     // to Peripheral, and that's true as well in this implementation.
 
-    public var playerIndex: GCControllerPlayerIndex {
+    open var playerIndex: GCControllerPlayerIndex {
         get {
             return vgcPlayerIndex
         }
@@ -992,22 +992,22 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
             
             vgcPlayerIndex = newValue
             
-            if deviceInfo.controllerType == .MFiHardware {
+            if deviceInfo.controllerType == .mFiHardware {
                 
                 if hardwareController != nil { hardwareController.playerIndex = newValue }
                 
             } else  {
                 
-                if centralPublisher != nil && centralPublisher.haveConnectionToPeripheral && toPeripheralOutputStream[.SmallData] != nil {
+                if centralPublisher != nil && centralPublisher.haveConnectionToPeripheral && toPeripheralOutputStream[.smallData] != nil {
                     
                     vgcLogDebug("Sending player index \(newValue.rawValue + 1) to controller \(deviceInfo.vendorName)")
                     
                     let playerIndexElement = elements.playerIndex
-                    playerIndexElement.value = playerIndex.rawValue
+                    playerIndexElement.value = playerIndex.rawValue as AnyObject
                     
-                    streamer[.SmallData]!.writeElement(playerIndexElement, toStream: toPeripheralOutputStream[.SmallData]!)
+                    streamer[.smallData]!.writeElement(playerIndexElement, toStream: toPeripheralOutputStream[.smallData]!)
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: self)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: VgcNewPlayerIndexNotification), object: self)
                     
                 } else {
                     vgcLogDebug("PERIPHERAL: Cannot send player index, no connection, no netservice manager or no open stream")
@@ -1025,13 +1025,13 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     }
     #endif
     
-    public var extendedGamepad: VgcExtendedGamepad? {
+    open var extendedGamepad: VgcExtendedGamepad? {
 
         return vgcExtendedGamepad
 
     }
     
-    public var gamepad: VgcGamepad? {
+    open var gamepad: VgcGamepad? {
 
         return vgcGamepad
 
@@ -1041,11 +1041,11 @@ public class VgcController: NSObject, NSStreamDelegate, VgcStreamerDelegate, NSN
     // changes in the value of any of it's elements.  This function
     // provides a single method to call the handler irrespective of
     // which profile the controller supports.
-    func callProfileLevelChangeHandler(element: GCControllerElement) {
+    func callProfileLevelChangeHandler(_ element: GCControllerElement) {
         
-        if deviceInfo.profileType == .ExtendedGamepad || deviceInfo.profileType == .Watch {
+        if deviceInfo.profileType == .extendedGamepad || deviceInfo.profileType == .watch {
             extendedGamepad?.callValueChangedHandler(element)
-        } else if deviceInfo.profileType == .Gamepad {
+        } else if deviceInfo.profileType == .gamepad {
             gamepad?.callValueChangedHandler(element)
         }
         
@@ -1198,22 +1198,22 @@ public class VgcMicroGamepad: GCMicroGamepad {
 #endif
 
 // MARK: - Gamepad Profile
-public class VgcGamepad: GCGamepad {
+open class VgcGamepad: GCGamepad {
     
     ///
     /// Reference to the VgcController that owns this profile.
     ///
-    public var vgcController: VgcController?
+    open var vgcController: VgcController?
     
-    private var vgcValueChangedHandler: GCGamepadValueChangedHandler?  // Used for software controllers
+    fileprivate var vgcValueChangedHandler: GCGamepadValueChangedHandler?  // Used for software controllers
     
-    private var vgcDpad:            VgcControllerDirectionPad
-    private var vgcLeftShoulder:    VgcControllerButtonInput
-    private var vgcRightShoulder:   VgcControllerButtonInput
-    private var vgcButtonA:         VgcControllerButtonInput
-    private var vgcButtonB:         VgcControllerButtonInput
-    private var vgcButtonX:         VgcControllerButtonInput
-    private var vgcButtonY:         VgcControllerButtonInput
+    fileprivate var vgcDpad:            VgcControllerDirectionPad
+    fileprivate var vgcLeftShoulder:    VgcControllerButtonInput
+    fileprivate var vgcRightShoulder:   VgcControllerButtonInput
+    fileprivate var vgcButtonA:         VgcControllerButtonInput
+    fileprivate var vgcButtonB:         VgcControllerButtonInput
+    fileprivate var vgcButtonX:         VgcControllerButtonInput
+    fileprivate var vgcButtonY:         VgcControllerButtonInput
     
     init(vgcGameController: VgcController) {
         
@@ -1231,13 +1231,13 @@ public class VgcGamepad: GCGamepad {
         
     }
     
-    public override var leftShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.leftShoulder } else { return vgcLeftShoulder } } }
-    public override var rightShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.rightShoulder } else { return vgcRightShoulder } } }
-    public override var dpad: GCControllerDirectionPad { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0) { return vgcController!.hardwareController.gamepad!.dpad } else { return vgcDpad } } }
-    public override var buttonA: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonA.value == 0 { return vgcController!.hardwareController.gamepad!.buttonA } else { return vgcButtonA } } }
-    public override var buttonB: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonB.value == 0 { return vgcController!.hardwareController.gamepad!.buttonB } else { return vgcButtonB } } }
-    public override var buttonX: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonX.value == 0 { return vgcController!.hardwareController.gamepad!.buttonX } else { return vgcButtonX } } }
-    public override var buttonY: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.buttonY } else { return vgcButtonY } } }
+    open override var leftShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.leftShoulder } else { return vgcLeftShoulder } } }
+    open override var rightShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.rightShoulder } else { return vgcRightShoulder } } }
+    open override var dpad: GCControllerDirectionPad { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0) { return vgcController!.hardwareController.gamepad!.dpad } else { return vgcDpad } } }
+    open override var buttonA: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonA.value == 0 { return vgcController!.hardwareController.gamepad!.buttonA } else { return vgcButtonA } } }
+    open override var buttonB: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonB.value == 0 { return vgcController!.hardwareController.gamepad!.buttonB } else { return vgcButtonB } } }
+    open override var buttonX: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonX.value == 0 { return vgcController!.hardwareController.gamepad!.buttonX } else { return vgcButtonX } } }
+    open override var buttonY: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.buttonY } else { return vgcButtonY } } }
     
     ///
     /// Returns a GCController hardware controller, if one is available.
@@ -1245,14 +1245,14 @@ public class VgcGamepad: GCGamepad {
     /// represents software controllers (as well as being a wrapper around the
     /// hardware controller.
     ///
-    override public weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.gamepad!.controller } else { return nil }
+    override open weak var controller: GCController? {
+        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.gamepad!.controller } else { return nil }
     }
     
     ///
     /// Same behavior as the GCController version.
     ///
-    public override var valueChangedHandler: GCGamepadValueChangedHandler? {
+    open override var valueChangedHandler: GCGamepadValueChangedHandler? {
         get {
             return vgcValueChangedHandler!
         }
@@ -1268,9 +1268,9 @@ public class VgcGamepad: GCGamepad {
         }
     }
     
-    func callValueChangedHandler(element: GCControllerElement) {
+    func callValueChangedHandler(_ element: GCControllerElement) {
         if let handler = vgcValueChangedHandler {
-            dispatch_async((vgcController?.handlerQueue)!) {
+            (vgcController?.handlerQueue)!.async {
                 handler(self, element)
             }
         }
@@ -1285,7 +1285,7 @@ public class VgcGamepad: GCGamepad {
         set {
             
             if let handler = vgcController?.controllerPausedHandler {
-                dispatch_async((vgcController?.handlerQueue)!) {
+                (vgcController?.handlerQueue)!.async {
                     handler(self.vgcController!)
                 }
             }
@@ -1295,7 +1295,7 @@ public class VgcGamepad: GCGamepad {
     // Unfortunately, there didn't seem to be any choice but to
     // rename this function because we need to return our own snapshot
     // class, and so cannot override the GCController version.
-    public func vgcSaveSnapshot() -> VgcGamepadSnapshot {
+    open func vgcSaveSnapshot() -> VgcGamepadSnapshot {
         
         let snapshot = VgcGamepadSnapshot(controller: self.vgcController!)
         return snapshot
@@ -1305,26 +1305,26 @@ public class VgcGamepad: GCGamepad {
 }
 
 // MARK: - Extended Gamepad Profile
-public class VgcExtendedGamepad: GCExtendedGamepad {
+open class VgcExtendedGamepad: GCExtendedGamepad {
     
     ///
     /// Reference to the VgcController that owns this profile.
     ///
-    public var vgcController: VgcController!
+    open var vgcController: VgcController!
     
-    private var vgcValueChangedHandler: GCExtendedGamepadValueChangedHandler?
+    fileprivate var vgcValueChangedHandler: GCExtendedGamepadValueChangedHandler?
     
-    private var vgcDpad:            VgcControllerDirectionPad
-    private var vgcLeftShoulder:    VgcControllerButtonInput
-    private var vgcRightShoulder:   VgcControllerButtonInput
-    private var vgcButtonA:         VgcControllerButtonInput
-    private var vgcButtonB:         VgcControllerButtonInput
-    private var vgcButtonX:         VgcControllerButtonInput
-    private var vgcButtonY:         VgcControllerButtonInput
-    private var vgcLeftThumbstick:  VgcControllerDirectionPad
-    private var vgcRightThumbstick: VgcControllerDirectionPad
-    private var vgcLeftTrigger:     VgcControllerButtonInput
-    private var vgcRightTrigger:    VgcControllerButtonInput
+    fileprivate var vgcDpad:            VgcControllerDirectionPad
+    fileprivate var vgcLeftShoulder:    VgcControllerButtonInput
+    fileprivate var vgcRightShoulder:   VgcControllerButtonInput
+    fileprivate var vgcButtonA:         VgcControllerButtonInput
+    fileprivate var vgcButtonB:         VgcControllerButtonInput
+    fileprivate var vgcButtonX:         VgcControllerButtonInput
+    fileprivate var vgcButtonY:         VgcControllerButtonInput
+    fileprivate var vgcLeftThumbstick:  VgcControllerDirectionPad
+    fileprivate var vgcRightThumbstick: VgcControllerDirectionPad
+    fileprivate var vgcLeftTrigger:     VgcControllerButtonInput
+    fileprivate var vgcRightTrigger:    VgcControllerButtonInput
     
     init(vgcGameController: VgcController) {
         
@@ -1351,48 +1351,48 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     // When these get set they will triger the handlers
     required convenience public init(coder decoder: NSCoder) {
         
-        let vgcController = decoder.decodeObjectForKey("vgcController") as! VgcController
+        let vgcController = decoder.decodeObject(forKey: "vgcController") as! VgcController
         
         self.init(vgcGameController: vgcController)
         
-        vgcLeftShoulder.value = decoder.decodeFloatForKey("leftShoulder")
-        vgcRightShoulder.value = decoder.decodeFloatForKey("rightShoulder")
-        vgcDpad.xAxis.value = decoder.decodeFloatForKey("dpadX")
-        vgcDpad.yAxis.value = decoder.decodeFloatForKey("dpadY")
-        vgcButtonA.value = decoder.decodeFloatForKey("buttonA")
-        vgcButtonB.value = decoder.decodeFloatForKey("buttonB")
-        vgcButtonX.value = decoder.decodeFloatForKey("buttonX")
-        vgcButtonY.value = decoder.decodeFloatForKey("buttonY")
-        vgcLeftTrigger.value = decoder.decodeFloatForKey("leftTrigger")
-        vgcRightTrigger.value = decoder.decodeFloatForKey("rightTrigger")
+        vgcLeftShoulder.value = decoder.decodeFloat(forKey: "leftShoulder")
+        vgcRightShoulder.value = decoder.decodeFloat(forKey: "rightShoulder")
+        vgcDpad.xAxis.value = decoder.decodeFloat(forKey: "dpadX")
+        vgcDpad.yAxis.value = decoder.decodeFloat(forKey: "dpadY")
+        vgcButtonA.value = decoder.decodeFloat(forKey: "buttonA")
+        vgcButtonB.value = decoder.decodeFloat(forKey: "buttonB")
+        vgcButtonX.value = decoder.decodeFloat(forKey: "buttonX")
+        vgcButtonY.value = decoder.decodeFloat(forKey: "buttonY")
+        vgcLeftTrigger.value = decoder.decodeFloat(forKey: "leftTrigger")
+        vgcRightTrigger.value = decoder.decodeFloat(forKey: "rightTrigger")
         
-        vgcRightThumbstick.xAxis.value = decoder.decodeFloatForKey("rightThumbstickX")
-        vgcRightThumbstick.yAxis.value = decoder.decodeFloatForKey("rightThumbstickY")
-        vgcLeftThumbstick.xAxis.value = decoder.decodeFloatForKey("leftThumbstickX")
-        vgcLeftThumbstick.yAxis.value = decoder.decodeFloatForKey("leftThumbstickY")
+        vgcRightThumbstick.xAxis.value = decoder.decodeFloat(forKey: "rightThumbstickX")
+        vgcRightThumbstick.yAxis.value = decoder.decodeFloat(forKey: "rightThumbstickY")
+        vgcLeftThumbstick.xAxis.value = decoder.decodeFloat(forKey: "leftThumbstickX")
+        vgcLeftThumbstick.yAxis.value = decoder.decodeFloat(forKey: "leftThumbstickY")
         
     }
     
     // These will use the getters that return both software and hardware values
-    func encodeWithCoder(coder: NSCoder) {
+    func encodeWithCoder(_ coder: NSCoder) {
         
-        coder.encodeObject(vgcController, forKey: "vgcController")
+        coder.encode(vgcController, forKey: "vgcController")
         
-        coder.encodeFloat(leftShoulder.value, forKey: "leftShoulder")
-        coder.encodeFloat(rightShoulder.value, forKey: "rightShoulder")
-        coder.encodeFloat(dpad.xAxis.value, forKey: "dpadX")
-        coder.encodeFloat(dpad.yAxis.value, forKey: "dpadY")
-        coder.encodeFloat(buttonA.value, forKey: "buttonA")
-        coder.encodeFloat(buttonB.value, forKey: "buttonB")
-        coder.encodeFloat(buttonX.value, forKey: "buttonX")
-        coder.encodeFloat(buttonY.value, forKey: "buttonY")
-        coder.encodeFloat(leftTrigger.value, forKey: "leftTrigger")
-        coder.encodeFloat(rightTrigger.value, forKey: "rightTrigger")
+        coder.encode(leftShoulder.value, forKey: "leftShoulder")
+        coder.encode(rightShoulder.value, forKey: "rightShoulder")
+        coder.encode(dpad.xAxis.value, forKey: "dpadX")
+        coder.encode(dpad.yAxis.value, forKey: "dpadY")
+        coder.encode(buttonA.value, forKey: "buttonA")
+        coder.encode(buttonB.value, forKey: "buttonB")
+        coder.encode(buttonX.value, forKey: "buttonX")
+        coder.encode(buttonY.value, forKey: "buttonY")
+        coder.encode(leftTrigger.value, forKey: "leftTrigger")
+        coder.encode(rightTrigger.value, forKey: "rightTrigger")
         
-        coder.encodeFloat(leftThumbstick.xAxis.value, forKey: "leftThumbstickX")
-        coder.encodeFloat(leftThumbstick.yAxis.value, forKey: "leftThumbstickY")
-        coder.encodeFloat(rightThumbstick.xAxis.value, forKey: "rightThumbstickX")
-        coder.encodeFloat(rightThumbstick.yAxis.value, forKey: "rightThumbstickY")
+        coder.encode(leftThumbstick.xAxis.value, forKey: "leftThumbstickX")
+        coder.encode(leftThumbstick.yAxis.value, forKey: "leftThumbstickY")
+        coder.encode(rightThumbstick.xAxis.value, forKey: "rightThumbstickX")
+        coder.encode(rightThumbstick.yAxis.value, forKey: "rightThumbstickY")
         
     }
     
@@ -1402,53 +1402,53 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     /// represents software controllers (as well as being a wrapper around the
     /// hardware controller.
     ///
-    override public weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.extendedGamepad!.controller } else { return nil }
+    override open weak var controller: GCController? {
+        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.extendedGamepad!.controller } else { return nil }
     }
     
     // These getters decide if they should return the VGC version of the element value
     // (which software-based peripherals are supported by) or the hardware controller version.
-    public override var leftShoulder: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftShoulder)! } else { return vgcLeftShoulder } } }
+    open override var leftShoulder: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftShoulder)! } else { return vgcLeftShoulder } } }
     
-    public override var rightShoulder: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightShoulder)! } else { return vgcRightShoulder } }
+    open override var rightShoulder: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightShoulder)! } else { return vgcRightShoulder } }
     }
     
-    public override var dpad: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0)   { return (vgcController?.hardwareController.extendedGamepad!.dpad)! } else { return vgcDpad } }
+    open override var dpad: GCControllerDirectionPad {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0)   { return (vgcController?.hardwareController.extendedGamepad!.dpad)! } else { return vgcDpad } }
     }
-    public override var buttonA: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonA.value == 0 {
+    open override var buttonA: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonA.value == 0 {
             return (vgcController?.hardwareController.extendedGamepad!.buttonA)!
         } else {
             return vgcButtonA } }
     }
-    public override var buttonB: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonB.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonB)! } else { return vgcButtonB } }
+    open override var buttonB: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonB.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonB)! } else { return vgcButtonB } }
     }
-    public override var buttonX: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonX.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonX)! } else { return vgcButtonX } }
+    open override var buttonX: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonX.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonX)! } else { return vgcButtonX } }
     }
-    public override var buttonY: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonY.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonY)! } else { return vgcButtonY } }
+    open override var buttonY: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonY.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonY)! } else { return vgcButtonY } }
     }
     
     // Extended profile-specific properties
-    public override var leftTrigger: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftTrigger)! } else { return vgcLeftTrigger } }
+    open override var leftTrigger: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftTrigger)! } else { return vgcLeftTrigger } }
     }
     
-    public override var rightTrigger: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightTrigger)! } else { return vgcRightTrigger } }
+    open override var rightTrigger: GCControllerButtonInput {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightTrigger)! } else { return vgcRightTrigger } }
     }
     
-    public override var leftThumbstick: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcLeftThumbstick.yAxis.value == 0 && vgcLeftThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.leftThumbstick)! } else { return vgcLeftThumbstick } }
+    open override var leftThumbstick: GCControllerDirectionPad {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcLeftThumbstick.yAxis.value == 0 && vgcLeftThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.leftThumbstick)! } else { return vgcLeftThumbstick } }
     }
     
-    public override var rightThumbstick: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcRightThumbstick.yAxis.value == 0 && vgcRightThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.rightThumbstick)! } else { return vgcRightThumbstick } }
+    open override var rightThumbstick: GCControllerDirectionPad {
+        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcRightThumbstick.yAxis.value == 0 && vgcRightThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.rightThumbstick)! } else { return vgcRightThumbstick } }
     }
     
     // The function of the pause element is simply to trigger the handler - it is
@@ -1460,7 +1460,7 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
         set {
             
             if let handler = vgcController?.controllerPausedHandler {
-                dispatch_async((vgcController?.handlerQueue)!) {
+                (vgcController?.handlerQueue)!.async {
                     handler(self.vgcController!)
                 }
             }
@@ -1470,7 +1470,7 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     // This is the profile-level value changed handler, providing a handler
     // call for any element value change on the profile.  Each profile has one
     // of these.
-    public override var valueChangedHandler: GCExtendedGamepadValueChangedHandler? {
+    open override var valueChangedHandler: GCExtendedGamepadValueChangedHandler? {
         get {
             return self.vgcValueChangedHandler!
         }
@@ -1487,10 +1487,10 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     
     // Call the handler using the developer-specified handler queue,
     // if any.  We default it to main.
-    func callValueChangedHandler(element: GCControllerElement) {
+    func callValueChangedHandler(_ element: GCControllerElement) {
         //vgcController.mapElements()
         if let handler = vgcValueChangedHandler {
-            dispatch_async((vgcController?.handlerQueue)!) {
+            (vgcController?.handlerQueue)!.async {
                 handler(self, element)
             }
         }
@@ -1500,7 +1500,7 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
     // Unfortunately, there didn't seem to be any choice but to
     // rename this function because we need to return our own snapshot
     // class, and so cannot override the GCController version.
-    public func vgcSaveSnapshot() -> VgcExtendedGamepadSnapshot {
+    open func vgcSaveSnapshot() -> VgcExtendedGamepadSnapshot {
         
         let snapshot = VgcExtendedGamepadSnapshot(controller: self.vgcController!)
         return snapshot
@@ -1509,17 +1509,17 @@ public class VgcExtendedGamepad: GCExtendedGamepad {
 }
 
 // MARK: - Motion Profile
-public class VgcMotion: NSObject {
+open class VgcMotion: NSObject {
     
-    private var vgcController: VgcController?
+    fileprivate var vgcController: VgcController?
     
-    private var vgcGravity: GCAcceleration!
-    private var vgcUserAcceleration: GCAcceleration!
-    private var vgcAttitude: GCQuaternion!
-    private var vgcRotationRate: GCRotationRate!
+    fileprivate var vgcGravity: GCAcceleration!
+    fileprivate var vgcUserAcceleration: GCAcceleration!
+    fileprivate var vgcAttitude: GCQuaternion!
+    fileprivate var vgcRotationRate: GCRotationRate!
     
     public typealias VgcMotionValueChangedHandler = (VgcMotion) -> Void
-    private var vgcValueChangedHandler: VgcMotionValueChangedHandler?
+    fileprivate var vgcValueChangedHandler: VgcMotionValueChangedHandler?
    
     init(vgcController: VgcController) {
         
@@ -1539,14 +1539,14 @@ public class VgcMotion: NSObject {
     /// represents software controllers (as well as being a wrapper around the
     /// hardware controller.
     ///
-    public weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.motion!.controller } else { return nil }
+    open weak var controller: GCController? {
+        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.motion!.controller } else { return nil }
     }
     
     
-    public var userAcceleration: GCAcceleration {
+    open var userAcceleration: GCAcceleration {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
         }
         set {
             vgcUserAcceleration = newValue
@@ -1555,7 +1555,7 @@ public class VgcMotion: NSObject {
     
     var motionUserAccelerationX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
         }
         set {
             vgcUserAcceleration.x = Double(newValue)
@@ -1565,7 +1565,7 @@ public class VgcMotion: NSObject {
     
     var motionUserAccelerationY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
         }
         set {
             vgcUserAcceleration.y = Double(newValue)
@@ -1575,7 +1575,7 @@ public class VgcMotion: NSObject {
     
     var motionUserAccelerationZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
         }
         set {
             vgcUserAcceleration.z = Double(newValue)
@@ -1583,10 +1583,10 @@ public class VgcMotion: NSObject {
         }
     }
     
-    public var attitude: GCQuaternion {
+    open var attitude: GCQuaternion {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
             #endif
             return vgcAttitude
         }
@@ -1598,7 +1598,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
             #endif
             return Float(vgcAttitude.x)
         }
@@ -1611,7 +1611,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
             #endif
             return Float(vgcAttitude.y)
         }
@@ -1624,7 +1624,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
             #endif
             return Float(vgcAttitude.z)
         }
@@ -1638,7 +1638,7 @@ public class VgcMotion: NSObject {
     var motionAttitudeW: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
             #endif
             return Float(vgcAttitude.w)
         }
@@ -1649,10 +1649,10 @@ public class VgcMotion: NSObject {
         }
     }
     
-    public var rotationRate: GCRotationRate {
+    open var rotationRate: GCRotationRate {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
             #endif
             return vgcRotationRate
         }
@@ -1664,7 +1664,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
             #endif
             return Float(vgcRotationRate.x)
         }
@@ -1677,7 +1677,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
             #endif
             return Float(vgcRotationRate.y)
         }
@@ -1690,7 +1690,7 @@ public class VgcMotion: NSObject {
     var motionRotationRateZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
+                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
             #endif
             return Float(vgcRotationRate.z)
         }
@@ -1700,9 +1700,9 @@ public class VgcMotion: NSObject {
         }
     }
     
-    public var gravity: GCAcceleration {
+    open var gravity: GCAcceleration {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
             
         }
         set {
@@ -1712,7 +1712,7 @@ public class VgcMotion: NSObject {
     
     var motionGravityX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
         }
         set {
             vgcGravity.x = Double(newValue)
@@ -1722,7 +1722,7 @@ public class VgcMotion: NSObject {
     
     var motionGravityY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
         }
         set {
             vgcGravity.y = Double(newValue)
@@ -1732,7 +1732,7 @@ public class VgcMotion: NSObject {
     
     var motionGravityZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
+            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
         }
         set {
             vgcGravity.z = Double(newValue)
@@ -1743,13 +1743,13 @@ public class VgcMotion: NSObject {
     
     func callHandler() {
         if let handler = vgcValueChangedHandler {
-            dispatch_async((vgcController?.handlerQueue)!) {
+            (vgcController?.handlerQueue)!.async {
                 handler(self)
             }
         }
     }
     
-    public var valueChangedHandler: VgcMotionValueChangedHandler? {
+    open var valueChangedHandler: VgcMotionValueChangedHandler? {
         get {
             return vgcValueChangedHandler!
         }
@@ -1763,18 +1763,18 @@ public class VgcMotion: NSObject {
 // MARK: - Snapshots
 
 // Convienance functions for snapshots to populate elements with values
-func makeButton(buttonValue: Float, controller: VgcController, element: Element) -> VgcControllerButtonInput {
+func makeButton(_ buttonValue: Float, controller: VgcController, element: Element) -> VgcControllerButtonInput {
     
-    element.value = buttonValue
+    element.value = buttonValue as AnyObject
     let button = VgcControllerButtonInput(vgcGameController: controller, element: element)
     return button
     
 }
 
-func makeDirectionPad(xAxis: Float, yAxis: Float, controller: VgcController, xElement: Element, yElement: Element) -> VgcControllerDirectionPad {
+func makeDirectionPad(_ xAxis: Float, yAxis: Float, controller: VgcController, xElement: Element, yElement: Element) -> VgcControllerDirectionPad {
     
-    xElement.value = xAxis
-    yElement.value = yAxis
+    xElement.value = xAxis as AnyObject
+    yElement.value = yAxis as AnyObject
     let directionPad = VgcControllerDirectionPad(vgcGameController: controller, xElement: xElement, yElement: yElement)
     return directionPad
     
@@ -1782,23 +1782,24 @@ func makeDirectionPad(xAxis: Float, yAxis: Float, controller: VgcController, xEl
 
 // Encode and decode snapshot NSData
 
-enum EncodingStructError: ErrorType {
-    case InvalidSize
+enum EncodingStructError: Error {
+    case invalidSize
 }
 
-func encodeSnapshot<T>(var value: T) -> NSData {
-    return withUnsafePointer(&value) { p in
-        NSData(bytes: p, length: sizeofValue(value))
+func encodeSnapshot<T>(_ value: T) -> Data {
+        var value = value
+    return withUnsafePointer(to: &value) { p in
+        Data(bytes: UnsafePointer<UInt8>(p), count: MemoryLayout.size(ofValue: value))
     }
 }
 
-func decodeSnapshot<T>(data: NSData) throws -> T {
-    guard data.length == sizeof(T) else {
-        throw EncodingStructError.InvalidSize
+func decodeSnapshot<T>(_ data: Data) throws -> T {
+    guard data.count == MemoryLayout<T>.size else {
+        throw EncodingStructError.invalidSize
     }
     
-    let pointer = UnsafeMutablePointer<T>.alloc(sizeof(T.Type))
-    data.getBytes(pointer, length: data.length)
+    let pointer = UnsafeMutablePointer<T>.allocate(capacity: MemoryLayout<T.Type>.size)
+    (data as NSData).getBytes(pointer, length: data.count)
     
     return pointer.move()
 }
@@ -1811,9 +1812,9 @@ func decodeSnapshot<T>(data: NSData) throws -> T {
 
 // MARK: - Extended Gamepad Snapshot
 
-public class VgcExtendedGamepadSnapshot: NSObject {
+open class VgcExtendedGamepadSnapshot: NSObject {
  
-    private let elements = VgcManager.elements
+    fileprivate let elements = VgcManager.elements
     
     // Use a custom named version of the snapshot struct
     struct VgcExtendedGamepadSnapShotDataV100 {
@@ -1835,7 +1836,7 @@ public class VgcExtendedGamepadSnapshot: NSObject {
         var rightTrigger: Float
     }
     
-    private var controller: VgcController!
+    fileprivate var controller: VgcController!
     
     var snapshotV100Structure: VgcExtendedGamepadSnapShotDataV100!
     
@@ -1847,7 +1848,7 @@ public class VgcExtendedGamepadSnapshot: NSObject {
         // struct will be used to provide interface-based access to the data
         // (using the getters below) as well as generating the NSData representation
         // of the snapshot.
-        let sizeInt = sizeof(VgcExtendedGamepadSnapShotDataV100)
+        let sizeInt = MemoryLayout<VgcExtendedGamepadSnapShotDataV100>.size
         let sizeUInt16 = UInt16(sizeInt)
         snapshotV100Structure = VgcExtendedGamepadSnapShotDataV100(
             version: 0x0100,
@@ -1870,7 +1871,7 @@ public class VgcExtendedGamepadSnapshot: NSObject {
         super.init()
     }
     
-    public init(controller: VgcController, snapshotData: NSData) {
+    public init(controller: VgcController, snapshotData: Data) {
         
         super.init()
         
@@ -1882,32 +1883,32 @@ public class VgcExtendedGamepadSnapshot: NSObject {
         
     }
     
-    public init(snapshotData: NSData) { super.init(); self.snapshotData = snapshotData }
+    public init(snapshotData: Data) { super.init(); self.snapshotData = snapshotData }
     
     // Getters for the various elements that read from the struct
-    public var dpad: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.dpadX, yAxis: snapshotV100Structure.dpadY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
-    public var buttonA: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonA, controller: controller, element: elements.buttonA) } }
-    public var buttonB: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonB, controller: controller, element: elements.buttonB) } }
-    public var buttonX: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonX, controller: controller, element: elements.buttonX) } }
-    public var buttonY: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonY, controller: controller, element: elements.buttonY) } }
-    public var leftShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightShoulder, controller: controller, element: elements.leftShoulder) } }
-    public var rightShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftShoulder, controller: controller, element: elements.rightShoulder) } }
-    public var leftTrigger: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftTrigger, controller: controller, element: elements.leftTrigger) } }
-    public var rightTrigger: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightTrigger, controller: controller, element: elements.rightTrigger) } }
-    public var rightThumbstick: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.rightThumbstickX, yAxis: snapshotV100Structure.rightThumbstickY, controller: controller, xElement: elements.rightThumbstickXAxis, yElement: elements.rightThumbstickYAxis) } }
-    public var leftThumbstick: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.leftThumbstickX, yAxis: snapshotV100Structure.leftThumbstickY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
+    open var dpad: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.dpadX, yAxis: snapshotV100Structure.dpadY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
+    open var buttonA: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonA, controller: controller, element: elements.buttonA) } }
+    open var buttonB: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonB, controller: controller, element: elements.buttonB) } }
+    open var buttonX: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonX, controller: controller, element: elements.buttonX) } }
+    open var buttonY: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonY, controller: controller, element: elements.buttonY) } }
+    open var leftShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightShoulder, controller: controller, element: elements.leftShoulder) } }
+    open var rightShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftShoulder, controller: controller, element: elements.rightShoulder) } }
+    open var leftTrigger: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftTrigger, controller: controller, element: elements.leftTrigger) } }
+    open var rightTrigger: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightTrigger, controller: controller, element: elements.rightTrigger) } }
+    open var rightThumbstick: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.rightThumbstickX, yAxis: snapshotV100Structure.rightThumbstickY, controller: controller, xElement: elements.rightThumbstickXAxis, yElement: elements.rightThumbstickYAxis) } }
+    open var leftThumbstick: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.leftThumbstickX, yAxis: snapshotV100Structure.leftThumbstickY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
     
     
     // The user can both read and write to the snapshotData property, NSData, that represents
     // an archived or flattened for of the snapshot object.  It is the way to "rehydrate" a
     // previously saved object, and results in "transmission" to the associated controller.
     
-    public var snapshotData: NSData {
+    open var snapshotData: Data {
         
         get {
             
-            let snapshot = UnsafeMutablePointer<VgcExtendedGamepadSnapShotDataV100>.alloc(1)
-            snapshot.initialize(snapshotV100Structure)
+            let snapshot = UnsafeMutablePointer<VgcExtendedGamepadSnapShotDataV100>.allocate(capacity: 1)
+            snapshot.initialize(to: snapshotV100Structure)
             let encodedNSData = encodeSnapshot(snapshotV100Structure)
             return encodedNSData
         }
@@ -1925,25 +1926,25 @@ public class VgcExtendedGamepadSnapshot: NSObject {
             // the simple init is used
             guard controller == nil else {
                 
-                controller.elements.dpadXAxis.value = snapshotV100Structure.dpadX
-                controller.elements.dpadYAxis.value = snapshotV100Structure.dpadY
+                controller.elements.dpadXAxis.value = snapshotV100Structure.dpadX as AnyObject
+                controller.elements.dpadYAxis.value = snapshotV100Structure.dpadY as AnyObject
                 
-                controller.elements.buttonA.value = snapshotV100Structure.buttonA
-                controller.elements.buttonB.value = snapshotV100Structure.buttonB
-                controller.elements.buttonX.value = snapshotV100Structure.buttonX
-                controller.elements.buttonY.value = snapshotV100Structure.buttonY
+                controller.elements.buttonA.value = snapshotV100Structure.buttonA as AnyObject
+                controller.elements.buttonB.value = snapshotV100Structure.buttonB as AnyObject
+                controller.elements.buttonX.value = snapshotV100Structure.buttonX as AnyObject
+                controller.elements.buttonY.value = snapshotV100Structure.buttonY as AnyObject
                 
-                controller.elements.leftShoulder.value = snapshotV100Structure.leftShoulder
-                controller.elements.rightShoulder.value = snapshotV100Structure.rightShoulder
+                controller.elements.leftShoulder.value = snapshotV100Structure.leftShoulder as AnyObject
+                controller.elements.rightShoulder.value = snapshotV100Structure.rightShoulder as AnyObject
                 
-                controller.elements.rightThumbstickXAxis.value = snapshotV100Structure.rightThumbstickX
-                controller.elements.rightThumbstickYAxis.value = snapshotV100Structure.rightThumbstickY
+                controller.elements.rightThumbstickXAxis.value = snapshotV100Structure.rightThumbstickX as AnyObject
+                controller.elements.rightThumbstickYAxis.value = snapshotV100Structure.rightThumbstickY as AnyObject
                 
-                controller.elements.leftThumbstickXAxis.value = snapshotV100Structure.leftThumbstickX
-                controller.elements.leftThumbstickYAxis.value = snapshotV100Structure.leftThumbstickY
+                controller.elements.leftThumbstickXAxis.value = snapshotV100Structure.leftThumbstickX as AnyObject
+                controller.elements.leftThumbstickYAxis.value = snapshotV100Structure.leftThumbstickY as AnyObject
                 
-                controller.elements.rightTrigger.value = snapshotV100Structure.rightTrigger
-                controller.elements.leftTrigger.value = snapshotV100Structure.leftTrigger
+                controller.elements.rightTrigger.value = snapshotV100Structure.rightTrigger as AnyObject
+                controller.elements.leftTrigger.value = snapshotV100Structure.leftTrigger as AnyObject
                 
                 return
             }
@@ -1953,9 +1954,9 @@ public class VgcExtendedGamepadSnapshot: NSObject {
 }
 
 // MARK: - Gamepad Snapshot
-public class VgcGamepadSnapshot: NSObject {
+open class VgcGamepadSnapshot: NSObject {
 
-    private let elements = VgcManager.elements
+    fileprivate let elements = VgcManager.elements
     
     // Use a custom named version of the snapshot struct
     struct VgcGamepadSnapShotDataV100 {
@@ -1972,7 +1973,7 @@ public class VgcGamepadSnapshot: NSObject {
         
     }
     
-    private var controller: VgcController!
+    fileprivate var controller: VgcController!
     
     var snapshotV100Structure: VgcGamepadSnapShotDataV100!
     
@@ -1984,7 +1985,7 @@ public class VgcGamepadSnapshot: NSObject {
         // struct will be used to provide interface-based access to the data
         // (using the getters below) as well as generating the NSData representation
         // of the snapshot.
-        let sizeInt = sizeof(VgcGamepadSnapShotDataV100)
+        let sizeInt = MemoryLayout<VgcGamepadSnapShotDataV100>.size
         let sizeUInt16 = UInt16(sizeInt)
         snapshotV100Structure = VgcGamepadSnapShotDataV100(
             version: 0x0100,
@@ -2001,7 +2002,7 @@ public class VgcGamepadSnapshot: NSObject {
         super.init()
     }
     
-    public init(controller: VgcController, snapshotData: NSData) {
+    public init(controller: VgcController, snapshotData: Data) {
         
         super.init()
         
@@ -2013,27 +2014,27 @@ public class VgcGamepadSnapshot: NSObject {
         
     }
     
-    public init(snapshotData: NSData) { super.init(); self.snapshotData = snapshotData }
+    public init(snapshotData: Data) { super.init(); self.snapshotData = snapshotData }
     
     // Getters for the various elements that read from the struct
-    public var dpad: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.dpadX, yAxis: snapshotV100Structure.dpadY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
-    public var buttonA: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonA, controller: controller, element: elements.buttonA) } }
-    public var buttonB: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonB, controller: controller, element: elements.buttonB) } }
-    public var buttonX: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonX, controller: controller, element: elements.buttonX) } }
-    public var buttonY: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonY, controller: controller, element: elements.buttonY) } }
-    public var leftShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightShoulder, controller: controller, element: elements.leftShoulder) } }
-    public var rightShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftShoulder, controller: controller, element: elements.rightShoulder) } }
+    open var dpad: GCControllerDirectionPad { get { return makeDirectionPad(snapshotV100Structure.dpadX, yAxis: snapshotV100Structure.dpadY, controller: controller, xElement: elements.dpadXAxis, yElement: elements.dpadYAxis) } }
+    open var buttonA: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonA, controller: controller, element: elements.buttonA) } }
+    open var buttonB: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonB, controller: controller, element: elements.buttonB) } }
+    open var buttonX: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonX, controller: controller, element: elements.buttonX) } }
+    open var buttonY: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.buttonY, controller: controller, element: elements.buttonY) } }
+    open var leftShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.rightShoulder, controller: controller, element: elements.leftShoulder) } }
+    open var rightShoulder: GCControllerButtonInput { get { return makeButton(snapshotV100Structure.leftShoulder, controller: controller, element: elements.rightShoulder) } }
     
     // The user can both read and write to the snapshotData property, NSData, that represents
     // an archived or flattened for of the snapshot object.  It is the way to "rehydrate" a
     // previously saved object, and results in "transmission" to the associated controller.
     
-    public var snapshotData: NSData {
+    open var snapshotData: Data {
         
         get {
             
-            let snapshot = UnsafeMutablePointer<VgcGamepadSnapShotDataV100>.alloc(1)
-            snapshot.initialize(snapshotV100Structure)
+            let snapshot = UnsafeMutablePointer<VgcGamepadSnapShotDataV100>.allocate(capacity: 1)
+            snapshot.initialize(to: snapshotV100Structure)
             let encodedNSData = encodeSnapshot(snapshotV100Structure)
             return encodedNSData
         }
@@ -2171,11 +2172,11 @@ public class VgcMicroGamepadSnapshot: NSObject {
 
 class VgcControllerButtonInput: GCControllerButtonInput {
     
-    private var vgcGameController: VgcController?
-    private var element: Element!
-    private var vgcValueChangedHandler: GCControllerButtonValueChangedHandler?
-    private var vgcPressedChangedHandler: GCControllerButtonValueChangedHandler?
-    private var vgcButtonPressed: Bool = false
+    fileprivate var vgcGameController: VgcController?
+    fileprivate var element: Element!
+    fileprivate var vgcValueChangedHandler: GCControllerButtonValueChangedHandler?
+    fileprivate var vgcPressedChangedHandler: GCControllerButtonValueChangedHandler?
+    fileprivate var vgcButtonPressed: Bool = false
     
     //internal typealias VgcControllerButtonValueChangedHandler = (VgcControllerButtonInput, Float, Bool) -> Void
     
@@ -2189,7 +2190,7 @@ class VgcControllerButtonInput: GCControllerButtonInput {
     }
     
 
-    override var pressed: Bool {
+    override var isPressed: Bool {
         get {
             return vgcButtonPressed
         }
@@ -2202,7 +2203,7 @@ class VgcControllerButtonInput: GCControllerButtonInput {
         }
         set {
             
-            element.value = newValue
+            element.value = newValue as AnyObject
             
             var buttonPressedChanged = false
             
@@ -2218,14 +2219,14 @@ class VgcControllerButtonInput: GCControllerButtonInput {
 
             if buttonPressedChanged {
                 if let pressedChangedHandler = vgcPressedChangedHandler {
-                    dispatch_async((vgcGameController?.handlerQueue)!) {
+                    (vgcGameController?.handlerQueue)!.async {
                         pressedChangedHandler(self, newValue, self.vgcButtonPressed)
                     }
                 }
             }
             
             if let valueHandler = vgcValueChangedHandler {
-                dispatch_async((vgcGameController?.handlerQueue)!) {
+                (vgcGameController?.handlerQueue)!.async {
                     valueHandler(self, self.element.value.floatValue, self.vgcButtonPressed)
                 }
             }
@@ -2256,10 +2257,10 @@ class VgcControllerButtonInput: GCControllerButtonInput {
 // Custom impelmentation of GCControllerAxisInput
 class VgcControllerAxisInput: GCControllerAxisInput {
     
-    private var vgcGameController: VgcController?
-    private var element: Element!
-    private var vgcCollection: AnyObject?
-    private var vgcValueChangedHandler: GCControllerAxisValueChangedHandler?
+    fileprivate var vgcGameController: VgcController?
+    fileprivate var element: Element!
+    fileprivate var vgcCollection: AnyObject?
+    fileprivate var vgcValueChangedHandler: GCControllerAxisValueChangedHandler?
     
     init(vgcGameController: VgcController, element: Element) {
         
@@ -2278,7 +2279,7 @@ class VgcControllerAxisInput: GCControllerAxisInput {
         set {
             
             if let handler = vgcValueChangedHandler {
-                dispatch_async((vgcGameController?.handlerQueue)!) {
+                (vgcGameController?.handlerQueue)!.async {
                     handler(self, newValue)
                 }
             }
@@ -2302,10 +2303,10 @@ class VgcControllerAxisInput: GCControllerAxisInput {
 
 class VgcControllerDirectionPad: GCControllerDirectionPad {
     
-    private var vgcGameController: VgcController?
-    private var vgcXAxis: VgcControllerAxisInput!
-    private var vgcYAxis: VgcControllerAxisInput!
-    private var vgcValueChangedHandler: GCControllerDirectionPadValueChangedHandler?
+    fileprivate var vgcGameController: VgcController?
+    fileprivate var vgcXAxis: VgcControllerAxisInput!
+    fileprivate var vgcYAxis: VgcControllerAxisInput!
+    fileprivate var vgcValueChangedHandler: GCControllerDirectionPadValueChangedHandler?
     
     init(vgcGameController: VgcController, xElement: Element, yElement: Element) {
         
@@ -2320,7 +2321,7 @@ class VgcControllerDirectionPad: GCControllerDirectionPad {
     
     func callHandler() {
         if let hanlder = vgcValueChangedHandler {
-            dispatch_async((vgcGameController?.handlerQueue)!) {
+            (vgcGameController?.handlerQueue)!.async {
                 hanlder(self, self.vgcXAxis.value, self.vgcYAxis.value)
             }
         }

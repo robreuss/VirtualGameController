@@ -50,11 +50,11 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         
         let element = VgcManager.elements.elementFromIdentifier(elementIdentifier)
         
-        if element.type == .deviceInfoElement {
+        if element?.type == .deviceInfoElement {
             
-            element.valueAsNSData = elementValue
+            element?.valueAsNSData = elementValue
             NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-            deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData) as? DeviceInfo)!
+            deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: (element?.valueAsNSData)!) as? DeviceInfo)!
             
             delegate?.testForMatchingStreams()
             
@@ -65,11 +65,11 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         
         vgcLogDebug("Opening pending streams")
 
-        outputStream.delegate = streamer as! StreamDelegate
+        outputStream.delegate = streamer
         outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         outputStream.open()
         
-        inputStream.delegate = streamer as! StreamDelegate
+        inputStream.delegate = streamer
         inputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         inputStream.open()
         
