@@ -113,7 +113,7 @@ public enum StreamDataType: Int, CustomStringConvertible {
 }
 
 // Message header identifier is a random pre-generated 32-bit integer
-let headerIdentifierAsNSData = Data(bytes: UnsafePointer<UInt8>(&VgcManager.headerIdentifier), count: sizeof(UInt32))
+let headerIdentifierAsNSData = Data(bytes: &VgcManager.headerIdentifier, count: MemoryLayout<UInt32>.size)
 
 ///
 /// Element is a class that represents each element/control on a controller, such as Button A or dpad.
@@ -209,10 +209,10 @@ open class Element: NSObject {
         let elementValueAsNSData = valueAsNSData
         
         var elementIdentifierAsUInt8: UInt8 = UInt8(identifier)
-        let elementIdentifierAsNSData = Data(bytes: UnsafePointer<UInt8>(&elementIdentifierAsUInt8), count: sizeof(UInt8))
+        let elementIdentifierAsNSData = Data(bytes: &elementIdentifierAsUInt8, count: MemoryLayout<UInt8>.size)
         
         var valueLengthAsUInt32: UInt32 = UInt32(elementValueAsNSData.count)
-        let valueLengthAsNSData = Data(bytes: UnsafePointer<UInt8>(&valueLengthAsUInt32), count: sizeof(UInt32))
+        let valueLengthAsNSData = Data(bytes: &valueLengthAsUInt32, count: MemoryLayout<UInt32>.size)
         
         let messageData = NSMutableData()
         
@@ -225,7 +225,7 @@ open class Element: NSObject {
         if VgcManager.netServiceLatencyLogging {                   // 8 bytes:  For latency testing
             
             var timestamp: Double = Date().timeIntervalSince1970
-            let timestampAsNSData = Data(bytes: UnsafePointer<UInt8>(&timestamp), count: sizeof(Double))
+            let timestampAsNSData = Data(bytes: &timestamp, count: MemoryLayout<Double>.size)
             messageData.append(timestampAsNSData)
             
         }
@@ -244,11 +244,11 @@ open class Element: NSObject {
                 
             case .int:
                 var value: Int = self.value as! Int
-                return Data(bytes: UnsafePointer<UInt8>(&value), count: sizeof(Int))
+                return Data(bytes: &value, count: MemoryLayout<Int>.size)
                 
             case .float:
                 var value: Float = self.value as! Float
-                return Data(bytes: UnsafePointer<UInt8>(&value), count: sizeof(Float))
+                return Data(bytes: &value, count: MemoryLayout<Float>.size)
                 
             case .data:
                 return self.value as! Data

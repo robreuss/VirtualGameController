@@ -507,9 +507,9 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     
     open func vibrateDevice() {
         let element = VgcManager.elements.elementFromIdentifier(ElementType.vibrateDevice.rawValue)
-        element?.value = 1
+        element?.value = 1 as AnyObject
         sendElementStateToPeripheral(element!)
-        element?.value = 0
+        element?.value = 0 as AnyObject
         sendElementStateToPeripheral(element!)
     }
 
@@ -1789,7 +1789,7 @@ enum EncodingStructError: Error {
 func encodeSnapshot<T>(_ value: T) -> Data {
         var value = value
     return withUnsafePointer(to: &value) { p in
-        Data(bytes: UnsafePointer<UInt8>(p), count: MemoryLayout.size(ofValue: value))
+        Data(bytes: p, count: MemoryLayout.size(ofValue: value))
     }
 }
 
