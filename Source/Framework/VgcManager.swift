@@ -292,7 +292,7 @@ open class VgcManager: NSObject {
     open static var centralServiceName = UIDevice.current.name
     #endif
     #if os(OSX)
-    public static var centralServiceName = NSHost.currentHost().localizedName
+    public static var centralServiceName = Host.currentHost().localizedName
     #endif
 
     #if !os(watchOS)
