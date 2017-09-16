@@ -17,14 +17,14 @@ import UIKit
 
 #if !os(watchOS)
 
-public class VgcPeripheralSetup: NSObject {
+open class VgcPeripheralSetup: NSObject {
     
-    public var profileType: ProfileType!
-    public var motionActive = false
-    public var enableMotionUserAcceleration = true
-    public var enableMotionRotationRate = true
-    public var enableMotionAttitude = true
-    public var enableMotionGravity = true
+    open var profileType: ProfileType!
+    open var motionActive = false
+    open var enableMotionUserAcceleration = true
+    open var enableMotionRotationRate = true
+    open var enableMotionAttitude = true
+    open var enableMotionGravity = true
     
     /*
     public var motionActive: Bool! {
@@ -41,11 +41,11 @@ public class VgcPeripheralSetup: NSObject {
     */
     
 #if os(iOS) || os(tvOS)
-    public var backgroundColor: UIColor!
+    open var backgroundColor: UIColor!
     
     public override init() {
-        self.profileType = .ExtendedGamepad
-        self.backgroundColor = UIColor.darkGrayColor()
+        self.profileType = .extendedGamepad
+        self.backgroundColor = UIColor.darkGray
     }
     
     public init(profileType: ProfileType, backgroundColor: UIColor) {
@@ -80,21 +80,21 @@ required convenience public init(coder decoder: NSCoder) {
     #endif
     
     #if os(iOS) || os(tvOS)
-    self.backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! UIColor
+    self.backgroundColor = decoder.decodeObject(forKey: "backgroundColor") as! UIColor
     #endif
     
-    self.profileType = ProfileType(rawValue: decoder.decodeIntegerForKey("profileType"))
+    self.profileType = ProfileType(rawValue: decoder.decodeInteger(forKey: "profileType"))
 
-    self.motionActive = decoder.decodeBoolForKey("motionActive")
-    self.enableMotionUserAcceleration = decoder.decodeBoolForKey("enableMotionUserAcceleration")
-    self.enableMotionAttitude = decoder.decodeBoolForKey("enableMotionAttitude")
-    self.enableMotionGravity = decoder.decodeBoolForKey("enableMotionGravity")
-    self.enableMotionRotationRate = decoder.decodeBoolForKey("enableMotionRotationRate")
+    self.motionActive = decoder.decodeBool(forKey: "motionActive")
+    self.enableMotionUserAcceleration = decoder.decodeBool(forKey: "enableMotionUserAcceleration")
+    self.enableMotionAttitude = decoder.decodeBool(forKey: "enableMotionAttitude")
+    self.enableMotionGravity = decoder.decodeBool(forKey: "enableMotionGravity")
+    self.enableMotionRotationRate = decoder.decodeBool(forKey: "enableMotionRotationRate")
 
 }
 
     
-    public override var description: String {
+    open override var description: String {
         
         var result: String = "\n"
         result += "Peripheral Setup:\n\n"
@@ -112,24 +112,24 @@ required convenience public init(coder decoder: NSCoder) {
     
     // Test
     
-    public func encodeWithCoder(coder: NSCoder) {
+    open func encodeWithCoder(_ coder: NSCoder) {
         
-        coder.encodeInteger(self.profileType.rawValue, forKey: "profileType")
-        coder.encodeObject(self.backgroundColor, forKey: "backgroundColor")
-        coder.encodeBool(self.motionActive, forKey: "motionActive")
-        coder.encodeBool(self.enableMotionUserAcceleration, forKey: "enableMotionUserAcceleration")
-        coder.encodeBool(self.enableMotionAttitude, forKey: "enableMotionAttitude")
-        coder.encodeBool(self.enableMotionGravity, forKey: "enableMotionGravity")
-        coder.encodeBool(self.enableMotionRotationRate, forKey: "enableMotionRotationRate")
+        coder.encode(self.profileType.rawValue, forKey: "profileType")
+        coder.encode(self.backgroundColor, forKey: "backgroundColor")
+        coder.encode(self.motionActive, forKey: "motionActive")
+        coder.encode(self.enableMotionUserAcceleration, forKey: "enableMotionUserAcceleration")
+        coder.encode(self.enableMotionAttitude, forKey: "enableMotionAttitude")
+        coder.encode(self.enableMotionGravity, forKey: "enableMotionGravity")
+        coder.encode(self.enableMotionRotationRate, forKey: "enableMotionRotationRate")
     }
     
     // A copy of the deviceInfo object is made when forwarding it through a Bridge.
-    func copyWithZone(zone: NSZone) -> AnyObject {
+    func copyWithZone(_ zone: NSZone?) -> AnyObject {
         let copy = VgcPeripheralSetup(profileType: profileType, backgroundColor: backgroundColor)
         return copy
     }
     
-    public func sendToController(controller: VgcController) {
+    open func sendToController(_ controller: VgcController) {
         
         if controller.hardwareController != nil {
             vgcLogDebug("Refusing to send peripheral setup to hardware controller")
@@ -139,9 +139,9 @@ required convenience public init(coder decoder: NSCoder) {
         vgcLogDebug("Sending Peripheral Setup to Peripheral:")
         print(self)
         
-        NSKeyedArchiver.setClassName("VgcPeripheralSetup", forClass: VgcPeripheralSetup.self)
+        NSKeyedArchiver.setClassName("VgcPeripheralSetup", for: VgcPeripheralSetup.self)
         let element = VgcManager.elements.peripheralSetup
-        element.value = NSKeyedArchiver.archivedDataWithRootObject(self)
+        element.value = NSKeyedArchiver.archivedData(withRootObject: self) as AnyObject
        controller.sendElementStateToPeripheral(element)
     }
     

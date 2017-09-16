@@ -137,6 +137,7 @@
 				TargetAttributes = {
 					202BBF601BE569BC004D47EC = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -294,6 +295,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerIOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = Build;
 			};
 			name = Debug;
@@ -313,6 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerIOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				SYMROOT = Build;
 			};
 			name = Release;

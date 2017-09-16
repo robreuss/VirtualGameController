@@ -25,13 +25,13 @@ import Foundation
 class VgcPendingStream: NSObject, VgcStreamerDelegate {
     
     weak var delegate: VgcPendingStreamDelegate?
-    var createTime = NSDate()
-    var inputStream: NSInputStream
-    var outputStream: NSOutputStream
+    var createTime = Date()
+    var inputStream: InputStream
+    var outputStream: OutputStream
     var streamer: VgcStreamer!
     var deviceInfo: DeviceInfo!
     
-    init(inputStream: NSInputStream, outputStream: NSOutputStream, delegate: VgcPendingStreamDelegate) {
+    init(inputStream: InputStream, outputStream: OutputStream, delegate: VgcPendingStreamDelegate) {
         
         self.delegate = delegate
         self.inputStream = inputStream
@@ -46,15 +46,15 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
     }
 
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
+    func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
         
         let element = VgcManager.elements.elementFromIdentifier(elementIdentifier)
         
-        if element.type == .DeviceInfoElement {
+        if element.type == .deviceInfoElement {
             
             element.valueAsNSData = elementValue
             NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-            deviceInfo = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as? DeviceInfo)!
+            deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData) as? DeviceInfo)!
             
             delegate?.testForMatchingStreams()
             
@@ -65,12 +65,12 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         
         vgcLogDebug("Opening pending streams")
 
-        outputStream.delegate = streamer
-        outputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        outputStream.delegate = streamer as! StreamDelegate
+        outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         outputStream.open()
         
-        inputStream.delegate = streamer
-        inputStream.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+        inputStream.delegate = streamer as! StreamDelegate
+        inputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         inputStream.open()
         
     }
@@ -88,15 +88,15 @@ func ==(lhs: VgcPendingStream, rhs: VgcPendingStream) -> Bool {
 }
 
 
-internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDelegate, VgcPendingStreamDelegate {
+internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate, VgcPendingStreamDelegate {
     
-    var localService: NSNetService!
-    var remoteService: NSNetService!
+    var localService: NetService!
+    var remoteService: NetService!
     var registeredName: String!
     var haveConnectionToPeripheral: Bool
-    var unusedInputStream: NSInputStream!
-    var unusedOutputStream: NSOutputStream!
-    var streamMatchingTimer: NSTimer!
+    var unusedInputStream: InputStream!
+    var unusedOutputStream: OutputStream!
+    var streamMatchingTimer: Timer!
     var pendingStreams = Set<VgcPendingStream>()
     
     override init() {
@@ -118,9 +118,9 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
             }
         #else
             if deviceIsTypeOfBridge() {
-                self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
+                self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
             } else {
-                self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
+                self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
                 
             }
         #endif
@@ -133,7 +133,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     // So that peripherals will be able to see us over NetServices
     func publishService() {
         vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
-        self.localService.publishWithOptions(.ListenForConnections)
+        self.localService.publish(options: .listenForConnections)
     }
     
     func unpublishService() {
@@ -143,25 +143,25 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
     
     func updateMatchingStreamTimer() {
         
-        if pendingStreams.count == 0 && streamMatchingTimer.valid {
+        if pendingStreams.count == 0 && streamMatchingTimer.isValid {
             vgcLogDebug("Invalidating matching stream timer")
             streamMatchingTimer.invalidate()
             streamMatchingTimer = nil
         } else if pendingStreams.count > 0 && streamMatchingTimer == nil {
             vgcLogDebug("Setting matching stream timer")
-            streamMatchingTimer = NSTimer.scheduledTimerWithTimeInterval(VgcManager.maxTimeForMatchingStreams, target: self, selector: "testForMatchingStreams", userInfo: nil, repeats: false)
+            streamMatchingTimer = Timer.scheduledTimer(timeInterval: VgcManager.maxTimeForMatchingStreams, target: self, selector: #selector(VgcPendingStreamDelegate.testForMatchingStreams), userInfo: nil, repeats: false)
         }
         
     }
     
-    let lockQueuePendingStreams = dispatch_queue_create("net.simplyformed.lockQueuePendingStreams", nil)
+    let lockQueuePendingStreams = DispatchQueue(label: "net.simplyformed.lockQueuePendingStreams", attributes: [])
     
     func testForMatchingStreams() {
         
         var pendingStream1: VgcPendingStream! = nil
         var pendingStream2: VgcPendingStream! = nil
         
-        dispatch_sync(lockQueuePendingStreams) {
+        lockQueuePendingStreams.sync {
             
             if self.pendingStreams.count > 0 { vgcLogDebug("Testing for matching streams among \(self.pendingStreams.count) pending streams") }
             
@@ -198,8 +198,8 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
                 controller.centralPublisher = self
                 pendingStream1.streamer.delegate = controller
                 pendingStream2.streamer.delegate = controller
-                controller.openstreams(.LargeData, inputStream: pendingStream1.inputStream, outputStream: pendingStream1.outputStream, streamStreamer: pendingStream1.streamer)
-                controller.openstreams(.SmallData, inputStream: pendingStream2.inputStream, outputStream: pendingStream2.outputStream, streamStreamer: pendingStream2.streamer)
+                controller.openstreams(.largeData, inputStream: pendingStream1.inputStream, outputStream: pendingStream1.outputStream, streamStreamer: pendingStream1.streamer)
+                controller.openstreams(.smallData, inputStream: pendingStream2.inputStream, outputStream: pendingStream2.outputStream, streamStreamer: pendingStream2.streamer)
                 
                 // Use of pendingStream1 is arbitrary - both streams have same deviceInfo
                 controller.deviceInfo = pendingStream1.deviceInfo
@@ -214,7 +214,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
 
     }
     
-    internal func netService(service: NSNetService, didAcceptConnectionWithInputStream inputStream: NSInputStream, outputStream: NSOutputStream) {
+    internal func netService(_ service: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
 
         vgcLogDebug("Assigning input/output streams to pending stream object")
         
@@ -224,7 +224,7 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
 
         pendingStream.streamer = VgcStreamer(delegate: pendingStream, delegateName:"Central Publisher")
 
-        dispatch_sync(lockQueuePendingStreams) {
+        lockQueuePendingStreams.sync {
             self.pendingStreams.insert(pendingStream)
         }
         pendingStream.openstreams()
@@ -233,11 +233,11 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         
     }
     
-    internal func netService(sender: NSNetService, didUpdateTXTRecordData data: NSData) {
+    internal func netService(_ sender: NetService, didUpdateTXTRecord data: Data) {
         vgcLogDebug("CENTRAL: netService NetService didUpdateTXTRecordData")
     }
     
-    internal func netServiceDidPublish(sender: NSNetService) {
+    internal func netServiceDidPublish(_ sender: NetService) {
         if deviceIsTypeOfBridge() {
             vgcLogDebug("Bridge is now published on: \(sender.domain + sender.type + sender.name)")
         } else {
@@ -246,30 +246,30 @@ internal class VgcCentralPublisher: NSObject, NSNetServiceDelegate, NSStreamDele
         self.registeredName = sender.name
     }
     
-    internal func netService(sender: NSNetService, didNotPublish errorDict: [String : NSNumber]) {
+    internal func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
         vgcLogDebug("Central net service did not publish, error: \(errorDict), registered name: \(self.registeredName), server name: \(self.localService.name)")
         vgcLogDebug("Republishing net service")
         unpublishService()
         publishService()
     }
     
-    internal func netServiceWillPublish(sender: NSNetService) {
+    internal func netServiceWillPublish(_ sender: NetService) {
         vgcLogDebug("NetService will be published")
     }
     
-    internal func netServiceWillResolve(sender: NSNetService) {
+    internal func netServiceWillResolve(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceWillResolve")
     }
     
-    internal func netService(sender: NSNetService, didNotResolve errorDict: [String : NSNumber]) {
+    internal func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
         vgcLogDebug("CENTRAL: netService didNotResolve: \(errorDict)")
     }
     
-    internal func netServiceDidResolveAddress(sender: NSNetService) {
+    internal func netServiceDidResolveAddress(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceDidResolveAddress")
     }
     
-    internal func netServiceDidStop(sender: NSNetService) {
+    internal func netServiceDidStop(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceDidStop")
         self.haveConnectionToPeripheral = false
     }

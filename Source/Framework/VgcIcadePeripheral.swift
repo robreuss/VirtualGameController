@@ -12,42 +12,42 @@ import Foundation
 
 public enum IcadeControllerMode: CustomStringConvertible {
  
-    case Disabled
-    case SnakebyteIdroidCon
-    case SteelSeriesFree
+    case disabled
+    case snakebyteIdroidCon
+    case steelSeriesFree
     case iCade
     case iCadeMobile
     case iCadeJr
-    case Eightbitty
-    case Gametel
+    case eightbitty
+    case gametel
     case iControlPadEarly
     case iControlPadLate
-    case GameDock
+    case gameDock
     case iMpulse
-    case Nyko
+    case nyko
     
     public var description : String {
         
         switch self {
-        case .Disabled: return "iCade Support Disabled"
-        case .SnakebyteIdroidCon: return "Snakebyte iDroid:con"
-        case .SteelSeriesFree: return "SteelSeries Free"
+        case .disabled: return "iCade Support Disabled"
+        case .snakebyteIdroidCon: return "Snakebyte iDroid:con"
+        case .steelSeriesFree: return "SteelSeries Free"
         case .iCade: return "iCade"
         case .iCadeMobile: return "iCade Mobile"
         case .iCadeJr: return "iCade Jr."
-        case .Eightbitty: return "8-bitty"
-        case .Gametel: return "Gametel"
+        case .eightbitty: return "8-bitty"
+        case .gametel: return "Gametel"
         case .iControlPadEarly: return "iControlPad (2.1a, 2.3)"
         case .iControlPadLate: return "iControlPad (2.4)"
-        case .GameDock: return "GameDock"
+        case .gameDock: return "GameDock"
         case .iMpulse: return "iMpulse"
-        case .Nyko: return "Nyko PlayPad / Pro"
+        case .nyko: return "Nyko PlayPad / Pro"
             
         }
     }
 }
 
-public class VgcIcadePeripheral: NSObject {
+open class VgcIcadePeripheral: NSObject {
     
     let peripheralManager = VgcManager.peripheral
     
@@ -59,22 +59,22 @@ public class VgcIcadePeripheral: NSObject {
     /// For Central/Bridge-based controller implementations, this will be VgcController.iCadeController.elements.  For Peripheral-based implementations,
     /// it will be the global population of elements contained in VgcManager.elements.  
     ///
-    public func elementForCharacter(characterString: String, controllerElements: Elements) -> (Element!, Int) {
+    open func elementForCharacter(_ characterString: String, controllerElements: Elements) -> (Element?, Int) {
         
-        let elementCharacter = characterString.uppercaseString
+        let elementCharacter = characterString.uppercased()
         
         // Handle dpad, which is common to known iCade controllers
-        if "WEXZDCAQ".rangeOfString(elementCharacter) != nil {
+        if "WEXZDCAQ".range(of: elementCharacter) != nil {
             return standardDpad(elementCharacter, controllerElements: controllerElements)
             
         }
         
         switch VgcManager.iCadeControllerMode {
             
-        case .Disabled:
+        case .disabled:
             return (nil, 0)
             
-        case .SnakebyteIdroidCon: // DONE
+        case .snakebyteIdroidCon: // DONE
             
             switch elementCharacter {
                 
@@ -140,7 +140,7 @@ public class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .SteelSeriesFree: // DONE
+        case .steelSeriesFree: // DONE
             
             switch elementCharacter {
                 
@@ -192,7 +192,7 @@ public class VgcIcadePeripheral: NSObject {
             }
             
             
-        case .Eightbitty:
+        case .eightbitty:
             switch elementCharacter {
                 
             case "I","M","K","P","L","V","O","G":
@@ -204,7 +204,7 @@ public class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .Gametel:
+        case .gametel:
             switch elementCharacter {
                 
             case "I","M","K","P","L","V","O","G":
@@ -236,7 +236,7 @@ public class VgcIcadePeripheral: NSObject {
     }
 }
 
-func standardDpad(elementCharacter: String, controllerElements: Elements) -> (Element!, Int) {
+func standardDpad(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
     
     switch elementCharacter {
         
@@ -268,7 +268,7 @@ func standardDpad(elementCharacter: String, controllerElements: Elements) -> (El
     }
 }
 
-func set09E1E2ABXYButtons(elementCharacter: String, controllerElements: Elements) -> (Element!, Int) {
+func set09E1E2ABXYButtons(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
     
     switch elementCharacter {
         
@@ -299,7 +299,7 @@ func set09E1E2ABXYButtons(elementCharacter: String, controllerElements: Elements
     
 }
 
-func set09E1E2ShouldersAndTriggers(elementCharacter: String, controllerElements: Elements) -> (Element!, Int) {
+func set09E1E2ShouldersAndTriggers(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
     
     switch elementCharacter {
         
@@ -328,7 +328,7 @@ func set09E1E2ShouldersAndTriggers(elementCharacter: String, controllerElements:
     
 }
 
-func set5678ShouldersAndTriggers(elementCharacter: String, controllerElements: Elements) -> (Element!, Int) {
+func set5678ShouldersAndTriggers(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
     
     switch elementCharacter {
         
@@ -356,7 +356,7 @@ func set5678ShouldersAndTriggers(elementCharacter: String, controllerElements: E
     
 }
 
-func set5678ABXYButtons(elementCharacter: String, controllerElements: Elements) -> (Element!, Int) {
+func set5678ABXYButtons(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
     
     switch elementCharacter {
         

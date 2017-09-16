@@ -18,7 +18,7 @@ import Foundation
 
 // Set deviceName in a platform specific way
 #if os(iOS) || os(tvOS)
-let deviceName = UIDevice.currentDevice().name
+let deviceName = UIDevice.current.name
     public let peripheralBackgroundColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 #endif
 
@@ -31,20 +31,20 @@ let deviceName = NSHost.currentHost().localizedName!
 
 // MARK: NetService Peripheral Management
 
-class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, NSStreamDelegate, VgcStreamerDelegate {
+class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, StreamDelegate, VgcStreamerDelegate {
 
     var elements: Elements!
     var peripheral: Peripheral!
     var connectedVgcService: VgcService!
-    var localService: NSNetService!
-    var inputStream: [StreamDataType: NSInputStream] = [:]
-    var outputStream: [StreamDataType: NSOutputStream] = [:]
+    var localService: NetService!
+    var inputStream: [StreamDataType: InputStream] = [:]
+    var outputStream: [StreamDataType: OutputStream] = [:]
     var registeredName: String!
-    var bridgeBrowser: NSNetServiceBrowser!
-    var centralBrowser: NSNetServiceBrowser!
+    var bridgeBrowser: NetServiceBrowser!
+    var centralBrowser: NetServiceBrowser!
     var browsing = false
     var streamer: [StreamDataType: VgcStreamer] = [:]
-    var serviceLookup = Dictionary<NSNetService, VgcService>()
+    var serviceLookup = Dictionary<NetService, VgcService>()
     
     init(peripheral: Peripheral) {
         
@@ -54,18 +54,18 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         elements = VgcManager.elements
         
-        self.streamer[.LargeData] = VgcStreamer(delegate: self, delegateName: "Browser")
-        self.streamer[.SmallData] = VgcStreamer(delegate: self, delegateName: "Browser")
+        self.streamer[.largeData] = VgcStreamer(delegate: self, delegateName: "Browser")
+        self.streamer[.smallData] = VgcStreamer(delegate: self, delegateName: "Browser")
         
         vgcLogDebug("Setting up NSNetService for browsing")
         
-        self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
+        self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
         self.localService.delegate = self
         self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
         
     }
     
-    func closeStream(streamDataType: StreamDataType) {
+    func closeStream(_ streamDataType: StreamDataType) {
         
         if inputStream[streamDataType] != nil { inputStream[streamDataType]!.close() }
         if outputStream[streamDataType] != nil { outputStream[streamDataType]!.close() }
@@ -76,8 +76,8 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         vgcLogDebug("Closing streams")
         
-        closeStream(.LargeData)
-        closeStream(.SmallData)
+        closeStream(.largeData)
+        closeStream(.smallData)
         
         peripheral.haveOpenStreamsToCentral = false
         
@@ -93,7 +93,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         browseForCentral()
     }
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData) {
+    func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
         
         // Get the element in the message using the hash value reference
         guard let element = elements.elementFromIdentifier(elementIdentifier) else {
@@ -105,50 +105,50 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         switch (element.type) {
             
-        case .SystemMessage:
+        case .systemMessage:
             
             let systemMessageType = SystemMessages(rawValue: Int(element.value as! NSNumber))
             
             vgcLogDebug("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
-            if systemMessageType == .ConnectionAcknowledgement {
+            if systemMessageType == .connectionAcknowledgement {
                 
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
 
                     if self.peripheral.connectionAcknowledgementWaitTimeout != nil { self.peripheral.connectionAcknowledgementWaitTimeout.invalidate() }
                     
                     self.peripheral.haveConnectionToCentral = true
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidConnectNotification, object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
                     
                 }
                 
             } else {
             
-                NSNotificationCenter.defaultCenter().postNotificationName(VgcSystemMessageNotification, object: systemMessageType!.rawValue)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: VgcSystemMessageNotification), object: systemMessageType!.rawValue)
                 
             }
             
             break
             
-        case .PeripheralSetup:
+        case .peripheralSetup:
             
             NSKeyedUnarchiver.setClass(VgcPeripheralSetup.self, forClassName: "VgcPeripheralSetup")
-            VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObjectWithData(element.valueAsNSData) as! VgcPeripheralSetup)
+            VgcManager.peripheralSetup = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData) as! VgcPeripheralSetup)
 
             vgcLogDebug("Central sent peripheral setup: \(VgcManager.peripheralSetup)")
 
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralSetupNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralSetupNotification), object: nil)
 
             break
             
-        case .VibrateDevice:
+        case .vibrateDevice:
             
             peripheral.vibrateDevice()
             
             break
             
-        case .PlayerIndex:
+        case .playerIndex:
 
             let playerIndex = Int(element.value as! NSNumber)
             peripheral.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
@@ -158,7 +158,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 self.peripheral.controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
                 
             }
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcNewPlayerIndexNotification, object: playerIndex)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcNewPlayerIndexNotification), object: playerIndex)
             
         default:
           
@@ -174,7 +174,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         }
         
         // If we're a bridge, send along the value to the Central
-        if deviceIsTypeOfBridge() && element.type != .PlayerIndex {
+        if deviceIsTypeOfBridge() && element.type != .playerIndex {
             
             //peripheral.browser.sendElementStateOverNetService(element)
             peripheral.controller.sendElementStateToPeripheral(element)
@@ -187,7 +187,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
     func disconnectFromCentral() {
         if connectedVgcService == nil { return }
         vgcLogDebug("Browser sending system message Disconnect)")
-        elements.systemMessage.value = SystemMessages.Disconnect.rawValue
+        elements.systemMessage.value = SystemMessages.disconnect.rawValue as AnyObject
         sendElementStateOverNetService(elements.systemMessage)
         closeStreams()
     }
@@ -197,50 +197,50 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         vgcLogDebug("Peripheral received invalid checksum message from Central")
     }
     
-    func sendDeviceInfoElement(let element: Element!) {
+    func sendDeviceInfoElement(_ element: Element!) {
         
         if element == nil {
             vgcLogDebug("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
             return
         }
         
-        var outputStreamLarge: NSOutputStream!
-        var outputStreamSmall: NSOutputStream!
+        var outputStreamLarge: OutputStream!
+        var outputStreamSmall: OutputStream!
         
-        if VgcManager.appRole == .Peripheral {
-            outputStreamLarge = self.outputStream[.LargeData]
-            outputStreamSmall = self.outputStream[.SmallData]
+        if VgcManager.appRole == .peripheral {
+            outputStreamLarge = self.outputStream[.largeData]
+            outputStreamSmall = self.outputStream[.smallData]
         } else if deviceIsTypeOfBridge() {
-            outputStreamLarge = peripheral.controller.toCentralOutputStream[.LargeData]
-            outputStreamSmall = peripheral.controller.toCentralOutputStream[.SmallData]
+            outputStreamLarge = peripheral.controller.toCentralOutputStream[.largeData]
+            outputStreamSmall = peripheral.controller.toCentralOutputStream[.smallData]
         }
         
         if peripheral.haveOpenStreamsToCentral {
-            streamer[.LargeData]!.writeElement(element, toStream:outputStreamLarge)
-            streamer[.SmallData]!.writeElement(element, toStream:outputStreamSmall)
+            streamer[.largeData]!.writeElement(element, toStream:outputStreamLarge)
+            streamer[.smallData]!.writeElement(element, toStream:outputStreamSmall)
         }
     }
 
-    func sendElementStateOverNetService(let element: Element!) {
+    func sendElementStateOverNetService(_ element: Element!) {
         
         if element == nil {
             vgcLogDebug("Browser got attempt to send nil element to \(connectedVgcService.fullName)")
             return
         }
         
-        var outputStream: NSOutputStream!
+        var outputStream: OutputStream!
         
-        if VgcManager.appRole == .Peripheral {
-            if element.dataType == .Data {
-                outputStream = self.outputStream[.LargeData]
+        if VgcManager.appRole == .peripheral {
+            if element.dataType == .data {
+                outputStream = self.outputStream[.largeData]
             } else {
-                outputStream = self.outputStream[.SmallData]
+                outputStream = self.outputStream[.smallData]
             }
         } else if deviceIsTypeOfBridge() {
-            if element.dataType == .Data {
-                outputStream = peripheral.controller.toCentralOutputStream[.LargeData]
+            if element.dataType == .data {
+                outputStream = peripheral.controller.toCentralOutputStream[.largeData]
             } else {
-                outputStream = peripheral.controller.toCentralOutputStream[.SmallData]
+                outputStream = peripheral.controller.toCentralOutputStream[.smallData]
             }
         }
     
@@ -250,10 +250,10 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         }
 
         // Prevent writes without a connection except deviceInfo
-        if element.dataType == .Data {
-            if (peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement) && streamer[.LargeData] != nil { streamer[.LargeData]!.writeElement(element, toStream:outputStream) }
+        if element.dataType == .data {
+            if (peripheral.haveConnectionToCentral || element.type == .deviceInfoElement) && streamer[.largeData] != nil { streamer[.largeData]!.writeElement(element, toStream:outputStream) }
         } else {
-            if (peripheral.haveConnectionToCentral || element.type == .DeviceInfoElement) && streamer[.SmallData] != nil { streamer[.SmallData]!.writeElement(element, toStream:outputStream) }
+            if (peripheral.haveConnectionToCentral || element.type == .deviceInfoElement) && streamer[.smallData] != nil { streamer[.smallData]!.writeElement(element, toStream:outputStream) }
         }
        
     }
@@ -275,18 +275,18 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         browsing = true
         
         vgcLogDebug("Searching for Centrals on \(VgcManager.bonjourTypeCentral)")
-        centralBrowser = NSNetServiceBrowser()
+        centralBrowser = NetServiceBrowser()
         centralBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
         centralBrowser.delegate = self
-        centralBrowser.searchForServicesOfType(VgcManager.bonjourTypeCentral, inDomain: "local")
+        centralBrowser.searchForServices(ofType: VgcManager.bonjourTypeCentral, inDomain: "local")
         
         // We only searches for bridges if we are not type bridge (bridges don't connect to bridges)
         if !deviceIsTypeOfBridge() {
             vgcLogDebug("Searching for Bridges on \(VgcManager.bonjourTypeBridge)")
-            bridgeBrowser = NSNetServiceBrowser()
+            bridgeBrowser = NetServiceBrowser()
             bridgeBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
             bridgeBrowser.delegate = self
-            bridgeBrowser.searchForServicesOfType(VgcManager.bonjourTypeBridge, inDomain: "local")
+            bridgeBrowser.searchForServices(ofType: VgcManager.bonjourTypeBridge, inDomain: "local")
         }
     }
     
@@ -303,17 +303,17 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         if serviceLookup.count > 0 { serviceLookup.removeAll() }
     }
     
-    func openStreamsFor(streamDataType: StreamDataType, vgcService: VgcService) {
+    func openStreamsFor(_ streamDataType: StreamDataType, vgcService: VgcService) {
 
         vgcLogDebug("Attempting to open \(streamDataType) streams for: \(vgcService.fullName)")
         var success: Bool
-        var inStream: NSInputStream?
-        var outStream: NSOutputStream?
+        var inStream: InputStream?
+        var outStream: OutputStream?
         success = vgcService.netService.getInputStream(&inStream, outputStream: &outStream)
         if ( !success ) {
             
             vgcLogDebug("Something went wrong connecting to service: \(vgcService.fullName)")
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralConnectionFailedNotification, object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralConnectionFailedNotification), object: nil)
             
         } else {
             
@@ -325,30 +325,30 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
                 
                 peripheral.controller.toCentralOutputStream[streamDataType] = outStream;
                 peripheral.controller.toCentralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
-                peripheral.controller.toCentralOutputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                peripheral.controller.toCentralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 peripheral.controller.toCentralOutputStream[streamDataType]!.open()
                 
                 peripheral.controller.fromCentralInputStream[streamDataType] = inStream
                 peripheral.controller.fromCentralInputStream[streamDataType]!.delegate = streamer[streamDataType]
-                peripheral.controller.fromCentralInputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                peripheral.controller.fromCentralInputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 peripheral.controller.fromCentralInputStream[streamDataType]!.open()
                 
             } else {
                 
                 outputStream[streamDataType] = outStream;
-                outputStream[streamDataType]!.delegate = streamer[streamDataType]
-                outputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                outputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+                outputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 outputStream[streamDataType]!.open()
                 
                 inputStream[streamDataType] = inStream
-                inputStream[streamDataType]!.delegate = streamer[streamDataType]
-                inputStream[streamDataType]!.scheduleInRunLoop(NSRunLoop.currentRunLoop(), forMode: NSDefaultRunLoopMode)
+                inputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+                inputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 inputStream[streamDataType]!.open()
                 
             }
             
             // SmallData comes second, so we wait for it before sending deviceInfo
-            if streamDataType == .SmallData {
+            if streamDataType == .smallData {
                 
                 peripheral.gotConnectionToCentral()
                 
@@ -358,7 +358,7 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
     }
     
-    func connectToService(vgcService: VgcService) {
+    func connectToService(_ vgcService: VgcService) {
        
         if (peripheral.haveConnectionToCentral == true) {
             vgcLogDebug("Refusing to connect to service \(vgcService.fullName) because we already have a connection.")
@@ -367,56 +367,56 @@ class VgcBrowser: NSObject, NSNetServiceDelegate, NSNetServiceBrowserDelegate, N
         
         vgcLogDebug("Attempting to connect to service: \(vgcService.fullName)")
         
-        openStreamsFor(.LargeData, vgcService: vgcService)
-        openStreamsFor(.SmallData, vgcService: vgcService)
+        openStreamsFor(.largeData, vgcService: vgcService)
+        openStreamsFor(.smallData, vgcService: vgcService)
         
         stopBrowsing()
     }
     
-    func netServiceBrowserWillSearch(browser: NSNetServiceBrowser) {
+    func netServiceBrowserWillSearch(_ browser: NetServiceBrowser) {
         vgcLogDebug("Browser will search")
     }
     
-    func netServiceDidResolveAddress(sender: NSNetService) {
+    func netServiceDidResolveAddress(_ sender: NetService) {
         vgcLogDebug("Browser did resolve address")
     }
     
-    func netServiceBrowser(browser: NSNetServiceBrowser, didFindService service: NSNetService, moreComing: Bool) {
+    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
         if (service == localService) {
             vgcLogDebug("Ignoring service because it is our own: \(service.name)")
         } else {
             vgcLogDebug("Found service of type \(service.type) at \(service.name)")
             var vgcService: VgcService
             if service.type == VgcManager.bonjourTypeBridge {
-                vgcService = VgcService(name: service.name, type:.Bridge, netService: service)
+                vgcService = VgcService(name: service.name, type:.bridge, netService: service)
             } else {
-                vgcService = VgcService(name: service.name, type:.Central, netService: service)
+                vgcService = VgcService(name: service.name, type:.central, netService: service)
             }
             
             serviceLookup[service] = vgcService
             
-            NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralFoundService, object: vgcService)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
             
-            if deviceIsTypeOfBridge() && vgcService.type == .Central && connectedVgcService != vgcService { connectToService(vgcService) }
+            if deviceIsTypeOfBridge() && vgcService.type == .central && connectedVgcService != vgcService { connectToService(vgcService) }
         }
         
     }
     
-    func netServiceBrowser(browser: NSNetServiceBrowser, didRemoveService service: NSNetService, moreComing: Bool) {
+    func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         
-        vgcLogDebug("Service was removed: \(service.type) isMainThread: \(NSThread.isMainThread())")
-        let vgcService = serviceLookup.removeValueForKey(service)
+        vgcLogDebug("Service was removed: \(service.type) isMainThread: \(Thread.isMainThread)")
+        let vgcService = serviceLookup.removeValue(forKey: service)
         vgcLogDebug("VgcService was removed: \(vgcService?.fullName)")
         // If VgcService is nil, it means we already removed the service so we do not send the notification
-        if vgcService != nil { NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService) }
+        if vgcService != nil { NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralLostService), object: vgcService) }
         
     }
 
-    func netServiceBrowserDidStopSearch(browser: NSNetServiceBrowser) {
+    func netServiceBrowserDidStopSearch(_ browser: NetServiceBrowser) {
         browsing = false
     }
     
-    func netServiceBrowser(browser: NSNetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+    func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
         vgcLogDebug("Net service browser reports error \(errorDict)")
         browsing = false
     }

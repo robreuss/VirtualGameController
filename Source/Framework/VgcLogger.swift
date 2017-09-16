@@ -10,23 +10,23 @@ import Foundation
 
 @objc public enum LogLevel: Int, CustomStringConvertible {
 
-    case Error = 0
-    case Debug = 1
-    case Verbose = 2
+    case error = 0
+    case debug = 1
+    case verbose = 2
     
     public var description : String {
         
         switch self {
             
-            case .Error: return "Error"
-            case .Debug: return "Debug"
-            case .Verbose: return "Verbose"
+            case .error: return "Error"
+            case .debug: return "Debug"
+            case .verbose: return "Verbose"
             
         }
     }
 }
 
-func logAtLevel(priority: LogLevel, logLine: String ) {
+func logAtLevel(_ priority: LogLevel, logLine: String ) {
     
     if priority.rawValue <= VgcManager.loggerLogLevel.rawValue  {
         
@@ -40,20 +40,20 @@ func logAtLevel(priority: LogLevel, logLine: String ) {
     }
 }
 
-public func vgcLogVerbose(logLine: String) {
+public func vgcLogVerbose(_ logLine: String) {
     
-    logAtLevel(.Verbose, logLine: logLine)
-    
-}
-
-public func vgcLogDebug(logLine: String) {
-
-    logAtLevel(.Debug, logLine: logLine)
+    logAtLevel(.verbose, logLine: logLine)
     
 }
 
-public func vgcLogError(logLine: String) {
+public func vgcLogDebug(_ logLine: String) {
 
-    logAtLevel(.Error, logLine: "<<< ERROR >>> \(logLine)")
+    logAtLevel(.debug, logLine: logLine)
+    
+}
+
+public func vgcLogError(_ logLine: String) {
+
+    logAtLevel(.error, logLine: "<<< ERROR >>> \(logLine)")
     
 }

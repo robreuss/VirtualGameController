@@ -31,23 +31,23 @@ public let VgcSystemMessageNotification:             String = "VgcSystemMessageN
 public let VgcPeripheralSetupNotification:           String = "VgcPeripheralSetupNotification"
 public let VgcNewPlayerIndexNotification:            String = "VgcNewPlayerIndexNotification"
 
-public class Peripheral: NSObject, VgcWatchDelegate {
+open class Peripheral: NSObject, VgcWatchDelegate {
     
-    private var vgcDeviceInfo: DeviceInfo!
+    fileprivate var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
     #if os(iOS)
-    public var watch: VgcWatch!
+    open var watch: VgcWatch!
     #endif
     var playerIndex: GCControllerPlayerIndex!
     weak var controller: VgcController!
     
     #if !(os(tvOS)) && !(os(OSX))
-    public var motion: VgcMotionManager!
+    open var motion: VgcMotionManager!
     #endif
 
-    public var haveConnectionToCentral: Bool = false
+    open var haveConnectionToCentral: Bool = false
     var haveOpenStreamsToCentral: Bool = false
-    var connectionAcknowledgementWaitTimeout: NSTimer!
+    var connectionAcknowledgementWaitTimeout: Timer!
     
     override init() {
         
@@ -64,7 +64,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             motion = VgcMotionManager()
         #endif
         
-        playerIndex = GCControllerPlayerIndex.IndexUnset
+        playerIndex = GCControllerPlayerIndex.indexUnset
          
     }
     
@@ -80,7 +80,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     /// Peripheral.  "State" in this case refers to the Element "value"
     /// property.
     ///
-    public func sendElementState(element: Element) {
+    open func sendElementState(_ element: Element) {
         
         // As a Peripheral, we don't need a connection to send if we're an EnhancementBridge, using instead the
         // stream associated with the hardware controllers VgcController.
@@ -90,7 +90,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
             
             // If we're enhancing a hardware controller with virtual elements, we pass values through to the controller
             // so they appear to the Central as coming from the hardware controller
-            if VgcManager.appRole == .EnhancementBridge && VgcController.enhancedController != nil {
+            if VgcManager.appRole == .enhancementBridge && VgcController.enhancedController != nil {
                 VgcController.enhancedController.peripheral.browser.sendElementStateOverNetService(element)
             } else {
                 browser.sendElementStateOverNetService(element)
@@ -117,7 +117,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     ///
     /// DeviceInfo for the controller represented by this Peripheral instance.
     ///
-    public var deviceInfo: DeviceInfo! {
+    open var deviceInfo: DeviceInfo! {
         
         get {
             if vgcDeviceInfo == nil {
@@ -136,7 +136,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
                 motion.deviceSupportsMotion = deviceInfo.supportsMotion
                 
                 // Override device info parameter if the hardware doesn't support motion
-                if motion.manager.deviceMotionAvailable == false { deviceInfo.supportsMotion = false } else { deviceInfo.supportsMotion = true }
+                if motion.manager.isDeviceMotionAvailable == false { deviceInfo.supportsMotion = false } else { deviceInfo.supportsMotion = true }
                 
             #endif
             
@@ -150,11 +150,11 @@ public class Peripheral: NSObject, VgcWatchDelegate {
     /// Connect to a Central or Bridge using a VgcService object obtained
     /// by browsing the network.
     ///
-    public func connectToService(vgcService: VgcService) {
+    open func connectToService(_ vgcService: VgcService) {
         browser.connectToService(vgcService)
     }
     
-    public func disconnectFromService() {
+    open func disconnectFromService() {
         
         if haveConnectionToCentral == false { return }
         
@@ -166,13 +166,13 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    public func browseForServices() {
+    open func browseForServices() {
         
         browser.reset()
         
         vgcLogDebug("Browsing for services...")
         
-        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidResetBrowser, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidResetBrowser), object: nil)
         
         // If we're a bridge, this peripheral is a controller-specific instance.  If the controller is no
         // longer in the array of controllers, it means it has disconnected and we don't want to advertise it
@@ -189,7 +189,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    public func stopBrowsingForServices() {
+    open func stopBrowsingForServices() {
         
         if deviceIsTypeOfBridge() {
             vgcLogDebug("Refusing to stop browsing for service because I am a BRIDGE")
@@ -200,27 +200,27 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    public var connectedService: VgcService? {
+    open var connectedService: VgcService? {
         get {
             guard let service = browser.connectedVgcService else { return nil }
             return service
         }
     }
     
-    public var availableServices: [VgcService] {
+    open var availableServices: [VgcService] {
         get {
             let services = [VgcService](browser.serviceLookup.values)
             return services
         }
     }
     
-    func gotConnectionAcknowledgementTimeout(timer: NSTimer) {
+    func gotConnectionAcknowledgementTimeout(_ timer: Timer) {
         
         vgcLogDebug("Got connection acknowledgement timeout")
 
         browser.disconnect()
         
-        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralConnectionFailedNotification, object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralConnectionFailedNotification), object: nil)
         
         connectionAcknowledgementWaitTimeout.invalidate()
         
@@ -234,7 +234,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
         haveOpenStreamsToCentral = true
         
-        connectionAcknowledgementWaitTimeout = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: "gotConnectionAcknowledgementTimeout:", userInfo: nil, repeats: false)
+        connectionAcknowledgementWaitTimeout = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(Peripheral.gotConnectionAcknowledgementTimeout(_:)), userInfo: nil, repeats: false)
         
         if deviceIsTypeOfBridge() {
             
@@ -248,13 +248,13 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    func lostConnectionToCentral(vgcService: VgcService) {
+    func lostConnectionToCentral(_ vgcService: VgcService) {
         
         vgcLogDebug("Peripheral lost connection to \(vgcService.fullName)")
         haveConnectionToCentral = false
         
-        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralDidDisconnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName(VgcPeripheralLostService, object: vgcService)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidDisconnectNotification), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralLostService), object: vgcService)
         
         // Avoid situation where a "ghost" instance will end up on the Bridge after a Peripheral
         // disconnects.  This provides support for the situation where a Central disconnects, but
@@ -271,7 +271,7 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    func sendDeviceInfo(deviceInfo: DeviceInfo) {
+    func sendDeviceInfo(_ deviceInfo: DeviceInfo) {
         
         if (haveOpenStreamsToCentral == false) {
             vgcLogDebug("No streams to Central so not sending controller device info")
@@ -280,42 +280,42 @@ public class Peripheral: NSObject, VgcWatchDelegate {
         
         vgcLogDebug("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
         
-        NSKeyedArchiver.setClassName("DeviceInfo", forClass: DeviceInfo.self)
+        NSKeyedArchiver.setClassName("DeviceInfo", for: DeviceInfo.self)
         let element = VgcManager.elements.deviceInfoElement
-        element.value = NSKeyedArchiver.archivedDataWithRootObject(deviceInfo)
+        element.value = NSKeyedArchiver.archivedData(withRootObject: deviceInfo) as AnyObject
         vgcLogDebug("\(deviceInfo)")
         
         browser.sendDeviceInfoElement(element)
 
     }
     
-    func receivedWatchMessage(element: Element) {
+    func receivedWatchMessage(_ element: Element) {
         vgcLogDebug("Received element \(element.name) with value \(element.value) from watch, forwarding to Central or Bridge")
         sendElementState(element)
     }
     
-    func bridgePeripheralDeviceInfoToCentral(controller: VgcController) {
+    func bridgePeripheralDeviceInfoToCentral(_ controller: VgcController) {
         
         vgcLogDebug("Forwarding controller \(controller.deviceInfo.vendorName) to Central")
         
         let deviceInfo = controller.deviceInfo.copy() as! DeviceInfo
         deviceInfo.vendorName = deviceInfo.vendorName + " (Bridged)"
-        if deviceInfo.controllerType == .MFiHardware { deviceInfo.controllerType = .BridgedMFiHardware }
-        if deviceInfo.controllerType == .ICadeHardware { deviceInfo.controllerType = .BridgedICadeHardware }
+        if deviceInfo.controllerType == .mFiHardware { deviceInfo.controllerType = .bridgedMFiHardware }
+        if deviceInfo.controllerType == .iCadeHardware { deviceInfo.controllerType = .bridgedICadeHardware }
         if deviceInfo.attachedToDevice {
-            deviceInfo.profileType = .ExtendedGamepad
+            deviceInfo.profileType = .extendedGamepad
             deviceInfo.supportsMotion = true
         }
         if deviceIsTypeOfBridge() { deviceInfo.supportsMotion = true }
         
         // microGamepad is only supported when running on Apple TV, so we transform to
         // Gamepad when bridging it over to a Central on iOS or OSX
-        if deviceInfo.profileType == .MicroGamepad { deviceInfo.profileType = .Gamepad }
+        if deviceInfo.profileType == .microGamepad { deviceInfo.profileType = .gamepad }
         sendDeviceInfo(deviceInfo)
         
     }
     
-    func mapElement(elementToBeMapped: Element, peripheral: Peripheral) {
+    func mapElement(_ elementToBeMapped: Element, peripheral: Peripheral) {
         
         if let mappedElementIdentifier = Elements.customMappings.mappings[elementToBeMapped.identifier] {
             

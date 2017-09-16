@@ -11,10 +11,10 @@ import Foundation
 #if !(os(tvOS)) && !(os(OSX))
 import CoreMotion
 
-public class VgcMotionManager: NSObject {
+open class VgcMotionManager: NSObject {
 
     #if os(iOS)
-    private let elements = VgcManager.elements
+    fileprivate let elements = VgcManager.elements
     var controller: VgcController!
     #endif
     
@@ -23,31 +23,31 @@ public class VgcMotionManager: NSObject {
     public var elements: Elements!
     #endif
     
-    public var deviceSupportsMotion: Bool!
+    open var deviceSupportsMotion: Bool!
     
-    public let manager = CMMotionManager()
+    open let manager = CMMotionManager()
     
-    public var active: Bool = false
+    open var active: Bool = false
     
     ///
     /// Don't enable these unless they are really needed because they produce
     /// tons of data to be transmitted and clog the channels.
     ///
-    public var enableUserAcceleration = true
-    public var enableRotationRate = true
-    public var enableAttitude = true
-    public var enableGravity = true
+    open var enableUserAcceleration = true
+    open var enableRotationRate = true
+    open var enableAttitude = true
+    open var enableGravity = true
     
-    public var enableLowPassFilter = true
-    public var enableAdaptiveFilter = true
-    public var cutOffFrequency: Double = 5.0
+    open var enableLowPassFilter = true
+    open var enableAdaptiveFilter = true
+    open var cutOffFrequency: Double = 5.0
     var filterConstant: Double!
     
     ///
     /// System can handle 60 updates/sec but only if a subset of motion factors are enabled,
     /// not all four.  If all four inputs are needed, update frequency should be reduced.
     ///
-    public var updateInterval = 1.0 / 60 {
+    open var updateInterval = 1.0 / 60 {
         didSet {
             manager.deviceMotionUpdateInterval = updateInterval
             setupFilterConstant()
@@ -63,7 +63,7 @@ public class VgcMotionManager: NSObject {
         
     }
     
-    public func start() {
+    open func start() {
   
         #if os(iOS) || os(watchOS)
             
@@ -76,7 +76,7 @@ public class VgcMotionManager: NSObject {
                         return
                     }
                 }
-                if VgcManager.appRole == .EnhancementBridge {
+                if VgcManager.appRole == .enhancementBridge {
                     if VgcController.enhancedController.peripheral.haveConnectionToCentral == false {
                         vgcLogDebug("Not starting motion because no connection")
                         return
@@ -85,28 +85,28 @@ public class VgcMotionManager: NSObject {
             #endif
             
             // No need to start if already active
-            if manager.deviceMotionActive {
+            if manager.isDeviceMotionActive {
                 vgcLogDebug("Not starting motion because already active")
                 return
             }
             
-            vgcLogDebug("Device supports: \(self.deviceSupportsMotion), motion available: \(self.manager.deviceMotionAvailable), accelerometer available: \(self.manager.accelerometerAvailable)")
+            vgcLogDebug("Device supports: \(self.deviceSupportsMotion), motion available: \(self.manager.isDeviceMotionAvailable), accelerometer available: \(self.manager.isAccelerometerAvailable)")
             
             if deviceIsTypeOfBridge() || self.deviceSupportsMotion == true {
                 
                 active = true
                 
                 // iOS supports device motion, but the watch only supports direct accelerometer data
-                if self.manager.deviceMotionAvailable {
+                if self.manager.isDeviceMotionAvailable {
                     
                     setupFilterConstant()
                     
                     //let motionQueue = NSOperationQueue()
                     
                     vgcLogDebug("Starting device motion updating")
-                    manager.deviceMotionUpdateInterval = NSTimeInterval(updateInterval)
+                    manager.deviceMotionUpdateInterval = TimeInterval(updateInterval)
                     
-                    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (deviceMotionData, error) -> Void in
+                    manager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { (deviceMotionData, error) -> Void in
                         
                         if error != nil {
                             vgcLogDebug("Got device motion error: \(error)")
@@ -121,10 +121,10 @@ public class VgcMotionManager: NSObject {
                             
                             //vgcLogDebug("Old double: \(deviceMotionData?.attitude.quaternion.x), new float: \(x)")
                             
-                            self.elements.motionAttitudeX.value = Float(x)
-                            self.elements.motionAttitudeY.value = Float(y)
-                            self.elements.motionAttitudeZ.value = Float(z)
-                            self.elements.motionAttitudeW.value = Float(w)
+                            self.elements.motionAttitudeX.value = Float(x) as AnyObject
+                            self.elements.motionAttitudeY.value = Float(y) as AnyObject
+                            self.elements.motionAttitudeZ.value = Float(z) as AnyObject
+                            self.elements.motionAttitudeW.value = Float(w) as AnyObject
                             
                             self.sendElementState(self.elements.motionAttitudeY)
                             self.sendElementState(self.elements.motionAttitudeX)
@@ -138,9 +138,9 @@ public class VgcMotionManager: NSObject {
                             
                             (x, y, z, w) = self.filterX(((deviceMotionData?.userAcceleration.x)!), y: ((deviceMotionData?.userAcceleration.y)!), z: ((deviceMotionData?.userAcceleration.z)!), w: 0)
             
-                            self.elements.motionUserAccelerationX.value = Float(x)
-                            self.elements.motionUserAccelerationY.value = Float(y)
-                            self.elements.motionUserAccelerationZ.value = Float(z)
+                            self.elements.motionUserAccelerationX.value = Float(x) as AnyObject
+                            self.elements.motionUserAccelerationY.value = Float(y) as AnyObject
+                            self.elements.motionUserAccelerationZ.value = Float(z) as AnyObject
                             
                             self.sendElementState(self.elements.motionUserAccelerationX)
                             self.sendElementState(self.elements.motionUserAccelerationY)
@@ -153,9 +153,9 @@ public class VgcMotionManager: NSObject {
                             
                             (x, y, z, w) = self.filterX(((deviceMotionData?.gravity.x)!), y: ((deviceMotionData?.gravity.y)!), z: ((deviceMotionData?.gravity.z)!), w: 0)
                            
-                            self.elements.motionGravityX.value = Float(x)
-                            self.elements.motionGravityY.value = Float(y)
-                            self.elements.motionGravityZ.value = Float(z)
+                            self.elements.motionGravityX.value = Float(x) as AnyObject
+                            self.elements.motionGravityY.value = Float(y) as AnyObject
+                            self.elements.motionGravityZ.value = Float(z) as AnyObject
                             
                             self.sendElementState(self.elements.motionGravityX)
                             self.sendElementState(self.elements.motionGravityY)
@@ -168,9 +168,9 @@ public class VgcMotionManager: NSObject {
                             
                             (x, y, z, w) = self.filterX(((deviceMotionData?.rotationRate.x)!), y: ((deviceMotionData?.rotationRate.y)!), z: ((deviceMotionData?.rotationRate.z)!), w: 0)
                             
-                            self.elements.motionRotationRateX.value = Float(x)
-                            self.elements.motionRotationRateY.value = Float(y)
-                            self.elements.motionRotationRateZ.value = Float(z)
+                            self.elements.motionRotationRateX.value = Float(x) as AnyObject
+                            self.elements.motionRotationRateY.value = Float(y) as AnyObject
+                            self.elements.motionRotationRateZ.value = Float(z) as AnyObject
                             
                             self.sendElementState(self.elements.motionRotationRateX)
                             self.sendElementState(self.elements.motionRotationRateY)
@@ -178,11 +178,11 @@ public class VgcMotionManager: NSObject {
                         }
                     })
                     
-                } else if self.manager.accelerometerAvailable {
+                } else if self.manager.isAccelerometerAvailable {
                     
                     vgcLogDebug("Starting accelerometer detection (for the Watch)")
-                    self.manager.accelerometerUpdateInterval = NSTimeInterval(self.updateInterval)
-                    self.manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue(), withHandler: { (accelerometerData, error) -> Void in
+                    self.manager.accelerometerUpdateInterval = TimeInterval(self.updateInterval)
+                    self.manager.startAccelerometerUpdates(to: OperationQueue.main, withHandler: { (accelerometerData, error) -> Void in
                         
                         /*
                         //vgcLogDebug("Device Motion: \(deviceMotionData!)")
@@ -200,9 +200,9 @@ public class VgcMotionManager: NSObject {
                         self.sendElementValueToBridge(motionAttitudeW)
                         }
                         */
-                        self.elements.motionUserAccelerationX.value = Float((accelerometerData?.acceleration.x)!)
-                        self.elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!)
-                        self.elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!)
+                        self.elements.motionUserAccelerationX.value = Float((accelerometerData?.acceleration.x)!) as AnyObject
+                        self.elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!) as AnyObject
+                        self.elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!) as AnyObject
                         
                         vgcLogDebug("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
                         
@@ -248,7 +248,7 @@ public class VgcMotionManager: NSObject {
         #endif // End of block out of motion for tvOS and OSX
     }
 
-    public func stop() {
+    open func stop() {
         #if os(iOS) || os(watchOS)
             vgcLogDebug("Stopping motion detection")
             manager.stopDeviceMotionUpdates()
@@ -256,7 +256,7 @@ public class VgcMotionManager: NSObject {
         #endif
     }
     
-    func sendElementState(element: Element) {
+    func sendElementState(_ element: Element) {
         
         #if os(iOS)
             if deviceIsTypeOfBridge() {
@@ -274,12 +274,12 @@ public class VgcMotionManager: NSObject {
     }
     
     // Filter functions
-    func Norm(x: Double, y: Double, z: Double) -> Double
+    func Norm(_ x: Double, y: Double, z: Double) -> Double
     {
         return sqrt(x * x + y * y + z * z);
     }
     
-    func Clamp(v: Double, min: Double, max: Double) -> Double
+    func Clamp(_ v: Double, min: Double, max: Double) -> Double
     {
         if(v > max) { return max } else if (v < min) { return min } else { return v }
     }
@@ -287,7 +287,7 @@ public class VgcMotionManager: NSObject {
     let kAccelerometerMinStep =	0.02
     let kAccelerometerNoiseAttenuation = 3.0
     
-    func filterX(x: Double, y: Double, z: Double, w: Double) -> (Double, Double, Double, Double) {
+    func filterX(_ x: Double, y: Double, z: Double, w: Double) -> (Double, Double, Double, Double) {
 
         if enableLowPassFilter {
             
@@ -297,7 +297,7 @@ public class VgcMotionManager: NSObject {
                 let d = Clamp(fabs(Norm(x, y: y, z: z) - Norm(x, y: y, z: z)) / kAccelerometerMinStep - 1.0, min: 0.0, max: 1.0)
                 alpha = (1.0 - d) * filterConstant / kAccelerometerNoiseAttenuation + d * filterConstant
             }
-            return (x * alpha + x * (1.0 - alpha), y * alpha + y * (1.0 - alpha), z * alpha + z * (1.0 - alpha), w)
+            return (x * alpha! + x * (1.0 - alpha!), y * alpha! + y * (1.0 - alpha!), z * alpha! + z * (1.0 - alpha!), w)
         } else {
             return (x, y, z, w)
         }
