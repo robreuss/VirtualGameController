@@ -501,11 +501,11 @@ open class Elements: NSObject {
         supplemental.insert(systemMessage, at: 0)
         
         switch(controller.profileType) {
-        case .microGamepad:
+        case .MicroGamepad:
             return microGamepadProfileElements + supplemental
-        case .gamepad:
+        case .Gamepad:
             return gamepadProfileElements + supplemental
-        case .extendedGamepad:
+        case .ExtendedGamepad:
             return extendedGamepadProfileElements + supplemental
         default:
             return extendedGamepadProfileElements + supplemental

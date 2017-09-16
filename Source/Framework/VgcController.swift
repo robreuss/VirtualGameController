@@ -164,7 +164,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     open class func enableIcadeController() {
         
         iCadeController = VgcController()
-        iCadeController.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .extendedGamepad, controllerType: .software, supportsMotion: false)
+        iCadeController.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .software, supportsMotion: false)
         
     }
     
@@ -614,7 +614,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             }
         #endif
         
-        if profileType == .gamepad || profileType == .extendedGamepad {
+        if profileType == .Gamepad || profileType == .ExtendedGamepad {
             
             gamepad!.dpad.valueChangedHandler           = dpadValueChangedHandler
             gamepad!.buttonA.valueChangedHandler        = buttonAChangedHandler
@@ -626,7 +626,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
         }
         
-        if profileType == .extendedGamepad {
+        if profileType == .ExtendedGamepad {
             
             extendedGamepad!.dpad.valueChangedHandler               = dpadValueChangedHandler
             extendedGamepad!.leftThumbstick.valueChangedHandler     = leftThumbstickChangedHandler
@@ -736,11 +736,11 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             // Unless we're on tvOS, we're not interested in the microGamepad
             #if !(os(tvOS))
                 if controller.hardwareController.extendedGamepad != nil {
-                    profileType = .extendedGamepad
+                    profileType = .ExtendedGamepad
                 } else if (controller.hardwareController.gamepad != nil) {
-                    profileType = .gamepad
+                    profileType = .Gamepad
                 } else {
-                    profileType = .unknown
+                    profileType = .Unknown
                 }
             #endif
             
@@ -915,20 +915,20 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             switch (deviceInfo.profileType) {
                 
-            case .microGamepad:
+            case .MicroGamepad:
                 #if os(tvOS)
                     vgcMicroGamepad = VgcMicroGamepad(vgcGameController: self)
                 #endif
                 break
                 
-            case .gamepad:
+            case .Gamepad:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 
-            case .extendedGamepad:
+            case .ExtendedGamepad:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
                 
-            case.watch:
+            case.Watch:
                 vgcGamepad = VgcGamepad(vgcGameController: self)
                 vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
                 
@@ -960,7 +960,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         if deviceInfo != nil {
             return deviceInfo.profileType
         } else {
-            return .extendedGamepad
+            return .ExtendedGamepad
         }
     }
     
@@ -1043,15 +1043,15 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     // which profile the controller supports.
     func callProfileLevelChangeHandler(_ element: GCControllerElement) {
         
-        if deviceInfo.profileType == .extendedGamepad || deviceInfo.profileType == .watch {
+        if deviceInfo.profileType == .ExtendedGamepad || deviceInfo.profileType == .Watch {
             extendedGamepad?.callValueChangedHandler(element)
-        } else if deviceInfo.profileType == .gamepad {
+        } else if deviceInfo.profileType == .Gamepad {
             gamepad?.callValueChangedHandler(element)
         }
         
         #if os(tvOS)
-            if deviceInfo.profileType == .MicroGamepad {
-                microGamepad!.callValueChangedHandler(element)
+            if deviceInfo.profileType == .microGamepad {
+                microGamepad!.callValueChangedHandler(element: element)
             }
         #endif
     }
@@ -1162,7 +1162,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
     
     func callValueChangedHandler(element: GCControllerElement) {
         if let handler = vgcValueChangedHandler {
-            dispatch_async((vgcController?.handlerQueue)!) {
+            (vgcController?.handlerQueue)!.async() {
                 handler(self, element)
             }
         }
@@ -1177,7 +1177,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
         set {
             
             if let handler = vgcController?.controllerPausedHandler {
-                dispatch_async((vgcController?.handlerQueue)!) {
+                (vgcController?.handlerQueue)!.async() {
                     handler(self.vgcController!)
                 }
             }
@@ -2097,7 +2097,7 @@ public class VgcMicroGamepadSnapshot: NSObject {
         // struct will be used to provide interface-based access to the data
         // (using the getters below) as well as generating the NSData representation
         // of the snapshot.
-        let sizeInt = sizeof(VgcMicroGamepadSnapShotDataV100)
+        let sizeInt = MemoryLayout<VgcMicroGamepadSnapShotDataV100>.size
         let sizeUInt16 = UInt16(sizeInt)
         snapshotV100Structure = VgcMicroGamepadSnapShotDataV100(
             version: 0x0100,
@@ -2137,8 +2137,8 @@ public class VgcMicroGamepadSnapshot: NSObject {
         
         get {
             
-            let snapshot = UnsafeMutablePointer<VgcMicroGamepadSnapShotDataV100>.alloc(1)
-            snapshot.initialize(snapshotV100Structure)
+            let snapshot = UnsafeMutablePointer<VgcMicroGamepadSnapShotDataV100>.allocate(capacity: 1)
+            snapshot.initialize(to: snapshotV100Structure)
             let encodedNSData = encodeSnapshot(snapshotV100Structure)
             return encodedNSData
         }
@@ -2147,7 +2147,7 @@ public class VgcMicroGamepadSnapshot: NSObject {
             
             // Decode the incoming NSData into the V100 structure
             do {
-                snapshotV100Structure = try decodeSnapshot(newValue)
+                snapshotV100Structure = try decodeSnapshot(newValue as Data)
             } catch {
                 print(error)
             }

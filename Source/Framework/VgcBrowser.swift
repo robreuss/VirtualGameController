@@ -23,7 +23,7 @@ let deviceName = UIDevice.current.name
 #endif
 
 #if os(OSX)
-let deviceName = NSHost.currentHost().localizedName!
+let deviceName = Host.current().localizedName!
     public let peripheralBackgroundColor = NSColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 #endif
 

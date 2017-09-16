@@ -303,14 +303,14 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         if deviceInfo.controllerType == .mFiHardware { deviceInfo.controllerType = .bridgedMFiHardware }
         if deviceInfo.controllerType == .iCadeHardware { deviceInfo.controllerType = .bridgedICadeHardware }
         if deviceInfo.attachedToDevice {
-            deviceInfo.profileType = .extendedGamepad
+            deviceInfo.profileType = .ExtendedGamepad
             deviceInfo.supportsMotion = true
         }
         if deviceIsTypeOfBridge() { deviceInfo.supportsMotion = true }
         
         // microGamepad is only supported when running on Apple TV, so we transform to
         // Gamepad when bridging it over to a Central on iOS or OSX
-        if deviceInfo.profileType == .microGamepad { deviceInfo.profileType = .gamepad }
+        if deviceInfo.profileType == .MicroGamepad { deviceInfo.profileType = .Gamepad }
         sendDeviceInfo(deviceInfo)
         
     }

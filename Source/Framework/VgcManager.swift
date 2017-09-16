@@ -100,47 +100,47 @@ public var customElements: CustomElementsSuperclass!
 
 @objc public enum ProfileType: Int, CustomStringConvertible {
     
-    case unknown
-    case genericGamepad
-    case microGamepad
-    case gamepad
-    case extendedGamepad
-    case motion
-    case watch
+    case Unknown
+    case GenericGamepad
+    case MicroGamepad
+    case Gamepad
+    case ExtendedGamepad
+    case Motion
+    case Watch
     
     public var description : String {
         switch self {
-        case .unknown: return "Unknown"
-        case .genericGamepad: return "GenericGamepad"
-        case .microGamepad: return "MicroGamepad"
-        case .gamepad: return "Gamepad"
-        case .extendedGamepad: return "ExtendedGamepad"
-        case .motion: return "Motion"
-        case .watch: return "Watch"
+        case .Unknown: return "Unknown"
+        case .GenericGamepad: return "GenericGamepad"
+        case .MicroGamepad: return "MicroGamepad"
+        case .Gamepad: return "Gamepad"
+        case .ExtendedGamepad: return "ExtendedGamepad"
+        case .Motion: return "Motion"
+        case .Watch: return "Watch"
         }
     }
     
     var pathComponentRead : String {
         switch self {
-        case .unknown: return ""
-        case .genericGamepad: return ""
-        case .microGamepad: return "microGamepad"
-        case .gamepad: return "gamepad"
-        case .extendedGamepad: return "extendedGamepad"
-        case .motion: return "motion"
-        case .watch: return "extendedGamepad"
+        case .Unknown: return ""
+        case .GenericGamepad: return ""
+        case .MicroGamepad: return "microGamepad"
+        case .Gamepad: return "gamepad"
+        case .ExtendedGamepad: return "extendedGamepad"
+        case .Motion: return "motion"
+        case .Watch: return "extendedGamepad"
         }
     }
     
     var pathComponentWrite : String {
         switch self {
-        case .unknown: return ""
-        case .genericGamepad: return ""
-        case .microGamepad: return "vgcMicroGamepad"
-        case .gamepad: return "vgcGamepad"
-        case .extendedGamepad: return "vgcExtendedGamepad"
-        case .motion: return "vgcMotion"
-        case .watch: return "vgcExtendedGamepad"
+        case .Unknown: return ""
+        case .GenericGamepad: return ""
+        case .MicroGamepad: return "vgcMicroGamepad"
+        case .Gamepad: return "vgcGamepad"
+        case .ExtendedGamepad: return "vgcExtendedGamepad"
+        case .Motion: return "vgcMotion"
+        case .Watch: return "vgcExtendedGamepad"
         }
     }
     
@@ -292,7 +292,7 @@ open class VgcManager: NSObject {
     open static var centralServiceName = UIDevice.current.name
     #endif
     #if os(OSX)
-    public static var centralServiceName = Host.currentHost().localizedName
+    public static var centralServiceName = Host.current().localizedName
     #endif
 
     #if !os(watchOS)
@@ -354,7 +354,7 @@ open class VgcManager: NSObject {
                 VgcManager.peripheral = Peripheral()
                 
                 // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .extendedGamepad, controllerType: .software, supportsMotion: true)
+                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .software, supportsMotion: true)
             
                 #if os(iOS)
                     VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)
@@ -435,7 +435,7 @@ public func deviceIsTypeOfBridge() -> Bool {
                 self.vendorName = UIDevice.current.name
             #endif
             #if os(OSX)
-                self.vendorName = NSHost.currentHost().localizedName!
+                self.vendorName = Host.current().localizedName!
             #endif
             #if os(watchOS)
                 self.vendorName = WKInterfaceDevice.currentDevice().name
@@ -445,7 +445,7 @@ public func deviceIsTypeOfBridge() -> Bool {
             self.vendorName = "Unknown"
         }
         
-        if profileType == .microGamepad {
+        if profileType == .MicroGamepad {
             vgcLogError("The use of the .MicroGamepad profile for software-based controllers will lead to unpredictable results.")
         }
         

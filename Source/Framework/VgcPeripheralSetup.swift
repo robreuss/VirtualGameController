@@ -44,7 +44,7 @@ open class VgcPeripheralSetup: NSObject {
     open var backgroundColor: UIColor!
     
     public override init() {
-        self.profileType = .extendedGamepad
+        self.profileType = .ExtendedGamepad
         self.backgroundColor = UIColor.darkGray
     }
     
@@ -61,7 +61,7 @@ open class VgcPeripheralSetup: NSObject {
     
     public override init() {
         self.profileType = .ExtendedGamepad
-        self.backgroundColor = NSColor.darkGrayColor()
+        self.backgroundColor = NSColor.darkGray
     }
     
     public init(profileType: ProfileType, backgroundColor: NSColor) {
@@ -76,7 +76,7 @@ required convenience public init(coder decoder: NSCoder) {
     self.init()
 
     #if os(OSX)
-    self.backgroundColor = decoder.decodeObjectForKey("backgroundColor") as! NSColor
+    self.backgroundColor = decoder.decodeObject(forKey: "backgroundColor") as! NSColor
     #endif
     
     #if os(iOS) || os(tvOS)

@@ -111,9 +111,9 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         // on iOS, hence these two conditional alternatives.
         #if os(OSX)
             if deviceIsTypeOfBridge() {
-                self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName!, port: 0)
+                self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName!, port: 0)
             } else {
-                self.localService = NSNetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName!, port: 0)
+                self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName!, port: 0)
                 
             }
         #else
