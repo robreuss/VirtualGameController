@@ -48,7 +48,9 @@ var peripheralManager = VgcManager.peripheral
         viewController = vc
         parentView = viewController.view
         
+        #if !os(tvOS)
         NotificationCenter.default.addObserver(self, selector: #selector(PeripheralControlPadView.peripheralDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidDisconnectNotification), object: nil)
+        #endif
         NotificationCenter.default.addObserver(self, selector: #selector(PeripheralControlPadView.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)        
         
         // Notification that a player index has been set
