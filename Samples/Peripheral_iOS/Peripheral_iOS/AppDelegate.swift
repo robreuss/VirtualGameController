@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         // This is a hack to deal with a slowly responding keyboard display
@@ -28,26 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         
         // Just as an example, sending a pause signal to our Central as we enter background
-        VgcManager.elements.pauseButton.value = 1.0
+        VgcManager.elements.pauseButton.value = 1.0 as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.pauseButton)
         
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
 
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
 
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         
         // Letting the Central know we are back from background
-        VgcManager.elements.pauseButton.value = 0.0
+        VgcManager.elements.pauseButton.value = 0.0 as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.pauseButton)
         
         // Reycle service browser
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
 
         VgcManager.peripheral.disconnectFromService()
     }

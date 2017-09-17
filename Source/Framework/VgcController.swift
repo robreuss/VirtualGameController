@@ -146,7 +146,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         // if we have a Central function (note, a Bridge has both
         // a Central and Peripheral role)
         
-        if VgcManager.appRole == .central || deviceIsTypeOfBridge() {
+        if VgcManager.appRole == .Central || deviceIsTypeOfBridge() {
             centralPublisher = VgcCentralPublisher()
             centralPublisher.publishService()
         }
@@ -275,7 +275,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     
     open func sendElementStateToPeripheral(_ element: Element) {
         
-        if element.dataType == .data {
+        if element.dataType == .Data {
             if streamer[.largeData] != nil {
                 streamer[.largeData]!.writeElement(element, toStream:toPeripheralOutputStream[.largeData]!)
             } else {
@@ -708,7 +708,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             // Ignore hardware controller connections to iOS device if it is
             // configured to be in the .Peripheral role.
-            if VgcManager.appRole == .peripheral {
+            if VgcManager.appRole == .Peripheral {
                 vgcLogDebug("Ignoring hardware device \(controller.hardwareController.vendorName) because we are configured as a Peripheral")
                 return
             }
@@ -719,7 +719,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
                 
                 // If we're in .EnhancementBridge mode, we do not allow more than one hardware
                 // controller to connect.
-                if existingController.deviceInfo.controllerType == .MFiHardware && VgcManager.appRole == .enhancementBridge { return }
+                if existingController.deviceInfo.controllerType == .MFiHardware && VgcManager.appRole == .EnhancementBridge { return }
                 
                 if existingController.deviceInfo != nil {
                     if existingController.deviceInfo.deviceUID == deviceHash {

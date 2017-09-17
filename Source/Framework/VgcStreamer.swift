@@ -12,22 +12,22 @@ import Foundation
 
 @objc internal protocol VgcStreamerDelegate {
     
-    func receivedNetServiceMessage(elementIdentifier: Int, elementValue: NSData)
-    optional func disconnect()
-    optional var deviceInfo: DeviceInfo! {get set}
-    optional var centralPublisher: VgcCentralPublisher! {get set}
-    optional func sendInvalidMessageSystemMessage()
+    func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data)
+    @objc optional func disconnect()
+    @objc optional var deviceInfo: DeviceInfo! {get set}
+    @objc optional var centralPublisher: VgcCentralPublisher! {get set}
+    @objc optional func sendInvalidMessageSystemMessage()
     
 }
 
-class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
+class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
 
-    private var elements: Elements!
+    fileprivate var elements: Elements!
     var delegate: VgcStreamerDelegate!
     var delegateName: String
     var malformedMessageCount: Int = 0
     var totalMessageCount: Int = 0
-    var startTime: NSDate = NSDate()
+    var startTime: Date = Date()
     var dataBuffer: NSMutableData = NSMutableData()
     var expectedLength: Int = 0
     var elementIdentifier: Int!
@@ -49,13 +49,13 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
     }
     
     
-    func writeElement(element: Element, toStream:NSOutputStream) {
+    func writeElement(_ element: Element, toStream:OutputStream) {
         
         let messageData = element.dataMessage
         
         if logging { vgcLogDebug("Sending Data for \(element.name):\(messageData.length) bytes") }
         
-        writeData(messageData, toStream: toStream)
+        writeData(messageData as Data, toStream: toStream)
         
         if element.clearValueAfterTransfer {
             element.clearValue()
@@ -63,22 +63,23 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
  
     }
     
-    func delayedWriteData(timer: NSTimer) {
+    func delayedWriteData(_ timer: Timer) {
         let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
-        let outputStream = (userInfo["stream"] as! NSOutputStream)
+        let outputStream = (userInfo["stream"] as! OutputStream)
         queueRetryTimer[outputStream]!.invalidate()
-        vgcLogDebug("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(NSDate().timeIntervalSince1970)]")
-        self.writeData(NSData(), toStream: outputStream)
+        vgcLogDebug("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(Date().timeIntervalSince1970)]")
+        self.writeData(Data(), toStream: outputStream)
     }
     
     // Two indicators for handling a busy send queue, both of which result in the message being appended
     // to an NSMutableData var
     var dataSendQueue = NSMutableData()
-    let lockQueueWriteData = dispatch_queue_create("net.simplyformed.lockQueueWriteData", nil)
+    let lockQueueWriteData = DispatchQueue(label: "net.simplyformed.lockQueueWriteData", attributes: [])
     var streamerIsBusy: Bool = false
-    var queueRetryTimer: [NSOutputStream: NSTimer] = [:]
+    var queueRetryTimer: [OutputStream: Timer] = [:]
     
-    func writeData(var data: NSData, toStream: NSOutputStream) {
+    func writeData(_ data: Data, toStream: OutputStream) {
+        var data = data
 
         if VgcManager.appRole == .Peripheral && VgcManager.peripheral == nil {
             vgcLogDebug("Attempt to write without peripheral object setup, exiting")
@@ -96,24 +97,24 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             static var messagesSent: Float = 0
             static var bytesSent: Int = 0
             static var messagesQueued: Int = 0
-            static var lastPublicationOfPerformance = NSDate()
+            static var lastPublicationOfPerformance = Date()
         }
 
         if !toStream.hasSpaceAvailable {
             if logging { vgcLogDebug("OutputStream has no space/streamer is busy (Status: \(toStream.streamStatus.rawValue))") }
-            if data.length > 0 {
-                dispatch_sync(self.lockQueueWriteData) {
-                    PerformanceVars.messagesQueued++
-                    self.dataSendQueue.appendData(data)
+            if data.count > 0 {
+                self.lockQueueWriteData.sync {
+                    PerformanceVars.messagesQueued += 1
+                    self.dataSendQueue.append(data)
                 }
                 
                 if logging { vgcLogDebug("Appended data queue (\(self.dataSendQueue.length) bytes)") }
             }
             if self.dataSendQueue.length > 0 {
 
-                if queueRetryTimer[toStream] == nil || !queueRetryTimer[toStream]!.valid {
+                if queueRetryTimer[toStream] == nil || !queueRetryTimer[toStream]!.isValid {
                     vgcLogDebug("Setting data queue retry timer (Stream: \(toStream))")
-                    queueRetryTimer[toStream] = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "delayedWriteData:", userInfo: ["stream": toStream], repeats: false)
+                    queueRetryTimer[toStream] = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(VgcStreamer.delayedWriteData(_:)), userInfo: ["stream": toStream], repeats: false)
                 }
 
             }
@@ -123,27 +124,27 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         if self.dataSendQueue.length > 0 {
             if logging { vgcLogDebug("Processing data queue (\(self.dataSendQueue.length) bytes)") }
 
-            dispatch_sync(self.lockQueueWriteData) {
-                self.dataSendQueue.appendData(data)
-                data = self.dataSendQueue
+            self.lockQueueWriteData.sync {
+                self.dataSendQueue.append(data)
+                data = self.dataSendQueue as Data
                 self.dataSendQueue = NSMutableData()
             }
             if queueRetryTimer[toStream] != nil { queueRetryTimer[toStream]!.invalidate() }
 
         }
         
-        if data.length > 0 { PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0 }
+        if data.count > 0 { PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0 }
         
         if VgcManager.performanceSamplingEnabled {
             
-            PerformanceVars.bytesSent += data.length
+            PerformanceVars.bytesSent += data.count
             
             if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
                 let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
                 let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
                 vgcLogDebug("\(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) kb/sec sent")
                 PerformanceVars.messagesSent = 0
-                PerformanceVars.lastPublicationOfPerformance = NSDate()
+                PerformanceVars.lastPublicationOfPerformance = Date()
                 PerformanceVars.bytesSent = 0
                 PerformanceVars.messagesQueued = 0
             }
@@ -153,17 +154,17 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
 
         var bytesWritten: NSInteger = 0
         
-        if data.length == 0 {
+        if data.count == 0 {
             vgcLogError("Attempt to send an empty buffer, exiting")
-            dispatch_sync(self.lockQueueWriteData) {
+            self.lockQueueWriteData.sync {
                 self.dataSendQueue = NSMutableData()
             }
             return
         }
 
-        while (data.length > bytesWritten) {
+        while (data.count > bytesWritten) {
             
-            let writeResult = toStream.write(UnsafePointer<UInt8>(data.bytes) + bytesWritten, maxLength: data.length - bytesWritten)
+            let writeResult = toStream.write((data as NSData).bytes.bindMemory(to: UInt8.self, capacity: data.count) + bytesWritten, maxLength: data.count - bytesWritten)
             if writeResult == -1 {
                 vgcLogError("NSOutputStream returned -1")
                 return
@@ -173,21 +174,21 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             
         }
         
-        if data.length != bytesWritten {
+        if data.count != bytesWritten {
             vgcLogError("Got data transfer size mismatch")
         } else {
-            if data.length > 300 { vgcLogDebug("Large message sent (\(data.length) bytes, \(data.length / 1000) kb)") }
+            if data.count > 300 { vgcLogDebug("Large message sent (\(data.count) bytes, \(data.count / 1000) kb)") }
         }
         
         streamerIsBusy = false
     }
 
-    func stream(aStream: NSStream, handleEvent eventCode: NSStreamEvent) {
+    func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         
          struct PerformanceVars {
             static var messagesReceived: Float = 0
             static var bytesReceived: Int = 0
-            static var lastPublicationOfPerformance = NSDate()
+            static var lastPublicationOfPerformance = Date()
             static var invalidMessages: Float = 0
             static var totalTransitTimeMeasurements: Double = 0
             static var totalTransitTime: Double = 0
@@ -196,7 +197,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         
         switch (eventCode){
  
-        case NSStreamEvent.HasBytesAvailable:
+        case Stream.Event.hasBytesAvailable:
             
             if logging { vgcLogDebug("Stream status: \(aStream.streamStatus.rawValue)") }
 
@@ -204,13 +205,13 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             
             let headerLength = VgcManager.netServiceHeaderLength
             
-            let inputStream = aStream as! NSInputStream
+            let inputStream = aStream as! InputStream
             
-            var buffer = Array<UInt8>(count: VgcManager.netServiceBufferSize, repeatedValue: 0)
+            var buffer = Array<UInt8>(repeating: 0, count: VgcManager.netServiceBufferSize)
             
             while inputStream.hasBytesAvailable {
                 
-                bufferLoops++
+                bufferLoops += 1
                
                 let len = inputStream.read(&buffer, maxLength: buffer.count)
                 
@@ -220,7 +221,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                
                 if logging { vgcLogDebug("Length of buffer: \(len)") }
                 
-                dataBuffer.appendData(NSData(bytes: &buffer, length: len))
+                dataBuffer.append(Data(bytes: &buffer, count: len))
                 
             }
             
@@ -232,34 +233,34 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                 if dataBuffer.length <= headerLength {
                     dataBuffer = NSMutableData()
                     vgcLogError("Streamer received data too short to have a header (\(dataBuffer.length) bytes)")
-                    PerformanceVars.invalidMessages++
+                    PerformanceVars.invalidMessages += 1
                     return
                 }
 
-                let headerIdentifier = dataBuffer.subdataWithRange(NSRange.init(location: 0, length: 4))
-                if headerIdentifier == headerIdentifierAsNSData {
+                let headerIdentifier = dataBuffer.subdata(with: NSRange.init(location: 0, length: 4))
+                if headerIdentifier == headerIdentifierAsNSData as Data {
                     
                     var elementIdentifierUInt8: UInt8 = 0
-                    let elementIdentifierNSData = dataBuffer.subdataWithRange(NSRange.init(location: 4, length: 1))
-                    elementIdentifierNSData.getBytes(&elementIdentifierUInt8, length: sizeof(UInt8))
+                    let elementIdentifierNSData = dataBuffer.subdata(with: NSRange.init(location: 4, length: 1))
+                    (elementIdentifierNSData as NSData).getBytes(&elementIdentifierUInt8, length: MemoryLayout<UInt8>.size)
                     elementIdentifier = Int(elementIdentifierUInt8)
                     
                     var expectedLengthUInt32: UInt32 = 0
-                    let valueLengthNSData = dataBuffer.subdataWithRange(NSRange.init(location: 5, length: 4))
-                    valueLengthNSData.getBytes(&expectedLengthUInt32, length: sizeof(UInt32))
+                    let valueLengthNSData = dataBuffer.subdata(with: NSRange.init(location: 5, length: 4))
+                    (valueLengthNSData as NSData).getBytes(&expectedLengthUInt32, length: MemoryLayout<UInt32>.size)
                     expectedLength = Int(expectedLengthUInt32)
                     
                     if VgcManager.netServiceLatencyLogging {
 
                         var timestampDouble: Double = 0
-                        let timestampNSData = dataBuffer.subdataWithRange(NSRange.init(location: 9, length: 8))
-                        timestampNSData.getBytes(&timestampDouble, length: sizeof(Double))
+                        let timestampNSData = dataBuffer.subdata(with: NSRange.init(location: 9, length: 8))
+                        (timestampNSData as NSData).getBytes(&timestampDouble, length: MemoryLayout<Double>.size)
                         
-                        let transitTime = round(1000 * (NSDate().timeIntervalSince1970 - timestampDouble))
+                        let transitTime = round(1000 * (Date().timeIntervalSince1970 - timestampDouble))
                         //if timestampDouble < lastTimeStamp { vgcLogDebug("Time problem") }
                         //lastTimeStamp = timestampDouble
                         PerformanceVars.totalTransitTime += transitTime
-                        PerformanceVars.totalTransitTimeMeasurements++
+                        PerformanceVars.totalTransitTimeMeasurements += 1
                         let averageTransitTime = PerformanceVars.totalTransitTime / PerformanceVars.totalTransitTimeMeasurements
                         let aboveAverageTransitTime = transitTime - averageTransitTime
                         let percentageAboveAverage = (averageTransitTime / transitTime) * 100
@@ -271,35 +272,35 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                     // This shouldn't happen
                     dataBuffer = NSMutableData()
                     vgcLogError("Streamer expected header but found no header identifier (\(dataBuffer.length) bytes)")
-                    PerformanceVars.invalidMessages++
+                    PerformanceVars.invalidMessages += 1
                     return
                 }
                 
                 if expectedLength == 0 {
                     dataBuffer = NSMutableData()
                     vgcLogError("Streamer got expected length of zero")
-                    PerformanceVars.invalidMessages++
+                    PerformanceVars.invalidMessages += 1
                     return
                 }
 
-                var elementValueData = NSData()
+                var elementValueData = Data()
 
                 if dataBuffer.length < (expectedLength + headerLength) {
                     if logging { vgcLogDebug("Streamer fetching additional data") }
                     break
                 }
 
-                elementValueData = dataBuffer.subdataWithRange(NSRange.init(location: headerLength, length: expectedLength))
+                elementValueData = dataBuffer.subdata(with: NSRange.init(location: headerLength, length: expectedLength))
 
-                let dataRemainingAfterCurrentElement = dataBuffer.subdataWithRange(NSRange.init(location: headerLength + expectedLength, length: dataBuffer.length - expectedLength - headerLength))
-                dataBuffer = NSMutableData(data: dataRemainingAfterCurrentElement)
+                let dataRemainingAfterCurrentElement = dataBuffer.subdata(with: NSRange.init(location: headerLength + expectedLength, length: dataBuffer.length - expectedLength - headerLength))
+                dataBuffer = NSData(data: dataRemainingAfterCurrentElement) as Data as Data as! NSMutableData
                 
-                if elementValueData.length == expectedLength {
+                if elementValueData.count == expectedLength {
                     
                     // Performance testing is about calculating elements received per second
                     // By sending motion data, it can be  compared to expected rates.
                     
-                    PerformanceVars.messagesReceived++
+                    PerformanceVars.messagesReceived += 1
                     
                     if VgcManager.performanceSamplingEnabled {
                         
@@ -311,7 +312,7 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
                             vgcLogDebug("\(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) invalid messages, \(kbPerSecond) kb/sec received")
                             PerformanceVars.messagesReceived = 0
                             PerformanceVars.invalidMessages = 0
-                            PerformanceVars.lastPublicationOfPerformance = NSDate()
+                            PerformanceVars.lastPublicationOfPerformance = Date()
                             PerformanceVars.bytesReceived = 0
                         }
                     }
@@ -338,33 +339,33 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
             }
 
             break
-        case NSStreamEvent():
+        case Stream.Event():
             NSLog("Streamer: All Zeros")
             break
             
-        case NSStreamEvent.OpenCompleted:
-            if aStream is NSInputStream {
+        case Stream.Event.openCompleted:
+            if aStream is InputStream {
                 vgcLogDebug("\(VgcManager.appRole) input stream is now open for \(delegateName)")
             } else {
                 vgcLogDebug("\(VgcManager.appRole) output stream is now open for \(delegateName)")
             }
             break
-        case NSStreamEvent.HasSpaceAvailable:
+        case Stream.Event.hasSpaceAvailable:
             //vgcLogDebug("HAS SPACE AVAILABLE")
             break
             
-        case NSStreamEvent.ErrorOccurred:
+        case Stream.Event.errorOccurred:
             vgcLogError("Stream ErrorOccurred: Event Code: \(eventCode) (Delegate Name: \(delegateName))")
             delegate.disconnect!()
             break
             
-        case NSStreamEvent.EndEncountered:
+        case Stream.Event.endEncountered:
             vgcLogDebug("Streamer: EndEncountered (Delegate Name: \(delegateName))")
             delegate.disconnect!()
             
             break
             
-        case NSStreamEvent.None:
+        case Stream.Event():
             vgcLogDebug("Streamer: Event None")
             break
         
@@ -374,17 +375,17 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         }
     }
     
-    func processDataMessage(dataMessage: NSString) {
+    func processDataMessage(_ dataMessage: NSString) {
         
         
         
     }
    
-    func netService(sender: NSNetService, didUpdateTXTRecordData data: NSData) {
+    func netService(_ sender: NetService, didUpdateTXTRecord data: Data) {
         vgcLogDebug("CENTRAL: netService NetService didUpdateTXTRecordData")
     }
     
-    func netServiceDidPublish(sender: NSNetService) {
+    func netServiceDidPublish(_ sender: NetService) {
         if deviceIsTypeOfBridge() {
             vgcLogDebug("Bridge streamer is now published on: \(sender.domain + sender.type + sender.name)")
         } else {
@@ -392,27 +393,27 @@ class VgcStreamer: NSObject, NSNetServiceDelegate, NSStreamDelegate {
         }
     }
     
-    func netService(sender: NSNetService, didNotPublish errorDict: [String : NSNumber]) {
+    func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
         vgcLogDebug("CENTRAL: Net service did not publish, error: \(errorDict)")
     }
     
-    func netServiceWillPublish(sender: NSNetService) {
+    func netServiceWillPublish(_ sender: NetService) {
         vgcLogDebug("NetService will be published")
     }
     
-    func netServiceWillResolve(sender: NSNetService) {
+    func netServiceWillResolve(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceWillResolve")
     }
     
-    func netService(sender: NSNetService, didNotResolve errorDict: [String : NSNumber]) {
+    func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
         vgcLogDebug("CENTRAL: netService didNotResolve: \(errorDict)")
     }
     
-    func netServiceDidResolveAddress(sender: NSNetService) {
+    func netServiceDidResolveAddress(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceDidResolveAddress")
     }
     
-    func netServiceDidStop(sender: NSNetService) {
+    func netServiceDidStop(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceDidStop")
     }
 

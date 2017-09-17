@@ -37,10 +37,10 @@ public enum SystemMessages: Int, CustomStringConvertible {
 // element.
 public enum ElementDataType: Int {
     
-    case int
-    case float
-    case string
-    case data
+    case Int
+    case Float
+    case String
+    case Data
     
 }
 
@@ -190,16 +190,16 @@ open class Element: NSObject {
     open func clearValue() {
         switch self.dataType {
             
-        case .int:
+        case .Int:
             value = 0 as AnyObject
             
-        case .float:
+        case .Float:
             value = 0.0 as AnyObject
             
-        case .data:
+        case .Data:
             value = Data() as AnyObject
             
-        case .string:
+        case .String:
             value = "" as AnyObject
         }
     }
@@ -242,18 +242,18 @@ open class Element: NSObject {
 
             switch self.dataType {
                 
-            case .int:
+            case .Int:
                 var value: Int = self.value as! Int
                 return Data(bytes: &value, count: MemoryLayout<Int>.size)
                 
-            case .float:
+            case .Float:
                 var value: Float = self.value as! Float
                 return Data(bytes: &value, count: MemoryLayout<Float>.size)
                 
-            case .data:
+            case .Data:
                 return self.value as! Data
                 
-            case .string:
+            case .String:
                 return (NSData(data: (self.value as! String).data(using: String.Encoding.utf8)!) as Data)
             }
         }
@@ -261,20 +261,20 @@ open class Element: NSObject {
         set {
             switch self.dataType {
                 
-            case .int:
+            case .Int:
                 var value: Int = 0
                 (newValue as NSData).getBytes(&value, length: MemoryLayout<Int>.size)
                 self.value = value as AnyObject
                 
-            case .float:
+            case .Float:
                 var value: Float = 0.0
                 (newValue as NSData).getBytes(&value, length: MemoryLayout<Float>.size)
                 self.value = value as AnyObject
                 
-            case .data:
+            case .Data:
                 self.value = newValue as AnyObject
                 
-            case .string:
+            case .String:
                 self.value = String(data: newValue, encoding: String.Encoding.utf8)! as AnyObject
                 
             }
@@ -514,49 +514,49 @@ open class Elements: NSObject {
     }
     #endif
     
-    open var systemMessage: Element = Element(type: .systemMessage, dataType: .int, name: "System Messages", getterKeypath: "", setterKeypath: "")
-    open var deviceInfoElement: Element = Element(type: .deviceInfoElement, dataType: .data, name: "Device Info", getterKeypath: "", setterKeypath: "")
-    open var playerIndex: Element = Element(type: .playerIndex, dataType: .int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
-    open var pauseButton: Element = Element(type: .pauseButton, dataType: .float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
-    open var peripheralSetup: Element = Element(type: .peripheralSetup, dataType: .data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
-    open var vibrateDevice: Element = Element(type: .vibrateDevice, dataType: .int, name: "Vibrate Device", getterKeypath: "", setterKeypath: "")
-    open var image: Element = Element(type: .image, dataType: .data, name: "Send Image", getterKeypath: "image.value", setterKeypath: "image.value")
+    open var systemMessage: Element = Element(type: .systemMessage, dataType: .Int, name: "System Messages", getterKeypath: "", setterKeypath: "")
+    open var deviceInfoElement: Element = Element(type: .deviceInfoElement, dataType: .Data, name: "Device Info", getterKeypath: "", setterKeypath: "")
+    open var playerIndex: Element = Element(type: .playerIndex, dataType: .Int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
+    open var pauseButton: Element = Element(type: .pauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
+    open var peripheralSetup: Element = Element(type: .peripheralSetup, dataType: .Data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
+    open var vibrateDevice: Element = Element(type: .vibrateDevice, dataType: .Int, name: "Vibrate Device", getterKeypath: "", setterKeypath: "")
+    open var image: Element = Element(type: .image, dataType: .Data, name: "Send Image", getterKeypath: "image.value", setterKeypath: "image.value")
     
-    open var leftShoulder: Element = Element(type: .leftShoulder, dataType: .float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
-    open var rightShoulder: Element = Element(type: .rightShoulder, dataType: .float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")
+    open var leftShoulder: Element = Element(type: .leftShoulder, dataType: .Float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
+    open var rightShoulder: Element = Element(type: .rightShoulder, dataType: .Float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")
     
-    open var dpadXAxis: Element = Element(type: .dpadXAxis, dataType: .float, name: "dpad X", getterKeypath: "dpad.xAxis.value", setterKeypath: "dpad.xAxis.value")
-    open var dpadYAxis: Element = Element(type: .dpadYAxis, dataType: .float, name: "dpad Y", getterKeypath: "dpad.yAxis.value", setterKeypath: "dpad.yAxis.value")
+    open var dpadXAxis: Element = Element(type: .dpadXAxis, dataType: .Float, name: "dpad X", getterKeypath: "dpad.xAxis.value", setterKeypath: "dpad.xAxis.value")
+    open var dpadYAxis: Element = Element(type: .dpadYAxis, dataType: .Float, name: "dpad Y", getterKeypath: "dpad.yAxis.value", setterKeypath: "dpad.yAxis.value")
     
-    open var buttonA: Element = Element(type: .buttonA, dataType: .float, name: "A", getterKeypath: "buttonA.value", setterKeypath: "buttonA.value")
-    open var buttonB: Element = Element(type: .buttonB, dataType: .float, name: "B", getterKeypath: "buttonB.value", setterKeypath: "buttonB.value")
-    open var buttonX: Element = Element(type: .buttonX, dataType: .float, name: "X", getterKeypath: "buttonX.value", setterKeypath: "buttonX.value")
-    open var buttonY: Element = Element(type: .buttonY, dataType: .float, name: "Y", getterKeypath: "buttonY.value", setterKeypath: "buttonY.value")
+    open var buttonA: Element = Element(type: .buttonA, dataType: .Float, name: "A", getterKeypath: "buttonA.value", setterKeypath: "buttonA.value")
+    open var buttonB: Element = Element(type: .buttonB, dataType: .Float, name: "B", getterKeypath: "buttonB.value", setterKeypath: "buttonB.value")
+    open var buttonX: Element = Element(type: .buttonX, dataType: .Float, name: "X", getterKeypath: "buttonX.value", setterKeypath: "buttonX.value")
+    open var buttonY: Element = Element(type: .buttonY, dataType: .Float, name: "Y", getterKeypath: "buttonY.value", setterKeypath: "buttonY.value")
     
-    open var leftThumbstickXAxis: Element = Element(type: .leftThumbstickXAxis, dataType: .float, name: "Left Thumb X", getterKeypath: "leftThumbstick.xAxis.value", setterKeypath: "leftThumbstick.xAxis.value")
-    open var leftThumbstickYAxis: Element = Element(type: .leftThumbstickYAxis, dataType: .float, name: "Left Thumb Y", getterKeypath: "leftThumbstick.yAxis.value", setterKeypath: "leftThumbstick.yAxis.value")
-    open var rightThumbstickXAxis: Element = Element(type: .rightThumbstickXAxis, dataType: .float, name: "Right Thumb X", getterKeypath: "rightThumbstick.xAxis.value", setterKeypath: "rightThumbstick.xAxis.value")
-    open var rightThumbstickYAxis: Element = Element(type: .rightThumbstickYAxis, dataType: .float, name: "Right Thumb Y", getterKeypath: "rightThumbstick.yAxis.value", setterKeypath: "rightThumbstick.yAxis.value")
+    open var leftThumbstickXAxis: Element = Element(type: .leftThumbstickXAxis, dataType: .Float, name: "Left Thumb X", getterKeypath: "leftThumbstick.xAxis.value", setterKeypath: "leftThumbstick.xAxis.value")
+    open var leftThumbstickYAxis: Element = Element(type: .leftThumbstickYAxis, dataType: .Float, name: "Left Thumb Y", getterKeypath: "leftThumbstick.yAxis.value", setterKeypath: "leftThumbstick.yAxis.value")
+    open var rightThumbstickXAxis: Element = Element(type: .rightThumbstickXAxis, dataType: .Float, name: "Right Thumb X", getterKeypath: "rightThumbstick.xAxis.value", setterKeypath: "rightThumbstick.xAxis.value")
+    open var rightThumbstickYAxis: Element = Element(type: .rightThumbstickYAxis, dataType: .Float, name: "Right Thumb Y", getterKeypath: "rightThumbstick.yAxis.value", setterKeypath: "rightThumbstick.yAxis.value")
     
-    open var rightTrigger: Element = Element(type: .rightTrigger, dataType: .float, name: "Right Trigger", getterKeypath: "rightTrigger.value", setterKeypath: "rightTrigger.value")
-    open var leftTrigger: Element = Element(type: .leftTrigger, dataType: .float, name: "Left Trigger", getterKeypath: "leftTrigger.value", setterKeypath: "leftTrigger.value")
+    open var rightTrigger: Element = Element(type: .rightTrigger, dataType: .Float, name: "Right Trigger", getterKeypath: "rightTrigger.value", setterKeypath: "rightTrigger.value")
+    open var leftTrigger: Element = Element(type: .leftTrigger, dataType: .Float, name: "Left Trigger", getterKeypath: "leftTrigger.value", setterKeypath: "leftTrigger.value")
     
-    open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .float, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
-    open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .float, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
-    open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .float, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
+    open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .Float, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
+    open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .Float, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
+    open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .Float, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
     
-    open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .float, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
-    open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .float, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
-    open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .float, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
+    open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .Float, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
+    open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .Float, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
+    open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .Float, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
     
-    open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .float, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
-    open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .float, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
-    open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .float, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
+    open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .Float, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
+    open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .Float, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
+    open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .Float, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
     
-    open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .float, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
-    open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
-    open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
-    open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
+    open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .Float, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
+    open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .Float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
+    open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .Float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
+    open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .Float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
     
     // Convience functions for getting a controller element object based on specific properties of the
     // controller element

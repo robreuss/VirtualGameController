@@ -9,7 +9,7 @@
 import Foundation
 import VirtualGameController
 
-public class CustomMappings: CustomMappingsSuperclass {
+open class CustomMappings: CustomMappingsSuperclass {
     
     public override init() {
         

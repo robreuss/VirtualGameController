@@ -90,7 +90,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             
             // If we're enhancing a hardware controller with virtual elements, we pass values through to the controller
             // so they appear to the Central as coming from the hardware controller
-            if VgcManager.appRole == .enhancementBridge && VgcController.enhancedController != nil {
+            if VgcManager.appRole == .EnhancementBridge && VgcController.enhancedController != nil {
                 VgcController.enhancedController.peripheral.browser.sendElementStateOverNetService(element)
             } else {
                 browser.sendElementStateOverNetService(element)

@@ -39,7 +39,7 @@ class InterfaceController: WKInterfaceController {
     // watch connectivity.  Needs investigation.  Tested using an HTTP server on the
     // iPhone but didn't get any better performance, suggesting it is an accelerometer
     // issue.
-    @IBAction func motionSwitch(value: Bool) {
+    @IBAction func motionSwitch(_ value: Bool) {
         if value == true {
             watchConnectivity.motion.start()
         } else {
@@ -56,32 +56,32 @@ class InterfaceController: WKInterfaceController {
             
             vgcLogDebug("Working on row for \(element.name)")
             
-            if let row = elementsTable.rowControllerAtIndex(index) as? ElementsTableRow {
+            if let row = elementsTable.rowController(at: index) as? ElementsTableRow {
                 row.elementLabel.setText(element.name)
             }
             
-            index++
+            index += 1
         }
     }
     
-    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
+    override func table(_ table: WKInterfaceTable, didSelectRowAt rowIndex: Int) {
         
         // Perform a wrist tap with each button push, just to be cute.
-        WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
+        WKInterfaceDevice.current().play(WKHapticType.click)
         
         // Toggle element.  This implementation could be enhanced by using touches
         // on the component used in the table row (such as a button) so that there
         // are seperate sendElementValueToBridge calls for touch down and up.
         let element = watchConnectivity.elements.watchProfileElements[rowIndex]
-        element.value = 1.0
-        watchConnectivity.sendElementState(element)
-        element.value = 0.0
-        watchConnectivity.sendElementState(element)
+        element.value = 1.0 as AnyObject
+        watchConnectivity.sendElementState(element: element)
+        element.value = 0.0 as AnyObject
+        watchConnectivity.sendElementState(element: element)
         
     }
     
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
         
         self.updateElementsTable()
         

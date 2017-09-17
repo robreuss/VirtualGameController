@@ -10,17 +10,17 @@ import Foundation
 
 @objc public enum LogLevel: Int, CustomStringConvertible {
 
-    case error = 0
-    case debug = 1
-    case verbose = 2
+    case Error = 0
+    case Debug = 1
+    case Verbose = 2
     
     public var description : String {
         
         switch self {
             
-            case .error: return "Error"
-            case .debug: return "Debug"
-            case .verbose: return "Verbose"
+            case .Error: return "Error"
+            case .Debug: return "Debug"
+            case .Verbose: return "Verbose"
             
         }
     }
@@ -42,18 +42,18 @@ func logAtLevel(_ priority: LogLevel, logLine: String ) {
 
 public func vgcLogVerbose(_ logLine: String) {
     
-    logAtLevel(.verbose, logLine: logLine)
+    logAtLevel(.Verbose, logLine: logLine)
     
 }
 
 public func vgcLogDebug(_ logLine: String) {
 
-    logAtLevel(.debug, logLine: logLine)
+    logAtLevel(.Debug, logLine: logLine)
     
 }
 
 public func vgcLogError(_ logLine: String) {
 
-    logAtLevel(.error, logLine: "<<< ERROR >>> \(logLine)")
+    logAtLevel(.Error, logLine: "<<< ERROR >>> \(logLine)")
     
 }

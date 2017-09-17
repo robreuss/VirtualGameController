@@ -27,7 +27,7 @@ public enum CustomElementType: Int {
 ///
 /// Your customElements class must descend from CustomElementsSuperclass
 ///
-public class CustomElements: CustomElementsSuperclass {
+open class CustomElements: CustomElementsSuperclass {
 
     public override init() {
         

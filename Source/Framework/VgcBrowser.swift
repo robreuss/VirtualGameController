@@ -207,7 +207,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         var outputStreamLarge: OutputStream!
         var outputStreamSmall: OutputStream!
         
-        if VgcManager.appRole == .peripheral {
+        if VgcManager.appRole == .Peripheral {
             outputStreamLarge = self.outputStream[.largeData]
             outputStreamSmall = self.outputStream[.smallData]
         } else if deviceIsTypeOfBridge() {
@@ -230,14 +230,14 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         
         var outputStream: OutputStream!
         
-        if VgcManager.appRole == .peripheral {
-            if element.dataType == .data {
+        if VgcManager.appRole == .Peripheral {
+            if element.dataType == .Data {
                 outputStream = self.outputStream[.largeData]
             } else {
                 outputStream = self.outputStream[.smallData]
             }
         } else if deviceIsTypeOfBridge() {
-            if element.dataType == .data {
+            if element.dataType == .Data {
                 outputStream = peripheral.controller.toCentralOutputStream[.largeData]
             } else {
                 outputStream = peripheral.controller.toCentralOutputStream[.smallData]
@@ -250,7 +250,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         }
 
         // Prevent writes without a connection except deviceInfo
-        if element.dataType == .data {
+        if element.dataType == .Data {
             if (peripheral.haveConnectionToCentral || element.type == .deviceInfoElement) && streamer[.largeData] != nil { streamer[.largeData]!.writeElement(element, toStream:outputStream) }
         } else {
             if (peripheral.haveConnectionToCentral || element.type == .deviceInfoElement) && streamer[.smallData] != nil { streamer[.smallData]!.writeElement(element, toStream:outputStream) }
@@ -388,16 +388,16 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             vgcLogDebug("Found service of type \(service.type) at \(service.name)")
             var vgcService: VgcService
             if service.type == VgcManager.bonjourTypeBridge {
-                vgcService = VgcService(name: service.name, type:.bridge, netService: service)
+                vgcService = VgcService(name: service.name, type:.Bridge, netService: service)
             } else {
-                vgcService = VgcService(name: service.name, type:.central, netService: service)
+                vgcService = VgcService(name: service.name, type:.Central, netService: service)
             }
             
             serviceLookup[service] = vgcService
             
             NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
             
-            if deviceIsTypeOfBridge() && vgcService.type == .central && connectedVgcService != vgcService { connectToService(vgcService) }
+            if deviceIsTypeOfBridge() && vgcService.type == .Central && connectedVgcService != vgcService { connectToService(vgcService) }
         }
         
     }

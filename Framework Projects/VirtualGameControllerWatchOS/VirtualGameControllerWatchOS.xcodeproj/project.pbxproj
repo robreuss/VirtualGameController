@@ -162,6 +162,8 @@
 					20A120B91BDA97BF00E30083 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
+						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -320,6 +322,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -329,6 +332,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -341,6 +345,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};

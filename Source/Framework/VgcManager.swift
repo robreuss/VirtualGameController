@@ -57,17 +57,17 @@ public var customElements: CustomElementsSuperclass!
 ///
 @objc public enum AppRole: Int, CustomStringConvertible {
     
-    case central = 0
-    case peripheral = 1
-    case bridge = 2
-    case enhancementBridge = 3
+    case Central = 0
+    case Peripheral = 1
+    case Bridge = 2
+    case EnhancementBridge = 3
     
     public var description : String {
         switch self {
-        case .central: return "Central"
-        case .peripheral: return "Peripheral"
-        case .bridge: return "Bridge"
-        case .enhancementBridge: return "Enhancement Bridge"
+        case .Central: return "Central"
+        case .Peripheral: return "Peripheral"
+        case .Bridge: return "Bridge"
+        case .EnhancementBridge: return "Enhancement Bridge"
         }
     }
 }
@@ -173,7 +173,7 @@ open class VgcManager: NSObject {
     fileprivate override init() {}
 
     // Default to being a Peripheral
-    open static var appRole: AppRole = .peripheral
+    open static var appRole: AppRole = .Peripheral
     
     #if !os(watchOS)
     /// Used by the Central to configure a software controller, in terms of profile type, background
@@ -188,7 +188,7 @@ open class VgcManager: NSObject {
     open static var elements = Elements()
     
     /// Log Level "Debug" is a standard level of logging for debugging - set to "Error" for release
-    @objc open static var loggerLogLevel: LogLevel = LogLevel.debug {
+    @objc open static var loggerLogLevel: LogLevel = LogLevel.Debug {
         didSet {
             vgcLogDebug("Set logLevel: \(VgcManager.loggerLogLevel)")
         }
@@ -223,12 +223,12 @@ open class VgcManager: NSObject {
     /// in response to an end-user selecting the type of iCade controller they've paired
     /// with their iOS device.
     ///
-    open static var iCadeControllerMode: IcadeControllerMode = .disabled {
+    open static var iCadeControllerMode: IcadeControllerMode = .Disabled {
 
         didSet {
             
             #if !os(watchOS)
-            if iCadeControllerMode != .disabled { iCadePeripheral = VgcIcadePeripheral() } else { iCadePeripheral = nil }
+            if iCadeControllerMode != .Disabled { iCadePeripheral = VgcIcadePeripheral() } else { iCadePeripheral = nil }
             #endif
             
         }
@@ -297,7 +297,7 @@ open class VgcManager: NSObject {
 
     #if !os(watchOS)
     open class func publishCentralService() {
-        if appRole == .central {
+        if appRole == .Central {
             VgcController.centralPublisher.publishService()
         } else {
             vgcLogError("Refused to publish Central service because appRole is not Central")
@@ -305,7 +305,7 @@ open class VgcManager: NSObject {
     }
     
     open class func unpublishCentralService() {
-        if appRole == .central {
+        if appRole == .Central {
             VgcController.centralPublisher.unpublishService()
         } else {
             vgcLogError("Refused to unpublish Central service because appRole is not Central")
@@ -349,7 +349,7 @@ open class VgcManager: NSObject {
             
         switch (VgcManager.appRole) {
             
-            case .peripheral:
+            case .Peripheral:
                 
                 VgcManager.peripheral = Peripheral()
                 
@@ -360,10 +360,10 @@ open class VgcManager: NSObject {
                     VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)
                 #endif
             
-            case .central:
+            case .Central:
                 VgcController.setup()
             
-            case .bridge, .enhancementBridge:
+            case .Bridge, .EnhancementBridge:
                 
                 VgcController.setup()
             }
@@ -376,7 +376,7 @@ open class VgcManager: NSObject {
 
 // Convienance function
 public func deviceIsTypeOfBridge() -> Bool {
-    return VgcManager.appRole == .bridge || VgcManager.appRole == .enhancementBridge
+    return VgcManager.appRole == .Bridge || VgcManager.appRole == .EnhancementBridge
 }
 
 // Meta information related to the controller.  This object is

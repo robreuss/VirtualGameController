@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>net.simplyformed.Peripheral-iOS</string>
+	<string>net.simplyformed.Peripheral-iOS-unique</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

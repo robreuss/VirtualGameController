@@ -76,7 +76,7 @@ open class VgcMotionManager: NSObject {
                         return
                     }
                 }
-                if VgcManager.appRole == .enhancementBridge {
+                if VgcManager.appRole == .EnhancementBridge {
                     if VgcController.enhancedController.peripheral.haveConnectionToCentral == false {
                         vgcLogDebug("Not starting motion because no connection")
                         return

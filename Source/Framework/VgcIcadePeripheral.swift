@@ -12,36 +12,36 @@ import Foundation
 
 public enum IcadeControllerMode: CustomStringConvertible {
  
-    case disabled
-    case snakebyteIdroidCon
-    case steelSeriesFree
-    case iCade
-    case iCadeMobile
-    case iCadeJr
-    case eightbitty
-    case gametel
-    case iControlPadEarly
-    case iControlPadLate
-    case gameDock
-    case iMpulse
-    case nyko
+    case Disabled
+    case SnakebyteIdroidCon
+    case SteelSeriesFree
+    case ICade
+    case ICadeMobile
+    case ICadeJr
+    case Eightbitty
+    case Gametel
+    case IControlPadEarly
+    case IControlPadLate
+    case GameDock
+    case IMpulse
+    case Nyko
     
     public var description : String {
         
         switch self {
-        case .disabled: return "iCade Support Disabled"
-        case .snakebyteIdroidCon: return "Snakebyte iDroid:con"
-        case .steelSeriesFree: return "SteelSeries Free"
-        case .iCade: return "iCade"
-        case .iCadeMobile: return "iCade Mobile"
-        case .iCadeJr: return "iCade Jr."
-        case .eightbitty: return "8-bitty"
-        case .gametel: return "Gametel"
-        case .iControlPadEarly: return "iControlPad (2.1a, 2.3)"
-        case .iControlPadLate: return "iControlPad (2.4)"
-        case .gameDock: return "GameDock"
-        case .iMpulse: return "iMpulse"
-        case .nyko: return "Nyko PlayPad / Pro"
+        case .Disabled: return "iCade Support Disabled"
+        case .SnakebyteIdroidCon: return "Snakebyte iDroid:con"
+        case .SteelSeriesFree: return "SteelSeries Free"
+        case .ICade: return "iCade"
+        case .ICadeMobile: return "iCade Mobile"
+        case .ICadeJr: return "iCade Jr."
+        case .Eightbitty: return "8-bitty"
+        case .Gametel: return "Gametel"
+        case .IControlPadEarly: return "iControlPad (2.1a, 2.3)"
+        case .IControlPadLate: return "iControlPad (2.4)"
+        case .GameDock: return "GameDock"
+        case .IMpulse: return "iMpulse"
+        case .Nyko: return "Nyko PlayPad / Pro"
             
         }
     }
@@ -71,10 +71,10 @@ open class VgcIcadePeripheral: NSObject {
         
         switch VgcManager.iCadeControllerMode {
             
-        case .disabled:
+        case .Disabled:
             return (nil, 0)
             
-        case .snakebyteIdroidCon: // DONE
+        case .SnakebyteIdroidCon: // DONE
             
             switch elementCharacter {
                 
@@ -127,7 +127,7 @@ open class VgcIcadePeripheral: NSObject {
                 
             }
             
-        case .iCadeMobile: // DONE
+        case .ICadeMobile: // DONE
             
             switch elementCharacter {
                 
@@ -140,7 +140,7 @@ open class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .steelSeriesFree: // DONE
+        case .SteelSeriesFree: // DONE
             
             switch elementCharacter {
                 
@@ -154,7 +154,7 @@ open class VgcIcadePeripheral: NSObject {
                 
             }
             
-        case .iCadeJr: // DONE
+        case .ICadeJr: // DONE
             switch elementCharacter {
                 
             case "U","F","Y","T","H","R","J","N":
@@ -167,7 +167,7 @@ open class VgcIcadePeripheral: NSObject {
             }
             
             
-        case .iCade: // DONE
+        case .ICade: // DONE
             switch elementCharacter {
                 
             case "U","F","Y","T","H","R","J","N":
@@ -179,7 +179,7 @@ open class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .iControlPadLate: // DONE
+        case .IControlPadLate: // DONE
             switch elementCharacter {
                 
             case "U","F","Y","T","H","R","J","N":
@@ -192,7 +192,7 @@ open class VgcIcadePeripheral: NSObject {
             }
             
             
-        case .eightbitty:
+        case .Eightbitty:
             switch elementCharacter {
                 
             case "I","M","K","P","L","V","O","G":
@@ -204,7 +204,7 @@ open class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .gametel:
+        case .Gametel:
             switch elementCharacter {
                 
             case "I","M","K","P","L","V","O","G":
@@ -216,7 +216,7 @@ open class VgcIcadePeripheral: NSObject {
             default: break
             }
             
-        case .iControlPadEarly:
+        case .IControlPadEarly:
             switch elementCharacter {
                 
             case "I","M","K","P","L","V","O","G":
