@@ -438,7 +438,7 @@ public func deviceIsTypeOfBridge() -> Bool {
                 self.vendorName = Host.current().localizedName!
             #endif
             #if os(watchOS)
-                self.vendorName = WKInterfaceDevice.currentDevice().name
+                self.vendorName = WKInterfaceDevice.current().name
             #endif
         }
         if self.vendorName == "" {

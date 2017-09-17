@@ -11,11 +11,13 @@ import Foundation
 import WatchKit
 import WatchConnectivity
     
-public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDelegate {
+    public class VgcWatchConnectivity: NSObject, WCSessionDelegate, URLSessionDelegate {
+        
+
 
     public let elements = Elements()
     var session: WCSession!
-    var httpSession: NSURLSession!
+    var httpSession: URLSession!
     public var motion: VgcMotionManager!
     
     public typealias VgcValueChangedHandler = (Element) -> Void
@@ -25,9 +27,9 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
       
         super.init()
         
-        session =  WCSession.defaultSession()
+        session =  WCSession.default()
         session.delegate = self
-        session.activateSession()
+        session.activate()
         
         #if os(watchOS)
         motion = VgcMotionManager()
@@ -42,10 +44,10 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     
     public func sendElementState(element: Element) {
         
-        if session.reachable {
+        if session.isReachable {
             let message = ["\(element.identifier)": element.value]
             vgcLogDebug("Watch connectivity sending message: \(message) for element \(element.name) with value \(element.value)")
-            session.sendMessage(message , replyHandler: { (content:[String : AnyObject]) -> Void in
+            session.sendMessage(message , replyHandler: { (content:[String : Any]) -> Void in
                 // Response to message shows up here
                 }, errorHandler: {  (error ) -> Void in
                     vgcLogError("Received an error while attempt to send element \(element) to bridge: \(error)")
@@ -62,20 +64,20 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
         for elementTypeString: String in message.keys {
             
             let element = elements.elementFromIdentifier(Int(elementTypeString)!)
-            element.value = message[elementTypeString]!
+            element?.value = message[elementTypeString]!
             
-            if element.identifier == elements.vibrateDevice.identifier {
+            if element?.identifier == elements.vibrateDevice.identifier {
                 
                 #if os(watchOS)
-                    WKInterfaceDevice.currentDevice().playHaptic(WKHapticType.Click)
+                    WKInterfaceDevice.current().play(WKHapticType.click)
                 #endif
                 
             } else {
 
-                vgcLogDebug("Calling handler with element: \(element.identifier): \(element.value)")
+                vgcLogDebug("Calling handler with element: \(element?.identifier): \(element?.value)")
                 
                 if let handler = valueChangedHandler {
-                    handler(element)
+                    handler(element!)
                 }
                 
             }
@@ -85,14 +87,20 @@ public class VgcWatchConnectivity: NSObject, WCSessionDelegate, NSURLSessionDele
     
     public func sessionReachabilityDidChange(session: WCSession) {
         
-        vgcLogDebug("Reachability changed to \(session.reachable)")
+        vgcLogDebug("Reachability changed to \(session.isReachable)")
 
-        if session.reachable == false {
+        if session.isReachable == false {
             vgcLogDebug("Stopping motion")
             motion.stop()
         }
         
     }
-    
+        
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        vgcLogDebug("activationDidCompleteWith")
+    }
+
 }
 #endif

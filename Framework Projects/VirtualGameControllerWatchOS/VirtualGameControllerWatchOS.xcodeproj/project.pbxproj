@@ -318,6 +318,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -337,6 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
