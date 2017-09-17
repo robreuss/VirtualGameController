@@ -1586,7 +1586,7 @@ open class VgcMotion: NSObject {
     open var attitude: GCQuaternion {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
             #endif
             return vgcAttitude
         }
@@ -1598,7 +1598,7 @@ open class VgcMotion: NSObject {
     var motionAttitudeX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
             #endif
             return Float(vgcAttitude.x)
         }
@@ -1611,7 +1611,7 @@ open class VgcMotion: NSObject {
     var motionAttitudeY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
             #endif
             return Float(vgcAttitude.y)
         }
@@ -1624,7 +1624,7 @@ open class VgcMotion: NSObject {
     var motionAttitudeZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
             #endif
             return Float(vgcAttitude.z)
         }
@@ -1638,7 +1638,7 @@ open class VgcMotion: NSObject {
     var motionAttitudeW: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
             #endif
             return Float(vgcAttitude.w)
         }
@@ -1652,7 +1652,7 @@ open class VgcMotion: NSObject {
     open var rotationRate: GCRotationRate {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
             #endif
             return vgcRotationRate
         }
@@ -1664,7 +1664,7 @@ open class VgcMotion: NSObject {
     var motionRotationRateX: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
             #endif
             return Float(vgcRotationRate.x)
         }
@@ -1677,7 +1677,7 @@ open class VgcMotion: NSObject {
     var motionRotationRateY: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
             #endif
             return Float(vgcRotationRate.y)
         }
@@ -1690,7 +1690,7 @@ open class VgcMotion: NSObject {
     var motionRotationRateZ: Float {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
             #endif
             return Float(vgcRotationRate.z)
         }
