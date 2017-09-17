@@ -33,7 +33,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
     var elementIdentifier: Int!
     var nsStringBuffer: NSString = ""
     var cycleCount: Int = 0
-    let logging = false
+    let logging = true
     var lastTimeStamp = 0.0
     
     init(delegate: VgcStreamerDelegate, delegateName: String) {
@@ -195,6 +195,10 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             static var averageTransitTime: Double = 0
         }
         
+        if dataBuffer.length == 0 {
+            dataBuffer = NSMutableData()
+        }
+        
         switch (eventCode){
  
         case Stream.Event.hasBytesAvailable:
@@ -220,8 +224,8 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                 PerformanceVars.bytesReceived += len
                
                 if logging { vgcLogDebug("Length of buffer: \(len)") }
-                
-                dataBuffer.append(Data(bytes: &buffer, count: len))
+
+                dataBuffer.append(&buffer, length: len)
                 
             }
             

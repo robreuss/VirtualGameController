@@ -698,7 +698,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     // and then pass them along using our custom notification name ("vgcControllerDidConnect").  This allows
     // us to "capture" a hardware controller being connected, and create a
     // VgcController facade object around it.
-    @objc class func controllerDidConnect(_ notification: Notification) {
+    @objc public class func controllerDidConnect(_ notification: Notification) {
         
         if notification.object is GCController {
             
@@ -784,7 +784,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     
     // A hardware controller disconnected - we capture this, handle it and
     // send our custom disconnect notification
-    @objc class func controllerDidDisconnect(_ notification: Notification) {
+    @objc public class func controllerDidDisconnect(_ notification: Notification) {
         
         vgcLogDebug("Got hardware didDisconnect notification: \(notification)")
         

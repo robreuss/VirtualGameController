@@ -24,36 +24,36 @@ import VirtualGameController
         
         super.viewDidLoad()
       
-        self.view.backgroundColor = UIColor.darkGrayColor()
+        self.view.backgroundColor = UIColor.darkGray
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 20, width: self.view.bounds.size.width, height: 60))
         titleLabel.text = "\(VgcManager.centralServiceName) (\(VgcManager.appRole.description))"
-        titleLabel.textAlignment = .Center
+        titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: titleLabel.font.fontName, size: 20)
-        titleLabel.textColor = UIColor.lightGrayColor()
+        titleLabel.textColor = UIColor.lightGray
         titleLabel.adjustsFontSizeToFitWidth = true
         self.view.addSubview(titleLabel)
         
         // Horizontal scrollview that contains the debug views
         scrollview = UIScrollView(frame: CGRect(x: 0, y: 70, width: self.view.bounds.width, height: self.view.bounds.size.height - 70))
-        scrollview.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
+        scrollview.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
         scrollview.contentSize = CGSize(width: scrollview.bounds.size.width, height: scrollview.bounds.size.height)
-        scrollview.backgroundColor = UIColor.grayColor()
+        scrollview.backgroundColor = UIColor.gray
         self.view.addSubview(scrollview)
         
-        imageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.size.width  * 0.20, self.view.bounds.size.height * 0.20))
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width  * 0.20, height: self.view.bounds.size.height * 0.20))
         imageView.center = self.view.center
-        imageView.userInteractionEnabled = true
-        imageView.backgroundColor = UIColor.clearColor()
+        imageView.isUserInteractionEnabled = true
+        imageView.backgroundColor = UIColor.clear
         self.view.addSubview(imageView)
         
-        let gr = UITapGestureRecognizer(target: self, action: "clearImage")
+        let gr = UITapGestureRecognizer(target: self, action: #selector(VgcCentralViewController.clearImage))
         imageView.gestureRecognizers = [gr]
 
         // Make debug view width suitable for a given device type
-        if (UIDevice.currentDevice().userInterfaceIdiom == .Phone) {
+        if (UIDevice.current.userInterfaceIdiom == .phone) {
             self.debugViewWidth = scrollview.bounds.size.width * 0.80
-        } else if (UIDevice.currentDevice().userInterfaceIdiom == .Pad) {
+        } else if (UIDevice.current.userInterfaceIdiom == .pad) {
             self.debugViewWidth = scrollview.bounds.size.width * 0.40
             if debugViewWidth > 500 { debugViewWidth = 300 }
         } else {
@@ -63,7 +63,7 @@ import VirtualGameController
         #if !os(tvOS)
             // Hidden text field to receive iCade controller input
             iCadeTextField = UITextField(frame: CGRect(x:-1, y: -1, width: 1, height: 1))
-            iCadeTextField.addTarget(self, action: "receivedIcadeInput:", forControlEvents: .EditingChanged)
+            iCadeTextField.addTarget(self, action: "receivedIcadeInput:", for: .editingChanged)
             //iCadeTextField.autocorrectionType = .No
             self.view.addSubview(iCadeTextField)
         #endif
@@ -80,16 +80,16 @@ import VirtualGameController
 
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: VgcControllerDidDisconnectNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidDisconnect), name: NSNotification.Name(rawValue: VgcControllerDidDisconnectNotification), object: nil)
         
         // Used to determine if an external keyboard (an iCade controller) is paired
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "keyboardWillShow:", name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "keyboardWillHide:", name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: "gotPlayerIndex:", name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
 
         #if !os(tvOS)
             // To enable iCade, this must be after the notification observers are defined. The connect notification should be used
@@ -102,7 +102,7 @@ import VirtualGameController
     // Determine if an iCade controller is paired
     func isExternalKeyboard(keyboardFrame: CGRect) -> Bool {
         
-        let keyboard = self.view.convertRect(keyboardFrame, fromView: self.view.window)
+        let keyboard = self.view.convert(keyboardFrame, from: self.view.window)
         let height = self.view.frame.size.height
         return keyboard.origin.y + keyboard.size.height > height
         
@@ -111,7 +111,7 @@ import VirtualGameController
     // Determine if an iCade controller is paired
     @objc func keyboardWillHide(aNotification: NSNotification) {
         
-        if isExternalKeyboard(aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue) {
+        if isExternalKeyboard(keyboardFrame: (aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue) {
             
             // Confirm we are in iCade controller mode
             if VgcManager.iCadeControllerMode != .Disabled {
@@ -130,7 +130,7 @@ import VirtualGameController
         
         vgcLogDebug("Testing for external keyboard (iCade controller)")
         // Test for external keyboard
-        if isExternalKeyboard(aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue) {
+        if isExternalKeyboard(keyboardFrame: (aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue) {
             
             vgcLogDebug("External keyboard found, displaying iCade controller")
             
@@ -160,15 +160,16 @@ import VirtualGameController
         
         if VgcManager.iCadeControllerMode != .Disabled && VgcController.iCadeController != nil {
             
+            /*
             vgcLogDebug("Sending iCade character: \(iCadeTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
             var element: Element!
             var value: Int
-            (element, value) = VgcManager.iCadePeripheral.elementForCharacter(iCadeTextField.text!, controllerElements: VgcController.iCadeController.elements)
+            (element, value) = VgcManager.iCadePeripheral.elementForCharacter( iCadeTextField.text!, controllerElements: VgcController.iCadeController.elements)
             iCadeTextField.text = ""
             if element == nil { return }
-            element.value = value
+            element.value = value as AnyObject
             VgcController.iCadeController.triggerElementHandlers(element, value: Float(value))
-            
+         */   
         }
     }
     
@@ -177,12 +178,11 @@ import VirtualGameController
     // This will result in a given debug view having all of it's values updated.
     func refreshDebugViewForController(controller: VgcController) {
         
-        //dispatch_sync(lockQueueRefreshDebugView) {
-            dispatch_async(dispatch_get_main_queue()) {
-                if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
-                    elementDebugView.refresh(controller)
-                }
+        DispatchQueue.main.async {
+            if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
+                elementDebugView.refresh(controller)
             }
+        }
         //}
     }
     
@@ -191,7 +191,7 @@ import VirtualGameController
         
         vgcLogDebug("Refreshing all debug views")
         for controller in VgcController.controllers() {
-            refreshDebugViewForController(controller)
+            refreshDebugViewForController(controller: controller)
         }
         
     }
@@ -218,7 +218,7 @@ import VirtualGameController
         }
         
         let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: newController)
-        elementDebugView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleRightMargin, UIViewAutoresizing.FlexibleLeftMargin]
+        elementDebugView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleLeftMargin]
         scrollview.addSubview(elementDebugView)
         
         if !newController.isHardwareController {
@@ -255,16 +255,15 @@ import VirtualGameController
         self.refreshElementDebugViewPositions()
         
         // Update the debug view after giving the player index time to arrive
-        let triggerTime = (Int64(NSEC_PER_SEC) * 6)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, triggerTime), dispatch_get_main_queue(), { () -> Void in
+        let triggerTime = DispatchTime.now() + .seconds(6)
+        DispatchQueue.main.asyncAfter(deadline: triggerTime) {
             elementDebugView.refresh(newController)
-        })
-
+        }
 
         // Refresh on all extended gamepad changes (Global handler)
         newController.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
-            self.refreshDebugViewForController(newController)
+            self.refreshDebugViewForController(controller: newController)
             
         }
 
@@ -272,7 +271,7 @@ import VirtualGameController
         // Refresh on all gamepad changes (Global handler)
         newController.gamepad?.valueChangedHandler = { (gamepad: GCGamepad, element: GCControllerElement) in
             
-            self.refreshDebugViewForController(newController)
+            self.refreshDebugViewForController(controller: newController)
             
         }
 
@@ -293,7 +292,7 @@ import VirtualGameController
             
             // Avoid updating too often or the UI will freeze up
             if lastMotionRefresh.timeIntervalSinceNow > -0.01 { return } else { lastMotionRefresh = NSDate() }
-            self.refreshDebugViewForController(newController)
+            self.refreshDebugViewForController(controller: newController)
             
         }
         
@@ -310,7 +309,7 @@ import VirtualGameController
         // Responds if any custom elements change
         Elements.customElements.valueChangedHandler = { (controller, element) in
             
-            self.refreshDebugViewForController(controller)
+            self.refreshDebugViewForController(controller: controller)
             
         }
         
@@ -320,7 +319,7 @@ import VirtualGameController
             vgcLogDebug("Handler fired for Send Image")
             
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
-                elementDebugView.imageView.image = UIImage(data: element.value as! NSData)
+                elementDebugView.imageView.image = UIImage(data: (element.value as! NSData) as Data)
             }
             
             element.value = NSData()
@@ -330,14 +329,14 @@ import VirtualGameController
         // Test of custom element "keyboard" handler
         newController.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (controller, element) in
             
-            let stringValue = String(controller.elements.custom[CustomElementType.Keyboard.rawValue]!.value)
+            let stringValue = String(describing: controller.elements.custom[CustomElementType.Keyboard.rawValue]!.value)
             if stringValue.characters.count > 1 {
                 let synthesizer = AVSpeechSynthesizer()
                 let utterance = AVSpeechUtterance(string: (stringValue))
                 utterance.rate = AVSpeechUtteranceMaximumSpeechRate / 3.0
                 utterance.postUtteranceDelay = 0.0
                 utterance.preUtteranceDelay = 0.0
-                synthesizer.speakUtterance(utterance)
+                synthesizer.speak(utterance)
             }
             
         }
@@ -345,7 +344,7 @@ import VirtualGameController
         // Another custom element test
         newController.elements.custom[CustomElementType.FiddlestickX.rawValue]!.valueChangedHandler = { (controller, element) in
             
-            self.refreshDebugViewForController(controller)
+            self.refreshDebugViewForController(controller: controller)
             
         }
         
@@ -363,14 +362,14 @@ import VirtualGameController
         guard let controller: VgcController = notification.object as? VgcController else { return }
         
         // Remove element debug view
-        let elementDebugView = elementDebugViewLookup.removeValueForKey(controller)
+        let elementDebugView = elementDebugViewLookup.removeValue(forKey: controller)
         
         if elementDebugView != nil {
             
             // Send to back so it animates off-screen behind other debug views
-            self.scrollview.sendSubviewToBack(elementDebugView!)
+            self.scrollview.sendSubview(toBack: elementDebugView!)
             
-            UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
+            UIView.animate(withDuration: animationSpeed, delay: 0.0, options: .curveEaseIn, animations: {
                 elementDebugView!.frame = CGRect(x: -(self.debugViewWidth), y: 5, width: self.debugViewWidth, height: self.scrollview.bounds.size.height - 5)
                 }, completion: { finished in
                     elementDebugView?.removeFromSuperview()
@@ -399,10 +398,10 @@ import VirtualGameController
                 
                 if !deviceIsTypeOfBridge() {
                     controller.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
-                    playerIndex++
+                    playerIndex += 1
                 }
                 
-                UIView.animateWithDuration(animationSpeed, delay: 0.0, options: .CurveEaseIn, animations: {
+                UIView.animate(withDuration: animationSpeed, delay: 0.0, options: .curveEaseIn, animations: {
                     
                     elementDebugView.frame = CGRect(x: xPosition, y: 5, width: self.debugViewWidth, height: self.scrollview.bounds.size.height - 20)
                     

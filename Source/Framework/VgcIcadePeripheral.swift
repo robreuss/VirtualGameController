@@ -60,7 +60,7 @@ open class VgcIcadePeripheral: NSObject {
     /// it will be the global population of elements contained in VgcManager.elements.  
     ///
     open func elementForCharacter(_ characterString: String, controllerElements: Elements) -> (Element?, Int) {
-        
+
         let elementCharacter = characterString.uppercased()
         
         // Handle dpad, which is common to known iCade controllers

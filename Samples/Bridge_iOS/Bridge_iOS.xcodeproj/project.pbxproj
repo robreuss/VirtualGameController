@@ -154,6 +154,8 @@
 				TargetAttributes = {
 					20F2053D1C252BEC005A45FF = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = CN7G7TCUME;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -336,12 +338,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -350,11 +354,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Bridge_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Bridge-iOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
