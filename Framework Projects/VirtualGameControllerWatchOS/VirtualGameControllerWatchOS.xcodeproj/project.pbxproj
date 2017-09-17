@@ -161,6 +161,7 @@
 				TargetAttributes = {
 					20A120B91BDA97BF00E30083 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CN7G7TCUME;
 					};
 				};
 			};
@@ -307,7 +308,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -315,7 +318,7 @@
 				INFOPLIST_FILE = VirtualGameControllerWatchOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
+				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -327,6 +330,7 @@
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -335,7 +339,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.VirtualGameControllerWatchOS;
+				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.VirtualGameControllerWatchOS;
 				PRODUCT_NAME = VirtualGameController;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
