@@ -115,9 +115,7 @@ import VirtualGameController
         
         vgcLogDebug("Testing for external keyboard (iCade controller)")
         
-        if let userInfo = aNotification.userInfo {
-            
-            if let keyboardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect {
+        if let keyboardFrame = aNotification.userInfo?[NSNotification.Name("UIKeyboardFrameBeginUserInfoKey")] as? CGRect {
                 
                 if isExternalKeyboardFrame(keyboardFrame: keyboardFrame) {
                     
@@ -136,17 +134,13 @@ import VirtualGameController
                     
                     vgcLogDebug("No external keyboard (iCade controller), resigning to hide virtual keyboard")
                     iCadeTextField.resignFirstResponder()
-                    
                 }
             } else {
-                // no UIKeyboardFrameBeginUserInfoKey entry in userInfo
-            }
-        } else {
-            // no userInfo dictionary in notification
+            // no UIKeyboardFrameBeginUserInfoKey entry in userInfo
         }
-        
     }
-    
+
+
 
     @objc func keyboardWillShow(aNotification: NSNotification) {
         
@@ -288,7 +282,7 @@ import VirtualGameController
             // Refresh on all micro gamepad changes (Global handler)
             newController.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in
                 
-                self.refreshDebugViewForController(newController)
+                self.refreshDebugViewForController(controller: newController)
                 
             }
         #endif
