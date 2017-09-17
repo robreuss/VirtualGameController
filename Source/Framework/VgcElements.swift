@@ -247,8 +247,8 @@ open class Element: NSObject {
                 return Data(bytes: &value, count: MemoryLayout<Int>.size)
                 
             case .Float:
-                var value: Float = self.value as! Float
-                return Data(bytes: &value, count: MemoryLayout<Float>.size)
+                var value = self.value
+                return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
                 
             case .Data:
                 return self.value as! Data
