@@ -84,9 +84,11 @@ import VirtualGameController
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidDisconnect), name: NSNotification.Name(rawValue: VgcControllerDidDisconnectNotification), object: nil)
         
         // Used to determine if an external keyboard (an iCade controller) is paired
-        NotificationCenter.default.addObserver(self, selector: "keyboardWillShow:", name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: "keyboardWillHide:", name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name(rawValue: "UIKeyboardWillShow"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name(rawValue: "UIKeyboardWillHide"), object: nil)
 
+        
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
         NotificationCenter.default.addObserver(self, selector: #selector(VgcCentralViewController.gotPlayerIndex), name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
@@ -99,8 +101,8 @@ import VirtualGameController
         #endif
     }
     
-    // Determine if an iCade controller is paired
-    func isExternalKeyboard(keyboardFrame: CGRect) -> Bool {
+
+    func isExternalKeyboardFrame(keyboardFrame: CGRect) -> Bool {
         
         let keyboard = self.view.convert(keyboardFrame, from: self.view.window)
         let height = self.view.frame.size.height
@@ -108,48 +110,55 @@ import VirtualGameController
         
     }
     
-    // Determine if an iCade controller is paired
-    @objc func keyboardWillHide(aNotification: NSNotification) {
-        
-        if isExternalKeyboard(keyboardFrame: (aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue) {
-            
-            // Confirm we are in iCade controller mode
-            if VgcManager.iCadeControllerMode != .Disabled {
-                
-                // Add an iCade controller to our set of controllers
-                #if !os(watchOS)
-                    VgcController.enableIcadeController()
-                #endif
-                
-            }
-        }
-    }
- 
-    // Determine if an iCade controller is paired
-    @objc func keyboardWillShow(aNotification: NSNotification) {
+
+    func testForPairedExternalKeyboard(aNotification:NSNotification) {
         
         vgcLogDebug("Testing for external keyboard (iCade controller)")
-        // Test for external keyboard
-        if isExternalKeyboard(keyboardFrame: (aNotification.userInfo![UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue) {
+        
+        if let userInfo = aNotification.userInfo {
             
-            vgcLogDebug("External keyboard found, displaying iCade controller")
-            
-            // Confirm we are in iCade controller mode
-            if VgcManager.iCadeControllerMode != .Disabled {
+            if let keyboardFrame = userInfo[UIKeyboardFrameBeginUserInfoKey] as? CGRect {
                 
-                // Add an iCade controller to our set of controllers
-                #if !os(watchOS)
-                    VgcController.enableIcadeController()
-                #endif
-                
+                if isExternalKeyboardFrame(keyboardFrame: keyboardFrame) {
+                    
+                    vgcLogDebug("External keyboard found, displaying iCade controller")
+                    
+                    // Confirm we are in iCade controller mode
+                    if VgcManager.iCadeControllerMode != .Disabled {
+                        
+                        // Add an iCade controller to our set of controllers
+                        #if !os(watchOS)
+                            VgcController.enableIcadeController()
+                        #endif
+                    }
+                    
+                } else {
+                    
+                    vgcLogDebug("No external keyboard (iCade controller), resigning to hide virtual keyboard")
+                    iCadeTextField.resignFirstResponder()
+                    
+                }
+            } else {
+                // no UIKeyboardFrameBeginUserInfoKey entry in userInfo
             }
-            
         } else {
-            
-            vgcLogDebug("No external keyboard (iCade controller), resigning to hide virtual keyboard")
-            iCadeTextField.resignFirstResponder()
-            
+            // no userInfo dictionary in notification
         }
+        
+    }
+    
+
+    @objc func keyboardWillShow(aNotification: NSNotification) {
+        
+        testForPairedExternalKeyboard(aNotification: aNotification)
+        
+    }
+ 
+
+    @objc func keyboardWillHide(aNotification: NSNotification) {
+        
+        testForPairedExternalKeyboard(aNotification: aNotification)
+
     }
     
     // iCade controller-generated characters are received into the hidden iCadeTextField, which calls this function.
