@@ -208,9 +208,11 @@
 					2027BCCD1BA613FD0097452D = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
+						LastSwiftMigration = 0830;
 					};
 					2027BCDE1BA613FE0097452D = {
 						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 0830;
 						TestTargetID = 2027BCCD1BA613FD0097452D;
 					};
 				};
@@ -419,9 +421,10 @@
 				);
 				INFOPLIST_FILE = CentralVirtualGameControllerTVSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSample;
+				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -440,9 +443,10 @@
 				);
 				INFOPLIST_FILE = CentralVirtualGameControllerTVSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSample;
+				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -454,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSampleTests;
 				PRODUCT_NAME = Central_tvOS;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Central_tvOS.app/Central_tvOS";
 			};
 			name = Debug;
@@ -466,6 +471,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSampleTests;
 				PRODUCT_NAME = Central_tvOS;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Central_tvOS.app/Central_tvOS";
 			};
 			name = Release;
