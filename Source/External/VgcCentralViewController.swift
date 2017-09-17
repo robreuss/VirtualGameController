@@ -89,7 +89,7 @@ import VirtualGameController
 
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
-        NotificationCenter.default.addObserver(self, selector: "gotPlayerIndex:", name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VgcCentralViewController.gotPlayerIndex), name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
 
         #if !os(tvOS)
             // To enable iCade, this must be after the notification observers are defined. The connect notification should be used
@@ -200,7 +200,7 @@ import VirtualGameController
         imageView.image = nil
     }
     
-    @objc func gotPlayerIndex(notification: NSNotification) {
+    @objc public func gotPlayerIndex(notification: NSNotification) {
         
         refreshAllDebugViews()
         
