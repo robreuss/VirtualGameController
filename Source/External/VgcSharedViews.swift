@@ -1029,7 +1029,7 @@ open class ElementDebugView: UIView {
                     } else {
                         value = (controller.elements.custom[element.identifier]?.value)!
                     }
-                    if element.dataType == .String && (value as! NSObject) as! NSNumber == 0 { value = "" as AnyObject }
+                    //if element.dataType == .String && (value as! NSObject) as! NSNumber == 0 { value = "" as AnyObject }
                 } else if keypath != "" {
                     value = controller.value(forKeyPath: keypath)! as AnyObject
                 } else {
