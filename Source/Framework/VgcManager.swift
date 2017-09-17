@@ -79,21 +79,21 @@ public var customElements: CustomElementsSuperclass!
 ///
 
 @objc public enum ControllerType: Int, CustomStringConvertible {
-    case software
-    case mFiHardware
-    case iCadeHardware
-    case bridgedMFiHardware
-    case bridgedICadeHardware
-    case watch
+    case Software
+    case MFiHardware
+    case ICadeHardware
+    case BridgedMFiHardware
+    case BridgedICadeHardware
+    case Watch
     
     public var description : String {
         switch self {
-        case .mFiHardware: return "MFi Hardware"
-        case .iCadeHardware: return "iCade Hardware"
-        case .software: return "Software"
-        case .bridgedMFiHardware: return "Bridged MFi Hardware"
-        case .bridgedICadeHardware: return "Bridged iCade Hardware"
-        case .watch: return "Watch"
+        case .MFiHardware: return "MFi Hardware"
+        case .ICadeHardware: return "iCade Hardware"
+        case .Software: return "Software"
+        case .BridgedMFiHardware: return "Bridged MFi Hardware"
+        case .BridgedICadeHardware: return "Bridged iCade Hardware"
+        case .Watch: return "Watch"
         }
     }
 }
@@ -354,7 +354,7 @@ open class VgcManager: NSObject {
                 VgcManager.peripheral = Peripheral()
                 
                 // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .software, supportsMotion: true)
+                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
             
                 #if os(iOS)
                     VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)

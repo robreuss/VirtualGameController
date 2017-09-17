@@ -300,8 +300,8 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
         let deviceInfo = controller.deviceInfo.copy() as! DeviceInfo
         deviceInfo.vendorName = deviceInfo.vendorName + " (Bridged)"
-        if deviceInfo.controllerType == .mFiHardware { deviceInfo.controllerType = .bridgedMFiHardware }
-        if deviceInfo.controllerType == .iCadeHardware { deviceInfo.controllerType = .bridgedICadeHardware }
+        if deviceInfo.controllerType == .MFiHardware { deviceInfo.controllerType = .BridgedMFiHardware }
+        if deviceInfo.controllerType == .ICadeHardware { deviceInfo.controllerType = .BridgedICadeHardware }
         if deviceInfo.attachedToDevice {
             deviceInfo.profileType = .ExtendedGamepad
             deviceInfo.supportsMotion = true

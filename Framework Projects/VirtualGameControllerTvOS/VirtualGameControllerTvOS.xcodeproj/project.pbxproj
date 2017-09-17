@@ -147,6 +147,7 @@
 				TargetAttributes = {
 					20A1208A1BDA976000E30083 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
 					};
 				};
@@ -291,7 +292,9 @@
 		20A120941BDA976000E30083 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -309,6 +312,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

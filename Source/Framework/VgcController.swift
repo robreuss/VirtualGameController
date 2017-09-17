@@ -164,7 +164,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     open class func enableIcadeController() {
         
         iCadeController = VgcController()
-        iCadeController.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .software, supportsMotion: false)
+        iCadeController.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "Generic iCade", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: false)
         
     }
     
@@ -329,7 +329,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
-        if deviceInfo != nil && deviceInfo.controllerType != .watch {
+        if deviceInfo != nil && deviceInfo.controllerType != .Watch {
             
             vgcLogDebug("Closing streams for controller \(deviceInfo.vendorName)")
             
@@ -537,7 +537,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         // hardware controller.  For software controllers, the mapping is handled when
         // dealing with NSNetService stream data.
         
-        if deviceInfo.controllerType != .mFiHardware { return }
+        if deviceInfo.controllerType != .MFiHardware { return }
         
         vgcLogDebug("Setting up hardware controller forwarding")
         
@@ -719,7 +719,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
                 
                 // If we're in .EnhancementBridge mode, we do not allow more than one hardware
                 // controller to connect.
-                if existingController.deviceInfo.controllerType == .mFiHardware && VgcManager.appRole == .enhancementBridge { return }
+                if existingController.deviceInfo.controllerType == .MFiHardware && VgcManager.appRole == .enhancementBridge { return }
                 
                 if existingController.deviceInfo != nil {
                     if existingController.deviceInfo.deviceUID == deviceHash {
@@ -777,7 +777,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             //VgcController.vgcControllers.append(controller)
             
             // Setting the deviceInfo property here will trigger the "VgcControllerDidConnectNotification".
-            controller.deviceInfo = DeviceInfo(deviceUID: deviceHash, vendorName: controller.hardwareController.vendorName!, attachedToDevice: controller.hardwareController.isAttachedToDevice, profileType: profileType, controllerType: .mFiHardware, supportsMotion: supportsMotion)
+            controller.deviceInfo = DeviceInfo(deviceUID: deviceHash, vendorName: controller.hardwareController.vendorName!, attachedToDevice: controller.hardwareController.isAttachedToDevice, profileType: profileType, controllerType: .MFiHardware, supportsMotion: supportsMotion)
             
         }
     }
@@ -827,7 +827,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     open var controllerPausedHandler: ((VgcController) -> Void)? {
         didSet {
             // Create a forwarding handler for the pause button
-            if deviceInfo.controllerType == .mFiHardware {
+            if deviceInfo.controllerType == .MFiHardware {
                 
                 hardwareController.controllerPausedHandler = { [unowned self] _ in
                     
@@ -937,9 +937,9 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
                 
             }
             
-            if deviceIsTypeOfBridge()  && deviceInfo.controllerType == .mFiHardware { setupHardwareControllerForwardingHandlers() }
+            if deviceIsTypeOfBridge()  && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerForwardingHandlers() }
             
-            if !deviceIsTypeOfBridge() && deviceInfo.controllerType == .mFiHardware { setupHardwareControllerMotionHandlers() }
+            if !deviceIsTypeOfBridge() && deviceInfo.controllerType == .MFiHardware { setupHardwareControllerMotionHandlers() }
             
             if deviceIsTypeOfBridge() { peripheral.bridgePeripheralDeviceInfoToCentral(self) }
             
@@ -992,7 +992,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             vgcPlayerIndex = newValue
             
-            if deviceInfo.controllerType == .mFiHardware {
+            if deviceInfo.controllerType == .MFiHardware {
                 
                 if hardwareController != nil { hardwareController.playerIndex = newValue }
                 
@@ -1050,7 +1050,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         }
         
         #if os(tvOS)
-            if deviceInfo.profileType == .microGamepad {
+            if deviceInfo.profileType == .MicroGamepad {
                 microGamepad!.callValueChangedHandler(element: element)
             }
         #endif
@@ -1092,7 +1092,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
     /// hardware controller.
     ///
     override public weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.microGamepad!.controller } else { return nil }
+        if vgcController?.deviceInfo.controllerType == .MFiHardware { return self.vgcController!.hardwareController.microGamepad!.controller } else { return nil }
     }
     
     public override var reportsAbsoluteDpadValues: Bool {
@@ -1153,7 +1153,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
                 
                 vgcController?.hardwareController.microGamepad?.valueChangedHandler = { (gamepad: GCMicroGamepad, element: GCControllerElement) in
                 
-                self.callValueChangedHandler(element)
+                self.callValueChangedHandler(element: element)
                 
                 }
             }
@@ -1231,13 +1231,13 @@ open class VgcGamepad: GCGamepad {
         
     }
     
-    open override var leftShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.leftShoulder } else { return vgcLeftShoulder } } }
-    open override var rightShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.rightShoulder } else { return vgcRightShoulder } } }
-    open override var dpad: GCControllerDirectionPad { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0) { return vgcController!.hardwareController.gamepad!.dpad } else { return vgcDpad } } }
-    open override var buttonA: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonA.value == 0 { return vgcController!.hardwareController.gamepad!.buttonA } else { return vgcButtonA } } }
-    open override var buttonB: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonB.value == 0 { return vgcController!.hardwareController.gamepad!.buttonB } else { return vgcButtonB } } }
-    open override var buttonX: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonX.value == 0 { return vgcController!.hardwareController.gamepad!.buttonX } else { return vgcButtonX } } }
-    open override var buttonY: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.buttonY } else { return vgcButtonY } } }
+    open override var leftShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.leftShoulder } else { return vgcLeftShoulder } } }
+    open override var rightShoulder: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.rightShoulder } else { return vgcRightShoulder } } }
+    open override var dpad: GCControllerDirectionPad { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0) { return vgcController!.hardwareController.gamepad!.dpad } else { return vgcDpad } } }
+    open override var buttonA: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonA.value == 0 { return vgcController!.hardwareController.gamepad!.buttonA } else { return vgcButtonA } } }
+    open override var buttonB: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonB.value == 0 { return vgcController!.hardwareController.gamepad!.buttonB } else { return vgcButtonB } } }
+    open override var buttonX: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonX.value == 0 { return vgcController!.hardwareController.gamepad!.buttonX } else { return vgcButtonX } } }
+    open override var buttonY: GCControllerButtonInput { get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return vgcController!.hardwareController.gamepad!.buttonY } else { return vgcButtonY } } }
     
     ///
     /// Returns a GCController hardware controller, if one is available.
@@ -1246,7 +1246,7 @@ open class VgcGamepad: GCGamepad {
     /// hardware controller.
     ///
     override open weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.gamepad!.controller } else { return nil }
+        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.gamepad!.controller } else { return nil }
     }
     
     ///
@@ -1403,52 +1403,52 @@ open class VgcExtendedGamepad: GCExtendedGamepad {
     /// hardware controller.
     ///
     override open weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.extendedGamepad!.controller } else { return nil }
+        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.extendedGamepad!.controller } else { return nil }
     }
     
     // These getters decide if they should return the VGC version of the element value
     // (which software-based peripherals are supported by) or the hardware controller version.
     open override var leftShoulder: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftShoulder)! } else { return vgcLeftShoulder } } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftShoulder)! } else { return vgcLeftShoulder } } }
     
     open override var rightShoulder: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightShoulder)! } else { return vgcRightShoulder } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightShoulder.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightShoulder)! } else { return vgcRightShoulder } }
     }
     
     open override var dpad: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0)   { return (vgcController?.hardwareController.extendedGamepad!.dpad)! } else { return vgcDpad } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcDpad.yAxis.value == 0 && vgcDpad.xAxis.value == 0)   { return (vgcController?.hardwareController.extendedGamepad!.dpad)! } else { return vgcDpad } }
     }
     open override var buttonA: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonA.value == 0 {
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonA.value == 0 {
             return (vgcController?.hardwareController.extendedGamepad!.buttonA)!
         } else {
             return vgcButtonA } }
     }
     open override var buttonB: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonB.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonB)! } else { return vgcButtonB } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonB.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonB)! } else { return vgcButtonB } }
     }
     open override var buttonX: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonX.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonX)! } else { return vgcButtonX } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonX.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonX)! } else { return vgcButtonX } }
     }
     open override var buttonY: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcButtonY.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonY)! } else { return vgcButtonY } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcButtonY.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.buttonY)! } else { return vgcButtonY } }
     }
     
     // Extended profile-specific properties
     open override var leftTrigger: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcLeftTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftTrigger)! } else { return vgcLeftTrigger } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcLeftTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.leftTrigger)! } else { return vgcLeftTrigger } }
     }
     
     open override var rightTrigger: GCControllerButtonInput {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && vgcRightTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightTrigger)! } else { return vgcRightTrigger } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && vgcRightTrigger.value == 0 { return (vgcController?.hardwareController.extendedGamepad!.rightTrigger)! } else { return vgcRightTrigger } }
     }
     
     open override var leftThumbstick: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcLeftThumbstick.yAxis.value == 0 && vgcLeftThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.leftThumbstick)! } else { return vgcLeftThumbstick } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcLeftThumbstick.yAxis.value == 0 && vgcLeftThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.leftThumbstick)! } else { return vgcLeftThumbstick } }
     }
     
     open override var rightThumbstick: GCControllerDirectionPad {
-        get { if vgcController?.deviceInfo.controllerType == .mFiHardware && (vgcRightThumbstick.yAxis.value == 0 && vgcRightThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.rightThumbstick)! } else { return vgcRightThumbstick } }
+        get { if vgcController?.deviceInfo.controllerType == .MFiHardware && (vgcRightThumbstick.yAxis.value == 0 && vgcRightThumbstick.xAxis.value == 0) { return (vgcController?.hardwareController.extendedGamepad!.rightThumbstick)! } else { return vgcRightThumbstick } }
     }
     
     // The function of the pause element is simply to trigger the handler - it is
@@ -1540,13 +1540,13 @@ open class VgcMotion: NSObject {
     /// hardware controller.
     ///
     open weak var controller: GCController? {
-        if vgcController?.deviceInfo.controllerType == .mFiHardware { return vgcController!.hardwareController.motion!.controller } else { return nil }
+        if vgcController?.deviceInfo.controllerType == .MFiHardware { return vgcController!.hardwareController.motion!.controller } else { return nil }
     }
     
     
     open var userAcceleration: GCAcceleration {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
         }
         set {
             vgcUserAcceleration = newValue
@@ -1555,7 +1555,7 @@ open class VgcMotion: NSObject {
     
     var motionUserAccelerationX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
         }
         set {
             vgcUserAcceleration.x = Double(newValue)
@@ -1565,7 +1565,7 @@ open class VgcMotion: NSObject {
     
     var motionUserAccelerationY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
         }
         set {
             vgcUserAcceleration.y = Double(newValue)
@@ -1575,7 +1575,7 @@ open class VgcMotion: NSObject {
     
     var motionUserAccelerationZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
         }
         set {
             vgcUserAcceleration.z = Double(newValue)
@@ -1702,7 +1702,7 @@ open class VgcMotion: NSObject {
     
     open var gravity: GCAcceleration {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
             
         }
         set {
@@ -1712,7 +1712,7 @@ open class VgcMotion: NSObject {
     
     var motionGravityX: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
         }
         set {
             vgcGravity.x = Double(newValue)
@@ -1722,7 +1722,7 @@ open class VgcMotion: NSObject {
     
     var motionGravityY: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
         }
         set {
             vgcGravity.y = Double(newValue)
@@ -1732,7 +1732,7 @@ open class VgcMotion: NSObject {
     
     var motionGravityZ: Float {
         get {
-            if vgcController?.deviceInfo.controllerType == .mFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
         }
         set {
             vgcGravity.z = Double(newValue)
@@ -2140,7 +2140,7 @@ public class VgcMicroGamepadSnapshot: NSObject {
             let snapshot = UnsafeMutablePointer<VgcMicroGamepadSnapShotDataV100>.allocate(capacity: 1)
             snapshot.initialize(to: snapshotV100Structure)
             let encodedNSData = encodeSnapshot(snapshotV100Structure)
-            return encodedNSData
+            return encodedNSData as NSData
         }
         
         set {
