@@ -206,11 +206,11 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         vgcLogDebug("Opening Peripheral-bound streams for stream data type: \(streamDataType)")
 
         // Open our Peripheral-bound streams
-        toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+        toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
         toPeripheralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         toPeripheralOutputStream[streamDataType]!.open()
         
-        fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+        fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType] 
         fromPeripheraInputlStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
         fromPeripheraInputlStream[streamDataType]!.open()
     }

@@ -336,12 +336,12 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             } else {
                 
                 outputStream[streamDataType] = outStream;
-                outputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+                outputStream[streamDataType]!.delegate = streamer[streamDataType]
                 outputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 outputStream[streamDataType]!.open()
                 
                 inputStream[streamDataType] = inStream
-                inputStream[streamDataType]!.delegate = streamer[streamDataType] as! StreamDelegate
+                inputStream[streamDataType]!.delegate = streamer[streamDataType] 
                 inputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
                 inputStream[streamDataType]!.open()
                 
