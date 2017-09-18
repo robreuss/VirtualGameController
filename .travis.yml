@@ -7,7 +7,7 @@ xcode_scheme:
 - VirtualGameControllerTvOS
 - VirtualGameControllerWatchOS
 xcode_sdk:
-- iphoneos10.3
+- iphonesimulator9.2
 - macosx10.12
 - appletvos10.2
 - watchos3.2
@@ -20,7 +20,7 @@ matrix:
            - xcode_scheme: VirtualGameControllerIOS
              xcode_sdk: watchos3.2
            - xcode_scheme: VirtualGameControllerOSX
-             xcode_sdk: iphoneos10.3
+             xcode_sdk: iphonesimulator9.2
            - xcode_scheme: VirtualGameControllerOSX
              xcode_sdk: appletvos10.2
            - xcode_scheme: VirtualGameControllerOSX
@@ -32,7 +32,7 @@ matrix:
            - xcode_scheme: VirtualGameControllerTvOS
              xcode_sdk: watchos3.2
            - xcode_scheme: VirtualGameControllerWatchOS
-             xcode_sdk: iphoneos10.3
+             xcode_sdk: iphonesimulator9.2
            - xcode_scheme: VirtualGameControllerWatchOS
              xcode_sdk: appletvos10.2
            - xcode_scheme: VirtualGameControllerWatchOS
