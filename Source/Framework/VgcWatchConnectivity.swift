@@ -57,7 +57,7 @@ import WatchConnectivity
         }
     }
 
-    public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    @nonobjc public func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         
         vgcLogDebug("Received message: \(message)")
         
@@ -74,7 +74,7 @@ import WatchConnectivity
                 
             } else {
 
-                vgcLogDebug("Calling handler with element: \(element?.identifier): \(element?.value)")
+                vgcLogDebug("Calling handler with element: \(String(describing: element?.identifier)): \(String(describing: element?.value))")
                 
                 if let handler = valueChangedHandler {
                     handler(element!)
@@ -85,7 +85,7 @@ import WatchConnectivity
         }
     }
     
-    public func sessionReachabilityDidChange(session: WCSession) {
+    public func sessionReachabilityDidChange(_ session: WCSession) {
         
         vgcLogDebug("Reachability changed to \(session.isReachable)")
 

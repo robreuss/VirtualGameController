@@ -68,9 +68,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = false
-        VgcManager.peripheral.motion.enableRotationRate = false
-        VgcManager.peripheral.motion.enableUserAcceleration = false
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
+        VgcManager.peripheral.motion.enableUserAcceleration = true
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
@@ -91,17 +91,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         }
         
-        if let element: Element = VgcManager.elements.image {
+        let element: Element = VgcManager.elements.image
             
-            element.valueChangedHandlerForPeripheral = { (element: Element) in
-                
-                vgcLogDebug("Custom element handler fired for Send Image")
-                self.peripheralControlPadView.flashView.image = nil
-                self.peripheralControlPadView.flashView.image = UIImage(data: (element.value as! NSData) as Data)
-                self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.bottom
-                self.peripheralControlPadView.flashView.alpha = 1.0
-                self.peripheralControlPadView.flashView.backgroundColor = UIColor.clear
-            }
+        element.valueChangedHandlerForPeripheral = { (element: Element) in
+            
+            vgcLogDebug("Custom element handler fired for Send Image")
+            self.peripheralControlPadView.flashView.image = nil
+            self.peripheralControlPadView.flashView.image = UIImage(data: (element.value as! NSData) as Data)
+            self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.bottom
+            self.peripheralControlPadView.flashView.alpha = 1.0
+            self.peripheralControlPadView.flashView.backgroundColor = UIColor.clear
         }
         
         if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.Keyboard.rawValue) {
@@ -116,24 +115,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     }, completion: { finished in
                         self.peripheralControlPadView.flashView!.alpha = 0
                 })
-                
             }
         }
         
-        if let element: Element = VgcManager.elements.rightShoulder {
+        let rightShoulderElement: Element = VgcManager.elements.rightShoulder
             
-            element.valueChangedHandlerForPeripheral = { (element: Element) in
-                
-                vgcLogDebug("Custom element handler fired for \(element.name) with value \(element.value)")
-                
-                self.peripheralControlPadView.flashView.backgroundColor = UIColor.green
-                UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
-                    self.peripheralControlPadView.flashView!.alpha = 1
-                    }, completion: { finished in
-                        self.peripheralControlPadView.flashView!.alpha = 0
-                })
-                
-            }
+        rightShoulderElement.valueChangedHandlerForPeripheral = { (rightShoulderElement: Element) in
+            
+            vgcLogDebug("Custom element handler fired for \(rightShoulderElement.name) with value \(rightShoulderElement.value)")
+            
+            self.peripheralControlPadView.flashView.backgroundColor = UIColor.green
+            UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
+                self.peripheralControlPadView.flashView!.alpha = 1
+                }, completion: { finished in
+                    self.peripheralControlPadView.flashView!.alpha = 0
+            })
         }
         
         // Handle element messages from watch.  No need to forward to Central, which is handled

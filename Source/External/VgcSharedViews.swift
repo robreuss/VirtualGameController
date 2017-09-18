@@ -378,7 +378,7 @@ var peripheralManager = VgcManager.peripheral
         
         if VgcManager.iCadeControllerMode != .Disabled {
             
-            vgcLogDebug("Sending iCade character: \(keyboardTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
+            vgcLogDebug("Sending iCade character: \(String(describing: keyboardTextField.text)) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
 
             var element: Element?
             var value: Int
@@ -972,12 +972,6 @@ open class ElementDebugView: UIView {
         imageElement?.value = imageData! as AnyObject
         imageElement?.clearValueAfterTransfer = true
         controller.sendElementStateToPeripheral(imageElement!)
-        
-        return
-
-        let element = controller.elements.rightTrigger
-        element.value = 1.0 as AnyObject
-        controller.sendElementStateToPeripheral(element)
         
     }
     
