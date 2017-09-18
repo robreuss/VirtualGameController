@@ -20,11 +20,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor darkGrayColor];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidConnect:) name:@"VgcControllerDidConnectNotification" object:nil];
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidConnect:) name:@"VgcControllerDidConnectNotification" object:nil];    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundService:) name:@"VgcPeripheralFoundService" object:nil];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peripheralDidConnect:) name:@"VgcPeripheralDidConnectNotification" object:nil];
+
     
     BOOL centralMode = false;
     

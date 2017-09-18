@@ -63,7 +63,7 @@ import VirtualGameController
         #if !os(tvOS)
             // Hidden text field to receive iCade controller input
             iCadeTextField = UITextField(frame: CGRect(x:-1, y: -1, width: 1, height: 1))
-            iCadeTextField.addTarget(self, action: "receivedIcadeInput:", for: .editingChanged)
+            iCadeTextField.addTarget(self, action: Selector(("receivedIcadeInput:")), for: .editingChanged)
             //iCadeTextField.autocorrectionType = .No
             self.view.addSubview(iCadeTextField)
         #endif
@@ -76,7 +76,7 @@ import VirtualGameController
         }
 
         // Disable peer-to-peer (Bluetooth) for better network performance
-        VgcManager.includesPeerToPeer = true
+        VgcManager.includesPeerToPeer = false
 
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
