@@ -225,6 +225,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         pendingStream.streamer = VgcStreamer(delegate: pendingStream, delegateName:"Central Publisher")
 
         lockQueuePendingStreams.sync {
+            vgcLogDebug("Syncing pending stream")
             self.pendingStreams.insert(pendingStream)
         }
         pendingStream.openstreams()

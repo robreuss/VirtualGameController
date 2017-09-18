@@ -266,9 +266,12 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                         PerformanceVars.totalTransitTime += transitTime
                         PerformanceVars.totalTransitTimeMeasurements += 1
                         let averageTransitTime = PerformanceVars.totalTransitTime / PerformanceVars.totalTransitTimeMeasurements
+                        
+                        /* Log percentage-based threshold of transit time relative to average
                         let aboveAverageTransitTime = transitTime - averageTransitTime
                         let percentageAboveAverage = (averageTransitTime / transitTime) * 100
-                        //if percentageAboveAverage > 40 { vgcLogDebug("Above average transit time: \(transitTime)ms by \(aboveAverageTransitTime), \(percentageAboveAverage)% above avg (Avg: \(averageTransitTime))") }
+                        if percentageAboveAverage > 40 { vgcLogDebug("Above average transit time: \(transitTime)ms by \(aboveAverageTransitTime), \(percentageAboveAverage)% above avg (Avg: \(averageTransitTime))") }
+                        */
                     }
                     
                 } else {

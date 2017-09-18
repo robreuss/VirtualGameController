@@ -406,7 +406,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         
         vgcLogDebug("Service was removed: \(service.type) isMainThread: \(Thread.isMainThread)")
         let vgcService = serviceLookup.removeValue(forKey: service)
-        vgcLogDebug("VgcService was removed: \(vgcService?.fullName)")
+        vgcLogDebug("VgcService was removed: \(String(describing: vgcService?.fullName))")
         // If VgcService is nil, it means we already removed the service so we do not send the notification
         if vgcService != nil { NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralLostService), object: vgcService) }
         

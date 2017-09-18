@@ -709,7 +709,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             // Ignore hardware controller connections to iOS device if it is
             // configured to be in the .Peripheral role.
             if VgcManager.appRole == .Peripheral {
-                vgcLogDebug("Ignoring hardware device \(controller.hardwareController.vendorName) because we are configured as a Peripheral")
+                vgcLogDebug("Ignoring hardware device \(String(describing: controller.hardwareController.vendorName)) because we are configured as a Peripheral")
                 return
             }
             

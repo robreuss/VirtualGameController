@@ -321,7 +321,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             
             let mappedElement = VgcManager.elements.elementFromIdentifier(mappedElementIdentifier)
             mappedElement?.mappingComplete = true
-            vgcLogDebug("   Mapping \(elementToBeMapped.name) to \(mappedElement?.name)")
+            vgcLogDebug("   Mapping \(elementToBeMapped.name) to \(String(describing: mappedElement?.name))")
             mappedElement?.value = elementToBeMapped.value
             sendElementState(mappedElement!)
             

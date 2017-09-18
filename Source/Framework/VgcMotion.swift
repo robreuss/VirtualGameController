@@ -111,7 +111,7 @@ open class VgcMotionManager: NSObject {
                     manager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { (deviceMotionData, error) -> Void in
                         
                         if error != nil {
-                            vgcLogDebug("Got device motion error: \(error)")
+                            vgcLogDebug("Got device motion error: \(String(describing: error))")
                         }
                         
                         var x, y, z, w: Double
@@ -206,7 +206,7 @@ open class VgcMotionManager: NSObject {
                         self.elements.motionUserAccelerationY.value = Float((accelerometerData?.acceleration.y)!) as AnyObject
                         self.elements.motionUserAccelerationZ.value = Float((accelerometerData?.acceleration.z)!) as AnyObject
                         
-                        vgcLogDebug("Sending accelerometer: \(accelerometerData?.acceleration.x) \(accelerometerData?.acceleration.y) \(accelerometerData?.acceleration.z)")
+                        vgcLogDebug("Sending accelerometer: \(String(describing: accelerometerData?.acceleration.x)) \(String(describing: accelerometerData?.acceleration.y)) \(String(describing: accelerometerData?.acceleration.z))")
                         
                         // Send data on the custom accelerometer channels
                         //if VgcManager.peripheral.motion.enableUserAcceleration {
