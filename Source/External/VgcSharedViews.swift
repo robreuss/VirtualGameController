@@ -541,12 +541,12 @@ class VgcButton: UIView {
         
         // If 3d touch is not supported, just send a "1" value
         if (self.traitCollection.forceTouchCapability == .available) {
-            element.value = self.percentageForce(touch!) as AnyObject
+            element.value = self.percentageForce(touch!) as Float as AnyObject
             valueLabel.text = "\(element.value)"
             let colorValue = CGFloat(baseGrayShade - (element.value as! Float / 10))
             self.backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
         } else {
-            element.value = 1.0 as AnyObject
+            element.value = 1.0 as Float as AnyObject
             valueLabel.text = "\(element.value)"
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
@@ -560,12 +560,12 @@ class VgcButton: UIView {
         
         // If 3d touch is not supported, just send a "1" value
         if (self.traitCollection.forceTouchCapability == .available) {
-            element.value = self.percentageForce(touch!) as AnyObject
+            element.value = self.percentageForce(touch!) as Float as AnyObject
             valueLabel.text = "\(element.value)"
             let colorValue = CGFloat(baseGrayShade - (element.value as! Float) / 10)
             self.backgroundColor = UIColor(red: colorValue, green: colorValue, blue: colorValue, alpha: 1)
         } else {
-            element.value = 1.0 as AnyObject
+            element.value = 1.0 as Float as AnyObject
             valueLabel.text = "\(element.value)"
             self.backgroundColor = UIColor(red: 0.30, green: 0.30, blue: 0.30, alpha: 1)
         }
@@ -576,7 +576,7 @@ class VgcButton: UIView {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             
-        element.value = 0.0 as AnyObject
+        element.value = 0.0 as Float as AnyObject
         valueLabel.text = "\(element.value)"
         VgcManager.peripheral.sendElementState(element)
         self.backgroundColor = UIColor(white: CGFloat(baseGrayShade), alpha: 1.0)

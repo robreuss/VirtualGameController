@@ -368,12 +368,14 @@
 				TargetAttributes = {
 					200B43F81C17AA2C000E8002 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = CN7G7TCUME;
 					};
 					200B44171C17AAA8000E8002 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 					200B442C1C17AABF000E8002 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -665,6 +667,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -673,8 +676,9 @@
 				INFOPLIST_FILE = SceneKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemoiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.SceneKitDemoiOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -682,6 +686,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -690,8 +695,9 @@
 				INFOPLIST_FILE = SceneKitDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemoiOS;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.SceneKitDemoiOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -710,6 +716,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemotvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -730,6 +737,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemotvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.1;
 			};
@@ -752,6 +760,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemoOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -772,6 +781,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SceneKitDemoOSX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

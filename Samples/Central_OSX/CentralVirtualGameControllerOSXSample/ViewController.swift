@@ -23,7 +23,7 @@ class ViewController: NSViewController {
             
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: "VgcControllerDidConnectNotification", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
 
     }
     
@@ -40,7 +40,7 @@ class ViewController: NSViewController {
 
     }
 
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }

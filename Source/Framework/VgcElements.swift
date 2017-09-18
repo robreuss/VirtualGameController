@@ -243,13 +243,17 @@ open class Element: NSObject {
             switch self.dataType {
                 
             case .Int:
+                
                 var value: Int = self.value as! Int
-                return Data(bytes: &value, count: MemoryLayout<Int>.size)
+                let data = NSData(bytes: &value, length: MemoryLayout<Int>.size)
+                return data as Data
                 
             case .Float:
-                var value = self.value
-                return Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
                 
+                var value: Float = self.value as! Float
+                let data = NSData(bytes: &value, length: MemoryLayout<Float>.size)
+                return data as Data
+      
             case .Data:
                 return self.value as! Data
                 
@@ -262,14 +266,18 @@ open class Element: NSObject {
             switch self.dataType {
                 
             case .Int:
-                var value: Int = 0
-                (newValue as NSData).getBytes(&value, length: MemoryLayout<Int>.size)
-                self.value = value as AnyObject
+
+                let data: NSData = newValue as NSData
+                var tempFloat: Int = 0
+                data.getBytes(&tempFloat, length: MemoryLayout<Int>.size)
+                self.value = tempFloat as AnyObject
                 
             case .Float:
-                var value: Float = 0.0
-                (newValue as NSData).getBytes(&value, length: MemoryLayout<Float>.size)
-                self.value = value as AnyObject
+                
+                let data: NSData = newValue as NSData
+                var tempFloat: Float = 0
+                data.getBytes(&tempFloat, length: MemoryLayout<Float>.size)
+                self.value = tempFloat as AnyObject
                 
             case .Data:
                 self.value = newValue as AnyObject

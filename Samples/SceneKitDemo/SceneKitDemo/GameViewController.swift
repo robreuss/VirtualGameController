@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
         // create and add a light to the scene
         lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light!.type = SCNLightTypeOmni
+        lightNode.light!.type = SCNLight.LightType.omni
         lightNode.position = SCNVector3(x: 0, y: 10, z: 10)
         lightNode.eulerAngles = SCNVector3Make(0.0, 3.1415/2.0, 0.0);
         scene.rootNode.addChildNode(lightNode)
@@ -48,17 +48,17 @@ class GameViewController: UIViewController {
         // create and add an ambient light to the scene
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient
+        ambientLightNode.light!.type = SCNLight.LightType.ambient
         #if os(OSX)
             ambientLightNode.light!.color = NSColor.darkGrayColor()
         #endif
         #if os(iOS) || os(tvOS)
-            ambientLightNode.light!.color = UIColor.darkGrayColor()
+            ambientLightNode.light!.color = UIColor.darkGray
         #endif
         scene.rootNode.addChildNode(ambientLightNode)
         
         // retrieve the ship node
-        ship = scene.rootNode.childNodeWithName("ship", recursively: true)!
+        ship = scene.rootNode.childNode(withName: "ship", recursively: true)!
         
         // retrieve the SCNView
         let scnView = self.view as! SCNView
@@ -77,11 +77,11 @@ class GameViewController: UIViewController {
             scnView.backgroundColor = NSColor.blackColor()
         #endif
         #if os(iOS) || os(tvOS)
-            scnView.backgroundColor = UIColor.blackColor()
+            scnView.backgroundColor = UIColor.black
         #endif
 
         sharedCode = SharedCode()
-        sharedCode.setup(ship, lightNode: lightNode, cameraNode: cameraNode)
+        sharedCode.setup(ship: ship, lightNode: lightNode, cameraNode: cameraNode)
  
         //scnView.delegate = sharedCode
     }

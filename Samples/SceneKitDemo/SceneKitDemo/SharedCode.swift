@@ -22,15 +22,16 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         self.lightNode = lightNode
         self.cameraNode = cameraNode
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidConnect:", name: VgcControllerDidConnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "controllerDidDisconnect:", name: VgcControllerDidDisconnectNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidDisconnect), name: NSNotification.Name(rawValue: VgcControllerDidDisconnectNotification), object: nil)
         
     }
     
-    func scaleShipByValue(var scaleValue: CGFloat) {
+    func scaleShipByValue( scaleValue: CGFloat) {
+        var scaleValue = scaleValue
         scaleValue = scaleValue + 1
         if scaleValue < 0.10 { scaleValue = 0.10 }
-        ship.runAction(SCNAction.scaleTo(scaleValue, duration: 1.0))
+        ship.runAction(SCNAction.scale(to: scaleValue, duration: 1.0))
     }
     
     /* IMPLEMENTATION USING RENDER LOOP
@@ -116,35 +117,35 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         // Left thumbstick controls move the plane left/right and up/down
         newController.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
             
-            self.ship.runAction(SCNAction.moveTo(SCNVector3.init(xValue * 5, yValue * 5, 0.0), duration: 0.3))
+            self.ship.runAction(SCNAction.move(to: SCNVector3.init(xValue * 5, yValue * 5, 0.0), duration: 0.3))
             
         }
         
         // Right thumbstick Y axis controls plane scale
         newController.extendedGamepad?.rightThumbstick.yAxis.valueChangedHandler = { (input, value) in
             
-            self.scaleShipByValue(CGFloat((newController.extendedGamepad?.rightThumbstick.yAxis.value)!))
+            self.scaleShipByValue(scaleValue: CGFloat((newController.extendedGamepad?.rightThumbstick.yAxis.value)!))
             
         }
         
         // Right Shoulder pushes the ship away from the user
         newController.extendedGamepad?.rightShoulder.valueChangedHandler = { (input, value, pressed) in
             
-            self.scaleShipByValue(CGFloat((newController.extendedGamepad?.rightShoulder.value)!))
+            self.scaleShipByValue(scaleValue: CGFloat((newController.extendedGamepad?.rightShoulder.value)!))
             
         }
         
         // Left Shoulder resets the reference frame
         newController.extendedGamepad?.leftShoulder.valueChangedHandler = { (input, value, pressed) in
             
-            self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 10.0), count: 1))
+            self.ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 10.0), count: 1))
             
         }
         
         // Right trigger draws the plane toward the user
         newController.extendedGamepad?.rightTrigger.valueChangedHandler = { (input, value, pressed) in
             
-            self.scaleShipByValue(-(CGFloat((newController.extendedGamepad?.rightTrigger.value)!)))
+            self.scaleShipByValue(scaleValue: -(CGFloat((newController.extendedGamepad?.rightTrigger.value)!)))
             
         }
         
@@ -153,14 +154,14 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             //vgcLogDebug("Custom element handler fired for Send Image: \(element.value)")
             
             #if os(OSX)
-                let image = NSImage(data: element.value as! NSData)
+                let image = NSImage(data: (element.value as! NSData) as Data)
             #endif
             #if os(iOS) || os(tvOS)
-                let image = UIImage(data: element.value as! NSData)
+                let image = UIImage(data: (element.value as! NSData) as Data)
             #endif
             
             // get its material
-            let material = self.ship.childNodeWithName("shipMesh", recursively: true)!.geometry?.firstMaterial!
+            let material = self.ship.childNode(withName: "shipMesh", recursively: true)!.geometry?.firstMaterial!
             /*
             // highlight it
             SCNTransaction.begin()
@@ -187,20 +188,21 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         }
         
         // Position ship at a solid origin
-        ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1.3), count: 1))
+        ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 1.3), count: 1))
         
         // Refresh on all motion changes
         newController.motion?.valueChangedHandler = { (input: VgcMotion) in
             
             let amplify = 3.14158
+            //let amplify = 0.1
             
             // Invert these because we want to be able to have the ship display in a way
             // that mirrors the position of the iOS device
             let x = -(input.attitude.x) * amplify
             let y = -(input.attitude.z) * amplify
             let z = -(input.attitude.y) * amplify
-            
-            self.ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
+
+            self.ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
             
             //ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat(x) * 4.0, CGFloat(y) * 4.0, CGFloat(z) * 4.0), duration: 0.3))
             // The following will give the ship a bit of "float" that relates to the up/down motion of the iOS device.
@@ -259,7 +261,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         
         //guard let controller: VgcController = notification.object as? VgcController else { return }
         
-        ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(0, y: 0, z: 0, duration: 1.0), count: 1))
+        ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: 0, y: 0, z: 0, duration: 1.0), count: 1))
         
     }
     

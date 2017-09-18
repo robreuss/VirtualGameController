@@ -33,7 +33,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
     var elementIdentifier: Int!
     var nsStringBuffer: NSString = ""
     var cycleCount: Int = 0
-    let logging = true
+    let logging = false
     var lastTimeStamp = 0.0
     
     init(delegate: VgcStreamerDelegate, delegateName: String) {
@@ -53,7 +53,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         
         let messageData = element.dataMessage
         
-        if logging { vgcLogDebug("Sending Data for \(element.name):\(messageData.length) bytes") }
+        if logging { vgcLogDebug("Sending Data for \(element.name):\(messageData.length) bytes, value: \(element.value)") }
         
         writeData(messageData as Data, toStream: toStream)
         

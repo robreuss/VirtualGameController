@@ -409,7 +409,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     func updateGameControllerWithValue(_ element: Element) {
         
         // Value could be either a string or a float
-        var valueAsFloat: Float = 0.0
+        var valueAsFloat: Float = 0.0 
          
         if element.value is NSNumber {
             valueAsFloat = (element.value as! NSNumber).floatValue
@@ -2274,7 +2274,11 @@ class VgcControllerAxisInput: GCControllerAxisInput {
     
     override var value: Float {
         get {
-            return (element.value).floatValue
+            if let floatValue = element.value.floatValue {
+                return floatValue
+            } else {
+                return 0
+            }
         }
         set {
             

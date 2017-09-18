@@ -22,22 +22,22 @@ class ViewController: NSViewController {
         
         // This is triggered by the developer on the Central side, by setting the playerIndex value on the controller, triggering a
         // system message being sent over the wire to this Peripheral, resulting in this notification.
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.gotPlayerIndex(_:)), name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
         
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
 
         // REQUIRED: Set device info
-        peripheral.deviceInfo = DeviceInfo(deviceUID: NSUUID().UUIDString, vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: false)
+        peripheral?.deviceInfo = DeviceInfo(deviceUID: UUID().uuidString, vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: false)
         
-        print(peripheral.deviceInfo)
+        print(peripheral?.deviceInfo)
         
         VgcManager.peripheral.browseForServices()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "foundService:", name: VgcPeripheralFoundService, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
 
     }
     
-    @objc func foundService(notification: NSNotification) {
+    @objc func foundService(_ notification: Notification) {
         if VgcManager.peripheral.haveConnectionToCentral == true { return }
         let service = notification.object as! VgcService
         vgcLogDebug("Automatically connecting to service \(service.fullName) because Central-selecting functionality is not implemented in this project")
@@ -52,36 +52,37 @@ class ViewController: NSViewController {
     }
     
     
-    func sendButtonPush(element: Element) {
+    func sendButtonPush(_ element: Element) {
         
-        element.value = 1
-        peripheral.sendElementState(element)
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) {
-            element.value = 0
-            peripheral.sendElementState(element)
+        element.value = Float(1) as AnyObject
+        peripheral?.sendElementState(element)
+        
+        let delayTime = DispatchTime.now() + Double(Int64(0.2 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) {
+            element.value = Float(0) as AnyObject
+            peripheral?.sendElementState(element)
         }
-        
+ 
     }
         
-    @objc public func gotPlayerIndex(notification: NSNotification) {
+    @objc open func gotPlayerIndex(_ notification: Notification) {
         
         let playerIndex: Int = notification.object as! Int
         playerIndexLabel.stringValue = "Player: \(playerIndex + 1)"
         
     }
     
-    @IBAction func rightShoulderPush(sender: NSButton) { sendButtonPush(elements.rightShoulder) }
-    @IBAction func leftShoulderPush(sender: NSButton) { sendButtonPush(elements.leftShoulder) }
-    @IBAction func rightTriggerPush(sender: NSButton) { sendButtonPush(elements.rightTrigger) }
-    @IBAction func leftTriggerPush(sender: NSButton) { sendButtonPush(elements.leftTrigger) }
+    @IBAction func rightShoulderPush(_ sender: NSButton) { sendButtonPush(elements.rightShoulder) }
+    @IBAction func leftShoulderPush(_ sender: NSButton) { sendButtonPush(elements.leftShoulder) }
+    @IBAction func rightTriggerPush(_ sender: NSButton) { sendButtonPush(elements.rightTrigger) }
+    @IBAction func leftTriggerPush(_ sender: NSButton) { sendButtonPush(elements.leftTrigger) }
 
-    @IBAction func yPush(sender: NSButton) { sendButtonPush(elements.buttonY) }
-    @IBAction func xPush(sender: NSButton) { sendButtonPush(elements.buttonX) }
-    @IBAction func aPush(sender: NSButton) { sendButtonPush(elements.buttonA) }
-    @IBAction func bPush(sender: NSButton) { sendButtonPush(elements.buttonB) }
+    @IBAction func yPush(_ sender: NSButton) { sendButtonPush(elements.buttonY) }
+    @IBAction func xPush(_ sender: NSButton) { sendButtonPush(elements.buttonX) }
+    @IBAction func aPush(_ sender: NSButton) { sendButtonPush(elements.buttonA) }
+    @IBAction func bPush(_ sender: NSButton) { sendButtonPush(elements.buttonB) }
     
-    override var representedObject: AnyObject? {
+    override var representedObject: Any? {
         didSet {
         // Update the view, if already loaded.
         }

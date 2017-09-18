@@ -38,10 +38,12 @@ open class VgcMotionManager: NSObject {
     open var enableAttitude = true
     open var enableGravity = true
     
-    open var enableLowPassFilter = true
-    open var enableAdaptiveFilter = true
+    open var enableLowPassFilter = false
+    open var enableAdaptiveFilter = false
     open var cutOffFrequency: Double = 5.0
     var filterConstant: Double!
+    
+    static var lastAttitudeX = 0.0, lastAttitudeY = 0.0, lastAttitudeZ = 0.0, lastAttitudeW = 0.0
     
     ///
     /// System can handle 60 updates/sec but only if a subset of motion factors are enabled,
