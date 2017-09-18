@@ -137,7 +137,7 @@ var peripheralManager = VgcManager.peripheral
             cameraImage.isUserInteractionEnabled = true
             parentView.addSubview(cameraImage)
             
-            let gr = UITapGestureRecognizer(target: vc, action: "displayPhotoPicker:")
+            let gr = UITapGestureRecognizer(target: vc, action: Selector(("displayPhotoPicker:")))
             cameraImage.gestureRecognizers = [gr]
 
             playerIndexLabel = UILabel(frame: CGRect(x: parentView.bounds.size.width * 0.50 - 50, y: parentView.bounds.size.height - 75, width: 100, height: 25))
