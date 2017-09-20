@@ -225,7 +225,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                
                 if logging { vgcLogDebug("Length of buffer: \(len)") }
 
-                dataBuffer.append(&buffer, length: len)
+                dataBuffer.append(Data(bytes: &buffer, count: len))
                 
             }
             
