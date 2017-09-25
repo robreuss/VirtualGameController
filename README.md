@@ -132,7 +132,7 @@ Pass an empty string to `deviceUID` to have it be created by the system using `N
 
 Pass an empty string to `vendorName` and the device network name will be used to identify the Peripheral.  
 
-####Finding Central Services
+#### Finding Central Services
 
 Begin the search for Bridges and Centrals:
 
@@ -155,7 +155,7 @@ In the simplest implementation, you'll be connecting to the first Central servic
 
 If you choose to implement a more complex scenario, where you have multiple Peripherals that connect to either a Bridge or Central, the combination of the above methods and notifications should have you covered.  The sample projects implement this type of flexible scenario.
         
-####Connecting to and Disconnecting from a Central
+#### Connecting to and Disconnecting from a Central
 Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
 
 ``` swift
@@ -175,7 +175,7 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidC
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
 ```
 
-####Sending Values to a Central
+#### Sending Values to a Central
 An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the `sendElementState` method.
 
 ``` swift
@@ -184,14 +184,14 @@ leftShoulder.value = 1.0
 VgcManager.peripheral.sendElementState(leftShoulder)
 ```
 
-####Player Index
+#### Player Index
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
 ``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
 ```
 
-####Device Motion
+#### Device Motion
 Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
 
 Key methods that should be self-explanatory:
@@ -214,7 +214,7 @@ VgcManager.peripheral.motion.enableLowPassFilter = true
 It is important for performance reasons to reduce updateInterval as much as you can, and to disable motion inputs that are not used in your game.
 
 ## Game Integration (Central)
-####GCController Replacement
+#### GCController Replacement
 **VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
 
 ``` swift
@@ -246,14 +246,14 @@ If you wish to test integration of the framework, it is proven to work with the 
 
 For in-depth instructions on using DemoBots as a test, see the [Wiki article](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
 
-####Central versus Bridge
+#### Central versus Bridge
 There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
 
 A **Central** is exactly what you expect in terms of game integration: your Central is your game and there should only be one implemented at a time.  
 
 A **Bridge** combines the behavior of a Central and a Peripheral; it is a Peripheral in relation to your Central, and it is a Central in relation to your Peripheral(s).  Another name for it would be a *controller forwarder*, because it's primary function is to forward/relay values sent by one or more Peripherals to the Central.  The Peripheral could be a MFi hardware controller, an iCade hardware controller, an *Apple Watch* or a software-based virtual controller (assuming the Bridge is deployed on an iPhone paired to the watch).  If the bridge is implemented on a device with device motion support (an iOS device) the Bridge can extend the capabilities of a Peripheral to include motion support.  For example, a MFi or iCade controller can appear to the Central to implement the motion profile.  
 
-####Extended Functionality
+#### Extended Functionality
 There are a few features supported by a Central that exceed the capabilities of the Apple *GameController* framework:
 
 - [Custom Elements](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements)
@@ -262,7 +262,7 @@ There are a few features supported by a Central that exceed the capabilities of 
 
 
 
-####Other
+#### Other
 There is a method provided on instances of VgcController called ````controller.vibrateDevice```` that will vibrate an iPhone, and if a watch app is integrated with that phone, the vibrate request will be forwarded to the watch as well, resulting in haptic feedback (wrist click).
 
 ## Integrating the Apple Watch
@@ -308,7 +308,7 @@ VgcManager.peripheral.sendElementState(element)
 ````
 
 
-####Sending Values to the Watch
+#### Sending Values to the Watch
 To send a value to a watch from your Peripheral iOS app, you can use the following method:
 
 ````swift
@@ -316,7 +316,7 @@ VgcManager.peripheral.watch.sendElementState(element)
 
 ````
 
-####Receiving Values on the Watch
+#### Receiving Values on the Watch
 If a watch is paired with your iPhone iOS app, values received by the iOS app from a Central will be forwarded to the watch, and you can react to those values by setting a valueChangedHandler on your watchConnectivity instance:
 
 ````swift
@@ -335,23 +335,23 @@ watchConnectivity.motion.start()
 watchConnectivity.motion.stop()
 ````
 
-##Custom Elements
+## Custom Elements
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
 
-##Custom Mappings
+## Custom Mappings
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
 
-##Bidirectional Communication
+## Bidirectional Communication
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bidirectional-Communication).
 
-##Objective C Support
+## Objective C Support
 See the Objective C sample project along with the [wiki page](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C).
 
-##iCade Controller Support
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
-##Contact and Support
+## iCade Controller Support
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).  
+## Contact and Support
 Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.  
-##License
+## License
 The MIT License (MIT)
 
 Copyright (c) [2015] [Rob Reuss]
