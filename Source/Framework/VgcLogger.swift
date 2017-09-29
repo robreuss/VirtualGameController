@@ -31,9 +31,9 @@ func logAtLevel(_ priority: LogLevel, logLine: String ) {
     if priority.rawValue <= VgcManager.loggerLogLevel.rawValue  {
         
         if VgcManager.loggerUseNSLog {
-            NSLog(logLine)
+            NSLog("[VGC] %@", logLine)
         } else {
-            print(logLine)
+            print("[VGC] \(logLine)")
         }
         
         

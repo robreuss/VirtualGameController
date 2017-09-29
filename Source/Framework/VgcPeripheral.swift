@@ -40,14 +40,16 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     #endif
     var playerIndex: GCControllerPlayerIndex!
     weak var controller: VgcController!
+    var localController: VgcController!
     
     #if !(os(tvOS)) && !(os(OSX))
-    open var motion: VgcMotionManager!
+    @objc open var motion: VgcMotionManager!
     #endif
 
     open var haveConnectionToCentral: Bool = false
     var haveOpenStreamsToCentral: Bool = false
     var connectionAcknowledgementWaitTimeout: Timer!
+    var previousElements = [Element?](repeating: nil, count:VgcManager.elements.allElementsCollection().count + 1)
     
     override init() {
         
@@ -65,7 +67,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         #endif
         
         playerIndex = GCControllerPlayerIndex.indexUnset
-         
+  
     }
     
     deinit {
@@ -80,7 +82,20 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     /// Peripheral.  "State" in this case refers to the Element "value"
     /// property.
     ///
-    open func sendElementState(_ element: Element) {
+    @objc open func sendElementState(_ element: Element) {
+        
+        if previousElements.count > 0 && element.dataType == .Float && VgcManager.enableDupFiltering {
+            if let previousElement = previousElements[element.type.rawValue] {
+                let previousElementValue = String(format: "%.\(VgcManager.dupFilteringPrecision)f", previousElement.value as! Float)
+                let currentElementValue = String(format: "%.\(VgcManager.dupFilteringPrecision)f", element.value as! Float)
+                if previousElementValue == currentElementValue {
+                    vgcLogVerbose("Not sending value because it's the same as last sent: \(previousElementValue)")
+                    return
+                }
+            }
+            previousElements[element.type.rawValue]?.value = element.value
+
+        }
         
         // As a Peripheral, we don't need a connection to send if we're an EnhancementBridge, using instead the
         // stream associated with the hardware controllers VgcController.
@@ -112,12 +127,14 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             
         }
         
+        if (self.localController != nil) { self.localController.updateGameControllerWithValue(element) }
+        
     }
     
     ///
     /// DeviceInfo for the controller represented by this Peripheral instance.
     ///
-    open var deviceInfo: DeviceInfo! {
+    @objc open var deviceInfo: DeviceInfo! {
         
         get {
             if vgcDeviceInfo == nil {
@@ -140,6 +157,14 @@ open class Peripheral: NSObject, VgcWatchDelegate {
                 
             #endif
             
+            if let localCtrlr = self.localController {
+                if VgcManager.enableLocalController {
+                    localCtrlr.deviceInfo = newValue
+                    vgcLogDebug("Device info set on LOCAL controller")
+                    print(newValue)
+                }
+            }
+            
             haveConnectionToCentral = false
             
         }
@@ -150,11 +175,11 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     /// Connect to a Central or Bridge using a VgcService object obtained
     /// by browsing the network.
     ///
-    open func connectToService(_ vgcService: VgcService) {
+    @objc open func connectToService(_ vgcService: VgcService) {
         browser.connectToService(vgcService)
     }
     
-    open func disconnectFromService() {
+    @objc open func disconnectFromService() {
         
         if haveConnectionToCentral == false { return }
         
@@ -166,7 +191,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    open func browseForServices() {
+    @objc open func browseForServices() {
         
         browser.reset()
         
@@ -189,7 +214,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    open func stopBrowsingForServices() {
+    @objc open func stopBrowsingForServices() {
         
         if deviceIsTypeOfBridge() {
             vgcLogDebug("Refusing to stop browsing for service because I am a BRIDGE")
@@ -200,21 +225,21 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
     }
     
-    open var connectedService: VgcService? {
+    @objc open var connectedService: VgcService? {
         get {
             guard let service = browser.connectedVgcService else { return nil }
             return service
         }
     }
     
-    open var availableServices: [VgcService] {
+    @objc open var availableServices: [VgcService] {
         get {
             let services = [VgcService](browser.serviceLookup.values)
             return services
         }
     }
     
-    func gotConnectionAcknowledgementTimeout(_ timer: Timer) {
+    @objc func gotConnectionAcknowledgementTimeout(_ timer: Timer) {
         
         vgcLogDebug("Got connection acknowledgement timeout")
 
@@ -225,12 +250,17 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         connectionAcknowledgementWaitTimeout.invalidate()
         
     }
-    
+
     func gotConnectionToCentral() {
         
         vgcLogDebug("Got connection to Central (Already? \(haveConnectionToCentral))")
         
         if (haveOpenStreamsToCentral == true) { return }
+        
+        previousElements.reserveCapacity(VgcManager.elements.allElementsCollection().count)
+        for element in VgcManager.elements.allElementsCollection() {
+            previousElements.insert(element.clone(), at: element.type.rawValue)
+        }
         
         haveOpenStreamsToCentral = true
         
@@ -243,7 +273,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         } else {
             
             sendDeviceInfo(deviceInfo)
-            
+
         }
         
     }
@@ -264,7 +294,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
 
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
-                vgcLogDebug("Stopping motion data")
+                vgcLogDebug("Stopping motion data on motion \(motion)")
                 motion.stop()
             }
         #endif

@@ -15,8 +15,8 @@ class InterfaceController: WKInterfaceController {
     
     @IBOutlet var elementsTable: WKInterfaceTable!
     
-    let watchConnectivity: VgcWatchConnectivity!
-    var session : WCSession!
+    @objc let watchConnectivity: VgcWatchConnectivity!
+    @objc var session : WCSession!
     
     override init() {
         
@@ -48,7 +48,7 @@ class InterfaceController: WKInterfaceController {
     }
     
     // Just as a simple example, display a table of the watch profile elements.
-    func updateElementsTable() {
+    @objc func updateElementsTable() {
         vgcLogDebug("Number of element rows: \(watchConnectivity.elements.allElementsCollection().count)")
         self.elementsTable.setNumberOfRows(watchConnectivity.elements.allElementsCollection().count, withRowType: "elementsTableRow")
         var index = 0

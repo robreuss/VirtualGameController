@@ -23,7 +23,7 @@ import VirtualGameController
     public override func viewDidLoad() {
         
         super.viewDidLoad()
-      
+ 
         self.view.backgroundColor = UIColor.darkGray
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 20, width: self.view.bounds.size.width, height: 60))
@@ -69,15 +69,12 @@ import VirtualGameController
         #endif
         
         // I have never been able to get this method to discover a controller
-        VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
+        //VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
-            vgcLogDebug("SAMPLE: Discovery completion handler executed")
+        //    vgcLogDebug("SAMPLE: Discovery completion handler executed")
             
-        }
-
-        // Disable peer-to-peer (Bluetooth) for better network performance
-        VgcManager.includesPeerToPeer = false
-
+        //}
+        
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
@@ -199,7 +196,7 @@ import VirtualGameController
         
     }
     
-    func clearImage() {
+    @objc func clearImage() {
         imageView.image = nil
     }
     
@@ -219,6 +216,16 @@ import VirtualGameController
             vgcLogDebug("Got nil controller in controllerDidConnect")
             return
         }
+        
+        /*
+        // Send configuration information to the peripheral
+        VgcManager.peripheralSetup.motionActive = true
+        VgcManager.peripheralSetup.enableMotionAttitude = true
+        VgcManager.peripheralSetup.enableMotionGravity = true
+        VgcManager.peripheralSetup.enableMotionUserAcceleration = true
+        VgcManager.peripheralSetup.enableMotionRotationRate = true
+        VgcManager.peripheralSetup.sendToController(newController)
+         */
         
         let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: newController)
         elementDebugView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleLeftMargin]
@@ -267,6 +274,26 @@ import VirtualGameController
         newController.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
             self.refreshDebugViewForController(controller: newController)
+            
+        }
+        
+        newController.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { (thumbstick, value) in
+            
+            
+            //print("HANDLER: Left thumbstick xAxis: \(value)")
+            
+        }
+        
+        newController.extendedGamepad?.buttonA.valueChangedHandler = { (button, value, pressed) in
+            
+            
+            print("HANDLER:Button A value: \(pressed), \(value)")
+            
+        }
+        
+        newController.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
+            
+            //print("HANDLER: Left thumbstick: \(xValue), \(yValue)")
             
         }
 

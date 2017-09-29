@@ -57,17 +57,21 @@ public var customElements: CustomElementsSuperclass!
 ///
 @objc public enum AppRole: Int, CustomStringConvertible {
     
-    case Central = 0
-    case Peripheral = 1
-    case Bridge = 2
-    case EnhancementBridge = 3
+    case Undefined = 0
+    case Central = 1
+    case Peripheral = 2
+    case Bridge = 3
+    case EnhancementBridge = 4
+    case MultiplayerPeer = 5
     
     public var description : String {
         switch self {
+        case .Undefined: return "Undefined"
         case .Central: return "Central"
         case .Peripheral: return "Peripheral"
         case .Bridge: return "Bridge"
         case .EnhancementBridge: return "Enhancement Bridge"
+        case .MultiplayerPeer: return "Multiplayer Peer"
         }
     }
 }
@@ -156,7 +160,7 @@ let messageValueSeperator = ":"
     open var type: AppRole
     internal var netService: NetService
     
-    open var fullName: String { return "\(name) (\(type.description))" }
+    @objc open var fullName: String { return "\(name) (\(type.description))" }
     
     init(name: String, type: AppRole, netService: NetService) {
         self.name = name
@@ -166,14 +170,14 @@ let messageValueSeperator = ":"
 }
 #endif
 
-open class VgcManager: NSObject {
+@objc open class VgcManager: NSObject {
    
     // Define this as a singleton although never used as such; only class methods used
-    static let sharedInstance = VgcManager()
+    @objc static let sharedInstance = VgcManager()
     fileprivate override init() {}
 
     // Default to being a Peripheral
-    open static var appRole: AppRole = .Peripheral
+    @objc open static var appRole: AppRole = .Peripheral
     
     #if !os(watchOS)
     /// Used by the Central to configure a software controller, in terms of profile type, background
@@ -185,7 +189,7 @@ open class VgcManager: NSObject {
     /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
     /// of which have their own set of elements).
     ///
-    open static var elements = Elements()
+    @objc open static var elements = Elements()
     
     /// Log Level "Debug" is a standard level of logging for debugging - set to "Error" for release
     @objc open static var loggerLogLevel: LogLevel = LogLevel.Debug {
@@ -205,16 +209,46 @@ open class VgcManager: NSObject {
     /// Used as a component of the bonjour names for the various app types.
     /// This should be set to something that uniquely identifies your app.
     ///
-    open static var appIdentifier = "vgc"
+    @objc open static var appIdentifier = "vgc"
+
+    @objc static var serviceDomain = "local"
     
-    static var bonjourTypeCentral: String { return "_\(VgcManager.appIdentifier)_central._tcp." }
-    static var bonjourTypeBridge: String { return "_\(VgcManager.appIdentifier)_bridge._tcp." }
+    @objc open static var uniqueServiceIdentifierString: String {
+        get {
+
+            if VgcManager.useUniqueDeviceName == true {
+                var usi: String
+                let defaults = UserDefaults.standard
+                if let usi = defaults.string(forKey: "includeUniqueServiceIdentifier") {
+                    vgcLogDebug("Found Unique Service Identifier")
+                    return usi
+                } else {
+                    usi = UUID().uuidString
+                    vgcLogDebug("Created new Unique Service Identifier")
+                    defaults.set(usi, forKey: "includeUniqueServiceIdentifier")
+                    return usi
+                }
+            } else {
+                #if os(iOS) || os(tvOS)
+                    return UIDevice.current.name
+                #endif
+                
+                #if os(OSX)
+                    return Host.current().localizedName!
+                #endif
+            }
+            return ""
+        }
+    }
+
+    @objc static var bonjourTypeCentral: String { return "_\(VgcManager.appIdentifier)_central._tcp." }
+    @objc static var bonjourTypeBridge: String { return "_\(VgcManager.appIdentifier)_bridge._tcp." }
     
     ///
     /// An app in Bridge mode can call it's handlers or simply relay
     /// data forward to the Central.  Relaying is more performant.
     ///
-    open static var bridgeRelayOnly = false
+    @objc open static var bridgeRelayOnly = false
 
     #if !os(watchOS)
     ///
@@ -242,14 +276,21 @@ open class VgcManager: NSObject {
     /// is recommended; it is more efficient because two values do not need to be transmitted.
     /// Central-side mapping also works with hardware controllers.
     ///
-    open static var usePeripheralSideMapping: Bool = false
-
-    open static var netServiceBufferSize = 2048
+    @objc open static var usePeripheralSideMapping: Bool = false
     
-    open static var netServiceLatencyLogging = false
+    ///
+    /// Filter duplicate float values, with comparison occuring at a certain
+    /// degree of decimal precision
+    ///
+    @objc open static var enableDupFiltering = false
+    @objc open static var dupFilteringPrecision = 2
+
+    @objc open static var netServiceBufferSize = 2040
+    
+    @objc open static var netServiceLatencyLogging = false
     
     // The header length of messages
-    static var netServiceHeaderLength: Int {
+    @objc static var netServiceHeaderLength: Int {
         
         get {
             if VgcManager.netServiceLatencyLogging {
@@ -262,34 +303,53 @@ open class VgcManager: NSObject {
     }
     
     // Indicator of start of header
-    static var headerIdentifier: UInt32 = 2584594329 // Random UInt32
+    @objc static var headerIdentifier: UInt32 = 2584594329 // Random UInt32
     
     // Maximum time to wait for both the small and large data streams to be opened, in seconds
-    static var maxTimeForMatchingStreams = 5.0
+    @objc static var maxTimeForMatchingStreams = 5.0
     
     // Disabling peer-to-peer (provides Bluetooth fallback) may improve performance if needed
     // NOTE: This property cannot be set after startAs is called.  Instead, use the version of
     // startAs that includes the includesPeerToPeer parameter.
-    open static var includesPeerToPeer = false
+    @objc static var includesPeerToPeer = false
+    
+    // Local Game Controller functionalty allows the use of the MFI/VGC interface for local functionality.
+    // Handlers can be created when the localControllerDidConnect notification is received, and game-play
+    // functionality placed in those handlers.  This functionality is useful if you want to have local peripheral
+    // activity to both the local game and a remote game, for example if implementing an ARKit environment
+    // where controller activity is needed by both instance of the app (on both devices).
+    @objc open static var enableLocalController = false
+    
+    // Include unique string in bonjour name to allow multiple unique central/peripheral combos to connect
+    // to one another (bi-directional).  It effectively gives each of the two Central's it's own unique service
+    // identity.  Uses a UID in the bonjour name.
+    @objc open static var useUniqueDeviceName = false
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console
     ///
-    static var performanceSamplingEnabled: Bool { get { return performanceSamplingDisplayFrequency > 0 } }
+    @objc open static var performanceSamplingEnabled: Bool { get { return performanceSamplingDisplayFrequency > 0 } }
     
     ///
     /// Controls how long we wait before averaging the number of messages
     /// transmitted/received per second when logging performance.  Set to 0 to disable.
     ///
-    open static var performanceSamplingDisplayFrequency: Float = 10.0
+    @objc open static var performanceSamplingDisplayFrequency: Float = 0.0
 
     #if !os(watchOS)
-    open static var peripheral: Peripheral!
+    @objc open static var peripheral: Peripheral!
+    
+    open var controller: VgcController {
+        get {
+            return VgcManager.peripheral.controller
+        }
+    }
+    
     #endif
     
     /// Network name for publishing service, defaults to device name
     #if !os(watchOS) && !os(OSX)
-    open static var centralServiceName = UIDevice.current.name
+    open static var centralServiceName = VgcManager.uniqueServiceIdentifierString
     #endif
     #if os(OSX)
     public static var centralServiceName = Host.current().localizedName
@@ -314,18 +374,25 @@ open class VgcManager: NSObject {
     #endif
     
     /// Simplified version of startAs when custom mapping and custom elements are not needed
-    open class func startAs(_ appRole: AppRole, appIdentifier: String) {
+    @objc open class func startAs(_ appRole: AppRole, appIdentifier: String) {
         VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass())
     }
     
     /// Simplified version of startAs when custom mapping and custom elements are not needed, but includesPeerToPeer is
-    open class func startAs(_ appRole: AppRole, appIdentifier: String, includesPeerToPeer: Bool) {
+    @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, includesPeerToPeer: Bool) {
         VgcManager.startAs(appRole, appIdentifier: appIdentifier, customElements: CustomElementsSuperclass(), customMappings: CustomMappingsSuperclass(), includesPeerToPeer: includesPeerToPeer)
     }
     
     /// Must use this startAs method to turn on peer to peer functionality (Bluetooth)
-    open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool) {
+    @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool) {
         VgcManager.includesPeerToPeer = includesPeerToPeer
+        startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
+    }
+    
+    /// Must use this startAs method to turn on peer to peer functionality (Bluetooth) and local game controller functionality
+    @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool, enableLocalController: Bool) {
+        VgcManager.includesPeerToPeer = includesPeerToPeer
+        VgcManager.enableLocalController = enableLocalController
         startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
     }
     
@@ -333,12 +400,26 @@ open class VgcManager: NSObject {
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
     ///
-    open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
+    @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
         
-        self.appRole = appRole
+        var appRoleVar = appRole
+        
+        #if !os(watchOS)
+        if (appRoleVar == .Central) && (VgcManager.peripheral != nil) {
+            vgcLogError("If running as both peripheral and central, central must call startAs first.  Ignoring Central request.")
+            return
+        }
+        #endif
+        
+        if self.appRole == .Central && appRoleVar == .Peripheral {
+            appRoleVar = .MultiplayerPeer
+            useUniqueDeviceName = true // Must use unique name when operating in peer mode
+        }
+        
+        self.appRole = appRoleVar
         
         if appIdentifier != "" { self.appIdentifier = appIdentifier } else { vgcLogError("You must set appIdentifier to some string") }
-        
+
         Elements.customElements = customElements
         Elements.customMappings = customMappings
         
@@ -346,11 +427,14 @@ open class VgcManager: NSObject {
         vgcLogDebug("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
 
         #if !os(watchOS)
-            
+        VgcManager.peripheral = Peripheral()
         switch (VgcManager.appRole) {
             
-            case .Peripheral:
-                
+            case .Undefined:
+                return
+            
+            case .Peripheral, .MultiplayerPeer:
+
                 VgcManager.peripheral = Peripheral()
                 
                 // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
@@ -368,6 +452,15 @@ open class VgcManager: NSObject {
                 VgcController.setup()
             }
       
+            // Create a controller for use with a peripheral
+            if VgcManager.enableLocalController {
+                vgcLogDebug("Enabling LOCAL game controller")
+                self.peripheral.localController = VgcController()
+                self.peripheral.localController.isLocalController = true
+                self.peripheral.localController.deviceInfo = VgcManager.peripheral.deviceInfo
+                NotificationCenter.default.post(name: Notification.Name(rawValue: VgcLocalControllerDidConnectNotification), object: self.peripheral.localController)
+            }
+            
         #endif
 
     }
@@ -397,12 +490,12 @@ public func deviceIsTypeOfBridge() -> Bool {
 
 @objc open class DeviceInfo: NSObject, NSCoding {
     
-    internal(set) var deviceUID: String
-    internal(set) open var vendorName: String
-    internal(set) open var attachedToDevice: Bool
-    open var profileType: ProfileType
-    internal(set) open var controllerType: ControllerType
-    internal(set) open var supportsMotion: Bool
+    @objc internal(set) var deviceUID: String
+    @objc internal(set) open var vendorName: String
+    @objc internal(set) open var attachedToDevice: Bool
+    @objc open var profileType: ProfileType
+    @objc internal(set) open var controllerType: ControllerType
+    @objc internal(set) open var supportsMotion: Bool
     
     @objc public init(deviceUID: String, vendorName: String, attachedToDevice: Bool, profileType: ProfileType, controllerType: ControllerType, supportsMotion: Bool) {
         var deviceUID = deviceUID
@@ -493,9 +586,20 @@ public func deviceIsTypeOfBridge() -> Bool {
     }
     
     // A copy of the deviceInfo object is made when forwarding it through a Bridge.
-    func copyWithZone(_ zone: NSZone?) -> AnyObject {
+    //func copy(with zone: NSZone? = nil) -> Any {
+    @objc func copyWithZone(_ zone: NSZone?) -> AnyObject {
         let copy = DeviceInfo(deviceUID: deviceUID, vendorName: vendorName, attachedToDevice: attachedToDevice, profileType: profileType, controllerType: controllerType, supportsMotion: supportsMotion)
         return copy
     }
-    
+    /*
+    func copyWithZone(zone: NSZone) -> AnyObject {
+        // This is the reason why `init(_ model: GameModel)`
+        // must be required, because `GameModel` is not `final`.
+        return self.dynamicType.init(self)
+    }
+    */
+    //public func copy(with zone: NSZone? = nil) -> Any {
+    //    return Swift.type(of:self).init(self)
+    //}
+
 }

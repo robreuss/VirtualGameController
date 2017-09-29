@@ -17,6 +17,9 @@ import Foundation
 
 public let VgcControllerDidConnectNotification:     String = "VgcControllerDidConnectNotification"
 public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDisconnectNotification"
+    
+public let VgcLocalControllerDidConnectNotification:     String = "VgcLocalControllerDidConnectNotification"
+public let VgcLocalControllerDidDisconnectNotification:  String = "VgcLocalControllerDidDisconnectNotification"
 
 // MARK: - VgcController
 
@@ -33,20 +36,20 @@ public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDi
 /// to both custom/software controllers and hardware controllers.
 
 open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServiceDelegate  {
-    
+
     weak open var peripheral: Peripheral!
     var streamer: [StreamDataType: VgcStreamer] = [:]
     
     // Each controller gets it's own copy of a set of elements appropriate to
     // it's profile, and these are used as a backing store for all element/control
     // values.
-    open var elements: Elements!
+    @objc open var elements: Elements!
     var centralPublisher: VgcCentralPublisher!
     var hardwareController: GCController!
-    var vgcExtendedGamepad: VgcExtendedGamepad!
-    var vgcGamepad: VgcGamepad!
+    @objc var vgcExtendedGamepad: VgcExtendedGamepad!
+    @objc var vgcGamepad: VgcGamepad!
     #if os(tvOS)
-    var vgcMicroGamepad: VgcMicroGamepad!
+    @objc var vgcMicroGamepad: VgcMicroGamepad!
     #endif
     
     // Flag to prevent performing two disconnects at the same time
@@ -60,6 +63,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     fileprivate var vgcMotion: VgcMotion!
     
     open var isHardwareController: Bool { get { return self.hardwareController != nil } }
+    open var isLocalController: Bool = false
     
     // Each controller gets it's own set of streams
     var fromCentralInputStream: [StreamDataType: InputStream] = [:]
@@ -75,8 +79,13 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         
         // Each controller gets their own instance of standard elements that
         // act as a virtual set of hardware elements that profiles map to
-        elements = Elements()
-
+        
+        if VgcManager.enableLocalController {
+            elements = VgcManager.elements
+        } else {
+            elements = Elements()
+        }
+        
         super.init()
         
         vgcMotion = VgcMotion(vgcController: self)
@@ -88,7 +97,6 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         
         //vgcGamepad = VgcGamepad(vgcGameController: self)
         //vgcExtendedGamepad = VgcExtendedGamepad(vgcGameController: self)
-        
     }
     
     deinit {
@@ -133,15 +141,6 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     // Called as a part of app initailization sequence
     class func setup() {
         
-        // Capture hardware connections, hiding them from the
-        // Central.  Instead, we will issue our own version of
-        // the didConnect notification when the deviceInfo property
-        // is "set", and the developer is responsible for implementing
-        // our version instead of the GCController version:
-        // "VgcControllerDidConnectNotification"
-        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidConnect(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidDisconnect(_:)), name: NSNotification.Name.GCControllerDidDisconnect, object: nil)
-        
         // Kick off publishing the availability of our service
         // if we have a Central function (note, a Bridge has both
         // a Central and Peripheral role)
@@ -150,7 +149,15 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             centralPublisher = VgcCentralPublisher()
             centralPublisher.publishService()
         }
-
+        
+        // Capture hardware connections, hiding them from the
+        // Central.  Instead, we will issue our own version of
+        // the didConnect notification when the deviceInfo property
+        // is "set", and the developer is responsible for implementing
+        // our version instead of the GCController version:
+        // "VgcControllerDidConnectNotification"
+        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidConnect(_:)), name: NSNotification.Name.GCControllerDidConnect, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VgcController.controllerDidDisconnect(_:)), name: NSNotification.Name.GCControllerDidDisconnect, object: nil)
     }
     
     ///
@@ -171,7 +178,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     // An array of currently connected controllers, that mimics the same
     // class function on GCCController, combining both software/virtual controllers
     // with hardware controllers
-    open class func controllers() -> [VgcController] {
+    @objc open class func controllers() -> [VgcController] {
         return vgcControllers
     }
     
@@ -218,7 +225,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     
 
     func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
-        
+       
         let element = elements.elementFromIdentifier(elementIdentifier)
         
         // If deviceInfo isn't set yet, we're not ready to handle incoming data
@@ -231,6 +238,8 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         if (element != nil) {
 
             element?.valueAsNSData = elementValue
+            
+            vgcLogVerbose("Received Data for \(element!.name ): \(elementValue.count) bytes, value: \(element?.value ?? "Unknown/Error" as AnyObject)")
             
             // Don't update the controller if we're in bridgeRelayOnly mode
             if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element!) }
@@ -495,7 +504,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             //vgcLogDebug("Setting value \(value) on Keypath \(element.setterKeypath(self))")
             
             setValue(value, forKeyPath: element.setterKeypath(self))
-            
+         
             mapElement(element)
             
         } else {
@@ -505,7 +514,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         }
     }
     
-    open func vibrateDevice() {
+    @objc open func vibrateDevice() {
         let element = VgcManager.elements.elementFromIdentifier(ElementType.vibrateDevice.rawValue)
         element?.value = 1 as AnyObject
         sendElementStateToPeripheral(element!)
@@ -708,8 +717,13 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             // Ignore hardware controller connections to iOS device if it is
             // configured to be in the .Peripheral role.
-            if VgcManager.appRole == .Peripheral {
+            if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) {
                 vgcLogDebug("Ignoring hardware device \(String(describing: controller.hardwareController.vendorName)) because we are configured as a Peripheral")
+                return
+            }
+            
+            if controller.hardwareController.vendorName == "Generic Controller" {
+                vgcLogDebug("Refusing to add hardware controller because is seems to be the unwanted simulator-based controller (vendor name Generic Controller)")
                 return
             }
             
@@ -842,7 +856,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         }
     }
     
-    open var motion: VgcMotion? {
+    @objc open var motion: VgcMotion? {
         return vgcMotion
     }
     
@@ -1018,20 +1032,20 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     }
     
     #if os(tvOS)
-    public var microGamepad: VgcMicroGamepad? {
+    @objc public var microGamepad: VgcMicroGamepad? {
 
         return vgcMicroGamepad
 
     }
     #endif
     
-    open var extendedGamepad: VgcExtendedGamepad? {
+    @objc open var extendedGamepad: VgcExtendedGamepad? {
 
         return vgcExtendedGamepad
 
     }
     
-    open var gamepad: VgcGamepad? {
+    @objc open var gamepad: VgcGamepad? {
 
         return vgcGamepad
 
@@ -1170,7 +1184,7 @@ public class VgcMicroGamepad: GCMicroGamepad {
     
     // The function of the pause element is simply to trigger the handler - it is
     // up to the developer to make sense of what the pause press means.
-    var vgcPauseButton: Float {
+    @objc var vgcPauseButton: Float {
         get {
             return self.vgcPauseButton
         }
@@ -1278,7 +1292,7 @@ open class VgcGamepad: GCGamepad {
     
     // The function of the pause element is simply to trigger the handler - it is
     // up to the developer to make sense of what the pause press means.
-    var vgcPauseButton: Float {
+    @objc var vgcPauseButton: Float {
         get {
             return self.vgcPauseButton
         }
@@ -1453,7 +1467,7 @@ open class VgcExtendedGamepad: GCExtendedGamepad {
     
     // The function of the pause element is simply to trigger the handler - it is
     // up to the developer to make sense of what the pause press means.
-    var vgcPauseButton: Float {
+    @objc var vgcPauseButton: Float {
         get {
             return self.vgcPauseButton
         }
@@ -1544,7 +1558,7 @@ open class VgcMotion: NSObject {
     }
     
     
-    open var userAcceleration: GCAcceleration {
+    @objc open var userAcceleration: GCAcceleration {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.userAcceleration)! } else { return vgcUserAcceleration }
         }
@@ -1553,7 +1567,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionUserAccelerationX: Float {
+    @objc var motionUserAccelerationX: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
         }
@@ -1563,7 +1577,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionUserAccelerationY: Float {
+    @objc var motionUserAccelerationY: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
         }
@@ -1573,7 +1587,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionUserAccelerationZ: Float {
+    @objc var motionUserAccelerationZ: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
         }
@@ -1583,7 +1597,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    open var attitude: GCQuaternion {
+    @objc open var attitude: GCQuaternion {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.attitude)! }
@@ -1595,7 +1609,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionAttitudeX: Float {
+    @objc var motionAttitudeX: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
@@ -1608,7 +1622,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionAttitudeY: Float {
+    @objc var motionAttitudeY: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
@@ -1621,7 +1635,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionAttitudeZ: Float {
+    @objc var motionAttitudeZ: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
@@ -1635,7 +1649,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionAttitudeW: Float {
+    @objc var motionAttitudeW: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
@@ -1649,7 +1663,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    open var rotationRate: GCRotationRate {
+    @objc open var rotationRate: GCRotationRate {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.rotationRate)! }
@@ -1661,7 +1675,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionRotationRateX: Float {
+    @objc var motionRotationRateX: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
@@ -1674,7 +1688,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionRotationRateY: Float {
+    @objc var motionRotationRateY: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
@@ -1687,7 +1701,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionRotationRateZ: Float {
+    @objc var motionRotationRateZ: Float {
         get {
             #if !os(tvOS)
                 if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
@@ -1700,7 +1714,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    open var gravity: GCAcceleration {
+    @objc open var gravity: GCAcceleration {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return (vgcController?.hardwareController.motion?.gravity)! } else { return vgcGravity }
             
@@ -1710,7 +1724,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionGravityX: Float {
+    @objc var motionGravityX: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
         }
@@ -1720,7 +1734,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionGravityY: Float {
+    @objc var motionGravityY: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
         }
@@ -1730,7 +1744,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    var motionGravityZ: Float {
+    @objc var motionGravityZ: Float {
         get {
             if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
         }
@@ -1749,7 +1763,7 @@ open class VgcMotion: NSObject {
         }
     }
     
-    open var valueChangedHandler: VgcMotionValueChangedHandler? {
+    @objc open var valueChangedHandler: VgcMotionValueChangedHandler? {
         get {
             return vgcValueChangedHandler!
         }
@@ -2214,8 +2228,6 @@ class VgcControllerButtonInput: GCControllerButtonInput {
                 vgcButtonPressed = false
                 buttonPressedChanged = true
             }
-            
-            //print("Handler button pressed: \(newValue), \(vgcButtonPressed)")
 
             if buttonPressedChanged {
                 if let pressedChangedHandler = vgcPressedChangedHandler {
@@ -2259,7 +2271,7 @@ class VgcControllerAxisInput: GCControllerAxisInput {
     
     fileprivate var vgcGameController: VgcController?
     fileprivate var element: Element!
-    fileprivate var vgcCollection: AnyObject?
+    fileprivate var vgcCollection: VgcControllerDirectionPad?
     fileprivate var vgcValueChangedHandler: GCControllerAxisValueChangedHandler?
     
     init(vgcGameController: VgcController, element: Element) {
@@ -2270,7 +2282,7 @@ class VgcControllerAxisInput: GCControllerAxisInput {
         
     }
     
-    override var collection: GCControllerElement? { get { return (vgcCollection! as! GCControllerElement) } }
+    override var collection: GCControllerElement? { get { return (vgcCollection! as GCControllerElement) } }
     
     override var value: Float {
         get {
@@ -2281,7 +2293,6 @@ class VgcControllerAxisInput: GCControllerAxisInput {
             }
         }
         set {
-            
             if let handler = vgcValueChangedHandler {
                 (vgcGameController?.handlerQueue)!.async {
                     handler(self, newValue)
@@ -2332,7 +2343,7 @@ class VgcControllerDirectionPad: GCControllerDirectionPad {
         
     }
     
-    override var xAxis: VgcControllerAxisInput {
+    @objc override var xAxis: VgcControllerAxisInput {
         get {
             return vgcXAxis
         }
@@ -2345,7 +2356,7 @@ class VgcControllerDirectionPad: GCControllerDirectionPad {
         }
     }
     
-    override var yAxis: VgcControllerAxisInput {
+    @objc override var yAxis: VgcControllerAxisInput {
         get {
             return vgcYAxis
         }
@@ -2358,7 +2369,7 @@ class VgcControllerDirectionPad: GCControllerDirectionPad {
         }
     }
     
-    override var valueChangedHandler: GCControllerDirectionPadValueChangedHandler? {
+     @objc override var valueChangedHandler: GCControllerDirectionPadValueChangedHandler? {
         get {
             return vgcValueChangedHandler!
         }

@@ -18,12 +18,13 @@ import Foundation
 
 // Set deviceName in a platform specific way
 #if os(iOS) || os(tvOS)
-let deviceName = UIDevice.current.name
+//let deviceName = UIDevice.current.name
+let deviceName = VgcManager.uniqueServiceIdentifierString
     public let peripheralBackgroundColor = UIColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 #endif
 
 #if os(OSX)
-let deviceName = Host.current().localizedName!
+let deviceName = VgcManager.uniqueServiceIdentifierString
     public let peripheralBackgroundColor = NSColor(red: 0.76, green: 0.76, blue: 0.76, alpha: 1)
 #endif
 
@@ -59,7 +60,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         
         vgcLogDebug("Setting up NSNetService for browsing")
         
-        self.localService = NetService.init(domain: "local.", type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
+        self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: deviceName, port: 0)
         self.localService.delegate = self
         self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
         
@@ -107,7 +108,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             
         case .systemMessage:
             
-            let systemMessageType = SystemMessages(rawValue: Int(element.value as! NSNumber))
+            let systemMessageType = SystemMessages(rawValue: Int(truncating: element.value as! NSNumber))
             
             vgcLogDebug("Central sent system message: \(systemMessageType!.description) to \(connectedVgcService.fullName)")
             
@@ -150,7 +151,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             
         case .playerIndex:
 
-            let playerIndex = Int(element.value as! NSNumber)
+            let playerIndex = Int(truncating: element.value as! NSNumber)
             peripheral.playerIndex = GCControllerPlayerIndex(rawValue: playerIndex)!
             
             if deviceIsTypeOfBridge(){
@@ -207,7 +208,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         var outputStreamLarge: OutputStream!
         var outputStreamSmall: OutputStream!
         
-        if VgcManager.appRole == .Peripheral {
+        if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) {
             outputStreamLarge = self.outputStream[.largeData]
             outputStreamSmall = self.outputStream[.smallData]
         } else if deviceIsTypeOfBridge() {
@@ -230,7 +231,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         
         var outputStream: OutputStream!
         
-        if VgcManager.appRole == .Peripheral {
+        if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) {
             if element.dataType == .Data {
                 outputStream = self.outputStream[.largeData]
             } else {
@@ -278,7 +279,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         centralBrowser = NetServiceBrowser()
         centralBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
         centralBrowser.delegate = self
-        centralBrowser.searchForServices(ofType: VgcManager.bonjourTypeCentral, inDomain: "local")
+        centralBrowser.searchForServices(ofType: VgcManager.bonjourTypeCentral, inDomain: VgcManager.serviceDomain)
         
         // We only searches for bridges if we are not type bridge (bridges don't connect to bridges)
         if !deviceIsTypeOfBridge() {
@@ -286,7 +287,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             bridgeBrowser = NetServiceBrowser()
             bridgeBrowser.includesPeerToPeer = VgcManager.includesPeerToPeer
             bridgeBrowser.delegate = self
-            bridgeBrowser.searchForServices(ofType: VgcManager.bonjourTypeBridge, inDomain: "local")
+            bridgeBrowser.searchForServices(ofType: VgcManager.bonjourTypeBridge, inDomain: VgcManager.serviceDomain)
         }
     }
     
@@ -382,7 +383,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
     }
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        if (service == localService) {
+        if (service.name == localService.name) {
             vgcLogDebug("Ignoring service because it is our own: \(service.name)")
         } else {
             vgcLogDebug("Found service of type \(service.type) at \(service.name)")

@@ -21,15 +21,13 @@
 		2031E02D1C24A1B900EE5FCA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E02B1C24A1B900EE5FCA /* ViewController.swift */; };
 		2031E0341C24A22600EE5FCA /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2031E0331C24A21600EE5FCA /* VirtualGameController.framework */; };
 		2031E0351C24A22600EE5FCA /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2031E0331C24A21600EE5FCA /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2031E03C1C24A25100EE5FCA /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */; };
-		2031E03D1C24A25100EE5FCA /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */; };
-		2031E03E1C24A25100EE5FCA /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E03B1C24A25100EE5FCA /* VgcSharedViews.swift */; };
 		2031E0401C24A30900EE5FCA /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2031E03F1C24A30900EE5FCA /* Interface.storyboard */; };
 		2031E0421C24A37C00EE5FCA /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0411C24A37C00EE5FCA /* ElementRow.swift */; };
 		208E55871C24A4D10050D8AD /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; };
 		208E55881C24A4D10050D8AD /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		20A490501C3A00B000E66788 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */; };
-		20A490511C3A00B000E66788 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */; };
+		2095F8C01F79F170004CC770 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */; };
+		2095F8C11F79F170004CC770 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */; };
+		2095F8C71F79F1BA004CC770 /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,12 +142,13 @@
 		2031E02A1C24A1B900EE5FCA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2031E02B1C24A1B900EE5FCA /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2031E02E1C24A21500EE5FCA /* VirtualGameControllerIOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerIOS.xcodeproj; path = "../../../Framework Projects/VirtualGameControllerIOS/VirtualGameControllerIOS.xcodeproj"; sourceTree = "<group>"; };
-		2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
-		2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
-		2031E03B1C24A25100EE5FCA /* VgcSharedViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2031E03F1C24A30900EE5FCA /* Interface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Interface.storyboard; sourceTree = "<group>"; };
 		2031E0411C24A37C00EE5FCA /* ElementRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
 		208E55811C24A4730050D8AD /* VirtualGameControllerWatchOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerWatchOS.xcodeproj; path = "../../../Framework Projects/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj"; sourceTree = "<group>"; };
+		2095F89B1F79EF4A004CC770 /* Peripheral_iOS WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Peripheral_iOS WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
+		2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
+		2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,14 +197,15 @@
 				2031E02E1C24A21500EE5FCA /* VirtualGameControllerIOS.xcodeproj */,
 				2031E02A1C24A1B900EE5FCA /* AppDelegate.swift */,
 				2031E02B1C24A1B900EE5FCA /* ViewController.swift */,
-				2031E0391C24A25100EE5FCA /* VgcCustomElements.swift */,
-				2031E03A1C24A25100EE5FCA /* VgcCustomMappings.swift */,
+				2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */,
+				2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */,
+				2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */,
 				2031DFF21C24A19000EE5FCA /* Main.storyboard */,
-				2031E03B1C24A25100EE5FCA /* VgcSharedViews.swift */,
 				2031DFF51C24A19000EE5FCA /* Assets.xcassets */,
 				2031DFF71C24A19000EE5FCA /* LaunchScreen.storyboard */,
 				2031DFFA1C24A19000EE5FCA /* Info.plist */,
 				2031E0291C24A1B800EE5FCA /* Peripheral_iOS-Bridging-Header.h */,
+				2095F89B1F79EF4A004CC770 /* Peripheral_iOS WatchKit App-Bridging-Header.h */,
 			);
 			path = Peripheral_iOS;
 			sourceTree = "<group>";
@@ -326,7 +326,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Rob Reuss";
 				TargetAttributes = {
 					2031DFEA1C24A19000EE5FCA = {
@@ -337,12 +337,12 @@
 					2031DFFC1C24A19100EE5FCA = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = CN7G7TCUME;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 					};
 					2031E00B1C24A19100EE5FCA = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = CN7G7TCUME;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -428,11 +428,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2031E03D1C24A25100EE5FCA /* VgcCustomMappings.swift in Sources */,
-				2031E03E1C24A25100EE5FCA /* VgcSharedViews.swift in Sources */,
+				2095F8C11F79F170004CC770 /* VgcCustomMappings.swift in Sources */,
+				2095F8C71F79F1BA004CC770 /* VgcSharedViews.swift in Sources */,
 				2031E02D1C24A1B900EE5FCA /* ViewController.swift in Sources */,
 				2031E02C1C24A1B900EE5FCA /* AppDelegate.swift in Sources */,
-				2031E03C1C24A25100EE5FCA /* VgcCustomElements.swift in Sources */,
+				2095F8C01F79F170004CC770 /* VgcCustomElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,8 +442,6 @@
 			files = (
 				2031E0181C24A19100EE5FCA /* NotificationController.swift in Sources */,
 				2031E0421C24A37C00EE5FCA /* ElementRow.swift in Sources */,
-				20A490501C3A00B000E66788 /* VgcCustomElements.swift in Sources */,
-				20A490511C3A00B000E66788 /* VgcCustomMappings.swift in Sources */,
 				2031E0161C24A19100EE5FCA /* ExtensionDelegate.swift in Sources */,
 				2031E0141C24A19100EE5FCA /* InterfaceController.swift in Sources */,
 			);
@@ -502,14 +500,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -549,14 +553,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -593,7 +603,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -610,7 +620,7 @@
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
 			};
@@ -621,13 +631,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				IBSC_MODULE = Peripheral_iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "Peripheral_iOS WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Peripheral_iOS/Peripheral_iOS WatchKit App-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
@@ -639,13 +653,16 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				IBSC_MODULE = Peripheral_iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "Peripheral_iOS WatchKit App/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Peripheral_iOS/Peripheral_iOS WatchKit App-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.1;
@@ -660,12 +677,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = Peripheral_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Peripheral_iOS/Peripheral_iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -677,12 +695,13 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = Peripheral_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DRelease";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Peripheral_iOS/Peripheral_iOS-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

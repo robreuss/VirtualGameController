@@ -24,7 +24,20 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
+        VgcManager.loggerLogLevel = .Debug
+        
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
+
+        VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true, enableLocalController: false)
+        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true, enableLocalController: true)
+        
+        // Must be turned ON on both ends (Peripheral and Central) because it effects the size of data headers
+        VgcManager.netServiceLatencyLogging = false
+        
+        VgcManager.performanceSamplingDisplayFrequency = 10
+        
+        VgcManager.peripheral.browseForServices()
         
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -67,7 +80,7 @@ class GameViewController: UIViewController {
         scnView.scene = scene
         
         // allows the user to manipulate the camera
-        scnView.allowsCameraControl = true
+        scnView.allowsCameraControl = false
         
         // show statistics such as fps and timing information
         scnView.showsStatistics = true
@@ -84,6 +97,40 @@ class GameViewController: UIViewController {
         sharedCode.setup(ship: ship, lightNode: lightNode, cameraNode: cameraNode)
  
         //scnView.delegate = sharedCode
+    }
+    
+    // Auto-connect to opposite device, for testing scenarios where both devices
+    // act as both Peripheral and Central.
+    /*
+    @objc func foundService(_ notification: Notification) {
+        let vgcService = notification.object as! VgcService
+        VgcManager.peripheral.connectToService(vgcService)
+    }
+ */
+    
+    @objc func peripheralDidConnect(_ notification: Notification) {
+
+        #if !os(tvOS)
+            
+             vgcLogDebug("Got VgcPeripheralDidConnectNotification notification")
+            VgcManager.peripheral.stopBrowsingForServices()
+            VgcManager.peripheral.motion.enableAttitude = true
+            VgcManager.peripheral.motion.enableUserAcceleration = false
+            VgcManager.peripheral.motion.enableGravity = false
+            VgcManager.peripheral.motion.enableRotationRate = false
+            VgcManager.peripheral.motion.start()
+            
+            if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
+                
+                // We're mimicing the Apple TV remote here, which starts with motion turned on
+                VgcManager.peripheral.motion.enableAttitude = false
+                VgcManager.peripheral.motion.enableUserAcceleration = true
+                VgcManager.peripheral.motion.enableGravity = true
+                VgcManager.peripheral.motion.enableRotationRate = false
+                VgcManager.peripheral.motion.start()
+            }
+        #endif
+        
     }
     
 }

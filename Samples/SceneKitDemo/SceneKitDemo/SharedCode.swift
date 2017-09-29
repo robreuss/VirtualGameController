@@ -84,17 +84,17 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         if newController.isHardwareController { return }
         
         if newController.deviceInfo.controllerType == .MFiHardware { return }
-        
+        /*
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         
         // Turn on motion to demonstrate that
         VgcManager.peripheralSetup.motionActive = false
         VgcManager.peripheralSetup.enableMotionAttitude = true
-        VgcManager.peripheralSetup.enableMotionGravity = true
+        VgcManager.peripheralSetup.enableMotionGravity = false
         VgcManager.peripheralSetup.enableMotionUserAcceleration = false
         VgcManager.peripheralSetup.enableMotionRotationRate = false
         VgcManager.peripheralSetup.sendToController(newController)
-        
+        */
         // Dpad adjusts lighting position
         
         #if os(iOS) || os(tvOS)
@@ -203,61 +203,11 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             let z = -(input.attitude.y) * amplify
 
             self.ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
-            
-            //ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat(x) * 4.0, CGFloat(y) * 4.0, CGFloat(z) * 4.0), duration: 0.3))
-            // The following will give the ship a bit of "float" that relates to the up/down motion of the iOS device.
-            
-            // Disable the following if you want to focus on using the on-screen device input controls instead of motion input.
-            // If this section is not disabled, and you use the onscreen input controls, the two will "fight" over control
-            // and create hurky jerky motion.
-            
-            /*
-            var xValue = CGFloat(input.gravity.x)
-            var yValue = CGFloat(input.userAcceleration.y)
-            
-            xValue = xValue + (xValue * 3.0)
-            yValue = yValue - (yValue * 20.0)
-            
-            ship.runAction(SCNAction.moveTo(SCNVector3.init(xValue, yValue, CGFloat( ship.position.z)), duration: 1.6))
-            */
         }
-        /*
-        // Refresh on all motion changes
-        controller.motion?.valueChangedHandler = { (input: VgcMotion) in
-        
-        let amplify = 2.75
-        
-        // Invert these because we want to be able to have the ship display in a way
-        // that mirrors the position of the iOS device
-        let x = -(input.attitude.x) * amplify
-        let y = -(input.attitude.z) * amplify
-        let z = -(input.attitude.y) * amplify
-        
-        ship.runAction(SCNAction.repeatAction(SCNAction.rotateToX(CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
-        
-        //ship.runAction(SCNAction.moveTo(SCNVector3.init(CGFloat(x) * 4.0, CGFloat(y) * 4.0, CGFloat(z) * 4.0), duration: 0.3))
-        // The following will give the ship a bit of "float" that relates to the up/down motion of the iOS device.
-        
-        // Disable the following if you want to focus on using the on-screen device input controls instead of motion input.
-        // If this section is not disabled, and you use the onscreen input controls, the two will "fight" over control
-        // and create hurky jerky motion.
-        
-        /*
-        var xValue = CGFloat(input.gravity.x)
-        var yValue = CGFloat(input.userAcceleration.y)
-        
-        xValue = xValue + (xValue * 3.0)
-        yValue = yValue - (yValue * 20.0)
-        
-        ship.runAction(SCNAction.moveTo(SCNVector3.init(xValue, yValue, CGFloat( ship.position.z)), duration: 1.6))
-        */
-        }
-        */
-        
         
     }
     
-    @objc func controllerDidDisconnect(notification: NSNotification) {
+        func controllerDidDisconnect(notification: NSNotification) {
         
         //guard let controller: VgcController = notification.object as? VgcController else { return }
         

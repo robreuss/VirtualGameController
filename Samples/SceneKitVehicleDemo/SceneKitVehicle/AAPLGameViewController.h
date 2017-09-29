@@ -13,6 +13,6 @@
 #import <SpriteKit/SpriteKit.h>
 #import <SceneKit/SceneKit.h>
 
-@interface AAPLGameViewController : UIViewController <SCNSceneRendererDelegate>
+@interface AAPLGameViewController : UIViewController <SCNSceneRendererDelegate, SCNPhysicsContactDelegate>
 
 @end

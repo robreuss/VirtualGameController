@@ -64,8 +64,16 @@
     return NO;
 }
 
+- (void)physicsWorld:(SCNPhysicsWorld *)world didBeginContact:(SCNPhysicsContact *)contact
+{
+    VgcController  * myController = [[VgcController controllers] firstObject];
+    [myController vibrateDevice];
+}
+
 - (void)setupEnvironment:(SCNScene *)scene
 {
+    scene.physicsWorld.contactDelegate = self;
+    
     // add an ambient light
     SCNNode *ambientLight = [SCNNode node];
     ambientLight.light = [SCNLight light];
@@ -644,6 +652,8 @@
         SCNMaterial * material = floor.geometry.firstMaterial;
         material.diffuse.contents = image;
 
+        //VgcController  * myController = [[VgcController controllers] firstObject];
+        [vgcController vibrateDevice];
     }];
     
     [controller.extendedGamepad.leftShoulder setValueChangedHandler:^(GCControllerButtonInput * button, float value, BOOL pressed) {
@@ -681,12 +691,12 @@
      */
     
     //_orientation = motion.attitude.y*3;
-    _orientation = motion.attitude.x*2;
+    _orientation = -(motion.attitude.x)*1.5;
     
     [self reorientCarIfNeeded];
     
-    [_vehicle applyEngineForce:motion.attitude.y * 700 forWheelAtIndex:2];
-    [_vehicle applyEngineForce:motion.attitude.y * 700 forWheelAtIndex:3];
+    [_vehicle applyEngineForce:-(motion.attitude.y) * 700 forWheelAtIndex:2];
+    [_vehicle applyEngineForce:-(motion.attitude.y) * 700 forWheelAtIndex:3];
     
     //[_vehicle applyBrakingForce:motion.attitude.z * 3 forWheelAtIndex:2];
     //[_vehicle applyBrakingForce:motion.attitude.z * 3 forWheelAtIndex:3];

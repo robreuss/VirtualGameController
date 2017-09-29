@@ -22,6 +22,14 @@ class GameViewController: NSViewController {
     
     override func awakeFromNib(){
         
+        // Use a compiler flag to control the logging level, dropping it to just errors if this
+        // is a release build.
+        #if Release
+            VgcManager.loggerLogLevel = .Error // Minimal logging
+        #else
+            VgcManager.loggerLogLevel = .Debug // Robust logging
+        #endif
+        
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings())
         
         // create a new scene

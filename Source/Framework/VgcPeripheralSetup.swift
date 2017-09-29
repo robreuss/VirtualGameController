@@ -17,7 +17,7 @@ import UIKit
 
 #if !os(watchOS)
 
-open class VgcPeripheralSetup: NSObject {
+open class VgcPeripheralSetup: NSObject, NSCoding {
     
     open var profileType: ProfileType!
     open var motionActive = false
@@ -29,7 +29,7 @@ open class VgcPeripheralSetup: NSObject {
     /*
     public var motionActive: Bool! {
         didSet {
-            if VgcManager.appRole == .Peripheral {
+            if (VgcManager.appRole == .Peripheral || appRole == .MultiplayerPeer) {
                 if self.motionActive == true {
                     VgcManager.peripheral.motion.start()
                 } else {
@@ -71,6 +71,7 @@ open class VgcPeripheralSetup: NSObject {
     }
 #endif
     
+
 required convenience public init(coder decoder: NSCoder) {
     
     self.init()
@@ -111,8 +112,8 @@ required convenience public init(coder decoder: NSCoder) {
     }
     
     // Test
-    
-    open func encodeWithCoder(_ coder: NSCoder) {
+
+    open func encode(with coder: NSCoder) {
         
         coder.encode(self.profileType.rawValue, forKey: "profileType")
         coder.encode(self.backgroundColor, forKey: "backgroundColor")
@@ -124,6 +125,7 @@ required convenience public init(coder decoder: NSCoder) {
     }
     
     // A copy of the deviceInfo object is made when forwarding it through a Bridge.
+    //func copy(with zone: NSZone? = nil) -> Any {
     func copyWithZone(_ zone: NSZone?) -> AnyObject {
         let copy = VgcPeripheralSetup(profileType: profileType, backgroundColor: backgroundColor)
         return copy
@@ -142,7 +144,7 @@ required convenience public init(coder decoder: NSCoder) {
         NSKeyedArchiver.setClassName("VgcPeripheralSetup", for: VgcPeripheralSetup.self)
         let element = VgcManager.elements.peripheralSetup
         element.value = NSKeyedArchiver.archivedData(withRootObject: self) as AnyObject
-       controller.sendElementStateToPeripheral(element)
+        controller.sendElementStateToPeripheral(element)
     }
     
     

@@ -10,6 +10,7 @@ import GameController
 import VirtualGameController
 //import <AudioToolbox/AudioServices.h>
 import AudioToolbox
+import CoreMotion
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -22,8 +23,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidConnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidConnectNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidDisconnectNotification), object: nil)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(self.localControllerDidConnect(_:)), name: NSNotification.Name(rawValue: VgcLocalControllerDidConnectNotification), object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(self.localControllerDidDisconnect), name: NSNotification.Name(rawValue: VgcLocalControllerDidDisonnectNotification), object: nil)
         
-        // Use a compiler flag to control the logging level, dropping it to just errors if this
+         // Use a compiler flag to control the logging level, dropping it to just errors if this
         // is a release build.
         #if Release
         VgcManager.loggerLogLevel = .Error // Minimal logging
@@ -33,10 +37,22 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         VgcManager.loggerUseNSLog = true
         
-        //VgcManager.netServiceLatencyLogging = true
+        // Must be turned ON on both ends (Peripheral and Central) because it effects the size of data headers
+        VgcManager.netServiceLatencyLogging = false
         
-        // Initialize Peripheral
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
+        // Network performance info
+        VgcManager.performanceSamplingDisplayFrequency = 10.0
+ 
+        // Publishes the CENTRAL service in case we want to operate as both
+        // When running as both, central service must be started FIRST
+        //VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
+        
+        // Run as a PERIPHERAL
+        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false)
+        
+        // Run in LOCAL mode so that the device also sends controller data to itself, so it is both running the game and forwarding control
+        // activity to another device
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
 
         // Set peripheral device info
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
@@ -63,17 +79,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
         
-        VgcManager.includesPeerToPeer = false
-        
         VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = false
-        VgcManager.peripheral.motion.enableRotationRate = false
-        VgcManager.peripheral.motion.enableUserAcceleration = false
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
+        VgcManager.peripheral.motion.enableUserAcceleration = true
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
+
+        
+        // Skip sending float values if they are the same as the preceding value
+        VgcManager.enableDupFiltering = false
+        VgcManager.dupFilteringPrecision = 3
         
         if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.DebugViewTap.rawValue) {
        
@@ -152,7 +171,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         imagePicker.dismiss(animated: true) { () -> Void in
             
@@ -254,12 +273,49 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         }
     }
+    
+    
+    @objc func localControllerDidConnect(_ notification: Notification) {
+        
+        guard let controller: VgcController = notification.object as? VgcController else { return }
 
+        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+            
+            print("LOCAL HANDLER: Global handler fired, Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)")
+            
+        }
+        
+        // Refresh on all extended gamepad changes (Global handler)
+        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+            
+            print("LOCAL HANDLER: Profile level (Extended), Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)  ")
+            
+        }
+        
+        controller.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { (thumbstick, value) in
+            
+            
+            print("LOCAL HANDLER: Left thumbstick xAxis: \(value)  \(thumbstick.value)")
+            
+        }
+        
+        controller.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
+            
+            print("LOCAL HANDLER: Left Thumbstick: \(xValue), \(yValue)")
+            
+        }
+
+
+        
+    }
+    
+    
     @objc func peripheralDidConnect(_ notification: Notification) {
         
         vgcLogDebug("Got VgcPeripheralDidConnectNotification notification")
         VgcManager.peripheral.stopBrowsingForServices()
         
+
         #if !os(tvOS)
             if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
                 
@@ -271,6 +327,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 VgcManager.peripheral.motion.start()
             }
         #endif
+        
+            // Data load testing
+        /*
+        Timer.scheduledTimer(withTimeInterval: 0.016666, repeats: true, block: { (Timer) in
+            VgcManager.elements.rightTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
+            
+            VgcManager.elements.leftTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.leftTrigger)
+            
+            VgcManager.elements.rightShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.rightShoulder)
+            
+            VgcManager.elements.leftShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.leftShoulder)
+            
+
+            VgcManager.elements.dpadXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.dpadXAxis)
+            
+            VgcManager.elements.dpadYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.dpadYAxis)
+            
+            VgcManager.elements.leftThumbstickXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickXAxis)
+            
+            VgcManager.elements.leftThumbstickYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickYAxis)
+
+        })
+ */
+        
         
     }
     

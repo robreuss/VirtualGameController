@@ -93,16 +93,7 @@
       location = "container:"
       name = "Sample Projects">
       <FileRef
-         location = "group:Samples/SceneKitVehicleDemo/SceneKitVehicle.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/ObjectiveC_iOS/ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Bridge_iOS/Bridge_iOS.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Samples/Central_iOS/Central_iOS.xcodeproj">
@@ -111,13 +102,25 @@
          location = "group:Samples/Central_tvOS/Central_tvOS.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Samples/SceneKitDemo/SceneKitDemo.xcodeproj">
+         location = "group:Samples/Peripheral_OSX/Peripheral_OSX.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Samples/Central_OSX/Central_OSX.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Samples/Peripheral_OSX/Peripheral_OSX.xcodeproj">
+         location = "group:Samples/Bridge_iOS/Bridge_iOS.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Samples/ObjectiveC_iOS/ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/robreuss/Downloads/Fox2SceneKitWWDC2017samplecode-2/Swift/Fox2.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Samples/SceneKitVehicleDemo/SceneKitVehicle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Samples/SceneKitDemo/SceneKitDemo.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>

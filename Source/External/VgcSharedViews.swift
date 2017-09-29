@@ -365,7 +365,7 @@ var peripheralManager = VgcManager.peripheral
         
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         
         keyboardTextField.resignFirstResponder()
         UIView.animate(withDuration: animationSpeed, delay: 0.0, options: .curveEaseIn, animations: {
@@ -374,7 +374,7 @@ var peripheralManager = VgcManager.peripheral
         })
     }
     
-    func textFieldDidChange(_ sender: AnyObject) {
+    @objc func textFieldDidChange(_ sender: AnyObject) {
         
         if VgcManager.iCadeControllerMode != .Disabled {
             
@@ -400,7 +400,7 @@ var peripheralManager = VgcManager.peripheral
     }
     
     #if !(os(tvOS))
-    func motionSwitchDidChange(_ sender:UISwitch!) {
+    @objc func motionSwitchDidChange(_ sender:UISwitch!) {
         
         vgcLogDebug("User modified motion switch: \(sender.isOn)")
         
@@ -952,7 +952,7 @@ open class ElementDebugView: UIView {
     // Central debug view to send a message to one or all Peripherals.
     // Use of a custom element is demonstrated; both standard and custom
     // are supported.
-    open func receivedDebugViewTap() {
+    @objc open func receivedDebugViewTap() {
 
         // Test vibrate using standard system element
         controller.vibrateDevice()
@@ -965,7 +965,7 @@ open class ElementDebugView: UIView {
         */
     }
     
-    open func receivedDebugViewDoubleTap() {
+    @objc open func receivedDebugViewDoubleTap() {
         
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
         let imageData = UIImageJPEGRepresentation(UIImage(named: "digit.jpg")!, 1.0)
@@ -1028,6 +1028,7 @@ open class ElementDebugView: UIView {
                     //if element.dataType == .String && (value as! NSObject) as! NSNumber == 0 { value = "" as AnyObject }
                 } else if keypath != "" {
                     value = controller.value(forKeyPath: keypath)! as AnyObject
+
                 } else {
                     value = "" as AnyObject
                 }

@@ -9,28 +9,30 @@
 
 ## Features
 
-- Wraps Apple's *GameController* framework API (GCController)
-- Create software-based controllers (that use the MFi profiles)
-- Controller forwarding
-- Bidirectional communication between software-based controllers and game, including larger files such as images represented as NSData (on a seperate channel)
-- Device motion support
-- Custom controller elements
-- Custom element mapping
-- WiFi-based, with Bluetooth fallback
-- Works with Apple TV Simulator
-- Unlimited number of hardware controllers on Apple TV (using controller forwarding)
-- Ability to enhance inexpensive slide-on/form-fitting controllers with motion, extended profile elements and custom elements
-- iCade controller support (mapped through the MFi profiles so they appear as MFi hardware)
-- Easy-to-implement 3d touch on software controllers
-- Leverage on-screen and Bluetooth keyboards using software controllers (including with Apple TV)
-- Support for snapshots (compatible with Apple's snapshot format)
-- Swift 2.1 or Objective C
-- Framework-based
+- **Wraps Apple's *GameController* framework API (GCController)**
+- **Create software-based controllers** (that use the MFi profiles)
+- **Supports using the MFi interface in "local" mode** (so a software-based controller can control both gameplay on the device it is running on, while forwarding controller activity to another device)
+- **Ability for a device to run as both a Central and Peripheral** (which enables multiplayer games where each device is both running the game and forwarding controller activity to another device running the game, including **ARKit multiplayer games**).  See **Multiplayer Implemention including ARKit** below for more information on how to do this.
+- **Controller forwarding** (where a controller "in the middle" can receive contoller data and forward it to a Central on which a game is running)
+- **Simple bidirectional communication** between software-based controllers (Peripheral) and game (Central), including larger files such as images represented as NSData (on a seperate channel)
+- **Device motion support**
+- **Custom elements**
+- **Custom element mapping** (making it easy to have setup multiple controller inputs to have the same effects in the game)
+- **WiFi-based, with Bluetooth fallback**
+- **Works with Apple TV Simulator**
+- **Unlimited number of hardware controllers on Apple TV** (using controller forwarding)
+- **Ability to enhance inexpensive slide-on/form-fitting controllers** with motion, extended profile elements and custom elements
+- **iCade controller support** (mapped through the MFi profiles so they appear as MFi hardware)
+- Easy-to-implement **3d touch** on software controllers
+- Leverage **on-screen and Bluetooth keyboards** using software controllers (including with Apple TV)
+- **Support for snapshots** (compatible with Apple's snapshot format)
+- **Swift 4.0 or Objective C**
+- **Framework-based**
 
 ## Requirements 
 
 - iOS 9.0+ / Mac OS X 10.9+
-- Xcode 7 / Swift 2.0 / Objective C
+- Xcode 9 / Swift 4.0 / Objective C
 
 ## Platform Support
 
@@ -40,10 +42,11 @@
 - watchOS
 
 ## Some Use Cases
-**VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing games, provide protection in case you need to revert to using Apple's framework, and allow for features that go beyond _Game Controller_ but use the MFi profiles.  A single game-side implementation can work with a wide range of controller scenarios.  **VirtualGameController** may be useful for you in the following cases:
+**VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing games, allow easy reversion to using Apple's framework, and allow for features that go beyond _Game Controller_ but use the MFi profiles.  A single game-side implementation can work with a wide range of controller scenarios.  **VirtualGameController** may be useful for you in the following cases:
 
 - **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.  
 - **Creating a hybrid hardware/software controller using controller forwarding.**  Apple described a feature called "controller forwarding" in a session at WWDC in 2014 (at around _29:00_, [https://developer.apple.com/videos/play/wwdc2014-611/](https://developer.apple.com/videos/play/wwdc2014-611/)) but as far as I know the feature never emerged. *VirtualGameController* supports controller forwarding in roughly the form described in the session, enabling you to enhance form-fitting hardware controllers with a full profile and motion input.
+- **Creating multiplayer games** (for example, using **ARKit**) where all controller activity is passed to all devices (including the local device), allowing for a synchronized version of the game to run on all devices.
 - **Supporting large numbers of controllers for social games.**  There are no imposed limits on the number of hardware or software controllers that can be used with a game.  The two third-party controller limit on the Apple TV can be exceeded using controller forwarding (bridging), hybrid controllers and software-based controllers. 
 - **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of dictation is demonstrated in the sample projects.
 
@@ -108,7 +111,7 @@ VirtualGameController is a wrapper around Apple's Game Controller framework, and
 Note that in the following example, no custom elements or custom mappings are being set.  See elsewhere in this document for a discussion of how those are handled (or see the sample projects). 
 
 ``` swift
- VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
+VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
 ```
 
 The parameter `appIdentifier` is for use with Bonjour and should be a short, unique identifier for your app.
@@ -116,11 +119,13 @@ The parameter `appIdentifier` is for use with Bonjour and should be a short, uni
 A simplified form is available if custom mapping and custom elements are not used:
 
 ``` swift
-VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", includesPeerToPeer: true)
+VgcManager.startAs(.Peripheral, appIdentifier: "MyAppID", includesPeerToPeer: false)
 ```
 Documentation of the custom mapping and custom elements functionality is coming soon, although the combination of the sample projects and class files are probably enough for you to get going.
 
-The `includesPeerToPeer` parameter is passed through to NSNetServices.  It provides the functionality for connectivity to fallback to Bluetooth or WiFi peer-to-peer.  See the NSNetServices documentation for more information.
+The `includesPeerToPeer` parameter is passed through to NSNetServices.  It provides the functionality for connectivity to fallback to Bluetooth or WiFi peer-to-peer.  It should be noted that if you plan to only support WiFi, it should be set to false because it has a negative performance impact even when running on WiFi.  See the NSNetServices documentation for more information.
+
+The `enableLocalController` parameter supports utilizing the VGC interface as a common interface to triggering game activity in response to controller input on both the local implementation of a game and a remote implementation of the same game (on a Central).   It is used as a part of a multiplayer implementation.  The functionality allows you to define local handlers in the same way as you define them on the Central.  This functionality will still be active even when not connected to a Central.  See Multiplayer Implementation below for more information.
 
 After calling the `startAs` method, the Peripheral may be defined by setting it's `deviceInfo` property.  Doing so is not required as the defaults (shown here) should suffice for most purposes.
 
@@ -132,7 +137,7 @@ Pass an empty string to `deviceUID` to have it be created by the system using `N
 
 Pass an empty string to `vendorName` and the device network name will be used to identify the Peripheral.  
 
-####Finding Central Services
+#### Finding Central Services
 
 Begin the search for Bridges and Centrals:
 
@@ -155,7 +160,7 @@ In the simplest implementation, you'll be connecting to the first Central servic
 
 If you choose to implement a more complex scenario, where you have multiple Peripherals that connect to either a Bridge or Central, the combination of the above methods and notifications should have you covered.  The sample projects implement this type of flexible scenario.
         
-####Connecting to and Disconnecting from a Central
+#### Connecting to and Disconnecting from a Central
 Once a reference to a service (either a Central or Bridge) is obtained, it is passed to the following method:
 
 ``` swift
@@ -175,7 +180,7 @@ NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidC
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "peripheralDidDisconnect:", name: VgcPeripheralDidDisconnectNotification, object: nil)
 ```
 
-####Sending Values to a Central
+#### Sending Values to a Central
 An Element class is provided, each instance of which represents a hardware or software controller element.  Sets of elements are made available for each supported profile (Micro Gamepad, Gamepad, Extended Gamepad and Motion).  To send a value to the Central, the value property of the appropriate Element object is set, and the element is passed to the `sendElementState` method.
 
 ``` swift
@@ -184,14 +189,14 @@ leftShoulder.value = 1.0
 VgcManager.peripheral.sendElementState(leftShoulder)
 ```
 
-####Player Index
+#### Player Index
 When a Central assigns a player index, it triggers the following notification which carries the new player index value as a payload:
 
 ``` swift
 NSNotificationCenter.defaultCenter().addObserver(self, selector: "receivedPlayerIndex:", name: VgcNewPlayerIndexNotification, object: nil)
 ```
 
-####Device Motion
+#### Device Motion
 Support for motion updates is contingent on Core Motion support for a given platform (for example, it is not supported on OS X).  The framework should detect it if an attempt is made to start motion updates on an unsupported platform.
 
 Key methods that should be self-explanatory:
@@ -213,8 +218,11 @@ VgcManager.peripheral.motion.enableLowPassFilter = true
 
 It is important for performance reasons to reduce updateInterval as much as you can, and to disable motion inputs that are not used in your game.
 
+#### Local Controller Behavior
+
+
 ## Game Integration (Central)
-####GCController Replacement
+#### GCController Replacement
 **VirtualGameController** is designed to be a drop-in replacement for the Apple framework **GameController** (although both frameworks should be included because some **GameController** header references are required):
 
 ``` swift
@@ -246,14 +254,14 @@ If you wish to test integration of the framework, it is proven to work with the 
 
 For in-depth instructions on using DemoBots as a test, see the [Wiki article](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots), which also provide helpful hints on integrating VirtualGameController with your existing project.
 
-####Central versus Bridge
+#### Central versus Bridge
 There are two types of Central app integrations and which result in dramatically different: **Central** and **Bridge**.
 
 A **Central** is exactly what you expect in terms of game integration: your Central is your game and there should only be one implemented at a time.  
 
 A **Bridge** combines the behavior of a Central and a Peripheral; it is a Peripheral in relation to your Central, and it is a Central in relation to your Peripheral(s).  Another name for it would be a *controller forwarder*, because it's primary function is to forward/relay values sent by one or more Peripherals to the Central.  The Peripheral could be a MFi hardware controller, an iCade hardware controller, an *Apple Watch* or a software-based virtual controller (assuming the Bridge is deployed on an iPhone paired to the watch).  If the bridge is implemented on a device with device motion support (an iOS device) the Bridge can extend the capabilities of a Peripheral to include motion support.  For example, a MFi or iCade controller can appear to the Central to implement the motion profile.  
 
-####Extended Functionality
+#### Extended Functionality
 There are a few features supported by a Central that exceed the capabilities of the Apple *GameController* framework:
 
 - [Custom Elements](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements)
@@ -262,7 +270,7 @@ There are a few features supported by a Central that exceed the capabilities of 
 
 
 
-####Other
+#### Other
 There is a method provided on instances of VgcController called ````controller.vibrateDevice```` that will vibrate an iPhone, and if a watch app is integrated with that phone, the vibrate request will be forwarded to the watch as well, resulting in haptic feedback (wrist click).
 
 ## Integrating the Apple Watch
@@ -308,7 +316,7 @@ VgcManager.peripheral.sendElementState(element)
 ````
 
 
-####Sending Values to the Watch
+#### Sending Values to the Watch
 To send a value to a watch from your Peripheral iOS app, you can use the following method:
 
 ````swift
@@ -316,7 +324,7 @@ VgcManager.peripheral.watch.sendElementState(element)
 
 ````
 
-####Receiving Values on the Watch
+#### Receiving Values on the Watch
 If a watch is paired with your iPhone iOS app, values received by the iOS app from a Central will be forwarded to the watch, and you can react to those values by setting a valueChangedHandler on your watchConnectivity instance:
 
 ````swift
@@ -334,24 +342,26 @@ You can send motion values from the watch, but please note that the performance 
 watchConnectivity.motion.start()
 watchConnectivity.motion.stop()
 ````
-
-##Custom Elements
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
-
-##Custom Mappings
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
-
-##Bidirectional Communication
+## Multiplayer Implementation including ARKit
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bidirectional-Communication).
 
-##Objective C Support
+## Custom Elements
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).
+
+## Custom Mappings
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Mappings).
+
+## Bidirectional Communication
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bidirectional-Communication).
+
+## Objective C Support
 See the Objective C sample project along with the [wiki page](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C).
 
-##iCade Controller Support
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
-##Contact and Support
+## iCade Controller Support
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).  
+## Contact and Support
 Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.  
-##License
+## License
 The MIT License (MIT)
 
 Copyright (c) [2015] [Rob Reuss]

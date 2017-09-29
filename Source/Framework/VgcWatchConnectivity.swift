@@ -15,19 +15,19 @@ import WatchConnectivity
         
 
 
-    public let elements = Elements()
-    var session: WCSession!
-    var httpSession: URLSession!
-    public var motion: VgcMotionManager!
+    @objc public let elements = Elements()
+    @objc var session: WCSession!
+    @objc var httpSession: URLSession!
+    @objc public var motion: VgcMotionManager!
     
     public typealias VgcValueChangedHandler = (Element) -> Void
-    public var valueChangedHandler: VgcValueChangedHandler!
+    @objc public var valueChangedHandler: VgcValueChangedHandler!
     
     public override init() {
       
         super.init()
         
-        session =  WCSession.default()
+        session =  WCSession.default
         session.delegate = self
         session.activate()
         
@@ -42,7 +42,7 @@ import WatchConnectivity
         
     }
     
-    public func sendElementState(element: Element) {
+    @objc public func sendElementState(element: Element) {
         
         if session.isReachable {
             let message = ["\(element.identifier)": element.value]

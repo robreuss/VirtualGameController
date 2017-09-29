@@ -35,7 +35,7 @@ public enum SystemMessages: Int, CustomStringConvertible {
 
 // The type of data that will be sent for a given
 // element.
-public enum ElementDataType: Int {
+@objc public enum ElementDataType: Int {
     
     case Int
     case Float
@@ -138,16 +138,16 @@ let headerIdentifierAsNSData = Data(bytes: &VgcManager.headerIdentifier, count: 
 ///
 open class Element: NSObject {
     
-    open var type: ElementType
-    open var dataType: ElementDataType
+    @objc open var type: ElementType
+    @objc open var dataType: ElementDataType
     
-    open var name: String
-    open var value: AnyObject
-    open var getterKeypath: String
-    open var setterKeypath: String
+    @objc open var name: String
+    @objc open var value: AnyObject
+    @objc open var getterKeypath: String
+    @objc open var setterKeypath: String
     
     /// Automatically clear out value after transfering
-    open var clearValueAfterTransfer: Bool = false
+    @objc open var clearValueAfterTransfer: Bool = false
     
     // Unique identifier is based on the element type
     open var identifier: Int!
@@ -155,11 +155,11 @@ open class Element: NSObject {
     // Used only for custom elements
     #if !os(watchOS)
     public typealias VgcCustomElementValueChangedHandler = (VgcController, Element) -> Void
-    open var valueChangedHandler: VgcCustomElementValueChangedHandler!
+    @objc open var valueChangedHandler: VgcCustomElementValueChangedHandler!
     #endif
     
     public typealias VgcCustomProfileValueChangedHandlerForPeripheral = (Element) -> Void
-    open var valueChangedHandlerForPeripheral: VgcCustomProfileValueChangedHandlerForPeripheral!
+    @objc open var valueChangedHandlerForPeripheral: VgcCustomProfileValueChangedHandlerForPeripheral!
     
     // Used as a flag when peripheral-side mapping one element to another, to prevent recursion
     var mappingComplete: Bool!
@@ -173,7 +173,7 @@ open class Element: NSObject {
     #endif
     
     // Init for a standard (not custom) element
-    public init(type: ElementType, dataType: ElementDataType,  name: String, getterKeypath: String, setterKeypath: String) {
+    @objc public init(type: ElementType, dataType: ElementDataType,  name: String, getterKeypath: String, setterKeypath: String) {
         
         self.type = type
         self.dataType = dataType
@@ -187,7 +187,7 @@ open class Element: NSObject {
         super.init()
     }
     
-    open func clearValue() {
+    @objc open func clearValue() {
         switch self.dataType {
             
         case .Int:
@@ -204,7 +204,7 @@ open class Element: NSObject {
         }
     }
     
-    open var dataMessage: NSMutableData {
+    @objc open var dataMessage: NSMutableData {
         
         let elementValueAsNSData = valueAsNSData
         
@@ -236,7 +236,7 @@ open class Element: NSObject {
         return messageData
     }
     
-    open var valueAsNSData: Data {
+    @objc open var valueAsNSData: Data {
         
         get {
 
@@ -341,10 +341,10 @@ open class Element: NSObject {
     }
     
     #endif
-    
-    open func copyWithZone(_ zone: NSZone?) -> AnyObject {
-        let copy = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
-        return copy
+
+    @objc func clone() -> Element {
+        let clone = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
+        return clone
     }
 
 }
@@ -453,7 +453,7 @@ open class Elements: NSObject {
         // used by devs to access the elements
         
         for customElement in Elements.customElements.customProfileElements {
-            let elementCopy = customElement.copy() as! Element
+            let elementCopy = customElement.clone()
             elementCopy.identifier = customElement.identifier
             custom[elementCopy.identifier] = elementCopy
             customProfileElements.append(elementCopy)
@@ -473,21 +473,21 @@ open class Elements: NSObject {
         
     }
     
-    var systemElements: [Element]
-    var extendedGamepadProfileElements: [Element]
-    var gamepadProfileElements: [Element]
-    var microGamepadProfileElements: [Element]
-    var motionProfileElements: [Element]
-    open var watchProfileElements: [Element]
+    @objc var systemElements: [Element]
+    @objc var extendedGamepadProfileElements: [Element]
+    @objc var gamepadProfileElements: [Element]
+    @objc var microGamepadProfileElements: [Element]
+    @objc var motionProfileElements: [Element]
+    @objc open var watchProfileElements: [Element]
     fileprivate var elementsByHashValue = Dictionary<Int, Element>()
     
-    open static var customElements: CustomElementsSuperclass!
-    open static var customMappings: CustomMappingsSuperclass!
+    @objc open static var customElements: CustomElementsSuperclass!
+    @objc open static var customMappings: CustomMappingsSuperclass!
     
-    open var custom = Dictionary<Int, Element>()
-    open var customProfileElements = [Element]()
+    @objc open var custom = Dictionary<Int, Element>()
+    @objc open var customProfileElements = [Element]()
     
-    open func allElementsCollection() -> [Element] {
+    @objc open func allElementsCollection() -> [Element] {
         
         let myAll = systemElements + extendedGamepadProfileElements + motionProfileElements + customProfileElements
         return myAll
@@ -522,55 +522,55 @@ open class Elements: NSObject {
     }
     #endif
     
-    open var systemMessage: Element = Element(type: .systemMessage, dataType: .Int, name: "System Messages", getterKeypath: "", setterKeypath: "")
-    open var deviceInfoElement: Element = Element(type: .deviceInfoElement, dataType: .Data, name: "Device Info", getterKeypath: "", setterKeypath: "")
-    open var playerIndex: Element = Element(type: .playerIndex, dataType: .Int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
-    open var pauseButton: Element = Element(type: .pauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
-    open var peripheralSetup: Element = Element(type: .peripheralSetup, dataType: .Data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
-    open var vibrateDevice: Element = Element(type: .vibrateDevice, dataType: .Int, name: "Vibrate Device", getterKeypath: "", setterKeypath: "")
-    open var image: Element = Element(type: .image, dataType: .Data, name: "Send Image", getterKeypath: "image.value", setterKeypath: "image.value")
+    @objc open var systemMessage: Element = Element(type: .systemMessage, dataType: .Int, name: "System Messages", getterKeypath: "", setterKeypath: "")
+    @objc open var deviceInfoElement: Element = Element(type: .deviceInfoElement, dataType: .Data, name: "Device Info", getterKeypath: "", setterKeypath: "")
+    @objc open var playerIndex: Element = Element(type: .playerIndex, dataType: .Int, name: "Player Index", getterKeypath: "playerIndex", setterKeypath: "playerIndex")
+    @objc open var pauseButton: Element = Element(type: .pauseButton, dataType: .Float, name: "Pause Button", getterKeypath: "vgcPauseButton", setterKeypath: "vgcPauseButton")
+    @objc open var peripheralSetup: Element = Element(type: .peripheralSetup, dataType: .Data, name: "Peripheral Setup", getterKeypath: "", setterKeypath: "")
+    @objc open var vibrateDevice: Element = Element(type: .vibrateDevice, dataType: .Int, name: "Vibrate Device", getterKeypath: "", setterKeypath: "")
+    @objc open var image: Element = Element(type: .image, dataType: .Data, name: "Send Image", getterKeypath: "image.value", setterKeypath: "image.value")
     
-    open var leftShoulder: Element = Element(type: .leftShoulder, dataType: .Float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
-    open var rightShoulder: Element = Element(type: .rightShoulder, dataType: .Float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")
+    @objc open var leftShoulder: Element = Element(type: .leftShoulder, dataType: .Float, name: "Left Shoulder", getterKeypath: "leftShoulder.value", setterKeypath: "leftShoulder.value")
+    @objc open var rightShoulder: Element = Element(type: .rightShoulder, dataType: .Float, name: "Right Shoulder", getterKeypath: "rightShoulder.value", setterKeypath: "rightShoulder.value")
     
-    open var dpadXAxis: Element = Element(type: .dpadXAxis, dataType: .Float, name: "dpad X", getterKeypath: "dpad.xAxis.value", setterKeypath: "dpad.xAxis.value")
-    open var dpadYAxis: Element = Element(type: .dpadYAxis, dataType: .Float, name: "dpad Y", getterKeypath: "dpad.yAxis.value", setterKeypath: "dpad.yAxis.value")
+    @objc open var dpadXAxis: Element = Element(type: .dpadXAxis, dataType: .Float, name: "dpad X", getterKeypath: "dpad.xAxis.value", setterKeypath: "dpad.xAxis.value")
+    @objc open var dpadYAxis: Element = Element(type: .dpadYAxis, dataType: .Float, name: "dpad Y", getterKeypath: "dpad.yAxis.value", setterKeypath: "dpad.yAxis.value")
     
-    open var buttonA: Element = Element(type: .buttonA, dataType: .Float, name: "A", getterKeypath: "buttonA.value", setterKeypath: "buttonA.value")
-    open var buttonB: Element = Element(type: .buttonB, dataType: .Float, name: "B", getterKeypath: "buttonB.value", setterKeypath: "buttonB.value")
-    open var buttonX: Element = Element(type: .buttonX, dataType: .Float, name: "X", getterKeypath: "buttonX.value", setterKeypath: "buttonX.value")
-    open var buttonY: Element = Element(type: .buttonY, dataType: .Float, name: "Y", getterKeypath: "buttonY.value", setterKeypath: "buttonY.value")
+    @objc open var buttonA: Element = Element(type: .buttonA, dataType: .Float, name: "A", getterKeypath: "buttonA.value", setterKeypath: "buttonA.value")
+    @objc open var buttonB: Element = Element(type: .buttonB, dataType: .Float, name: "B", getterKeypath: "buttonB.value", setterKeypath: "buttonB.value")
+    @objc open var buttonX: Element = Element(type: .buttonX, dataType: .Float, name: "X", getterKeypath: "buttonX.value", setterKeypath: "buttonX.value")
+    @objc open var buttonY: Element = Element(type: .buttonY, dataType: .Float, name: "Y", getterKeypath: "buttonY.value", setterKeypath: "buttonY.value")
     
-    open var leftThumbstickXAxis: Element = Element(type: .leftThumbstickXAxis, dataType: .Float, name: "Left Thumb X", getterKeypath: "leftThumbstick.xAxis.value", setterKeypath: "leftThumbstick.xAxis.value")
-    open var leftThumbstickYAxis: Element = Element(type: .leftThumbstickYAxis, dataType: .Float, name: "Left Thumb Y", getterKeypath: "leftThumbstick.yAxis.value", setterKeypath: "leftThumbstick.yAxis.value")
-    open var rightThumbstickXAxis: Element = Element(type: .rightThumbstickXAxis, dataType: .Float, name: "Right Thumb X", getterKeypath: "rightThumbstick.xAxis.value", setterKeypath: "rightThumbstick.xAxis.value")
-    open var rightThumbstickYAxis: Element = Element(type: .rightThumbstickYAxis, dataType: .Float, name: "Right Thumb Y", getterKeypath: "rightThumbstick.yAxis.value", setterKeypath: "rightThumbstick.yAxis.value")
+    @objc open var leftThumbstickXAxis: Element = Element(type: .leftThumbstickXAxis, dataType: .Float, name: "Left Thumb X", getterKeypath: "leftThumbstick.xAxis.value", setterKeypath: "leftThumbstick.xAxis.value")
+    @objc open var leftThumbstickYAxis: Element = Element(type: .leftThumbstickYAxis, dataType: .Float, name: "Left Thumb Y", getterKeypath: "leftThumbstick.yAxis.value", setterKeypath: "leftThumbstick.yAxis.value")
+    @objc open var rightThumbstickXAxis: Element = Element(type: .rightThumbstickXAxis, dataType: .Float, name: "Right Thumb X", getterKeypath: "rightThumbstick.xAxis.value", setterKeypath: "rightThumbstick.xAxis.value")
+    @objc open var rightThumbstickYAxis: Element = Element(type: .rightThumbstickYAxis, dataType: .Float, name: "Right Thumb Y", getterKeypath: "rightThumbstick.yAxis.value", setterKeypath: "rightThumbstick.yAxis.value")
     
-    open var rightTrigger: Element = Element(type: .rightTrigger, dataType: .Float, name: "Right Trigger", getterKeypath: "rightTrigger.value", setterKeypath: "rightTrigger.value")
-    open var leftTrigger: Element = Element(type: .leftTrigger, dataType: .Float, name: "Left Trigger", getterKeypath: "leftTrigger.value", setterKeypath: "leftTrigger.value")
+    @objc open var rightTrigger: Element = Element(type: .rightTrigger, dataType: .Float, name: "Right Trigger", getterKeypath: "rightTrigger.value", setterKeypath: "rightTrigger.value")
+    @objc open var leftTrigger: Element = Element(type: .leftTrigger, dataType: .Float, name: "Left Trigger", getterKeypath: "leftTrigger.value", setterKeypath: "leftTrigger.value")
     
-    open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .Float, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
-    open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .Float, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
-    open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .Float, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
+    @objc open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .Float, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
+    @objc open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .Float, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
+    @objc open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .Float, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
     
-    open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .Float, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
-    open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .Float, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
-    open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .Float, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
+    @objc open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .Float, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
+    @objc open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .Float, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
+    @objc open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .Float, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
     
-    open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .Float, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
-    open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .Float, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
-    open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .Float, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
+    @objc open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .Float, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
+    @objc open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .Float, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
+    @objc open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .Float, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
     
-    open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .Float, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
-    open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .Float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
-    open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .Float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
-    open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .Float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
+    @objc open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .Float, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
+    @objc open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .Float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
+    @objc open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .Float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
+    @objc open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .Float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
     
     // Convience functions for getting a controller element object based on specific properties of the
     // controller element
 
     
-    open func elementFromType(_ type: ElementType) -> Element! {
+    @objc open func elementFromType(_ type: ElementType) -> Element! {
         
         for element in allElementsCollection() {
             if element.type == type { return element }
@@ -579,20 +579,19 @@ open class Elements: NSObject {
         
     }
     
-    open func elementFromIdentifier(_ identifier: Int) -> Element! {
+    @objc open func elementFromIdentifier(_ identifier: Int) -> Element! {
         
         guard let element = elementsByHashValue[identifier] else { return nil }
         return element
         
     }
-    
 }
 
 // Convienance initializer, simplifies creation of custom elements
 open class CustomElement: Element {
     
     // Init for a custom element
-    public init(name: String, dataType: ElementDataType, type: Int) {
+    @objc public init(name: String, dataType: ElementDataType, type: Int) {
         
         super.init(type: .custom , dataType: dataType, name: name, getterKeypath: "", setterKeypath: "")
         
@@ -600,7 +599,7 @@ open class CustomElement: Element {
         
     }
     
-    required convenience public init(coder decoder: NSCoder) {
+    @objc required convenience public init(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
@@ -609,7 +608,7 @@ open class CustomElement: Element {
 // A stub, to support creation of a custom mappings class external to a framework
 open class CustomMappingsSuperclass: NSObject {
     
-    open var mappings = Dictionary<Int, Int>()
+    @objc open var mappings = Dictionary<Int, Int>()
     public override init() {
         
         super.init()
@@ -625,10 +624,10 @@ open class CustomElementsSuperclass: NSObject {
     // Watch OS implementation does not include VgcController because it does not support parent class GCController
     #if !os(watchOS)
     public typealias VgcCustomProfileValueChangedHandler = (VgcController, Element) -> Void
-    open var valueChangedHandler: VgcCustomProfileValueChangedHandler!
+    @objc open var valueChangedHandler: VgcCustomProfileValueChangedHandler!
     #endif
     
-    open var customProfileElements: [Element] = []
+    @objc open var customProfileElements: [Element] = []
     
     public override init() {
         
