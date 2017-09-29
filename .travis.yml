@@ -1,4 +1,4 @@
-language: objective-c
+language: swift
 osx_image: xcode9
 xcode_workspace: VirtualGameController.xcworkspace
 xcode_scheme:
