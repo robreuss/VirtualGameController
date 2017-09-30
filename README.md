@@ -44,6 +44,7 @@
 ## Some Use Cases
 **VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing games, allow easy reversion to using Apple's framework, and allow for features that go beyond _Game Controller_ but use the MFi profiles.  A single game-side implementation can work with a wide range of controller scenarios.  **VirtualGameController** may be useful for you in the following cases:
 
+- **Providing a pair of users with a shared gaming space (ARKit).** VGC makes it easy to implement a shared controller environment, so that a pair of users playing the same game on their respective devices will receive controller input data from both devices (users).  A single set of block-based handlers can be implemented to handle input from both on-screen controls and controller data received from the opposite device.  VGC also makes it easy to manage state across the devices by using custom elements.  
 - **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.  
 - **Creating a hybrid hardware/software controller using controller forwarding.**  Apple described a feature called "controller forwarding" in a session at WWDC in 2014 (at around _29:00_, [https://developer.apple.com/videos/play/wwdc2014-611/](https://developer.apple.com/videos/play/wwdc2014-611/)) but as far as I know the feature never emerged. *VirtualGameController* supports controller forwarding in roughly the form described in the session, enabling you to enhance form-fitting hardware controllers with a full profile and motion input.
 - **Creating multiplayer games** (for example, using **ARKit**) where all controller activity is passed to all devices (including the local device), allowing for a synchronized version of the game to run on all devices.
@@ -343,7 +344,7 @@ watchConnectivity.motion.start()
 watchConnectivity.motion.stop()
 ````
 ## Multiplayer Implementation including ARKit
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bidirectional-Communication).
+Coming soon.
 
 ## Custom Elements
 See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Custom-Elements).

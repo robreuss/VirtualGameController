@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		204E16D01F7F32C900618AC3 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204E16CF1F7F32C900618AC3 /* VirtualGameController.framework */; };
+		204E16D11F7F32C900618AC3 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 204E16CF1F7F32C900618AC3 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		204E16D51F7F333000618AC3 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E16D31F7F333000618AC3 /* VgcCustomElements.swift */; };
+		204E16D61F7F333000618AC3 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E16D41F7F333000618AC3 /* VgcCustomMappings.swift */; };
+		204E16D81F7F4BB500618AC3 /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204E16D71F7F4BB500618AC3 /* VgcSharedViews.swift */; };
 		208CCA7B1F7F322400DD82AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208CCA7A1F7F322400DD82AB /* AppDelegate.swift */; };
 		208CCA7D1F7F322400DD82AB /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 208CCA7C1F7F322400DD82AB /* art.scnassets */; };
 		208CCA7F1F7F322400DD82AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208CCA7E1F7F322400DD82AB /* ViewController.swift */; };
@@ -15,7 +20,25 @@
 		208CCA871F7F322400DD82AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208CCA851F7F322400DD82AB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		204E16D21F7F32C900618AC3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				204E16D11F7F32C900618AC3 /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		204E16CF1F7F32C900618AC3 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		204E16D31F7F333000618AC3 /* VgcCustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		204E16D41F7F333000618AC3 /* VgcCustomMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
+		204E16D71F7F4BB500618AC3 /* VgcSharedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; };
 		208CCA771F7F322400DD82AB /* ARKit_Ship_Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARKit_Ship_Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208CCA7A1F7F322400DD82AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		208CCA7C1F7F322400DD82AB /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -31,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204E16D01F7F32C900618AC3 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +64,7 @@
 		208CCA6E1F7F322400DD82AB = {
 			isa = PBXGroup;
 			children = (
+				204E16CF1F7F32C900618AC3 /* VirtualGameController.framework */,
 				208CCA791F7F322400DD82AB /* ARKit_Ship_Demo */,
 				208CCA781F7F322400DD82AB /* Products */,
 			);
@@ -56,6 +81,9 @@
 		208CCA791F7F322400DD82AB /* ARKit_Ship_Demo */ = {
 			isa = PBXGroup;
 			children = (
+				204E16D31F7F333000618AC3 /* VgcCustomElements.swift */,
+				204E16D41F7F333000618AC3 /* VgcCustomMappings.swift */,
+				204E16D71F7F4BB500618AC3 /* VgcSharedViews.swift */,
 				208CCA7A1F7F322400DD82AB /* AppDelegate.swift */,
 				208CCA7C1F7F322400DD82AB /* art.scnassets */,
 				208CCA7E1F7F322400DD82AB /* ViewController.swift */,
@@ -77,6 +105,7 @@
 				208CCA731F7F322400DD82AB /* Sources */,
 				208CCA741F7F322400DD82AB /* Frameworks */,
 				208CCA751F7F322400DD82AB /* Resources */,
+				204E16D21F7F32C900618AC3 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,8 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				204E16D61F7F333000618AC3 /* VgcCustomMappings.swift in Sources */,
+				204E16D81F7F4BB500618AC3 /* VgcSharedViews.swift in Sources */,
 				208CCA7F1F7F322400DD82AB /* ViewController.swift in Sources */,
 				208CCA7B1F7F322400DD82AB /* AppDelegate.swift in Sources */,
+				204E16D51F7F333000618AC3 /* VgcCustomElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +314,7 @@
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = ARKit_Ship_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.ARKit-Ship-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed2.ARKit-Ship-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -297,7 +329,7 @@
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = ARKit_Ship_Demo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.ARKit-Ship-Demo";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed2.ARKit-Ship-Demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
