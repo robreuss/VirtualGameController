@@ -85,8 +85,8 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             return
         }
         
-        // If no connection, clean-up queue and exit
-        if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) && VgcManager.peripheral.haveOpenStreamsToCentral == false {
+        // If no connection to Central, clean-up queue and exit
+        if (VgcManager.appRole == .Peripheral) && VgcManager.peripheral.haveOpenStreamsToCentral == false {
             vgcLogDebug("No connection so clearing write queue (\(self.dataSendQueue.length) bytes)")
             dataSendQueue = NSMutableData()
             return
