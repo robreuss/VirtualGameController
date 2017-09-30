@@ -216,7 +216,7 @@ let messageValueSeperator = ":"
     @objc open static var uniqueServiceIdentifierString: String {
         get {
 
-            if VgcManager.useUniqueDeviceName == true {
+            if VgcManager.useRandomServiceName == true {
                 var usi: String
                 let defaults = UserDefaults.standard
                 if let usi = defaults.string(forKey: "includeUniqueServiceIdentifier") {
@@ -323,7 +323,7 @@ let messageValueSeperator = ":"
     // Include unique string in bonjour name to allow multiple unique central/peripheral combos to connect
     // to one another (bi-directional).  It effectively gives each of the two Central's it's own unique service
     // identity.  Uses a UID in the bonjour name.
-    @objc open static var useUniqueDeviceName = false
+    @objc open static var useRandomServiceName = false
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console
@@ -392,7 +392,11 @@ let messageValueSeperator = ":"
     /// Must use this startAs method to turn on peer to peer functionality (Bluetooth) and local game controller functionality
     @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool, enableLocalController: Bool) {
         VgcManager.includesPeerToPeer = includesPeerToPeer
-        VgcManager.enableLocalController = enableLocalController
+        if appRole == .Peripheral {
+            VgcManager.enableLocalController = enableLocalController
+        } else if enableLocalController {
+            vgcLogError("Cannot start LOCAL controller as a Central")
+        }
         startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
     }
     
@@ -412,8 +416,10 @@ let messageValueSeperator = ":"
         #endif
         
         if self.appRole == .Central && appRoleVar == .Peripheral {
+            vgcLogDebug("Setting up as MultiplayerPeer")
             appRoleVar = .MultiplayerPeer
-            useUniqueDeviceName = true // Must use unique name when operating in peer mode
+            vgcLogDebug("Switching to unique device name")
+            useRandomServiceName = true // Must use unique name when operating in peer mode
         }
         
         self.appRole = appRoleVar
@@ -458,8 +464,7 @@ let messageValueSeperator = ":"
                 self.peripheral.localController = VgcController()
                 self.peripheral.localController.isLocalController = true
                 self.peripheral.localController.deviceInfo = VgcManager.peripheral.deviceInfo
-                NotificationCenter.default.post(name: Notification.Name(rawValue: VgcLocalControllerDidConnectNotification), object: self.peripheral.localController)
-            }
+             }
             
         #endif
 

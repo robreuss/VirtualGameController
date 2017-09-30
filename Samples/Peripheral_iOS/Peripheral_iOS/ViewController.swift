@@ -23,9 +23,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidConnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidConnectNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidDisconnectNotification), object: nil)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(self.localControllerDidConnect(_:)), name: NSNotification.Name(rawValue: VgcLocalControllerDidConnectNotification), object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.localControllerDidDisconnect), name: NSNotification.Name(rawValue: VgcLocalControllerDidDisonnectNotification), object: nil)
         
          // Use a compiler flag to control the logging level, dropping it to just errors if this
         // is a release build.

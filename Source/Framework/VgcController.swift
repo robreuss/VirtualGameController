@@ -17,9 +17,6 @@ import Foundation
 
 public let VgcControllerDidConnectNotification:     String = "VgcControllerDidConnectNotification"
 public let VgcControllerDidDisconnectNotification:  String = "VgcControllerDidDisconnectNotification"
-    
-public let VgcLocalControllerDidConnectNotification:     String = "VgcLocalControllerDidConnectNotification"
-public let VgcLocalControllerDidDisconnectNotification:  String = "VgcLocalControllerDidDisconnectNotification"
 
 // MARK: - VgcController
 
@@ -911,16 +908,11 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
                 vgcLogDebug("Controller exists already, removing")
                 self.lockQueueVgcController.sync {
                     VgcController.vgcControllers.remove(at: index)
-                    DispatchQueue.main.async {
-                        
-                        //NSNotificationCenter.defaultCenter().postNotificationName("VgcControllerDidConnectNotification", object: self)
-                        
-                    }
                 }
             
             }
             
-            // Make a game controller out of the peripheral
+            // Make a game controller out of the Peripheral
             vgcLogDebug("Appending controller \(deviceInfo.vendorName) to vControllers (\(VgcController.controllers().count + 1) controllers with new controller)")
             
             lockQueueVgcController.sync {
@@ -959,7 +951,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             if deviceIsTypeOfBridge() { peripheral.browseForServices() }  // Now that we have a peripheral, let the Central know we can act as a peripheral (forwarding)
             
-            sendConnectionAcknowledgement()
+            if !self.isLocalController { sendConnectionAcknowledgement() }
             
             DispatchQueue.main.async {
                 
