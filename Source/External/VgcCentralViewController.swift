@@ -69,11 +69,11 @@ import VirtualGameController
         #endif
         
         // I have never been able to get this method to discover a controller
-        //VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
+        VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
-        //    vgcLogDebug("SAMPLE: Discovery completion handler executed")
+            vgcLogDebug("SAMPLE: Discovery completion handler executed")
             
-        //}
+        }
         
         // These function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
@@ -177,13 +177,11 @@ import VirtualGameController
 
     // This will result in a given debug view having all of it's values updated.
     func refreshDebugViewForController(controller: VgcController) {
-        
-        DispatchQueue.main.async {
+
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
                 elementDebugView.refresh(controller)
             }
-        }
-        //}
+
     }
     
     // Call refresh on all of the debug views
@@ -217,8 +215,11 @@ import VirtualGameController
             return
         }
         
+        // This is actually the default in the framework - shown here for illustrative purposes
+        newController.handlerQueue = DispatchQueue.main
+        
         /*
-        // Send configuration information to the peripheral
+        // Send configuration information to the peripheral, which is normally set on the Peripheral side
         VgcManager.peripheralSetup.motionActive = true
         VgcManager.peripheralSetup.enableMotionAttitude = true
         VgcManager.peripheralSetup.enableMotionGravity = true
@@ -411,6 +412,7 @@ import VirtualGameController
     
     func refreshElementDebugViewPositions() {
         
+
    
         let controllerCount = CGFloat(VgcController.controllers().count)
         

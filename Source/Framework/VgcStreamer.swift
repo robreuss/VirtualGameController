@@ -66,7 +66,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
         let outputStream = (userInfo["stream"] as! OutputStream)
         queueRetryTimer[outputStream]!.invalidate()
-        vgcLogVerbose("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(Date().timeIntervalSince1970)]")
+        vgcLogDebug("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(Date().timeIntervalSince1970)]")
         self.writeData(Data(), toStream: outputStream)
     }
     
@@ -84,7 +84,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             vgcLogDebug("Attempt to write without peripheral object setup, exiting")
             return
         }
-        
+
         // If no connection to Central, clean-up queue and exit
         if (VgcManager.appRole == .Peripheral) && VgcManager.peripheral.haveOpenStreamsToCentral == false {
             vgcLogDebug("No connection so clearing write queue (\(self.dataSendQueue.length) bytes)")
@@ -143,7 +143,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                 let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
                 let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
                 PerformanceVars.totalSessionMessages += PerformanceVars.messagesSent
-                vgcLogDebug("Performance: \(PerformanceVars.messagesSent) msgs, \(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) kb/sec sent(Session: \(PerformanceVars.totalSessionMessages) msgs)")
+                vgcLogDebug("Performance: \(PerformanceVars.messagesSent) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) KB/sec sent")
                 PerformanceVars.messagesSent = 0
                 PerformanceVars.lastPublicationOfPerformance = Date()
                 PerformanceVars.bytesSent = 0
@@ -336,7 +336,9 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                             let kbPerSecond: Float = (Float(PerformanceVars.bytesReceived) / VgcManager.performanceSamplingDisplayFrequency) / 1000
                             //let invalidChecksumsPerSec: Float = (PerformanceVars.invalidChecksums / VgcManager.performanceSamplingDisplayFrequency)
                             PerformanceVars.totalSessionMessages += PerformanceVars.messagesReceived
-                            vgcLogDebug("Performance: \(PerformanceVars.messagesReceived) msgs, \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) kb/sec rcvd (\(PerformanceVars.totalSessionMessages) total msgs), Avg Buf Load \(PerformanceVars.bufferLoad / PerformanceVars.bufferCycles), Max Buf Load \(PerformanceVars.maxLoad), Cycles \(PerformanceVars.bufferCycles), Avg Cycles: \((PerformanceVars.bufferCycles) / (PerformanceVars.bufferReads))")
+                            if PerformanceVars.bufferCycles > 0 { // Avoid divide by zero crash
+                                vgcLogDebug("Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Avg Buf Load \(PerformanceVars.bufferLoad / PerformanceVars.bufferCycles), Max Buf Load \(PerformanceVars.maxLoad), Cycles \(PerformanceVars.bufferCycles), Avg Cycles: \((PerformanceVars.bufferCycles) / (PerformanceVars.bufferReads))")
+                            }
                             //
                             PerformanceVars.messagesReceived = 0
                             PerformanceVars.invalidMessages = 0

@@ -788,6 +788,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             //VgcController.vgcControllers.append(controller)
             
             // Setting the deviceInfo property here will trigger the "VgcControllerDidConnectNotification".
+            print("Hardware controller description: \( controller.hardwareController.description), \( controller.hardwareController.vendorName)")
             controller.deviceInfo = DeviceInfo(deviceUID: deviceHash, vendorName: controller.hardwareController.vendorName!, attachedToDevice: controller.hardwareController.isAttachedToDevice, profileType: profileType, controllerType: .MFiHardware, supportsMotion: supportsMotion)
             
         }
