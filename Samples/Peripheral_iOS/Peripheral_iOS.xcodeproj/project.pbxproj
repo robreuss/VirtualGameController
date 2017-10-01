@@ -677,7 +677,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = Peripheral_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -695,7 +695,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				INFOPLIST_FILE = Peripheral_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DRelease";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Peripheral-iOS-unique";

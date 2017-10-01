@@ -27,7 +27,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect(_:)), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
-        
+
         VgcManager.useRandomServiceName = true
         // Publishes the CENTRAL service in case we want to operate as both
         // When running as both, central service must be started FIRST
@@ -185,6 +185,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             //print("LOCAL HANDLER: Profile level (Extended), Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)  ")
             
         }
+
         
      }
  
@@ -201,6 +202,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         vgcLogDebug("Got VgcPeripheralDidConnectNotification notification")
         VgcManager.peripheral.stopBrowsingForServices()
+
         
     }
 }

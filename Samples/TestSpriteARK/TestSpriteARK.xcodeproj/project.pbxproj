@@ -14,7 +14,26 @@
 		20A7A2031F804ED10009489B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A2011F804ED10009489B /* Main.storyboard */; };
 		20A7A2051F804ED10009489B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A2041F804ED10009489B /* Assets.xcassets */; };
 		20A7A2081F804ED10009489B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A2061F804ED10009489B /* LaunchScreen.storyboard */; };
+		20A7A2111F8057470009489B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A20F1F8057470009489B /* GameScene.sks */; };
+		20A7A2121F8057470009489B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7A2101F8057470009489B /* GameScene.swift */; };
+		20A7A2141F8057820009489B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7A2131F8057820009489B /* VirtualGameController.framework */; };
+		20A7A2151F8057870009489B /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7A2131F8057820009489B /* VirtualGameController.framework */; };
+		20A7A2161F8057870009489B /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7A2131F8057820009489B /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		20A7A2171F8057870009489B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				20A7A2161F8057870009489B /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		20A7A1F61F804ED10009489B /* TestSpriteARK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestSpriteARK.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,6 +45,9 @@
 		20A7A2041F804ED10009489B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20A7A2071F804ED10009489B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20A7A2091F804ED10009489B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20A7A20F1F8057470009489B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		20A7A2101F8057470009489B /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		20A7A2131F8057820009489B /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20A7A2151F8057870009489B /* VirtualGameController.framework in Frameworks */,
+				20A7A2141F8057820009489B /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,9 +82,12 @@
 		20A7A1F81F804ED10009489B /* TestSpriteARK */ = {
 			isa = PBXGroup;
 			children = (
+				20A7A2131F8057820009489B /* VirtualGameController.framework */,
 				20A7A1F91F804ED10009489B /* AppDelegate.swift */,
 				20A7A1FB1F804ED10009489B /* Scene.sks */,
 				20A7A1FD1F804ED10009489B /* Scene.swift */,
+				20A7A20F1F8057470009489B /* GameScene.sks */,
+				20A7A2101F8057470009489B /* GameScene.swift */,
 				20A7A1FF1F804ED10009489B /* ViewController.swift */,
 				20A7A2011F804ED10009489B /* Main.storyboard */,
 				20A7A2041F804ED10009489B /* Assets.xcassets */,
@@ -80,6 +107,7 @@
 				20A7A1F21F804ED10009489B /* Sources */,
 				20A7A1F31F804ED10009489B /* Frameworks */,
 				20A7A1F41F804ED10009489B /* Resources */,
+				20A7A2171F8057870009489B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A7A1FC1F804ED10009489B /* Scene.sks in Resources */,
+				20A7A2111F8057470009489B /* GameScene.sks in Resources */,
 				20A7A2081F804ED10009489B /* LaunchScreen.storyboard in Resources */,
 				20A7A2051F804ED10009489B /* Assets.xcassets in Resources */,
 				20A7A2031F804ED10009489B /* Main.storyboard in Resources */,
@@ -145,6 +174,7 @@
 			files = (
 				20A7A2001F804ED10009489B /* ViewController.swift in Sources */,
 				20A7A1FE1F804ED10009489B /* Scene.swift in Sources */,
+				20A7A2121F8057470009489B /* GameScene.swift in Sources */,
 				20A7A1FA1F804ED10009489B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +314,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestSpriteARK",
+				);
 				INFOPLIST_FILE = TestSpriteARK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.TestSpriteARK;
@@ -299,6 +333,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TestSpriteARK",
+				);
 				INFOPLIST_FILE = TestSpriteARK/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.TestSpriteARK;

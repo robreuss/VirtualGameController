@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203413391F8059A000151F8C /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203413381F80599F00151F8C /* VirtualGameController.framework */; };
+		2034133A1F8059AB00151F8C /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 203413381F80599F00151F8C /* VirtualGameController.framework */; };
+		2034133B1F8059AB00151F8C /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 203413381F80599F00151F8C /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2034134B1F8059E800151F8C /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203413491F8059E700151F8C /* VgcCustomElements.swift */; };
+		2034134C1F8059E800151F8C /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2034134A1F8059E800151F8C /* VgcCustomMappings.swift */; };
+		2034136E1F805CE100151F8C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2034136D1F805CE100151F8C /* GameScene.sks */; };
 		20A7A2471F8059370009489B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7A2461F8059370009489B /* AppDelegate.swift */; };
-		20A7A2491F8059370009489B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A2481F8059370009489B /* GameScene.sks */; };
 		20A7A24B1F8059370009489B /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A24A1F8059370009489B /* Actions.sks */; };
 		20A7A24D1F8059370009489B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7A24C1F8059370009489B /* GameScene.swift */; };
 		20A7A24F1F8059370009489B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A7A24E1F8059370009489B /* GameViewController.swift */; };
@@ -17,10 +22,27 @@
 		20A7A2571F8059370009489B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A7A2551F8059370009489B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2034133C1F8059AB00151F8C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2034133B1F8059AB00151F8C /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		203413381F80599F00151F8C /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = "<group>"; };
+		203413491F8059E700151F8C /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VgcCustomElements.swift; sourceTree = "<group>"; };
+		2034134A1F8059E800151F8C /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VgcCustomMappings.swift; sourceTree = "<group>"; };
+		2034136D1F805CE100151F8C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		20A7A2431F8059370009489B /* Spritereousrce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spritereousrce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A7A2461F8059370009489B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20A7A2481F8059370009489B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		20A7A24A1F8059370009489B /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		20A7A24C1F8059370009489B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		20A7A24E1F8059370009489B /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2034133A1F8059AB00151F8C /* VirtualGameController.framework in Frameworks */,
+				203413391F8059A000151F8C /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,8 +84,11 @@
 		20A7A2451F8059370009489B /* Spritereousrce */ = {
 			isa = PBXGroup;
 			children = (
+				203413381F80599F00151F8C /* VirtualGameController.framework */,
 				20A7A2461F8059370009489B /* AppDelegate.swift */,
-				20A7A2481F8059370009489B /* GameScene.sks */,
+				2034136D1F805CE100151F8C /* GameScene.sks */,
+				203413491F8059E700151F8C /* VgcCustomElements.swift */,
+				2034134A1F8059E800151F8C /* VgcCustomMappings.swift */,
 				20A7A24A1F8059370009489B /* Actions.sks */,
 				20A7A24C1F8059370009489B /* GameScene.swift */,
 				20A7A24E1F8059370009489B /* GameViewController.swift */,
@@ -83,6 +110,7 @@
 				20A7A23F1F8059370009489B /* Sources */,
 				20A7A2401F8059370009489B /* Frameworks */,
 				20A7A2411F8059370009489B /* Resources */,
+				2034133C1F8059AB00151F8C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,9 +161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				20A7A2521F8059370009489B /* Main.storyboard in Resources */,
-				20A7A2491F8059370009489B /* GameScene.sks in Resources */,
 				20A7A2541F8059370009489B /* Assets.xcassets in Resources */,
 				20A7A2571F8059370009489B /* LaunchScreen.storyboard in Resources */,
+				2034136E1F805CE100151F8C /* GameScene.sks in Resources */,
 				20A7A24B1F8059370009489B /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,6 +177,8 @@
 			files = (
 				20A7A24D1F8059370009489B /* GameScene.swift in Sources */,
 				20A7A24F1F8059370009489B /* GameViewController.swift in Sources */,
+				2034134C1F8059E800151F8C /* VgcCustomMappings.swift in Sources */,
+				2034134B1F8059E800151F8C /* VgcCustomElements.swift in Sources */,
 				20A7A2471F8059370009489B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +318,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Spritereousrce",
+				);
 				INFOPLIST_FILE = Spritereousrce/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.Spritereousrce;
@@ -303,6 +337,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Spritereousrce",
+				);
 				INFOPLIST_FILE = Spritereousrce/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.Spritereousrce;

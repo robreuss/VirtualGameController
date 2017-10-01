@@ -81,9 +81,9 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             return
         }
         
-        if newController.isHardwareController { return }
+        //if newController.isHardwareController { return }
         
-        if newController.deviceInfo.controllerType == .MFiHardware { return }
+        //if newController.deviceInfo.controllerType == .MFiHardware { return }
         /*
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         
@@ -207,7 +207,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         
     }
     
-        func controllerDidDisconnect(notification: NSNotification) {
+    @objc func controllerDidDisconnect(notification: NSNotification) {
         
         //guard let controller: VgcController = notification.object as? VgcController else { return }
         

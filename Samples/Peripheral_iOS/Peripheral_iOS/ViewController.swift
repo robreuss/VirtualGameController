@@ -79,9 +79,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = true
-        VgcManager.peripheral.motion.enableRotationRate = true
-        VgcManager.peripheral.motion.enableUserAcceleration = true
+        VgcManager.peripheral.motion.enableGravity = false
+        VgcManager.peripheral.motion.enableRotationRate = false
+        VgcManager.peripheral.motion.enableUserAcceleration = false
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
@@ -326,38 +326,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         #endif
         
             // Data load testing
-        /*
-        Timer.scheduledTimer(withTimeInterval: 0.016666, repeats: true, block: { (Timer) in
-            VgcManager.elements.rightTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
-            
-            VgcManager.elements.leftTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.leftTrigger)
-            
-            VgcManager.elements.rightShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.rightShoulder)
-            
-            VgcManager.elements.leftShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.leftShoulder)
-            
-
-            VgcManager.elements.dpadXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.dpadXAxis)
-            
-            VgcManager.elements.dpadYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.dpadYAxis)
-            
-            VgcManager.elements.leftThumbstickXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickXAxis)
-            
-            VgcManager.elements.leftThumbstickYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickYAxis)
-
-        })
- */
         
-        
+        //var motionPollingTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(sendRandomData), userInfo: nil, repeats: true)
     }
+    /*
+    @objc func sendRandomData() {
+        VgcManager.elements.rightTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
+        
+        VgcManager.elements.leftTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.leftTrigger)
+        
+        VgcManager.elements.rightShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.rightShoulder)
+        
+        VgcManager.elements.leftShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.leftShoulder)
+        
+        
+        VgcManager.elements.dpadXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.dpadXAxis)
+        
+        VgcManager.elements.dpadYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.dpadYAxis)
+        
+        VgcManager.elements.leftThumbstickXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickXAxis)
+        
+        VgcManager.elements.leftThumbstickYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
+        VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickYAxis)
+
+    }
+*/
     
     @objc func peripheralDidDisconnect(_ notification: Notification) {
         
