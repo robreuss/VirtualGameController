@@ -392,39 +392,40 @@ let messageValueSeperator = ":"
     /// Must use this startAs method to turn on peer to peer functionality (Bluetooth) and local game controller functionality
     @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!, includesPeerToPeer: Bool, enableLocalController: Bool) {
         VgcManager.includesPeerToPeer = includesPeerToPeer
-        if appRole == .Peripheral {
+        if appRole == .Peripheral || appRole == .MultiplayerPeer {
             VgcManager.enableLocalController = enableLocalController
         } else if enableLocalController {
-            vgcLogError("Cannot start LOCAL controller as a Central")
+            vgcLogError("Cannot start LOCAL controller as a Central.  Exiting startAs function.")
+            return
         }
-        startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
+        if appRole == .MultiplayerPeer {
+            vgcLogError("MULTIPEER mode so setting service name to something random (guarenteed unique).")
+            useRandomServiceName = true // Must use unique name when operating in peer mode
+            vgcLogError("MULTIPEER mode so starting as .Central first.")
+            startAs(.Central, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
+            vgcLogError("MULTIPEER mode so starting as .Peripheral second.")
+            startAs(.Peripheral, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
+            self.appRole = .MultiplayerPeer
+        } else {
+            startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
+        }
     }
+
     
-    
-    
-    ///
+     ///
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
     ///
     @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
-        
-        var appRoleVar = appRole
-        
+
         #if !os(watchOS)
-        if (appRoleVar == .Central) && (VgcManager.peripheral != nil) {
-            vgcLogError("If running as both peripheral and central, central must call startAs first.  Ignoring Central request.")
-            return
-        }
+        //if (appRoleVar == .Central) && (VgcManager.peripheral != nil) {
+        //    vgcLogError("Cannot call startAs twice for Central and Periperal.  Use .Multiplayer appRole instead.")
+        //    return
+        //}
         #endif
         
-        if self.appRole == .Central && appRoleVar == .Peripheral {
-            vgcLogDebug("Setting up as MultiplayerPeer")
-            appRoleVar = .MultiplayerPeer
-            vgcLogDebug("Switching to unique device name")
-            useRandomServiceName = true // Must use unique name when operating in peer mode
-        }
-        
-        self.appRole = appRoleVar
+        self.appRole = appRole
         
         if appIdentifier != "" { self.appIdentifier = appIdentifier } else { vgcLogError("You must set appIdentifier to some string") }
 
@@ -461,7 +462,7 @@ let messageValueSeperator = ":"
             }
       
             // Create a controller for use with a peripheral
-            if VgcManager.enableLocalController {
+            if VgcManager.enableLocalController && appRole == .Peripheral {
                 vgcLogDebug("Enabling LOCAL game controller")
                 self.peripheral.localController = VgcController()
                 self.peripheral.localController.isLocalController = true
