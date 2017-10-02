@@ -41,15 +41,15 @@ class ViewController: VgcCentralViewController {
         // Enable running as a "Local" game controller as well, used in combination with running as a PERIPHERAL to
         // have the controller both process it's own control activity in a game and forward that activity to another
         // device
-        // VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
-        // NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
-        // VgcManager.peripheral.browseForServices()
+         //VgcManager.startAs(.MultiplayerPeer, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
+         //NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
+         //VgcManager.peripheral.browseForServices()
         
         super.viewDidLoad()
         
     }
     
-    /* Used for testing connecting the sample apps Central-to-Central in multipeer mode
+    // Used for testing connecting the sample apps Central-to-Central in multipeer mode
      
     // Auto-connect to opposite device
     @objc func foundService(_ notification: Notification) {
@@ -69,6 +69,6 @@ class ViewController: VgcCentralViewController {
         VgcManager.peripheral.motion.start()
         
     }
- */
+
     
 }
