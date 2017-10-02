@@ -7,7 +7,7 @@
 //
 
 import VirtualGameController
-
+import Foundation
 
 // Note that sample apps for both Bridge and Central descend from a common
 // ancestor class that contains much of the functionality.
@@ -34,21 +34,41 @@ class ViewController: VgcCentralViewController {
         
         // Network performance info
         VgcManager.performanceSamplingDisplayFrequency = 10.0
-        
+
         // Include custom elements
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false)
-        
-        // Also run as a PERIPHERAL - note that the Central startAs must come first
-        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false)
         
         // Enable running as a "Local" game controller as well, used in combination with running as a PERIPHERAL to
         // have the controller both process it's own control activity in a game and forward that activity to another
         // device
-        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
+        // VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
+        // NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
+        // VgcManager.peripheral.browseForServices()
         
         super.viewDidLoad()
         
     }
     
+    /* Used for testing connecting the sample apps Central-to-Central in multipeer mode
+     
+    // Auto-connect to opposite device
+    @objc func foundService(_ notification: Notification) {
+        let vgcService = notification.object as! VgcService
+        VgcManager.peripheral.connectToService(vgcService)
+        
+        VgcManager.peripheral.motion.updateInterval = 1/60
+        
+        VgcManager.peripheral.motion.enableAttitude = true
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
+        VgcManager.peripheral.motion.enableUserAcceleration = true
+        
+        VgcManager.peripheral.motion.enableAdaptiveFilter = true
+        VgcManager.peripheral.motion.enableLowPassFilter = true
+        
+        VgcManager.peripheral.motion.start()
+        
+    }
+ */
     
 }

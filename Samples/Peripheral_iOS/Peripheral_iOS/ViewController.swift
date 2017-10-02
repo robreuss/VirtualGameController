@@ -79,9 +79,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.peripheral.motion.updateInterval = 1/60
         
         VgcManager.peripheral.motion.enableAttitude = true
-        VgcManager.peripheral.motion.enableGravity = false
-        VgcManager.peripheral.motion.enableRotationRate = false
-        VgcManager.peripheral.motion.enableUserAcceleration = false
+        VgcManager.peripheral.motion.enableGravity = true
+        VgcManager.peripheral.motion.enableRotationRate = true
+        VgcManager.peripheral.motion.enableUserAcceleration = true
         
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
        
             element.valueChangedHandlerForPeripheral = { (element: Element) in
                 
-                vgcLogDebug("Custom element handler fired for \(element.name)")
+                vgcLogDebug("[SAMPLE] Custom element handler fired for \(element.name)")
                 
                 self.peripheralControlPadView.flashView.backgroundColor = UIColor.blue
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
@@ -111,7 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         element.valueChangedHandlerForPeripheral = { (element: Element) in
             
-            vgcLogDebug("Custom element handler fired for Send Image")
+            vgcLogDebug("[SAMPLE] Custom element handler fired for Send Image")
             self.peripheralControlPadView.flashView.image = nil
             self.peripheralControlPadView.flashView.image = UIImage(data: (element.value as! NSData) as Data)
             self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.bottom
@@ -123,7 +123,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             element.valueChangedHandlerForPeripheral = { (element: Element) in
                 
-                vgcLogDebug("Custom element handler fired for \(element.name) with value \(element.value)")
+                vgcLogDebug("[SAMPLE] Custom element handler fired for \(element.name) with value \(element.value)")
                 
                 self.peripheralControlPadView.flashView.backgroundColor = UIColor.brown
                 UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
@@ -138,7 +138,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         rightShoulderElement.valueChangedHandlerForPeripheral = { (rightShoulderElement: Element) in
             
-            vgcLogDebug("Custom element handler fired for \(rightShoulderElement.name) with value \(rightShoulderElement.value)")
+            vgcLogDebug("[SAMPLE] Custom element handler fired for \(rightShoulderElement.name) with value \(rightShoulderElement.value)")
             
             self.peripheralControlPadView.flashView.backgroundColor = UIColor.green
             UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
@@ -152,7 +152,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // automatically - only here for other processing.
         VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
             
-            vgcLogDebug("Value changed handler received element state from watch: \(element.name) with value \(element.value)")
+            vgcLogDebug("[SAMPLE] Value changed handler received element state from watch: \(element.name) with value \(element.value)")
             
         }
 
@@ -186,7 +186,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // newly found VgcService object is included with the notification.
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
-        vgcLogDebug("Found service: \(vgcService.fullName) isMainThread: \(Thread.isMainThread)")
+        vgcLogDebug("[SAMPLE] Found service: \(vgcService.fullName) isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
  
@@ -194,29 +194,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // I'm not using here, but the lost VgcService object is included with the notification.
     @objc func lostService(_ notification: Notification) {
         let vgcService = notification.object as? VgcService
-        vgcLogDebug("Lost service: \(vgcService!.fullName) isMainThread: \(Thread.isMainThread)")
+        vgcLogDebug("[SAMPLE] Lost service: \(vgcService!.fullName) isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
     // Watch reachability changed
     @objc func watchDidConnect(_ notification: Notification) {
-        vgcLogDebug("Got watch did connect notification \(VgcManager.peripheral)")
+        vgcLogDebug("[SAMPLE] Got watch did connect notification \(VgcManager.peripheral)")
     }
     
     // Watch reachability changed
     @objc func watchDidDisconnect(_ notification: Notification) {
-        vgcLogDebug("Got watch did disconnect notification")
+        vgcLogDebug("[SAMPLE] Got watch did disconnect notification")
     }
     
     // Notification indicates we should refresh the view
     @objc func serviceBrowserReset(_ notification: Notification) {
-        vgcLogDebug("Service browser reset, isMainThread: \(Thread.isMainThread)")
+        vgcLogDebug("[SAMPLE] Service browser reset, isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
     // Notification indicates connection failed
     @objc func peripheralConnectionFailed(_ notification: Notification) {
-        vgcLogDebug("Peripheral connect failed, isMainThread: \(Thread.isMainThread)")
+        vgcLogDebug("[SAMPLE] Peripheral connect failed, isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
@@ -278,27 +278,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
-            print("LOCAL HANDLER: Global handler fired, Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)")
+            print("[SAMPLE] LOCAL HANDLER: Global handler fired, Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)")
             
         }
         
         // Refresh on all extended gamepad changes (Global handler)
         controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
-            print("LOCAL HANDLER: Profile level (Extended), Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)  ")
+            print("[SAMPLE] LOCAL HANDLER: Profile level (Extended), Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)  ")
             
         }
         
         controller.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { (thumbstick, value) in
             
             
-            print("LOCAL HANDLER: Left thumbstick xAxis: \(value)  \(thumbstick.value)")
+            print("[SAMPLE] LOCAL HANDLER: Left thumbstick xAxis: \(value)  \(thumbstick.value)")
             
         }
         
         controller.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
             
-            print("LOCAL HANDLER: Left Thumbstick: \(xValue), \(yValue)")
+            print("[SAMPLE] LOCAL HANDLER: Left Thumbstick: \(xValue), \(yValue)")
             
         }
 
@@ -309,7 +309,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @objc func peripheralDidConnect(_ notification: Notification) {
         
-        vgcLogDebug("Got VgcPeripheralDidConnectNotification notification")
+        vgcLogDebug("[SAMPLE] Got VgcPeripheralDidConnectNotification notification")
         VgcManager.peripheral.stopBrowsingForServices()
         
 
@@ -361,7 +361,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @objc func peripheralDidDisconnect(_ notification: Notification) {
         
-        vgcLogDebug("Got VgcPeripheralDidDisconnectNotification notification")
+        vgcLogDebug("[SAMPLE] Got VgcPeripheralDidDisconnectNotification notification")
         VgcManager.peripheral.browseForServices()
         
     }

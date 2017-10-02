@@ -71,7 +71,7 @@ import VirtualGameController
         // I have never been able to get this method to discover a controller
         VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
-            vgcLogDebug("SAMPLE: Discovery completion handler executed")
+            vgcLogDebug("[SAMPLE] Discovery completion handler executed")
             
         }
         
@@ -110,13 +110,13 @@ import VirtualGameController
 
     func testForPairedExternalKeyboard(aNotification:NSNotification) {
         
-        vgcLogDebug("Testing for external keyboard (iCade controller)")
+        vgcLogDebug("T[SAMPLE] esting for external keyboard (iCade controller)")
         
         if let keyboardFrame = aNotification.userInfo?[NSNotification.Name("UIKeyboardFrameBeginUserInfoKey")] as? CGRect {
                 
                 if isExternalKeyboardFrame(keyboardFrame: keyboardFrame) {
                     
-                    vgcLogDebug("External keyboard found, displaying iCade controller")
+                    vgcLogDebug("[SAMPLE] External keyboard found, displaying iCade controller")
                     
                     // Confirm we are in iCade controller mode
                     if VgcManager.iCadeControllerMode != .Disabled {
@@ -129,7 +129,7 @@ import VirtualGameController
                     
                 } else {
                     
-                    vgcLogDebug("No external keyboard (iCade controller), resigning to hide virtual keyboard")
+                    vgcLogDebug("[SAMPLE] No external keyboard (iCade controller), resigning to hide virtual keyboard")
                     iCadeTextField.resignFirstResponder()
                 }
             } else {
@@ -187,7 +187,7 @@ import VirtualGameController
     // Call refresh on all of the debug views
     func refreshAllDebugViews() {
         
-        vgcLogDebug("Refreshing all debug views")
+        vgcLogDebug("[SAMPLE] Refreshing all debug views")
         for controller in VgcController.controllers() {
             refreshDebugViewForController(controller: controller)
         }
@@ -211,7 +211,7 @@ import VirtualGameController
         if VgcManager.appRole == .EnhancementBridge { return }
         
         guard let newController: VgcController = notification.object as? VgcController else {
-            vgcLogDebug("Got nil controller in controllerDidConnect")
+            vgcLogDebug("[SAMPLE] Got nil controller in controllerDidConnect")
             return
         }
         
@@ -288,7 +288,7 @@ import VirtualGameController
         newController.extendedGamepad?.buttonA.valueChangedHandler = { (button, value, pressed) in
             
             
-            print("HANDLER:Button A value: \(pressed), \(value)")
+            print("[SAMPLE] HANDLER:Button A value: \(pressed), \(value)")
             
         }
         
@@ -347,7 +347,7 @@ import VirtualGameController
         // Test receiving an image
         newController.elements.image.valueChangedHandler = { (controller, element) in
             
-            vgcLogDebug("Handler fired for Send Image")
+            vgcLogDebug("[SAMPLE] Handler fired for Send Image")
             
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
                 elementDebugView.imageView.image = UIImage(data: (element.value as! NSData) as Data)
@@ -382,7 +382,7 @@ import VirtualGameController
         // Demonstrates receiving a message as a Bridge from a Central
         VgcManager.elements.rightTrigger.valueChangedHandlerForPeripheral = { (element) in
             
-            vgcLogDebug("Got right trigger")
+            vgcLogDebug("[SAMPLE] Got right trigger")
             
         }
         
@@ -416,7 +416,7 @@ import VirtualGameController
    
         let controllerCount = CGFloat(VgcController.controllers().count)
         
-        vgcLogDebug("Refreshing debug view positions with controller count of \(controllerCount), debug view count \(self.elementDebugViewLookup.count)")
+        vgcLogDebug("[SAMPLE] Refreshing debug view positions with controller count of \(controllerCount), debug view count \(self.elementDebugViewLookup.count)")
         
         let elementViewSpacing = CGFloat(20.0)
         var xPosition = CGFloat(5)
@@ -443,7 +443,7 @@ import VirtualGameController
                 xPosition += self.debugViewWidth + elementViewSpacing
                 
             } else {
-                vgcLogError("Controller \(controller.vendorName) has no DEBUG view")
+                vgcLogError("[SAMPLE] Controller \(controller.vendorName) has no DEBUG view")
             }
             
         }

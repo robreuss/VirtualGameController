@@ -143,7 +143,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                 let messagesPerSecond: Float = PerformanceVars.messagesSent / VgcManager.performanceSamplingDisplayFrequency
                 let kbPerSecond: Float = (Float(PerformanceVars.bytesSent) / VgcManager.performanceSamplingDisplayFrequency) / 1000
                 PerformanceVars.totalSessionMessages += PerformanceVars.messagesSent
-                vgcLogDebug("Performance: \(PerformanceVars.messagesSent) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) KB/sec sent")
+                vgcLogDebug("Peripheral Performance: \(PerformanceVars.messagesSent) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.messagesQueued) msgs queued, \(kbPerSecond) KB/sec sent")
                 PerformanceVars.messagesSent = 0
                 PerformanceVars.lastPublicationOfPerformance = Date()
                 PerformanceVars.bytesSent = 0
@@ -337,7 +337,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                             //let invalidChecksumsPerSec: Float = (PerformanceVars.invalidChecksums / VgcManager.performanceSamplingDisplayFrequency)
                             PerformanceVars.totalSessionMessages += PerformanceVars.messagesReceived
                             if PerformanceVars.bufferCycles > 0 { // Avoid divide by zero crash
-                                vgcLogDebug("Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Avg Buf Load \(PerformanceVars.bufferLoad / PerformanceVars.bufferCycles), Max Buf Load \(PerformanceVars.maxLoad), Cycles \(PerformanceVars.bufferCycles), Avg Cycles: \((PerformanceVars.bufferCycles) / (PerformanceVars.bufferReads))")
+                                vgcLogDebug("Central Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Avg Buf Load \(PerformanceVars.bufferLoad / PerformanceVars.bufferCycles), Max Buf Load \(PerformanceVars.maxLoad), Cycles \(PerformanceVars.bufferCycles), Avg Cycles: \((PerformanceVars.bufferCycles) / (PerformanceVars.bufferReads))")
                             }
                             //
                             PerformanceVars.messagesReceived = 0

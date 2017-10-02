@@ -156,12 +156,6 @@ open class VgcMotionManager: NSObject {
             vgcLogDebug("Attempting to start motion detection")
             
             #if os(iOS)
-                if !deviceIsTypeOfBridge() {
-                    if  VgcManager.peripheral.haveConnectionToCentral == false {
-                        vgcLogDebug("Not starting motion because no connection")
-                        return
-                    }
-                }
                 if VgcManager.appRole == .EnhancementBridge {
                     if VgcController.enhancedController.peripheral.haveConnectionToCentral == false {
                         vgcLogDebug("Not starting motion because no connection")

@@ -378,7 +378,7 @@ var peripheralManager = VgcManager.peripheral
         
         if VgcManager.iCadeControllerMode != .Disabled {
             
-            vgcLogDebug("Sending iCade character: \(String(describing: keyboardTextField.text)) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
+            vgcLogDebug("[SAMPLE] Sending iCade character: \(String(describing: keyboardTextField.text)) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
 
             var element: Element?
             var value: Int
@@ -402,7 +402,7 @@ var peripheralManager = VgcManager.peripheral
     #if !(os(tvOS))
     @objc func motionSwitchDidChange(_ sender:UISwitch!) {
         
-        vgcLogDebug("User modified motion switch: \(sender.isOn)")
+        vgcLogDebug("[SAMPLE] User modified motion switch: \(sender.isOn)")
         
         if sender.isOn == true {
 
@@ -438,7 +438,7 @@ open class ServiceSelectorView: UIView, UITableViewDataSource, UITableViewDelega
     }
     
     open func refresh() {
-        vgcLogDebug("Refreshing server selector view")
+        vgcLogDebug("[SAMPLE] Refreshing server selector view")
         self.tableView.reloadSections(IndexSet(integer: 0), with: UITableViewRowAnimation.automatic)
     }
     

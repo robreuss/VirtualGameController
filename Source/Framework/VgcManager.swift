@@ -400,6 +400,8 @@ let messageValueSeperator = ":"
         startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
     }
     
+    
+    
     ///
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
@@ -433,7 +435,7 @@ let messageValueSeperator = ":"
         vgcLogDebug("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
 
         #if !os(watchOS)
-        VgcManager.peripheral = Peripheral()
+
         switch (VgcManager.appRole) {
             
             case .Undefined:
