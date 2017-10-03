@@ -81,9 +81,9 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             return
         }
         
-        //if newController.isHardwareController { return }
+        if newController.isHardwareController { return }
         
-        //if newController.deviceInfo.controllerType == .MFiHardware { return }
+        if newController.deviceInfo.controllerType == .MFiHardware { return }
         /*
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         

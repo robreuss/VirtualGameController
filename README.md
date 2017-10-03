@@ -7,49 +7,49 @@
 
 # Virtual Game Controller
 
+## Overview
+Virtual Game Controller (VGC) makes it easy to create software-based controllers for games and other purposes, allowing you to control one iOS device with another.  The framework wraps Apple's GCController API enabling your app to support both your own software-based controllers and hardware-based controllers that conform to the MFi standard.  The GCController API (https://developer.apple.com/library/content/documentation/ServicesDiscovery/Conceptual/GameControllerPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40013276-CH1-SW1) supports both reading the values of game controller elements directly (polling) as well as registering to be called when a value changes using a block-based handler.  VGC operates the same way and supports all of the features of the GCController API for both software- and hardware-based controllers.  While VGC is typically used to have an iOS device act as a controller for another iOS device, it can also be used where the two devices are pairs, and a shared game environment is presented on each device.  User inputs through on-screen controls are flowed through the framework and received by the handlers for both devices.  This capability is perfect for table-top games with two players, including ARKit games where you want both players to see and act on a common game space.  The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, including both SceneKit and SprikeKit examples.
+
 ## Features
 
 - **Wraps Apple's *GameController* framework API (GCController)**
-- **Create software-based controllers** (that use the MFi profiles)
-- **Supports using the MFi interface in "local" mode** (so a software-based controller can control both gameplay on the device it is running on, while forwarding controller activity to another device)
-- **Ability for a device to run as both a Central and Peripheral** (which enables multiplayer games where each device is both running the game and forwarding controller activity to another device running the game, including **ARKit multiplayer games**).  See **Multiplayer Implemention including ARKit** below for more information on how to do this.
-- **Controller forwarding** (where a controller "in the middle" can receive contoller data and forward it to a Central on which a game is running)
-- **Simple bidirectional communication** between software-based controllers (Peripheral) and game (Central), including larger files such as images represented as NSData (on a seperate channel)
+- **Create software-based controllers**
+- **Support for multiplayer mode**
+- **Controller forwarding**
+- **Simple bidirectional communication on same channel**
 - **Device motion support**
 - **Custom elements**
-- **Custom element mapping** (making it easy to have setup multiple controller inputs to have the same effects in the game)
-- **WiFi-based, with Bluetooth fallback**
-- **Works with Apple TV Simulator**
-- **Unlimited number of hardware controllers on Apple TV** (using controller forwarding)
-- **Ability to enhance inexpensive slide-on/form-fitting controllers** with motion, extended profile elements and custom elements
+- **Custom element mapping**
+- **WiFi-based**
+- **Unlimited number of hardware controllers on Apple TV** when using one software-based controller as a bridge
+- **Ability to enhance inexpensive slide-on/form-fitting controllers**
 - **iCade controller support** (mapped through the MFi profiles so they appear as MFi hardware)
 - Easy-to-implement **3d touch** on software controllers
-- Leverage **on-screen and Bluetooth keyboards** using software controllers (including with Apple TV)
 - **Support for snapshots** (compatible with Apple's snapshot format)
-- **Swift 4.0 or Objective C**
+- **Swift 3.2/4 or Objective C**
 - **Framework-based**
 
 ## Requirements 
 
-- iOS 9.0+ / Mac OS X 10.9+
+- iOS 9.0+ / MacOS 10.9+
 - Xcode 9 / Swift 3.2 & 4.0 / Objective C
 
 ## Platform Support
 
 - iOS
 - tvOS
-- OS X
+- MacOS
 - watchOS
 
 ## Some Use Cases
-**VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing games, allow easy reversion to using Apple's framework, and allow for features that go beyond _Game Controller_ but use the MFi profiles.  A single game-side implementation can work with a wide range of controller scenarios.  **VirtualGameController** may be useful for you in the following cases:
+**VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing controller-based games.
+**VirtualGameController** may be useful for you in the following cases:
 
 - **Providing a pair of users with a shared gaming space (ARKit).** VGC makes it easy to implement a shared controller environment, so that a pair of users playing the same game on their respective devices will receive controller input data from both devices (users).  A single set of block-based handlers can be implemented to handle input from both on-screen controls and controller data received from the opposite device.  VGC also makes it easy to manage state across the devices by using custom elements.  
 - **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.  
-- **Creating a hybrid hardware/software controller using controller forwarding.**  Apple described a feature called "controller forwarding" in a session at WWDC in 2014 (at around _29:00_, [https://developer.apple.com/videos/play/wwdc2014-611/](https://developer.apple.com/videos/play/wwdc2014-611/)) but as far as I know the feature never emerged. *VirtualGameController* supports controller forwarding in roughly the form described in the session, enabling you to enhance form-fitting hardware controllers with a full profile and motion input.
-- **Creating multiplayer games** (for example, using **ARKit**) where all controller activity is passed to all devices (including the local device), allowing for a synchronized version of the game to run on all devices.
+- **Creating a hybrid hardware/software controller using controller forwarding.**
 - **Supporting large numbers of controllers for social games.**  There are no imposed limits on the number of hardware or software controllers that can be used with a game.  The two third-party controller limit on the Apple TV can be exceeded using controller forwarding (bridging), hybrid controllers and software-based controllers. 
-- **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of dictation is demonstrated in the sample projects.
+- **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of voice dictation is demonstrated in the sample projects.
 
 ## Screenshots
 The user interfaces in the sample projects are designed for documentation, testing and debugging purposes, rather than for use in games.  
@@ -359,9 +359,11 @@ See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/Bi
 See the Objective C sample project along with the [wiki page](https://github.com/robreuss/VirtualGameController/wiki/Implementing-in-Objective-C).
 
 ## iCade Controller Support
-See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).  
+See the [wiki article](https://github.com/robreuss/VirtualGameController/wiki/iCade-Controller-Support).
+
 ## Contact and Support
-Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.  
+Feel free to contact me with any questions either using [LinkedIn](https://www.linkedin.com/pub/rob-reuss/2/7b/488) or <virtualgamecontroller@gmail.com>.
+
 ## License
 The MIT License (MIT)
 
