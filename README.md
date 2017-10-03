@@ -32,7 +32,7 @@
 ## Requirements 
 
 - iOS 9.0+ / Mac OS X 10.9+
-- Xcode 9 / Swift 4.0 / Objective C
+- Xcode 9 / Swift 3.2 & 4.0 / Objective C
 
 ## Platform Support
 

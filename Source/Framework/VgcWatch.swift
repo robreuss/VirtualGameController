@@ -51,7 +51,7 @@ public let VgcWatchDidDisconnectNotification:  String = "VgcWatchDidDisconnectNo
             vgcLogDebug("Watch connectivity is supported, activating")
             if self.wcSession == nil {
                 vgcLogDebug("Setting up watch session")
-                self.wcSession = WCSession.default
+                self.wcSession = WCSession.default()
                 self.wcSession.delegate = self
             }
             self.wcSession.activate()
