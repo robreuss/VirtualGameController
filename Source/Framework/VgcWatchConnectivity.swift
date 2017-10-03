@@ -27,7 +27,11 @@ import WatchConnectivity
       
         super.init()
         
-        session =  WCSession.default
+        #if swift(>=4)
+            session = WCSession.default
+        #else
+            session = WCSession.default()
+        #endif
         session.delegate = self
         session.activate()
         
