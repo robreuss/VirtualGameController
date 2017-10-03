@@ -346,14 +346,17 @@ import VirtualGameController
         
         // Test receiving an image
         newController.elements.image.valueChangedHandler = { (controller, element) in
-            
+
             vgcLogDebug("[SAMPLE] Handler fired for Send Image")
-            
+
             if let elementDebugView: ElementDebugView = self.elementDebugViewLookup[controller] as? ElementDebugView {
-                elementDebugView.imageView.image = UIImage(data: (element.value as! NSData) as Data)
+                
+                if let image = UIImage(data: (element.value as! NSData) as Data) {
+                    elementDebugView.imageView.image = image
+                    element.value = NSData()
+                }
             }
             
-            element.value = NSData()
             
         }
         
