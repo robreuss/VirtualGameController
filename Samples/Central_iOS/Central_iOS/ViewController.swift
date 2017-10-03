@@ -7,6 +7,7 @@
 //
 
 import VirtualGameController
+import GameController
 import Foundation
 
 // Note that sample apps for both Bridge and Central descend from a common
