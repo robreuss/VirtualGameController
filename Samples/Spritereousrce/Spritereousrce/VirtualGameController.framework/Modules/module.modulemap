@@ -1,4 +1,0 @@
-framework module VirtualGameController {
-    header "VirtualGameController-Swift.h"
-    requires objc
-}

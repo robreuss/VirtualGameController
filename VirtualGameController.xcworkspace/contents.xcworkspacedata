@@ -93,7 +93,7 @@
       location = "container:"
       name = "Sample Projects">
       <FileRef
-         location = "group:Samples/ARKit_Ship_Demo/ARKit_Ship_Demo.xcodeproj">
+         location = "group:Samples/TestSpriteKit/TestSpriteKit.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
