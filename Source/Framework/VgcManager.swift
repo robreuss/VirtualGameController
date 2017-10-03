@@ -285,7 +285,7 @@ let messageValueSeperator = ":"
     @objc open static var enableDupFiltering = false
     @objc open static var dupFilteringPrecision = 2
 
-    @objc open static var netServiceBufferSize = 2040
+    @objc open static var netServiceBufferSize = 4080
     
     @objc open static var netServiceLatencyLogging = false
     
