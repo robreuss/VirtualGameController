@@ -81,9 +81,11 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             return
         }
         
-        if newController.isHardwareController { return }
-        
-        if newController.deviceInfo.controllerType == .MFiHardware { return }
+        #if os(tvOS) // ATV remote will interfere so we want to exclude it's input
+            if newController.isHardwareController { return }
+            if newController.deviceInfo.controllerType == .MFiHardware { return }
+        #endif
+
         /*
         VgcManager.peripheralSetup = VgcPeripheralSetup()
         

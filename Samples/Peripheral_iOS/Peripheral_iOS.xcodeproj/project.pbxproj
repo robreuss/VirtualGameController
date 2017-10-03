@@ -25,9 +25,9 @@
 		2031E0421C24A37C00EE5FCA /* ElementRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2031E0411C24A37C00EE5FCA /* ElementRow.swift */; };
 		208E55871C24A4D10050D8AD /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; };
 		208E55881C24A4D10050D8AD /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		2095F8C01F79F170004CC770 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */; };
-		2095F8C11F79F170004CC770 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */; };
 		2095F8C71F79F1BA004CC770 /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */; };
+		20B1C58F1F83D9C6006CCF5C /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C58D1F83D9C6006CCF5C /* VgcCustomElements.swift */; };
+		20B1C5901F83D9C6006CCF5C /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C58E1F83D9C6006CCF5C /* VgcCustomMappings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -146,9 +146,9 @@
 		2031E0411C24A37C00EE5FCA /* ElementRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElementRow.swift; sourceTree = "<group>"; };
 		208E55811C24A4730050D8AD /* VirtualGameControllerWatchOS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = VirtualGameControllerWatchOS.xcodeproj; path = "../../../Framework Projects/VirtualGameControllerWatchOS/VirtualGameControllerWatchOS.xcodeproj"; sourceTree = "<group>"; };
 		2095F89B1F79EF4A004CC770 /* Peripheral_iOS WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Peripheral_iOS WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
-		2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
-		2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 		2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcSharedViews.swift; path = ../../../Source/External/VgcSharedViews.swift; sourceTree = "<group>"; };
+		20B1C58D1F83D9C6006CCF5C /* VgcCustomElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
+		20B1C58E1F83D9C6006CCF5C /* VgcCustomMappings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,9 +197,9 @@
 				2031E02E1C24A21500EE5FCA /* VirtualGameControllerIOS.xcodeproj */,
 				2031E02A1C24A1B900EE5FCA /* AppDelegate.swift */,
 				2031E02B1C24A1B900EE5FCA /* ViewController.swift */,
-				2095F8BE1F79F170004CC770 /* VgcCustomElements.swift */,
+				20B1C58D1F83D9C6006CCF5C /* VgcCustomElements.swift */,
+				20B1C58E1F83D9C6006CCF5C /* VgcCustomMappings.swift */,
 				2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */,
-				2095F8BF1F79F170004CC770 /* VgcCustomMappings.swift */,
 				2031DFF21C24A19000EE5FCA /* Main.storyboard */,
 				2031DFF51C24A19000EE5FCA /* Assets.xcassets */,
 				2031DFF71C24A19000EE5FCA /* LaunchScreen.storyboard */,
@@ -428,11 +428,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2095F8C11F79F170004CC770 /* VgcCustomMappings.swift in Sources */,
 				2095F8C71F79F1BA004CC770 /* VgcSharedViews.swift in Sources */,
 				2031E02D1C24A1B900EE5FCA /* ViewController.swift in Sources */,
+				20B1C5901F83D9C6006CCF5C /* VgcCustomMappings.swift in Sources */,
+				20B1C58F1F83D9C6006CCF5C /* VgcCustomElements.swift in Sources */,
 				2031E02C1C24A1B900EE5FCA /* AppDelegate.swift in Sources */,
-				2095F8C01F79F170004CC770 /* VgcCustomElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
