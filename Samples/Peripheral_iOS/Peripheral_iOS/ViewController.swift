@@ -172,12 +172,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         imagePicker.dismiss(animated: true) { () -> Void in
             
-            let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-            let imageData = UIImageJPEGRepresentation(image, 1.0)
-            imageElement?.value = imageData! as AnyObject
-            imageElement?.clearValueAfterTransfer = true
-            VgcManager.peripheral.sendElementState(imageElement!)
-            
+            DispatchQueue.global(qos: .background).async {
+                let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                imageElement?.value = imageData! as AnyObject
+                imageElement?.clearValueAfterTransfer = true
+                VgcManager.peripheral.sendElementState(imageElement!)
+            }
+
+
         }
 
     }
