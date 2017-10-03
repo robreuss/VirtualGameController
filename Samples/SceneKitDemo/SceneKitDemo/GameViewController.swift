@@ -31,13 +31,12 @@ class GameViewController: UIViewController {
 
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true, enableLocalController: false)
         //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true, enableLocalController: true)
+        //VgcManager.peripheral.browseForServices()
         
         // Must be turned ON on both ends (Peripheral and Central) because it effects the size of data headers
         VgcManager.netServiceLatencyLogging = false
         
         VgcManager.performanceSamplingDisplayFrequency = 10
-        
-        VgcManager.peripheral.browseForServices()
         
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
