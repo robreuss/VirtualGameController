@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             
             print("Motion: \(Double(input.attitude.x))")
             newController.elements.motionAttitudeX.value = input.attitude.x as AnyObject
-            //VgcController.sendElementStateToAllPeripherals(newController.elements.motionAttitudeX)
+            VgcController.sendElementStateToAllPeripherals(newController.elements.motionAttitudeX)
         }
 
     }

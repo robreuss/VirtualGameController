@@ -11,7 +11,7 @@ import VirtualGameController
 
 class ViewController: UIViewController {
 
-    var numberOfMessages = 5
+    var numberOfMessages = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,9 +30,30 @@ class ViewController: UIViewController {
             
         }
         
-        let rightTriggerElement: Element = VgcManager.elements.rightTrigger
+        var lastDisplay = Date().timeIntervalSince1970
+        var totalElapsed: TimeInterval = 0
+        var readingCount: Double = 0
+        let motionX: Element = VgcManager.elements.motionAttitudeX
+        motionX.valueChangedHandlerForPeripheral = { (motionAttitudeX: Element) in
+
+            let adjustedUnixTime = (motionAttitudeXELement.value as! Double)
+            let elapsed = (Date().timeIntervalSince1970 - adjustedUnixTime) * 1000.0
+            //print("Received date: \(adjustedUnixTime)")
+            //print("Raw elapsed: \((Date().timeIntervalSince1970 - adjustedUnixTime))")
+            //print("Raw elapsed * 1000: \((Date().timeIntervalSince1970 - adjustedUnixTime) * 1000)")
+            totalElapsed += elapsed
+            readingCount += 1
+            if Date().timeIntervalSince1970 - lastDisplay > 60 {
+                let elapsed = (((totalElapsed / readingCount) / 2.0) * 100).rounded() / 100
+                print("Elapsed \(elapsed)")
+                lastDisplay = Date().timeIntervalSince1970
+                totalElapsed = 0
+            }
+        }
+            
         
-        rightTriggerElement.valueChangedHandlerForPeripheral = { (rightTriggerElement: Element) in
+        let rightTriggerElement: Element = VgcManager.elements.rightTrigger
+         rightTriggerElement.valueChangedHandlerForPeripheral = { (rightTriggerElement: Element) in
             
             //vgcLogDebug("[SAMPLE] Custom element handler fired for \(rightTriggerElement.name) with value \(rightTriggerElement.value)")
             
@@ -40,6 +61,7 @@ class ViewController: UIViewController {
             let date = NSDate(timeIntervalSince1970: adjustedUnixTime)
             
             print("Received: \(date.timeIntervalSince1970)")
+
             
             let formatter = DateFormatter()
             // initially set the format based on your datepicker date
@@ -67,22 +89,22 @@ class ViewController: UIViewController {
         for var messageNumber in 1...numberOfMessages {
 
             let currentTimeString = Double(Date().timeIntervalSince1970)
-            print("Sent:     \(Date().timeIntervalSince1970)")
+            //print("Sent:     \(Date().timeIntervalSince1970)")
             VgcManager.elements.rightTrigger.value = currentTimeString as AnyObject
             
             let myFloat: Double = 1507143232.64618
             let myFloatAny = myFloat as AnyObject
             let myNewFloat = myFloatAny as! Double
-            print("My float: \(myFloat), \(myFloatAny),  \(myNewFloat)")
+            //print("My float: \(myFloat), \(myFloatAny),  \(myNewFloat)")
             
             //let data = VgcManager.elements.rightTrigger.valueAsNSData
             VgcManager.elements.rightTrigger.value = currentTimeString as AnyObject
-            print("Sending value: \(VgcManager.elements.rightTrigger.value)")
+            //print("Sending value: \(VgcManager.elements.rightTrigger.value)")
             
-            VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
+            //VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
             
-            //VgcManager.elements.motionAttitudeX.value = currentTimeString as AnyObject
-            //VgcManager.peripheral.sendElementState(VgcManager.elements.motionAttitudeX)
+            VgcManager.elements.motionAttitudeX.value = currentTimeString as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.motionAttitudeX)
             
         }
         
