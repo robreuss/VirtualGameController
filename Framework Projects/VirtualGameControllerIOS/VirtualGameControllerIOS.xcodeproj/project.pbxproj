@@ -319,6 +319,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				SYMROOT = Build;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Debug;
 		};
@@ -341,6 +342,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				SYMROOT = Build;
+				WATCHOS_DEPLOYMENT_TARGET = 3.0;
 			};
 			name = Release;
 		};

@@ -8,7 +8,9 @@
 # Virtual Game Controller
 
 ## Overview
-Virtual Game Controller (VGC) makes it easy to create software-based controllers for games and other purposes, allowing you to control one iOS device with another.  The framework wraps Apple's GCController API enabling your app to support both your own software-based controllers and hardware-based controllers that conform to the MFi standard.  The GCController API (https://developer.apple.com/library/content/documentation/ServicesDiscovery/Conceptual/GameControllerPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40013276-CH1-SW1) supports both reading the values of game controller elements directly (polling) as well as registering to be called when a value changes using a block-based handler.  VGC operates the same way and supports all of the features of the GCController API for both software- and hardware-based controllers.  While VGC is typically used to have an iOS device act as a controller for another iOS device, it can also be used where the two devices are pairs, and a shared game environment is presented on each device.  User inputs through on-screen controls are flowed through the framework and received by the handlers for both devices.  This capability is perfect for table-top games with two players, including ARKit games where you want both players to see and act on a common game space.  The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, including both SceneKit and SprikeKit examples.
+Virtual Game Controller (VGC) makes it easy to create software-based controllers for games and other purposes, enabling you to easily control one iOS device with another (or multiple other devices, such as in the case of a tvOS game).  The framework wraps Apple's GCController Framework API, making it easy to simulatenously support both your own software-based controllers and hardware-based controllers that conform to the MFi standard, with a single set of handlers or element polling.  The [GCController API](https://developer.apple.com/library/content/documentation/ServicesDiscovery/Conceptual/GameControllerPG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40013276-CH1-SW1) supports both reading the values of game controller elements directly (polling) as well as registering to be called when a value changes using a block-based handler.  VGC operates the same way and supports all of the features of the GCController API for both software- and hardware-based controllers.  
+
+While VGC is typically used to have an iOS device act as a controller for another iOS device, it can also be used where two devices are peers, and a common game environment is presented on each device.  In that type of implementation, user inputs through on-screen controls are flowed through the framework and received by the handlers for both devices.  VGC supports easy creation of custom element types, including images and Data types, so that game logic such as state can be coordinated between the two devices.  This capability is perfect for table-top games with two players, including ARKit games where you want both players to see and act on a common game space.  The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, including both SceneKit and SprikeKit examples.
 
 ## Features
 
@@ -16,17 +18,14 @@ Virtual Game Controller (VGC) makes it easy to create software-based controllers
 - **Create software-based controllers**
 - **Support for multiplayer mode**
 - **Controller forwarding**
-- **Simple bidirectional communication on same channel**
+- **Simple bidirectional communication on a shared channel**
 - **Device motion support**
 - **Custom elements**
 - **Custom element mapping**
 - **WiFi-based**
-- **Unlimited number of hardware controllers on Apple TV** when using one software-based controller as a bridge
 - **Ability to enhance inexpensive slide-on/form-fitting controllers**
-- **iCade controller support** (mapped through the MFi profiles so they appear as MFi hardware)
-- Easy-to-implement **3d touch** on software controllers
-- **Support for snapshots** (compatible with Apple's snapshot format)
-- **Swift 3.2/4 or Objective C**
+- **iCade controller support** 
+- **Support for snapshots compatible with GCController snapshots** 
 - **Framework-based**
 
 ## Requirements 
@@ -105,7 +104,7 @@ Other notes on sample projects:
 - There are also instructions on the Wiki for testing using [DemoBots](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-DemoBots) (in Swift) and [SceneKitVehicle](https://github.com/robreuss/VirtualGameController/wiki/Testing-using-SceneKitVehicle) (in Objective C) sample projects from Apple.
 
 ## Working with MFi Hardware-based Controllers
-VirtualGameController is a wrapper around Apple's Game Controller framework, and so working with hardware controllers with VGC is the same as it is with the [Game Controller framework](https://developer.apple.com/library/tvos/documentation/GameController/Reference/GCController_Ref/index.html).  See the Game Integration section below and the sample projects for additional details.
+VirtualGameController is a wrapper around Apple's Game Controller framework, and so working with hardware controllers with VGC is the same as it is with Apple's [Game Controller framework](https://developer.apple.com/library/tvos/documentation/GameController/Reference/GCController_Ref/index.html).  See the Game Integration section below and the sample projects for additional details.
 
 ## Creating a Software-based Peripheral
 ####Initialization

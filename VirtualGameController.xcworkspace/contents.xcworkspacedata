@@ -11,6 +11,13 @@
       location = "group:LICENSE">
    </FileRef>
    <Group
+      location = "group:Tests"
+      name = "Tests">
+      <FileRef
+         location = "group:Performance_Central.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "group:Source"
       name = "Source">
       <Group

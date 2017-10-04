@@ -49,6 +49,7 @@ class InterfaceController: WKInterfaceController {
     
     // Just as a simple example, display a table of the watch profile elements.
     @objc func updateElementsTable() {
+
         vgcLogDebug("Number of element rows: \(watchConnectivity.elements.allElementsCollection().count)")
         self.elementsTable.setNumberOfRows(watchConnectivity.elements.allElementsCollection().count, withRowType: "elementsTableRow")
         var index = 0
@@ -57,6 +58,7 @@ class InterfaceController: WKInterfaceController {
             vgcLogDebug("Working on row for \(element.name)")
             
             if let row = elementsTable.rowController(at: index) as? ElementsTableRow {
+                print("Labeling row")
                 row.elementLabel.setText(element.name)
             }
             

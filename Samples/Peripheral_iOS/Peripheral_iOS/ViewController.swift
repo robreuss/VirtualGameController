@@ -35,7 +35,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.loggerUseNSLog = true
         
         // Must be turned ON on both ends (Peripheral and Central) because it effects the size of data headers
-        VgcManager.netServiceLatencyLogging = false
+        VgcManager.netServiceLatencyLogging = true
         
         // Network performance info
         VgcManager.performanceSamplingDisplayFrequency = 10.0
