@@ -414,19 +414,19 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     
     func updateGameControllerWithValue(_ element: Element) {
         
-        // Value could be either a string or a float
-        var valueAsFloat: Float = 0.0 
-         
+        // Value could be either a string or a float or a double
+        var value: Float = 0.0
+        
         if element.value is NSNumber {
-            valueAsFloat = (element.value as! NSNumber).floatValue
+            value = (element.value as! NSNumber).floatValue
         }
         
         switch(element.type) {
             
         case .systemMessage:
             
-            if valueAsFloat < 1 { return } // Unknown system message
-            let messageType = SystemMessages(rawValue: Int(valueAsFloat))!
+            if value < 1 { return } // Unknown system message
+            let messageType = SystemMessages(rawValue: Int(value))!
             
             vgcLogDebug("Peripheral sent system message: \(messageType.description)")
             
@@ -489,18 +489,27 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         // All of the standard input elements fall through to here
         default:
 
-            triggerElementHandlers(element, value: valueAsFloat)
-            
+            if element.dataType == .Float {
+                triggerElementHandlers(element, value: element.value)
+            } else {
+                triggerElementHandlers(element, value: element.value )
+            }
         }
     }
     
-    open func triggerElementHandlers(_ element: Element, value: Float) {
+    open func triggerElementHandlers(_ element: Element, value: AnyObject) {
         
         if elements.elementsForController(self).contains(element) {
             
             //vgcLogDebug("Setting value \(value) on Keypath \(element.setterKeypath(self))")
             
-            setValue(value, forKeyPath: element.setterKeypath(self))
+            if element.dataType == .Float {
+                setValue(Float(value as! NSNumber), forKeyPath: element.setterKeypath(self))
+            } else if element.dataType == .Double {
+                setValue(Double(value as! NSNumber), forKeyPath: element.setterKeypath(self))
+            }
+            
+
          
             mapElement(element)
             
@@ -1560,9 +1569,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionUserAccelerationX: Float {
+    @objc var motionUserAccelerationX: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Float(vgcUserAcceleration.x) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.userAcceleration.x)!) } else { return Double(vgcUserAcceleration.x) }
         }
         set {
             vgcUserAcceleration.x = Double(newValue)
@@ -1570,9 +1579,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionUserAccelerationY: Float {
+    @objc var motionUserAccelerationY: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Float(vgcUserAcceleration.y) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.userAcceleration.y)!) } else { return Double(vgcUserAcceleration.y) }
         }
         set {
             vgcUserAcceleration.y = Double(newValue)
@@ -1580,9 +1589,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionUserAccelerationZ: Float {
+    @objc var motionUserAccelerationZ: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Float(vgcUserAcceleration.z) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.userAcceleration.z)!) } else { return Double(vgcUserAcceleration.z) }
         }
         set {
             vgcUserAcceleration.z = Double(newValue)
@@ -1602,12 +1611,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionAttitudeX: Float {
+    @objc var motionAttitudeX: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.attitude.x)!) }
             #endif
-            return Float(vgcAttitude.x)
+            return Double(vgcAttitude.x)
         }
         set {
             vgcAttitude.x = Double(newValue)
@@ -1615,12 +1624,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionAttitudeY: Float {
+    @objc var motionAttitudeY: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.attitude.y)!) }
             #endif
-            return Float(vgcAttitude.y)
+            return Double(vgcAttitude.y)
         }
         set {
             vgcAttitude.y = Double(newValue)
@@ -1628,12 +1637,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionAttitudeZ: Float {
+    @objc var motionAttitudeZ: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.attitude.z)!) }
             #endif
-            return Float(vgcAttitude.z)
+            return Double(vgcAttitude.z)
         }
         set {
             vgcAttitude.z = Double(newValue)
@@ -1642,12 +1651,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionAttitudeW: Float {
+    @objc var motionAttitudeW: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.attitude.w)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.attitude.w)!) }
             #endif
-            return Float(vgcAttitude.w)
+            return Double(vgcAttitude.w)
         }
         set {
             vgcAttitude.w = Double(newValue)
@@ -1668,12 +1677,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionRotationRateX: Float {
+    @objc var motionRotationRateX: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.x)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.rotationRate.x)!) }
             #endif
-            return Float(vgcRotationRate.x)
+            return Double(vgcRotationRate.x)
         }
         set {
             vgcRotationRate.x = Double(newValue)
@@ -1681,12 +1690,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionRotationRateY: Float {
+    @objc var motionRotationRateY: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.y)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.rotationRate.y)!) }
             #endif
-            return Float(vgcRotationRate.y)
+            return Double(vgcRotationRate.y)
         }
         set {
             vgcRotationRate.y = Double(newValue)
@@ -1694,12 +1703,12 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionRotationRateZ: Float {
+    @objc var motionRotationRateZ: Double {
         get {
             #if !os(tvOS)
-                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.rotationRate.z)!) }
+                if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.rotationRate.z)!) }
             #endif
-            return Float(vgcRotationRate.z)
+            return Double(vgcRotationRate.z)
         }
         set {
             vgcRotationRate.z = Double(newValue)
@@ -1717,9 +1726,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionGravityX: Float {
+    @objc var motionGravityX: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Float(vgcGravity.x) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.gravity.x)!) } else { return Double(vgcGravity.x) }
         }
         set {
             vgcGravity.x = Double(newValue)
@@ -1727,9 +1736,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionGravityY: Float {
+    @objc var motionGravityY: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Float(vgcGravity.y) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.gravity.y)!) } else { return Double(vgcGravity.y) }
         }
         set {
             vgcGravity.y = Double(newValue)
@@ -1737,9 +1746,9 @@ open class VgcMotion: NSObject {
         }
     }
     
-    @objc var motionGravityZ: Float {
+    @objc var motionGravityZ: Double {
         get {
-            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Float((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Float(vgcGravity.z) }
+            if vgcController?.deviceInfo.controllerType == .MFiHardware { return Double((vgcController?.hardwareController.motion?.gravity.z)!) } else { return Double(vgcGravity.z) }
         }
         set {
             vgcGravity.z = Double(newValue)

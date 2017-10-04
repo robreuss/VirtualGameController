@@ -39,6 +39,7 @@ public enum SystemMessages: Int, CustomStringConvertible {
     
     case Int
     case Float
+    case Double
     case String
     case Data
     
@@ -196,6 +197,9 @@ open class Element: NSObject {
         case .Float:
             value = 0.0 as AnyObject
             
+        case .Double:
+            value = 0.0 as AnyObject
+            
         case .Data:
             value = Data() as AnyObject
             
@@ -253,6 +257,12 @@ open class Element: NSObject {
                 var value: Float = self.value as! Float
                 let data = NSData(bytes: &value, length: MemoryLayout<Float>.size)
                 return data as Data
+                
+            case .Double:
+                
+                var value: Double = self.value as! Double
+                let data = NSData(bytes: &value, length: MemoryLayout<Double>.size)
+                return data as Data
       
             case .Data:
                 return self.value as! Data
@@ -277,6 +287,13 @@ open class Element: NSObject {
                 let data: NSData = newValue as NSData
                 var tempFloat: Float = 0
                 data.getBytes(&tempFloat, length: MemoryLayout<Float>.size)
+                self.value = tempFloat as AnyObject
+                
+            case .Double:
+                
+                let data: NSData = newValue as NSData
+                var tempFloat: Double = 0
+                data.getBytes(&tempFloat, length: MemoryLayout<Double>.size)
                 self.value = tempFloat as AnyObject
                 
             case .Data:
@@ -549,22 +566,22 @@ open class Elements: NSObject {
     @objc open var rightTrigger: Element = Element(type: .rightTrigger, dataType: .Float, name: "Right Trigger", getterKeypath: "rightTrigger.value", setterKeypath: "rightTrigger.value")
     @objc open var leftTrigger: Element = Element(type: .leftTrigger, dataType: .Float, name: "Left Trigger", getterKeypath: "leftTrigger.value", setterKeypath: "leftTrigger.value")
     
-    @objc open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .Float, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
-    @objc open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .Float, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
-    @objc open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .Float, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
+    @objc open var motionUserAccelerationX: Element = Element(type: .motionUserAccelerationX, dataType: .Double, name: "Accelerometer X", getterKeypath: "motionUserAccelerationX", setterKeypath: "motionUserAccelerationX")
+    @objc open var motionUserAccelerationY: Element = Element(type: .motionUserAccelerationY, dataType: .Double, name: "Accelerometer Y", getterKeypath: "motionUserAccelerationY", setterKeypath: "motionUserAccelerationY")
+    @objc open var motionUserAccelerationZ: Element = Element(type: .motionUserAccelerationZ, dataType: .Double, name: "Accelerometer Z", getterKeypath: "motionUserAccelerationZ", setterKeypath: "motionUserAccelerationZ")
     
-    @objc open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .Float, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
-    @objc open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .Float, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
-    @objc open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .Float, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
+    @objc open var motionRotationRateX: Element = Element(type: .motionRotationRateX, dataType: .Double, name: "Rotation Rate X", getterKeypath: "motionRotationRateX", setterKeypath: "motionRotationRateX")
+    @objc open var motionRotationRateY: Element = Element(type: .motionRotationRateY, dataType: .Double, name: "Rotation Rate Y", getterKeypath: "motionRotationRateY", setterKeypath: "motionRotationRateY")
+    @objc open var motionRotationRateZ: Element = Element(type: .motionRotationRateZ, dataType: .Double, name: "Rotation Rate Z", getterKeypath: "motionRotationRateZ", setterKeypath: "motionRotationRateZ")
     
-    @objc open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .Float, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
-    @objc open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .Float, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
-    @objc open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .Float, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
+    @objc open var motionGravityX: Element = Element(type: .motionGravityX, dataType: .Double, name: "Gravity X", getterKeypath: "motionGravityX", setterKeypath: "motionGravityX")
+    @objc open var motionGravityY: Element = Element(type: .motionGravityY, dataType: .Double, name: "Gravity Y", getterKeypath: "motionGravityY", setterKeypath: "motionGravityY")
+    @objc open var motionGravityZ: Element = Element(type: .motionGravityZ, dataType: .Double, name: "Gravity Z", getterKeypath: "motionGravityZ", setterKeypath: "motionGravityZ")
     
-    @objc open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .Float, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
-    @objc open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .Float, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
-    @objc open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .Float, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
-    @objc open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .Float, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
+    @objc open var motionAttitudeX: Element = Element(type: .motionAttitudeX, dataType: .Double, name: "Attitude X", getterKeypath: "motionAttitudeX", setterKeypath: "motionAttitudeX")
+    @objc open var motionAttitudeY: Element = Element(type: .motionAttitudeY, dataType: .Double, name: "Attitude Y", getterKeypath: "motionAttitudeY", setterKeypath: "motionAttitudeY")
+    @objc open var motionAttitudeZ: Element = Element(type: .motionAttitudeZ, dataType: .Double, name: "Attitude Z", getterKeypath: "motionAttitudeZ", setterKeypath: "motionAttitudeZ")
+    @objc open var motionAttitudeW: Element = Element(type: .motionAttitudeW, dataType: .Double, name: "Attitude W", getterKeypath: "motionAttitudeW", setterKeypath: "motionAttitudeW")
     
     // Convience functions for getting a controller element object based on specific properties of the
     // controller element
