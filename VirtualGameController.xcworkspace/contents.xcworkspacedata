@@ -14,6 +14,9 @@
       location = "group:Tests"
       name = "Tests">
       <FileRef
+         location = "group:Performance_Peripheral/Performance_Peripheral.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:Performance_Central.xcodeproj">
       </FileRef>
    </Group>
