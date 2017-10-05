@@ -16,6 +16,7 @@ While VGC is typically used to have an iOS device act as a controller for anothe
 
 - **Wraps Apple's *GameController* framework API (GCController)**
 - **Create software-based controllers**
+- **<5ms latency, including processing when sending 60 64-bit words/second**
 - **Support for multiplayer mode**
 - **Controller forwarding**
 - **Simple bidirectional communication on a shared channel**
@@ -366,7 +367,7 @@ Feel free to contact me with any questions either using [LinkedIn](https://www.l
 ## License
 The MIT License (MIT)
 
-Copyright (c) [2015] [Rob Reuss]
+Copyright (c) [2017] [Rob Reuss]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

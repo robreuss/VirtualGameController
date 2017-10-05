@@ -36,7 +36,7 @@
 		203C33651F85472B000C0C5E /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		203C33691F854758000C0C5E /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
 		203C336A1F854758000C0C5E /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
-		2068BF991F8541F200791871 /* Performance_Central.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Performance_Central.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2068BF991F8541F200791871 /* Test_Performance_Central.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Performance_Central.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2068BF9C1F8541F200791871 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2068BF9E1F8541F200791871 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2068BFA11F8541F200791871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		2068BF9A1F8541F200791871 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2068BF991F8541F200791871 /* Performance_Central.app */,
+				2068BF991F8541F200791871 /* Test_Performance_Central.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2068BF981F8541F200791871 /* Performance_Central */ = {
+		2068BF981F8541F200791871 /* Test_Performance_Central */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2068BFAB1F8541F200791871 /* Build configuration list for PBXNativeTarget "Performance_Central" */;
+			buildConfigurationList = 2068BFAB1F8541F200791871 /* Build configuration list for PBXNativeTarget "Test_Performance_Central" */;
 			buildPhases = (
 				2068BF951F8541F200791871 /* Sources */,
 				2068BF961F8541F200791871 /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = Performance_Central;
+			name = Test_Performance_Central;
 			productName = Performance_Central;
-			productReference = 2068BF991F8541F200791871 /* Performance_Central.app */;
+			productReference = 2068BF991F8541F200791871 /* Test_Performance_Central.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2068BF941F8541F200791871 /* Build configuration list for PBXProject "Performance_Central" */;
+			buildConfigurationList = 2068BF941F8541F200791871 /* Build configuration list for PBXProject "Test_Performance_Central" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2068BF981F8541F200791871 /* Performance_Central */,
+				2068BF981F8541F200791871 /* Test_Performance_Central */,
 			);
 		};
 /* End PBXProject section */
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2068BF941F8541F200791871 /* Build configuration list for PBXProject "Performance_Central" */ = {
+		2068BF941F8541F200791871 /* Build configuration list for PBXProject "Test_Performance_Central" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2068BFA91F8541F200791871 /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2068BFAB1F8541F200791871 /* Build configuration list for PBXNativeTarget "Performance_Central" */ = {
+		2068BFAB1F8541F200791871 /* Build configuration list for PBXNativeTarget "Test_Performance_Central" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2068BFAC1F8541F200791871 /* Debug */,

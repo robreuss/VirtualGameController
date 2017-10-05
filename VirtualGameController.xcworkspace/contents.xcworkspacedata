@@ -11,16 +11,6 @@
       location = "group:LICENSE">
    </FileRef>
    <Group
-      location = "group:Tests"
-      name = "Tests">
-      <FileRef
-         location = "group:Performance_Peripheral/Performance_Peripheral.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Performance_Central.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
       location = "group:Source"
       name = "Source">
       <Group
@@ -103,7 +93,7 @@
       location = "container:"
       name = "Sample Projects">
       <FileRef
-         location = "group:Samples/TestSpriteKit/TestSpriteKit.xcodeproj">
+         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Samples/TestSpriteKit/MultiplayerSpritekitExample.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
@@ -134,6 +124,16 @@
       </FileRef>
       <FileRef
          location = "group:Samples/SceneKitDemo/SceneKitDemo.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "group:Tests"
+      name = "Tests">
+      <FileRef
+         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Tests/Performance_Peripheral/Test_Performance_Peripheral.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Tests/Test_Performance_Central.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>

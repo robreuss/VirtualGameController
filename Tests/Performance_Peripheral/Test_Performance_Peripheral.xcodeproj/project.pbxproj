@@ -33,7 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		203C334C1F854269000C0C5E /* Performance_Peripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Performance_Peripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		203C334C1F854269000C0C5E /* Test_Performance_Peripheral.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Test_Performance_Peripheral.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		203C334F1F854269000C0C5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		203C33511F854269000C0C5E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		203C33541F854269000C0C5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -69,7 +69,7 @@
 		203C334D1F854269000C0C5E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				203C334C1F854269000C0C5E /* Performance_Peripheral.app */,
+				203C334C1F854269000C0C5E /* Test_Performance_Peripheral.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		203C334B1F854269000C0C5E /* Performance_Peripheral */ = {
+		203C334B1F854269000C0C5E /* Test_Performance_Peripheral */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 203C335E1F854269000C0C5E /* Build configuration list for PBXNativeTarget "Performance_Peripheral" */;
+			buildConfigurationList = 203C335E1F854269000C0C5E /* Build configuration list for PBXNativeTarget "Test_Performance_Peripheral" */;
 			buildPhases = (
 				203C33481F854269000C0C5E /* Sources */,
 				203C33491F854269000C0C5E /* Frameworks */,
@@ -105,9 +105,9 @@
 			);
 			dependencies = (
 			);
-			name = Performance_Peripheral;
+			name = Test_Performance_Peripheral;
 			productName = Performance_Peripheral;
-			productReference = 203C334C1F854269000C0C5E /* Performance_Peripheral.app */;
+			productReference = 203C334C1F854269000C0C5E /* Test_Performance_Peripheral.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 203C33471F854269000C0C5E /* Build configuration list for PBXProject "Performance_Peripheral" */;
+			buildConfigurationList = 203C33471F854269000C0C5E /* Build configuration list for PBXProject "Test_Performance_Peripheral" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				203C334B1F854269000C0C5E /* Performance_Peripheral */,
+				203C334B1F854269000C0C5E /* Test_Performance_Peripheral */,
 			);
 		};
 /* End PBXProject section */
@@ -331,7 +331,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		203C33471F854269000C0C5E /* Build configuration list for PBXProject "Performance_Peripheral" */ = {
+		203C33471F854269000C0C5E /* Build configuration list for PBXProject "Test_Performance_Peripheral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				203C335C1F854269000C0C5E /* Debug */,
@@ -340,7 +340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		203C335E1F854269000C0C5E /* Build configuration list for PBXNativeTarget "Performance_Peripheral" */ = {
+		203C335E1F854269000C0C5E /* Build configuration list for PBXNativeTarget "Test_Performance_Peripheral" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				203C335F1F854269000C0C5E /* Debug */,

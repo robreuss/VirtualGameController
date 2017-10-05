@@ -11,125 +11,87 @@ import VirtualGameController
 
 class ViewController: UIViewController {
 
-    var numberOfMessages = 1
-    
+    let numberOfMessagesToSendEachTime = 3
+    let frequencyOfMessageBursts: TimeInterval = 1/60
+    let elapsedTimeForMeasurements = 10.0 // seconds
+    var lastDisplayOfData = Date().timeIntervalSince1970
+    var totalTransitTime: TimeInterval = 0
+    var countOfMeasurements: Double = 0
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        VgcManager.loggerUseNSLog = true
+        
+        // Network performance info
+        VgcManager.performanceSamplingDisplayFrequency = 30.0
         
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
-        
-        let motionAttitudeXELement: Element = VgcManager.elements.motionAttitudeX
-        motionAttitudeXELement.valueChangedHandlerForPeripheral = { (motion: Element) in
- 
-            let adjustedUnixTime = (motion.value as! Double)
-            let date = NSDate(timeIntervalSince1970: adjustedUnixTime)
-            print("Received: \(date.timeIntervalSince1970)")
-            
-        }
-        
-        var lastDisplay = Date().timeIntervalSince1970
-        var totalElapsed: TimeInterval = 0
-        var readingCount: Double = 0
-        let motionX: Element = VgcManager.elements.motionAttitudeX
-        motionX.valueChangedHandlerForPeripheral = { (motionAttitudeX: Element) in
 
-            let adjustedUnixTime = (motionAttitudeXELement.value as! Double)
-            let elapsed = (Date().timeIntervalSince1970 - adjustedUnixTime) * 1000.0
-            //print("Received date: \(adjustedUnixTime)")
-            //print("Raw elapsed: \((Date().timeIntervalSince1970 - adjustedUnixTime))")
-            //print("Raw elapsed * 1000: \((Date().timeIntervalSince1970 - adjustedUnixTime) * 1000)")
-            totalElapsed += elapsed
-            readingCount += 1
-            if Date().timeIntervalSince1970 - lastDisplay > 60 {
-                let elapsed = (((totalElapsed / readingCount) / 2.0) * 100).rounded() / 100
-                print("Elapsed \(elapsed)")
-                lastDisplay = Date().timeIntervalSince1970
-                totalElapsed = 0
-            }
-        }
-            
-        
-        let rightTriggerElement: Element = VgcManager.elements.rightTrigger
-         rightTriggerElement.valueChangedHandlerForPeripheral = { (rightTriggerElement: Element) in
-            
-            //vgcLogDebug("[SAMPLE] Custom element handler fired for \(rightTriggerElement.name) with value \(rightTriggerElement.value)")
-            
-            let adjustedUnixTime = (rightTriggerElement.value as! Double)
-            let date = NSDate(timeIntervalSince1970: adjustedUnixTime)
-            
-            print("Received: \(date.timeIntervalSince1970)")
-
-            
-            let formatter = DateFormatter()
-            // initially set the format based on your datepicker date
-            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
-            let myString = formatter.string(from: Date())
-            // convert your string to date
-            let yourDate = formatter.date(from: myString)
-            //then again set the date format whhich type of output you need
-            formatter.dateFormat = "dd-MMM-yyyy"
-            // again convert your date to string
-            let myStringafd = formatter.string(from: date as Date)
-            
-            //print(myStringafd)
-            
-        }
-        
-        // Look for Centrals.  Note, system is automatically setup to use UID-based device names so that a
-        // Peripheral device does not try to connect to it's own Central service.
+        // Look for Centrals
         VgcManager.peripheral.browseForServices()
-    }
-    
-    @objc func sendTimeAsMessageValues() {
-        
-        for var messageNumber in 1...numberOfMessages {
-
-            let currentTimeString = Double(Date().timeIntervalSince1970)
-            //print("Sent:     \(Date().timeIntervalSince1970)")
-            VgcManager.elements.rightTrigger.value = currentTimeString as AnyObject
-            
-            let myFloat: Double = 1507143232.64618
-            let myFloatAny = myFloat as AnyObject
-            let myNewFloat = myFloatAny as! Double
-            //print("My float: \(myFloat), \(myFloatAny),  \(myNewFloat)")
-            
-            //let data = VgcManager.elements.rightTrigger.valueAsNSData
-            VgcManager.elements.rightTrigger.value = currentTimeString as AnyObject
-            //print("Sending value: \(VgcManager.elements.rightTrigger.value)")
-            
-            //VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
-            
-            VgcManager.elements.motionAttitudeX.value = currentTimeString as AnyObject
-            VgcManager.peripheral.sendElementState(VgcManager.elements.motionAttitudeX)
-            
-        }
         
     }
     
-    // Auto-connect to opposite device
+    // Connect to Central
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
+        vgcLogDebug("[TESTING] Found service: \(vgcService.name), connecting...")
         VgcManager.peripheral.connectToService(vgcService)
     }
     
+    // Connected to Central
     @objc func peripheralDidConnect(_ notification: Notification) {
         
-        vgcLogDebug("[SAMPLE] Got VgcPeripheralDidConnectNotification notification")
+        vgcLogDebug("[TESTING] Peripheral didConnect")
+        
+        vgcLogDebug("[TESTING] Setting up handler for return data from Central")
+        
+        // Setup handler for return data from Central
+        let motionX: Element = VgcManager.elements.motionAttitudeX
+        motionX.valueChangedHandlerForPeripheral = { (motionAttitudeX: Element) in
+            
+            let adjustedUnixTime = (motionAttitudeX.value as! Double)
+            
+            // Record the elapsed time in milliseconds
+            let elapsed = (Date().timeIntervalSince1970 - adjustedUnixTime) * 1000.0
+            self.totalTransitTime += elapsed
+            self.countOfMeasurements += 1
+            if Date().timeIntervalSince1970 - self.lastDisplayOfData > self.elapsedTimeForMeasurements {
+                
+                //
+                // Latency is measured by getting the average round trip time, dividing it by two (for a single trip), and rounding that to two digits
+                //
+                let latency = (((self.totalTransitTime / self.countOfMeasurements) / 2.0) * 100).rounded() / 100
+                
+                vgcLogDebug("[TESTING] Latency measured over \(self.elapsedTimeForMeasurements) seconds, \(self.countOfMeasurements) messages: \(latency) ms")
+                self.lastDisplayOfData = Date().timeIntervalSince1970
+                self.totalTransitTime = 0
+                self.countOfMeasurements = 0
+                
+            }
+        }
+        
         VgcManager.peripheral.stopBrowsingForServices()
-        let messagesPerSecond: Double = 1/60
-        let sendMessagesTimer = Timer.scheduledTimer(timeInterval: messagesPerSecond, target: self, selector: #selector(sendTimeAsMessageValues), userInfo: nil, repeats: true)
-
         
-        // Data load testing
+        vgcLogDebug("[TESTING] Seting timer for sending messages to Central")
+        vgcLogDebug("[TESTING] Waiting for first set of data: \(self.elapsedTimeForMeasurements) seconds...")
+        Timer.scheduledTimer(timeInterval: frequencyOfMessageBursts, target: self, selector: #selector(sendCurrentTimeAsMessageValues), userInfo: nil, repeats: true)
         
-        //var motionPollingTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(sendRandomData), userInfo: nil, repeats: true)
     }
     
+    // Send message values to Central at intervals based on timer
+    @objc func sendCurrentTimeAsMessageValues() {
+        
+        for _ in 1...numberOfMessagesToSendEachTime {
 
+            VgcManager.elements.motionAttitudeX.value = Date().timeIntervalSince1970 as AnyObject
+            VgcManager.peripheral.sendElementState(VgcManager.elements.motionAttitudeX)
+            
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

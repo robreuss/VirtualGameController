@@ -287,7 +287,7 @@ let messageValueSeperator = ":"
 
     @objc open static var netServiceBufferSize = 4080
     
-    @objc open static var netServiceLatencyLogging = false
+    @objc open static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
     
     // The header length of messages
     @objc static var netServiceHeaderLength: Int {
