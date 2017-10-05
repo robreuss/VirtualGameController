@@ -204,7 +204,7 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             let y = -(input.attitude.z) * amplify
             let z = -(input.attitude.y) * amplify
 
-            self.ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.15), count: 1))
+            self.ship.runAction(SCNAction.repeat(SCNAction.rotateTo(x: CGFloat(x), y: CGFloat(y), z: CGFloat(z), duration: 0.10), count: 1))
         }
         
     }
