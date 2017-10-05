@@ -135,7 +135,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         
         if data.count > 0 { PerformanceVars.messagesSent = PerformanceVars.messagesSent + 1.0 }
         
-        if VgcManager.performanceSamplingEnabled {
+        if VgcManager.performanceSamplingEnabled  && (VgcManager.appRole == .MultiplayerPeer || VgcManager.appRole == .Peripheral) {
             
             PerformanceVars.bytesSent += data.count
             
@@ -329,7 +329,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                     
                     PerformanceVars.messagesReceived += 1
                     
-                    if VgcManager.performanceSamplingEnabled {
+                    if VgcManager.performanceSamplingEnabled && (VgcManager.appRole == .MultiplayerPeer || VgcManager.appRole == .Central) {
                         
                         if Float(PerformanceVars.lastPublicationOfPerformance.timeIntervalSinceNow) < -(VgcManager.performanceSamplingDisplayFrequency) {
                             let messagesPerSecond: Float = PerformanceVars.messagesReceived / VgcManager.performanceSamplingDisplayFrequency
