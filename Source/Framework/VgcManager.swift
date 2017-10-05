@@ -428,7 +428,11 @@ let messageValueSeperator = ":"
         self.appRole = appRole
         
         if appIdentifier != "" { self.appIdentifier = appIdentifier } else { vgcLogError("You must set appIdentifier to some string") }
-
+        
+        var customElements = customElements
+        var customMappings = customMappings
+        if customElements == nil { customElements = CustomElementsSuperclass()}
+        if customMappings == nil { customMappings = CustomMappingsSuperclass()}
         Elements.customElements = customElements
         Elements.customMappings = customMappings
         
