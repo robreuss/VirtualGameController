@@ -11,26 +11,46 @@ import VirtualGameController
 
 class ViewController: UIViewController {
 
-    let numberOfMessagesToSendEachTime = 3
+    // Values to tweak...
+    
+    // Time interval for sending one or more messages
+    // (frequency of sending messages)
     let frequencyOfMessageBursts: TimeInterval = 1/60
+    
+    // Number of messages to send at each interval
+    let numberOfMessagesToSendEachTime = 1
+
+    // Frequency at which to display statiatics
     let elapsedTimeForMeasurements = 10.0 // seconds
+    
+    
+    // Incrementors and counters...
+    
+    // Last time statistics were displayed - do not change
     var lastDisplayOfData = Date().timeIntervalSince1970
+    
+    // Total of latency over a display statistics period - do not change
     var totalTransitTime: TimeInterval = 0
+    
+    // Number of measurements taken - do not change
     var countOfMeasurements: Double = 0
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Display time information and other NSLog info
         VgcManager.loggerUseNSLog = true
         
-        // Network performance info
+        // Display network performance info in addition to latency
+        // Set to zero to disable
         VgcManager.performanceSamplingDisplayFrequency = 30.0
         
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
 
-        // Look for Centrals
+        // Look for the performance central app
         VgcManager.peripheral.browseForServices()
         
     }
@@ -66,7 +86,7 @@ class ViewController: UIViewController {
                 //
                 let latency = (((self.totalTransitTime / self.countOfMeasurements) / 2.0) * 100).rounded() / 100
                 
-                vgcLogDebug("[TESTING] Latency measured over \(self.elapsedTimeForMeasurements) seconds, \(self.countOfMeasurements) messages: \(latency) ms")
+                vgcLogDebug("[TESTING] Latency measured over \(self.elapsedTimeForMeasurements) seconds, \(self.countOfMeasurements / self.elapsedTimeForMeasurements) msgs/sec: \(latency) ms")
                 self.lastDisplayOfData = Date().timeIntervalSince1970
                 self.totalTransitTime = 0
                 self.countOfMeasurements = 0
@@ -78,6 +98,7 @@ class ViewController: UIViewController {
         
         vgcLogDebug("[TESTING] Seting timer for sending messages to Central")
         vgcLogDebug("[TESTING] Waiting for first set of data: \(self.elapsedTimeForMeasurements) seconds...")
+        vgcLogDebug("[TESTING] NOTE: \"Latency\" reflects network transfer as well as processing/handling at both ends.")
         Timer.scheduledTimer(timeInterval: frequencyOfMessageBursts, target: self, selector: #selector(sendCurrentTimeAsMessageValues), userInfo: nil, repeats: true)
         
     }
