@@ -117,13 +117,10 @@
          location = "group:Samples/ObjectiveC_iOS/ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:/Users/robreuss/Downloads/Fox2SceneKitWWDC2017samplecode-2/Swift/Fox2.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:Samples/SceneKitVehicleDemo/SceneKitVehicle.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:Samples/SceneKitDemo/SceneKitDemo.xcodeproj">
+         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Samples/SceneKitDemo/ShipDemo.xcodeproj">
       </FileRef>
    </Group>
    <Group

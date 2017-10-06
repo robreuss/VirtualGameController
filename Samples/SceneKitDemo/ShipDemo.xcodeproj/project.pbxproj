@@ -144,7 +144,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		200B43F91C17AA2C000E8002 /* SceneKitDemoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200B43F91C17AA2C000E8002 /* ShipDemoiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipDemoiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200B43FC1C17AA2C000E8002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		200B43FE1C17AA2C000E8002 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		200B44001C17AA2C000E8002 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -152,13 +152,13 @@
 		200B44051C17AA2C000E8002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200B44081C17AA2C000E8002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		200B440A1C17AA2C000E8002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		200B44181C17AAA8000E8002 /* SceneKitDemotvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemotvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200B44181C17AAA8000E8002 /* ShipDemotvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipDemotvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200B441A1C17AAA8000E8002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		200B441C1C17AAA8000E8002 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		200B44211C17AAA8000E8002 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		200B44231C17AAA8000E8002 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		200B44251C17AAA8000E8002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		200B442D1C17AABF000E8002 /* SceneKitDemoOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SceneKitDemoOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		200B442D1C17AABF000E8002 /* ShipDemoOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShipDemoOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		200B442F1C17AABF000E8002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		200B44311C17AABF000E8002 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		200B44331C17AABF000E8002 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -216,9 +216,9 @@
 		200B43FA1C17AA2C000E8002 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				200B43F91C17AA2C000E8002 /* SceneKitDemoiOS.app */,
-				200B44181C17AAA8000E8002 /* SceneKitDemotvOS.app */,
-				200B442D1C17AABF000E8002 /* SceneKitDemoOSX.app */,
+				200B43F91C17AA2C000E8002 /* ShipDemoiOS.app */,
+				200B44181C17AAA8000E8002 /* ShipDemotvOS.app */,
+				200B442D1C17AABF000E8002 /* ShipDemoOSX.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -296,9 +296,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		200B43F81C17AA2C000E8002 /* SceneKitDemoiOS */ = {
+		200B43F81C17AA2C000E8002 /* ShipDemoiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 200B440D1C17AA2C000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemoiOS" */;
+			buildConfigurationList = 200B440D1C17AA2C000E8002 /* Build configuration list for PBXNativeTarget "ShipDemoiOS" */;
 			buildPhases = (
 				200B43F51C17AA2C000E8002 /* Sources */,
 				200B43F61C17AA2C000E8002 /* Frameworks */,
@@ -311,14 +311,14 @@
 				20D149E21C1922B300F6EB93 /* PBXTargetDependency */,
 				20D149E61C1922F600F6EB93 /* PBXTargetDependency */,
 			);
-			name = SceneKitDemoiOS;
+			name = ShipDemoiOS;
 			productName = SceneKitDemo;
-			productReference = 200B43F91C17AA2C000E8002 /* SceneKitDemoiOS.app */;
+			productReference = 200B43F91C17AA2C000E8002 /* ShipDemoiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		200B44171C17AAA8000E8002 /* SceneKitDemotvOS */ = {
+		200B44171C17AAA8000E8002 /* ShipDemotvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 200B44261C17AAA8000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemotvOS" */;
+			buildConfigurationList = 200B44261C17AAA8000E8002 /* Build configuration list for PBXNativeTarget "ShipDemotvOS" */;
 			buildPhases = (
 				200B44141C17AAA8000E8002 /* Sources */,
 				200B44151C17AAA8000E8002 /* Frameworks */,
@@ -331,14 +331,14 @@
 				202A582C1C19344800FE7414 /* PBXTargetDependency */,
 				208CC9D51F7F286E00DD82AB /* PBXTargetDependency */,
 			);
-			name = SceneKitDemotvOS;
+			name = ShipDemotvOS;
 			productName = SceneKitDemotvOS;
-			productReference = 200B44181C17AAA8000E8002 /* SceneKitDemotvOS.app */;
+			productReference = 200B44181C17AAA8000E8002 /* ShipDemotvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		200B442C1C17AABF000E8002 /* SceneKitDemoOSX */ = {
+		200B442C1C17AABF000E8002 /* ShipDemoOSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 200B443D1C17AABF000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemoOSX" */;
+			buildConfigurationList = 200B443D1C17AABF000E8002 /* Build configuration list for PBXNativeTarget "ShipDemoOSX" */;
 			buildPhases = (
 				200B44291C17AABF000E8002 /* Sources */,
 				200B442A1C17AABF000E8002 /* Frameworks */,
@@ -351,9 +351,9 @@
 				20D149E01C19212F00F6EB93 /* PBXTargetDependency */,
 				202A58281C19343B00FE7414 /* PBXTargetDependency */,
 			);
-			name = SceneKitDemoOSX;
+			name = ShipDemoOSX;
 			productName = SceneKitDemoOSX;
-			productReference = 200B442D1C17AABF000E8002 /* SceneKitDemoOSX.app */;
+			productReference = 200B442D1C17AABF000E8002 /* ShipDemoOSX.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -380,7 +380,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 200B43F41C17AA2C000E8002 /* Build configuration list for PBXProject "SceneKitDemo" */;
+			buildConfigurationList = 200B43F41C17AA2C000E8002 /* Build configuration list for PBXProject "ShipDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -407,9 +407,9 @@
 			);
 			projectRoot = "";
 			targets = (
-				200B43F81C17AA2C000E8002 /* SceneKitDemoiOS */,
-				200B44171C17AAA8000E8002 /* SceneKitDemotvOS */,
-				200B442C1C17AABF000E8002 /* SceneKitDemoOSX */,
+				200B43F81C17AA2C000E8002 /* ShipDemoiOS */,
+				200B44171C17AAA8000E8002 /* ShipDemotvOS */,
+				200B442C1C17AABF000E8002 /* ShipDemoOSX */,
 			);
 		};
 /* End PBXProject section */
@@ -808,7 +808,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		200B43F41C17AA2C000E8002 /* Build configuration list for PBXProject "SceneKitDemo" */ = {
+		200B43F41C17AA2C000E8002 /* Build configuration list for PBXProject "ShipDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200B440B1C17AA2C000E8002 /* Debug */,
@@ -817,7 +817,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		200B440D1C17AA2C000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemoiOS" */ = {
+		200B440D1C17AA2C000E8002 /* Build configuration list for PBXNativeTarget "ShipDemoiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200B440E1C17AA2C000E8002 /* Debug */,
@@ -826,7 +826,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		200B44261C17AAA8000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemotvOS" */ = {
+		200B44261C17AAA8000E8002 /* Build configuration list for PBXNativeTarget "ShipDemotvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200B44271C17AAA8000E8002 /* Debug */,
@@ -835,7 +835,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		200B443D1C17AABF000E8002 /* Build configuration list for PBXNativeTarget "SceneKitDemoOSX" */ = {
+		200B443D1C17AABF000E8002 /* Build configuration list for PBXNativeTarget "ShipDemoOSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				200B443E1C17AABF000E8002 /* Debug */,

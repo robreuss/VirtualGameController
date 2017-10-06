@@ -407,11 +407,14 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(controllerDidConnect:) name:@"VgcControllerDidConnectNotification" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(foundService:) name:@"VgcPeripheralFoundService" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peripheralDidConnect:) name:@"VgcPeripheralDidConnectNotification" object:nil];
     
-    [VgcManager startAs:AppRoleCentral appIdentifier:@"vgc" includesPeerToPeer: false];
+    [VgcManager startAs:AppRoleMultiplayerPeer appIdentifier:@"vgc" customElements:nil customMappings:nil includesPeerToPeer:false enableLocalController:true];
 
     VgcManager.loggerLogLevel = LogLevelError;
     VgcManager.loggerUseNSLog = @YES;
+    
+    [[VgcManager peripheral] browseForServices];
     
     SCNView *scnView = (SCNView *) self.view;
     
@@ -439,13 +442,27 @@
     //plug game logic
     scnView.delegate = self;
     
-    
     UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTap:)];
     doubleTap.numberOfTapsRequired = 2;
     doubleTap.numberOfTouchesRequired = 2;
     scnView.gestureRecognizers = @[doubleTap];
-    
+
     [super viewDidLoad];
+}
+
+
+    - (void) peripheralDidConnect:(NSNotification *) aNotification {
+        
+        [[VgcManager peripheral] motion].enableAttitude = YES;
+        [[[VgcManager peripheral] motion] start];
+        
+    }
+        
+- (void) foundService:(NSNotification *) aNotification {
+    
+    VgcService * service = (VgcService *)[aNotification object];
+    [[VgcManager peripheral] connectToService:service];
+
 }
 
 - (void) handleDoubleTap:(UITapGestureRecognizer *) gesture
