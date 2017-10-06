@@ -968,21 +968,24 @@ open class ElementDebugView: UIView {
     @objc open func receivedDebugViewDoubleTap() {
         
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-        let imageData = UIImageJPEGRepresentation(UIImage(named: "digit.jpg")!, 1.0)
-        imageElement?.value = imageData! as AnyObject
-        imageElement?.clearValueAfterTransfer = true
-        controller.sendElementStateToPeripheral(imageElement!)
+        if let image = UIImage(named: "digit.jpg") {
+            let imageData = UIImageJPEGRepresentation(image, 1.0)
+            imageElement?.value = imageData! as AnyObject
+            imageElement?.clearValueAfterTransfer = true
+            controller.sendElementStateToPeripheral(imageElement!)
+        }
         
     }
     
     open func receivedDebugViewTripleTap() {
         
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-        let imageData = UIImageJPEGRepresentation(UIImage(named: "digit.jpg")!, 1.0)
-        imageElement?.value = imageData! as AnyObject
-        imageElement?.clearValueAfterTransfer = true
-        controller.sendElementStateToPeripheral(imageElement!)
-        
+        if let image = UIImage(named: "digit.jpg") {
+            let imageData = UIImageJPEGRepresentation(image, 1.0)
+            imageElement?.value = imageData! as AnyObject
+            imageElement?.clearValueAfterTransfer = true
+            controller.sendElementStateToPeripheral(imageElement!)
+        }
         // Test simple float mode
         //let rightShoulder = controller.elements.rightShoulder
         //rightShoulder.value = 1.0
