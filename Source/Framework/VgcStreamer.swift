@@ -66,13 +66,13 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         let userInfo = timer.userInfo as! Dictionary<String, AnyObject>
         let outputStream = (userInfo["stream"] as! OutputStream)
         queueRetryTimer[outputStream]!.invalidate()
-        vgcLogDebug("Timer triggered to process data send queue (\(self.dataSendQueue.length) bytes) to stream \(outputStream) [\(Date().timeIntervalSince1970)]")
+        vgcLogDebug("Timer triggered to process data send queue (\(self.dataSendQueue.count) messages) to stream \(outputStream) [\(Date().timeIntervalSince1970)]")
         self.writeData(Data(), toStream: outputStream)
     }
     
     // Two indicators for handling a busy send queue, both of which result in the message being appended
     // to an NSMutableData var
-    var dataSendQueue = NSMutableData()
+    var dataSendQueue = [Data]()
     let lockQueueWriteData = DispatchQueue(label: "net.simplyformed.lockQueueWriteData", attributes: [])
     var streamerIsBusy: Bool = false
     var queueRetryTimer: [OutputStream: Timer] = [:]
@@ -87,8 +87,8 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
 
         // If no connection to Central, clean-up queue and exit
         if (VgcManager.appRole == .Peripheral) && VgcManager.peripheral.haveOpenStreamsToCentral == false {
-            vgcLogDebug("No connection so clearing write queue (\(self.dataSendQueue.length) bytes)")
-            dataSendQueue = NSMutableData()
+            vgcLogDebug("No connection so clearing write queue (\(self.dataSendQueue.count) messages)")
+            dataSendQueue = [Data]()
             return
         }
         
@@ -101,16 +101,21 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         }
 
         if !toStream.hasSpaceAvailable {
+            
             vgcLogDebug("OutputStream has no space/streamer is busy (Status: \(toStream.streamStatus.rawValue))")
             if data.count > 0 {
+                
                 self.lockQueueWriteData.sync {
+                    if self.dataSendQueue.count >= VgcManager.maxDataBufferSizeMessages {
+                        self.dataSendQueue.removeFirst()
+                    }
                     PerformanceVars.messagesQueued += 1
                     self.dataSendQueue.append(data)
                 }
                 
-                vgcLogDebug("Appended data queue (\(self.dataSendQueue.length) bytes)")
+                vgcLogDebug("Appended data queue (\(self.dataSendQueue.count) total messages)")
             }
-            if self.dataSendQueue.length > 0 {
+            if self.dataSendQueue.count > 0 {
 
                 if queueRetryTimer[toStream] == nil || !queueRetryTimer[toStream]!.isValid {
                     vgcLogDebug("Setting data queue retry timer (Stream: \(toStream))")
@@ -121,13 +126,16 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             return
        }
 
-        if self.dataSendQueue.length > 0 {
-            vgcLogDebug("Processing data queue (\(self.dataSendQueue.length) bytes)")
+        if self.dataSendQueue.count > 0 {
+            vgcLogDebug("Processing data queue (\(self.dataSendQueue.count) messages)")
 
             self.lockQueueWriteData.sync {
                 self.dataSendQueue.append(data)
-                data = self.dataSendQueue as Data
-                self.dataSendQueue = NSMutableData()
+                for message in self.dataSendQueue {
+                    data.append(message)
+                }
+                print("DATA MESSAGE: \(data)")
+                self.dataSendQueue = [Data]()
             }
             if queueRetryTimer[toStream] != nil { queueRetryTimer[toStream]!.invalidate() }
 
@@ -158,7 +166,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
         if data.count == 0 {
             vgcLogError("Attempt to send an empty buffer, exiting")
             self.lockQueueWriteData.sync {
-                self.dataSendQueue = NSMutableData()
+                self.dataSendQueue =  [Data]()
             }
             return
         }

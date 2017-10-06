@@ -286,6 +286,7 @@ let messageValueSeperator = ":"
     @objc open static var dupFilteringPrecision = 2
 
     @objc open static var netServiceBufferSize = 4080
+    @objc open static var maxDataBufferSizeMessages = 512 // Number of messages to hold in a FIFO buffer until stream returns
     
     @objc open static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
     
