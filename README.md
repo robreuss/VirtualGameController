@@ -55,13 +55,6 @@ The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, inc
 - **Supporting large numbers of controllers for social games.**  There are no imposed limits on the number of hardware or software controllers that can be used with a game.  The two third-party controller limit on the Apple TV can be exceeded using controller forwarding (bridging), hybrid controllers and software-based controllers. 
 - **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of voice dictation is demonstrated in the sample projects.
 
-## Screenshots
-The user interfaces in the sample projects are designed for documentation, testing and debugging purposes, rather than for use in games.  
-
-<img src="http://robreuss.squarespace.com/storage/peripheral_central_selector2.png" alt="Selector" width="225"/>
-<img src="http://robreuss.squarespace.com/storage/peripheral2.png" alt="Peripheral"  width="225"/>
-<img src="http://robreuss.squarespace.com/storage/central2.png" alt="Central" width="275"/>
-
 ## Terminology
 * **Peripheral**: A software-based game controller.
 * **Central**: Typically a game that supports hardware and software controllers.  The Central utilizes VirtualGameController as a replacement for the Apple Game Controller framework.
