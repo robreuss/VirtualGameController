@@ -16,8 +16,9 @@ While VGC is typically used to have an iOS device act as a controller for anothe
 
 - **Wraps Apple's *GameController* framework API (GCController)**
 - **Create software-based controllers**
-- **<5ms latency, including processing when sending 60 64-bit words/second**
-- **Support for multiplayer mode**
+- **<5ms latency (including processing) when sending Doubles (64-bit) at 60/sec**
+- **Both closures and polling supported for processing input**
+- **Support for peer mode**
 - **Controller forwarding**
 - **Simple bidirectional communication on a shared channel**
 - **Device motion support**
@@ -43,10 +44,11 @@ While VGC is typically used to have an iOS device act as a controller for anothe
 
 ## Some Use Cases
 **VirtualGameController** is a drop-in replacement for Apple's _Game Controller_ framework, so it can be easily integrated into existing controller-based games.
-**VirtualGameController** may be useful for you in the following cases:
 
-- **Providing a pair of users with a shared gaming space (ARKit).** VGC makes it easy to implement a shared controller environment, so that a pair of users playing the same game on their respective devices will receive controller input data from both devices (users).  A single set of block-based handlers can be implemented to handle input from both on-screen controls and controller data received from the opposite device.  VGC also makes it easy to manage state across the devices by using custom elements.  
-- **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.  
+**VirtualGameController** may be useful in the following cases:
+
+- **Developing and supporting software-based controllers.**  Enable your users to use their iPhone, iPad or Apple Watch to control your game, leveraging 3d touch and motion input.  Especially useful with Apple TV.  Inputs are flowed through the GCController API (that is, through the MFi profiles) and so your software-based controller will appear as a hardware-based controller.  Easily send information from your game to your software controller (bidirectional communication).  The API for creating a software-based controller is simple and easy-to-use.
+- **Providing a pair of users with a shared gaming experience (ARKit).** VGC makes it easy to implement a shared controller environment, so that a pair of users playing the same game on their respective devices will receive controller input data from both devices (users).  A single set of block-based handlers can be implemented to handle input from both on-screen controls and controller data received from the opposite device.  VGC also makes it easy to manage state across the devices by using custom elements.
 - **Creating a hybrid hardware/software controller using controller forwarding.**
 - **Supporting large numbers of controllers for social games.**  There are no imposed limits on the number of hardware or software controllers that can be used with a game.  The two third-party controller limit on the Apple TV can be exceeded using controller forwarding (bridging), hybrid controllers and software-based controllers. 
 - **Creating text-driven games.**  Support for string-based custom inputs makes it easy to create text-oriented games.  Use of voice dictation is demonstrated in the sample projects.
