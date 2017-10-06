@@ -92,29 +92,37 @@
    <Group
       location = "container:"
       name = "Sample Projects">
+      <Group
+         location = "container:"
+         name = "Peripheral Samples">
+         <FileRef
+            location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Samples/Peripheral_OSX/Peripheral_OSX.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Central_Samples">
+         <FileRef
+            location = "group:Samples/Central_iOS/Central_iOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Samples/Bridge_iOS/Bridge_iOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Samples/ObjectiveC_iOS/ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Samples/Central_OSX/Central_OSX.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:Samples/Central_tvOS/Central_tvOS.xcodeproj">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Samples/TestSpriteKit/MultiplayerSpritekitExample.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Peripheral_iOS/Peripheral_iOS.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Central_iOS/Central_iOS.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Central_tvOS/Central_tvOS.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Peripheral_OSX/Peripheral_OSX.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Central_OSX/Central_OSX.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/Bridge_iOS/Bridge_iOS.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:Samples/ObjectiveC_iOS/ObjectiveC_iOS/ObjectiveC_iOS.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:Samples/SceneKitVehicleDemo/SceneKitVehicle.xcodeproj">
