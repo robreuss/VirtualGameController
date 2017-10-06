@@ -15,6 +15,7 @@ import UIKit
 #endif
 
 var ship: SCNNode!
+var ship2: SCNNode!
 var lightNode: SCNNode!
 var cameraNode: SCNNode!
 var sharedCode: SharedCode!
@@ -26,11 +27,14 @@ class GameViewController: UIViewController {
         
         VgcManager.loggerLogLevel = .Debug
         
-        //NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
 
+        // Uncomment to run using the iOS Peripheral sample app to control the ship.  Be sure to turn Motion on through the iOS Peripheral sample app.
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: false)
-        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: true)
+        
+        // Uncomment to run where two iOS devices each display two ships, and using motion, each device controls one ship.  Both ships are kept in sync across both devices.
+        //VgcManager.startAs(.MultiplayerPeer, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: true)
         //VgcManager.peripheral.browseForServices()
         
         VgcManager.performanceSamplingDisplayFrequency = 10
@@ -88,21 +92,22 @@ class GameViewController: UIViewController {
         #if os(iOS) || os(tvOS)
             scnView.backgroundColor = UIColor.black
         #endif
-
+        
         sharedCode = SharedCode()
-        sharedCode.setup(ship: ship, lightNode: lightNode, cameraNode: cameraNode)
+ 
+        sharedCode.setup(scene: scene, ship: ship, lightNode: lightNode, cameraNode: cameraNode)
  
         //scnView.delegate = sharedCode
     }
     
     // Auto-connect to opposite device, for testing scenarios where both devices
     // act as both Peripheral and Central.
-    /*
+    
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
         VgcManager.peripheral.connectToService(vgcService)
     }
- */
+ 
     
     @objc func peripheralDidConnect(_ notification: Notification) {
 
