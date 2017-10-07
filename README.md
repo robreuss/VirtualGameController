@@ -5,7 +5,7 @@
 [![CocoaPods](https://img.shields.io/badge/CocoaPods-compatible-4BC51D.svg?style=flat)](https://cocoapods.org/?q=virtualgamecontroller)
 ![Travis](https://travis-ci.org/robreuss/VirtualGameController.svg)
 
-![](http://robreuss.squarespace.com/storage/Game-Controller-Outline-300px.png)
+![Logo](http://robreuss.squarespace.com/storage/Game-Controller-Outline-300px.png)
 # Virtual Game Controller
 
 ## Overview
