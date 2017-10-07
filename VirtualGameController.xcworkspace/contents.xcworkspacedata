@@ -92,9 +92,13 @@
    <Group
       location = "container:"
       name = "Sample Projects">
-      <FileRef
-         location = "group:SpriteKitExample/SpriteKitExample.xcodeproj">
-      </FileRef>
+      <Group
+         location = "group:Samples/SpriteKitExample"
+         name = "SpriteKitExample">
+         <FileRef
+            location = "group:SpriteKitExample.xcodeproj">
+         </FileRef>
+      </Group>
       <Group
          location = "group:Samples/SceneKitShipDemo"
          name = "SceneKitShipDemo">

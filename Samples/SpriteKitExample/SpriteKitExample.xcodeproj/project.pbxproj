@@ -15,7 +15,23 @@
 		20E6A99B1F8950A20023F778 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E6A9991F8950A20023F778 /* Main.storyboard */; };
 		20E6A99D1F8950A20023F778 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E6A99C1F8950A20023F778 /* Assets.xcassets */; };
 		20E6A9A01F8950A20023F778 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E6A99E1F8950A20023F778 /* LaunchScreen.storyboard */; };
+		20E6A9B01F89517D0023F778 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E6A9AF1F89517D0023F778 /* VirtualGameController.framework */; };
+		20E6A9B11F89517D0023F778 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E6A9AF1F89517D0023F778 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		20E6A9B21F89517D0023F778 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				20E6A9B11F89517D0023F778 /* VirtualGameController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		20E6A98C1F8950A20023F778 /* SpriteKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,6 +44,7 @@
 		20E6A99C1F8950A20023F778 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20E6A99F1F8950A20023F778 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20E6A9A11F8950A20023F778 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20E6A9AF1F89517D0023F778 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20E6A9B01F89517D0023F778 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +62,7 @@
 		20E6A9831F8950A20023F778 = {
 			isa = PBXGroup;
 			children = (
+				20E6A9AF1F89517D0023F778 /* VirtualGameController.framework */,
 				20E6A98E1F8950A20023F778 /* SpriteKitExample */,
 				20E6A98D1F8950A20023F778 /* Products */,
 			);
@@ -83,6 +102,7 @@
 				20E6A9881F8950A20023F778 /* Sources */,
 				20E6A9891F8950A20023F778 /* Frameworks */,
 				20E6A98A1F8950A20023F778 /* Resources */,
+				20E6A9B21F89517D0023F778 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
