@@ -268,7 +268,12 @@ open class Element: NSObject {
                 return self.value as! Data
                 
             case .String:
-                return (NSData(data: (self.value as! String).data(using: String.Encoding.utf8)!) as Data)
+                if let myData = (self.value as! String).data(using: String.Encoding.utf8) {
+                    return (NSData(data: myData) as Data)
+                } else {
+                    vgcLogError("Got nil when expecting string data")
+                    return Data()
+                }
             }
         }
         

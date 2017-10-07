@@ -54,13 +54,18 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
                 
                 element.valueAsNSData = elementValue
                 NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-                deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: (element.valueAsNSData)) as? DeviceInfo)!
-                
-                delegate?.testForMatchingStreams()
+                if let di = (NSKeyedUnarchiver.unarchiveObject(with: (element.valueAsNSData)) as? DeviceInfo) {
+                    deviceInfo = di
+                    delegate?.testForMatchingStreams()
+                } else {
+                    
+                    vgcLogError("Received nil DeviceInfo")
+                    
+                }
                 
             }
         } else {
-            vgcLogError("Bad device info.")
+            vgcLogError("Expected DeviceInfo but got nil element based on identifer \(elementIdentifier)")
         }
     }
     

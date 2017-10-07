@@ -53,14 +53,16 @@ open class VgcMotionManager: NSObject {
     ///
     @objc open var updateInterval = 1.0 / 60 {
         didSet {
-            if active {
-                active = false
-                motionPollingTimer.invalidate()
-                motionPollingTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(pollMotionData), userInfo: nil, repeats: true)
-                active = true
-            }
-            //manager.deviceMotionUpdateInterval = updateInterval // Left over from block-based approach instead of polling
             setupFilterConstant()
+        }
+    }
+    
+    func startPolling() {
+        if active {
+            active = false
+            if let timer = motionPollingTimer { timer.invalidate() }
+            motionPollingTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(pollMotionData), userInfo: nil, repeats: true)
+            active = true
         }
     }
     
@@ -75,20 +77,14 @@ open class VgcMotionManager: NSObject {
     
     @objc func pollMotionData() {
 
-        let deviceMotionData = manager.deviceMotion
-        
-        // Motion data is not available, probably because we just launched
-        if deviceMotionData == nil {
-            vgcLogDebug("Motion data not available yet")
-            return
-        }
-        
+        guard let deviceMotionData = manager.deviceMotion else { return }
+
         var x, y, z, w: Double
-        
+    
         // Send data on the custom accelerometer channels
         if self.enableAttitude {
             
-            (x, y, z, w) = self.filterX(((deviceMotionData?.attitude.quaternion.x)!), y: ((deviceMotionData?.attitude.quaternion.y)!), z: ((deviceMotionData?.attitude.quaternion.z)!), w: ((deviceMotionData?.attitude.quaternion.w)!))
+            (x, y, z, w) = self.filterX(((deviceMotionData.attitude.quaternion.x)), y: ((deviceMotionData.attitude.quaternion.y)), z: ((deviceMotionData.attitude.quaternion.z)), w: ((deviceMotionData.attitude.quaternion.w)))
             
             //vgcLogDebug("Old double: \(deviceMotionData?.attitude.quaternion.x), new float: \(x)")
             
@@ -102,12 +98,12 @@ open class VgcMotionManager: NSObject {
             self.sendElementState(self.elements.motionAttitudeZ)
             self.sendElementState(self.elements.motionAttitudeW)
         }
-        
-        
+    
+    
         // Send data on the custom accelerometer channels
         if self.enableUserAcceleration {
             
-            (x, y, z, w) = self.filterX(((deviceMotionData?.userAcceleration.x)!), y: ((deviceMotionData?.userAcceleration.y)!), z: ((deviceMotionData?.userAcceleration.z)!), w: 0)
+            (x, y, z, w) = self.filterX(((deviceMotionData.userAcceleration.x)), y: ((deviceMotionData.userAcceleration.y)), z: ((deviceMotionData.userAcceleration.z)), w: 0)
             
             self.elements.motionUserAccelerationX.value = Float(x) as AnyObject
             self.elements.motionUserAccelerationY.value = Float(y) as AnyObject
@@ -117,12 +113,12 @@ open class VgcMotionManager: NSObject {
             self.sendElementState(self.elements.motionUserAccelerationY)
             self.sendElementState(self.elements.motionUserAccelerationZ)
         }
-        
+    
         // Gravity
-        
+    
         if self.enableGravity {
             
-            (x, y, z, w) = self.filterX(((deviceMotionData?.gravity.x)!), y: ((deviceMotionData?.gravity.y)!), z: ((deviceMotionData?.gravity.z)!), w: 0)
+            (x, y, z, w) = self.filterX(((deviceMotionData.gravity.x)), y: ((deviceMotionData.gravity.y)), z: ((deviceMotionData.gravity.z)), w: 0)
             
             self.elements.motionGravityX.value = Float(x) as AnyObject
             self.elements.motionGravityY.value = Float(y) as AnyObject
@@ -132,12 +128,12 @@ open class VgcMotionManager: NSObject {
             self.sendElementState(self.elements.motionGravityY)
             self.sendElementState(self.elements.motionGravityZ)
         }
-        
+    
         // Rotation Rate
-        
+    
         if self.enableRotationRate {
             
-            (x, y, z, w) = self.filterX(((deviceMotionData?.rotationRate.x)!), y: ((deviceMotionData?.rotationRate.y)!), z: ((deviceMotionData?.rotationRate.z)!), w: 0)
+            (x, y, z, w) = self.filterX(((deviceMotionData.rotationRate.x)), y: ((deviceMotionData.rotationRate.y)), z: ((deviceMotionData.rotationRate.z)), w: 0)
             
             self.elements.motionRotationRateX.value = Float(x) as AnyObject
             self.elements.motionRotationRateY.value = Float(y) as AnyObject
@@ -186,7 +182,7 @@ open class VgcMotionManager: NSObject {
                     
                     manager.startDeviceMotionUpdates()
                     
-                    motionPollingTimer = Timer.scheduledTimer(timeInterval: updateInterval, target: self, selector: #selector(pollMotionData), userInfo: nil, repeats: true)
+                    startPolling()
                 }
                 
             } else if self.manager.isAccelerometerAvailable {

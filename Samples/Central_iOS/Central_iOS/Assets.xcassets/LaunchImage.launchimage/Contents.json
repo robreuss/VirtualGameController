@@ -17,7 +17,6 @@
     {
       "orientation" : "portrait",
       "idiom" : "ipad",
-      "filename" : "116-controller@2x.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
@@ -25,7 +24,6 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
-      "filename" : "116-controller@2x-1.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "2x"
