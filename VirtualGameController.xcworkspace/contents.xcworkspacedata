@@ -93,6 +93,19 @@
       location = "container:"
       name = "Sample Projects">
       <Group
+         location = "group:Samples/SceneKitShipDemo"
+         name = "SceneKitShipDemo">
+         <FileRef
+            location = "group:SceneKitShipDemo_macOS/SceneKitShipDemo_macOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:SceneKitShipDemo_tvOS/SceneKitShipDemo_tvOS.xcodeproj">
+         </FileRef>
+         <FileRef
+            location = "group:SceneKitShipDemo_iOS/SceneKitShipDemo_iOS.xcodeproj">
+         </FileRef>
+      </Group>
+      <Group
          location = "container:"
          name = "Peripheral Samples">
          <FileRef
@@ -126,9 +139,6 @@
       </FileRef>
       <FileRef
          location = "group:Samples/SceneKitVehicleDemo/SceneKitVehicle.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Samples/SceneKitDemo/ShipDemo.xcodeproj">
       </FileRef>
    </Group>
    <Group

@@ -117,9 +117,10 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
         
         if var currentShip = self.shipLeft {
 
+            #if !os(OSX)
             if newController.isLocalController {
                 if UIDevice.current.userInterfaceIdiom == .pad {
-                    currentShip = self.shipRight
+                    if self.shipRight != nil { currentShip = self.shipRight }
                 } else {
                     currentShip = self.shipLeft
                 }
@@ -127,10 +128,10 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
                 if UIDevice.current.userInterfaceIdiom == .pad {
                     currentShip = self.shipLeft
                 } else {
-                    currentShip = self.shipRight
+                    if self.shipRight != nil { currentShip = self.shipRight }
                 }
             }
-
+            #endif
             
             #if os(iOS) || os(tvOS)
             newController.extendedGamepad?.dpad.valueChangedHandler = { (dpad, xValue, yValue) in

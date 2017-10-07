@@ -20,7 +20,6 @@
 		208E55961C24BB7F0050D8AD /* VgcPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E55941C24BB7F0050D8AD /* VgcPeripheral.swift */; };
 		208E55971C24BB7F0050D8AD /* VgcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E55951C24BB7F0050D8AD /* VgcWatch.swift */; };
 		20A1208F1BDA976000E30083 /* VirtualGameControllerTvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A1208E1BDA976000E30083 /* VirtualGameControllerTvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20B1C57E1F833AE5006CCF5C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C57D1F833AE5006CCF5C /* GameViewController.swift */; };
 		20B1C5801F833BBF006CCF5C /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C57F1F833BBF006CCF5C /* SharedCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +43,6 @@
 		20A1208B1BDA976000E30083 /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A1208E1BDA976000E30083 /* VirtualGameControllerTvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerTvOS.h; sourceTree = "<group>"; };
 		20A120901BDA976000E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20B1C57D1F833AE5006CCF5C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameViewController.swift; path = ../../Samples/SceneKitDemo/SceneKitDemo/GameViewController.swift; sourceTree = "<group>"; };
 		20B1C57F1F833BBF006CCF5C /* SharedCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				20B1C57F1F833BBF006CCF5C /* SharedCode.swift */,
-				20B1C57D1F833AE5006CCF5C /* GameViewController.swift */,
 				208E55921C24BB6A0050D8AD /* VirtualGameControllerTvOS */,
 				208E55931C24BB6A0050D8AD /* VgcPeripheral.swift */,
 				208E558E1C24BB0B0050D8AD /* VgcWatch.swift */,
@@ -195,7 +192,6 @@
 				202BC0041BE57CE4004D47EC /* VgcManager.swift in Sources */,
 				207A78BD1C276D9200529768 /* VgcLogger.swift in Sources */,
 				202BC0051BE57CE4004D47EC /* VgcMotion.swift in Sources */,
-				20B1C57E1F833AE5006CCF5C /* GameViewController.swift in Sources */,
 				20B1C5801F833BBF006CCF5C /* SharedCode.swift in Sources */,
 				208E55971C24BB7F0050D8AD /* VgcWatch.swift in Sources */,
 				202BBFFF1BE57CE4004D47EC /* VgcCentralPublisher.swift in Sources */,
