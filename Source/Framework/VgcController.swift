@@ -404,7 +404,11 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         if let destinationElementIdentifier = Elements.customMappings.mappings[elementToBeMapped.identifier] {
             let destinationElement = elements.elementFromIdentifier(destinationElementIdentifier)
             destinationElement?.value = elementToBeMapped.value
-            setValue(destinationElement?.value, forKeyPath: (destinationElement?.setterKeypath(self))!)
+            if let keyPath = (destinationElement?.setterKeypath(self)) {
+                setValue(destinationElement?.value, forKeyPath: keyPath)
+            } else {
+                vgcLogError("Expected keyPath from element but got nil")
+            }
         }
 
     }
@@ -425,14 +429,18 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
         case .systemMessage:
             
-            if value < 1 { return } // Unknown system message
-            let messageType = SystemMessages(rawValue: Int(value))!
+            if value < 1 {
+                vgcLogError("Receive bad system message type (\(value))")
+                return
+            }
             
-            vgcLogDebug("Peripheral sent system message: \(messageType.description)")
-            
-            switch messageType {
+            if let messageType = SystemMessages(rawValue: Int(value)) {
                 
-                // A Bridge uses the Disconnect system message to notify it's Central
+                vgcLogDebug("Peripheral sent system message: \(messageType.description)")
+                
+                switch messageType {
+                    
+                    // A Bridge uses the Disconnect system message to notify it's Central
                 // that it's Peripheral has disconnected
                 case .disconnect:
                     
@@ -440,16 +448,24 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
                     
                 case .receivedInvalidMessage:
                     break
-                
+                    
                 case .connectionAcknowledgement:
                     break
+                }
                 
+            } else {
+                vgcLogError("Expected system message type but got nil")
+                return
             }
             
         case .deviceInfoElement:
             
             NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
-            deviceInfo = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData as Data) as? DeviceInfo)!
+            if let di = (NSKeyedUnarchiver.unarchiveObject(with: element.valueAsNSData as Data) as? DeviceInfo) {
+                deviceInfo = di
+            } else {
+                vgcLogError("Expected DeviceInfo but got nil")
+            }
             
         case .playerIndex:
             

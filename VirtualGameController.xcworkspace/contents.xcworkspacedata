@@ -92,56 +92,9 @@
    <Group
       location = "container:"
       name = "Sample Projects">
-      <Group
-         location = "group:Samples/MultiplayerSpriteKitExample"
-         name = "MultiplayerSpriteKitExample">
-         <Group
-            location = "group:MultiplayerSpriteKitExample"
-            name = "MultiplayerSpriteKitExample">
-            <FileRef
-               location = "group:GameViewController.swift">
-            </FileRef>
-            <Group
-               location = "group:Assets.xcassets"
-               name = "Assets.xcassets">
-               <Group
-                  location = "group:AppIcon.appiconset"
-                  name = "AppIcon.appiconset">
-                  <FileRef
-                     location = "group:Contents.json">
-                  </FileRef>
-               </Group>
-            </Group>
-            <Group
-               location = "group:Base.lproj"
-               name = "Base.lproj">
-               <FileRef
-                  location = "group:LaunchScreen.storyboard">
-               </FileRef>
-               <FileRef
-                  location = "group:Main.storyboard">
-               </FileRef>
-            </Group>
-            <FileRef
-               location = "group:GameScene.sks">
-            </FileRef>
-            <FileRef
-               location = "group:AppDelegate.swift">
-            </FileRef>
-            <FileRef
-               location = "group:GameScene.swift">
-            </FileRef>
-            <FileRef
-               location = "group:Info.plist">
-            </FileRef>
-            <FileRef
-               location = "group:Actions.sks">
-            </FileRef>
-         </Group>
-         <FileRef
-            location = "group:MultiplayerSpriteKitExample.xcodeproj">
-         </FileRef>
-      </Group>
+      <FileRef
+         location = "group:MultiplayerSpriteKitExample/MultiplayerSpriteKitExample.xcodeproj">
+      </FileRef>
       <Group
          location = "group:Samples/SceneKitShipDemo"
          name = "SceneKitShipDemo">

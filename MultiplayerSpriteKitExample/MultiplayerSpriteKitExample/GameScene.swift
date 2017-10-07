@@ -8,6 +8,10 @@
 
 import SpriteKit
 import GameplayKit
+import GameController
+import VirtualGameController
+
+// Test
 
 class GameScene: SKScene {
     
@@ -37,8 +41,19 @@ class GameScene: SKScene {
         }
     }
     
+    func sendPOS(pos:CGPoint) {
+        
+        let elementX = VgcManager.elements.leftThumbstickXAxis
+        elementX.value = pos.x as AnyObject
+        VgcManager.peripheral.sendElementState(elementX)
+        
+        let elementY = VgcManager.elements.leftThumbstickYAxis
+        elementY.value = pos.y as AnyObject
+        VgcManager.peripheral.sendElementState(elementY)
+        
+    }
     
-    func touchDown(atPoint pos : CGPoint) {
+    open func addSpinnyNode(pos : CGPoint) {
         if let n = self.spinnyNode?.copy() as! SKShapeNode? {
             n.position = pos
             n.strokeColor = SKColor.green
@@ -46,20 +61,16 @@ class GameScene: SKScene {
         }
     }
     
+    func touchDown(atPoint pos : CGPoint) {
+        sendPOS(pos: pos)
+    }
+    
     func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
+        sendPOS(pos: pos)
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
+        sendPOS(pos: pos)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -87,3 +98,5 @@ class GameScene: SKScene {
         // Called before each frame is rendered
     }
 }
+
+
