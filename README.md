@@ -93,8 +93,8 @@ carthage update --platform watchOS
 ````
 
 ## Core Documentation
-* [Intregrating VGC into Your Game](https://github.com/robreuss/VirtualGameController/wiki/Game-Integration-(Central)) 
-* [Creating a Software-based Controller](https://github.com/robreuss/VirtualGameController/wiki/Creating-a-Software-based-Controller-(Peripheral)) 
+* [Integrating VGC into your Game (Central)](https://github.com/robreuss/VirtualGameController/wiki/Game-Integration-(Central)) 
+* [Creating a Software-based Controller (Peripheral)](https://github.com/robreuss/VirtualGameController/wiki/Creating-a-Software-based-Controller-(Peripheral)) 
 * [Implementing Peer/Multiplayer Capabilities](https://github.com/robreuss/VirtualGameController/wiki/Implementing-Peer-Multiplayer-Capabilities)
 
 ## Further Documentation
