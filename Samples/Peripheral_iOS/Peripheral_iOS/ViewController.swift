@@ -23,40 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidConnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidConnectNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidDisconnectNotification), object: nil)
-        
-        // Use a compiler flag to control the logging level, dropping it to just errors if this
-        // is a release build.
-        #if Release
-        VgcManager.loggerLogLevel = .Error // Minimal logging
-        #else
-        VgcManager.loggerLogLevel = .Debug // Robust logging
-        #endif
-        
-        // NSLog provides time/date/context information - OPTIONAL
-        VgcManager.loggerUseNSLog = true
-        
-        // Make this non-zero if you'd like to see some basic performance statistics
-        // written to console. - OPTIONAL
-        VgcManager.performanceSamplingDisplayFrequency = 10.0
-
-        // Run as a PERIPHERAL - REQUIRED
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
-
-        // Set peripheral device info - OPTIONAL
-        // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
-        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
-        
-        // This property needs to be set to a specific iCade controller to enable the iCade functionality.  This
-        // cannot be done by automatically discovering the identity of the controller; rather, it requires
-        // presenting a list of controllers to the user and let them choose. - OPTIONAL
-        VgcManager.iCadeControllerMode = .Disabled
-        
-        // Display our basic controller UI for debugging purposes.
-        peripheralControlPadView = PeripheralControlPadView(vc: self)
-
-        // Fired off each time a Central is found
+        // REQUIRED: Fired off each time a Central is found
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.lostService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralLostService), object: nil)
         
@@ -75,10 +42,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // motion sensors to use, whether motion is turned on, and a background color value.  Let me know if you
         // have requirements for additional Peripheral setup values.
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receivedPeripheralSetup(_:)), name: NSNotification.Name(rawValue: VgcPeripheralSetupNotification), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidConnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidConnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidDisconnectNotification), object: nil)
+        
+        // Use a compiler flag to control the logging level, dropping it to just errors if this
+        // is a release build.
+        #if Release
+        VgcManager.loggerLogLevel = .Error // Minimal logging
+        #else
+        VgcManager.loggerLogLevel = .Debug // Robust logging
+        #endif
+        
+        // NSLog provides time/date/context information - OPTIONAL
+        VgcManager.loggerUseNSLog = true
+        
+        // Make this non-zero if you'd like to see some basic performance statistics
+        // written to console. - OPTIONAL
+        VgcManager.performanceSamplingDisplayFrequency = 10.0
 
-        // Kick off the search for Centrals and Bridges that we can connect to.  When
-        // services are found, the VgcPeripheralFoundService will fire. - REQUIRED
-        VgcManager.peripheral.browseForServices()
+        // REQUIRED: Run as a PERIPHERAL
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
+
+        // Set peripheral device info - OPTIONAL
+        // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
+        VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+        
+        // This property needs to be set to a specific iCade controller to enable the iCade functionality.  This
+        // cannot be done by automatically discovering the identity of the controller; rather, it requires
+        // presenting a list of controllers to the user and let them choose. - OPTIONAL
+        VgcManager.iCadeControllerMode = .Disabled
+        
+        // Display our basic controller UI for debugging purposes.
+        peripheralControlPadView = PeripheralControlPadView(vc: self)
         
         // Frequency at which the motion sensors are polled - OPTIONAL
         VgcManager.peripheral.motion.updateInterval = 1/60
@@ -122,43 +118,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
 
+        // REQUIRED: Kick off the search for Centrals and Bridges that we can connect to.  When
+        // services are found, the VgcPeripheralFoundService will fire.
+        VgcManager.peripheral.browseForServices()
         
     }
     
-    // Used for sending photos to the Central...
-    @objc func displayPhotoPicker(_ sender: AnyObject) {
-
-        imagePicker =  UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        
-        imagePicker.dismiss(animated: true) { () -> Void in
-            
-            DispatchQueue.global(qos: .background).async {
-                let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-                let imageData = UIImageJPEGRepresentation(image, 1.0)
-                imageElement?.value = imageData! as AnyObject
-                imageElement?.clearValueAfterTransfer = true
-                VgcManager.peripheral.sendElementState(imageElement!)
-            }
-
-
-        }
-
-    }
-
     // Add new service to our list of available services.
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
         vgcLogDebug("[SAMPLE] Found service: \(vgcService.fullName) isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
- 
+    
     // Refresh list of available services because a service went offline.
     @objc func lostService(_ notification: Notification) {
         let vgcService = notification.object as? VgcService
@@ -321,6 +293,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         vgcLogDebug("[SAMPLE] Got VgcPeripheralDidDisconnectNotification notification")
         VgcManager.peripheral.browseForServices()
+        
+    }
+    
+    
+    // Used for sending photos to the Central...
+    @objc func displayPhotoPicker(_ sender: AnyObject) {
+        
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        imagePicker.dismiss(animated: true) { () -> Void in
+            
+            DispatchQueue.global(qos: .background).async {
+                let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
+                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                imageElement?.value = imageData! as AnyObject
+                imageElement?.clearValueAfterTransfer = true
+                VgcManager.peripheral.sendElementState(imageElement!)
+            }
+            
+        }
         
     }
     
