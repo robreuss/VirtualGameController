@@ -21,10 +21,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
+
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidConnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidConnectNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.watchDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcWatchDidDisconnectNotification), object: nil)
         
-         // Use a compiler flag to control the logging level, dropping it to just errors if this
+        // Use a compiler flag to control the logging level, dropping it to just errors if this
         // is a release build.
         #if Release
         VgcManager.loggerLogLevel = .Error // Minimal logging
@@ -32,80 +34,76 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.loggerLogLevel = .Debug // Robust logging
         #endif
         
+        // NSLog provides time/date/context information - OPTIONAL
         VgcManager.loggerUseNSLog = true
         
-        // Network performance info
+        // Make this non-zero if you'd like to see some basic performance statistics
+        // written to console. - OPTIONAL
         VgcManager.performanceSamplingDisplayFrequency = 10.0
- 
-        // Publishes the CENTRAL service in case we want to operate as both
-        // When running as both, central service must be started FIRST
-        //VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: true)
-        
-        // Run as a PERIPHERAL
-        //VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false)
-        
-        // Run in LOCAL mode so that the device also sends controller data to itself, so it is both running the game and forwarding control
-        // activity to another device
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
 
-        // Set peripheral device info
+        // Run as a PERIPHERAL - REQUIRED
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
+
+        // Set peripheral device info - OPTIONAL
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
         VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
         
-        // This property needs to be set to a specific iCade controller to enable the functionality.  This
+        // This property needs to be set to a specific iCade controller to enable the iCade functionality.  This
         // cannot be done by automatically discovering the identity of the controller; rather, it requires
-        // presenting a list of controllers to the user and let them choose.
+        // presenting a list of controllers to the user and let them choose. - OPTIONAL
         VgcManager.iCadeControllerMode = .Disabled
         
-        // Display our basic controller UI for debugging purposes
+        // Display our basic controller UI for debugging purposes.
         peripheralControlPadView = PeripheralControlPadView(vc: self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidDisconnectNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralConnectionFailed(_:)), name: NSNotification.Name(rawValue: VgcPeripheralConnectionFailedNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receivedSystemMessage(_:)), name: NSNotification.Name(rawValue: VgcSystemMessageNotification), object: nil)
+        // Fired off each time a Central is found
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receivedPeripheralSetup(_:)), name: NSNotification.Name(rawValue: VgcPeripheralSetupNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.lostService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralLostService), object: nil)
+        
+        // Notification that the process of searching for services has bee reset
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.serviceBrowserReset(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidResetBrowser), object: nil)
         
+        // Notification that this peripheral has connected/disconnected/failed to a Central
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralDidDisconnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidDisconnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.peripheralConnectionFailed(_:)), name: NSNotification.Name(rawValue: VgcPeripheralConnectionFailedNotification), object: nil)
+        
+        // This is currently only used for connection acknowledgement - FUTURE
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receivedSystemMessage(_:)), name: NSNotification.Name(rawValue: VgcSystemMessageNotification), object: nil)
+        
+        // A Central has the ability to send a Peripheral Setup object that determines things like which
+        // motion sensors to use, whether motion is turned on, and a background color value.  Let me know if you
+        // have requirements for additional Peripheral setup values.
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.receivedPeripheralSetup(_:)), name: NSNotification.Name(rawValue: VgcPeripheralSetupNotification), object: nil)
+
         // Kick off the search for Centrals and Bridges that we can connect to.  When
-        // services are found, the VgcPeripheralFoundService will fire.
+        // services are found, the VgcPeripheralFoundService will fire. - REQUIRED
         VgcManager.peripheral.browseForServices()
         
+        // Frequency at which the motion sensors are polled - OPTIONAL
         VgcManager.peripheral.motion.updateInterval = 1/60
         
+        // Which motion sensors to poll and generate data for - OPTIONAL
+        // Use only those you need!
         VgcManager.peripheral.motion.enableAttitude = true
         VgcManager.peripheral.motion.enableGravity = true
         VgcManager.peripheral.motion.enableRotationRate = true
         VgcManager.peripheral.motion.enableUserAcceleration = true
         
+        // A couple of filters to minimize data transfer and minimize user - OPTIONAL
+        // shake.
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
 
-        
-        // Skip sending float values if they are the same as the preceding value
+        // Skip sending float values if they are the same as the preceding value - mainly useful
+        // for motion data, which can be a pretty intense flow of data if you are using multiple
+        // types of motion data. - OPTIONAL
         VgcManager.enableDupFiltering = false
         VgcManager.dupFilteringPrecision = 3
         
-        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.DebugViewTap.rawValue) {
-       
-            element.valueChangedHandlerForPeripheral = { (element: Element) in
-                
-                vgcLogDebug("[SAMPLE] Custom element handler fired for \(element.name)")
-                
-                self.peripheralControlPadView.flashView.backgroundColor = UIColor.blue
-                UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
-                    self.peripheralControlPadView.flashView!.alpha = 1
-                    }, completion: { finished in
-                        self.peripheralControlPadView.flashView!.alpha = 0
-                })
-                
-            }
-        }
-        
+        // Example Peripheral-side handler for receiving elements from the Central,
+        // in this case an image element. - OPTIONAL
         let element: Element = VgcManager.elements.image
-            
         element.valueChangedHandlerForPeripheral = { (element: Element) in
             
             vgcLogDebug("[SAMPLE] Custom element handler fired for Send Image")
@@ -114,35 +112,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.bottom
             self.peripheralControlPadView.flashView.alpha = 1.0
             self.peripheralControlPadView.flashView.backgroundColor = UIColor.clear
-        }
-        
-        if let element: Element = VgcManager.elements.elementFromIdentifier(CustomElementType.Keyboard.rawValue) {
-            
-            element.valueChangedHandlerForPeripheral = { (element: Element) in
-                
-                vgcLogDebug("[SAMPLE] Custom element handler fired for \(element.name) with value \(element.value)")
-                
-                self.peripheralControlPadView.flashView.backgroundColor = UIColor.brown
-                UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
-                    self.peripheralControlPadView.flashView!.alpha = 1
-                    }, completion: { finished in
-                        self.peripheralControlPadView.flashView!.alpha = 0
-                })
-            }
-        }
-        
-        let rightShoulderElement: Element = VgcManager.elements.rightShoulder
-            
-        rightShoulderElement.valueChangedHandlerForPeripheral = { (rightShoulderElement: Element) in
-            
-            vgcLogDebug("[SAMPLE] Custom element handler fired for \(rightShoulderElement.name) with value \(rightShoulderElement.value)")
-            
-            self.peripheralControlPadView.flashView.backgroundColor = UIColor.green
-            UIView.animate(withDuration: 0.05, delay: 0.0, options: .curveEaseIn, animations: {
-                self.peripheralControlPadView.flashView!.alpha = 1
-                }, completion: { finished in
-                    self.peripheralControlPadView.flashView!.alpha = 0
-            })
         }
         
         // Handle element messages from watch.  No need to forward to Central, which is handled
@@ -156,6 +125,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    // Used for sending photos to the Central...
     @objc func displayPhotoPicker(_ sender: AnyObject) {
 
         imagePicker =  UIImagePickerController()
@@ -182,35 +152,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
 
-    // Add new service to our list of available services.  I'm not using here, but the
-    // newly found VgcService object is included with the notification.
+    // Add new service to our list of available services.
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
         vgcLogDebug("[SAMPLE] Found service: \(vgcService.fullName) isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
  
-    // Refresh list of available services because one went offline. 
-    // I'm not using here, but the lost VgcService object is included with the notification.
+    // Refresh list of available services because a service went offline.
     @objc func lostService(_ notification: Notification) {
         let vgcService = notification.object as? VgcService
         vgcLogDebug("[SAMPLE] Lost service: \(vgcService!.fullName) isMainThread: \(Thread.isMainThread)")
-        peripheralControlPadView.serviceSelectorView.refresh()
-    }
-    
-    // Watch reachability changed
-    @objc func watchDidConnect(_ notification: Notification) {
-        vgcLogDebug("[SAMPLE] Got watch did connect notification \(VgcManager.peripheral)")
-    }
-    
-    // Watch reachability changed
-    @objc func watchDidDisconnect(_ notification: Notification) {
-        vgcLogDebug("[SAMPLE] Got watch did disconnect notification")
-    }
-    
-    // Notification indicates we should refresh the view
-    @objc func serviceBrowserReset(_ notification: Notification) {
-        vgcLogDebug("[SAMPLE] Service browser reset, isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
@@ -220,7 +172,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         peripheralControlPadView.serviceSelectorView.refresh()
     }
     
-    // The Central has sent PeripheralSetup information
+    // Notification indicates we should refresh the view
+    @objc func serviceBrowserReset(_ notification: Notification) {
+        vgcLogDebug("[SAMPLE] Service browser reset, isMainThread: \(Thread.isMainThread)")
+        peripheralControlPadView.serviceSelectorView.refresh()
+    }
+
+    // The Central has sent PeripheralSetup information - OPTIONAL
     @objc func receivedPeripheralSetup(_ notification: Notification) {
       
         if VgcManager.peripheralSetup.motionActive {
@@ -271,17 +229,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    
-    @objc func localControllerDidConnect(_ notification: Notification) {
+    // This notification is designed to mimic the same key notification on the Central only when
+    // the "enableLocalController" setting is true (set within the "startAs" method above).  Within
+    // this notification, you can register handler blocks for all the elements you support, providing
+    // a nice centralized location for your controller response code.  In cases where you are operating
+    // in "peer" mode, you can use this notification to contain blocks that will be executed when EITHER
+    // the local or remote device receives controller input.  - OPTIONAL
+    @objc func controllerDidConnect(_ notification: Notification) {
         
         guard let controller: VgcController = notification.object as? VgcController else { return }
 
-        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
-            
-            print("[SAMPLE] LOCAL HANDLER: Global handler fired, Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)")
-            
-        }
-        
         // Refresh on all extended gamepad changes (Global handler)
         controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
@@ -301,12 +258,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             print("[SAMPLE] LOCAL HANDLER: Left Thumbstick: \(xValue), \(yValue)")
             
         }
-
-
         
     }
     
-    
+    // This should be implemented in order to stop browsing for Central services, unless your
+    // implementation calls for it (can't imagine why).
     @objc func peripheralDidConnect(_ notification: Notification) {
         
         vgcLogDebug("[SAMPLE] Got VgcPeripheralDidConnectNotification notification")
@@ -325,7 +281,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             }
         #endif
         
-            // Data load testing
+        // Data load testing - fire off a large amount of data at the Central
         
         //var motionPollingTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(sendRandomData), userInfo: nil, repeats: true)
     }
@@ -359,11 +315,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 */
     
+    // My implementation of this Peripheral starts browsing for services again when
+    // the Central disconnects for whatever reason.
     @objc func peripheralDidDisconnect(_ notification: Notification) {
         
         vgcLogDebug("[SAMPLE] Got VgcPeripheralDidDisconnectNotification notification")
         VgcManager.peripheral.browseForServices()
         
+    }
+    
+    // Watch reachability changed
+    @objc func watchDidConnect(_ notification: Notification) {
+        vgcLogDebug("[SAMPLE] Got watch did connect notification \(VgcManager.peripheral)")
+    }
+    
+    // Watch reachability changed
+    @objc func watchDidDisconnect(_ notification: Notification) {
+        vgcLogDebug("[SAMPLE] Got watch did disconnect notification")
     }
     
     override func didReceiveMemoryWarning() {
