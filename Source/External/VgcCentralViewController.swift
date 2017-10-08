@@ -69,23 +69,23 @@ import VirtualGameController
         #endif
         
         // I have never been able to get this method to discover a controller
+        // Here's the Apple documentation for this method:
+        // https://developer.apple.com/documentation/gamecontroller/gccontroller/1458879-startwirelesscontrollerdiscovery?language=objc
         VgcController.startWirelessControllerDiscoveryWithCompletionHandler { () -> Void in
             
             vgcLogDebug("[SAMPLE] Discovery completion handler executed")
             
         }
         
-        // These function just like their GCController counter-parts, resulting from new connections by
+        // These notifications function just like their GCController counter-parts, resulting from new connections by
         // both software and hardware controllers
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidDisconnect), name: NSNotification.Name(rawValue: VgcControllerDidDisconnectNotification), object: nil)
         
         // Used to determine if an external keyboard (an iCade controller) is paired
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name(rawValue: "UIKeyboardWillShow"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name(rawValue: "UIKeyboardWillHide"), object: nil)
 
-        
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
         NotificationCenter.default.addObserver(self, selector: #selector(VgcCentralViewController.gotPlayerIndex), name: NSNotification.Name(rawValue: VgcNewPlayerIndexNotification), object: nil)
@@ -206,10 +206,11 @@ import VirtualGameController
     
     @objc func controllerDidConnect(notification: NSNotification) {
         
-        // If we're enhancing a hardware controller, we should display the Peripheral UI
+        // If we're enhancing a limited hardware controller (e.g. with motion), we should display the Peripheral UI
         // instead of the debug view UI
         if VgcManager.appRole == .EnhancementBridge { return }
         
+        // Notification passes the new controller, allowing us to set it's properties below
         guard let newController: VgcController = notification.object as? VgcController else {
             vgcLogDebug("[SAMPLE] Got nil controller in controllerDidConnect")
             return
@@ -228,6 +229,7 @@ import VirtualGameController
         VgcManager.peripheralSetup.sendToController(newController)
          */
         
+        // Debug views are the UI element representing each controller
         let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: newController)
         elementDebugView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleLeftMargin]
         scrollview.addSubview(elementDebugView)
@@ -271,6 +273,12 @@ import VirtualGameController
             elementDebugView.refresh(newController)
         }
 
+        // What follows are a serious of handler that assign blocks to the new controller that
+        // are executed in response to receiving controller input from either a software-based Peripheral
+        // or a hardware-based MFI controller.  This is where you put game logic that is driven by controllers.
+        // NOTE: you can also poll the element values if you want to associate your controller input with
+        // rendering.
+        
         // Refresh on all extended gamepad changes (Global handler)
         newController.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
             
@@ -280,13 +288,10 @@ import VirtualGameController
         
         newController.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { (thumbstick, value) in
             
-            
             //print("HANDLER: Left thumbstick xAxis: \(value)")
-            
         }
         
         newController.extendedGamepad?.buttonA.valueChangedHandler = { (button, value, pressed) in
-            
             
             print("[SAMPLE] HANDLER:Button A value: \(pressed), \(value)")
             
@@ -414,8 +419,6 @@ import VirtualGameController
     }
     
     func refreshElementDebugViewPositions() {
-        
-
    
         let controllerCount = CGFloat(VgcController.controllers().count)
         
@@ -424,9 +427,7 @@ import VirtualGameController
         let elementViewSpacing = CGFloat(20.0)
         var xPosition = CGFloat(5)
         var playerIndex = 0
-        
-        
-        
+         
         for controller in VgcController.controllers() {
             
             if let elementDebugView = self.elementDebugViewLookup[controller] {
