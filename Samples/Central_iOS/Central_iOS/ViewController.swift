@@ -47,9 +47,11 @@ class ViewController: VgcCentralViewController {
         
     }
     
-    // Used for testing connecting the sample apps Central-to-Central in multipeer mode
+    // Used for testing connecting the sample apps in multipeer mode -
+    // uncomment above and here to play with this functionality
      
     // Auto-connect to opposite device
+    /*
     @objc func foundService(_ notification: Notification) {
         let vgcService = notification.object as! VgcService
         VgcManager.peripheral.connectToService(vgcService)
@@ -67,6 +69,7 @@ class ViewController: VgcCentralViewController {
         VgcManager.peripheral.motion.start()
         
     }
+ */
 
     
 }
