@@ -954,8 +954,7 @@ open class ElementDebugView: UIView {
     // are supported.
     @objc open func receivedDebugViewTap() {
 
-        // Test vibrate using standard system element
-        controller.vibrateDevice()
+        self.controller.disconnect()
         
         // Test vibrate using custom element
         /*
@@ -966,6 +965,8 @@ open class ElementDebugView: UIView {
     }
     
     @objc open func receivedDebugViewDoubleTap() {
+        
+            controller.vibrateDevice()
         
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
         if let image = UIImage(named: "digit.jpg") {
@@ -979,6 +980,9 @@ open class ElementDebugView: UIView {
     
     open func receivedDebugViewTripleTap() {
         
+
+        
+        /*
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
         if let image = UIImage(named: "digit.jpg") {
             let imageData = UIImageJPEGRepresentation(image, 1.0)
@@ -998,6 +1002,8 @@ open class ElementDebugView: UIView {
         keyboard.value = "Before newline\nAfter newline\n\n\n" as AnyObject
         controller.sendElementStateToPeripheral(keyboard)
         //VgcController.sendElementStateToAllPeripherals(keyboard)
+ 
+ */
         
     }
     
