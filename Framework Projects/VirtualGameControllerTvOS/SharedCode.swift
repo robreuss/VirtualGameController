@@ -230,8 +230,6 @@ class SharedCode: NSObject, SCNSceneRendererDelegate {
             // Refresh on all motion changes
             newController.motion?.valueChangedHandler = { (input: VgcMotion) in
                 
-                print("Getting motion data from: \(newController.deviceInfo.vendorName)")
-                
                 let amplify = 3.14158
                 //let amplify = 0.1
                 
