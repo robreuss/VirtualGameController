@@ -92,6 +92,19 @@ carthage update --platform tvOS
 carthage update --platform watchOS
 ````
 
+## Reference Apps
+The project includes a pair apps that implement most of the available framework features and settings, as well as providing a generally helpful test environment.
+
+### Peripheral_iOS ###
+The ````Peripheral_iOS```` sample project provides a reference implementation of a software-based game controller.  Once you have implemented VGC in your game (Central) you can use the Peripheral_iOS app to test it:
+
+![Peripheral Test](https://static1.1.sqspcdn.com/static/f/677681/26657435/1446879995410/peripheral.png?token=Tfx6nkrlOJpryXF1LmuZmIvXUTM%3D)
+
+### Central_iOS ###
+The ````Central_iOS```` sample project provides a reference implementation of a Central (your game, to which Peripherals connect).  It provides a straightforward way of testing your implementation of Peripherals:
+
+![Central Test](https://static1.1.sqspcdn.com/static/f/677681/26657433/1446879952810/central.png?token=hvc5ml0dydCvhbfVtXjZ39Cai2U%3D)
+
 ## Core Documentation
 * [Integrating VGC into your Game (Central)](https://github.com/robreuss/VirtualGameController/wiki/Game-Integration-(Central)) 
 * [Creating a Software-based Controller (Peripheral)](https://github.com/robreuss/VirtualGameController/wiki/Creating-a-Software-based-Controller-(Peripheral)) 
