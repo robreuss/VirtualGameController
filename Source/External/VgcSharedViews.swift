@@ -817,14 +817,14 @@ open class ElementDebugView: UIView {
         
         super.init(frame: frame)
         
-        let debugViewTapGR = UITapGestureRecognizer(target: self, action: #selector(ElementDebugView.receivedDebugViewTap))
-        
         let debugViewDoubleTapGR = UITapGestureRecognizer(target: self, action: #selector(ElementDebugView.receivedDebugViewDoubleTap))
         debugViewDoubleTapGR.numberOfTapsRequired = 2
-        self.gestureRecognizers = [debugViewTapGR, debugViewDoubleTapGR]
         
+        let debugViewTapGR = UITapGestureRecognizer(target: self, action: #selector(ElementDebugView.receivedDebugViewTap))
         debugViewTapGR.require(toFail: debugViewDoubleTapGR)
         
+        self.gestureRecognizers = [debugViewTapGR, debugViewDoubleTapGR]
+
         self.backgroundColor = UIColor.white
         
         //self.layer.cornerRadius = 15
@@ -954,7 +954,24 @@ open class ElementDebugView: UIView {
     // are supported.
     @objc open func receivedDebugViewTap() {
 
-        self.controller.disconnect()
+       controller.vibrateDevice()
+        
+        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
+        if let image = UIImage(named: "digit.jpg") {
+            let imageData = UIImageJPEGRepresentation(image, 1.0)
+            imageElement?.value = imageData! as AnyObject
+            imageElement?.clearValueAfterTransfer = true
+            controller.sendElementStateToPeripheral(imageElement!)
+        }
+        return
+        
+        // This will flash to peripheral interface blue.  Look for the handler in the Peripheral
+        // app View Controller
+        if let tapElement = controller.elements.custom[CustomElementType.DebugViewTap.rawValue] {
+            tapElement.value = 1.0 as AnyObject
+            controller.sendElementStateToPeripheral(tapElement)
+            VgcController.sendElementStateToAllPeripherals(tapElement)
+        }
         
         // Test vibrate using custom element
         /*
@@ -965,23 +982,13 @@ open class ElementDebugView: UIView {
     }
     
     @objc open func receivedDebugViewDoubleTap() {
-        
-            controller.vibrateDevice()
-        
-        let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-        if let image = UIImage(named: "digit.jpg") {
-            let imageData = UIImageJPEGRepresentation(image, 1.0)
-            imageElement?.value = imageData! as AnyObject
-            imageElement?.clearValueAfterTransfer = true
-            controller.sendElementStateToPeripheral(imageElement!)
-        }
+
+        self.controller.disconnect()
         
     }
     
     open func receivedDebugViewTripleTap() {
-        
-
-        
+       
         /*
         let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
         if let image = UIImage(named: "digit.jpg") {
