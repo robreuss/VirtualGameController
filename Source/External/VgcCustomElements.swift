@@ -48,7 +48,7 @@ open class CustomElements: CustomElementsSuperclass {
             CustomElement(name: "Fiddlestick Y", dataType: .Float, type:CustomElementType.FiddlestickY.rawValue),
             CustomElement(name: "Fiddlestick Z", dataType: .Float, type:CustomElementType.FiddlestickZ.rawValue),
             CustomElement(name: "Keyboard", dataType: .String, type:CustomElementType.Keyboard.rawValue),
-            CustomElement(name: "DebugView Tap", dataType: .Data, type:CustomElementType.DebugViewTap.rawValue),
+            CustomElement(name: "DebugView Tap", dataType: .Float, type:CustomElementType.DebugViewTap.rawValue),
         ]
 
     }
