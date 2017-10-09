@@ -103,9 +103,6 @@
          location = "group:Samples/SceneKitShipDemo"
          name = "SceneKitShipDemo">
          <FileRef
-            location = "group:SceneKitShipDemo_macOS/SceneKitShipDemo_macOS.xcodeproj">
-         </FileRef>
-         <FileRef
             location = "group:SceneKitShipDemo_tvOS/SceneKitShipDemo_tvOS.xcodeproj">
          </FileRef>
          <FileRef
