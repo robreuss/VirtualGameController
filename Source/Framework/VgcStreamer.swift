@@ -328,7 +328,6 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                 elementValueData = dataBuffer.subdata(with: NSRange.init(location: headerLength, length: expectedLength))
                 let dataRemainingAfterCurrentElement = dataBuffer.subdata(with: NSRange.init(location: headerLength + expectedLength, length: dataBuffer.length - expectedLength - headerLength))
                 dataBuffer = NSMutableData(data: dataRemainingAfterCurrentElement)
-                //dataBuffer = NSMutableData(data: dataRemainingAfterCurrentElement)
                 
                 if elementValueData.count == expectedLength {
                     
