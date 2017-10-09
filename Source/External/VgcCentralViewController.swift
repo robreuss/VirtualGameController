@@ -63,7 +63,7 @@ import VirtualGameController
         #if !os(tvOS)
             // Hidden text field to receive iCade controller input
             iCadeTextField = UITextField(frame: CGRect(x:-1, y: -1, width: 1, height: 1))
-            iCadeTextField.addTarget(self, action: Selector(("receivedIcadeInput:")), for: .editingChanged)
+            iCadeTextField.addTarget(self, action: #selector(self.receivedIcadeInput(sender:)), for: .editingChanged)
             //iCadeTextField.autocorrectionType = .No
             self.view.addSubview(iCadeTextField)
         #endif
@@ -82,9 +82,10 @@ import VirtualGameController
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidDisconnect), name: NSNotification.Name(rawValue: VgcControllerDidDisconnectNotification), object: nil)
         
+        
         // Used to determine if an external keyboard (an iCade controller) is paired
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name(rawValue: "UIKeyboardWillShow"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name(rawValue: "UIKeyboardWillHide"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         // This is a little convienance thing for the purpose of keeping the debug views refreshed when a change is
         // made to the playerIndex
@@ -93,7 +94,7 @@ import VirtualGameController
         #if !os(tvOS)
             // To enable iCade, this must be after the notification observers are defined. The connect notification should be used
             // to setup the controller for use.
-            //VgcManager.iCadeControllerMode = .iCadeMobile
+            VgcManager.iCadeControllerMode = .ICadeMobile
             if VgcManager.iCadeControllerMode != .Disabled { iCadeTextField.becomeFirstResponder() }
         #endif
     }
@@ -138,38 +139,33 @@ import VirtualGameController
     }
 
 
-
-    @objc func keyboardWillShow(aNotification: NSNotification) {
-        
-        testForPairedExternalKeyboard(aNotification: aNotification)
-        
+    @objc func keyboardWillShow(notification: NSNotification) {
+        testForPairedExternalKeyboard(aNotification: notification)
     }
- 
-
-    @objc func keyboardWillHide(aNotification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         
-        testForPairedExternalKeyboard(aNotification: aNotification)
-
+        testForPairedExternalKeyboard(aNotification: notification)
     }
+    
     
     // iCade controller-generated characters are received into the hidden iCadeTextField, which calls this function.
     // In turn, the appropriate element can be obtained using elementForCharacter, and then the handlers called on the
     // controller.  If this were a Peripheral-side implementation, then the element would be used to send the value to
     // the Central.
-    func receivedIcadeInput(sender: AnyObject) {
+    @objc func receivedIcadeInput(sender: AnyObject) {
         
         if VgcManager.iCadeControllerMode != .Disabled && VgcController.iCadeController != nil {
             
-            /*
+            
             vgcLogDebug("Sending iCade character: \(iCadeTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
-            var element: Element!
+            var element: Element?
             var value: Int
             (element, value) = VgcManager.iCadePeripheral.elementForCharacter( iCadeTextField.text!, controllerElements: VgcController.iCadeController.elements)
             iCadeTextField.text = ""
             if element == nil { return }
-            element.value = value as AnyObject
-            VgcController.iCadeController.triggerElementHandlers(element, value: Float(value))
-         */   
+            element?.value = value as AnyObject
+            VgcController.iCadeController.triggerElementHandlers(element!, value: Float(value) as AnyObject)
+ 
         }
     }
     
