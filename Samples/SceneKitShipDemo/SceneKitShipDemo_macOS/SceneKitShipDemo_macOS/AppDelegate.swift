@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  SceneKitShipDemo_macOS
 //
-//  Created by Rob Reuss on 10/6/17.
+//  Created by Rob Reuss on 10/8/17.
 //  Copyright © 2017 Rob Reuss. All rights reserved.
 //
 

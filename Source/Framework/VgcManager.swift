@@ -349,12 +349,7 @@ let messageValueSeperator = ":"
     #endif
     
     /// Network name for publishing service, defaults to device name
-    #if !os(watchOS) && !os(OSX)
     open static var centralServiceName = VgcManager.uniqueServiceIdentifierString
-    #endif
-    #if os(OSX)
-    public static var centralServiceName = Host.current().localizedName
-    #endif
 
     #if !os(watchOS)
     open class func publishCentralService() {
@@ -366,7 +361,7 @@ let messageValueSeperator = ":"
     }
     
     open class func unpublishCentralService() {
-        if appRole == .Central {
+        if appRole == .Central || appRole == .MultiplayerPeer {
             VgcController.centralPublisher.unpublishService()
         } else {
             vgcLogError("Refused to unpublish Central service because appRole is not Central")

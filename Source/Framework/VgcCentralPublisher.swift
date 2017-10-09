@@ -115,23 +115,11 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         
         super.init()
         
-        // Note, for some reason OSX requires that the centralServiceName is force unwrapped, but it does not compile that way
-        // on iOS, hence these two conditional alternatives.
-        #if os(OSX)
-            if deviceIsTypeOfBridge() {
-                self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName!, port: 0)
-            } else {
-                self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName!, port: 0)
-                
-            }
-        #else
-            if deviceIsTypeOfBridge() {
-                self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
-            } else {
-                self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
-                
-            }
-        #endif
+        if deviceIsTypeOfBridge() {
+            self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
+        } else {
+            self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
+        }
         
         self.localService.delegate = self
         self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
@@ -141,7 +129,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     // So that peripherals will be able to see us over NetServices
     func publishService() {
         vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
-        vgcLogDebug("Service bonjour domain is \(self.localService.domain), type is \(self.localService.type)")
+        vgcLogDebug("Service bonjour domain is \(self.localService.domain), type is \(self.localService.type), name is \(self.localService.name)")
         self.localService.publish(options: .listenForConnections)
     }
     
