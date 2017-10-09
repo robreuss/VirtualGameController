@@ -12,6 +12,7 @@
 		2056E1F81F8BC1030051FAED /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 2056E1F71F8BC1030051FAED /* art.scnassets */; };
 		2056E1FA1F8BC1030051FAED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2056E1F91F8BC1030051FAED /* Assets.xcassets */; };
 		2056E1FD1F8BC1030051FAED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2056E1FB1F8BC1030051FAED /* Main.storyboard */; };
+		2056E2061F8BC1560051FAED /* SharedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2056E2051F8BC1560051FAED /* SharedCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		2056E1FC1F8BC1030051FAED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2056E1FE1F8BC1030051FAED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2056E1FF1F8BC1030051FAED /* SceneKitShipDemo_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SceneKitShipDemo_macOS.entitlements; sourceTree = "<group>"; };
+		2056E2051F8BC1560051FAED /* SharedCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SharedCode.swift; path = "../../../../Framework Projects/VirtualGameControllerTvOS/SharedCode.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				2056E1F31F8BC1030051FAED /* AppDelegate.swift */,
 				2056E1F51F8BC1030051FAED /* GameViewController.swift */,
+				2056E2051F8BC1560051FAED /* SharedCode.swift */,
 				2056E1F71F8BC1030051FAED /* art.scnassets */,
 				2056E1F91F8BC1030051FAED /* Assets.xcassets */,
 				2056E1FB1F8BC1030051FAED /* Main.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2056E2061F8BC1560051FAED /* SharedCode.swift in Sources */,
 				2056E1F61F8BC1030051FAED /* GameViewController.swift in Sources */,
 				2056E1F41F8BC1030051FAED /* AppDelegate.swift in Sources */,
 			);
