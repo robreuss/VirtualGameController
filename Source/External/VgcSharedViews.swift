@@ -1059,7 +1059,7 @@ open class ElementDebugView: UIView {
                 // Pause will be empty
                 if stringValue == "" { continue }
 
-                if element.dataType == .Float {
+                if element.dataType == .Float || element.dataType == .Double {
                     
                     let valFloat = Float(stringValue)! as Float
                     
