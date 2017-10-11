@@ -1,0 +1,404 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["4HTTP7RequestC", ""]
+- ["4HTTP7RequestC", "upgradeToWebSocket"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private "=="
+- "AssignmentPrecedence"
+- !private "HeaderKey"
+- "Request"
+- "Response"
+- "String"
+- !private "StringLiteralType"
+- "Void"
+- "WebSocket"
+depends-member:
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "lowercased"]
+- !private ["s23BidirectionalCollectionP", "range"]
+- !private ["4HTTP17BodyRepresentableP", "init"]
+- !private ["4HTTP17BodyRepresentableP", "lowercased"]
+- !private ["4HTTP17BodyRepresentableP", "range"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4Bits16BytesConvertibleP", "init"]
+- !private ["4Bits16BytesConvertibleP", "lowercased"]
+- !private ["4Bits16BytesConvertibleP", "range"]
+- !private ["4Bits18BytesInitializableP", "init"]
+- !private ["4Bits18BytesInitializableP", "lowercased"]
+- !private ["4Bits18BytesInitializableP", "range"]
+- !private ["4Bits18BytesRepresentableP", "init"]
+- !private ["4Bits18BytesRepresentableP", "lowercased"]
+- !private ["4Bits18BytesRepresentableP", "range"]
+- !private ["s7CVarArgP", "connection"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "lowercased"]
+- !private ["s7CVarArgP", "range"]
+- !private ["s7CVarArgP", "secWebProtocol"]
+- !private ["s7CVarArgP", "secWebSocketAccept"]
+- !private ["s7CVarArgP", "secWebSocketKey"]
+- !private ["s7CVarArgP", "secWebSocketVersion"]
+- !private ["s7CVarArgP", "upgrade"]
+- !private ["s10CollectionP", "connection"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "lowercased"]
+- !private ["s10CollectionP", "range"]
+- !private ["s10CollectionP", "secWebProtocol"]
+- !private ["s10CollectionP", "secWebSocketAccept"]
+- !private ["s10CollectionP", "secWebSocketKey"]
+- !private ["s10CollectionP", "secWebSocketVersion"]
+- !private ["s10CollectionP", "upgrade"]
+- !private ["s10ComparableP", "init"]
+- !private ["s10ComparableP", "lowercased"]
+- !private ["s10ComparableP", "range"]
+- !private ["s28CustomDebugStringConvertibleP", "connection"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "lowercased"]
+- !private ["s28CustomDebugStringConvertibleP", "range"]
+- !private ["s28CustomDebugStringConvertibleP", "secWebProtocol"]
+- !private ["s28CustomDebugStringConvertibleP", "secWebSocketAccept"]
+- !private ["s28CustomDebugStringConvertibleP", "secWebSocketKey"]
+- !private ["s28CustomDebugStringConvertibleP", "secWebSocketVersion"]
+- !private ["s28CustomDebugStringConvertibleP", "upgrade"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "lowercased"]
+- !private ["s29CustomPlaygroundQuickLookableP", "range"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "connection"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "lowercased"]
+- !private ["s17CustomReflectableP", "range"]
+- !private ["s17CustomReflectableP", "secWebProtocol"]
+- !private ["s17CustomReflectableP", "secWebSocketAccept"]
+- !private ["s17CustomReflectableP", "secWebSocketKey"]
+- !private ["s17CustomReflectableP", "secWebSocketVersion"]
+- !private ["s17CustomReflectableP", "upgrade"]
+- !private ["s23CustomStringConvertibleP", "Response"]
+- !private ["s23CustomStringConvertibleP", "WebSocket"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "connection"]
+- !private ["s23CustomStringConvertibleP", "headers"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "lowercased"]
+- !private ["s23CustomStringConvertibleP", "onComplete"]
+- !private ["s23CustomStringConvertibleP", "range"]
+- !private ["s23CustomStringConvertibleP", "secWebProtocol"]
+- !private ["s23CustomStringConvertibleP", "secWebSocketAccept"]
+- !private ["s23CustomStringConvertibleP", "secWebSocketKey"]
+- !private ["s23CustomStringConvertibleP", "secWebSocketVersion"]
+- !private ["s23CustomStringConvertibleP", "upgrade"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "connection"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "lowercased"]
+- !private ["s9DecodableP", "range"]
+- !private ["s9DecodableP", "secWebProtocol"]
+- !private ["s9DecodableP", "secWebSocketAccept"]
+- !private ["s9DecodableP", "secWebSocketKey"]
+- !private ["s9DecodableP", "secWebSocketVersion"]
+- !private ["s9DecodableP", "upgrade"]
+- !private ["s10DictionaryV", "connection"]
+- !private ["s10DictionaryV", "secWebProtocol"]
+- !private ["s10DictionaryV", "secWebSocketAccept"]
+- !private ["s10DictionaryV", "secWebSocketKey"]
+- !private ["s10DictionaryV", "secWebSocketVersion"]
+- !private ["s10DictionaryV", "upgrade"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "connection"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "lowercased"]
+- !private ["s9EncodableP", "range"]
+- !private ["s9EncodableP", "secWebProtocol"]
+- !private ["s9EncodableP", "secWebSocketAccept"]
+- !private ["s9EncodableP", "secWebSocketKey"]
+- !private ["s9EncodableP", "secWebSocketVersion"]
+- !private ["s9EncodableP", "upgrade"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "invalidOrUnsupportedVersion"]
+- !private ["s9EquatableP", "lowercased"]
+- !private ["s9EquatableP", "missingConnectionHeader"]
+- !private ["s9EquatableP", "missingSecKeyHeader"]
+- !private ["s9EquatableP", "missingUpgradeHeader"]
+- !private ["s9EquatableP", "range"]
+- !private ["s9EquatableP", "server"]
+- !private ["s9EquatableP", "switchingProtocols"]
+- !private ["s5ErrorP", "invalidOrUnsupportedVersion"]
+- !private ["s5ErrorP", "missingConnectionHeader"]
+- !private ["s5ErrorP", "missingSecKeyHeader"]
+- !private ["s5ErrorP", "missingUpgradeHeader"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "connection"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "secWebProtocol"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "secWebSocketAccept"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "secWebSocketKey"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "secWebSocketVersion"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "upgrade"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "lowercased"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "range"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "lowercased"]
+- !private ["s26ExpressibleByStringLiteralP", "range"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "lowercased"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "range"]
+- !private ["10WebSockets0A6SocketC11FormatErrorO", "deinit"]
+- !private ["10WebSockets0A6SocketC11FormatErrorO", "invalidOrUnsupportedVersion"]
+- !private ["10WebSockets0A6SocketC11FormatErrorO", "missingConnectionHeader"]
+- !private ["10WebSockets0A6SocketC11FormatErrorO", "missingSecKeyHeader"]
+- !private ["10WebSockets0A6SocketC11FormatErrorO", "missingUpgradeHeader"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "lowercased"]
+- !private ["s8HashableP", "range"]
+- !private ["s8HashableP", "server"]
+- !private ["s8HashableP", "switchingProtocols"]
+- !private ["4HTTP13KeyAccessibleP", "connection"]
+- !private ["4HTTP13KeyAccessibleP", "secWebProtocol"]
+- !private ["4HTTP13KeyAccessibleP", "secWebSocketAccept"]
+- !private ["4HTTP13KeyAccessibleP", "secWebSocketKey"]
+- !private ["4HTTP13KeyAccessibleP", "secWebSocketVersion"]
+- !private ["4HTTP13KeyAccessibleP", "upgrade"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s25LosslessStringConvertibleP", "lowercased"]
+- !private ["s25LosslessStringConvertibleP", "range"]
+- !private ["4HTTP7MessageP", "Response"]
+- !private ["4HTTP7MessageP", "WebSocket"]
+- !private ["4HTTP7MessageP", "headers"]
+- !private ["4HTTP7MessageP", "init"]
+- !private ["4HTTP7MessageP", "onComplete"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s10MirrorPathP", "lowercased"]
+- !private ["s10MirrorPathP", "range"]
+- !private ["10WebSockets0A6SocketC4ModeO", "server"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So8NSCodingP", "lowercased"]
+- !private ["So8NSCodingP", "range"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So9NSCopyingP", "lowercased"]
+- !private ["So9NSCopyingP", "range"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderReadingP", "lowercased"]
+- !private ["So21NSItemProviderReadingP", "range"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So21NSItemProviderWritingP", "lowercased"]
+- !private ["So21NSItemProviderWritingP", "range"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSMutableCopyingP", "lowercased"]
+- !private ["So16NSMutableCopyingP", "range"]
+- !private ["So8NSObjectC", "lowercased"]
+- !private ["So8NSObjectC", "range"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "lowercased"]
+- !private ["So16NSObjectProtocolP", "range"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So14NSSecureCodingP", "lowercased"]
+- !private ["So14NSSecureCodingP", "range"]
+- !private ["So8NSStringC", "init"]
+- !private ["So8NSStringC", "lowercased"]
+- !private ["So8NSStringC", "range"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "lowercased"]
+- !private ["s26RangeReplaceableCollectionP", "range"]
+- !private ["4HTTP7RequestC", "HeaderKey"]
+- ["4HTTP7RequestC", "Response"]
+- ["4HTTP7RequestC", "String"]
+- ["4HTTP7RequestC", "Void"]
+- ["4HTTP7RequestC", "WebSocket"]
+- !private ["4HTTP7RequestC", "headers"]
+- ["4HTTP7RequestC", "upgradeToWebSocket"]
+- !private ["4HTTP8ResponseC", "init"]
+- !private ["4HTTP8ResponseC", "onComplete"]
+- !private ["4HTTP21ResponseRepresentableP", "init"]
+- !private ["4HTTP21ResponseRepresentableP", "lowercased"]
+- !private ["4HTTP21ResponseRepresentableP", "onComplete"]
+- !private ["4HTTP21ResponseRepresentableP", "range"]
+- !private ["s8SequenceP", "connection"]
+- !private ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "lowercased"]
+- !private ["s8SequenceP", "range"]
+- !private ["s8SequenceP", "secWebProtocol"]
+- !private ["s8SequenceP", "secWebSocketAccept"]
+- !private ["s8SequenceP", "secWebSocketKey"]
+- !private ["s8SequenceP", "secWebSocketVersion"]
+- !private ["s8SequenceP", "upgrade"]
+- !private ["4HTTP6StatusO", "switchingProtocols"]
+- !private ["SS", "init"]
+- !private ["SS", "lowercased"]
+- !private ["SS", "range"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s14StringProtocolP", "lowercased"]
+- !private ["s14StringProtocolP", "range"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s16TextOutputStreamP", "lowercased"]
+- !private ["s16TextOutputStreamP", "range"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s20TextOutputStreamableP", "lowercased"]
+- !private ["s20TextOutputStreamableP", "range"]
+- !private ["10WebSockets0A6SocketC", "FormatError"]
+- !private ["10WebSockets0A6SocketC", "exchange"]
+- !private ["10WebSockets0A6SocketC", "init"]
+- !private ["10WebSockets0A6SocketC", "listen"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "lowercased"]
+- !private ["s23_BidirectionalIndexableP", "range"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "lowercased"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "range"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "lowercased"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "range"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "lowercased"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "range"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "lowercased"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "range"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "lowercased"]
+- !private ["s33_ExpressibleByStringInterpolationP", "range"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "lowercased"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "range"]
+- !private ["s10_IndexableP", "connection"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s10_IndexableP", "lowercased"]
+- !private ["s10_IndexableP", "range"]
+- !private ["s10_IndexableP", "secWebProtocol"]
+- !private ["s10_IndexableP", "secWebSocketAccept"]
+- !private ["s10_IndexableP", "secWebSocketKey"]
+- !private ["s10_IndexableP", "secWebSocketVersion"]
+- !private ["s10_IndexableP", "upgrade"]
+- !private ["s14_IndexableBaseP", "connection"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["s14_IndexableBaseP", "lowercased"]
+- !private ["s14_IndexableBaseP", "range"]
+- !private ["s14_IndexableBaseP", "secWebProtocol"]
+- !private ["s14_IndexableBaseP", "secWebSocketAccept"]
+- !private ["s14_IndexableBaseP", "secWebSocketKey"]
+- !private ["s14_IndexableBaseP", "secWebSocketVersion"]
+- !private ["s14_IndexableBaseP", "upgrade"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "lowercased"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "range"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "connection"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "lowercased"]
+- !private ["s21_ObjectiveCBridgeableP", "range"]
+- !private ["s21_ObjectiveCBridgeableP", "secWebProtocol"]
+- !private ["s21_ObjectiveCBridgeableP", "secWebSocketAccept"]
+- !private ["s21_ObjectiveCBridgeableP", "secWebSocketKey"]
+- !private ["s21_ObjectiveCBridgeableP", "secWebSocketVersion"]
+- !private ["s21_ObjectiveCBridgeableP", "upgrade"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "lowercased"]
+- !private ["s26_RangeReplaceableIndexableP", "range"]
+- !private ["s16_SwiftStringViewP", "init"]
+- !private ["s16_SwiftStringViewP", "lowercased"]
+- !private ["s16_SwiftStringViewP", "range"]
+depends-nominal:
+- !private "s23BidirectionalCollectionP"
+- !private "4HTTP17BodyRepresentableP"
+- !private "Sb"
+- !private "4Bits16BytesConvertibleP"
+- !private "4Bits18BytesInitializableP"
+- !private "4Bits18BytesRepresentableP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s10DictionaryV"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "10WebSockets0A6SocketC11FormatErrorO"
+- !private "s8HashableP"
+- !private "4HTTP13KeyAccessibleP"
+- !private "s25LosslessStringConvertibleP"
+- !private "4HTTP7MessageP"
+- !private "s10MirrorPathP"
+- !private "10WebSockets0A6SocketC4ModeO"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So8NSObjectC"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s26RangeReplaceableCollectionP"
+- "4HTTP7RequestC"
+- !private "4HTTP8ResponseC"
+- !private "4HTTP21ResponseRepresentableP"
+- !private "s8SequenceP"
+- !private "4HTTP6StatusO"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "10WebSockets0A6SocketC"
+- !private "s23_BidirectionalIndexableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "d8651fe2475c37ef6be0c6b3aac7b03c"

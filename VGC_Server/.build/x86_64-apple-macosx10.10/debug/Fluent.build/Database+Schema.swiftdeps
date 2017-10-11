@@ -1,0 +1,184 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["6Fluent8DatabaseC", ""]
+- ["6Fluent8DatabaseC", "create"]
+- ["6Fluent8DatabaseC", "modify"]
+- ["6Fluent8DatabaseC", "delete"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "=="
+- "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "CastingPrecedence"
+- "Creator"
+- "Database"
+- "Entity"
+- "Modifier"
+- !private "Query"
+- !private "SoftDeletable"
+- !private "Timestampable"
+depends-member:
+- !private ["6Fluent6ActionO", "schema"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["6Fluent7BuilderP", "date"]
+- !private ["6Fluent7BuilderP", "deleteFields"]
+- !private ["6Fluent7BuilderP", "deleteForeignKeys"]
+- !private ["6Fluent7BuilderP", "fields"]
+- !private ["6Fluent7BuilderP", "foreignKeys"]
+- !private ["6Fluent7BuilderP", "init"]
+- !private ["6Fluent7CreatorC", "date"]
+- !private ["6Fluent7CreatorC", "deinit"]
+- !private ["6Fluent7CreatorC", "fields"]
+- !private ["6Fluent7CreatorC", "foreignKeys"]
+- !private ["6Fluent7CreatorC", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "some"]
+- ["6Fluent8DatabaseC", "Creator"]
+- ["6Fluent8DatabaseC", "Entity"]
+- ["6Fluent8DatabaseC", "Modifier"]
+- !private ["6Fluent8DatabaseC", "Query"]
+- !private ["6Fluent8DatabaseC", "SoftDeletable"]
+- !private ["6Fluent8DatabaseC", "Timestampable"]
+- ["6Fluent8DatabaseC", "create"]
+- !private ["6Fluent8DatabaseC", "deinit"]
+- ["6Fluent8DatabaseC", "delete"]
+- ["6Fluent8DatabaseC", "modify"]
+- !private ["6Fluent8DatabaseC", "query"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["6Fluent6EntityP", "createdAtKey"]
+- !private ["6Fluent6EntityP", "database"]
+- !private ["6Fluent6EntityP", "deletedAtKey"]
+- !private ["6Fluent6EntityP", "updatedAtKey"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "create"]
+- !private ["s9EquatableP", "delete"]
+- !private ["s9EquatableP", "modify"]
+- !private ["s9EquatableP", "schema"]
+- !private ["s9EquatableP", "some"]
+- !private ["6Fluent8ExecutorP", "Creator"]
+- !private ["6Fluent8ExecutorP", "Modifier"]
+- !private ["6Fluent8ExecutorP", "Query"]
+- !private ["6Fluent8ExecutorP", "query"]
+- !private ["6Fluent21ExecutorRepresentableP", "action"]
+- !private ["6Fluent21ExecutorRepresentableP", "init"]
+- !private ["6Fluent21ExecutorRepresentableP", "some"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "some"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["6Fluent8ModifierC", "deinit"]
+- !private ["6Fluent8ModifierC", "deleteFields"]
+- !private ["6Fluent8ModifierC", "deleteForeignKeys"]
+- !private ["6Fluent8ModifierC", "fields"]
+- !private ["6Fluent8ModifierC", "foreignKeys"]
+- !private ["6Fluent8ModifierC", "init"]
+- !private ["4Node0A13InitializableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13RepresentableP", "_getBuiltinLogicValue"]
+- !private ["6Fluent5QueryC", "action"]
+- !private ["6Fluent5QueryC", "init"]
+- !private ["6Fluent5QueryC", "some"]
+- !private ["6Fluent11QueryLoggerP", "Creator"]
+- !private ["6Fluent11QueryLoggerP", "Modifier"]
+- !private ["6Fluent11QueryLoggerP", "Query"]
+- !private ["6Fluent11QueryLoggerP", "query"]
+- !private ["6Fluent18QueryRepresentableP", "action"]
+- !private ["6Fluent18QueryRepresentableP", "init"]
+- !private ["6Fluent18QueryRepresentableP", "some"]
+- !private ["6Fluent5RawOrO", "some"]
+- !private ["6Fluent14RowConvertibleP", "createdAtKey"]
+- !private ["6Fluent14RowConvertibleP", "database"]
+- !private ["6Fluent14RowConvertibleP", "deletedAtKey"]
+- !private ["6Fluent14RowConvertibleP", "updatedAtKey"]
+- !private ["6Fluent16RowInitializableP", "createdAtKey"]
+- !private ["6Fluent16RowInitializableP", "database"]
+- !private ["6Fluent16RowInitializableP", "deletedAtKey"]
+- !private ["6Fluent16RowInitializableP", "updatedAtKey"]
+- !private ["6Fluent16RowRepresentableP", "createdAtKey"]
+- !private ["6Fluent16RowRepresentableP", "database"]
+- !private ["6Fluent16RowRepresentableP", "deletedAtKey"]
+- !private ["6Fluent16RowRepresentableP", "updatedAtKey"]
+- !private ["6Fluent6SchemaO", "create"]
+- !private ["6Fluent6SchemaO", "delete"]
+- !private ["6Fluent6SchemaO", "modify"]
+- !private ["6Fluent13SoftDeletableP", "deletedAtKey"]
+- !private ["6Fluent8StorableP", "createdAtKey"]
+- !private ["6Fluent8StorableP", "database"]
+- !private ["6Fluent8StorableP", "deletedAtKey"]
+- !private ["6Fluent8StorableP", "updatedAtKey"]
+- !private ["6Fluent13TimestampableP", "createdAtKey"]
+- !private ["6Fluent13TimestampableP", "updatedAtKey"]
+- !private ["6Fluent12TransactableP", "Creator"]
+- !private ["6Fluent12TransactableP", "Modifier"]
+- !private ["6Fluent12TransactableP", "Query"]
+- !private ["6Fluent12TransactableP", "query"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "6Fluent6ActionO"
+- !private "Sb"
+- !private "6Fluent7BuilderP"
+- !private "6Fluent7CreatorC"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- "6Fluent8DatabaseC"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "6Fluent6EntityP"
+- !private "s9EquatableP"
+- !private "6Fluent8ExecutorP"
+- !private "6Fluent21ExecutorRepresentableP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "6Fluent8ModifierC"
+- !private "4Node0A13InitializableP"
+- !private "4Node0A13RepresentableP"
+- !private "6Fluent5QueryC"
+- !private "6Fluent11QueryLoggerP"
+- !private "6Fluent18QueryRepresentableP"
+- !private "6Fluent5RawOrO"
+- !private "6Fluent14RowConvertibleP"
+- !private "6Fluent16RowInitializableP"
+- !private "6Fluent16RowRepresentableP"
+- !private "6Fluent6SchemaO"
+- !private "6Fluent13SoftDeletableP"
+- !private "6Fluent8StorableP"
+- !private "6Fluent13TimestampableP"
+- !private "6Fluent12TransactableP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/CSQLite/include/sqlite3.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "d01462c0d806fd3a48b9c91d3da1bca0"

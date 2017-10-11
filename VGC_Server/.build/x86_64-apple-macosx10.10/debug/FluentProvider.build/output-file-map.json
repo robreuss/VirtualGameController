@@ -1,0 +1,119 @@
+{
+  "": {
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/master.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Cache.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Cache.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Cache.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Cache~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Cache.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Config+Driver.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Driver.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet/Config+Driver.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Driver~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Driver.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Config+Preparation.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Preparation.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet/Config+Preparation.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Preparation~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Config+Preparation.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Droplet+Prepare.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Prepare.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet/Droplet+Prepare.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Prepare~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Prepare.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Droplet+Storage.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Storage.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet/Droplet+Storage.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Storage~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Droplet+Storage.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Exports.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Exports.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Exports.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Exports~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Exports.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/Filterable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable/Filterable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/FilterableKey+String.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey+String.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable/FilterableKey+String.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey+String~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey+String.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/FilterableKey.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable/FilterableKey.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/FilterableKey.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/Query+Filterable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Query+Filterable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Filterable/Query+Filterable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Query+Filterable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Query+Filterable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Model.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Model.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Model.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Model~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Model.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Node+Row+JSON.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Node+Row+JSON.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Node+Row+JSON.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Node+Row+JSON~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Node+Row+JSON.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Pagination.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Pagination.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Pagination.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Pagination~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Pagination.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Prepare.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Prepare.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Prepare.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Prepare~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Prepare.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Provider.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Provider.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Provider.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Provider~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Provider.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/SQLite+Config.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/SQLite+Config.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/SQLite+Config.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/SQLite+Config~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/SQLite+Config.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/Request+Updateable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Request+Updateable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable/Request+Updateable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Request+Updateable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Request+Updateable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/Updateable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable/Updateable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/UpdateableKey.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/UpdateableKey.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/Updateable/UpdateableKey.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/UpdateableKey~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FluentProvider.build/UpdateableKey.swiftdeps"
+  }
+}

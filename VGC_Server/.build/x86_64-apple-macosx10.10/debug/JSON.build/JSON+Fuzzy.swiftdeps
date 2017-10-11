@@ -1,0 +1,196 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+- "4JSONAAV"
+provides-member:
+- ["4JSONAAV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "CastingPrecedence"
+- "Context"
+- "FuzzyConverter"
+- "JSON"
+- !private "JSONInitializable"
+- !private "JSONRepresentable"
+- "Node"
+depends-member:
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4Bits16BytesConvertibleP", "JSON"]
+- !private ["4Bits16BytesConvertibleP", "converted"]
+- ["4Bits16BytesConvertibleP", "initialize"]
+- ["4Bits16BytesConvertibleP", "represent"]
+- !private ["4Bits18BytesInitializableP", "JSON"]
+- !private ["4Bits18BytesInitializableP", "converted"]
+- ["4Bits18BytesInitializableP", "initialize"]
+- ["4Bits18BytesInitializableP", "represent"]
+- !private ["4Bits18BytesRepresentableP", "JSON"]
+- !private ["4Bits18BytesRepresentableP", "converted"]
+- ["4Bits18BytesRepresentableP", "initialize"]
+- ["4Bits18BytesRepresentableP", "represent"]
+- !private ["4Node7ContextP", "isJSON"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "JSON"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "context"]
+- !private ["s9EquatableP", "converted"]
+- ["s9EquatableP", "initialize"]
+- ["s9EquatableP", "represent"]
+- !private ["s25ExpressibleByArrayLiteralP", "JSON"]
+- !private ["s25ExpressibleByArrayLiteralP", "context"]
+- !private ["s25ExpressibleByArrayLiteralP", "converted"]
+- ["s25ExpressibleByArrayLiteralP", "initialize"]
+- ["s25ExpressibleByArrayLiteralP", "represent"]
+- !private ["s27ExpressibleByBooleanLiteralP", "JSON"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s27ExpressibleByBooleanLiteralP", "context"]
+- !private ["s27ExpressibleByBooleanLiteralP", "converted"]
+- ["s27ExpressibleByBooleanLiteralP", "initialize"]
+- ["s27ExpressibleByBooleanLiteralP", "represent"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "JSON"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "context"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "converted"]
+- ["s30ExpressibleByDictionaryLiteralP", "initialize"]
+- ["s30ExpressibleByDictionaryLiteralP", "represent"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "JSON"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "context"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "converted"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "initialize"]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "represent"]
+- !private ["s25ExpressibleByFloatLiteralP", "JSON"]
+- !private ["s25ExpressibleByFloatLiteralP", "context"]
+- !private ["s25ExpressibleByFloatLiteralP", "converted"]
+- ["s25ExpressibleByFloatLiteralP", "initialize"]
+- ["s25ExpressibleByFloatLiteralP", "represent"]
+- !private ["s27ExpressibleByIntegerLiteralP", "JSON"]
+- !private ["s27ExpressibleByIntegerLiteralP", "context"]
+- !private ["s27ExpressibleByIntegerLiteralP", "converted"]
+- ["s27ExpressibleByIntegerLiteralP", "initialize"]
+- ["s27ExpressibleByIntegerLiteralP", "represent"]
+- !private ["s23ExpressibleByNilLiteralP", "JSON"]
+- !private ["s23ExpressibleByNilLiteralP", "context"]
+- !private ["s23ExpressibleByNilLiteralP", "converted"]
+- ["s23ExpressibleByNilLiteralP", "initialize"]
+- ["s23ExpressibleByNilLiteralP", "represent"]
+- !private ["s26ExpressibleByStringLiteralP", "JSON"]
+- !private ["s26ExpressibleByStringLiteralP", "context"]
+- !private ["s26ExpressibleByStringLiteralP", "converted"]
+- ["s26ExpressibleByStringLiteralP", "initialize"]
+- ["s26ExpressibleByStringLiteralP", "represent"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "JSON"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "context"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "converted"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "initialize"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "represent"]
+- !private ["4Node14FuzzyConverterP", "JSON"]
+- !private ["4Node14FuzzyConverterP", "context"]
+- !private ["4Node14FuzzyConverterP", "converted"]
+- ["4Node14FuzzyConverterP", "initialize"]
+- ["4Node14FuzzyConverterP", "represent"]
+- ["4Node14FuzzyConverterP", ""]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- ["4JSONAAV", "Context"]
+- !private ["4JSONAAV", "JSON"]
+- !private ["4JSONAAV", "JSONInitializable"]
+- !private ["4JSONAAV", "JSONRepresentable"]
+- ["4JSONAAV", "Node"]
+- !private ["4JSONAAV", "converted"]
+- ["4JSONAAV", "deinit"]
+- ["4JSONAAV", "initialize"]
+- ["4JSONAAV", "represent"]
+- !private ["4JSON17JSONInitializableP", "init"]
+- !private ["4JSON17JSONRepresentableP", "JSON"]
+- !private ["4JSON17JSONRepresentableP", "converted"]
+- ["4JSON17JSONRepresentableP", "initialize"]
+- !private ["4JSON17JSONRepresentableP", "makeJSON"]
+- ["4JSON17JSONRepresentableP", "represent"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["4NodeAAV", "context"]
+- !private ["4NodeAAV", "converted"]
+- !private ["4Node0A13InitializableP", "JSON"]
+- !private ["4Node0A13InitializableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13InitializableP", "context"]
+- !private ["4Node0A13InitializableP", "converted"]
+- ["4Node0A13InitializableP", "initialize"]
+- ["4Node0A13InitializableP", "represent"]
+- !private ["4Node0A13RepresentableP", "JSON"]
+- !private ["4Node0A13RepresentableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13RepresentableP", "context"]
+- !private ["4Node0A13RepresentableP", "converted"]
+- ["4Node0A13RepresentableP", "initialize"]
+- ["4Node0A13RepresentableP", "represent"]
+- !private ["13PathIndexableAAP", "JSON"]
+- !private ["13PathIndexableAAP", "context"]
+- !private ["13PathIndexableAAP", "converted"]
+- ["13PathIndexableAAP", "initialize"]
+- ["13PathIndexableAAP", "represent"]
+- !private ["4Node21StructuredDataWrapperP", "JSON"]
+- !private ["4Node21StructuredDataWrapperP", "context"]
+- !private ["4Node21StructuredDataWrapperP", "converted"]
+- ["4Node21StructuredDataWrapperP", "initialize"]
+- ["4Node21StructuredDataWrapperP", "represent"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "Sb"
+- "4Bits16BytesConvertibleP"
+- "4Bits18BytesInitializableP"
+- "4Bits18BytesRepresentableP"
+- !private "4Node7ContextP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- "s25ExpressibleByArrayLiteralP"
+- "s27ExpressibleByBooleanLiteralP"
+- "s30ExpressibleByDictionaryLiteralP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s25ExpressibleByFloatLiteralP"
+- "s27ExpressibleByIntegerLiteralP"
+- "s23ExpressibleByNilLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "4Node14FuzzyConverterP"
+- !private "s8HashableP"
+- "4JSONAAV"
+- !private "4JSON17JSONInitializableP"
+- "4JSON17JSONRepresentableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "4NodeAAV"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- "13PathIndexableAAP"
+- "4Node21StructuredDataWrapperP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "9a37e567c78afdb40862b39bc0e3f514"

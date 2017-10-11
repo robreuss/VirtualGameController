@@ -1,0 +1,228 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+- "10Foundation4DataV"
+provides-member:
+- ["10Foundation4DataV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "Bytes"
+- "BytesConvertible"
+- "Data"
+- !private "FloatLiteralType"
+- !private "IntegerLiteralType"
+- !private "UnsafeMutableBufferPointer"
+depends-member:
+- !private ["Sa", "init"]
+- !private ["s23BidirectionalCollectionP", "Bytes"]
+- !private ["s23BidirectionalCollectionP", "UnsafeMutableBufferPointer"]
+- !private ["s23BidirectionalCollectionP", "copyBytes"]
+- !private ["s23BidirectionalCollectionP", "count"]
+- ["s23BidirectionalCollectionP", "init"]
+- ["s23BidirectionalCollectionP", "makeBytes"]
+- !private ["4Bits16BytesConvertibleP", "Bytes"]
+- !private ["4Bits16BytesConvertibleP", "UnsafeMutableBufferPointer"]
+- !private ["4Bits16BytesConvertibleP", "copyBytes"]
+- !private ["4Bits16BytesConvertibleP", "count"]
+- ["4Bits16BytesConvertibleP", "init"]
+- ["4Bits16BytesConvertibleP", "makeBytes"]
+- ["4Bits16BytesConvertibleP", ""]
+- !private ["4Bits18BytesInitializableP", "Bytes"]
+- !private ["4Bits18BytesInitializableP", "UnsafeMutableBufferPointer"]
+- !private ["4Bits18BytesInitializableP", "copyBytes"]
+- !private ["4Bits18BytesInitializableP", "count"]
+- ["4Bits18BytesInitializableP", "init"]
+- ["4Bits18BytesInitializableP", "makeBytes"]
+- ["4Bits18BytesInitializableP", ""]
+- !private ["4Bits18BytesRepresentableP", "Bytes"]
+- !private ["4Bits18BytesRepresentableP", "UnsafeMutableBufferPointer"]
+- !private ["4Bits18BytesRepresentableP", "copyBytes"]
+- !private ["4Bits18BytesRepresentableP", "count"]
+- ["4Bits18BytesRepresentableP", "init"]
+- ["4Bits18BytesRepresentableP", "makeBytes"]
+- ["4Bits18BytesRepresentableP", ""]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10CollectionP", "Bytes"]
+- !private ["s10CollectionP", "UnsafeMutableBufferPointer"]
+- !private ["s10CollectionP", "copyBytes"]
+- !private ["s10CollectionP", "count"]
+- ["s10CollectionP", "init"]
+- ["s10CollectionP", "makeBytes"]
+- !private ["s28CustomDebugStringConvertibleP", "Bytes"]
+- !private ["s28CustomDebugStringConvertibleP", "UnsafeMutableBufferPointer"]
+- !private ["s28CustomDebugStringConvertibleP", "copyBytes"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s28CustomDebugStringConvertibleP", "makeBytes"]
+- !private ["s17CustomReflectableP", "Bytes"]
+- !private ["s17CustomReflectableP", "UnsafeMutableBufferPointer"]
+- !private ["s17CustomReflectableP", "copyBytes"]
+- !private ["s17CustomReflectableP", "count"]
+- ["s17CustomReflectableP", "init"]
+- ["s17CustomReflectableP", "makeBytes"]
+- !private ["s23CustomStringConvertibleP", "Bytes"]
+- !private ["s23CustomStringConvertibleP", "UnsafeMutableBufferPointer"]
+- !private ["s23CustomStringConvertibleP", "copyBytes"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "makeBytes"]
+- ["10Foundation4DataV", "Bytes"]
+- !private ["10Foundation4DataV", "UnsafeMutableBufferPointer"]
+- !private ["10Foundation4DataV", "copyBytes"]
+- !private ["10Foundation4DataV", "count"]
+- ["10Foundation4DataV", "deinit"]
+- ["10Foundation4DataV", "init"]
+- ["10Foundation4DataV", "makeBytes"]
+- !private ["s9DecodableP", "Bytes"]
+- !private ["s9DecodableP", "UnsafeMutableBufferPointer"]
+- !private ["s9DecodableP", "copyBytes"]
+- !private ["s9DecodableP", "count"]
+- ["s9DecodableP", "init"]
+- ["s9DecodableP", "makeBytes"]
+- !private ["s9EncodableP", "Bytes"]
+- !private ["s9EncodableP", "UnsafeMutableBufferPointer"]
+- !private ["s9EncodableP", "copyBytes"]
+- !private ["s9EncodableP", "count"]
+- ["s9EncodableP", "init"]
+- ["s9EncodableP", "makeBytes"]
+- !private ["s9EquatableP", "Bytes"]
+- !private ["s9EquatableP", "UnsafeMutableBufferPointer"]
+- !private ["s9EquatableP", "copyBytes"]
+- !private ["s9EquatableP", "count"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "makeBytes"]
+- !private ["s25ExpressibleByArrayLiteralP", "init"]
+- !private ["s8HashableP", "Bytes"]
+- !private ["s8HashableP", "UnsafeMutableBufferPointer"]
+- !private ["s8HashableP", "copyBytes"]
+- !private ["s8HashableP", "count"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "makeBytes"]
+- !private ["s17MutableCollectionP", "Bytes"]
+- !private ["s17MutableCollectionP", "UnsafeMutableBufferPointer"]
+- !private ["s17MutableCollectionP", "copyBytes"]
+- !private ["s17MutableCollectionP", "count"]
+- ["s17MutableCollectionP", "init"]
+- ["s17MutableCollectionP", "makeBytes"]
+- !private ["s22RandomAccessCollectionP", "Bytes"]
+- !private ["s22RandomAccessCollectionP", "UnsafeMutableBufferPointer"]
+- !private ["s22RandomAccessCollectionP", "copyBytes"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- ["s22RandomAccessCollectionP", "init"]
+- ["s22RandomAccessCollectionP", "makeBytes"]
+- !private ["s26RangeReplaceableCollectionP", "Bytes"]
+- !private ["s26RangeReplaceableCollectionP", "UnsafeMutableBufferPointer"]
+- !private ["s26RangeReplaceableCollectionP", "copyBytes"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- ["s26RangeReplaceableCollectionP", "makeBytes"]
+- !private ["10Foundation20ReferenceConvertibleP", "Bytes"]
+- !private ["10Foundation20ReferenceConvertibleP", "UnsafeMutableBufferPointer"]
+- !private ["10Foundation20ReferenceConvertibleP", "copyBytes"]
+- !private ["10Foundation20ReferenceConvertibleP", "count"]
+- ["10Foundation20ReferenceConvertibleP", "init"]
+- ["10Foundation20ReferenceConvertibleP", "makeBytes"]
+- !private ["s8SequenceP", "Bytes"]
+- !private ["s8SequenceP", "UnsafeMutableBufferPointer"]
+- !private ["s8SequenceP", "copyBytes"]
+- !private ["s8SequenceP", "count"]
+- ["s8SequenceP", "init"]
+- ["s8SequenceP", "makeBytes"]
+- !private ["Sr", "init"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s23_BidirectionalIndexableP", "Bytes"]
+- !private ["s23_BidirectionalIndexableP", "UnsafeMutableBufferPointer"]
+- !private ["s23_BidirectionalIndexableP", "copyBytes"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- ["s23_BidirectionalIndexableP", "init"]
+- ["s23_BidirectionalIndexableP", "makeBytes"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s10_IndexableP", "Bytes"]
+- !private ["s10_IndexableP", "UnsafeMutableBufferPointer"]
+- !private ["s10_IndexableP", "copyBytes"]
+- !private ["s10_IndexableP", "count"]
+- ["s10_IndexableP", "init"]
+- ["s10_IndexableP", "makeBytes"]
+- !private ["s14_IndexableBaseP", "Bytes"]
+- !private ["s14_IndexableBaseP", "UnsafeMutableBufferPointer"]
+- !private ["s14_IndexableBaseP", "copyBytes"]
+- !private ["s14_IndexableBaseP", "count"]
+- ["s14_IndexableBaseP", "init"]
+- ["s14_IndexableBaseP", "makeBytes"]
+- !private ["s17_MutableIndexableP", "Bytes"]
+- !private ["s17_MutableIndexableP", "UnsafeMutableBufferPointer"]
+- !private ["s17_MutableIndexableP", "copyBytes"]
+- !private ["s17_MutableIndexableP", "count"]
+- ["s17_MutableIndexableP", "init"]
+- ["s17_MutableIndexableP", "makeBytes"]
+- !private ["s21_ObjectiveCBridgeableP", "Bytes"]
+- !private ["s21_ObjectiveCBridgeableP", "UnsafeMutableBufferPointer"]
+- !private ["s21_ObjectiveCBridgeableP", "copyBytes"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s21_ObjectiveCBridgeableP", "makeBytes"]
+- !private ["s22_RandomAccessIndexableP", "Bytes"]
+- !private ["s22_RandomAccessIndexableP", "UnsafeMutableBufferPointer"]
+- !private ["s22_RandomAccessIndexableP", "copyBytes"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- ["s22_RandomAccessIndexableP", "init"]
+- ["s22_RandomAccessIndexableP", "makeBytes"]
+- !private ["s26_RangeReplaceableIndexableP", "Bytes"]
+- !private ["s26_RangeReplaceableIndexableP", "UnsafeMutableBufferPointer"]
+- !private ["s26_RangeReplaceableIndexableP", "copyBytes"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "makeBytes"]
+depends-nominal:
+- !private "Sa"
+- "s23BidirectionalCollectionP"
+- "4Bits16BytesConvertibleP"
+- "4Bits18BytesInitializableP"
+- "4Bits18BytesRepresentableP"
+- !private "s7CVarArgP"
+- "s10CollectionP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "10Foundation4DataV"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s8HashableP"
+- "s17MutableCollectionP"
+- "s22RandomAccessCollectionP"
+- "s26RangeReplaceableCollectionP"
+- "10Foundation20ReferenceConvertibleP"
+- "s8SequenceP"
+- !private "Sr"
+- !private "s14_ArrayProtocolP"
+- "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- "s22_RandomAccessIndexableP"
+- "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "7378b558dd497dc2db4636f847fc31dc"

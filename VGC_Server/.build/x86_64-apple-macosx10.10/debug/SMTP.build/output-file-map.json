@@ -1,0 +1,131 @@
+{
+  "": {
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/master.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/EHLOExtension.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EHLOExtension.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/EHLOExtension.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EHLOExtension~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EHLOExtension.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPAuthMethod.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPAuthMethod.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPAuthMethod.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPAuthMethod~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPAuthMethod.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient+Authorize.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Authorize.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient+Authorize.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Authorize~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Authorize.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient+Convenience.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Convenience.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient+Convenience.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Convenience~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Convenience.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient+Reply.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Reply.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient+Reply.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Reply~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Reply.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient+Send.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Send.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient+Send.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Send~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Send.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient+Transmit.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Transmit.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient+Transmit.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Transmit~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient+Transmit.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClient.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClient.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClient.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPClientError.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClientError.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPClientError.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClientError~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPClientError.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPCredential.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPCredential.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPCredential.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPCredential~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPCredential.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Client/SMTPGreeting.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPGreeting.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Client/SMTPGreeting.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPGreeting~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/SMTPGreeting.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Address/EmailAddress+StringLiteralConvertible.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress+StringLiteralConvertible.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Address/EmailAddress+StringLiteralConvertible.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress+StringLiteralConvertible~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress+StringLiteralConvertible.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Address/EmailAddress.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Address/EmailAddress.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddress.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Address/EmailAddressRepresentable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddressRepresentable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Address/EmailAddressRepresentable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddressRepresentable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAddressRepresentable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Attachment/EmailAttachment.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachment.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Attachment/EmailAttachment.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachment~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachment.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Attachment/EmailAttachmentRepresentable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachmentRepresentable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Attachment/EmailAttachmentRepresentable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachmentRepresentable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailAttachmentRepresentable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Body/EmailBody.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBody.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Body/EmailBody.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBody~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBody.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Body/EmailBodyRepresentable.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBodyRepresentable.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Body/EmailBodyRepresentable.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBodyRepresentable~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/EmailBodyRepresentable.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Email/Email.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email/Email.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Email.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Utility/NSDate+SMTP.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSDate+SMTP.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Utility/NSDate+SMTP.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSDate+SMTP~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSDate+SMTP.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/SMTP/Utility/NSUUID+SMTPMessageID.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSUUID+SMTPMessageID.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/Utility/NSUUID+SMTPMessageID.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSUUID+SMTPMessageID~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.build/NSUUID+SMTPMessageID.swiftdeps"
+  }
+}

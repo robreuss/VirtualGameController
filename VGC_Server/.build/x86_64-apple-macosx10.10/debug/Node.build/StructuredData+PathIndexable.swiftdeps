@@ -1,0 +1,79 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+- "4Node14StructuredDataO"
+provides-member:
+- ["4Node14StructuredDataO", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "PathIndexable"
+- "String"
+- "StructuredData"
+depends-member:
+- !private ["s23CustomStringConvertibleP", "array"]
+- ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "object"]
+- ["s23CustomStringConvertibleP", "pathIndexableArray"]
+- ["s23CustomStringConvertibleP", "pathIndexableObject"]
+- !private ["s9EquatableP", "array"]
+- ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "object"]
+- ["s9EquatableP", "pathIndexableArray"]
+- ["s9EquatableP", "pathIndexableObject"]
+- !private ["4Node0A13InitializableP", "array"]
+- ["4Node0A13InitializableP", "init"]
+- !private ["4Node0A13InitializableP", "object"]
+- ["4Node0A13InitializableP", "pathIndexableArray"]
+- ["4Node0A13InitializableP", "pathIndexableObject"]
+- !private ["4Node0A13RepresentableP", "array"]
+- ["4Node0A13RepresentableP", "init"]
+- !private ["4Node0A13RepresentableP", "object"]
+- ["4Node0A13RepresentableP", "pathIndexableArray"]
+- ["4Node0A13RepresentableP", "pathIndexableObject"]
+- !private ["13PathIndexableAAP", "array"]
+- ["13PathIndexableAAP", "init"]
+- !private ["13PathIndexableAAP", "object"]
+- ["13PathIndexableAAP", "pathIndexableArray"]
+- ["13PathIndexableAAP", "pathIndexableObject"]
+- ["13PathIndexableAAP", ""]
+- ["4Node14StructuredDataO", "String"]
+- ["4Node14StructuredDataO", "StructuredData"]
+- !private ["4Node14StructuredDataO", "array"]
+- ["4Node14StructuredDataO", "deinit"]
+- ["4Node14StructuredDataO", "init"]
+- !private ["4Node14StructuredDataO", "object"]
+- ["4Node14StructuredDataO", "pathIndexableArray"]
+- ["4Node14StructuredDataO", "pathIndexableObject"]
+depends-nominal:
+- "s23CustomStringConvertibleP"
+- "s9EquatableP"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- "13PathIndexableAAP"
+- "4Node14StructuredDataO"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "176167e158361b1ea7acca2eef97e9e5"

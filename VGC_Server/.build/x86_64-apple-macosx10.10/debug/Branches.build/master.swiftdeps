@@ -1,0 +1,7 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "ea79dfb9749732c8dd6fc041ff2930d0"
+build_time: [1507599536, 820889000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/routing.git-5366657101075133678/Sources/Branches/Branch+Paths.swift": [1507599509, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/routing.git-5366657101075133678/Sources/Branches/Branch.swift": [1507599509, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/routing.git-5366657101075133678/Sources/Branches/SubBranchMap.swift": [1507599509, 0]

@@ -1,0 +1,155 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "TCPReadableSocket"
+provides-nominal:
+- "7Sockets17TCPReadableSocketP"
+provides-member:
+- ["7Sockets17TCPReadableSocketP", ""]
+- ["7Sockets17TCPReadableSocketP", "read"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!="
+- !private ">"
+- "AssignmentPrecedence"
+- "Bytes"
+- !private "EAGAIN"
+- !private "ECONNRESET"
+- !private "EINTR"
+- !private "FloatLiteralType"
+- "Int"
+- !private "IntegerLiteralType"
+- "ReadableStream"
+- !private "SocketsError"
+- "TCPReadableSocket"
+- "TCPSocket"
+- !private "errno"
+- !private "libc"
+- !private "~="
+depends-member:
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["9Debugging10DebuggableP", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["7Sockets10DescriptorV", "raw"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s5ErrorP", "init"]
+- !private ["7Sockets11ErrorReasonO", "readFailed"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s27ExpressibleByIntegerLiteralP", "raw"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- ["7Sockets9RawSocketP", "Bytes"]
+- !private ["7Sockets9RawSocketP", "EAGAIN"]
+- !private ["7Sockets9RawSocketP", "ECONNRESET"]
+- !private ["7Sockets9RawSocketP", "EINTR"]
+- ["7Sockets9RawSocketP", "Int"]
+- !private ["7Sockets9RawSocketP", "SocketsError"]
+- !private ["7Sockets9RawSocketP", "close"]
+- !private ["7Sockets9RawSocketP", "descriptor"]
+- !private ["7Sockets9RawSocketP", "errno"]
+- !private ["7Sockets9RawSocketP", "libc"]
+- !private ["7Sockets9RawSocketP", "read"]
+- ["9Transport14ReadableStreamP", "Bytes"]
+- !private ["9Transport14ReadableStreamP", "EAGAIN"]
+- !private ["9Transport14ReadableStreamP", "ECONNRESET"]
+- !private ["9Transport14ReadableStreamP", "EINTR"]
+- ["9Transport14ReadableStreamP", "Int"]
+- !private ["9Transport14ReadableStreamP", "SocketsError"]
+- !private ["9Transport14ReadableStreamP", "close"]
+- !private ["9Transport14ReadableStreamP", "descriptor"]
+- !private ["9Transport14ReadableStreamP", "errno"]
+- !private ["9Transport14ReadableStreamP", "libc"]
+- !private ["9Transport14ReadableStreamP", "read"]
+- ["9Transport14ReadableStreamP", ""]
+- !private ["7Sockets0A5ErrorV", "deinit"]
+- !private ["7Sockets0A5ErrorV", "init"]
+- ["9Transport6StreamP", "Bytes"]
+- !private ["9Transport6StreamP", "EAGAIN"]
+- !private ["9Transport6StreamP", "ECONNRESET"]
+- !private ["9Transport6StreamP", "EINTR"]
+- ["9Transport6StreamP", "Int"]
+- !private ["9Transport6StreamP", "SocketsError"]
+- !private ["9Transport6StreamP", "close"]
+- !private ["9Transport6StreamP", "descriptor"]
+- !private ["9Transport6StreamP", "errno"]
+- !private ["9Transport6StreamP", "libc"]
+- !private ["9Transport6StreamP", "read"]
+- ["7Sockets17TCPReadableSocketP", "Bytes"]
+- !private ["7Sockets17TCPReadableSocketP", "EAGAIN"]
+- !private ["7Sockets17TCPReadableSocketP", "ECONNRESET"]
+- !private ["7Sockets17TCPReadableSocketP", "EINTR"]
+- ["7Sockets17TCPReadableSocketP", "Int"]
+- !private ["7Sockets17TCPReadableSocketP", "SocketsError"]
+- !private ["7Sockets17TCPReadableSocketP", "close"]
+- !private ["7Sockets17TCPReadableSocketP", "descriptor"]
+- !private ["7Sockets17TCPReadableSocketP", "errno"]
+- !private ["7Sockets17TCPReadableSocketP", "libc"]
+- ["7Sockets17TCPReadableSocketP", "read"]
+- ["7Sockets9TCPSocketP", "Bytes"]
+- !private ["7Sockets9TCPSocketP", "EAGAIN"]
+- !private ["7Sockets9TCPSocketP", "ECONNRESET"]
+- !private ["7Sockets9TCPSocketP", "EINTR"]
+- ["7Sockets9TCPSocketP", "Int"]
+- !private ["7Sockets9TCPSocketP", "SocketsError"]
+- !private ["7Sockets9TCPSocketP", "close"]
+- !private ["7Sockets9TCPSocketP", "descriptor"]
+- !private ["7Sockets9TCPSocketP", "errno"]
+- !private ["7Sockets9TCPSocketP", "libc"]
+- !private ["7Sockets9TCPSocketP", "read"]
+- ["7Sockets9TCPSocketP", ""]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "Sb"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "9Debugging10DebuggableP"
+- !private "s9DecodableP"
+- !private "7Sockets10DescriptorV"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- !private "7Sockets11ErrorReasonO"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- "7Sockets9RawSocketP"
+- "9Transport14ReadableStreamP"
+- !private "7Sockets0A5ErrorV"
+- "9Transport6StreamP"
+- "7Sockets17TCPReadableSocketP"
+- "7Sockets9TCPSocketP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "b2a934a41c84c8896e2d7c26b6d60eb0"

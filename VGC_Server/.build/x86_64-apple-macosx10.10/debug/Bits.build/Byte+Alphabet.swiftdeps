@@ -1,0 +1,138 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["s5UInt8V", ""]
+- ["s5UInt8V", "A"]
+- ["s5UInt8V", "B"]
+- ["s5UInt8V", "C"]
+- ["s5UInt8V", "D"]
+- ["s5UInt8V", "E"]
+- ["s5UInt8V", "F"]
+- ["s5UInt8V", "G"]
+- ["s5UInt8V", "H"]
+- ["s5UInt8V", "I"]
+- ["s5UInt8V", "J"]
+- ["s5UInt8V", "K"]
+- ["s5UInt8V", "L"]
+- ["s5UInt8V", "M"]
+- ["s5UInt8V", "N"]
+- ["s5UInt8V", "O"]
+- ["s5UInt8V", "P"]
+- ["s5UInt8V", "Q"]
+- ["s5UInt8V", "R"]
+- ["s5UInt8V", "S"]
+- ["s5UInt8V", "T"]
+- ["s5UInt8V", "U"]
+- ["s5UInt8V", "V"]
+- ["s5UInt8V", "W"]
+- ["s5UInt8V", "X"]
+- ["s5UInt8V", "Y"]
+- ["s5UInt8V", "Z"]
+- ["s5UInt8V", "a"]
+- ["s5UInt8V", "b"]
+- ["s5UInt8V", "c"]
+- ["s5UInt8V", "d"]
+- ["s5UInt8V", "e"]
+- ["s5UInt8V", "f"]
+- ["s5UInt8V", "g"]
+- ["s5UInt8V", "h"]
+- ["s5UInt8V", "i"]
+- ["s5UInt8V", "j"]
+- ["s5UInt8V", "k"]
+- ["s5UInt8V", "l"]
+- ["s5UInt8V", "m"]
+- ["s5UInt8V", "n"]
+- ["s5UInt8V", "o"]
+- ["s5UInt8V", "p"]
+- ["s5UInt8V", "q"]
+- ["s5UInt8V", "r"]
+- ["s5UInt8V", "s"]
+- ["s5UInt8V", "t"]
+- ["s5UInt8V", "u"]
+- ["s5UInt8V", "v"]
+- ["s5UInt8V", "w"]
+- ["s5UInt8V", "x"]
+- ["s5UInt8V", "y"]
+- ["s5UInt8V", "z"]
+provides-dynamic-lookup:
+depends-top-level:
+- "Byte"
+- "FloatLiteralType"
+- "IntegerLiteralType"
+depends-member:
+- ["s5UInt8V", "A"]
+- ["s5UInt8V", "B"]
+- ["s5UInt8V", "Byte"]
+- ["s5UInt8V", "C"]
+- ["s5UInt8V", "D"]
+- ["s5UInt8V", "E"]
+- ["s5UInt8V", "F"]
+- ["s5UInt8V", "G"]
+- ["s5UInt8V", "H"]
+- ["s5UInt8V", "I"]
+- ["s5UInt8V", "J"]
+- ["s5UInt8V", "K"]
+- ["s5UInt8V", "L"]
+- ["s5UInt8V", "M"]
+- ["s5UInt8V", "N"]
+- ["s5UInt8V", "O"]
+- ["s5UInt8V", "P"]
+- ["s5UInt8V", "Q"]
+- ["s5UInt8V", "R"]
+- ["s5UInt8V", "S"]
+- ["s5UInt8V", "T"]
+- ["s5UInt8V", "U"]
+- ["s5UInt8V", "V"]
+- ["s5UInt8V", "W"]
+- ["s5UInt8V", "X"]
+- ["s5UInt8V", "Y"]
+- ["s5UInt8V", "Z"]
+- ["s5UInt8V", "a"]
+- ["s5UInt8V", "b"]
+- ["s5UInt8V", "c"]
+- ["s5UInt8V", "d"]
+- ["s5UInt8V", "e"]
+- ["s5UInt8V", "f"]
+- ["s5UInt8V", "g"]
+- ["s5UInt8V", "h"]
+- ["s5UInt8V", "i"]
+- ["s5UInt8V", "j"]
+- ["s5UInt8V", "k"]
+- ["s5UInt8V", "l"]
+- ["s5UInt8V", "m"]
+- ["s5UInt8V", "n"]
+- ["s5UInt8V", "o"]
+- ["s5UInt8V", "p"]
+- ["s5UInt8V", "q"]
+- ["s5UInt8V", "r"]
+- ["s5UInt8V", "s"]
+- ["s5UInt8V", "t"]
+- ["s5UInt8V", "u"]
+- ["s5UInt8V", "v"]
+- ["s5UInt8V", "w"]
+- ["s5UInt8V", "x"]
+- ["s5UInt8V", "y"]
+- ["s5UInt8V", "z"]
+depends-nominal:
+- "s5UInt8V"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "017e9356ffd42d0a5daa9b942735b746"

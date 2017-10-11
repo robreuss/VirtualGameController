@@ -1,0 +1,5 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "040bbff012757a3078aa616d39859921"
+build_time: [1507599590, 282250000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/Run/main.swift": [1507598927, 0]

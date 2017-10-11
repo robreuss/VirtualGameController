@@ -1,0 +1,26 @@
+# pack-refs with: peeled fully-peeled 
+b64e70d133116987544125770ab8912ab2d06b39 refs/heads/beta
+2676981c04b16deffeed763db795b2e16a160397 refs/heads/joannis-performance
+f32d0952b8d4dfcef5ea194e85c1968d90f97bf0 refs/heads/master
+fc15a1617ade3e0d5ef2be72c671f1a9f2a8fec6 refs/heads/vapor-1
+3d0d7da9dfa7ab08185d5dc4b9dfee6c098149c3 refs/pull/1/head
+d891c02fc2a40ae1114b891d3bd506f06eeed189 refs/pull/10/head
+a90712d59ed89d4905819f565fbd2c7a353131e9 refs/pull/13/head
+01aa31dbef075b679d145e93ab724d35ea1b3ad4 refs/pull/2/head
+96d5cb22a58b2e947db095ac28a5d28b04b9cf7e refs/pull/3/head
+3262755b8d52424a520319d1991509c2a1b7e686 refs/pull/4/head
+41dcd6e5bbd30e284817d26f277e564bba02fb0d refs/pull/5/head
+10acbcf6e1238d7e1eeaa1afc8f13a6632e0e888 refs/pull/6/head
+e13f33a0547188ab7b52e323b42c0892052befb2 refs/pull/7/head
+0904266cac07df572774dad7cfbc5ac2ea184815 refs/pull/9/head
+5e666ae71242efd95a49b230ed67249b24365857 refs/tags/1.0.0
+2ea24e535f67fd1a28ee4b3159c3d976c824f8a3 refs/tags/1.0.1
+17255901690084b4535dcb34f2cd4fb9784cd5cd refs/tags/1.0.2
+fc15a1617ade3e0d5ef2be72c671f1a9f2a8fec6 refs/tags/1.0.3
+a91bd2091a756d0a6585beef3fb714fb5d764c33 refs/tags/2.0.0
+8f413a01e6fa65431bcc3e0be5880528c509a233 refs/tags/2.0.0-alpha.1
+62a31ea554a5f086b60d38913130c938384ebd81 refs/tags/2.0.0-alpha.2
+11ee56e3f273a4ecb03d52ddcc3e202d25160aba refs/tags/2.0.0-alpha.3
+99f8704a89f8f1e24928a51c834ff96f6a2e47b5 refs/tags/2.0.0-beta.1
+af678f083b732abbee2cb9bf48fac39e042e7832 refs/tags/2.0.0-beta.2
+f32d0952b8d4dfcef5ea194e85c1968d90f97bf0 refs/tags/2.1.0

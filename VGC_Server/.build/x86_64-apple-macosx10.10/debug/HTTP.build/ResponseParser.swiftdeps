@@ -1,0 +1,194 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ResponseParser"
+provides-nominal:
+- "4HTTP14ResponseParserC"
+provides-member:
+- ["4HTTP14ResponseParserC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "Bytes"
+- "CHTTPParser"
+- "CHTTPParserState"
+- !private "HTTP_RESPONSE"
+- "Int"
+- !private "ParseResults"
+- !private "ParserError"
+- "Response"
+- "ResponseParser"
+- !private "Status"
+- "http_parser"
+- !private "http_parser_init"
+- "http_parser_settings"
+depends-member:
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["4HTTP4BodyO", "data"]
+- !private ["4HTTP17BodyRepresentableP", "data"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4HTTP11CHTTPParserP", "HTTP_RESPONSE"]
+- !private ["4HTTP11CHTTPParserP", "Int"]
+- !private ["4HTTP11CHTTPParserP", "ParseResults"]
+- !private ["4HTTP11CHTTPParserP", "ParserError"]
+- !private ["4HTTP11CHTTPParserP", "Response"]
+- !private ["4HTTP11CHTTPParserP", "Status"]
+- !private ["4HTTP11CHTTPParserP", "executeParser"]
+- !private ["4HTTP11CHTTPParserP", "http_parser"]
+- !private ["4HTTP11CHTTPParserP", "http_parser_init"]
+- !private ["4HTTP11CHTTPParserP", "http_parser_settings"]
+- !private ["4HTTP11CHTTPParserP", "initialize"]
+- ["4HTTP11CHTTPParserP", "parser"]
+- ["4HTTP11CHTTPParserP", "settings"]
+- !private ["4HTTP11CHTTPParserP", "state"]
+- ["4HTTP11CHTTPParserP", ""]
+- ["4HTTP16CHTTPParserStateO", "parsing"]
+- ["4HTTP16CHTTPParserStateO", "ready"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "invalidMessage"]
+- ["s9EquatableP", "parsing"]
+- ["s9EquatableP", "ready"]
+- !private ["s5ErrorP", "invalidMessage"]
+- !private ["s25ExpressibleByArrayLiteralP", "data"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "invalidMessage"]
+- ["s8HashableP", "parsing"]
+- ["s8HashableP", "ready"]
+- !private ["Si", "init"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["4HTTP7MessageP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s7NumericP", "init"]
+- !private ["4HTTP12ParseResultsC", "body"]
+- !private ["4HTTP12ParseResultsC", "get"]
+- !private ["4HTTP12ParseResultsC", "headers"]
+- !private ["4HTTP12ParseResultsC", "isComplete"]
+- !private ["4HTTP12ParseResultsC", "remove"]
+- !private ["4HTTP12ParseResultsC", "set"]
+- !private ["4HTTP12ParseResultsC", "version"]
+- !private ["4HTTP11ParserErrorO", "deinit"]
+- !private ["4HTTP11ParserErrorO", "invalidMessage"]
+- !private ["4HTTP8ResponseC", "init"]
+- ["4HTTP14ResponseParserC", "Bytes"]
+- ["4HTTP14ResponseParserC", "CHTTPParserState"]
+- !private ["4HTTP14ResponseParserC", "HTTP_RESPONSE"]
+- ["4HTTP14ResponseParserC", "Int"]
+- !private ["4HTTP14ResponseParserC", "ParseResults"]
+- !private ["4HTTP14ResponseParserC", "ParserError"]
+- ["4HTTP14ResponseParserC", "Response"]
+- !private ["4HTTP14ResponseParserC", "Status"]
+- ["4HTTP14ResponseParserC", "deinit"]
+- !private ["4HTTP14ResponseParserC", "executeParser"]
+- ["4HTTP14ResponseParserC", "http_parser"]
+- !private ["4HTTP14ResponseParserC", "http_parser_init"]
+- ["4HTTP14ResponseParserC", "http_parser_settings"]
+- ["4HTTP14ResponseParserC", "init"]
+- !private ["4HTTP14ResponseParserC", "initialize"]
+- ["4HTTP14ResponseParserC", "parse"]
+- ["4HTTP14ResponseParserC", "parser"]
+- ["4HTTP14ResponseParserC", "settings"]
+- ["4HTTP14ResponseParserC", "state"]
+- !private ["4HTTP21ResponseRepresentableP", "init"]
+- !private ["s13SignedIntegerP", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["4HTTP6StatusO", "init"]
+- !private ["s10StrideableP", "init"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s11_StrideableP", "init"]
+- !private ["SC11http_parserV", "init"]
+- !private ["SC11http_parserV", "status_code"]
+- !private ["SC20http_parser_settingsV", "init"]
+depends-nominal:
+- !private "s13BinaryIntegerP"
+- !private "4HTTP4BodyO"
+- !private "4HTTP17BodyRepresentableP"
+- !private "Sb"
+- "4HTTP11CHTTPParserP"
+- "4HTTP16CHTTPParserStateO"
+- !private "s7CVarArgP"
+- !private "s10ComparableP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s17FixedWidthIntegerP"
+- "s8HashableP"
+- !private "Si"
+- !private "s25LosslessStringConvertibleP"
+- !private "4HTTP7MessageP"
+- !private "s10MirrorPathP"
+- !private "s7NumericP"
+- !private "4HTTP12ParseResultsC"
+- !private "4HTTP11ParserErrorO"
+- !private "4HTTP8ResponseC"
+- "4HTTP14ResponseParserC"
+- !private "4HTTP21ResponseRepresentableP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "4HTTP6StatusO"
+- !private "s10StrideableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s11_StrideableP"
+- !private "SC11http_parserV"
+- !private "SC20http_parser_settingsV"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "d1a2ece5c534e9737e3a49db48a0ad9f"

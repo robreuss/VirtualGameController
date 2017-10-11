@@ -1,0 +1,108 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "KeyAccessible"
+provides-nominal:
+- "7Configs13KeyAccessibleP"
+- "s10DictionaryV"
+provides-member:
+- ["7Configs13KeyAccessibleP", ""]
+- ["s10DictionaryV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "Dictionary"
+- "KeyAccessible"
+depends-member:
+- ["s7CVarArgP", "Key"]
+- ["s7CVarArgP", "Value"]
+- ["s7CVarArgP", "subscript"]
+- ["s10CollectionP", "Key"]
+- ["s10CollectionP", "Value"]
+- ["s10CollectionP", "subscript"]
+- ["s28CustomDebugStringConvertibleP", "Key"]
+- ["s28CustomDebugStringConvertibleP", "Value"]
+- ["s28CustomDebugStringConvertibleP", "subscript"]
+- ["s17CustomReflectableP", "Key"]
+- ["s17CustomReflectableP", "Value"]
+- ["s17CustomReflectableP", "subscript"]
+- ["s23CustomStringConvertibleP", "Key"]
+- ["s23CustomStringConvertibleP", "Value"]
+- ["s23CustomStringConvertibleP", "subscript"]
+- ["s9DecodableP", "Key"]
+- ["s9DecodableP", "Value"]
+- ["s9DecodableP", "subscript"]
+- ["s10DictionaryV", "Key"]
+- ["s10DictionaryV", "Value"]
+- ["s10DictionaryV", "deinit"]
+- ["s10DictionaryV", "subscript"]
+- ["s9EncodableP", "Key"]
+- ["s9EncodableP", "Value"]
+- ["s9EncodableP", "subscript"]
+- ["s30ExpressibleByDictionaryLiteralP", "Key"]
+- ["s30ExpressibleByDictionaryLiteralP", "Value"]
+- ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- ["7Configs13KeyAccessibleP", "Key"]
+- ["7Configs13KeyAccessibleP", "Value"]
+- ["7Configs13KeyAccessibleP", "subscript"]
+- ["7Configs13KeyAccessibleP", ""]
+- ["4Node0A13InitializableP", "Key"]
+- ["4Node0A13InitializableP", "Value"]
+- ["4Node0A13InitializableP", "subscript"]
+- ["4Node0A13RepresentableP", "Key"]
+- ["4Node0A13RepresentableP", "Value"]
+- ["4Node0A13RepresentableP", "subscript"]
+- ["s8SequenceP", "Key"]
+- ["s8SequenceP", "Value"]
+- ["s8SequenceP", "subscript"]
+- ["s10_IndexableP", "Key"]
+- ["s10_IndexableP", "Value"]
+- ["s10_IndexableP", "subscript"]
+- ["s14_IndexableBaseP", "Key"]
+- ["s14_IndexableBaseP", "Value"]
+- ["s14_IndexableBaseP", "subscript"]
+- ["s21_ObjectiveCBridgeableP", "Key"]
+- ["s21_ObjectiveCBridgeableP", "Value"]
+- ["s21_ObjectiveCBridgeableP", "subscript"]
+depends-nominal:
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s10DictionaryV"
+- "s9EncodableP"
+- "s30ExpressibleByDictionaryLiteralP"
+- "7Configs13KeyAccessibleP"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- "s8SequenceP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/JSON.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "442d59d90563f61e577709f070af8eab"

@@ -1,0 +1,123 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Action"
+- "Aggregate"
+- "Schema"
+- "=="
+- "=="
+- "=="
+provides-nominal:
+- "6Fluent6ActionO"
+- "6Fluent9AggregateO"
+- "6Fluent6SchemaO"
+provides-member:
+- ["6Fluent6ActionO", ""]
+- ["6Fluent9AggregateO", ""]
+- ["6Fluent6SchemaO", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "&&"
+- "=="
+- "Action"
+- "Aggregate"
+- "Bool"
+- !private "BooleanLiteralType"
+- "ComputedField"
+- "Equatable"
+- "Field"
+- "ForeignKey"
+- "Index"
+- "RawOr"
+- "Schema"
+- "String"
+depends-member:
+- ["6Fluent6ActionO", "=="]
+- ["6Fluent6ActionO", "Action"]
+- ["6Fluent6ActionO", "Aggregate"]
+- ["6Fluent6ActionO", "Bool"]
+- ["6Fluent6ActionO", "ComputedField"]
+- ["6Fluent6ActionO", "RawOr"]
+- ["6Fluent6ActionO", "Schema"]
+- ["6Fluent6ActionO", "String"]
+- ["6Fluent6ActionO", "aggregate"]
+- ["6Fluent6ActionO", "create"]
+- ["6Fluent6ActionO", "deinit"]
+- ["6Fluent6ActionO", "delete"]
+- ["6Fluent6ActionO", "fetch"]
+- ["6Fluent6ActionO", "modify"]
+- ["6Fluent6ActionO", "schema"]
+- ["6Fluent9AggregateO", "=="]
+- ["6Fluent9AggregateO", "Aggregate"]
+- ["6Fluent9AggregateO", "Bool"]
+- ["6Fluent9AggregateO", "String"]
+- ["6Fluent9AggregateO", "average"]
+- ["6Fluent9AggregateO", "count"]
+- ["6Fluent9AggregateO", "custom"]
+- ["6Fluent9AggregateO", "deinit"]
+- ["6Fluent9AggregateO", "max"]
+- ["6Fluent9AggregateO", "min"]
+- ["6Fluent9AggregateO", "sum"]
+- ["s9EquatableP", "aggregate"]
+- ["s9EquatableP", "average"]
+- ["s9EquatableP", "count"]
+- ["s9EquatableP", "create"]
+- ["s9EquatableP", "createIndex"]
+- ["s9EquatableP", "custom"]
+- ["s9EquatableP", "delete"]
+- ["s9EquatableP", "deleteIndex"]
+- ["s9EquatableP", "fetch"]
+- ["s9EquatableP", "max"]
+- ["s9EquatableP", "min"]
+- ["s9EquatableP", "modify"]
+- ["s9EquatableP", "schema"]
+- ["s9EquatableP", "sum"]
+- ["s9EquatableP", ""]
+- !private ["6Fluent5RawOrO", "deinit"]
+- ["6Fluent6SchemaO", "=="]
+- ["6Fluent6SchemaO", "Bool"]
+- ["6Fluent6SchemaO", "Field"]
+- ["6Fluent6SchemaO", "ForeignKey"]
+- ["6Fluent6SchemaO", "Index"]
+- ["6Fluent6SchemaO", "RawOr"]
+- ["6Fluent6SchemaO", "Schema"]
+- ["6Fluent6SchemaO", "create"]
+- ["6Fluent6SchemaO", "createIndex"]
+- ["6Fluent6SchemaO", "deinit"]
+- ["6Fluent6SchemaO", "delete"]
+- ["6Fluent6SchemaO", "deleteIndex"]
+- ["6Fluent6SchemaO", "modify"]
+depends-nominal:
+- "6Fluent6ActionO"
+- "6Fluent9AggregateO"
+- "s9EquatableP"
+- !private "6Fluent5RawOrO"
+- "6Fluent6SchemaO"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/CSQLite/include/sqlite3.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "044f2739e3140b1e62f513a1d6df45e3"

@@ -1,0 +1,4 @@
+module CSQLite {
+    umbrella "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/CSQLite/include"
+    export *
+}

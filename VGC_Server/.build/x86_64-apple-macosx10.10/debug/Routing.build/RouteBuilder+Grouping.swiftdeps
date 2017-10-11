@@ -1,0 +1,122 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["7Routing12RouteBuilderP", ""]
+- ["7Routing12RouteBuilderP", "grouped"]
+- ["7Routing12RouteBuilderP", "grouped"]
+- ["7Routing12RouteBuilderP", "grouped"]
+- ["7Routing12RouteBuilderP", "grouped"]
+- ["7Routing12RouteBuilderP", "grouped"]
+- ["7Routing12RouteBuilderP", "group"]
+- ["7Routing12RouteBuilderP", "group"]
+- ["7Routing12RouteBuilderP", "group"]
+- ["7Routing12RouteBuilderP", "group"]
+- ["7Routing12RouteBuilderP", "group"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "Array"
+- "Middleware"
+- "RouteBuilder"
+- !private "RouteGroup"
+- "String"
+depends-member:
+- !private ["Sa", "pathComponents"]
+- !private ["s23BidirectionalCollectionP", "pathComponents"]
+- !private ["s7CVarArgP", "pathComponents"]
+- !private ["s10CollectionP", "pathComponents"]
+- !private ["s28CustomDebugStringConvertibleP", "pathComponents"]
+- !private ["s17CustomReflectableP", "pathComponents"]
+- !private ["s23CustomStringConvertibleP", "pathComponents"]
+- !private ["s9DecodableP", "pathComponents"]
+- !private ["s9EncodableP", "pathComponents"]
+- !private ["s25ExpressibleByArrayLiteralP", "pathComponents"]
+- !private ["s17MutableCollectionP", "pathComponents"]
+- !private ["4Node0A13InitializableP", "pathComponents"]
+- !private ["4Node0A13RepresentableP", "pathComponents"]
+- !private ["s22RandomAccessCollectionP", "pathComponents"]
+- !private ["s26RangeReplaceableCollectionP", "pathComponents"]
+- ["7Routing12RouteBuilderP", "Middleware"]
+- ["7Routing12RouteBuilderP", "RouteBuilder"]
+- !private ["7Routing12RouteBuilderP", "RouteGroup"]
+- ["7Routing12RouteBuilderP", "String"]
+- ["7Routing12RouteBuilderP", "group"]
+- ["7Routing12RouteBuilderP", "grouped"]
+- !private ["7Routing12RouteBuilderP", "init"]
+- !private ["7Routing10RouteGroupC", "deinit"]
+- !private ["7Routing10RouteGroupC", "init"]
+- !private ["s8SequenceP", "pathComponents"]
+- !private ["s14_ArrayProtocolP", "pathComponents"]
+- !private ["s23_BidirectionalIndexableP", "pathComponents"]
+- !private ["s24_DestructorSafeContainerP", "pathComponents"]
+- !private ["s10_IndexableP", "pathComponents"]
+- !private ["s14_IndexableBaseP", "pathComponents"]
+- !private ["s17_MutableIndexableP", "pathComponents"]
+- !private ["s21_ObjectiveCBridgeableP", "pathComponents"]
+- !private ["s22_RandomAccessIndexableP", "pathComponents"]
+- !private ["s26_RangeReplaceableIndexableP", "pathComponents"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s17MutableCollectionP"
+- !private "4Node0A13InitializableP"
+- !private "4Node0A13RepresentableP"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- "7Routing12RouteBuilderP"
+- !private "7Routing10RouteGroupC"
+- !private "s8SequenceP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Branches.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/WebSockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "9ed0b1d5e5c0b124da8c29f69238d10d"

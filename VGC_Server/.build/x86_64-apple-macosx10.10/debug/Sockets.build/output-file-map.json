@@ -1,0 +1,137 @@
+{
+  "": {
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/master.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Address/Address+C.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address+C.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address/Address+C.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address+C~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address+C.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Address/Address.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address/Address.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Address.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Core/Buffer.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Buffer.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Core/Buffer.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Buffer~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Buffer.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Core/Conversions.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Conversions.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Core/Conversions.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Conversions~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Conversions.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Core/Error.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Error.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Core/Error.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Error~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Error.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Core/FDSet.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/FDSet.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Core/FDSet.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/FDSet~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/FDSet.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Core/Types.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Types.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Core/Types.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Types~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Types.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Exports.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Exports.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Exports.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Exports~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Exports.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/Config.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Config.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/Config.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Config~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Config.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/Descriptor.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Descriptor.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/Descriptor.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Descriptor~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Descriptor.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/InternetSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/InternetSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/InternetSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/InternetSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/InternetSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/Pipe.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Pipe.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/Pipe.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Pipe~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Pipe.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/RawSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/RawSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/RawSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/RawSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/RawSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/Select.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Select.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/Select.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Select~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Select.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/Socket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/Socket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/Socket/SocketOptions.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/SocketOptions.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/Socket/SocketOptions.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/SocketOptions~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/SocketOptions.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/TCP/TCPEstablishedSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPEstablishedSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCP/TCPEstablishedSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPEstablishedSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPEstablishedSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/TCP/TCPInternetSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPInternetSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCP/TCPInternetSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPInternetSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPInternetSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/TCP/TCPReadableSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPReadableSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCP/TCPReadableSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPReadableSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPReadableSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/TCP/TCPSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCP/TCPSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/TCP/TCPWriteableSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPWriteableSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCP/TCPWriteableSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPWriteableSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/TCPWriteableSocket.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Sockets/UDP/UDPSocket.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/UDPSocket.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/UDP/UDPSocket.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/UDPSocket~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.build/UDPSocket.swiftdeps"
+  }
+}

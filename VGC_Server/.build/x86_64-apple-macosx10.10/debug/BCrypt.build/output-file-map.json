@@ -1,0 +1,59 @@
+{
+  "": {
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/master.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/BCryptError.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/BCryptError.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/BCryptError.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/BCryptError~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/BCryptError.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Base64.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Base64.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Base64.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Base64~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Base64.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Convenience.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Convenience.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Convenience.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Convenience~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Convenience.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Export.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Export.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Export.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Export~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Export.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Hash.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Hash.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Hash.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Hash~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Hash.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Keys.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Keys.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Keys.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Keys~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Keys.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Parser.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Parser.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Parser.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Parser~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Parser.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Salt.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Salt.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Salt.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Salt~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Salt.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/bcrypt.git-6177224099894028443/Sources/BCrypt/Serializer.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Serializer.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Serializer.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Serializer~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.build/Serializer.swiftdeps"
+  }
+}

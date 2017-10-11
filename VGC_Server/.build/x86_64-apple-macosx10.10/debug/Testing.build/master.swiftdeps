@@ -1,0 +1,10 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "ac4d9dca6e6e64803a17a595dacc7190"
+build_time: [1507599556, 401351000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/Bytes.swift": [1507599507, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/Exports.swift": [1507599507, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/Request.swift": [1507599507, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/Responder.swift": [1507599507, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/Response.swift": [1507599507, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Testing/TestingError.swift": [1507599507, 0]

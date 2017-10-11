@@ -1,0 +1,599 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "FoundationStream"
+provides-nominal:
+- "9Transport16FoundationStreamC"
+- "9Transport16FoundationStreamC5ErrorO"
+provides-member:
+- ["9Transport16FoundationStreamC", ""]
+- ["9Transport16FoundationStreamC5ErrorO", ""]
+- ["So6StreamC", ""]
+- ["So6StreamC", "closed"]
+provides-dynamic-lookup:
+- "stream"
+depends-top-level:
+- !private "!="
+- "=="
+- "AssignmentPrecedence"
+- "Bool"
+- !private "BooleanLiteralType"
+- "Bytes"
+- "ClientStream"
+- "Double"
+- "Foundation"
+- "FoundationStream"
+- "InputStream"
+- "Int"
+- "NSObject"
+- "OutputStream"
+- "Port"
+- "Stream"
+- "StreamDelegate"
+- "String"
+- !private "StringLiteralType"
+- "Swift"
+- !private "||"
+depends-member:
+- !private ["Sa", "count"]
+- !private ["s23BidirectionalCollectionP", "count"]
+- !private ["s13BinaryIntegerP", "hashValue"]
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "Error"]
+- ["s7CVarArgP", "Event"]
+- !private ["s7CVarArgP", "Foundation"]
+- !private ["s7CVarArgP", "Int"]
+- ["s7CVarArgP", "close"]
+- !private ["s7CVarArgP", "closed"]
+- ["s7CVarArgP", "connect"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "delegate"]
+- !private ["s7CVarArgP", "getStreamsToHost"]
+- !private ["s7CVarArgP", "hashValue"]
+- ["s7CVarArgP", "hostname"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "input"]
+- ["s7CVarArgP", "isClosed"]
+- !private ["s7CVarArgP", "open"]
+- !private ["s7CVarArgP", "output"]
+- ["s7CVarArgP", "port"]
+- ["s7CVarArgP", "read"]
+- ["s7CVarArgP", "scheme"]
+- ["s7CVarArgP", "setTimeout"]
+- ["s7CVarArgP", "stream"]
+- !private ["s7CVarArgP", "streamStatus"]
+- ["s7CVarArgP", "write"]
+- ["s7CVarArgP", ""]
+- !private ["9Transport12ClientStreamP", "Error"]
+- !private ["9Transport12ClientStreamP", "Foundation"]
+- !private ["9Transport12ClientStreamP", "Int"]
+- ["9Transport12ClientStreamP", "close"]
+- ["9Transport12ClientStreamP", "connect"]
+- ["9Transport12ClientStreamP", "hostname"]
+- !private ["9Transport12ClientStreamP", "input"]
+- ["9Transport12ClientStreamP", "isClosed"]
+- !private ["9Transport12ClientStreamP", "output"]
+- ["9Transport12ClientStreamP", "port"]
+- ["9Transport12ClientStreamP", "read"]
+- ["9Transport12ClientStreamP", "scheme"]
+- ["9Transport12ClientStreamP", "setTimeout"]
+- ["9Transport12ClientStreamP", "stream"]
+- ["9Transport12ClientStreamP", "write"]
+- ["9Transport12ClientStreamP", ""]
+- !private ["s10CollectionP", "count"]
+- !private ["s10ComparableP", "hashValue"]
+- !private ["s10ComparableP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "Error"]
+- ["s28CustomDebugStringConvertibleP", "Event"]
+- !private ["s28CustomDebugStringConvertibleP", "Foundation"]
+- !private ["s28CustomDebugStringConvertibleP", "Int"]
+- ["s28CustomDebugStringConvertibleP", "close"]
+- !private ["s28CustomDebugStringConvertibleP", "closed"]
+- ["s28CustomDebugStringConvertibleP", "connect"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "delegate"]
+- !private ["s28CustomDebugStringConvertibleP", "getStreamsToHost"]
+- ["s28CustomDebugStringConvertibleP", "hostname"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "input"]
+- ["s28CustomDebugStringConvertibleP", "isClosed"]
+- !private ["s28CustomDebugStringConvertibleP", "open"]
+- !private ["s28CustomDebugStringConvertibleP", "output"]
+- ["s28CustomDebugStringConvertibleP", "port"]
+- ["s28CustomDebugStringConvertibleP", "read"]
+- ["s28CustomDebugStringConvertibleP", "scheme"]
+- ["s28CustomDebugStringConvertibleP", "setTimeout"]
+- ["s28CustomDebugStringConvertibleP", "stream"]
+- !private ["s28CustomDebugStringConvertibleP", "streamStatus"]
+- ["s28CustomDebugStringConvertibleP", "write"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "hashValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "Error"]
+- ["s23CustomStringConvertibleP", "Event"]
+- !private ["s23CustomStringConvertibleP", "Foundation"]
+- !private ["s23CustomStringConvertibleP", "Int"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- ["s23CustomStringConvertibleP", "close"]
+- !private ["s23CustomStringConvertibleP", "closed"]
+- ["s23CustomStringConvertibleP", "connect"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "delegate"]
+- !private ["s23CustomStringConvertibleP", "getStreamsToHost"]
+- !private ["s23CustomStringConvertibleP", "hashValue"]
+- ["s23CustomStringConvertibleP", "hostname"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "input"]
+- ["s23CustomStringConvertibleP", "isClosed"]
+- !private ["s23CustomStringConvertibleP", "open"]
+- !private ["s23CustomStringConvertibleP", "output"]
+- ["s23CustomStringConvertibleP", "port"]
+- ["s23CustomStringConvertibleP", "read"]
+- ["s23CustomStringConvertibleP", "scheme"]
+- ["s23CustomStringConvertibleP", "setTimeout"]
+- ["s23CustomStringConvertibleP", "stream"]
+- !private ["s23CustomStringConvertibleP", "streamStatus"]
+- ["s23CustomStringConvertibleP", "write"]
+- ["s23CustomStringConvertibleP", ""]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "count"]
+- !private ["s9DecodableP", "hashValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "count"]
+- !private ["s9EncodableP", "hashValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "Error"]
+- ["s9EquatableP", "Event"]
+- !private ["s9EquatableP", "Foundation"]
+- !private ["s9EquatableP", "Int"]
+- ["s9EquatableP", "_code"]
+- ["s9EquatableP", "_domain"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- ["s9EquatableP", "_getEmbeddedNSError"]
+- ["s9EquatableP", "_userInfo"]
+- ["s9EquatableP", "close"]
+- ["s9EquatableP", "closed"]
+- ["s9EquatableP", "connect"]
+- !private ["s9EquatableP", "contains"]
+- !private ["s9EquatableP", "delegate"]
+- !private ["s9EquatableP", "endEncountered"]
+- !private ["s9EquatableP", "getStreamsToHost"]
+- ["s9EquatableP", "hashValue"]
+- ["s9EquatableP", "hostname"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "input"]
+- ["s9EquatableP", "isClosed"]
+- ["s9EquatableP", "notOpen"]
+- !private ["s9EquatableP", "open"]
+- !private ["s9EquatableP", "output"]
+- ["s9EquatableP", "port"]
+- ["s9EquatableP", "read"]
+- ["s9EquatableP", "scheme"]
+- ["s9EquatableP", "setTimeout"]
+- ["s9EquatableP", "stream"]
+- !private ["s9EquatableP", "streamStatus"]
+- !private ["s9EquatableP", "unableToCompleteReadOperation"]
+- !private ["s9EquatableP", "unableToConnectToHost"]
+- ["s9EquatableP", "write"]
+- ["s9EquatableP", ""]
+- ["9Transport16FoundationStreamC5ErrorO", "__derived_enum_equals"]
+- ["9Transport16FoundationStreamC5ErrorO", "_code"]
+- ["9Transport16FoundationStreamC5ErrorO", "_domain"]
+- ["9Transport16FoundationStreamC5ErrorO", "_getEmbeddedNSError"]
+- ["9Transport16FoundationStreamC5ErrorO", "_userInfo"]
+- ["9Transport16FoundationStreamC5ErrorO", "deinit"]
+- ["9Transport16FoundationStreamC5ErrorO", "hashValue"]
+- ["9Transport16FoundationStreamC5ErrorO", "unableToCompleteReadOperation"]
+- ["9Transport16FoundationStreamC5ErrorO", "unableToCompleteWriteOperation"]
+- ["9Transport16FoundationStreamC5ErrorO", "unableToConnectToHost"]
+- ["9Transport16FoundationStreamC5ErrorO", "unableToUpgradeToSSL"]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- ["s5ErrorP", "hashValue"]
+- !private ["s5ErrorP", "unableToCompleteReadOperation"]
+- !private ["s5ErrorP", "unableToConnectToHost"]
+- ["s5ErrorP", ""]
+- !private ["So6StreamC5EventV", "contains"]
+- !private ["So6StreamC5EventV", "endEncountered"]
+- !private ["s25ExpressibleByArrayLiteralP", "contains"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s25ExpressibleByArrayLiteralP", "endEncountered"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "hashValue"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- ["9Transport16FoundationStreamC", "Bool"]
+- ["9Transport16FoundationStreamC", "Bytes"]
+- ["9Transport16FoundationStreamC", "Double"]
+- ["9Transport16FoundationStreamC", "Error"]
+- ["9Transport16FoundationStreamC", "Foundation"]
+- ["9Transport16FoundationStreamC", "InputStream"]
+- ["9Transport16FoundationStreamC", "Int"]
+- ["9Transport16FoundationStreamC", "OutputStream"]
+- ["9Transport16FoundationStreamC", "Port"]
+- ["9Transport16FoundationStreamC", "String"]
+- ["9Transport16FoundationStreamC", "Swift"]
+- ["9Transport16FoundationStreamC", "close"]
+- ["9Transport16FoundationStreamC", "connect"]
+- ["9Transport16FoundationStreamC", "deinit"]
+- ["9Transport16FoundationStreamC", "flush"]
+- ["9Transport16FoundationStreamC", "hostname"]
+- ["9Transport16FoundationStreamC", "init"]
+- ["9Transport16FoundationStreamC", "input"]
+- ["9Transport16FoundationStreamC", "isClosed"]
+- ["9Transport16FoundationStreamC", "output"]
+- ["9Transport16FoundationStreamC", "port"]
+- ["9Transport16FoundationStreamC", "read"]
+- ["9Transport16FoundationStreamC", "scheme"]
+- ["9Transport16FoundationStreamC", "setTimeout"]
+- ["9Transport16FoundationStreamC", "stream"]
+- ["9Transport16FoundationStreamC", "write"]
+- !private ["s8HashableP", "Error"]
+- ["s8HashableP", "Event"]
+- !private ["s8HashableP", "Foundation"]
+- !private ["s8HashableP", "Int"]
+- ["s8HashableP", "_code"]
+- ["s8HashableP", "_domain"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- ["s8HashableP", "_getEmbeddedNSError"]
+- ["s8HashableP", "_userInfo"]
+- ["s8HashableP", "close"]
+- ["s8HashableP", "closed"]
+- ["s8HashableP", "connect"]
+- !private ["s8HashableP", "delegate"]
+- !private ["s8HashableP", "getStreamsToHost"]
+- ["s8HashableP", "hashValue"]
+- ["s8HashableP", "hostname"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "input"]
+- ["s8HashableP", "isClosed"]
+- ["s8HashableP", "notOpen"]
+- !private ["s8HashableP", "open"]
+- !private ["s8HashableP", "output"]
+- ["s8HashableP", "port"]
+- ["s8HashableP", "read"]
+- ["s8HashableP", "scheme"]
+- ["s8HashableP", "setTimeout"]
+- ["s8HashableP", "stream"]
+- !private ["s8HashableP", "streamStatus"]
+- !private ["s8HashableP", "unableToCompleteReadOperation"]
+- !private ["s8HashableP", "unableToConnectToHost"]
+- ["s8HashableP", "write"]
+- ["s8HashableP", ""]
+- !private ["So11InputStreamC", "close"]
+- !private ["So11InputStreamC", "closed"]
+- !private ["So11InputStreamC", "delegate"]
+- !private ["So11InputStreamC", "open"]
+- !private ["So11InputStreamC", "read"]
+- !private ["Si", "hashValue"]
+- !private ["Si", "init"]
+- !private ["9Transport14InternetStreamP", "Error"]
+- !private ["9Transport14InternetStreamP", "Foundation"]
+- !private ["9Transport14InternetStreamP", "Int"]
+- ["9Transport14InternetStreamP", "close"]
+- ["9Transport14InternetStreamP", "connect"]
+- ["9Transport14InternetStreamP", "hostname"]
+- !private ["9Transport14InternetStreamP", "input"]
+- ["9Transport14InternetStreamP", "isClosed"]
+- !private ["9Transport14InternetStreamP", "output"]
+- ["9Transport14InternetStreamP", "port"]
+- ["9Transport14InternetStreamP", "read"]
+- ["9Transport14InternetStreamP", "scheme"]
+- ["9Transport14InternetStreamP", "setTimeout"]
+- ["9Transport14InternetStreamP", "stream"]
+- ["9Transport14InternetStreamP", "write"]
+- ["9Transport14InternetStreamP", ""]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "hashValue"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s17MutableCollectionP", "count"]
+- ["So8NSObjectC", "Bool"]
+- ["So8NSObjectC", "Bytes"]
+- ["So8NSObjectC", "Double"]
+- !private ["So8NSObjectC", "Error"]
+- ["So8NSObjectC", "Event"]
+- ["So8NSObjectC", "Foundation"]
+- ["So8NSObjectC", "InputStream"]
+- ["So8NSObjectC", "Int"]
+- ["So8NSObjectC", "OutputStream"]
+- ["So8NSObjectC", "Port"]
+- ["So8NSObjectC", "String"]
+- ["So8NSObjectC", "Swift"]
+- ["So8NSObjectC", "close"]
+- ["So8NSObjectC", "closed"]
+- ["So8NSObjectC", "connect"]
+- !private ["So8NSObjectC", "delegate"]
+- ["So8NSObjectC", "flush"]
+- !private ["So8NSObjectC", "getStreamsToHost"]
+- ["So8NSObjectC", "hostname"]
+- ["So8NSObjectC", "init"]
+- ["So8NSObjectC", "input"]
+- ["So8NSObjectC", "isClosed"]
+- !private ["So8NSObjectC", "open"]
+- ["So8NSObjectC", "output"]
+- ["So8NSObjectC", "port"]
+- ["So8NSObjectC", "read"]
+- ["So8NSObjectC", "scheme"]
+- ["So8NSObjectC", "setTimeout"]
+- ["So8NSObjectC", "stream"]
+- !private ["So8NSObjectC", "streamStatus"]
+- ["So8NSObjectC", "write"]
+- ["So8NSObjectC", ""]
+- !private ["So16NSObjectProtocolP", "Error"]
+- ["So16NSObjectProtocolP", "Event"]
+- !private ["So16NSObjectProtocolP", "Foundation"]
+- !private ["So16NSObjectProtocolP", "Int"]
+- ["So16NSObjectProtocolP", "close"]
+- !private ["So16NSObjectProtocolP", "closed"]
+- ["So16NSObjectProtocolP", "connect"]
+- !private ["So16NSObjectProtocolP", "delegate"]
+- !private ["So16NSObjectProtocolP", "getStreamsToHost"]
+- ["So16NSObjectProtocolP", "hostname"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So16NSObjectProtocolP", "input"]
+- ["So16NSObjectProtocolP", "isClosed"]
+- !private ["So16NSObjectProtocolP", "open"]
+- !private ["So16NSObjectProtocolP", "output"]
+- ["So16NSObjectProtocolP", "port"]
+- ["So16NSObjectProtocolP", "read"]
+- ["So16NSObjectProtocolP", "scheme"]
+- ["So16NSObjectProtocolP", "setTimeout"]
+- ["So16NSObjectProtocolP", "stream"]
+- !private ["So16NSObjectProtocolP", "streamStatus"]
+- ["So16NSObjectProtocolP", "write"]
+- ["So16NSObjectProtocolP", ""]
+- !private ["s7NumericP", "hashValue"]
+- !private ["s7NumericP", "init"]
+- !private ["s9OptionSetP", "contains"]
+- !private ["s9OptionSetP", "endEncountered"]
+- !private ["So12OutputStreamC", "close"]
+- !private ["So12OutputStreamC", "closed"]
+- !private ["So12OutputStreamC", "delegate"]
+- !private ["So12OutputStreamC", "open"]
+- !private ["So12OutputStreamC", "write"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- ["s16RawRepresentableP", "closed"]
+- !private ["s16RawRepresentableP", "contains"]
+- !private ["s16RawRepresentableP", "endEncountered"]
+- ["s16RawRepresentableP", "notOpen"]
+- !private ["9Transport14ReadableStreamP", "Error"]
+- !private ["9Transport14ReadableStreamP", "Foundation"]
+- !private ["9Transport14ReadableStreamP", "Int"]
+- ["9Transport14ReadableStreamP", "close"]
+- ["9Transport14ReadableStreamP", "connect"]
+- ["9Transport14ReadableStreamP", "hostname"]
+- !private ["9Transport14ReadableStreamP", "input"]
+- ["9Transport14ReadableStreamP", "isClosed"]
+- !private ["9Transport14ReadableStreamP", "output"]
+- ["9Transport14ReadableStreamP", "port"]
+- ["9Transport14ReadableStreamP", "read"]
+- ["9Transport14ReadableStreamP", "scheme"]
+- ["9Transport14ReadableStreamP", "setTimeout"]
+- ["9Transport14ReadableStreamP", "stream"]
+- ["9Transport14ReadableStreamP", "write"]
+- ["9Transport14ReadableStreamP", ""]
+- !private ["s8SequenceP", "count"]
+- !private ["s10SetAlgebraP", "contains"]
+- !private ["s10SetAlgebraP", "endEncountered"]
+- !private ["s13SignedIntegerP", "hashValue"]
+- !private ["s13SignedIntegerP", "init"]
+- !private ["s13SignedNumericP", "hashValue"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["s12StaticStringV", "init"]
+- ["So6StreamC6StatusO", "closed"]
+- ["So6StreamC6StatusO", "notOpen"]
+- !private ["9Transport6StreamP", "Error"]
+- !private ["9Transport6StreamP", "Foundation"]
+- !private ["9Transport6StreamP", "Int"]
+- ["9Transport6StreamP", "close"]
+- ["9Transport6StreamP", "connect"]
+- ["9Transport6StreamP", "hostname"]
+- !private ["9Transport6StreamP", "input"]
+- ["9Transport6StreamP", "isClosed"]
+- !private ["9Transport6StreamP", "output"]
+- ["9Transport6StreamP", "port"]
+- ["9Transport6StreamP", "read"]
+- ["9Transport6StreamP", "scheme"]
+- ["9Transport6StreamP", "setTimeout"]
+- ["9Transport6StreamP", "stream"]
+- ["9Transport6StreamP", "write"]
+- ["9Transport6StreamP", ""]
+- ["So6StreamC", "Bool"]
+- ["So6StreamC", "Event"]
+- !private ["So6StreamC", "close"]
+- ["So6StreamC", "closed"]
+- !private ["So6StreamC", "delegate"]
+- !private ["So6StreamC", "getStreamsToHost"]
+- !private ["So6StreamC", "open"]
+- !private ["So6StreamC", "read"]
+- !private ["So6StreamC", "streamStatus"]
+- !private ["So6StreamC", "write"]
+- !private ["So14StreamDelegateP", "Error"]
+- !private ["So14StreamDelegateP", "Foundation"]
+- !private ["So14StreamDelegateP", "Int"]
+- ["So14StreamDelegateP", "close"]
+- ["So14StreamDelegateP", "connect"]
+- ["So14StreamDelegateP", "hostname"]
+- !private ["So14StreamDelegateP", "input"]
+- ["So14StreamDelegateP", "isClosed"]
+- !private ["So14StreamDelegateP", "output"]
+- ["So14StreamDelegateP", "port"]
+- ["So14StreamDelegateP", "read"]
+- ["So14StreamDelegateP", "scheme"]
+- ["So14StreamDelegateP", "setTimeout"]
+- ["So14StreamDelegateP", "stream"]
+- ["So14StreamDelegateP", "write"]
+- ["So14StreamDelegateP", ""]
+- !private ["s10StrideableP", "hashValue"]
+- !private ["s10StrideableP", "init"]
+- !private ["9Transport15WriteableStreamP", "Error"]
+- !private ["9Transport15WriteableStreamP", "Foundation"]
+- !private ["9Transport15WriteableStreamP", "Int"]
+- ["9Transport15WriteableStreamP", "close"]
+- ["9Transport15WriteableStreamP", "connect"]
+- ["9Transport15WriteableStreamP", "hostname"]
+- !private ["9Transport15WriteableStreamP", "input"]
+- ["9Transport15WriteableStreamP", "isClosed"]
+- !private ["9Transport15WriteableStreamP", "output"]
+- ["9Transport15WriteableStreamP", "port"]
+- ["9Transport15WriteableStreamP", "read"]
+- ["9Transport15WriteableStreamP", "scheme"]
+- ["9Transport15WriteableStreamP", "setTimeout"]
+- ["9Transport15WriteableStreamP", "stream"]
+- ["9Transport15WriteableStreamP", "write"]
+- ["9Transport15WriteableStreamP", ""]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- !private ["s18_BitwiseOperationsP", "hashValue"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s10_IndexableP", "count"]
+- !private ["s14_IndexableBaseP", "count"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Error"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "Event"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Foundation"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "Int"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "close"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "closed"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "connect"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "delegate"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "getStreamsToHost"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "hostname"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "input"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "isClosed"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "open"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "output"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "port"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "read"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "scheme"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "setTimeout"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "stream"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "streamStatus"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "write"]
+- ["10Foundation27_KeyValueCodingAndObservingP", ""]
+- !private ["s17_MutableIndexableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "hashValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- !private ["s11_StrideableP", "hashValue"]
+- !private ["s11_StrideableP", "init"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "s13BinaryIntegerP"
+- !private "Sb"
+- "s7CVarArgP"
+- "9Transport12ClientStreamP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- "9Transport16FoundationStreamC5ErrorO"
+- "s5ErrorP"
+- !private "So6StreamC5EventV"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- "9Transport16FoundationStreamC"
+- "s8HashableP"
+- !private "So11InputStreamC"
+- !private "Si"
+- "9Transport14InternetStreamP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "s17MutableCollectionP"
+- "So8NSObjectC"
+- "So16NSObjectProtocolP"
+- !private "s7NumericP"
+- !private "s9OptionSetP"
+- !private "So12OutputStreamC"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- "s16RawRepresentableP"
+- "9Transport14ReadableStreamP"
+- !private "s8SequenceP"
+- !private "s10SetAlgebraP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "s12StaticStringV"
+- "So6StreamC6StatusO"
+- "9Transport6StreamP"
+- "So6StreamC"
+- "So14StreamDelegateP"
+- !private "s10StrideableP"
+- "9Transport15WriteableStreamP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "43922d930e2c33dfb0e95966d6983ae6"

@@ -1,0 +1,18 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "ad1d463d6f095d403f41a7b362787f99"
+build_time: [1507599545, 423582000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Client/WebSocket+Client.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Communication/WebSocket+ControlFrames.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Communication/WebSocket+Send.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Connection/Headers+WebSockets.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Connection/WebSockets+Hash.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Model/Fragmentation.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Model/Frame.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Model/WebSocket+Error.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Model/WebSocket.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Request+WebSockets.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Serialization/FrameDeserializer.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Serialization/FrameSerializer.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/Serialization/WebSockets+Flags.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/WebSockets/WebSocketFormatErrors.swift": [1507599510, 0]

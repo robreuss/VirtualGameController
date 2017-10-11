@@ -1,0 +1,329 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Abort"
+provides-nominal:
+- "5Vapor5AbortV"
+provides-member:
+- ["5Vapor5AbortV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "??"
+- "Abort"
+- "AbortError"
+- !private "Array"
+- "AssignmentPrecedence"
+- "Debuggable"
+- "Int"
+- "Node"
+- "Status"
+- "String"
+- "StringLiteralType"
+depends-member:
+- ["5Vapor5AbortV", "Abort"]
+- ["5Vapor5AbortV", "Int"]
+- ["5Vapor5AbortV", "Node"]
+- ["5Vapor5AbortV", "Status"]
+- ["5Vapor5AbortV", "String"]
+- ["5Vapor5AbortV", "_code"]
+- ["5Vapor5AbortV", "_domain"]
+- ["5Vapor5AbortV", "_getEmbeddedNSError"]
+- ["5Vapor5AbortV", "_userInfo"]
+- ["5Vapor5AbortV", "badRequest"]
+- ["5Vapor5AbortV", "column"]
+- ["5Vapor5AbortV", "debugDescription"]
+- ["5Vapor5AbortV", "deinit"]
+- ["5Vapor5AbortV", "documentationLinks"]
+- ["5Vapor5AbortV", "file"]
+- ["5Vapor5AbortV", "gitHubIssues"]
+- ["5Vapor5AbortV", "identifier"]
+- ["5Vapor5AbortV", "init"]
+- ["5Vapor5AbortV", "line"]
+- ["5Vapor5AbortV", "metadata"]
+- ["5Vapor5AbortV", "notFound"]
+- ["5Vapor5AbortV", "possibleCauses"]
+- ["5Vapor5AbortV", "readableName"]
+- ["5Vapor5AbortV", "reason"]
+- ["5Vapor5AbortV", "serverError"]
+- ["5Vapor5AbortV", "stackOverflowQuestions"]
+- ["5Vapor5AbortV", "status"]
+- ["5Vapor5AbortV", "suggestedFixes"]
+- ["5Vapor5AbortV", "typeIdentifier"]
+- ["5Vapor5AbortV", "unauthorized"]
+- ["5Vapor10AbortErrorP", "Abort"]
+- ["5Vapor10AbortErrorP", "_code"]
+- ["5Vapor10AbortErrorP", "_domain"]
+- ["5Vapor10AbortErrorP", "_getEmbeddedNSError"]
+- ["5Vapor10AbortErrorP", "_userInfo"]
+- ["5Vapor10AbortErrorP", "badRequest"]
+- !private ["5Vapor10AbortErrorP", "column"]
+- ["5Vapor10AbortErrorP", "debugDescription"]
+- ["5Vapor10AbortErrorP", "documentationLinks"]
+- !private ["5Vapor10AbortErrorP", "file"]
+- ["5Vapor10AbortErrorP", "gitHubIssues"]
+- ["5Vapor10AbortErrorP", "identifier"]
+- ["5Vapor10AbortErrorP", "init"]
+- ["5Vapor10AbortErrorP", "internalServerError"]
+- !private ["5Vapor10AbortErrorP", "line"]
+- ["5Vapor10AbortErrorP", "metadata"]
+- ["5Vapor10AbortErrorP", "notFound"]
+- ["5Vapor10AbortErrorP", "possibleCauses"]
+- ["5Vapor10AbortErrorP", "readableName"]
+- ["5Vapor10AbortErrorP", "reason"]
+- !private ["5Vapor10AbortErrorP", "reasonPhrase"]
+- ["5Vapor10AbortErrorP", "stackOverflowQuestions"]
+- ["5Vapor10AbortErrorP", "status"]
+- ["5Vapor10AbortErrorP", "suggestedFixes"]
+- ["5Vapor10AbortErrorP", "typeIdentifier"]
+- ["5Vapor10AbortErrorP", "unauthorized"]
+- ["5Vapor10AbortErrorP", ""]
+- ["s23BidirectionalCollectionP", "init"]
+- ["4HTTP17BodyRepresentableP", "init"]
+- ["4Bits16BytesConvertibleP", "init"]
+- ["4Bits18BytesInitializableP", "init"]
+- ["4Bits18BytesRepresentableP", "init"]
+- ["s7CVarArgP", "init"]
+- ["s10CollectionP", "init"]
+- ["s10ComparableP", "init"]
+- ["s28CustomDebugStringConvertibleP", "Abort"]
+- ["s28CustomDebugStringConvertibleP", "_code"]
+- ["s28CustomDebugStringConvertibleP", "_domain"]
+- ["s28CustomDebugStringConvertibleP", "_getEmbeddedNSError"]
+- ["s28CustomDebugStringConvertibleP", "_userInfo"]
+- !private ["s28CustomDebugStringConvertibleP", "column"]
+- ["s28CustomDebugStringConvertibleP", "debugDescription"]
+- ["s28CustomDebugStringConvertibleP", "documentationLinks"]
+- !private ["s28CustomDebugStringConvertibleP", "file"]
+- ["s28CustomDebugStringConvertibleP", "gitHubIssues"]
+- ["s28CustomDebugStringConvertibleP", "identifier"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "line"]
+- ["s28CustomDebugStringConvertibleP", "metadata"]
+- ["s28CustomDebugStringConvertibleP", "possibleCauses"]
+- ["s28CustomDebugStringConvertibleP", "readableName"]
+- ["s28CustomDebugStringConvertibleP", "reason"]
+- ["s28CustomDebugStringConvertibleP", "stackOverflowQuestions"]
+- ["s28CustomDebugStringConvertibleP", "status"]
+- ["s28CustomDebugStringConvertibleP", "suggestedFixes"]
+- ["s28CustomDebugStringConvertibleP", "typeIdentifier"]
+- ["s28CustomDebugStringConvertibleP", ""]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s17CustomReflectableP", "init"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["9Debugging10DebuggableP", "Abort"]
+- ["9Debugging10DebuggableP", "_code"]
+- ["9Debugging10DebuggableP", "_domain"]
+- ["9Debugging10DebuggableP", "_getEmbeddedNSError"]
+- ["9Debugging10DebuggableP", "_userInfo"]
+- !private ["9Debugging10DebuggableP", "column"]
+- ["9Debugging10DebuggableP", "debugDescription"]
+- ["9Debugging10DebuggableP", "documentationLinks"]
+- !private ["9Debugging10DebuggableP", "file"]
+- ["9Debugging10DebuggableP", "gitHubIssues"]
+- ["9Debugging10DebuggableP", "identifier"]
+- ["9Debugging10DebuggableP", "init"]
+- !private ["9Debugging10DebuggableP", "line"]
+- ["9Debugging10DebuggableP", "metadata"]
+- ["9Debugging10DebuggableP", "possibleCauses"]
+- ["9Debugging10DebuggableP", "readableName"]
+- ["9Debugging10DebuggableP", "reason"]
+- ["9Debugging10DebuggableP", "stackOverflowQuestions"]
+- ["9Debugging10DebuggableP", "status"]
+- ["9Debugging10DebuggableP", "suggestedFixes"]
+- ["9Debugging10DebuggableP", "typeIdentifier"]
+- ["9Debugging10DebuggableP", ""]
+- ["s9DecodableP", "init"]
+- ["4SMTP25EmailAddressRepresentableP", "init"]
+- ["4SMTP22EmailBodyRepresentableP", "init"]
+- ["s9EncodableP", "init"]
+- ["s9EquatableP", "badRequest"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "internalServerError"]
+- ["s9EquatableP", "notFound"]
+- !private ["s9EquatableP", "reasonPhrase"]
+- ["s9EquatableP", "unauthorized"]
+- ["s5ErrorP", "Abort"]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- ["s5ErrorP", "badRequest"]
+- !private ["s5ErrorP", "column"]
+- ["s5ErrorP", "debugDescription"]
+- ["s5ErrorP", "documentationLinks"]
+- !private ["s5ErrorP", "file"]
+- ["s5ErrorP", "gitHubIssues"]
+- ["s5ErrorP", "identifier"]
+- ["s5ErrorP", "init"]
+- ["s5ErrorP", "internalServerError"]
+- !private ["s5ErrorP", "line"]
+- ["s5ErrorP", "metadata"]
+- ["s5ErrorP", "notFound"]
+- ["s5ErrorP", "possibleCauses"]
+- ["s5ErrorP", "readableName"]
+- ["s5ErrorP", "reason"]
+- !private ["s5ErrorP", "reasonPhrase"]
+- ["s5ErrorP", "stackOverflowQuestions"]
+- ["s5ErrorP", "status"]
+- ["s5ErrorP", "suggestedFixes"]
+- ["s5ErrorP", "typeIdentifier"]
+- ["s5ErrorP", "unauthorized"]
+- ["s5ErrorP", ""]
+- ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- ["s26ExpressibleByStringLiteralP", "init"]
+- ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- ["s8HashableP", "badRequest"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "internalServerError"]
+- ["s8HashableP", "notFound"]
+- !private ["s8HashableP", "reasonPhrase"]
+- ["s8HashableP", "unauthorized"]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s10MirrorPathP", "init"]
+- ["So8NSCodingP", "init"]
+- ["So9NSCopyingP", "init"]
+- ["So21NSItemProviderReadingP", "init"]
+- ["So21NSItemProviderWritingP", "init"]
+- ["So16NSMutableCopyingP", "init"]
+- ["So16NSObjectProtocolP", "init"]
+- ["So14NSSecureCodingP", "init"]
+- ["So8NSStringC", "init"]
+- ["4Node0A13InitializableP", "init"]
+- ["4Node0A13RepresentableP", "init"]
+- ["7Routing15ParameterizableP", "init"]
+- ["13PathIndexable0A7IndexerP", "init"]
+- ["s26RangeReplaceableCollectionP", "init"]
+- ["5Vapor23RequestContentSubscriptP", "init"]
+- ["4HTTP21ResponseRepresentableP", "init"]
+- ["s8SequenceP", "init"]
+- ["4HTTP6StatusO", "badRequest"]
+- ["4HTTP6StatusO", "internalServerError"]
+- ["4HTTP6StatusO", "notFound"]
+- !private ["4HTTP6StatusO", "reasonPhrase"]
+- ["4HTTP6StatusO", "unauthorized"]
+- ["SS", "init"]
+- ["s14StringProtocolP", "init"]
+- ["s16TextOutputStreamP", "init"]
+- ["s20TextOutputStreamableP", "init"]
+- ["s23_BidirectionalIndexableP", "init"]
+- ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- ["s33_ExpressibleByStringInterpolationP", "init"]
+- ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- ["s10_IndexableP", "init"]
+- ["s14_IndexableBaseP", "init"]
+- ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s26_RangeReplaceableIndexableP", "init"]
+- ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- "5Vapor5AbortV"
+- "5Vapor10AbortErrorP"
+- "s23BidirectionalCollectionP"
+- "4HTTP17BodyRepresentableP"
+- "4Bits16BytesConvertibleP"
+- "4Bits18BytesInitializableP"
+- "4Bits18BytesRepresentableP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s10ComparableP"
+- "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "9Debugging10DebuggableP"
+- "s9DecodableP"
+- "4SMTP25EmailAddressRepresentableP"
+- "4SMTP22EmailBodyRepresentableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- "s5ErrorP"
+- "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- "s26ExpressibleByStringLiteralP"
+- "s33ExpressibleByUnicodeScalarLiteralP"
+- "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "So8NSCodingP"
+- "So9NSCopyingP"
+- "So21NSItemProviderReadingP"
+- "So21NSItemProviderWritingP"
+- "So16NSMutableCopyingP"
+- "So16NSObjectProtocolP"
+- "So14NSSecureCodingP"
+- "So8NSStringC"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- "7Routing15ParameterizableP"
+- "13PathIndexable0A7IndexerP"
+- "s26RangeReplaceableCollectionP"
+- "5Vapor23RequestContentSubscriptP"
+- "4HTTP21ResponseRepresentableP"
+- "s8SequenceP"
+- "4HTTP6StatusO"
+- "SS"
+- "s14StringProtocolP"
+- "s16TextOutputStreamP"
+- "s20TextOutputStreamableP"
+- "s23_BidirectionalIndexableP"
+- "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- "s34_ExpressibleByBuiltinStringLiteralP"
+- "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- "s33_ExpressibleByStringInterpolationP"
+- "s35_HasCustomAnyHashableRepresentationP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "10Foundation27_KeyValueCodingAndObservingP"
+- "s21_ObjectiveCBridgeableP"
+- "s26_RangeReplaceableIndexableP"
+- "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/JSON.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FormData.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Cache.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Console.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Routing.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Branches.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Cookies.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Configs.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sessions.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/WebSockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Multipart.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "68147383fee5ea3553d7b87218b7fe53"

@@ -1,0 +1,29 @@
+{
+  "": {
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/master.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/SQLite/SQLite+Result.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Result.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Result.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Result~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Result.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/SQLite/SQLite+Statement.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Statement.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Statement.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Statement~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite+Statement.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/SQLite/SQLite.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/SQLite.swiftdeps"
+  },
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/SQLite/StatusError.swift": {
+    "dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/StatusError.d",
+    "object": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/StatusError.swift.o",
+    "swiftmodule": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/StatusError~partial.swiftmodule",
+    "swift-dependencies": "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.build/StatusError.swiftdeps"
+  }
+}

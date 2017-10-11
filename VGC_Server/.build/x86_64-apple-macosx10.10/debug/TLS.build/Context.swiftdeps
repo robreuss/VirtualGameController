@@ -1,0 +1,353 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "CContext"
+- "CMethod"
+- "CSSL"
+- "Context"
+provides-nominal:
+- "3TLS7ContextC"
+provides-member:
+- ["3TLS7ContextC", ""]
+- ["3TLS7ContextC", "loadSignature"]
+- ["3TLS7ContextC", "loadCertificates"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "!"
+- !private "=="
+- !private "??"
+- "AssignmentPrecedence"
+- !private "BIO_new_mem_buf"
+- "Bool"
+- "BooleanLiteralType"
+- "CContext"
+- "CMethod"
+- "CSSL"
+- "Certificates"
+- "Context"
+- !private "FloatLiteralType"
+- !private "Int32"
+- !private "IntegerLiteralType"
+- "Mode"
+- "OPENSSL_add_all_algorithms_conf"
+- "OPENSSL_config"
+- !private "PEM_read_bio_PrivateKey"
+- !private "PEM_read_bio_X509"
+- "SSL"
+- !private "SSL_CTRL_MODE"
+- !private "SSL_CTRL_OPTIONS"
+- "SSL_CTX"
+- !private "SSL_CTX_check_private_key"
+- !private "SSL_CTX_ctrl"
+- !private "SSL_CTX_free"
+- !private "SSL_CTX_load_verify_locations"
+- !private "SSL_CTX_new"
+- !private "SSL_CTX_set_cipher_list"
+- !private "SSL_CTX_set_verify"
+- !private "SSL_CTX_use_PrivateKey"
+- !private "SSL_CTX_use_PrivateKey_file"
+- !private "SSL_CTX_use_certificate"
+- !private "SSL_CTX_use_certificate_chain_file"
+- !private "SSL_CTX_use_certificate_file"
+- !private "SSL_FILETYPE_PEM"
+- "SSL_METHOD"
+- !private "SSL_MODE_AUTO_RETRY"
+- !private "SSL_OP_NO_COMPRESSION"
+- !private "SSL_OP_NO_SSLv2"
+- !private "SSL_OP_NO_SSLv3"
+- !private "SSL_VERIFY_NONE"
+- "SSL_library_init"
+- "SSL_load_error_strings"
+- !private "SSLv23_client_method"
+- !private "SSLv23_server_method"
+- "String"
+- !private "StringLiteralType"
+- !private "TLSError"
+- "UnsafeMutablePointer"
+- "UnsafePointer"
+- !private "fatalError"
+- !private "|"
+- !private "||"
+depends-member:
+- !private ["Sa", "count"]
+- !private ["s23BidirectionalCollectionP", "count"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4Bits16BytesConvertibleP", "init"]
+- !private ["4Bits18BytesInitializableP", "init"]
+- !private ["4Bits18BytesRepresentableP", "init"]
+- !private ["s7CVarArgP", "count"]
+- !private ["s7CVarArgP", "init"]
+- ["3TLS12CertificatesO", "Signature"]
+- !private ["3TLS12CertificatesO", "areSelfSigned"]
+- ["3TLS12CertificatesO", "bytes"]
+- ["3TLS12CertificatesO", "certificateAuthority"]
+- ["3TLS12CertificatesO", "chain"]
+- !private ["3TLS12CertificatesO", "defaults"]
+- ["3TLS12CertificatesO", "files"]
+- ["3TLS12CertificatesO", "none"]
+- !private ["s10CollectionP", "count"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10ComparableP", "init"]
+- !private ["3TLS7ContextC", "BIO_new_mem_buf"]
+- ["3TLS7ContextC", "Bool"]
+- ["3TLS7ContextC", "CContext"]
+- !private ["3TLS7ContextC", "CMethod"]
+- ["3TLS7ContextC", "Certificates"]
+- !private ["3TLS7ContextC", "Context"]
+- !private ["3TLS7ContextC", "Int32"]
+- ["3TLS7ContextC", "Mode"]
+- ["3TLS7ContextC", "OPENSSL_add_all_algorithms_conf"]
+- ["3TLS7ContextC", "OPENSSL_config"]
+- !private ["3TLS7ContextC", "PEM_read_bio_PrivateKey"]
+- !private ["3TLS7ContextC", "PEM_read_bio_X509"]
+- !private ["3TLS7ContextC", "SSL_CTRL_MODE"]
+- !private ["3TLS7ContextC", "SSL_CTRL_OPTIONS"]
+- !private ["3TLS7ContextC", "SSL_CTX_check_private_key"]
+- !private ["3TLS7ContextC", "SSL_CTX_ctrl"]
+- !private ["3TLS7ContextC", "SSL_CTX_free"]
+- !private ["3TLS7ContextC", "SSL_CTX_load_verify_locations"]
+- !private ["3TLS7ContextC", "SSL_CTX_new"]
+- !private ["3TLS7ContextC", "SSL_CTX_set_cipher_list"]
+- !private ["3TLS7ContextC", "SSL_CTX_set_verify"]
+- !private ["3TLS7ContextC", "SSL_CTX_use_PrivateKey"]
+- !private ["3TLS7ContextC", "SSL_CTX_use_PrivateKey_file"]
+- !private ["3TLS7ContextC", "SSL_CTX_use_certificate"]
+- !private ["3TLS7ContextC", "SSL_CTX_use_certificate_chain_file"]
+- !private ["3TLS7ContextC", "SSL_CTX_use_certificate_file"]
+- !private ["3TLS7ContextC", "SSL_FILETYPE_PEM"]
+- !private ["3TLS7ContextC", "SSL_MODE_AUTO_RETRY"]
+- !private ["3TLS7ContextC", "SSL_OP_NO_COMPRESSION"]
+- !private ["3TLS7ContextC", "SSL_OP_NO_SSLv2"]
+- !private ["3TLS7ContextC", "SSL_OP_NO_SSLv3"]
+- !private ["3TLS7ContextC", "SSL_VERIFY_NONE"]
+- ["3TLS7ContextC", "SSL_library_init"]
+- ["3TLS7ContextC", "SSL_load_error_strings"]
+- !private ["3TLS7ContextC", "SSLv23_client_method"]
+- !private ["3TLS7ContextC", "SSLv23_server_method"]
+- ["3TLS7ContextC", "String"]
+- !private ["3TLS7ContextC", "TLSError"]
+- !private ["3TLS7ContextC", "assert"]
+- ["3TLS7ContextC", "cContext"]
+- ["3TLS7ContextC", "certificates"]
+- ["3TLS7ContextC", "deinit"]
+- !private ["3TLS7ContextC", "fatalError"]
+- ["3TLS7ContextC", "init"]
+- !private ["3TLS7ContextC", "isGloballyInitialized"]
+- ["3TLS7ContextC", "loadCertificates"]
+- ["3TLS7ContextC", "loadSignature"]
+- !private ["3TLS7ContextC", "makeError"]
+- ["3TLS7ContextC", "mode"]
+- ["3TLS7ContextC", "verifyCertificates"]
+- ["3TLS7ContextC", "verifyHost"]
+- !private ["s28CustomDebugStringConvertibleP", "client"]
+- !private ["s28CustomDebugStringConvertibleP", "count"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "client"]
+- !private ["s17CustomReflectableP", "count"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "count"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["9Debugging10DebuggableP", "init"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "client"]
+- !private ["s9DecodableP", "count"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "client"]
+- !private ["s9EncodableP", "count"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- ["s9EquatableP", "client"]
+- !private ["s9EquatableP", "init"]
+- ["s9EquatableP", "server"]
+- !private ["s5ErrorP", "init"]
+- !private ["s25ExpressibleByArrayLiteralP", "count"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s23ExpressibleByNilLiteralP", "client"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- ["s8HashableP", "client"]
+- !private ["s8HashableP", "init"]
+- ["s8HashableP", "server"]
+- !private ["s5Int32V", "init"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- ["3TLS4ModeO", "client"]
+- !private ["3TLS4ModeO", "deinit"]
+- ["3TLS4ModeO", "server"]
+- !private ["s17MutableCollectionP", "count"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s7NumericP", "init"]
+- !private ["Sq", "client"]
+- !private ["s22RandomAccessCollectionP", "count"]
+- !private ["s26RangeReplaceableCollectionP", "count"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s8SequenceP", "count"]
+- !private ["s8SequenceP", "init"]
+- ["3TLS12CertificatesO9SignatureO", "selfSigned"]
+- ["3TLS12CertificatesO9SignatureO", "signedDirectory"]
+- ["3TLS12CertificatesO9SignatureO", "signedFile"]
+- !private ["s13SignedIntegerP", "init"]
+- !private ["s13SignedNumericP", "init"]
+- !private ["s12StaticStringV", "init"]
+- !private ["s10StrideableP", "init"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["3TLS8TLSErrorV", "deinit"]
+- !private ["3TLS8TLSErrorV", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["s14_ArrayProtocolP", "count"]
+- !private ["s23_BidirectionalIndexableP", "count"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s24_DestructorSafeContainerP", "count"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "count"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s14_IndexableBaseP", "count"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s17_MutableIndexableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "client"]
+- !private ["s21_ObjectiveCBridgeableP", "count"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s26_OptionalNilComparisonTypeV", "client"]
+- !private ["s22_RandomAccessIndexableP", "count"]
+- !private ["s26_RangeReplaceableIndexableP", "count"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s11_StrideableP", "init"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "s13BinaryIntegerP"
+- !private "Sb"
+- !private "4Bits16BytesConvertibleP"
+- !private "4Bits18BytesInitializableP"
+- !private "4Bits18BytesRepresentableP"
+- !private "s7CVarArgP"
+- "3TLS12CertificatesO"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- "3TLS7ContextC"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "9Debugging10DebuggableP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s17FixedWidthIntegerP"
+- "s8HashableP"
+- !private "s5Int32V"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- "3TLS4ModeO"
+- !private "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s7NumericP"
+- !private "Sq"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
+- "3TLS12CertificatesO9SignatureO"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "s12StaticStringV"
+- !private "s10StrideableP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "3TLS8TLSErrorV"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s26_OptionalNilComparisonTypeV"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "6d271d6e60c5da0fa76c1cdba7e5ba0e"

@@ -1,0 +1,382 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["4SMTP10SMTPClientC", ""]
+- ["4SMTP10SMTPClientC", "send"]
+- ["4SMTP10SMTPClientC", "send"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+="
+- !private "Array"
+- !private "AssignmentPrecedence"
+- !private "BooleanLiteralType"
+- "Email"
+- "EmailAddress"
+- !private "EmailAttachment"
+- !private "EmailBody"
+- !private "ExtendedGraphemeClusterType"
+- "Int"
+- "SMTPClient"
+- "SMTPCredentials"
+- "Sequence"
+- "String"
+- !private "StringLiteralType"
+- !private "UnicodeScalarType"
+depends-member:
+- !private ["Sa", "base64Encoded"]
+- !private ["Sa", "forEach"]
+- !private ["Sa", "joined"]
+- !private ["Sa", "map"]
+- !private ["Sa", "smtpLongFormatted"]
+- !private ["s23BidirectionalCollectionP", "base64Encoded"]
+- !private ["s23BidirectionalCollectionP", "forEach"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "joined"]
+- !private ["s23BidirectionalCollectionP", "map"]
+- !private ["s23BidirectionalCollectionP", "smtpLongFormatted"]
+- !private ["4SMTP9EmailBodyV0C4TypeO", "html"]
+- !private ["4SMTP9EmailBodyV0C4TypeO", "plain"]
+- !private ["4Bits16BytesConvertibleP", "init"]
+- !private ["4Bits18BytesInitializableP", "init"]
+- !private ["4Bits18BytesRepresentableP", "init"]
+- !private ["s7CVarArgP", "base64Encoded"]
+- !private ["s7CVarArgP", "forEach"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "joined"]
+- !private ["s7CVarArgP", "map"]
+- !private ["s7CVarArgP", "smtpLongFormatted"]
+- !private ["s7CVarArgP", "subscript"]
+- !private ["9Transport12ClientStreamP", "write"]
+- !private ["s10CollectionP", "base64Encoded"]
+- !private ["s10CollectionP", "forEach"]
+- !private ["s10CollectionP", "init"]
+- !private ["s10CollectionP", "joined"]
+- !private ["s10CollectionP", "map"]
+- !private ["s10CollectionP", "smtpLongFormatted"]
+- !private ["s10CollectionP", "subscript"]
+- !private ["s10ComparableP", "init"]
+- !private ["s10ComparableP", "smtpFormatted"]
+- !private ["s28CustomDebugStringConvertibleP", "base64Encoded"]
+- !private ["s28CustomDebugStringConvertibleP", "forEach"]
+- !private ["s28CustomDebugStringConvertibleP", "init"]
+- !private ["s28CustomDebugStringConvertibleP", "joined"]
+- !private ["s28CustomDebugStringConvertibleP", "map"]
+- !private ["s28CustomDebugStringConvertibleP", "smtpFormatted"]
+- !private ["s28CustomDebugStringConvertibleP", "smtpLongFormatted"]
+- !private ["s28CustomDebugStringConvertibleP", "subscript"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "smtpFormatted"]
+- !private ["s17CustomReflectableP", "base64Encoded"]
+- !private ["s17CustomReflectableP", "forEach"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "joined"]
+- !private ["s17CustomReflectableP", "map"]
+- !private ["s17CustomReflectableP", "smtpFormatted"]
+- !private ["s17CustomReflectableP", "smtpLongFormatted"]
+- !private ["s17CustomReflectableP", "subscript"]
+- !private ["s23CustomStringConvertibleP", "base64Encoded"]
+- !private ["s23CustomStringConvertibleP", "forEach"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "joined"]
+- !private ["s23CustomStringConvertibleP", "map"]
+- !private ["s23CustomStringConvertibleP", "smtpFormatted"]
+- !private ["s23CustomStringConvertibleP", "smtpLongFormatted"]
+- !private ["s23CustomStringConvertibleP", "subscript"]
+- !private ["10Foundation4DateV", "smtpFormatted"]
+- !private ["s9DecodableP", "base64Encoded"]
+- !private ["s9DecodableP", "forEach"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "joined"]
+- !private ["s9DecodableP", "map"]
+- !private ["s9DecodableP", "smtpFormatted"]
+- !private ["s9DecodableP", "smtpLongFormatted"]
+- !private ["s9DecodableP", "subscript"]
+- !private ["s10DictionaryV", "subscript"]
+- !private ["4SMTP5EmailC", "String"]
+- !private ["4SMTP5EmailC", "attachments"]
+- !private ["4SMTP5EmailC", "body"]
+- !private ["4SMTP5EmailC", "date"]
+- !private ["4SMTP5EmailC", "extendedFields"]
+- !private ["4SMTP5EmailC", "from"]
+- !private ["4SMTP5EmailC", "id"]
+- !private ["4SMTP5EmailC", "makeDataHeaders"]
+- !private ["4SMTP5EmailC", "subject"]
+- !private ["4SMTP5EmailC", "to"]
+- ["4SMTP12EmailAddressV", "String"]
+- !private ["4SMTP12EmailAddressV", "address"]
+- !private ["4SMTP12EmailAddressV", "name"]
+- !private ["4SMTP12EmailAddressV", "smtpLongFormatted"]
+- !private ["4SMTP25EmailAddressRepresentableP", "address"]
+- !private ["4SMTP25EmailAddressRepresentableP", "init"]
+- !private ["4SMTP25EmailAddressRepresentableP", "name"]
+- !private ["4SMTP25EmailAddressRepresentableP", "smtpLongFormatted"]
+- !private ["4SMTP15EmailAttachmentV", "body"]
+- !private ["4SMTP15EmailAttachmentV", "contentType"]
+- !private ["4SMTP15EmailAttachmentV", "filename"]
+- !private ["4SMTP28EmailAttachmentRepresentableP", "body"]
+- !private ["4SMTP28EmailAttachmentRepresentableP", "contentType"]
+- !private ["4SMTP28EmailAttachmentRepresentableP", "emailAttachment"]
+- !private ["4SMTP28EmailAttachmentRepresentableP", "filename"]
+- !private ["4SMTP9EmailBodyV", "content"]
+- !private ["4SMTP9EmailBodyV", "type"]
+- !private ["4SMTP22EmailBodyRepresentableP", "content"]
+- !private ["4SMTP22EmailBodyRepresentableP", "init"]
+- !private ["4SMTP22EmailBodyRepresentableP", "type"]
+- !private ["s9EncodableP", "base64Encoded"]
+- !private ["s9EncodableP", "forEach"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "joined"]
+- !private ["s9EncodableP", "map"]
+- !private ["s9EncodableP", "smtpFormatted"]
+- !private ["s9EncodableP", "smtpLongFormatted"]
+- !private ["s9EncodableP", "subscript"]
+- !private ["s9EquatableP", "address"]
+- !private ["s9EquatableP", "content"]
+- !private ["s9EquatableP", "html"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "name"]
+- !private ["s9EquatableP", "plain"]
+- !private ["s9EquatableP", "smtpFormatted"]
+- !private ["s9EquatableP", "smtpLongFormatted"]
+- !private ["s9EquatableP", "type"]
+- !private ["s25ExpressibleByArrayLiteralP", "base64Encoded"]
+- !private ["s25ExpressibleByArrayLiteralP", "forEach"]
+- !private ["s25ExpressibleByArrayLiteralP", "joined"]
+- !private ["s25ExpressibleByArrayLiteralP", "map"]
+- !private ["s25ExpressibleByArrayLiteralP", "smtpLongFormatted"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "subscript"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "address"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "name"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "smtpLongFormatted"]
+- !private ["s26ExpressibleByStringLiteralP", "address"]
+- !private ["s26ExpressibleByStringLiteralP", "init"]
+- !private ["s26ExpressibleByStringLiteralP", "name"]
+- !private ["s26ExpressibleByStringLiteralP", "smtpLongFormatted"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "address"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "init"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "name"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "smtpLongFormatted"]
+- !private ["s8HashableP", "html"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "plain"]
+- !private ["s8HashableP", "smtpFormatted"]
+- !private ["9Transport14InternetStreamP", "write"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s10MirrorPathP", "init"]
+- !private ["s17MutableCollectionP", "base64Encoded"]
+- !private ["s17MutableCollectionP", "forEach"]
+- !private ["s17MutableCollectionP", "joined"]
+- !private ["s17MutableCollectionP", "map"]
+- !private ["s17MutableCollectionP", "smtpLongFormatted"]
+- !private ["So8NSCodingP", "init"]
+- !private ["So9NSCopyingP", "init"]
+- !private ["So21NSItemProviderReadingP", "init"]
+- !private ["So21NSItemProviderWritingP", "init"]
+- !private ["So16NSMutableCopyingP", "init"]
+- !private ["So16NSObjectProtocolP", "init"]
+- !private ["So14NSSecureCodingP", "init"]
+- !private ["So8NSStringC", "init"]
+- !private ["s22RandomAccessCollectionP", "base64Encoded"]
+- !private ["s22RandomAccessCollectionP", "forEach"]
+- !private ["s22RandomAccessCollectionP", "joined"]
+- !private ["s22RandomAccessCollectionP", "map"]
+- !private ["s22RandomAccessCollectionP", "smtpLongFormatted"]
+- !private ["s26RangeReplaceableCollectionP", "base64Encoded"]
+- !private ["s26RangeReplaceableCollectionP", "forEach"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "joined"]
+- !private ["s26RangeReplaceableCollectionP", "map"]
+- !private ["s26RangeReplaceableCollectionP", "smtpLongFormatted"]
+- !private ["9Transport14ReadableStreamP", "write"]
+- !private ["10Foundation20ReferenceConvertibleP", "smtpFormatted"]
+- ["4SMTP10SMTPClientC", "Email"]
+- !private ["4SMTP10SMTPClientC", "EmailAttachment"]
+- !private ["4SMTP10SMTPClientC", "EmailBody"]
+- ["4SMTP10SMTPClientC", "Int"]
+- ["4SMTP10SMTPClientC", "SMTPCredentials"]
+- ["4SMTP10SMTPClientC", "String"]
+- !private ["4SMTP10SMTPClientC", "negotiateSession"]
+- ["4SMTP10SMTPClientC", "send"]
+- !private ["4SMTP10SMTPClientC", "stream"]
+- !private ["4SMTP10SMTPClientC", "transmit"]
+- !private ["4SMTP10SMTPClientC", "transmitDATA"]
+- ["s8SequenceP", "EmailAddress"]
+- ["s8SequenceP", "Iterator"]
+- ["s8SequenceP", "String"]
+- !private ["s8SequenceP", "base64Encoded"]
+- !private ["s8SequenceP", "forEach"]
+- !private ["s8SequenceP", "init"]
+- !private ["s8SequenceP", "joined"]
+- !private ["s8SequenceP", "map"]
+- !private ["s8SequenceP", "smtpLongFormatted"]
+- !private ["s8SequenceP", "subscript"]
+- !private ["9Transport6StreamP", "write"]
+- !private ["SS", "init"]
+- !private ["s14StringProtocolP", "init"]
+- !private ["s16TextOutputStreamP", "init"]
+- !private ["s20TextOutputStreamableP", "init"]
+- !private ["9Transport15WriteableStreamP", "write"]
+- !private ["s14_ArrayProtocolP", "base64Encoded"]
+- !private ["s14_ArrayProtocolP", "forEach"]
+- !private ["s14_ArrayProtocolP", "joined"]
+- !private ["s14_ArrayProtocolP", "map"]
+- !private ["s14_ArrayProtocolP", "smtpLongFormatted"]
+- !private ["s23_BidirectionalIndexableP", "base64Encoded"]
+- !private ["s23_BidirectionalIndexableP", "forEach"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "joined"]
+- !private ["s23_BidirectionalIndexableP", "map"]
+- !private ["s23_BidirectionalIndexableP", "smtpLongFormatted"]
+- !private ["s24_DestructorSafeContainerP", "base64Encoded"]
+- !private ["s24_DestructorSafeContainerP", "forEach"]
+- !private ["s24_DestructorSafeContainerP", "joined"]
+- !private ["s24_DestructorSafeContainerP", "map"]
+- !private ["s24_DestructorSafeContainerP", "smtpLongFormatted"]
+- !private ["s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP", "init"]
+- !private ["s34_ExpressibleByBuiltinStringLiteralP", "init"]
+- !private ["s39_ExpressibleByBuiltinUTF16StringLiteralP", "init"]
+- !private ["s41_ExpressibleByBuiltinUnicodeScalarLiteralP", "init"]
+- !private ["s33_ExpressibleByStringInterpolationP", "init"]
+- !private ["s35_HasCustomAnyHashableRepresentationP", "init"]
+- !private ["s10_IndexableP", "base64Encoded"]
+- !private ["s10_IndexableP", "forEach"]
+- !private ["s10_IndexableP", "init"]
+- !private ["s10_IndexableP", "joined"]
+- !private ["s10_IndexableP", "map"]
+- !private ["s10_IndexableP", "smtpLongFormatted"]
+- !private ["s10_IndexableP", "subscript"]
+- !private ["s14_IndexableBaseP", "base64Encoded"]
+- !private ["s14_IndexableBaseP", "forEach"]
+- !private ["s14_IndexableBaseP", "init"]
+- !private ["s14_IndexableBaseP", "joined"]
+- !private ["s14_IndexableBaseP", "map"]
+- !private ["s14_IndexableBaseP", "smtpLongFormatted"]
+- !private ["s14_IndexableBaseP", "subscript"]
+- !private ["10Foundation27_KeyValueCodingAndObservingP", "init"]
+- !private ["s17_MutableIndexableP", "base64Encoded"]
+- !private ["s17_MutableIndexableP", "forEach"]
+- !private ["s17_MutableIndexableP", "joined"]
+- !private ["s17_MutableIndexableP", "map"]
+- !private ["s17_MutableIndexableP", "smtpLongFormatted"]
+- !private ["s21_ObjectiveCBridgeableP", "base64Encoded"]
+- !private ["s21_ObjectiveCBridgeableP", "forEach"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "joined"]
+- !private ["s21_ObjectiveCBridgeableP", "map"]
+- !private ["s21_ObjectiveCBridgeableP", "smtpFormatted"]
+- !private ["s21_ObjectiveCBridgeableP", "smtpLongFormatted"]
+- !private ["s21_ObjectiveCBridgeableP", "subscript"]
+- !private ["s22_RandomAccessIndexableP", "base64Encoded"]
+- !private ["s22_RandomAccessIndexableP", "forEach"]
+- !private ["s22_RandomAccessIndexableP", "joined"]
+- !private ["s22_RandomAccessIndexableP", "map"]
+- !private ["s22_RandomAccessIndexableP", "smtpLongFormatted"]
+- !private ["s26_RangeReplaceableIndexableP", "base64Encoded"]
+- !private ["s26_RangeReplaceableIndexableP", "forEach"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "joined"]
+- !private ["s26_RangeReplaceableIndexableP", "map"]
+- !private ["s26_RangeReplaceableIndexableP", "smtpLongFormatted"]
+- !private ["s16_SwiftStringViewP", "init"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "4SMTP9EmailBodyV0C4TypeO"
+- !private "4Bits16BytesConvertibleP"
+- !private "4Bits18BytesInitializableP"
+- !private "4Bits18BytesRepresentableP"
+- !private "s7CVarArgP"
+- !private "9Transport12ClientStreamP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "10Foundation4DateV"
+- !private "s9DecodableP"
+- !private "s10DictionaryV"
+- !private "4SMTP5EmailC"
+- "4SMTP12EmailAddressV"
+- !private "4SMTP25EmailAddressRepresentableP"
+- !private "4SMTP15EmailAttachmentV"
+- !private "4SMTP28EmailAttachmentRepresentableP"
+- !private "4SMTP9EmailBodyV"
+- !private "4SMTP22EmailBodyRepresentableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- !private "s8HashableP"
+- !private "9Transport14InternetStreamP"
+- !private "s25LosslessStringConvertibleP"
+- !private "s10MirrorPathP"
+- !private "s17MutableCollectionP"
+- !private "So8NSCodingP"
+- !private "So9NSCopyingP"
+- !private "So21NSItemProviderReadingP"
+- !private "So21NSItemProviderWritingP"
+- !private "So16NSMutableCopyingP"
+- !private "So16NSObjectProtocolP"
+- !private "So14NSSecureCodingP"
+- !private "So8NSStringC"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "9Transport14ReadableStreamP"
+- !private "10Foundation20ReferenceConvertibleP"
+- "4SMTP10SMTPClientC"
+- "s8SequenceP"
+- !private "9Transport6StreamP"
+- !private "SS"
+- !private "s14StringProtocolP"
+- !private "s16TextOutputStreamP"
+- !private "s20TextOutputStreamableP"
+- !private "9Transport15WriteableStreamP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+- !private "s34_ExpressibleByBuiltinStringLiteralP"
+- !private "s39_ExpressibleByBuiltinUTF16StringLiteralP"
+- !private "s41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+- !private "s33_ExpressibleByStringInterpolationP"
+- !private "s35_HasCustomAnyHashableRepresentationP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "10Foundation27_KeyValueCodingAndObservingP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s16_SwiftStringViewP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "19ef55fa7caad32e72c892ddbeb6542b"

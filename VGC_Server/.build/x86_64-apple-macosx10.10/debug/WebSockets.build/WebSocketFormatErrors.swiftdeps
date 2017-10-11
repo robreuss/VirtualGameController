@@ -1,0 +1,103 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "=="
+provides-nominal:
+- "10WebSockets0A6SocketC11FormatErrorO"
+provides-member:
+- ["10WebSockets0A6SocketC", ""]
+- ["10WebSockets0A6SocketC11FormatErrorO", ""]
+- ["10WebSockets0A6SocketC", "FormatError"]
+provides-dynamic-lookup:
+depends-top-level:
+- "=="
+- "Bool"
+- !private "BooleanLiteralType"
+- "Equatable"
+- "Status"
+- "Swift"
+- "WebSocket"
+depends-member:
+- ["s9EquatableP", "_code"]
+- ["s9EquatableP", "_domain"]
+- ["s9EquatableP", "_getEmbeddedNSError"]
+- ["s9EquatableP", "_userInfo"]
+- ["s9EquatableP", "invalidOrUnsupportedStatus"]
+- ["s9EquatableP", "invalidOrUnsupportedVersion"]
+- ["s9EquatableP", "invalidSecAcceptHeader"]
+- ["s9EquatableP", "invalidURI"]
+- ["s9EquatableP", "missingConnectionHeader"]
+- ["s9EquatableP", "missingSecAcceptHeader"]
+- ["s9EquatableP", "missingSecKeyHeader"]
+- ["s9EquatableP", "missingUpgradeHeader"]
+- ["s9EquatableP", ""]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- ["s5ErrorP", "invalidOrUnsupportedStatus"]
+- ["s5ErrorP", "invalidOrUnsupportedVersion"]
+- ["s5ErrorP", "invalidSecAcceptHeader"]
+- ["s5ErrorP", "invalidURI"]
+- ["s5ErrorP", "missingConnectionHeader"]
+- ["s5ErrorP", "missingSecAcceptHeader"]
+- ["s5ErrorP", "missingSecKeyHeader"]
+- ["s5ErrorP", "missingUpgradeHeader"]
+- ["s5ErrorP", ""]
+- ["10WebSockets0A6SocketC11FormatErrorO", "=="]
+- ["10WebSockets0A6SocketC11FormatErrorO", "Bool"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "Status"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "WebSocket"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "_code"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "_domain"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "_getEmbeddedNSError"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "_userInfo"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "deinit"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "invalidOrUnsupportedStatus"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "invalidOrUnsupportedVersion"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "invalidSecAcceptHeader"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "invalidURI"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "missingConnectionHeader"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "missingSecAcceptHeader"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "missingSecKeyHeader"]
+- ["10WebSockets0A6SocketC11FormatErrorO", "missingUpgradeHeader"]
+- ["10WebSockets0A6SocketC", "FormatError"]
+- ["10WebSockets0A6SocketC", "Status"]
+- ["10WebSockets0A6SocketC", "Swift"]
+depends-nominal:
+- "s9EquatableP"
+- "s5ErrorP"
+- "10WebSockets0A6SocketC11FormatErrorO"
+- "10WebSockets0A6SocketC"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "62fa7db3d3ac18f09dc11d9f606150c7"

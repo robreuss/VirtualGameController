@@ -1,0 +1,234 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RouteGroup"
+provides-nominal:
+- "7Routing10RouteGroupC"
+provides-member:
+- ["7Routing10RouteGroupC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- !private "??"
+- "AssignmentPrecedence"
+- "Collection"
+- "Method"
+- "Middleware"
+- !private "Request"
+- "Responder"
+- "RouteBuilder"
+- "RouteGroup"
+- "String"
+depends-member:
+- !private ["Sa", "chain"]
+- !private ["Sa", "isEmpty"]
+- !private ["Sa", "reduce"]
+- !private ["4HTTP14BasicResponderV", "init"]
+- !private ["s23BidirectionalCollectionP", "chain"]
+- !private ["s23BidirectionalCollectionP", "isEmpty"]
+- !private ["s23BidirectionalCollectionP", "reduce"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["s7CVarArgP", "chain"]
+- !private ["s7CVarArgP", "isEmpty"]
+- !private ["s7CVarArgP", "reduce"]
+- ["s10CollectionP", "Iterator"]
+- ["s10CollectionP", "Middleware"]
+- !private ["s10CollectionP", "Request"]
+- !private ["s10CollectionP", "Responder"]
+- !private ["s10CollectionP", "chain"]
+- !private ["s10CollectionP", "isEmpty"]
+- !private ["s10CollectionP", "reduce"]
+- !private ["s10CollectionP", "reversed"]
+- !private ["s28CustomDebugStringConvertibleP", "chain"]
+- !private ["s28CustomDebugStringConvertibleP", "isEmpty"]
+- !private ["s28CustomDebugStringConvertibleP", "reduce"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "chain"]
+- !private ["s17CustomReflectableP", "isEmpty"]
+- !private ["s17CustomReflectableP", "reduce"]
+- !private ["s23CustomStringConvertibleP", "Handler"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "chain"]
+- !private ["s23CustomStringConvertibleP", "isEmpty"]
+- !private ["s23CustomStringConvertibleP", "reduce"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "chain"]
+- !private ["s9DecodableP", "isEmpty"]
+- !private ["s9DecodableP", "reduce"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "chain"]
+- !private ["s9EncodableP", "isEmpty"]
+- !private ["s9EncodableP", "reduce"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s25ExpressibleByArrayLiteralP", "chain"]
+- !private ["s25ExpressibleByArrayLiteralP", "isEmpty"]
+- !private ["s25ExpressibleByArrayLiteralP", "reduce"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["4HTTP7MessageP", "Handler"]
+- !private ["4HTTP10MiddlewareP", "respond"]
+- !private ["s17MutableCollectionP", "chain"]
+- !private ["s17MutableCollectionP", "isEmpty"]
+- !private ["s17MutableCollectionP", "reduce"]
+- !private ["4Node0A13InitializableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13InitializableP", "chain"]
+- !private ["4Node0A13InitializableP", "isEmpty"]
+- !private ["4Node0A13InitializableP", "reduce"]
+- !private ["4Node0A13RepresentableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13RepresentableP", "chain"]
+- !private ["4Node0A13RepresentableP", "isEmpty"]
+- !private ["4Node0A13RepresentableP", "reduce"]
+- !private ["s22RandomAccessCollectionP", "chain"]
+- !private ["s22RandomAccessCollectionP", "isEmpty"]
+- !private ["s22RandomAccessCollectionP", "reduce"]
+- !private ["s26RangeReplaceableCollectionP", "chain"]
+- !private ["s26RangeReplaceableCollectionP", "isEmpty"]
+- !private ["s26RangeReplaceableCollectionP", "reduce"]
+- !private ["4HTTP7RequestC", "Handler"]
+- !private ["4HTTP9ResponderP", "init"]
+- !private ["4HTTP9ResponderP", "respond"]
+- !private ["7Routing12RouteBuilderP", "Request"]
+- !private ["7Routing12RouteBuilderP", "host"]
+- !private ["7Routing12RouteBuilderP", "middleware"]
+- !private ["7Routing12RouteBuilderP", "parent"]
+- !private ["7Routing12RouteBuilderP", "pathPrefix"]
+- ["7Routing12RouteBuilderP", "register"]
+- ["7Routing12RouteBuilderP", ""]
+- ["7Routing10RouteGroupC", "Method"]
+- ["7Routing10RouteGroupC", "Middleware"]
+- !private ["7Routing10RouteGroupC", "Request"]
+- ["7Routing10RouteGroupC", "Responder"]
+- ["7Routing10RouteGroupC", "RouteBuilder"]
+- ["7Routing10RouteGroupC", "String"]
+- ["7Routing10RouteGroupC", "deinit"]
+- ["7Routing10RouteGroupC", "host"]
+- ["7Routing10RouteGroupC", "init"]
+- ["7Routing10RouteGroupC", "middleware"]
+- ["7Routing10RouteGroupC", "parent"]
+- ["7Routing10RouteGroupC", "pathPrefix"]
+- ["7Routing10RouteGroupC", "register"]
+- ["s8SequenceP", "Iterator"]
+- ["s8SequenceP", "Middleware"]
+- !private ["s8SequenceP", "Request"]
+- !private ["s8SequenceP", "Responder"]
+- !private ["s8SequenceP", "chain"]
+- !private ["s8SequenceP", "isEmpty"]
+- !private ["s8SequenceP", "reduce"]
+- !private ["s8SequenceP", "reversed"]
+- !private ["s14_ArrayProtocolP", "chain"]
+- !private ["s14_ArrayProtocolP", "isEmpty"]
+- !private ["s14_ArrayProtocolP", "reduce"]
+- !private ["s23_BidirectionalIndexableP", "chain"]
+- !private ["s23_BidirectionalIndexableP", "isEmpty"]
+- !private ["s23_BidirectionalIndexableP", "reduce"]
+- !private ["s24_DestructorSafeContainerP", "chain"]
+- !private ["s24_DestructorSafeContainerP", "isEmpty"]
+- !private ["s24_DestructorSafeContainerP", "reduce"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- ["s10_IndexableP", "Iterator"]
+- ["s10_IndexableP", "Middleware"]
+- !private ["s10_IndexableP", "Request"]
+- !private ["s10_IndexableP", "Responder"]
+- !private ["s10_IndexableP", "chain"]
+- !private ["s10_IndexableP", "isEmpty"]
+- !private ["s10_IndexableP", "reduce"]
+- !private ["s10_IndexableP", "reversed"]
+- ["s14_IndexableBaseP", "Iterator"]
+- ["s14_IndexableBaseP", "Middleware"]
+- !private ["s14_IndexableBaseP", "Request"]
+- !private ["s14_IndexableBaseP", "Responder"]
+- !private ["s14_IndexableBaseP", "chain"]
+- !private ["s14_IndexableBaseP", "isEmpty"]
+- !private ["s14_IndexableBaseP", "reduce"]
+- !private ["s14_IndexableBaseP", "reversed"]
+- !private ["s17_MutableIndexableP", "chain"]
+- !private ["s17_MutableIndexableP", "isEmpty"]
+- !private ["s17_MutableIndexableP", "reduce"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "chain"]
+- !private ["s21_ObjectiveCBridgeableP", "isEmpty"]
+- !private ["s21_ObjectiveCBridgeableP", "reduce"]
+- !private ["s22_RandomAccessIndexableP", "chain"]
+- !private ["s22_RandomAccessIndexableP", "isEmpty"]
+- !private ["s22_RandomAccessIndexableP", "reduce"]
+- !private ["s26_RangeReplaceableIndexableP", "chain"]
+- !private ["s26_RangeReplaceableIndexableP", "isEmpty"]
+- !private ["s26_RangeReplaceableIndexableP", "reduce"]
+depends-nominal:
+- !private "Sa"
+- !private "4HTTP14BasicResponderV"
+- !private "s23BidirectionalCollectionP"
+- !private "Sb"
+- !private "s7CVarArgP"
+- "s10CollectionP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s8HashableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "4HTTP7MessageP"
+- !private "4HTTP10MiddlewareP"
+- !private "s17MutableCollectionP"
+- !private "4Node0A13InitializableP"
+- !private "4Node0A13RepresentableP"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "4HTTP7RequestC"
+- !private "4HTTP9ResponderP"
+- "7Routing12RouteBuilderP"
+- "7Routing10RouteGroupC"
+- "s8SequenceP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Branches.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/WebSockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "2655612b0a5613d734f1b87f1063879e"

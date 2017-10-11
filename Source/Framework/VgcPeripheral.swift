@@ -35,6 +35,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     
     fileprivate var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
+    var webSocketPeripheral: WebSocketPeripheral!
     #if os(iOS)
     open var watch: VgcWatch!
     #endif
@@ -108,7 +109,11 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             if VgcManager.appRole == .EnhancementBridge && VgcController.enhancedController != nil {
                 VgcController.enhancedController.peripheral.browser.sendElementStateOverNetService(element)
             } else {
-                browser.sendElementStateOverNetService(element)
+                if VgcManager.useWebSocketServer {
+                    webSocketPeripheral.sendElement(element: element)
+                } else {
+                    browser.sendElementStateOverNetService(element)
+                }
             }
             
             //vgcLogDebug("Element to be mapped: \(element.name)")
@@ -193,24 +198,33 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     
     @objc open func browseForServices() {
         
-        browser.reset()
+        if VgcManager.useWebSocketServer {
+            
+            if webSocketPeripheral == nil { webSocketPeripheral = WebSocketPeripheral() }
+            
+            webSocketPeripheral.getCentralList()
+            
+        } else {
         
-        vgcLogDebug("Browsing for services...")
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidResetBrowser), object: nil)
-        
-        // If we're a bridge, this peripheral is a controller-specific instance.  If the controller is no
-        // longer in the array of controllers, it means it has disconnected and we don't want to advertise it
-        // any longer.
-        if deviceIsTypeOfBridge() {
-            let (existsAlready, _) = VgcController.controllerAlreadyExists(controller)
-            if existsAlready == false {
-                vgcLogDebug("Refusing to announce Bridge-to-Central peripheral because it's controller no longer exists.  If the controller is MFi, it may have gone to sleep.")
-                return
+            browser.reset()
+            
+            vgcLogDebug("Browsing for services...")
+            
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidResetBrowser), object: nil)
+            
+            // If we're a bridge, this peripheral is a controller-specific instance.  If the controller is no
+            // longer in the array of controllers, it means it has disconnected and we don't want to advertise it
+            // any longer.
+            if deviceIsTypeOfBridge() {
+                let (existsAlready, _) = VgcController.controllerAlreadyExists(controller)
+                if existsAlready == false {
+                    vgcLogDebug("Refusing to announce Bridge-to-Central peripheral because it's controller no longer exists.  If the controller is MFi, it may have gone to sleep.")
+                    return
+                }
             }
+            
+            browser.browseForCentral()
         }
-        
-        browser.browseForCentral()
         
     }
     

@@ -1,0 +1,227 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "OSRandom"
+- "makeRandom"
+provides-nominal:
+- "6Random8OSRandomC"
+provides-member:
+- ["6Random8OSRandomC", ""]
+- ["Si", ""]
+- ["Si", "maxByte"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+"
+- !private "+="
+- !private "-"
+- !private "..<"
+- "Byte"
+- "Bytes"
+- "EmptyInitializable"
+- !private "FloatLiteralType"
+- "Int"
+- !private "IntegerLiteralType"
+- "OSRandom"
+- "RandomProtocol"
+- !private "UInt32"
+- !private "arc4random_uniform"
+- "makeRandom"
+depends-member:
+- ["s13BinaryIntegerP", "Byte"]
+- ["s13BinaryIntegerP", "Int"]
+- ["s13BinaryIntegerP", "init"]
+- ["s13BinaryIntegerP", "max"]
+- !private ["s13BinaryIntegerP", "maxByte"]
+- !private ["4Bits16BytesConvertibleP", "init"]
+- ["4Bits16BytesConvertibleP", "max"]
+- !private ["4Bits18BytesInitializableP", "init"]
+- ["4Bits18BytesInitializableP", "max"]
+- !private ["4Bits18BytesRepresentableP", "init"]
+- ["4Bits18BytesRepresentableP", "max"]
+- ["s7CVarArgP", "Byte"]
+- ["s7CVarArgP", "Int"]
+- ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "max"]
+- !private ["s7CVarArgP", "maxByte"]
+- ["s10ComparableP", "Byte"]
+- ["s10ComparableP", "Int"]
+- ["s10ComparableP", "init"]
+- ["s10ComparableP", "max"]
+- !private ["s10ComparableP", "maxByte"]
+- ["s29CustomPlaygroundQuickLookableP", "Byte"]
+- ["s29CustomPlaygroundQuickLookableP", "Int"]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s29CustomPlaygroundQuickLookableP", "max"]
+- !private ["s29CustomPlaygroundQuickLookableP", "maxByte"]
+- ["s17CustomReflectableP", "Byte"]
+- ["s17CustomReflectableP", "Int"]
+- ["s17CustomReflectableP", "init"]
+- ["s17CustomReflectableP", "max"]
+- !private ["s17CustomReflectableP", "maxByte"]
+- ["s23CustomStringConvertibleP", "Byte"]
+- ["s23CustomStringConvertibleP", "Int"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "max"]
+- !private ["s23CustomStringConvertibleP", "maxByte"]
+- ["s9DecodableP", "Byte"]
+- ["s9DecodableP", "Int"]
+- ["s9DecodableP", "init"]
+- ["s9DecodableP", "max"]
+- !private ["s9DecodableP", "maxByte"]
+- !private ["4Core18EmptyInitializableP", "Byte"]
+- ["4Core18EmptyInitializableP", "bytes"]
+- ["4Core18EmptyInitializableP", "init"]
+- !private ["4Core18EmptyInitializableP", "makeRandom"]
+- ["4Core18EmptyInitializableP", ""]
+- ["s9EncodableP", "Byte"]
+- ["s9EncodableP", "Int"]
+- ["s9EncodableP", "init"]
+- ["s9EncodableP", "max"]
+- !private ["s9EncodableP", "maxByte"]
+- ["s9EquatableP", "Byte"]
+- ["s9EquatableP", "Int"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "max"]
+- !private ["s9EquatableP", "maxByte"]
+- ["s27ExpressibleByIntegerLiteralP", "Byte"]
+- ["s27ExpressibleByIntegerLiteralP", "Int"]
+- ["s27ExpressibleByIntegerLiteralP", "init"]
+- ["s27ExpressibleByIntegerLiteralP", "max"]
+- !private ["s27ExpressibleByIntegerLiteralP", "maxByte"]
+- ["s17FixedWidthIntegerP", "Byte"]
+- ["s17FixedWidthIntegerP", "Int"]
+- ["s17FixedWidthIntegerP", "init"]
+- ["s17FixedWidthIntegerP", "max"]
+- !private ["s17FixedWidthIntegerP", "maxByte"]
+- ["s8HashableP", "Byte"]
+- ["s8HashableP", "Int"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "max"]
+- !private ["s8HashableP", "maxByte"]
+- ["Si", "Byte"]
+- ["Si", "Int"]
+- ["Si", "init"]
+- ["Si", "maxByte"]
+- ["s25LosslessStringConvertibleP", "Byte"]
+- ["s25LosslessStringConvertibleP", "Int"]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s25LosslessStringConvertibleP", "max"]
+- !private ["s25LosslessStringConvertibleP", "maxByte"]
+- ["s10MirrorPathP", "Byte"]
+- ["s10MirrorPathP", "Int"]
+- ["s10MirrorPathP", "init"]
+- !private ["s10MirrorPathP", "maxByte"]
+- ["s7NumericP", "Byte"]
+- ["s7NumericP", "Int"]
+- ["s7NumericP", "init"]
+- ["s7NumericP", "max"]
+- !private ["s7NumericP", "maxByte"]
+- !private ["6Random8OSRandomC", "Byte"]
+- ["6Random8OSRandomC", "Bytes"]
+- ["6Random8OSRandomC", "Int"]
+- ["6Random8OSRandomC", "bytes"]
+- ["6Random8OSRandomC", "deinit"]
+- ["6Random8OSRandomC", "init"]
+- !private ["6Random8OSRandomC", "makeRandom"]
+- !private ["6Random0A8ProtocolP", "Byte"]
+- ["6Random0A8ProtocolP", "bytes"]
+- ["6Random0A8ProtocolP", "init"]
+- !private ["6Random0A8ProtocolP", "makeRandom"]
+- ["6Random0A8ProtocolP", ""]
+- ["s13SignedIntegerP", "Byte"]
+- ["s13SignedIntegerP", "Int"]
+- ["s13SignedIntegerP", "init"]
+- !private ["s13SignedIntegerP", "maxByte"]
+- ["s13SignedNumericP", "Byte"]
+- ["s13SignedNumericP", "Int"]
+- ["s13SignedNumericP", "init"]
+- !private ["s13SignedNumericP", "maxByte"]
+- ["s10StrideableP", "Byte"]
+- ["s10StrideableP", "Int"]
+- ["s10StrideableP", "init"]
+- ["s10StrideableP", "max"]
+- !private ["s10StrideableP", "maxByte"]
+- !private ["s6UInt32V", "init"]
+- !private ["s5UInt8V", "init"]
+- ["s5UInt8V", "max"]
+- !private ["s15UnsignedIntegerP", "init"]
+- ["s15UnsignedIntegerP", "max"]
+- ["s18_BitwiseOperationsP", "Byte"]
+- ["s18_BitwiseOperationsP", "Int"]
+- ["s18_BitwiseOperationsP", "init"]
+- ["s18_BitwiseOperationsP", "max"]
+- !private ["s18_BitwiseOperationsP", "maxByte"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "Byte"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "Int"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "max"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "maxByte"]
+- ["s21_ObjectiveCBridgeableP", "Byte"]
+- ["s21_ObjectiveCBridgeableP", "Int"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s21_ObjectiveCBridgeableP", "max"]
+- !private ["s21_ObjectiveCBridgeableP", "maxByte"]
+- ["s11_StrideableP", "Byte"]
+- ["s11_StrideableP", "Int"]
+- ["s11_StrideableP", "init"]
+- ["s11_StrideableP", "max"]
+- !private ["s11_StrideableP", "maxByte"]
+- !private ["s14_StringElementP", "init"]
+- ["s14_StringElementP", "max"]
+depends-nominal:
+- "s13BinaryIntegerP"
+- "4Bits16BytesConvertibleP"
+- "4Bits18BytesInitializableP"
+- "4Bits18BytesRepresentableP"
+- "s7CVarArgP"
+- "s10ComparableP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "4Core18EmptyInitializableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- "s27ExpressibleByIntegerLiteralP"
+- "s17FixedWidthIntegerP"
+- "s8HashableP"
+- "Si"
+- "s25LosslessStringConvertibleP"
+- "s10MirrorPathP"
+- "s7NumericP"
+- "6Random8OSRandomC"
+- "6Random0A8ProtocolP"
+- "s13SignedIntegerP"
+- "s13SignedNumericP"
+- "s10StrideableP"
+- !private "s6UInt32V"
+- "s5UInt8V"
+- "s15UnsignedIntegerP"
+- "s18_BitwiseOperationsP"
+- "s35_ExpressibleByBuiltinIntegerLiteralP"
+- "s21_ObjectiveCBridgeableP"
+- "s11_StrideableP"
+- "s14_StringElementP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "56f4cf7854504c374a0eac53249626d6"

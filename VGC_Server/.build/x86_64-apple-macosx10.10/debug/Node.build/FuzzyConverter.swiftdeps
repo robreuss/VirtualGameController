@@ -1,0 +1,259 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "FuzzyConverter"
+provides-nominal:
+- "4Node14FuzzyConverterP"
+provides-member:
+- ["4Node14FuzzyConverterP", ""]
+- ["4NodeAAV", ""]
+- ["Sa", ""]
+- ["4NodeAAV", "fuzzy"]
+- ["Sa", "initialize"]
+- ["Sa", "represent"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "??"
+- "Array"
+- "AssignmentPrecedence"
+- "Context"
+- "FuzzyConverter"
+- "Node"
+- !private "NodeError"
+- !private "_fuzzyTypes"
+depends-member:
+- ["Sa", "Context"]
+- ["Sa", "FuzzyConverter"]
+- ["Sa", "Iterator"]
+- ["Sa", "Node"]
+- !private ["Sa", "NodeError"]
+- ["Sa", "initialize"]
+- ["Sa", "represent"]
+- ["s23BidirectionalCollectionP", "FuzzyConverter"]
+- ["s23BidirectionalCollectionP", "Iterator"]
+- !private ["s23BidirectionalCollectionP", "Node"]
+- !private ["s23BidirectionalCollectionP", "NodeError"]
+- ["s7CVarArgP", "FuzzyConverter"]
+- ["s7CVarArgP", "Iterator"]
+- !private ["s7CVarArgP", "Node"]
+- !private ["s7CVarArgP", "NodeError"]
+- ["s10CollectionP", "FuzzyConverter"]
+- ["s10CollectionP", "Iterator"]
+- !private ["s10CollectionP", "Node"]
+- !private ["s10CollectionP", "NodeError"]
+- ["s28CustomDebugStringConvertibleP", "FuzzyConverter"]
+- ["s28CustomDebugStringConvertibleP", "Iterator"]
+- !private ["s28CustomDebugStringConvertibleP", "Node"]
+- !private ["s28CustomDebugStringConvertibleP", "NodeError"]
+- !private ["s28CustomDebugStringConvertibleP", "noFuzzyConverter"]
+- ["s17CustomReflectableP", "FuzzyConverter"]
+- ["s17CustomReflectableP", "Iterator"]
+- !private ["s17CustomReflectableP", "Node"]
+- !private ["s17CustomReflectableP", "NodeError"]
+- ["s23CustomStringConvertibleP", "FuzzyConverter"]
+- ["s23CustomStringConvertibleP", "Iterator"]
+- !private ["s23CustomStringConvertibleP", "Node"]
+- !private ["s23CustomStringConvertibleP", "NodeError"]
+- !private ["9Debugging10DebuggableP", "noFuzzyConverter"]
+- ["s9DecodableP", "FuzzyConverter"]
+- ["s9DecodableP", "Iterator"]
+- !private ["s9DecodableP", "Node"]
+- !private ["s9DecodableP", "NodeError"]
+- ["s9EncodableP", "FuzzyConverter"]
+- ["s9EncodableP", "Iterator"]
+- !private ["s9EncodableP", "Node"]
+- !private ["s9EncodableP", "NodeError"]
+- !private ["s9EquatableP", "_fuzzyTypes"]
+- !private ["s9EquatableP", "defaultContext"]
+- !private ["s9EquatableP", "fuzzy"]
+- !private ["s5ErrorP", "noFuzzyConverter"]
+- ["s25ExpressibleByArrayLiteralP", "FuzzyConverter"]
+- ["s25ExpressibleByArrayLiteralP", "Iterator"]
+- !private ["s25ExpressibleByArrayLiteralP", "Node"]
+- !private ["s25ExpressibleByArrayLiteralP", "NodeError"]
+- !private ["s25ExpressibleByArrayLiteralP", "_fuzzyTypes"]
+- !private ["s25ExpressibleByArrayLiteralP", "defaultContext"]
+- !private ["s25ExpressibleByArrayLiteralP", "fuzzy"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_fuzzyTypes"]
+- !private ["s27ExpressibleByBooleanLiteralP", "defaultContext"]
+- !private ["s27ExpressibleByBooleanLiteralP", "fuzzy"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "_fuzzyTypes"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "defaultContext"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "fuzzy"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "_fuzzyTypes"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "defaultContext"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "fuzzy"]
+- !private ["s25ExpressibleByFloatLiteralP", "_fuzzyTypes"]
+- !private ["s25ExpressibleByFloatLiteralP", "defaultContext"]
+- !private ["s25ExpressibleByFloatLiteralP", "fuzzy"]
+- !private ["s27ExpressibleByIntegerLiteralP", "_fuzzyTypes"]
+- !private ["s27ExpressibleByIntegerLiteralP", "defaultContext"]
+- !private ["s27ExpressibleByIntegerLiteralP", "fuzzy"]
+- !private ["s23ExpressibleByNilLiteralP", "_fuzzyTypes"]
+- !private ["s23ExpressibleByNilLiteralP", "defaultContext"]
+- !private ["s23ExpressibleByNilLiteralP", "fuzzy"]
+- !private ["s26ExpressibleByStringLiteralP", "_fuzzyTypes"]
+- !private ["s26ExpressibleByStringLiteralP", "defaultContext"]
+- !private ["s26ExpressibleByStringLiteralP", "fuzzy"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "_fuzzyTypes"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "defaultContext"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "fuzzy"]
+- ["4Node14FuzzyConverterP", "Context"]
+- ["4Node14FuzzyConverterP", "Node"]
+- !private ["4Node14FuzzyConverterP", "_fuzzyTypes"]
+- !private ["4Node14FuzzyConverterP", "defaultContext"]
+- !private ["4Node14FuzzyConverterP", "fuzzy"]
+- ["4Node14FuzzyConverterP", "initialize"]
+- ["4Node14FuzzyConverterP", "represent"]
+- ["s16IndexingIteratorV", "Element"]
+- ["s16IteratorProtocolP", "Element"]
+- ["s17MutableCollectionP", "FuzzyConverter"]
+- ["s17MutableCollectionP", "Iterator"]
+- !private ["s17MutableCollectionP", "Node"]
+- !private ["s17MutableCollectionP", "NodeError"]
+- ["4NodeAAV", "FuzzyConverter"]
+- !private ["4NodeAAV", "_fuzzyTypes"]
+- !private ["4NodeAAV", "defaultContext"]
+- ["4NodeAAV", "deinit"]
+- ["4NodeAAV", "fuzzy"]
+- !private ["4Node0A5ErrorO", "deinit"]
+- !private ["4Node0A5ErrorO", "noFuzzyConverter"]
+- ["4Node0A13InitializableP", "FuzzyConverter"]
+- ["4Node0A13InitializableP", "Iterator"]
+- !private ["4Node0A13InitializableP", "Node"]
+- !private ["4Node0A13InitializableP", "NodeError"]
+- !private ["4Node0A13InitializableP", "_fuzzyTypes"]
+- !private ["4Node0A13InitializableP", "defaultContext"]
+- !private ["4Node0A13InitializableP", "fuzzy"]
+- ["4Node0A13RepresentableP", "FuzzyConverter"]
+- ["4Node0A13RepresentableP", "Iterator"]
+- !private ["4Node0A13RepresentableP", "Node"]
+- !private ["4Node0A13RepresentableP", "NodeError"]
+- !private ["4Node0A13RepresentableP", "_fuzzyTypes"]
+- !private ["4Node0A13RepresentableP", "defaultContext"]
+- !private ["4Node0A13RepresentableP", "fuzzy"]
+- !private ["4Node13ObjectContextC", "deinit"]
+- !private ["13PathIndexableAAP", "_fuzzyTypes"]
+- !private ["13PathIndexableAAP", "defaultContext"]
+- !private ["13PathIndexableAAP", "fuzzy"]
+- ["s22RandomAccessCollectionP", "FuzzyConverter"]
+- ["s22RandomAccessCollectionP", "Iterator"]
+- !private ["s22RandomAccessCollectionP", "Node"]
+- !private ["s22RandomAccessCollectionP", "NodeError"]
+- ["s26RangeReplaceableCollectionP", "FuzzyConverter"]
+- ["s26RangeReplaceableCollectionP", "Iterator"]
+- !private ["s26RangeReplaceableCollectionP", "Node"]
+- !private ["s26RangeReplaceableCollectionP", "NodeError"]
+- ["s8SequenceP", "Element"]
+- ["s8SequenceP", "FuzzyConverter"]
+- ["s8SequenceP", "Iterator"]
+- !private ["s8SequenceP", "Node"]
+- !private ["s8SequenceP", "NodeError"]
+- !private ["4Node21StructuredDataWrapperP", "_fuzzyTypes"]
+- !private ["4Node21StructuredDataWrapperP", "defaultContext"]
+- !private ["4Node21StructuredDataWrapperP", "fuzzy"]
+- ["s14_ArrayProtocolP", "FuzzyConverter"]
+- ["s14_ArrayProtocolP", "Iterator"]
+- !private ["s14_ArrayProtocolP", "Node"]
+- !private ["s14_ArrayProtocolP", "NodeError"]
+- ["s23_BidirectionalIndexableP", "FuzzyConverter"]
+- ["s23_BidirectionalIndexableP", "Iterator"]
+- !private ["s23_BidirectionalIndexableP", "Node"]
+- !private ["s23_BidirectionalIndexableP", "NodeError"]
+- ["s24_DestructorSafeContainerP", "FuzzyConverter"]
+- ["s24_DestructorSafeContainerP", "Iterator"]
+- !private ["s24_DestructorSafeContainerP", "Node"]
+- !private ["s24_DestructorSafeContainerP", "NodeError"]
+- ["s10_IndexableP", "FuzzyConverter"]
+- ["s10_IndexableP", "Iterator"]
+- !private ["s10_IndexableP", "Node"]
+- !private ["s10_IndexableP", "NodeError"]
+- ["s14_IndexableBaseP", "FuzzyConverter"]
+- ["s14_IndexableBaseP", "Iterator"]
+- !private ["s14_IndexableBaseP", "Node"]
+- !private ["s14_IndexableBaseP", "NodeError"]
+- ["s17_MutableIndexableP", "FuzzyConverter"]
+- ["s17_MutableIndexableP", "Iterator"]
+- !private ["s17_MutableIndexableP", "Node"]
+- !private ["s17_MutableIndexableP", "NodeError"]
+- ["s21_ObjectiveCBridgeableP", "FuzzyConverter"]
+- ["s21_ObjectiveCBridgeableP", "Iterator"]
+- !private ["s21_ObjectiveCBridgeableP", "Node"]
+- !private ["s21_ObjectiveCBridgeableP", "NodeError"]
+- ["s22_RandomAccessIndexableP", "FuzzyConverter"]
+- ["s22_RandomAccessIndexableP", "Iterator"]
+- !private ["s22_RandomAccessIndexableP", "Node"]
+- !private ["s22_RandomAccessIndexableP", "NodeError"]
+- ["s26_RangeReplaceableIndexableP", "FuzzyConverter"]
+- ["s26_RangeReplaceableIndexableP", "Iterator"]
+- !private ["s26_RangeReplaceableIndexableP", "Node"]
+- !private ["s26_RangeReplaceableIndexableP", "NodeError"]
+depends-nominal:
+- "Sa"
+- "s23BidirectionalCollectionP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- !private "9Debugging10DebuggableP"
+- "s9DecodableP"
+- "s9EncodableP"
+- !private "s9EquatableP"
+- !private "s5ErrorP"
+- "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "4Node14FuzzyConverterP"
+- "s16IndexingIteratorV"
+- "s16IteratorProtocolP"
+- "s17MutableCollectionP"
+- "4NodeAAV"
+- !private "4Node0A5ErrorO"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- !private "4Node13ObjectContextC"
+- !private "13PathIndexableAAP"
+- "s22RandomAccessCollectionP"
+- "s26RangeReplaceableCollectionP"
+- "s8SequenceP"
+- !private "4Node21StructuredDataWrapperP"
+- "s14_ArrayProtocolP"
+- "s23_BidirectionalIndexableP"
+- "s24_DestructorSafeContainerP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- "s22_RandomAccessIndexableP"
+- "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "cb554b7564c9c76fd5f34692adb5c46a"

@@ -1,0 +1,217 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "FluentModelError"
+provides-nominal:
+- "14FluentProvider0A10ModelErrorO"
+provides-member:
+- ["14FluentProvider0A10ModelErrorO", ""]
+- ["4Node0A13InitializableP", ""]
+- ["4Node0A13RepresentableP", ""]
+- ["4Node0A13InitializableP", "init"]
+- ["4Node0A13RepresentableP", "makeNode"]
+provides-dynamic-lookup:
+depends-top-level:
+- "Context"
+- "Error"
+- "FluentModelError"
+- "JSONInitializable"
+- "JSONRepresentable"
+- "Node"
+- "NodeInitializable"
+- "NodeRepresentable"
+- "RowInitializable"
+- "RowRepresentable"
+depends-member:
+- !private ["4HTTP17BodyRepresentableP", "converted"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4Bits16BytesConvertibleP", "converted"]
+- !private ["4Bits18BytesInitializableP", "converted"]
+- !private ["4Bits18BytesRepresentableP", "converted"]
+- !private ["4Node7ContextP", "isJSON"]
+- !private ["4Node7ContextP", "isRow"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- !private ["s9EquatableP", "context"]
+- !private ["s9EquatableP", "converted"]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- !private ["s5ErrorP", "invalidContext"]
+- ["s5ErrorP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "context"]
+- !private ["s25ExpressibleByArrayLiteralP", "converted"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s27ExpressibleByBooleanLiteralP", "context"]
+- !private ["s27ExpressibleByBooleanLiteralP", "converted"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "context"]
+- !private ["s30ExpressibleByDictionaryLiteralP", "converted"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "context"]
+- !private ["s43ExpressibleByExtendedGraphemeClusterLiteralP", "converted"]
+- !private ["s25ExpressibleByFloatLiteralP", "context"]
+- !private ["s25ExpressibleByFloatLiteralP", "converted"]
+- !private ["s27ExpressibleByIntegerLiteralP", "context"]
+- !private ["s27ExpressibleByIntegerLiteralP", "converted"]
+- !private ["s23ExpressibleByNilLiteralP", "context"]
+- !private ["s23ExpressibleByNilLiteralP", "converted"]
+- !private ["s26ExpressibleByStringLiteralP", "context"]
+- !private ["s26ExpressibleByStringLiteralP", "converted"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "context"]
+- !private ["s33ExpressibleByUnicodeScalarLiteralP", "converted"]
+- ["14FluentProvider0A10ModelErrorO", "Context"]
+- ["14FluentProvider0A10ModelErrorO", "Error"]
+- ["14FluentProvider0A10ModelErrorO", "_code"]
+- ["14FluentProvider0A10ModelErrorO", "_domain"]
+- ["14FluentProvider0A10ModelErrorO", "_getEmbeddedNSError"]
+- ["14FluentProvider0A10ModelErrorO", "_userInfo"]
+- ["14FluentProvider0A10ModelErrorO", "deinit"]
+- ["14FluentProvider0A10ModelErrorO", "invalidContext"]
+- ["14FluentProvider0A10ModelErrorO", "unspecified"]
+- !private ["4Node14FuzzyConverterP", "context"]
+- !private ["4Node14FuzzyConverterP", "converted"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- !private ["4JSONAAV", "converted"]
+- !private ["4JSON17JSONInitializableP", "FluentModelError"]
+- ["4JSON17JSONInitializableP", "Node"]
+- !private ["4JSON17JSONInitializableP", "init"]
+- ["4JSON17JSONRepresentableP", "Context"]
+- !private ["4JSON17JSONRepresentableP", "FluentModelError"]
+- ["4JSON17JSONRepresentableP", "Node"]
+- !private ["4JSON17JSONRepresentableP", "converted"]
+- !private ["4JSON17JSONRepresentableP", "makeJSON"]
+- !private ["4JSON17JSONRepresentableP", "makeRow"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["4NodeAAV", "context"]
+- !private ["4NodeAAV", "converted"]
+- !private ["4Node0A13InitializableP", "FluentModelError"]
+- ["4Node0A13InitializableP", "JSONInitializable"]
+- ["4Node0A13InitializableP", "Node"]
+- ["4Node0A13InitializableP", "RowInitializable"]
+- !private ["4Node0A13InitializableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13InitializableP", "context"]
+- !private ["4Node0A13InitializableP", "converted"]
+- ["4Node0A13InitializableP", "init"]
+- ["4Node0A13RepresentableP", "Context"]
+- !private ["4Node0A13RepresentableP", "FluentModelError"]
+- ["4Node0A13RepresentableP", "JSONRepresentable"]
+- ["4Node0A13RepresentableP", "Node"]
+- ["4Node0A13RepresentableP", "RowRepresentable"]
+- !private ["4Node0A13RepresentableP", "_getBuiltinLogicValue"]
+- !private ["4Node0A13RepresentableP", "context"]
+- !private ["4Node0A13RepresentableP", "converted"]
+- !private ["4Node0A13RepresentableP", "makeJSON"]
+- ["4Node0A13RepresentableP", "makeNode"]
+- !private ["4Node0A13RepresentableP", "makeRow"]
+- !private ["13PathIndexableAAP", "context"]
+- !private ["13PathIndexableAAP", "converted"]
+- !private ["4HTTP21ResponseRepresentableP", "converted"]
+- !private ["6Fluent3RowV", "converted"]
+- !private ["6Fluent16RowInitializableP", "FluentModelError"]
+- ["6Fluent16RowInitializableP", "Node"]
+- !private ["6Fluent16RowInitializableP", "init"]
+- ["6Fluent16RowRepresentableP", "Context"]
+- !private ["6Fluent16RowRepresentableP", "FluentModelError"]
+- ["6Fluent16RowRepresentableP", "Node"]
+- !private ["6Fluent16RowRepresentableP", "makeJSON"]
+- !private ["6Fluent16RowRepresentableP", "makeRow"]
+- !private ["4Node21StructuredDataWrapperP", "context"]
+- !private ["4Node21StructuredDataWrapperP", "converted"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+depends-nominal:
+- !private "4HTTP17BodyRepresentableP"
+- !private "Sb"
+- !private "4Bits16BytesConvertibleP"
+- !private "4Bits18BytesInitializableP"
+- !private "4Bits18BytesRepresentableP"
+- !private "4Node7ContextP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- !private "s9EquatableP"
+- "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s30ExpressibleByDictionaryLiteralP"
+- !private "s43ExpressibleByExtendedGraphemeClusterLiteralP"
+- !private "s25ExpressibleByFloatLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s23ExpressibleByNilLiteralP"
+- !private "s26ExpressibleByStringLiteralP"
+- !private "s33ExpressibleByUnicodeScalarLiteralP"
+- "14FluentProvider0A10ModelErrorO"
+- !private "4Node14FuzzyConverterP"
+- !private "s8HashableP"
+- !private "4JSONAAV"
+- "4JSON17JSONInitializableP"
+- "4JSON17JSONRepresentableP"
+- !private "s25LosslessStringConvertibleP"
+- !private "4NodeAAV"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- !private "13PathIndexableAAP"
+- !private "4HTTP21ResponseRepresentableP"
+- !private "6Fluent3RowV"
+- "6Fluent16RowInitializableP"
+- "6Fluent16RowRepresentableP"
+- !private "4Node21StructuredDataWrapperP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/JSON.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SMTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/FormData.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Cache.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Console.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Routing.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Vapor.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Branches.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Cookies.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Configs.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sessions.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/WebSockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Fluent.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/BCrypt.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Multipart.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/CSQLite/include/sqlite3.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "bf27a264f66f1206344699cf1baaabd6"

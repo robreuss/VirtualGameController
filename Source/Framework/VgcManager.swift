@@ -290,15 +290,18 @@ let messageValueSeperator = ":"
     
     @objc open static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
     
+    // Future
+    @objc open static var useWebSocketServer = true     // Future functionality for streaming controller inputs through WebSockets server
+    @objc open static var includeRoutingHeaders = false    // Includes unique identifying information for peripherals and centrals
+    
     // The header length of messages
     @objc static var netServiceHeaderLength: Int {
         
         get {
-            if VgcManager.netServiceLatencyLogging {
-                return 17
-            } else {
-                return 9
-            }
+            var headerLength = 9 // Base size
+            if VgcManager.includeRoutingHeaders { headerLength += 3 } // WebSocket peripheral/controller identifiers
+            if VgcManager.netServiceLatencyLogging { headerLength += 8 } // 17 with latency header info
+            return headerLength
         }
         
     }

@@ -1,0 +1,190 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+- "s3SetV"
+provides-member:
+- ["s3SetV", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "Array"
+- "AssignmentPrecedence"
+- "Context"
+- "Node"
+- "NodeConvertible"
+- "Set"
+depends-member:
+- !private ["Sa", "deinit"]
+- !private ["Sa", "init"]
+- !private ["Sa", "makeNode"]
+- !private ["s23BidirectionalCollectionP", "init"]
+- !private ["s23BidirectionalCollectionP", "makeNode"]
+- !private ["s7CVarArgP", "Array"]
+- !private ["s7CVarArgP", "Element"]
+- !private ["s7CVarArgP", "Set"]
+- ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "makeNode"]
+- !private ["s10CollectionP", "Array"]
+- !private ["s10CollectionP", "Element"]
+- !private ["s10CollectionP", "Set"]
+- ["s10CollectionP", "init"]
+- ["s10CollectionP", "makeNode"]
+- !private ["s28CustomDebugStringConvertibleP", "Array"]
+- !private ["s28CustomDebugStringConvertibleP", "Element"]
+- !private ["s28CustomDebugStringConvertibleP", "Set"]
+- ["s28CustomDebugStringConvertibleP", "init"]
+- ["s28CustomDebugStringConvertibleP", "makeNode"]
+- !private ["s17CustomReflectableP", "Array"]
+- !private ["s17CustomReflectableP", "Element"]
+- !private ["s17CustomReflectableP", "Set"]
+- ["s17CustomReflectableP", "init"]
+- ["s17CustomReflectableP", "makeNode"]
+- !private ["s23CustomStringConvertibleP", "Array"]
+- !private ["s23CustomStringConvertibleP", "Element"]
+- !private ["s23CustomStringConvertibleP", "Set"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "makeNode"]
+- !private ["s9DecodableP", "Array"]
+- !private ["s9DecodableP", "Element"]
+- !private ["s9DecodableP", "Set"]
+- ["s9DecodableP", "init"]
+- ["s9DecodableP", "makeNode"]
+- !private ["s9EncodableP", "Array"]
+- !private ["s9EncodableP", "Element"]
+- !private ["s9EncodableP", "Set"]
+- ["s9EncodableP", "init"]
+- ["s9EncodableP", "makeNode"]
+- !private ["s9EquatableP", "Array"]
+- !private ["s9EquatableP", "Element"]
+- !private ["s9EquatableP", "Set"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "makeNode"]
+- !private ["s25ExpressibleByArrayLiteralP", "Array"]
+- !private ["s25ExpressibleByArrayLiteralP", "Element"]
+- !private ["s25ExpressibleByArrayLiteralP", "Set"]
+- ["s25ExpressibleByArrayLiteralP", "init"]
+- ["s25ExpressibleByArrayLiteralP", "makeNode"]
+- !private ["s8HashableP", "Array"]
+- !private ["s8HashableP", "Element"]
+- !private ["s8HashableP", "Set"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "makeNode"]
+- !private ["s17MutableCollectionP", "init"]
+- !private ["s17MutableCollectionP", "makeNode"]
+- !private ["4NodeAAV", "deinit"]
+- !private ["4Node0A13InitializableP", "Array"]
+- !private ["4Node0A13InitializableP", "Element"]
+- !private ["4Node0A13InitializableP", "Set"]
+- ["4Node0A13InitializableP", "init"]
+- ["4Node0A13InitializableP", "makeNode"]
+- ["4Node0A13InitializableP", ""]
+- !private ["4Node0A13RepresentableP", "Array"]
+- !private ["4Node0A13RepresentableP", "Element"]
+- !private ["4Node0A13RepresentableP", "Set"]
+- ["4Node0A13RepresentableP", "init"]
+- ["4Node0A13RepresentableP", "makeNode"]
+- ["4Node0A13RepresentableP", ""]
+- !private ["s22RandomAccessCollectionP", "init"]
+- !private ["s22RandomAccessCollectionP", "makeNode"]
+- !private ["s26RangeReplaceableCollectionP", "init"]
+- !private ["s26RangeReplaceableCollectionP", "makeNode"]
+- !private ["s8SequenceP", "Array"]
+- !private ["s8SequenceP", "Element"]
+- !private ["s8SequenceP", "Set"]
+- ["s8SequenceP", "init"]
+- ["s8SequenceP", "makeNode"]
+- !private ["s3SetV", "Array"]
+- ["s3SetV", "Context"]
+- !private ["s3SetV", "Element"]
+- ["s3SetV", "Node"]
+- !private ["s3SetV", "Set"]
+- ["s3SetV", "deinit"]
+- ["s3SetV", "init"]
+- ["s3SetV", "makeNode"]
+- !private ["s10SetAlgebraP", "Array"]
+- !private ["s10SetAlgebraP", "Element"]
+- !private ["s10SetAlgebraP", "Set"]
+- ["s10SetAlgebraP", "init"]
+- ["s10SetAlgebraP", "makeNode"]
+- !private ["s14_ArrayProtocolP", "init"]
+- !private ["s14_ArrayProtocolP", "makeNode"]
+- !private ["s23_BidirectionalIndexableP", "init"]
+- !private ["s23_BidirectionalIndexableP", "makeNode"]
+- !private ["s24_DestructorSafeContainerP", "init"]
+- !private ["s24_DestructorSafeContainerP", "makeNode"]
+- !private ["s10_IndexableP", "Array"]
+- !private ["s10_IndexableP", "Element"]
+- !private ["s10_IndexableP", "Set"]
+- ["s10_IndexableP", "init"]
+- ["s10_IndexableP", "makeNode"]
+- !private ["s14_IndexableBaseP", "Array"]
+- !private ["s14_IndexableBaseP", "Element"]
+- !private ["s14_IndexableBaseP", "Set"]
+- ["s14_IndexableBaseP", "init"]
+- ["s14_IndexableBaseP", "makeNode"]
+- !private ["s17_MutableIndexableP", "init"]
+- !private ["s17_MutableIndexableP", "makeNode"]
+- !private ["s21_ObjectiveCBridgeableP", "Array"]
+- !private ["s21_ObjectiveCBridgeableP", "Element"]
+- !private ["s21_ObjectiveCBridgeableP", "Set"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s21_ObjectiveCBridgeableP", "makeNode"]
+- !private ["s22_RandomAccessIndexableP", "init"]
+- !private ["s22_RandomAccessIndexableP", "makeNode"]
+- !private ["s26_RangeReplaceableIndexableP", "init"]
+- !private ["s26_RangeReplaceableIndexableP", "makeNode"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- "s7CVarArgP"
+- "s10CollectionP"
+- "s28CustomDebugStringConvertibleP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- "s25ExpressibleByArrayLiteralP"
+- "s8HashableP"
+- !private "s17MutableCollectionP"
+- !private "4NodeAAV"
+- "4Node0A13InitializableP"
+- "4Node0A13RepresentableP"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- "s8SequenceP"
+- "s3SetV"
+- "s10SetAlgebraP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s24_DestructorSafeContainerP"
+- "s10_IndexableP"
+- "s14_IndexableBaseP"
+- !private "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "a4a8a1c2b0d6eeca077190c1d7e0cfe6"

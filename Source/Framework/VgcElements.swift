@@ -139,8 +139,13 @@ let headerIdentifierAsNSData = Data(bytes: &VgcManager.headerIdentifier, count: 
 ///
 open class Element: NSObject {
     
+    //@objc open var destinationCentralID: UInt16 = 0
+    //@objc open var destinationPeripheralID: UInt8 = 0
+    
     @objc open var type: ElementType
     @objc open var dataType: ElementDataType
+    
+    //@objc open var controllerDestination: Int16
     
     @objc open var name: String
     @objc open var value: AnyObject
@@ -219,6 +224,24 @@ open class Element: NSObject {
         let valueLengthAsNSData = Data(bytes: &valueLengthAsUInt32, count: MemoryLayout<UInt32>.size)
         
         let messageData = NSMutableData()
+        
+        // Extra headers, for WebSocket implementation
+        /*
+        if VgcManager.includeRoutingHeaders {
+            
+            var destinationPeripheralUInt8: UInt8 = UInt8(destinationPeripheralID)
+            let destinationPeripheralData = Data(bytes: &destinationPeripheralUInt8, count: MemoryLayout<UInt8>.size)
+            messageData.append(destinationPeripheralData)  // 1 byte:  Peripheral this element is destined for
+
+            var destinationCentralUInt16: UInt16 = UInt16(destinationCentralID)
+            let destinationCentralData = Data(bytes: &destinationCentralUInt16, count: MemoryLayout<UInt16>.size)
+            messageData.append(destinationCentralData)  // 2 bytes:  Central this element is destined for
+
+        }
+        */
+        
+        // Extra headers for WebSockets
+        
         
         // Message header
         messageData.append(headerIdentifierAsNSData)  // 4 bytes:   indicates the start of an individual message, random 32-bit int

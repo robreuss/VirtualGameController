@@ -1,0 +1,17 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "1f957b242bfb8ecb9389c21b53b306cc"
+build_time: [1507599530, 869246000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Cipher/Cipher+Method.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Cipher/Cipher.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Essentials/ByteStream.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Essentials/Exports.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Essentials/Helpers.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/HMAC/HMAC+Method.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/HMAC/HMAC.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Hash/Hash+Method.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Hash/Hash.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Random/Hash+Random.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Random/LibreSSLError.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Random/PseudoRandom.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/crypto.git-7980259129511365902/Sources/Crypto/Random/Random.swift": [1507599510, 0]

@@ -106,6 +106,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     var unusedOutputStream: OutputStream!
     var streamMatchingTimer: Timer!
     var pendingStreams = Set<VgcPendingStream>()
+    var webSocketCentral: WebSocketCentral!
     
     override init() {
         
@@ -128,9 +129,14 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     
     // So that peripherals will be able to see us over NetServices
     func publishService() {
-        vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
-        vgcLogDebug("Service bonjour domain is \(self.localService.domain), type is \(self.localService.type), name is \(self.localService.name)")
-        self.localService.publish(options: .listenForConnections)
+        if VgcManager.useWebSocketServer {
+            if webSocketCentral == nil { webSocketCentral = WebSocketCentral() }
+            webSocketCentral.publishCentral(ID: VgcManager.uniqueServiceIdentifierString)
+        }  else {
+            vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
+            vgcLogDebug("Service bonjour domain is \(self.localService.domain), type is \(self.localService.type), name is \(self.localService.name)")
+            self.localService.publish(options: .listenForConnections)
+        }
     }
     
     func unpublishService() {

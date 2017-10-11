@@ -1,0 +1,133 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "Database"
+provides-nominal:
+- "6Fluent8DatabaseC"
+provides-member:
+- ["6Fluent8DatabaseC", ""]
+- ["6Fluent8DatabaseC", "queryLogger"]
+- ["6Fluent8DatabaseC", "query"]
+provides-dynamic-lookup:
+depends-top-level:
+- "AssignmentPrecedence"
+- "Database"
+- "Driver"
+- "Executor"
+- "FloatLiteralType"
+- "IdentifierType"
+- "Int"
+- "IntegerLiteralType"
+- "KeyNamingConvention"
+- "Node"
+- "Query"
+- "QueryLog"
+- "QueryLogger"
+- "RawOr"
+- "String"
+- "ThreadConnectionPool"
+depends-member:
+- !private ["s23CustomStringConvertibleP", "init"]
+- ["6Fluent8DatabaseC", "Database"]
+- ["6Fluent8DatabaseC", "Driver"]
+- ["6Fluent8DatabaseC", "IdentifierType"]
+- ["6Fluent8DatabaseC", "Int"]
+- ["6Fluent8DatabaseC", "KeyNamingConvention"]
+- ["6Fluent8DatabaseC", "Node"]
+- ["6Fluent8DatabaseC", "Query"]
+- ["6Fluent8DatabaseC", "QueryLog"]
+- ["6Fluent8DatabaseC", "QueryLogCallback"]
+- ["6Fluent8DatabaseC", "QueryLogger"]
+- ["6Fluent8DatabaseC", "RawOr"]
+- ["6Fluent8DatabaseC", "String"]
+- ["6Fluent8DatabaseC", "ThreadConnectionPool"]
+- ["6Fluent8DatabaseC", "default"]
+- ["6Fluent8DatabaseC", "deinit"]
+- ["6Fluent8DatabaseC", "driver"]
+- ["6Fluent8DatabaseC", "idKey"]
+- ["6Fluent8DatabaseC", "idType"]
+- ["6Fluent8DatabaseC", "init"]
+- ["6Fluent8DatabaseC", "keyNamingConvention"]
+- ["6Fluent8DatabaseC", "log"]
+- ["6Fluent8DatabaseC", "map"]
+- ["6Fluent8DatabaseC", "query"]
+- ["6Fluent8DatabaseC", "queryLogger"]
+- ["6Fluent8DatabaseC", "threadConnectionPool"]
+- !private ["6Fluent6DriverP", "idKey"]
+- !private ["6Fluent6DriverP", "idType"]
+- !private ["6Fluent6DriverP", "keyNamingConvention"]
+- !private ["6Fluent6DriverP", "queryLogger"]
+- !private ["6Fluent8ExecutorP", "QueryLog"]
+- !private ["6Fluent8ExecutorP", "ThreadConnectionPool"]
+- !private ["6Fluent8ExecutorP", "driver"]
+- !private ["6Fluent8ExecutorP", "idKey"]
+- !private ["6Fluent8ExecutorP", "idType"]
+- !private ["6Fluent8ExecutorP", "init"]
+- !private ["6Fluent8ExecutorP", "keyNamingConvention"]
+- ["6Fluent8ExecutorP", "log"]
+- ["6Fluent8ExecutorP", "query"]
+- ["6Fluent8ExecutorP", "queryLogger"]
+- !private ["6Fluent8ExecutorP", "threadConnectionPool"]
+- ["6Fluent8ExecutorP", ""]
+- !private ["6Fluent8QueryLogV", "init"]
+- !private ["6Fluent11QueryLoggerP", "QueryLog"]
+- !private ["6Fluent11QueryLoggerP", "ThreadConnectionPool"]
+- !private ["6Fluent11QueryLoggerP", "driver"]
+- !private ["6Fluent11QueryLoggerP", "idKey"]
+- !private ["6Fluent11QueryLoggerP", "idType"]
+- !private ["6Fluent11QueryLoggerP", "keyNamingConvention"]
+- ["6Fluent11QueryLoggerP", "log"]
+- ["6Fluent11QueryLoggerP", "query"]
+- ["6Fluent11QueryLoggerP", "queryLogger"]
+- !private ["6Fluent11QueryLoggerP", "threadConnectionPool"]
+- ["6Fluent11QueryLoggerP", ""]
+- !private ["6Fluent20ThreadConnectionPoolC", "deinit"]
+- !private ["6Fluent20ThreadConnectionPoolC", "init"]
+- !private ["6Fluent20ThreadConnectionPoolC", "query"]
+- !private ["6Fluent12TransactableP", "QueryLog"]
+- !private ["6Fluent12TransactableP", "ThreadConnectionPool"]
+- !private ["6Fluent12TransactableP", "driver"]
+- !private ["6Fluent12TransactableP", "idKey"]
+- !private ["6Fluent12TransactableP", "idType"]
+- !private ["6Fluent12TransactableP", "keyNamingConvention"]
+- ["6Fluent12TransactableP", "log"]
+- ["6Fluent12TransactableP", "query"]
+- ["6Fluent12TransactableP", "queryLogger"]
+- !private ["6Fluent12TransactableP", "threadConnectionPool"]
+depends-nominal:
+- !private "s23CustomStringConvertibleP"
+- "6Fluent8DatabaseC"
+- !private "6Fluent6DriverP"
+- "6Fluent8ExecutorP"
+- !private "6Fluent8QueryLogV"
+- "6Fluent11QueryLoggerP"
+- !private "6Fluent20ThreadConnectionPoolC"
+- "6Fluent12TransactableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Node.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/PathIndexable.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/SQLite.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sqlite.git--8232814251736334455/Sources/CSQLite/include/sqlite3.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "e4d835d6796dc40fa5828db1b3e578aa"

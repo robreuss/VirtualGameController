@@ -1,0 +1,13 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "04c0a44ad9e53fe671f1cd642d3b6bb6"
+build_time: [1507599536, 819151000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON+Bytes.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON+Equatable.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON+Fuzzy.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON+Parse.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON+Serialize.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSON.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSONContext.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/JSONRepresentable.swift": [1507599510, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/json.git-9153249592855998091/Sources/JSON/Sequence+Convertible.swift": [1507599510, 0]

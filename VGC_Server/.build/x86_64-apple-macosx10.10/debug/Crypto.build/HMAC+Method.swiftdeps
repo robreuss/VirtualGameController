@@ -1,0 +1,179 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+- "6Crypto4HMACC6MethodO"
+provides-member:
+- ["6Crypto4HMACC", ""]
+- ["6Crypto4HMACC6MethodO", ""]
+- ["6Crypto4HMACC", "Method"]
+- ["6Crypto4HMACC6MethodO", "evp"]
+provides-dynamic-lookup:
+depends-top-level:
+- "=="
+- "EVP_MD"
+- !private "EVP_dss1"
+- !private "EVP_ecdsa"
+- !private "EVP_md4"
+- !private "EVP_md5"
+- !private "EVP_ripemd160"
+- !private "EVP_sha1"
+- !private "EVP_sha224"
+- !private "EVP_sha256"
+- !private "EVP_sha384"
+- !private "EVP_sha512"
+- !private "EVP_whirlpool"
+- !private "FloatLiteralType"
+- "HMAC"
+- !private "IntegerLiteralType"
+- "UnsafePointer"
+depends-member:
+- !private ["s13BinaryIntegerP", "hashValue"]
+- !private ["s7CVarArgP", "hashValue"]
+- !private ["s10ComparableP", "hashValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- !private ["s17CustomReflectableP", "hashValue"]
+- !private ["s23CustomStringConvertibleP", "hashValue"]
+- !private ["s9DecodableP", "hashValue"]
+- !private ["s9EncodableP", "hashValue"]
+- !private ["s9EquatableP", "EVP_dss1"]
+- !private ["s9EquatableP", "EVP_ecdsa"]
+- !private ["s9EquatableP", "EVP_md4"]
+- !private ["s9EquatableP", "EVP_md5"]
+- !private ["s9EquatableP", "EVP_ripemd160"]
+- !private ["s9EquatableP", "EVP_sha1"]
+- !private ["s9EquatableP", "EVP_sha224"]
+- !private ["s9EquatableP", "EVP_sha256"]
+- !private ["s9EquatableP", "EVP_sha384"]
+- !private ["s9EquatableP", "EVP_sha512"]
+- !private ["s9EquatableP", "EVP_whirlpool"]
+- ["s9EquatableP", "dss1"]
+- ["s9EquatableP", "ecdsa"]
+- ["s9EquatableP", "hashValue"]
+- ["s9EquatableP", "md4"]
+- ["s9EquatableP", "md5"]
+- ["s9EquatableP", "ripemd160"]
+- ["s9EquatableP", "sha1"]
+- ["s9EquatableP", "sha224"]
+- ["s9EquatableP", "sha256"]
+- ["s9EquatableP", "sha384"]
+- ["s9EquatableP", "sha512"]
+- ["s9EquatableP", "whirlpool"]
+- ["s9EquatableP", ""]
+- !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
+- !private ["s17FixedWidthIntegerP", "hashValue"]
+- ["6Crypto4HMACC", "Method"]
+- !private ["s8HashableP", "EVP_dss1"]
+- !private ["s8HashableP", "EVP_ecdsa"]
+- !private ["s8HashableP", "EVP_md4"]
+- !private ["s8HashableP", "EVP_md5"]
+- !private ["s8HashableP", "EVP_ripemd160"]
+- !private ["s8HashableP", "EVP_sha1"]
+- !private ["s8HashableP", "EVP_sha224"]
+- !private ["s8HashableP", "EVP_sha256"]
+- !private ["s8HashableP", "EVP_sha384"]
+- !private ["s8HashableP", "EVP_sha512"]
+- !private ["s8HashableP", "EVP_whirlpool"]
+- ["s8HashableP", "dss1"]
+- ["s8HashableP", "ecdsa"]
+- ["s8HashableP", "hashValue"]
+- ["s8HashableP", "md4"]
+- ["s8HashableP", "md5"]
+- ["s8HashableP", "ripemd160"]
+- ["s8HashableP", "sha1"]
+- ["s8HashableP", "sha224"]
+- ["s8HashableP", "sha256"]
+- ["s8HashableP", "sha384"]
+- ["s8HashableP", "sha512"]
+- ["s8HashableP", "whirlpool"]
+- ["s8HashableP", ""]
+- !private ["Si", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "hashValue"]
+- ["6Crypto4HMACC6MethodO", "EVP_MD"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_dss1"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_ecdsa"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_md4"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_md5"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_ripemd160"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_sha1"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_sha224"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_sha256"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_sha384"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_sha512"]
+- !private ["6Crypto4HMACC6MethodO", "EVP_whirlpool"]
+- ["6Crypto4HMACC6MethodO", "UnsafePointer"]
+- ["6Crypto4HMACC6MethodO", "__derived_enum_equals"]
+- ["6Crypto4HMACC6MethodO", "deinit"]
+- ["6Crypto4HMACC6MethodO", "dss1"]
+- ["6Crypto4HMACC6MethodO", "ecdsa"]
+- ["6Crypto4HMACC6MethodO", "evp"]
+- ["6Crypto4HMACC6MethodO", "hashValue"]
+- ["6Crypto4HMACC6MethodO", "md4"]
+- ["6Crypto4HMACC6MethodO", "md5"]
+- ["6Crypto4HMACC6MethodO", "ripemd160"]
+- ["6Crypto4HMACC6MethodO", "sha1"]
+- ["6Crypto4HMACC6MethodO", "sha224"]
+- ["6Crypto4HMACC6MethodO", "sha256"]
+- ["6Crypto4HMACC6MethodO", "sha384"]
+- ["6Crypto4HMACC6MethodO", "sha512"]
+- ["6Crypto4HMACC6MethodO", "whirlpool"]
+- !private ["s10MirrorPathP", "hashValue"]
+- !private ["s7NumericP", "hashValue"]
+- !private ["s13SignedIntegerP", "hashValue"]
+- !private ["s13SignedNumericP", "hashValue"]
+- !private ["s10StrideableP", "hashValue"]
+- !private ["s18_BitwiseOperationsP", "hashValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
+- !private ["s21_ObjectiveCBridgeableP", "hashValue"]
+- !private ["s11_StrideableP", "hashValue"]
+depends-nominal:
+- !private "s13BinaryIntegerP"
+- !private "s7CVarArgP"
+- !private "s10ComparableP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s17FixedWidthIntegerP"
+- "6Crypto4HMACC"
+- "s8HashableP"
+- !private "Si"
+- !private "s25LosslessStringConvertibleP"
+- "6Crypto4HMACC6MethodO"
+- !private "s10MirrorPathP"
+- !private "s7NumericP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "s10StrideableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s11_StrideableP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "207024e6146b37073f9b8d0d92341b6d"

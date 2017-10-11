@@ -1,0 +1,325 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["s5UInt8V", ""]
+- ["s15UnsignedIntegerP", ""]
+- ["s5UInt8V", "randomByte"]
+- ["s15UnsignedIntegerP", "random"]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "..."
+- "Byte"
+- !private "FloatLiteralType"
+- !private "IntegerLiteralType"
+- !private "MemoryLayout"
+- "UInt32"
+- "UnsignedInteger"
+- !private "arc4random_uniform"
+depends-member:
+- !private ["Sa", "append"]
+- !private ["s23BidirectionalCollectionP", "append"]
+- !private ["s23BidirectionalCollectionP", "forEach"]
+- ["s13BinaryIntegerP", "Byte"]
+- !private ["s13BinaryIntegerP", "MemoryLayout"]
+- ["s13BinaryIntegerP", "Self"]
+- ["s13BinaryIntegerP", "UInt32"]
+- !private ["s13BinaryIntegerP", "arc4random_uniform"]
+- ["s13BinaryIntegerP", "init"]
+- ["s13BinaryIntegerP", "max"]
+- !private ["s13BinaryIntegerP", "max32"]
+- !private ["s13BinaryIntegerP", "randomByte"]
+- ["4Bits16BytesConvertibleP", "Byte"]
+- ["4Bits16BytesConvertibleP", "UInt32"]
+- !private ["4Bits16BytesConvertibleP", "arc4random_uniform"]
+- ["4Bits16BytesConvertibleP", "init"]
+- ["4Bits16BytesConvertibleP", "max"]
+- !private ["4Bits16BytesConvertibleP", "max32"]
+- !private ["4Bits16BytesConvertibleP", "randomByte"]
+- ["4Bits18BytesInitializableP", "Byte"]
+- ["4Bits18BytesInitializableP", "UInt32"]
+- !private ["4Bits18BytesInitializableP", "arc4random_uniform"]
+- ["4Bits18BytesInitializableP", "init"]
+- ["4Bits18BytesInitializableP", "max"]
+- !private ["4Bits18BytesInitializableP", "max32"]
+- !private ["4Bits18BytesInitializableP", "randomByte"]
+- ["4Bits18BytesRepresentableP", "Byte"]
+- ["4Bits18BytesRepresentableP", "UInt32"]
+- !private ["4Bits18BytesRepresentableP", "arc4random_uniform"]
+- ["4Bits18BytesRepresentableP", "init"]
+- ["4Bits18BytesRepresentableP", "max"]
+- !private ["4Bits18BytesRepresentableP", "max32"]
+- !private ["4Bits18BytesRepresentableP", "randomByte"]
+- ["s7CVarArgP", "Byte"]
+- ["s7CVarArgP", "UInt32"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "arc4random_uniform"]
+- ["s7CVarArgP", "init"]
+- ["s7CVarArgP", "max"]
+- !private ["s7CVarArgP", "max32"]
+- !private ["s7CVarArgP", "randomByte"]
+- !private ["s11ClosedRangeV", "forEach"]
+- !private ["s10CollectionP", "append"]
+- !private ["s10CollectionP", "forEach"]
+- ["s10ComparableP", "Byte"]
+- !private ["s10ComparableP", "MemoryLayout"]
+- ["s10ComparableP", "Self"]
+- ["s10ComparableP", "UInt32"]
+- !private ["s10ComparableP", "arc4random_uniform"]
+- ["s10ComparableP", "init"]
+- ["s10ComparableP", "max"]
+- !private ["s10ComparableP", "max32"]
+- !private ["s10ComparableP", "randomByte"]
+- !private ["s20CountableClosedRangeV", "forEach"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s28CustomDebugStringConvertibleP", "forEach"]
+- ["s29CustomPlaygroundQuickLookableP", "Byte"]
+- ["s29CustomPlaygroundQuickLookableP", "UInt32"]
+- !private ["s29CustomPlaygroundQuickLookableP", "arc4random_uniform"]
+- ["s29CustomPlaygroundQuickLookableP", "init"]
+- ["s29CustomPlaygroundQuickLookableP", "max"]
+- !private ["s29CustomPlaygroundQuickLookableP", "max32"]
+- !private ["s29CustomPlaygroundQuickLookableP", "randomByte"]
+- ["s17CustomReflectableP", "Byte"]
+- ["s17CustomReflectableP", "UInt32"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "arc4random_uniform"]
+- !private ["s17CustomReflectableP", "forEach"]
+- ["s17CustomReflectableP", "init"]
+- ["s17CustomReflectableP", "max"]
+- !private ["s17CustomReflectableP", "max32"]
+- !private ["s17CustomReflectableP", "randomByte"]
+- ["s23CustomStringConvertibleP", "Byte"]
+- !private ["s23CustomStringConvertibleP", "MemoryLayout"]
+- ["s23CustomStringConvertibleP", "Self"]
+- ["s23CustomStringConvertibleP", "UInt32"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "arc4random_uniform"]
+- !private ["s23CustomStringConvertibleP", "forEach"]
+- ["s23CustomStringConvertibleP", "init"]
+- ["s23CustomStringConvertibleP", "max"]
+- !private ["s23CustomStringConvertibleP", "max32"]
+- !private ["s23CustomStringConvertibleP", "randomByte"]
+- ["s9DecodableP", "Byte"]
+- ["s9DecodableP", "UInt32"]
+- !private ["s9DecodableP", "append"]
+- !private ["s9DecodableP", "arc4random_uniform"]
+- ["s9DecodableP", "init"]
+- ["s9DecodableP", "max"]
+- !private ["s9DecodableP", "max32"]
+- !private ["s9DecodableP", "randomByte"]
+- ["s9EncodableP", "Byte"]
+- ["s9EncodableP", "UInt32"]
+- !private ["s9EncodableP", "append"]
+- !private ["s9EncodableP", "arc4random_uniform"]
+- ["s9EncodableP", "init"]
+- ["s9EncodableP", "max"]
+- !private ["s9EncodableP", "max32"]
+- !private ["s9EncodableP", "randomByte"]
+- ["s9EquatableP", "Byte"]
+- !private ["s9EquatableP", "MemoryLayout"]
+- ["s9EquatableP", "Self"]
+- ["s9EquatableP", "UInt32"]
+- !private ["s9EquatableP", "arc4random_uniform"]
+- !private ["s9EquatableP", "forEach"]
+- ["s9EquatableP", "init"]
+- ["s9EquatableP", "max"]
+- !private ["s9EquatableP", "max32"]
+- !private ["s9EquatableP", "randomByte"]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- ["s27ExpressibleByIntegerLiteralP", "Byte"]
+- !private ["s27ExpressibleByIntegerLiteralP", "MemoryLayout"]
+- ["s27ExpressibleByIntegerLiteralP", "Self"]
+- ["s27ExpressibleByIntegerLiteralP", "UInt32"]
+- !private ["s27ExpressibleByIntegerLiteralP", "arc4random_uniform"]
+- ["s27ExpressibleByIntegerLiteralP", "init"]
+- ["s27ExpressibleByIntegerLiteralP", "max"]
+- !private ["s27ExpressibleByIntegerLiteralP", "max32"]
+- !private ["s27ExpressibleByIntegerLiteralP", "randomByte"]
+- ["s17FixedWidthIntegerP", "Byte"]
+- ["s17FixedWidthIntegerP", "UInt32"]
+- !private ["s17FixedWidthIntegerP", "arc4random_uniform"]
+- ["s17FixedWidthIntegerP", "init"]
+- ["s17FixedWidthIntegerP", "max"]
+- !private ["s17FixedWidthIntegerP", "max32"]
+- !private ["s17FixedWidthIntegerP", "randomByte"]
+- ["s8HashableP", "Byte"]
+- !private ["s8HashableP", "MemoryLayout"]
+- ["s8HashableP", "Self"]
+- ["s8HashableP", "UInt32"]
+- !private ["s8HashableP", "arc4random_uniform"]
+- ["s8HashableP", "init"]
+- ["s8HashableP", "max"]
+- !private ["s8HashableP", "max32"]
+- !private ["s8HashableP", "randomByte"]
+- ["s25LosslessStringConvertibleP", "Byte"]
+- ["s25LosslessStringConvertibleP", "UInt32"]
+- !private ["s25LosslessStringConvertibleP", "arc4random_uniform"]
+- ["s25LosslessStringConvertibleP", "init"]
+- ["s25LosslessStringConvertibleP", "max"]
+- !private ["s25LosslessStringConvertibleP", "max32"]
+- !private ["s25LosslessStringConvertibleP", "randomByte"]
+- !private ["s12MemoryLayoutO", "size"]
+- !private ["s17MutableCollectionP", "append"]
+- ["s7NumericP", "Byte"]
+- !private ["s7NumericP", "MemoryLayout"]
+- ["s7NumericP", "Self"]
+- ["s7NumericP", "UInt32"]
+- !private ["s7NumericP", "arc4random_uniform"]
+- ["s7NumericP", "init"]
+- ["s7NumericP", "max"]
+- !private ["s7NumericP", "max32"]
+- !private ["s7NumericP", "randomByte"]
+- !private ["s22RandomAccessCollectionP", "append"]
+- !private ["s22RandomAccessCollectionP", "forEach"]
+- !private ["s15RangeExpressionP", "forEach"]
+- !private ["s26RangeReplaceableCollectionP", "append"]
+- !private ["s8SequenceP", "append"]
+- !private ["s8SequenceP", "forEach"]
+- ["s10StrideableP", "Byte"]
+- !private ["s10StrideableP", "MemoryLayout"]
+- ["s10StrideableP", "Self"]
+- ["s10StrideableP", "UInt32"]
+- !private ["s10StrideableP", "arc4random_uniform"]
+- ["s10StrideableP", "init"]
+- ["s10StrideableP", "max"]
+- !private ["s10StrideableP", "max32"]
+- !private ["s10StrideableP", "randomByte"]
+- ["s6UInt32V", "deinit"]
+- ["s6UInt32V", "init"]
+- ["s5UInt8V", "Byte"]
+- ["s5UInt8V", "UInt32"]
+- !private ["s5UInt8V", "arc4random_uniform"]
+- !private ["s5UInt8V", "deinit"]
+- !private ["s5UInt8V", "init"]
+- ["s5UInt8V", "max"]
+- !private ["s5UInt8V", "max32"]
+- ["s5UInt8V", "randomByte"]
+- ["s15UnsignedIntegerP", "Byte"]
+- !private ["s15UnsignedIntegerP", "MemoryLayout"]
+- ["s15UnsignedIntegerP", "Self"]
+- ["s15UnsignedIntegerP", "UInt32"]
+- !private ["s15UnsignedIntegerP", "arc4random_uniform"]
+- ["s15UnsignedIntegerP", "init"]
+- ["s15UnsignedIntegerP", "max"]
+- !private ["s15UnsignedIntegerP", "max32"]
+- ["s15UnsignedIntegerP", "random"]
+- !private ["s15UnsignedIntegerP", "randomByte"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s23_BidirectionalIndexableP", "append"]
+- !private ["s23_BidirectionalIndexableP", "forEach"]
+- ["s18_BitwiseOperationsP", "Byte"]
+- ["s18_BitwiseOperationsP", "UInt32"]
+- !private ["s18_BitwiseOperationsP", "arc4random_uniform"]
+- ["s18_BitwiseOperationsP", "init"]
+- ["s18_BitwiseOperationsP", "max"]
+- !private ["s18_BitwiseOperationsP", "max32"]
+- !private ["s18_BitwiseOperationsP", "randomByte"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "Byte"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "UInt32"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "arc4random_uniform"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- ["s35_ExpressibleByBuiltinIntegerLiteralP", "max"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "max32"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "randomByte"]
+- !private ["s10_IndexableP", "append"]
+- !private ["s10_IndexableP", "forEach"]
+- !private ["s14_IndexableBaseP", "append"]
+- !private ["s14_IndexableBaseP", "forEach"]
+- !private ["s17_MutableIndexableP", "append"]
+- ["s21_ObjectiveCBridgeableP", "Byte"]
+- ["s21_ObjectiveCBridgeableP", "UInt32"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "arc4random_uniform"]
+- ["s21_ObjectiveCBridgeableP", "init"]
+- ["s21_ObjectiveCBridgeableP", "max"]
+- !private ["s21_ObjectiveCBridgeableP", "max32"]
+- !private ["s21_ObjectiveCBridgeableP", "randomByte"]
+- !private ["s22_RandomAccessIndexableP", "append"]
+- !private ["s22_RandomAccessIndexableP", "forEach"]
+- !private ["s26_RangeReplaceableIndexableP", "append"]
+- ["s11_StrideableP", "Byte"]
+- !private ["s11_StrideableP", "MemoryLayout"]
+- ["s11_StrideableP", "Self"]
+- ["s11_StrideableP", "UInt32"]
+- !private ["s11_StrideableP", "arc4random_uniform"]
+- ["s11_StrideableP", "init"]
+- ["s11_StrideableP", "max"]
+- !private ["s11_StrideableP", "max32"]
+- !private ["s11_StrideableP", "randomByte"]
+- ["s14_StringElementP", "Byte"]
+- ["s14_StringElementP", "UInt32"]
+- !private ["s14_StringElementP", "arc4random_uniform"]
+- !private ["s14_StringElementP", "init"]
+- ["s14_StringElementP", "max"]
+- !private ["s14_StringElementP", "max32"]
+- !private ["s14_StringElementP", "randomByte"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- "s13BinaryIntegerP"
+- "4Bits16BytesConvertibleP"
+- "4Bits18BytesInitializableP"
+- "4Bits18BytesRepresentableP"
+- "s7CVarArgP"
+- !private "s11ClosedRangeV"
+- !private "s10CollectionP"
+- "s10ComparableP"
+- !private "s20CountableClosedRangeV"
+- !private "s28CustomDebugStringConvertibleP"
+- "s29CustomPlaygroundQuickLookableP"
+- "s17CustomReflectableP"
+- "s23CustomStringConvertibleP"
+- "s9DecodableP"
+- "s9EncodableP"
+- "s9EquatableP"
+- !private "s25ExpressibleByArrayLiteralP"
+- "s27ExpressibleByIntegerLiteralP"
+- "s17FixedWidthIntegerP"
+- "s8HashableP"
+- "s25LosslessStringConvertibleP"
+- !private "s12MemoryLayoutO"
+- !private "s17MutableCollectionP"
+- "s7NumericP"
+- !private "s22RandomAccessCollectionP"
+- !private "s15RangeExpressionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "s8SequenceP"
+- "s10StrideableP"
+- "s6UInt32V"
+- "s5UInt8V"
+- "s15UnsignedIntegerP"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- "s18_BitwiseOperationsP"
+- !private "s24_DestructorSafeContainerP"
+- "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "s17_MutableIndexableP"
+- "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- "s11_StrideableP"
+- "s14_StringElementP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "f7bab27e3d3ddeed443b780e9169ddaa"

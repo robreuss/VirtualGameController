@@ -1,0 +1,14 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "c773dea417522be0122cfd2d7a9d4e38"
+build_time: [1507599529, 302841000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Exports.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Internet/ClientStream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Internet/InternetStream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Internet/Port.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Internet/ServerStream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Streams/FoundationStream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Streams/ReadableStream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Streams/Stream.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Streams/StreamError.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/sockets.git-972942978533733666/Sources/Transport/Streams/WriteableStream.swift": [1507599508, 0]

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2016B4451F8EB04E00556A9E /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2016B4441F8EB04E00556A9E /* Starscream.framework */; };
+		2016B4461F8EB04E00556A9E /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2016B4441F8EB04E00556A9E /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		207711311F79E9ED0006081B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207711301F79E9ED0006081B /* AppDelegate.swift */; };
 		207711331F79E9ED0006081B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207711321F79E9ED0006081B /* ViewController.swift */; };
 		207711361F79E9ED0006081B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207711341F79E9ED0006081B /* Main.storyboard */; };
@@ -67,6 +69,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				2095F86D1F79EB2A004CC770 /* VirtualGameController.framework in Embed Frameworks */,
+				2016B4461F8EB04E00556A9E /* Starscream.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2016B4441F8EB04E00556A9E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Starscream.framework; sourceTree = "<group>"; };
 		2077112E1F79E9ED0006081B /* Central_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207711301F79E9ED0006081B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207711321F79E9ED0006081B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2095F86C1F79EB2A004CC770 /* VirtualGameController.framework in Frameworks */,
+				2016B4451F8EB04E00556A9E /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +159,7 @@
 		208DFBF31BA7C99800C75E41 = {
 			isa = PBXGroup;
 			children = (
+				2016B4441F8EB04E00556A9E /* Starscream.framework */,
 				20855CDB1C192DDB00F82CED /* VirtualGameControllerIOS.xcodeproj */,
 				2077112F1F79E9ED0006081B /* Central_iOS */,
 				208DFBFD1BA7C99800C75E41 /* Products */,
@@ -448,6 +454,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Central_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -480,6 +490,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = Central_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

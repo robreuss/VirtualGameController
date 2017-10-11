@@ -1,0 +1,543 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "FrameParserError"
+- "FrameParser"
+provides-nominal:
+- "10WebSockets16FrameParserErrorO"
+- "10WebSockets11FrameParserC"
+provides-member:
+- ["10WebSockets16FrameParserErrorO", ""]
+- ["10WebSockets11FrameParserC", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "&"
+- !private "+="
+- !private "<"
+- "=="
+- "AssignmentPrecedence"
+- !private "Bool"
+- !private "Byte"
+- !private "FloatLiteralType"
+- "FrameParser"
+- "FrameParserError"
+- !private "IntegerLiteralType"
+- "ReadableStream"
+- "Swift"
+- !private "UInt64"
+- !private "UInt8"
+- "WebSocket"
+- !private "~="
+depends-member:
+- !private ["Sa", "append"]
+- !private ["s23BidirectionalCollectionP", "append"]
+- !private ["s13BinaryIntegerP", "containsMask"]
+- !private ["s13BinaryIntegerP", "eightBytePayloadLength"]
+- !private ["s13BinaryIntegerP", "finFlag"]
+- !private ["s13BinaryIntegerP", "hashValue"]
+- !private ["s13BinaryIntegerP", "init"]
+- !private ["s13BinaryIntegerP", "maskKeyIncludedFlag"]
+- !private ["s13BinaryIntegerP", "opCodeFlag"]
+- !private ["s13BinaryIntegerP", "payloadLengthFlag"]
+- !private ["s13BinaryIntegerP", "rsv1Flag"]
+- !private ["s13BinaryIntegerP", "rsv2Flag"]
+- !private ["s13BinaryIntegerP", "rsv3Flag"]
+- !private ["s13BinaryIntegerP", "toUIntMax"]
+- !private ["s13BinaryIntegerP", "twoBytePayloadLength"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["4Bits16BytesConvertibleP", "containsMask"]
+- !private ["4Bits16BytesConvertibleP", "eightBytePayloadLength"]
+- !private ["4Bits16BytesConvertibleP", "finFlag"]
+- !private ["4Bits16BytesConvertibleP", "init"]
+- !private ["4Bits16BytesConvertibleP", "maskKeyIncludedFlag"]
+- !private ["4Bits16BytesConvertibleP", "opCodeFlag"]
+- !private ["4Bits16BytesConvertibleP", "payloadLengthFlag"]
+- !private ["4Bits16BytesConvertibleP", "rsv1Flag"]
+- !private ["4Bits16BytesConvertibleP", "rsv2Flag"]
+- !private ["4Bits16BytesConvertibleP", "rsv3Flag"]
+- !private ["4Bits16BytesConvertibleP", "toUIntMax"]
+- !private ["4Bits16BytesConvertibleP", "twoBytePayloadLength"]
+- !private ["4Bits18BytesInitializableP", "containsMask"]
+- !private ["4Bits18BytesInitializableP", "eightBytePayloadLength"]
+- !private ["4Bits18BytesInitializableP", "finFlag"]
+- !private ["4Bits18BytesInitializableP", "init"]
+- !private ["4Bits18BytesInitializableP", "maskKeyIncludedFlag"]
+- !private ["4Bits18BytesInitializableP", "opCodeFlag"]
+- !private ["4Bits18BytesInitializableP", "payloadLengthFlag"]
+- !private ["4Bits18BytesInitializableP", "rsv1Flag"]
+- !private ["4Bits18BytesInitializableP", "rsv2Flag"]
+- !private ["4Bits18BytesInitializableP", "rsv3Flag"]
+- !private ["4Bits18BytesInitializableP", "toUIntMax"]
+- !private ["4Bits18BytesInitializableP", "twoBytePayloadLength"]
+- !private ["4Bits18BytesRepresentableP", "containsMask"]
+- !private ["4Bits18BytesRepresentableP", "eightBytePayloadLength"]
+- !private ["4Bits18BytesRepresentableP", "finFlag"]
+- !private ["4Bits18BytesRepresentableP", "init"]
+- !private ["4Bits18BytesRepresentableP", "maskKeyIncludedFlag"]
+- !private ["4Bits18BytesRepresentableP", "opCodeFlag"]
+- !private ["4Bits18BytesRepresentableP", "payloadLengthFlag"]
+- !private ["4Bits18BytesRepresentableP", "rsv1Flag"]
+- !private ["4Bits18BytesRepresentableP", "rsv2Flag"]
+- !private ["4Bits18BytesRepresentableP", "rsv3Flag"]
+- !private ["4Bits18BytesRepresentableP", "toUIntMax"]
+- !private ["4Bits18BytesRepresentableP", "twoBytePayloadLength"]
+- !private ["s7CVarArgP", "append"]
+- !private ["s7CVarArgP", "containsMask"]
+- !private ["s7CVarArgP", "eightBytePayloadLength"]
+- !private ["s7CVarArgP", "finFlag"]
+- !private ["s7CVarArgP", "hashValue"]
+- !private ["s7CVarArgP", "init"]
+- !private ["s7CVarArgP", "maskKeyIncludedFlag"]
+- !private ["s7CVarArgP", "opCodeFlag"]
+- !private ["s7CVarArgP", "payloadLengthFlag"]
+- !private ["s7CVarArgP", "rsv1Flag"]
+- !private ["s7CVarArgP", "rsv2Flag"]
+- !private ["s7CVarArgP", "rsv3Flag"]
+- !private ["s7CVarArgP", "toUIntMax"]
+- !private ["s7CVarArgP", "twoBytePayloadLength"]
+- !private ["s10CollectionP", "append"]
+- !private ["s10ComparableP", "containsMask"]
+- !private ["s10ComparableP", "eightBytePayloadLength"]
+- !private ["s10ComparableP", "finFlag"]
+- !private ["s10ComparableP", "hashValue"]
+- !private ["s10ComparableP", "init"]
+- !private ["s10ComparableP", "maskKeyIncludedFlag"]
+- !private ["s10ComparableP", "opCodeFlag"]
+- !private ["s10ComparableP", "payloadLengthFlag"]
+- !private ["s10ComparableP", "rsv1Flag"]
+- !private ["s10ComparableP", "rsv2Flag"]
+- !private ["s10ComparableP", "rsv3Flag"]
+- !private ["s10ComparableP", "toUIntMax"]
+- !private ["s10ComparableP", "twoBytePayloadLength"]
+- !private ["s28CustomDebugStringConvertibleP", "append"]
+- !private ["s29CustomPlaygroundQuickLookableP", "_getBuiltinLogicValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "containsMask"]
+- !private ["s29CustomPlaygroundQuickLookableP", "eightBytePayloadLength"]
+- !private ["s29CustomPlaygroundQuickLookableP", "finFlag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "hashValue"]
+- !private ["s29CustomPlaygroundQuickLookableP", "init"]
+- !private ["s29CustomPlaygroundQuickLookableP", "maskKeyIncludedFlag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "opCodeFlag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "payloadLengthFlag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "rsv1Flag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "rsv2Flag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "rsv3Flag"]
+- !private ["s29CustomPlaygroundQuickLookableP", "toUIntMax"]
+- !private ["s29CustomPlaygroundQuickLookableP", "twoBytePayloadLength"]
+- !private ["s17CustomReflectableP", "_getBuiltinLogicValue"]
+- !private ["s17CustomReflectableP", "append"]
+- !private ["s17CustomReflectableP", "containsMask"]
+- !private ["s17CustomReflectableP", "eightBytePayloadLength"]
+- !private ["s17CustomReflectableP", "finFlag"]
+- !private ["s17CustomReflectableP", "hashValue"]
+- !private ["s17CustomReflectableP", "init"]
+- !private ["s17CustomReflectableP", "maskKeyIncludedFlag"]
+- !private ["s17CustomReflectableP", "opCodeFlag"]
+- !private ["s17CustomReflectableP", "payloadLengthFlag"]
+- !private ["s17CustomReflectableP", "rsv1Flag"]
+- !private ["s17CustomReflectableP", "rsv2Flag"]
+- !private ["s17CustomReflectableP", "rsv3Flag"]
+- !private ["s17CustomReflectableP", "toUIntMax"]
+- !private ["s17CustomReflectableP", "twoBytePayloadLength"]
+- !private ["s23CustomStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s23CustomStringConvertibleP", "append"]
+- !private ["s23CustomStringConvertibleP", "containsMask"]
+- !private ["s23CustomStringConvertibleP", "eightBytePayloadLength"]
+- !private ["s23CustomStringConvertibleP", "finFlag"]
+- !private ["s23CustomStringConvertibleP", "hashValue"]
+- !private ["s23CustomStringConvertibleP", "init"]
+- !private ["s23CustomStringConvertibleP", "maskKeyIncludedFlag"]
+- !private ["s23CustomStringConvertibleP", "opCodeFlag"]
+- !private ["s23CustomStringConvertibleP", "payloadLengthFlag"]
+- !private ["s23CustomStringConvertibleP", "rsv1Flag"]
+- !private ["s23CustomStringConvertibleP", "rsv2Flag"]
+- !private ["s23CustomStringConvertibleP", "rsv3Flag"]
+- !private ["s23CustomStringConvertibleP", "toUIntMax"]
+- !private ["s23CustomStringConvertibleP", "twoBytePayloadLength"]
+- !private ["s9DecodableP", "_getBuiltinLogicValue"]
+- !private ["s9DecodableP", "append"]
+- !private ["s9DecodableP", "containsMask"]
+- !private ["s9DecodableP", "eightBytePayloadLength"]
+- !private ["s9DecodableP", "finFlag"]
+- !private ["s9DecodableP", "hashValue"]
+- !private ["s9DecodableP", "init"]
+- !private ["s9DecodableP", "maskKeyIncludedFlag"]
+- !private ["s9DecodableP", "opCodeFlag"]
+- !private ["s9DecodableP", "payloadLengthFlag"]
+- !private ["s9DecodableP", "rsv1Flag"]
+- !private ["s9DecodableP", "rsv2Flag"]
+- !private ["s9DecodableP", "rsv3Flag"]
+- !private ["s9DecodableP", "toUIntMax"]
+- !private ["s9DecodableP", "twoBytePayloadLength"]
+- !private ["s9EncodableP", "_getBuiltinLogicValue"]
+- !private ["s9EncodableP", "append"]
+- !private ["s9EncodableP", "containsMask"]
+- !private ["s9EncodableP", "eightBytePayloadLength"]
+- !private ["s9EncodableP", "finFlag"]
+- !private ["s9EncodableP", "hashValue"]
+- !private ["s9EncodableP", "init"]
+- !private ["s9EncodableP", "maskKeyIncludedFlag"]
+- !private ["s9EncodableP", "opCodeFlag"]
+- !private ["s9EncodableP", "payloadLengthFlag"]
+- !private ["s9EncodableP", "rsv1Flag"]
+- !private ["s9EncodableP", "rsv2Flag"]
+- !private ["s9EncodableP", "rsv3Flag"]
+- !private ["s9EncodableP", "toUIntMax"]
+- !private ["s9EncodableP", "twoBytePayloadLength"]
+- ["s9EquatableP", "_code"]
+- ["s9EquatableP", "_domain"]
+- !private ["s9EquatableP", "_getBuiltinLogicValue"]
+- ["s9EquatableP", "_getEmbeddedNSError"]
+- ["s9EquatableP", "_userInfo"]
+- !private ["s9EquatableP", "containsMask"]
+- !private ["s9EquatableP", "eightBytePayloadLength"]
+- !private ["s9EquatableP", "finFlag"]
+- ["s9EquatableP", "hashValue"]
+- !private ["s9EquatableP", "init"]
+- !private ["s9EquatableP", "maskKeyIncludedFlag"]
+- !private ["s9EquatableP", "missingByte"]
+- !private ["s9EquatableP", "opCodeFlag"]
+- !private ["s9EquatableP", "payloadLengthFlag"]
+- !private ["s9EquatableP", "rsv1Flag"]
+- !private ["s9EquatableP", "rsv2Flag"]
+- !private ["s9EquatableP", "rsv3Flag"]
+- !private ["s9EquatableP", "toUIntMax"]
+- !private ["s9EquatableP", "twoBytePayloadLength"]
+- ["s9EquatableP", ""]
+- ["s5ErrorP", "_code"]
+- ["s5ErrorP", "_domain"]
+- ["s5ErrorP", "_getEmbeddedNSError"]
+- ["s5ErrorP", "_userInfo"]
+- ["s5ErrorP", "hashValue"]
+- !private ["s5ErrorP", "missingByte"]
+- ["s5ErrorP", ""]
+- !private ["s25ExpressibleByArrayLiteralP", "append"]
+- !private ["s27ExpressibleByBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s27ExpressibleByIntegerLiteralP", "containsMask"]
+- !private ["s27ExpressibleByIntegerLiteralP", "eightBytePayloadLength"]
+- !private ["s27ExpressibleByIntegerLiteralP", "finFlag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "hashValue"]
+- !private ["s27ExpressibleByIntegerLiteralP", "init"]
+- !private ["s27ExpressibleByIntegerLiteralP", "maskKeyIncludedFlag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "opCodeFlag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "payloadLengthFlag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "rsv1Flag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "rsv2Flag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "rsv3Flag"]
+- !private ["s27ExpressibleByIntegerLiteralP", "toUIntMax"]
+- !private ["s27ExpressibleByIntegerLiteralP", "twoBytePayloadLength"]
+- !private ["s17FixedWidthIntegerP", "containsMask"]
+- !private ["s17FixedWidthIntegerP", "eightBytePayloadLength"]
+- !private ["s17FixedWidthIntegerP", "finFlag"]
+- !private ["s17FixedWidthIntegerP", "hashValue"]
+- !private ["s17FixedWidthIntegerP", "init"]
+- !private ["s17FixedWidthIntegerP", "maskKeyIncludedFlag"]
+- !private ["s17FixedWidthIntegerP", "opCodeFlag"]
+- !private ["s17FixedWidthIntegerP", "payloadLengthFlag"]
+- !private ["s17FixedWidthIntegerP", "rsv1Flag"]
+- !private ["s17FixedWidthIntegerP", "rsv2Flag"]
+- !private ["s17FixedWidthIntegerP", "rsv3Flag"]
+- !private ["s17FixedWidthIntegerP", "toUIntMax"]
+- !private ["s17FixedWidthIntegerP", "twoBytePayloadLength"]
+- !private ["10WebSockets0A6SocketC5FrameC", "Header"]
+- !private ["10WebSockets0A6SocketC5FrameC", "MaskingKey"]
+- !private ["10WebSockets0A6SocketC5FrameC", "OpCode"]
+- !private ["10WebSockets0A6SocketC5FrameC", "init"]
+- !private ["10WebSockets11FrameParserC", "Bool"]
+- !private ["10WebSockets11FrameParserC", "Byte"]
+- !private ["10WebSockets11FrameParserC", "FrameParserError"]
+- ["10WebSockets11FrameParserC", "ReadableStream"]
+- !private ["10WebSockets11FrameParserC", "UInt64"]
+- !private ["10WebSockets11FrameParserC", "UInt8"]
+- ["10WebSockets11FrameParserC", "WebSocket"]
+- ["10WebSockets11FrameParserC", "acceptFrame"]
+- ["10WebSockets11FrameParserC", "deinit"]
+- !private ["10WebSockets11FrameParserC", "extractByteOne"]
+- !private ["10WebSockets11FrameParserC", "extractByteZero"]
+- !private ["10WebSockets11FrameParserC", "extractEightBytePayloadLengthExtension"]
+- !private ["10WebSockets11FrameParserC", "extractMaskingKey"]
+- !private ["10WebSockets11FrameParserC", "extractPayload"]
+- !private ["10WebSockets11FrameParserC", "extractTwoBytePayloadLengthExtension"]
+- ["10WebSockets11FrameParserC", "init"]
+- !private ["10WebSockets11FrameParserC", "stream"]
+- ["10WebSockets16FrameParserErrorO", "__derived_enum_equals"]
+- ["10WebSockets16FrameParserErrorO", "_code"]
+- ["10WebSockets16FrameParserErrorO", "_domain"]
+- ["10WebSockets16FrameParserErrorO", "_getEmbeddedNSError"]
+- ["10WebSockets16FrameParserErrorO", "_userInfo"]
+- ["10WebSockets16FrameParserErrorO", "deinit"]
+- ["10WebSockets16FrameParserErrorO", "hashValue"]
+- ["10WebSockets16FrameParserErrorO", "missingByte"]
+- ["s8HashableP", "_code"]
+- ["s8HashableP", "_domain"]
+- !private ["s8HashableP", "_getBuiltinLogicValue"]
+- ["s8HashableP", "_getEmbeddedNSError"]
+- ["s8HashableP", "_userInfo"]
+- !private ["s8HashableP", "containsMask"]
+- !private ["s8HashableP", "eightBytePayloadLength"]
+- !private ["s8HashableP", "finFlag"]
+- ["s8HashableP", "hashValue"]
+- !private ["s8HashableP", "init"]
+- !private ["s8HashableP", "maskKeyIncludedFlag"]
+- !private ["s8HashableP", "missingByte"]
+- !private ["s8HashableP", "opCodeFlag"]
+- !private ["s8HashableP", "payloadLengthFlag"]
+- !private ["s8HashableP", "rsv1Flag"]
+- !private ["s8HashableP", "rsv2Flag"]
+- !private ["s8HashableP", "rsv3Flag"]
+- !private ["s8HashableP", "toUIntMax"]
+- !private ["s8HashableP", "twoBytePayloadLength"]
+- ["s8HashableP", ""]
+- !private ["10WebSockets0A6SocketC5FrameC6HeaderV", "init"]
+- !private ["Si", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "_getBuiltinLogicValue"]
+- !private ["s25LosslessStringConvertibleP", "containsMask"]
+- !private ["s25LosslessStringConvertibleP", "eightBytePayloadLength"]
+- !private ["s25LosslessStringConvertibleP", "finFlag"]
+- !private ["s25LosslessStringConvertibleP", "hashValue"]
+- !private ["s25LosslessStringConvertibleP", "init"]
+- !private ["s25LosslessStringConvertibleP", "maskKeyIncludedFlag"]
+- !private ["s25LosslessStringConvertibleP", "opCodeFlag"]
+- !private ["s25LosslessStringConvertibleP", "payloadLengthFlag"]
+- !private ["s25LosslessStringConvertibleP", "rsv1Flag"]
+- !private ["s25LosslessStringConvertibleP", "rsv2Flag"]
+- !private ["s25LosslessStringConvertibleP", "rsv3Flag"]
+- !private ["s25LosslessStringConvertibleP", "toUIntMax"]
+- !private ["s25LosslessStringConvertibleP", "twoBytePayloadLength"]
+- !private ["10WebSockets0A6SocketC5FrameC10MaskingKeyO", "hash"]
+- !private ["10WebSockets0A6SocketC5FrameC10MaskingKeyO", "key"]
+- !private ["10WebSockets0A6SocketC5FrameC10MaskingKeyO", "none"]
+- !private ["s10MirrorPathP", "hashValue"]
+- !private ["s17MutableCollectionP", "append"]
+- !private ["s7NumericP", "containsMask"]
+- !private ["s7NumericP", "eightBytePayloadLength"]
+- !private ["s7NumericP", "finFlag"]
+- !private ["s7NumericP", "hashValue"]
+- !private ["s7NumericP", "init"]
+- !private ["s7NumericP", "maskKeyIncludedFlag"]
+- !private ["s7NumericP", "opCodeFlag"]
+- !private ["s7NumericP", "payloadLengthFlag"]
+- !private ["s7NumericP", "rsv1Flag"]
+- !private ["s7NumericP", "rsv2Flag"]
+- !private ["s7NumericP", "rsv3Flag"]
+- !private ["s7NumericP", "toUIntMax"]
+- !private ["s7NumericP", "twoBytePayloadLength"]
+- !private ["10WebSockets0A6SocketC5FrameC6OpCodeO", "init"]
+- !private ["s22RandomAccessCollectionP", "append"]
+- !private ["s26RangeReplaceableCollectionP", "append"]
+- !private ["9Transport14ReadableStreamP", "read"]
+- !private ["9Transport14ReadableStreamP", "readByte"]
+- !private ["s8SequenceP", "append"]
+- !private ["s13SignedIntegerP", "hashValue"]
+- !private ["s13SignedNumericP", "hashValue"]
+- !private ["9Transport6StreamP", "read"]
+- !private ["9Transport6StreamP", "readByte"]
+- !private ["s10StrideableP", "containsMask"]
+- !private ["s10StrideableP", "eightBytePayloadLength"]
+- !private ["s10StrideableP", "finFlag"]
+- !private ["s10StrideableP", "hashValue"]
+- !private ["s10StrideableP", "init"]
+- !private ["s10StrideableP", "maskKeyIncludedFlag"]
+- !private ["s10StrideableP", "opCodeFlag"]
+- !private ["s10StrideableP", "payloadLengthFlag"]
+- !private ["s10StrideableP", "rsv1Flag"]
+- !private ["s10StrideableP", "rsv2Flag"]
+- !private ["s10StrideableP", "rsv3Flag"]
+- !private ["s10StrideableP", "toUIntMax"]
+- !private ["s10StrideableP", "twoBytePayloadLength"]
+- !private ["s6UInt64V", "init"]
+- !private ["s6UInt64V", "toUIntMax"]
+- !private ["s5UInt8V", "containsMask"]
+- !private ["s5UInt8V", "eightBytePayloadLength"]
+- !private ["s5UInt8V", "finFlag"]
+- !private ["s5UInt8V", "maskKeyIncludedFlag"]
+- !private ["s5UInt8V", "opCodeFlag"]
+- !private ["s5UInt8V", "payloadLengthFlag"]
+- !private ["s5UInt8V", "rsv1Flag"]
+- !private ["s5UInt8V", "rsv2Flag"]
+- !private ["s5UInt8V", "rsv3Flag"]
+- !private ["s5UInt8V", "toUIntMax"]
+- !private ["s5UInt8V", "twoBytePayloadLength"]
+- !private ["s15UnsignedIntegerP", "containsMask"]
+- !private ["s15UnsignedIntegerP", "eightBytePayloadLength"]
+- !private ["s15UnsignedIntegerP", "finFlag"]
+- !private ["s15UnsignedIntegerP", "init"]
+- !private ["s15UnsignedIntegerP", "maskKeyIncludedFlag"]
+- !private ["s15UnsignedIntegerP", "opCodeFlag"]
+- !private ["s15UnsignedIntegerP", "payloadLengthFlag"]
+- !private ["s15UnsignedIntegerP", "rsv1Flag"]
+- !private ["s15UnsignedIntegerP", "rsv2Flag"]
+- !private ["s15UnsignedIntegerP", "rsv3Flag"]
+- !private ["s15UnsignedIntegerP", "toUIntMax"]
+- !private ["s15UnsignedIntegerP", "twoBytePayloadLength"]
+- ["10WebSockets0A6SocketC", "Frame"]
+- !private ["s14_ArrayProtocolP", "append"]
+- !private ["s23_BidirectionalIndexableP", "append"]
+- !private ["s18_BitwiseOperationsP", "containsMask"]
+- !private ["s18_BitwiseOperationsP", "eightBytePayloadLength"]
+- !private ["s18_BitwiseOperationsP", "finFlag"]
+- !private ["s18_BitwiseOperationsP", "hashValue"]
+- !private ["s18_BitwiseOperationsP", "init"]
+- !private ["s18_BitwiseOperationsP", "maskKeyIncludedFlag"]
+- !private ["s18_BitwiseOperationsP", "opCodeFlag"]
+- !private ["s18_BitwiseOperationsP", "payloadLengthFlag"]
+- !private ["s18_BitwiseOperationsP", "rsv1Flag"]
+- !private ["s18_BitwiseOperationsP", "rsv2Flag"]
+- !private ["s18_BitwiseOperationsP", "rsv3Flag"]
+- !private ["s18_BitwiseOperationsP", "toUIntMax"]
+- !private ["s18_BitwiseOperationsP", "twoBytePayloadLength"]
+- !private ["s15_CVarArgAlignedP", "init"]
+- !private ["s15_CVarArgAlignedP", "toUIntMax"]
+- !private ["s24_DestructorSafeContainerP", "append"]
+- !private ["s35_ExpressibleByBuiltinBooleanLiteralP", "_getBuiltinLogicValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "containsMask"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "eightBytePayloadLength"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "finFlag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "hashValue"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "init"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "maskKeyIncludedFlag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "opCodeFlag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "payloadLengthFlag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "rsv1Flag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "rsv2Flag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "rsv3Flag"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "toUIntMax"]
+- !private ["s35_ExpressibleByBuiltinIntegerLiteralP", "twoBytePayloadLength"]
+- !private ["s10_IndexableP", "append"]
+- !private ["s14_IndexableBaseP", "append"]
+- !private ["s17_MutableIndexableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "_getBuiltinLogicValue"]
+- !private ["s21_ObjectiveCBridgeableP", "append"]
+- !private ["s21_ObjectiveCBridgeableP", "containsMask"]
+- !private ["s21_ObjectiveCBridgeableP", "eightBytePayloadLength"]
+- !private ["s21_ObjectiveCBridgeableP", "finFlag"]
+- !private ["s21_ObjectiveCBridgeableP", "hashValue"]
+- !private ["s21_ObjectiveCBridgeableP", "init"]
+- !private ["s21_ObjectiveCBridgeableP", "maskKeyIncludedFlag"]
+- !private ["s21_ObjectiveCBridgeableP", "opCodeFlag"]
+- !private ["s21_ObjectiveCBridgeableP", "payloadLengthFlag"]
+- !private ["s21_ObjectiveCBridgeableP", "rsv1Flag"]
+- !private ["s21_ObjectiveCBridgeableP", "rsv2Flag"]
+- !private ["s21_ObjectiveCBridgeableP", "rsv3Flag"]
+- !private ["s21_ObjectiveCBridgeableP", "toUIntMax"]
+- !private ["s21_ObjectiveCBridgeableP", "twoBytePayloadLength"]
+- !private ["s22_RandomAccessIndexableP", "append"]
+- !private ["s26_RangeReplaceableIndexableP", "append"]
+- !private ["s11_StrideableP", "containsMask"]
+- !private ["s11_StrideableP", "eightBytePayloadLength"]
+- !private ["s11_StrideableP", "finFlag"]
+- !private ["s11_StrideableP", "hashValue"]
+- !private ["s11_StrideableP", "init"]
+- !private ["s11_StrideableP", "maskKeyIncludedFlag"]
+- !private ["s11_StrideableP", "opCodeFlag"]
+- !private ["s11_StrideableP", "payloadLengthFlag"]
+- !private ["s11_StrideableP", "rsv1Flag"]
+- !private ["s11_StrideableP", "rsv2Flag"]
+- !private ["s11_StrideableP", "rsv3Flag"]
+- !private ["s11_StrideableP", "toUIntMax"]
+- !private ["s11_StrideableP", "twoBytePayloadLength"]
+- !private ["s14_StringElementP", "containsMask"]
+- !private ["s14_StringElementP", "eightBytePayloadLength"]
+- !private ["s14_StringElementP", "finFlag"]
+- !private ["s14_StringElementP", "maskKeyIncludedFlag"]
+- !private ["s14_StringElementP", "opCodeFlag"]
+- !private ["s14_StringElementP", "payloadLengthFlag"]
+- !private ["s14_StringElementP", "rsv1Flag"]
+- !private ["s14_StringElementP", "rsv2Flag"]
+- !private ["s14_StringElementP", "rsv3Flag"]
+- !private ["s14_StringElementP", "toUIntMax"]
+- !private ["s14_StringElementP", "twoBytePayloadLength"]
+depends-nominal:
+- !private "Sa"
+- !private "s23BidirectionalCollectionP"
+- !private "s13BinaryIntegerP"
+- !private "Sb"
+- !private "4Bits16BytesConvertibleP"
+- !private "4Bits18BytesInitializableP"
+- !private "4Bits18BytesRepresentableP"
+- !private "s7CVarArgP"
+- !private "s10CollectionP"
+- !private "s10ComparableP"
+- !private "s28CustomDebugStringConvertibleP"
+- !private "s29CustomPlaygroundQuickLookableP"
+- !private "s17CustomReflectableP"
+- !private "s23CustomStringConvertibleP"
+- !private "s9DecodableP"
+- !private "s9EncodableP"
+- "s9EquatableP"
+- "s5ErrorP"
+- !private "s25ExpressibleByArrayLiteralP"
+- !private "s27ExpressibleByBooleanLiteralP"
+- !private "s27ExpressibleByIntegerLiteralP"
+- !private "s17FixedWidthIntegerP"
+- !private "10WebSockets0A6SocketC5FrameC"
+- "10WebSockets11FrameParserC"
+- "10WebSockets16FrameParserErrorO"
+- "s8HashableP"
+- !private "10WebSockets0A6SocketC5FrameC6HeaderV"
+- !private "Si"
+- !private "s25LosslessStringConvertibleP"
+- !private "10WebSockets0A6SocketC5FrameC10MaskingKeyO"
+- !private "s10MirrorPathP"
+- !private "s17MutableCollectionP"
+- !private "s7NumericP"
+- !private "10WebSockets0A6SocketC5FrameC6OpCodeO"
+- !private "s22RandomAccessCollectionP"
+- !private "s26RangeReplaceableCollectionP"
+- !private "9Transport14ReadableStreamP"
+- !private "s8SequenceP"
+- !private "s13SignedIntegerP"
+- !private "s13SignedNumericP"
+- !private "9Transport6StreamP"
+- !private "s10StrideableP"
+- !private "s6UInt64V"
+- !private "s5UInt8V"
+- !private "s15UnsignedIntegerP"
+- "10WebSockets0A6SocketC"
+- !private "s14_ArrayProtocolP"
+- !private "s23_BidirectionalIndexableP"
+- !private "s18_BitwiseOperationsP"
+- !private "s15_CVarArgAlignedP"
+- !private "s24_DestructorSafeContainerP"
+- !private "s35_ExpressibleByBuiltinBooleanLiteralP"
+- !private "s35_ExpressibleByBuiltinIntegerLiteralP"
+- !private "s10_IndexableP"
+- !private "s14_IndexableBaseP"
+- !private "s17_MutableIndexableP"
+- !private "s21_ObjectiveCBridgeableP"
+- !private "s22_RandomAccessIndexableP"
+- !private "s26_RangeReplaceableIndexableP"
+- !private "s11_StrideableP"
+- !private "s14_StringElementP"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.apinotesc"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/ObjectiveC.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/URI.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/HTTP.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/TLS.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/libc.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Core.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Debugging.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Dispatch.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Random.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Darwin.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Foundation.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreFoundation.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Crypto.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/CoreGraphics.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Sockets.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Bits.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/Swift.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/IOKit.swiftmodule"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/macosx/x86_64/SwiftOnoneSupport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/Transport.swiftmodule"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/engine.git-3311994267206676365/Sources/CHTTP/include/http_parser.h"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/ctls.git-9210868160426949823/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CHTTP.build/module.modulemap"
+- "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/x86_64-apple-macosx10.10/debug/CSQLite.build/module.modulemap"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/objc/ObjectiveC.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include/Darwin.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CoreGraphics.apinotes"
+- "/Applications/Xcode9.1.b2.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/CoreText.framework/Headers/CoreText.apinotes"
+interface-hash: "8b3fe492b8ddd0ee17c1812c9dba0728"

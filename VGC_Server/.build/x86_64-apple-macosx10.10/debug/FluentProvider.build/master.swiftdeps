@@ -1,0 +1,23 @@
+version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
+options: "6965ea05b3be0ab4bcfa6b2717309b77"
+build_time: [1507599556, 401413000]
+inputs:
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Cache.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Config+Driver.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Config+Preparation.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Droplet+Prepare.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Droplet/Droplet+Storage.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Exports.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/Filterable.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/FilterableKey+String.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/FilterableKey.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Filterable/Query+Filterable.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Model.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Node+Row+JSON.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Pagination.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Prepare.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Provider.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/SQLite+Config.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/Request+Updateable.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/Updateable.swift": [1507599508, 0]
+  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/fluent-provider.git-1502561075136423204/Sources/FluentProvider/Updateable/UpdateableKey.swift": [1507599508, 0]
