@@ -94,7 +94,7 @@ import VirtualGameController
         #if !os(tvOS)
             // To enable iCade, this must be after the notification observers are defined. The connect notification should be used
             // to setup the controller for use.
-            VgcManager.iCadeControllerMode = .ICadeMobile
+            //VgcManager.iCadeControllerMode = .ICadeMobile
             if VgcManager.iCadeControllerMode != .Disabled { iCadeTextField.becomeFirstResponder() }
         #endif
     }

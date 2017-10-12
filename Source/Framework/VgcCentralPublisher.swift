@@ -146,7 +146,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     
     func updateMatchingStreamTimer() {
         
-        if pendingStreams.count == 0 && streamMatchingTimer.isValid {
+        if streamMatchingTimer != nil && pendingStreams.count == 0 && streamMatchingTimer.isValid {
             vgcLogDebug("Invalidating matching stream timer")
             streamMatchingTimer.invalidate()
             streamMatchingTimer = nil

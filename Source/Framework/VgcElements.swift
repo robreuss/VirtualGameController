@@ -704,7 +704,7 @@ open class Elements: NSObject {
             // This shouldn't happen
             vgcLogError("Streamer expected header but found no header identifier (\(data.length) bytes)")
             PerformanceVars.invalidMessages += 1
-            return (nil, nil)
+            return (nil, data as Data)
         }
         
         if expectedLength == 0 {
@@ -716,7 +716,7 @@ open class Elements: NSObject {
         var elementValueData = Data()
         
         if data.length < (expectedLength + headerLength) {
-            vgcLogVerbose("Streamer fetching additional data")
+            print("Streamer fetching additional data")
             return (nil, nil)
         }
         
@@ -741,7 +741,7 @@ open class Elements: NSObject {
                     PerformanceVars.totalSessionMessages += PerformanceVars.messagesReceived
                     if PerformanceVars.bufferCycles > 0 { // Avoid divide by zero crash
                         //vgcLogDebug("Central Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Avg Buf Load \(PerformanceVars.bufferLoad / PerformanceVars.bufferCycles), Max Buf Load \(PerformanceVars.maxLoad), Cycles \(PerformanceVars.bufferCycles), Avg Cycles: \((PerformanceVars.bufferCycles) / (PerformanceVars.bufferReads))")
-                        vgcLogDebug("Central Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Max Buf Load \(PerformanceVars.maxLoad)")
+                        vgcLogDebug("Central Performance: \(PerformanceVars.messagesReceived) msgs (\(PerformanceVars.totalSessionMessages) total), \(messagesPerSecond) msgs/sec, \(PerformanceVars.invalidMessages) bad msgs, \(kbPerSecond) KB/sec rcvd, Max Buf Load \(PerformanceVars.maxLoad), Bytes rcvd \(PerformanceVars.bytesReceived)")
                     }
                     //
                     PerformanceVars.messagesReceived = 0
@@ -770,9 +770,12 @@ open class Elements: NSObject {
             //print("Data remaining after current element: \(dataRemainingAfterCurrentElement)")
     
             return (element: element, remainingData: dataRemainingAfterCurrentElement)
+        } else {
+            // We found no element, so return the whole set of data as a remainder
+            print("Returning all data as a remainder \(dataRemainingAfterCurrentElement.count)")
+            return (element: nil, remainingData: data as Data)
         }
-        vgcLogError("Streamer reached end of sequence")
-        return (nil, nil)
+
     }
     
 }
