@@ -224,6 +224,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
                     delegate.receivedNetServiceMessage(elementUnwrapped.identifier, elementValue: elementUnwrapped.valueAsNSData)
                 } else {
                     vgcLogError("Got non-element from processMessage (remainder: \(remainingData))")
+                    return
 
                 }
                 

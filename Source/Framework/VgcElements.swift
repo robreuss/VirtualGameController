@@ -717,7 +717,7 @@ open class Elements: NSObject {
         
         if data.length < (expectedLength + headerLength) {
             print("Streamer fetching additional data")
-            return (nil, nil)
+            return (nil, data as Data)
         }
         
         elementValueData = data.subdata(with: NSRange.init(location: headerLength, length: expectedLength))
