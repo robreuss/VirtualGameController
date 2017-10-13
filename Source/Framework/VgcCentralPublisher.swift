@@ -107,7 +107,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     var streamMatchingTimer: Timer!
     var pendingStreams = Set<VgcPendingStream>()
     //var webSocketCentral: WebSocketCentral!
-    var webSocketCentrals = Set<WebSocketCentral>()
+    var webSocketCentrals = [WebSocketCentral]()
     
     override init() {
         
@@ -132,7 +132,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     func publishService() {
         if VgcManager.useWebSocketServer {
             let webSocketCentral = WebSocketCentral()
-            webSocketCentrals.insert(webSocketCentral)
+            webSocketCentrals.append(webSocketCentral)
             webSocketCentral.publishCentral(ID: VgcManager.uniqueServiceIdentifierString)
         }  else {
             vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")

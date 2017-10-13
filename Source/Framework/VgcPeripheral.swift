@@ -37,6 +37,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     var browser: VgcBrowser!
     var webSocketPeripheralSmallData: WebSocketPeripheral!
     var webSocketPeripheralLargeData: WebSocketPeripheral!
+    var peripheralID: String!
     #if os(iOS)
     open var watch: VgcWatch!
     #endif
@@ -58,6 +59,8 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         super.init()
 
         haveConnectionToCentral = false
+        
+         peripheralID = UUID().uuidString
         
         #if !os(watchOS)
             browser = VgcBrowser(peripheral: self)
@@ -214,7 +217,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             
             webSocketPeripheralSmallData.setup()
             webSocketPeripheralLargeData.setup()
-            webSocketPeripheralSmallData.getCentralList()
+            webSocketPeripheralSmallData.subscribeToServiceList()
             
         } else {
         

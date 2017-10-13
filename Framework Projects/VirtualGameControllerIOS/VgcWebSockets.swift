@@ -157,7 +157,7 @@ class WebSocketPeripheral: WebSocketDelegate {
         socket.delegate = self
         
         socket.onConnect = {
-            let commandDictionary = ["command": "getServiceList"]
+            let commandDictionary = ["command": "subscribeToServiceList", "peripheralID": VgcManager.peripheral.peripheralID]
             let jsonEncoder = JSONEncoder()
             do {
                 vgcLogDebug("Peripheral requesting service list from server")
@@ -167,11 +167,10 @@ class WebSocketPeripheral: WebSocketDelegate {
             }
             catch {
             }
-            
         }
     }
     
-    func getCentralList()  {
+    func subscribeToServiceList()  {
         
         vgcLogDebug("Peripheral attempting to connect to server")
         socket.connect()
@@ -213,7 +212,7 @@ class WebSocketPeripheral: WebSocketDelegate {
                     
                     let service = try! JSONDecoder().decode(Service.self, from: text.data(using: .utf8)!)
                     
-                     let commandDictionary = ["command": "connectPeripheral", "peripheralID": UUID().uuidString, "centralID": service.ID]
+                    let commandDictionary = ["command": "connectPeripheral", "peripheralID": VgcManager.peripheral.peripheralID, "centralID": service.ID]
                     let jsonEncoder = JSONEncoder()
                     do {
                         vgcLogDebug("Peripheral requesting connection to service ID \(service.ID)")
