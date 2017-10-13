@@ -716,7 +716,7 @@ open class Elements: NSObject {
         var elementValueData = Data()
         
         if data.length < (expectedLength + headerLength) {
-            print("Streamer fetching additional data")
+            //print("Streamer fetching additional data")
             return (nil, data as Data)
         }
         
@@ -753,11 +753,8 @@ open class Elements: NSObject {
                     PerformanceVars.bufferReads = 0
                     PerformanceVars.maxLoad = 0
                 }
-            } else {
-                vgcLogError("Element value data does not match expected length")
             }
-            
-            
+          
             //if logging { vgcLogDebug("Got completed data transfer (\(elementValueData.length) of \(expectedLength))") }
             
             let element = VgcManager.elements.elementFromIdentifier(elementIdentifier!)

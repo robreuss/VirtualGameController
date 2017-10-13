@@ -35,7 +35,8 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     
     fileprivate var vgcDeviceInfo: DeviceInfo!
     var browser: VgcBrowser!
-    var webSocketPeripheral: WebSocketPeripheral!
+    var webSocketPeripheralSmallData: WebSocketPeripheral!
+    var webSocketPeripheralLargeData: WebSocketPeripheral!
     #if os(iOS)
     open var watch: VgcWatch!
     #endif
@@ -110,7 +111,11 @@ open class Peripheral: NSObject, VgcWatchDelegate {
                 VgcController.enhancedController.peripheral.browser.sendElementStateOverNetService(element)
             } else {
                 if VgcManager.useWebSocketServer {
-                    webSocketPeripheral.sendElement(element: element)
+                    if element.valueAsNSData.count < 1024 {
+                        webSocketPeripheralSmallData.sendElement(element: element)
+                    } else {
+                        webSocketPeripheralLargeData.sendElement(element: element)
+                    }
                 } else {
                     browser.sendElementStateOverNetService(element)
                 }
@@ -200,9 +205,16 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
         if VgcManager.useWebSocketServer {
             
-            if webSocketPeripheral == nil { webSocketPeripheral = WebSocketPeripheral() }
+            if webSocketPeripheralSmallData == nil {
+                webSocketPeripheralSmallData = WebSocketPeripheral()
+            }
+            if webSocketPeripheralLargeData == nil {
+                webSocketPeripheralLargeData = WebSocketPeripheral()
+            }
             
-            webSocketPeripheral.getCentralList()
+            webSocketPeripheralSmallData.setup()
+            webSocketPeripheralLargeData.setup()
+            webSocketPeripheralSmallData.getCentralList()
             
         } else {
         
@@ -322,7 +334,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
             return
         }
         
-        vgcLogDebug("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)")
+        if !VgcManager.useWebSocketServer { vgcLogDebug("Sending device info for controller \(deviceInfo.vendorName) to \(browser.connectedVgcService.fullName)") }
         
         NSKeyedArchiver.setClassName("DeviceInfo", for: DeviceInfo.self)
         let element = VgcManager.elements.deviceInfoElement

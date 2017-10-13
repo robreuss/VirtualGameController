@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2014EC231F90256A00EF38CC /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2014EC221F90256900EF38CC /* Starscream.framework */; };
+		2014EC241F90256A00EF38CC /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2014EC221F90256900EF38CC /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		20E6A9901F8950A20023F778 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6A98F1F8950A20023F778 /* AppDelegate.swift */; };
 		20E6A9921F8950A20023F778 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E6A9911F8950A20023F778 /* GameScene.sks */; };
 		20E6A9941F8950A20023F778 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 20E6A9931F8950A20023F778 /* Actions.sks */; };
@@ -27,6 +29,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				20E6A9B11F89517D0023F778 /* VirtualGameController.framework in Embed Frameworks */,
+				2014EC241F90256A00EF38CC /* Starscream.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2014EC221F90256900EF38CC /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Starscream.framework; sourceTree = "<group>"; };
 		20E6A98C1F8950A20023F778 /* SpriteKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpriteKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E6A98F1F8950A20023F778 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20E6A9911F8950A20023F778 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -53,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20E6A9B01F89517D0023F778 /* VirtualGameController.framework in Frameworks */,
+				2014EC231F90256A00EF38CC /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +67,7 @@
 		20E6A9831F8950A20023F778 = {
 			isa = PBXGroup;
 			children = (
+				2014EC221F90256900EF38CC /* Starscream.framework */,
 				20E6A9AF1F89517D0023F778 /* VirtualGameController.framework */,
 				20E6A98E1F8950A20023F778 /* SpriteKitExample */,
 				20E6A98D1F8950A20023F778 /* Products */,
@@ -308,6 +314,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpriteKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SpriteKitExample;
@@ -323,6 +333,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = SpriteKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.SpriteKitExample;

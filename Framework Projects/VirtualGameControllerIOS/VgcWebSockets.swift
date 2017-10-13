@@ -42,19 +42,19 @@ class WebSocketCentral: WebSocketDelegate {
     
     func publishCentral(ID: String)  {
         
-        print("websocket attempting to connect to server")
+        vgcLogDebug("Central connecting to server")
         socket = WebSocket(url: URL(string: "ws://192.168.86.99:8080/central")!)
         socket.delegate = self
         socket.onConnect = {
-            print("websocket is connected")
+            
+            vgcLogDebug("Central has a connected socket")
             
             let commandDictionary = ["command": "publishCentral", "centralID": ID]
             let jsonEncoder = JSONEncoder()
             do {
                 let jsonDataDict = try jsonEncoder.encode(commandDictionary)
                 let jsonString = String(data: jsonDataDict, encoding: .utf8)
-                //let jsonDataCommand = try jsonEncoder.encode(command)
-                print("JSON String : " + jsonString!)
+                vgcLogDebug("Central publishing to server")
                 self.socket.write(string: jsonString!)
             }
             catch {
@@ -62,6 +62,18 @@ class WebSocketCentral: WebSocketDelegate {
  
         }
         socket.connect()
+    }
+    
+    func sendElement(element: Element) {
+        
+        if let _ = self.socket {
+            //print("Sending element data message")
+            self.socket.write(data: element.dataMessage as Data)
+            //print("Finished sending")
+        } else {
+            vgcLogError("Got nil socket")
+        }
+        
     }
     
     func websocketDidConnect(socket: WebSocketClient) {
@@ -74,20 +86,31 @@ class WebSocketCentral: WebSocketDelegate {
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         do {
+            
             let rawJSON = try JSONDecoder().decode(Dictionary<String, String>.self, from: text.data(using: .utf8)!)
             
-            print("Peripheral received message: \(rawJSON)")
+            vgcLogDebug("Central received text message: \(text)")
             
             if let command = rawJSON["command"] {
                 
                 switch command {
                     
                 case "peripheralConnected":
-                    print("Peripheral connected, JSON: \(rawJSON), creating controller")
                     
-                    controller = VgcController()
-                    let deviceInfo = DeviceInfo(deviceUID: "jfjf", vendorName: "dddd", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
-                    controller.deviceInfo = deviceInfo
+                    vgcLogDebug("A peripheral has connected to the central via the server")
+                    
+                    if let peripheralID = rawJSON["peripheralID"] {
+                        vgcLogDebug("Creating a peripheral controller on the central with peripheralID \(peripheralID)")
+                        controller = VgcController()
+                        controller.webSocket = self
+                        controller.sendConnectionAcknowledgement()
+                        
+                        // Publish another service for the next controller
+                        VgcController.centralPublisher.publishService()
+                        
+                        //let deviceInfo = DeviceInfo(deviceUID: peripheralID, vendorName: "dddd", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+                        //controller.deviceInfo = peripheral.dev
+                    }
                     
                 default:
                     print("Default")
@@ -100,30 +123,21 @@ class WebSocketCentral: WebSocketDelegate {
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("central got some data: \(data.count)")
+        //print("central got some data: \(data.count)")
         
-        var dataBuffer = NSMutableData(data: data)
-        let headerLength = VgcManager.netServiceHeaderLength
-        var elementIdentifer: Int
-        var expectedLength: Int
-        let headerIdentifier = dataBuffer.subdata(with: NSRange.init(location: 0, length: 4))
-        if headerIdentifier == headerIdentifierAsNSData as Data {
-            
-            var elementIdentifierUInt8: UInt8 = 0
-            let elementIdentifierNSData = dataBuffer.subdata(with: NSRange.init(location: 4, length: 1))
-            (elementIdentifierNSData as NSData).getBytes(&elementIdentifierUInt8, length: MemoryLayout<UInt8>.size)
-            elementIdentifer = Int(elementIdentifierUInt8)
-            
-            var expectedLengthUInt32: UInt32 = 0
-            let valueLengthNSData = dataBuffer.subdata(with: NSRange.init(location: 5, length: 4))
-            (valueLengthNSData as NSData).getBytes(&expectedLengthUInt32, length: MemoryLayout<UInt32>.size)
-            expectedLength = Int(expectedLengthUInt32)
-            
-            let elementValueData = dataBuffer.subdata(with: NSRange.init(location: headerLength, length: expectedLength))
-            
-            let element = VgcManager.elements.elementFromIdentifier(elementIdentifer)
-  
-            controller.receivedNetServiceMessage(elementIdentifer, elementValue: elementValueData)
+        let mutableData = NSMutableData(data: data)
+        
+        let (element, remainingData) = VgcManager.elements.processMessage(data: mutableData)
+        
+        if let elementUnwrapped = element {
+            if elementUnwrapped.type == .deviceInfoElement {
+                print("Got device info")
+                controller.updateGameControllerWithValue(elementUnwrapped)
+            } else {
+               controller.receivedNetServiceMessage(elementUnwrapped.identifier, elementValue: elementUnwrapped.valueAsNSData)
+            }
+        } else {
+            vgcLogError("Central got non-element from processMessage")
         }
 
     }
@@ -133,42 +147,54 @@ class WebSocketCentral: WebSocketDelegate {
 class WebSocketPeripheral: WebSocketDelegate {
     
     var socket: WebSocket!
+    var streamDataType: StreamDataType = .largeData
     
-    func getCentralList()  {
+    func setup() {
         
-        print("websocket attempting to connect to server")
+        vgcLogDebug("Setting-up socket-based peripheral")
+        
         socket = WebSocket(url: URL(string: "ws://192.168.86.99:8080/peripheral")!)
         socket.delegate = self
+        
         socket.onConnect = {
             let commandDictionary = ["command": "getServiceList"]
             let jsonEncoder = JSONEncoder()
             do {
+                vgcLogDebug("Peripheral requesting service list from server")
                 let jsonDataDict = try jsonEncoder.encode(commandDictionary)
                 let jsonString = String(data: jsonDataDict, encoding: .utf8)
-                print("JSON String : " + jsonString!)
                 self.socket.write(string: jsonString!)
             }
             catch {
             }
             
         }
+    }
+    
+    func getCentralList()  {
+        
+        vgcLogDebug("Peripheral attempting to connect to server")
         socket.connect()
         
     }
     
     func sendElement(element: Element) {
   
-        print("Sending element data message")
-        self.socket.write(data: element.dataMessage as Data)
-        
+        if let _ = self.socket {
+            //print("Sending element data message")
+            self.socket.write(data: element.dataMessage as Data)
+            //print("Finished sending")
+        } else {
+            vgcLogError("Got nil socket")
+        }
     }
     
     func websocketDidConnect(socket: WebSocketClient) {
-
+        vgcLogDebug("Peripheral connected to server and has a socket")
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        print("websocket is disconnected: \(error?.localizedDescription)")
+        vgcLogDebug("Peripheral socket is disconnected: \(error?.localizedDescription)")
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
@@ -182,31 +208,35 @@ class WebSocketPeripheral: WebSocketDelegate {
                 switch command {
                     
                 case "addedService":
-                    print("Received addedService, JSON: \(rawJSON)")
+                    
+                    vgcLogDebug("Peripheral notification that a service has been added")
                     
                     let service = try! JSONDecoder().decode(Service.self, from: text.data(using: .utf8)!)
                     
-                    let commandDictionary = ["command": "connectPeripheral", "peripheralID": "1", "centralID": service.ID]
+                     let commandDictionary = ["command": "connectPeripheral", "peripheralID": UUID().uuidString, "centralID": service.ID]
                     let jsonEncoder = JSONEncoder()
                     do {
+                        vgcLogDebug("Peripheral requesting connection to service ID \(service.ID)")
                         let jsonDataDict = try jsonEncoder.encode(commandDictionary)
                         let jsonString = String(data: jsonDataDict, encoding: .utf8)
-                        print("JSON String : " + jsonString!)
                         self.socket.write(string: jsonString!)
                     }
                     catch {
                     }
+                    
                     VgcManager.peripheral.haveConnectionToCentral = true
                     NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
 
+                    VgcManager.peripheral.gotConnectionToCentral()
+                    
                     //print("App role: \(VgcManager.appRole)")
                     //let netService = NetService()
                     //var vgcService = VgcService(name: service.name, type:.Central, netService: netService)
                     //VgcManager.peripheral.browser.serviceLookup[netService] = vgcService
                     //NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
-                    
+                
                 default:
-                    print("Default")
+                    vgcLogError("Default case")
                 }
             }
             
@@ -218,7 +248,19 @@ class WebSocketPeripheral: WebSocketDelegate {
     }
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        print("peripheral got some data: \(data.count)")
+        vgcLogError("Peripheral received data")
+        
+        let mutableData = NSMutableData(data: data)
+        
+        let (element, remainingData) = VgcManager.elements.processMessage(data: mutableData)
+        
+        if let elementUnwrapped = element {
+            VgcManager.peripheral.browser.receivedNetServiceMessage(elementUnwrapped.identifier, elementValue: elementUnwrapped.valueAsNSData)
+        } else {
+            vgcLogError("Peripheral got non-element from processMessage")
+        }
+
+
     }
     
 }

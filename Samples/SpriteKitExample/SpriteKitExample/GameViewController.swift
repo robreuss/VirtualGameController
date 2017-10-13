@@ -72,7 +72,7 @@ class GameViewController: UIViewController, ARSKViewDelegate {
         // Left thumbstick controls move the plane left/right and up/down
         newController.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
             
-            print("X value thumbstick: \(xValue)")
+            //print("X value thumbstick: \(xValue)")
             let myPos = CGPoint(x: Double(xValue), y: Double(yValue))
             self.scene.addSpinnyNode(pos: myPos)
             

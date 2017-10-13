@@ -36,6 +36,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
 
     weak open var peripheral: Peripheral!
     var streamer: [StreamDataType: VgcStreamer] = [:]
+    var webSocket: WebSocketCentral!
     
     // Each controller gets it's own copy of a set of elements appropriate to
     // it's profile, and these are used as a backing store for all element/control
@@ -230,7 +231,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             vgcLogDebug("Received data before device is configured")
             return
         }
-        
+ 
         // Element is non-nil on success
         if (element != nil) {
 
@@ -242,7 +243,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             if (!deviceIsTypeOfBridge() || !VgcManager.bridgeRelayOnly) { updateGameControllerWithValue(element!) }
             
             // If we're a bridge, send along the value to the Central
-            if deviceIsTypeOfBridge() && element?.type != .playerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
+            if !VgcManager.useWebSocketServer && deviceIsTypeOfBridge() && element?.type != .playerIndex && peripheral != nil && peripheral.haveConnectionToCentral == true {
                 
                 element?.valueAsNSData = elementValue
                 peripheral.browser.sendElementStateOverNetService(element)
@@ -280,18 +281,31 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     }
     
     open func sendElementStateToPeripheral(_ element: Element) {
-        
-        if element.dataType == .Data {
-            if streamer[.largeData] != nil {
-                streamer[.largeData]!.writeElement(element, toStream:toPeripheralOutputStream[.largeData]!)
+
+        if VgcManager.useWebSocketServer {
+   
+            webSocket.sendElement(element: element)
+            /*
+            if element.dataType == .Data {
+                peripheral.webSocketPeripheralLargeData.sendElement(element: element)
             } else {
-                vgcLogDebug("nil stream LargeData error caught");
+                peripheral.webSocketPeripheralSmallData.sendElement(element: element)
             }
+            */
         } else {
-            if streamer[.smallData] != nil {
-                streamer[.smallData]!.writeElement(element, toStream:toPeripheralOutputStream[.smallData]!)
+        
+            if element.dataType == .Data {
+                if streamer[.largeData] != nil {
+                    streamer[.largeData]!.writeElement(element, toStream:toPeripheralOutputStream[.largeData]!)
+                } else {
+                    vgcLogDebug("nil stream LargeData error caught");
+                }
             } else {
-                vgcLogDebug("nil stream SmallData error caught");
+                if streamer[.smallData] != nil {
+                    streamer[.smallData]!.writeElement(element, toStream:toPeripheralOutputStream[.smallData]!)
+                } else {
+                    vgcLogDebug("nil stream SmallData error caught");
+                }
             }
         }
         
@@ -309,16 +323,18 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
 
     }
     
-    // Send a message to the Peripheral that we received an invalid message (based on checksum).
-    // This gives the Peripheral an opportunity to take some action, for example, slowing the flow
-    // of motion data.
     func sendConnectionAcknowledgement() {
         let element = elements.systemMessage
         element.value = SystemMessages.connectionAcknowledgement.rawValue as AnyObject
-        if let inStream = streamer[.smallData] {
-            if let outStream = toPeripheralOutputStream[.smallData] {
-                vgcLogDebug("Sending connection acknowledgement to \(deviceInfo.vendorName)")
-                inStream.writeElement(element, toStream: outStream)
+        if VgcManager.useWebSocketServer {
+            sendElementStateToPeripheral(element)
+            //webSocket.socket.write(data: element.valueAsNSData)
+        } else {
+            if let inStream = streamer[.smallData] {
+                if let outStream = toPeripheralOutputStream[.smallData] {
+                    vgcLogDebug("Sending connection acknowledgement to \(deviceInfo.vendorName)")
+                    inStream.writeElement(element, toStream: outStream)
+                }
             }
         }
     }

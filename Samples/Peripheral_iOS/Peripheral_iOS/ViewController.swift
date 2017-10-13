@@ -62,7 +62,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.performanceSamplingDisplayFrequency = 10.0
 
         // REQUIRED: Run as a PERIPHERAL
-        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
+        VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: false)
 
         // Set peripheral device info - OPTIONAL
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults

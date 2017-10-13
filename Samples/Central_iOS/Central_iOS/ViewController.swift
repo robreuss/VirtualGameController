@@ -31,7 +31,7 @@ class ViewController: VgcCentralViewController {
         VgcManager.loggerUseNSLog = true
         
         // Network performance info
-        VgcManager.performanceSamplingDisplayFrequency = 10.0
+        VgcManager.performanceSamplingDisplayFrequency = 3
 
         // Include custom elements
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false)

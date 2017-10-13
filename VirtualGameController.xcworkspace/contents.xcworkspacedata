@@ -152,10 +152,10 @@
       location = "group:Tests"
       name = "Tests">
       <FileRef
-         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Tests/Performance_Peripheral/Test_Performance_Peripheral.xcodeproj">
+         location = "group:Performance_Peripheral/Test_Performance_Peripheral.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:/Users/robreuss/Documents/Development/VirtualGameController/Tests/Test_Performance_Central.xcodeproj">
+         location = "group:Test_Performance_Central.xcodeproj">
       </FileRef>
    </Group>
 </Workspace>

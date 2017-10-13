@@ -205,20 +205,28 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             return
         }
         
-        var outputStreamLarge: OutputStream!
-        var outputStreamSmall: OutputStream!
+        if VgcManager.useWebSocketServer {
+            
+            peripheral.webSocketPeripheralSmallData.sendElement(element: element)
+            
+        } else {
         
-        if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) {
-            outputStreamLarge = self.outputStream[.largeData]
-            outputStreamSmall = self.outputStream[.smallData]
-        } else if deviceIsTypeOfBridge() {
-            outputStreamLarge = peripheral.controller.toCentralOutputStream[.largeData]
-            outputStreamSmall = peripheral.controller.toCentralOutputStream[.smallData]
-        }
-        
-        if peripheral.haveOpenStreamsToCentral {
-            streamer[.largeData]!.writeElement(element, toStream:outputStreamLarge)
-            streamer[.smallData]!.writeElement(element, toStream:outputStreamSmall)
+            var outputStreamLarge: OutputStream!
+            var outputStreamSmall: OutputStream!
+            
+            if (VgcManager.appRole == .Peripheral || VgcManager.appRole == .MultiplayerPeer) {
+                outputStreamLarge = self.outputStream[.largeData]
+                outputStreamSmall = self.outputStream[.smallData]
+            } else if deviceIsTypeOfBridge() {
+                outputStreamLarge = peripheral.controller.toCentralOutputStream[.largeData]
+                outputStreamSmall = peripheral.controller.toCentralOutputStream[.smallData]
+            }
+            
+            if peripheral.haveOpenStreamsToCentral {
+                streamer[.largeData]!.writeElement(element, toStream:outputStreamLarge)
+                streamer[.smallData]!.writeElement(element, toStream:outputStreamSmall)
+            }
+            
         }
     }
 

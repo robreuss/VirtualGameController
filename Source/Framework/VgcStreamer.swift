@@ -200,7 +200,7 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             
         case Stream.Event.hasBytesAvailable:
             
-            print("RECEIVED STREAM DATA")
+            //print("RECEIVED STREAM DATA")
 
             let inputStream = aStream as! InputStream
             
@@ -209,27 +209,27 @@ class VgcStreamer: NSObject, NetServiceDelegate, StreamDelegate {
             while inputStream.hasBytesAvailable {
                 
                 let len = inputStream.read(&buffer, maxLength: buffer.count)
-                if len > 500 { vgcLogError("Input buffer loaded: \(len)") }
+                //if len > 500 { vgcLogError("Input buffer loaded: \(len)") }
                 dataBuffer.append(Data(bytes: &buffer, count: len))
                 
             }
             
             while dataBuffer.length > 0 {
                 
-                print("ENTERED DATA BUFFER PROCESS")
+                //print("ENTERED DATA BUFFER PROCESS")
 
                 let (element, remainingData) = elements.processMessage(data: self.dataBuffer)
 
                 if let elementUnwrapped = element {
                     delegate.receivedNetServiceMessage(elementUnwrapped.identifier, elementValue: elementUnwrapped.valueAsNSData)
                 } else {
-                    vgcLogError("Got non-element from processMessage (remainder: \(remainingData))")
+                    //vgcLogError("Got non-element from processMessage (remainder: \(remainingData))")
                     return
 
                 }
                 
                 if let remainingDataUnwrapped = remainingData {
-                    print("Got remainder")
+                    //print("Got remainder")
                     dataBuffer = NSMutableData(data: remainingDataUnwrapped)
                 } else {
                     dataBuffer = NSMutableData()

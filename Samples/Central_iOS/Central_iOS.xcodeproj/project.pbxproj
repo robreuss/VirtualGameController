@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2016B4451F8EB04E00556A9E /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2016B4441F8EB04E00556A9E /* Starscream.framework */; };
-		2016B4461F8EB04E00556A9E /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2016B4441F8EB04E00556A9E /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		205104571F8FBC31003D34A8 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 205104561F8FBC31003D34A8 /* VirtualGameController.framework */; };
+		205104581F8FBC31003D34A8 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 205104561F8FBC31003D34A8 /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2051045B1F8FBC44003D34A8 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2051045A1F8FBC44003D34A8 /* Starscream.framework */; };
+		2051045C1F8FBC44003D34A8 /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2051045A1F8FBC44003D34A8 /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		207711311F79E9ED0006081B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207711301F79E9ED0006081B /* AppDelegate.swift */; };
 		207711331F79E9ED0006081B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207711321F79E9ED0006081B /* ViewController.swift */; };
 		207711361F79E9ED0006081B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207711341F79E9ED0006081B /* Main.storyboard */; };
 		207711381F79E9ED0006081B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 207711371F79E9ED0006081B /* Assets.xcassets */; };
 		2077113B1F79E9ED0006081B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 207711391F79E9ED0006081B /* LaunchScreen.storyboard */; };
-		2095F86C1F79EB2A004CC770 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CE01C192DDB00F82CED /* VirtualGameController.framework */; };
-		2095F86D1F79EB2A004CC770 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20855CE01C192DDB00F82CED /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2095F8B01F79EFF7004CC770 /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8AE1F79EFF7004CC770 /* VgcCustomElements.swift */; };
 		2095F8B11F79EFF7004CC770 /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8AF1F79EFF7004CC770 /* VgcCustomMappings.swift */; };
 		2095F8B31F79F01C004CC770 /* VgcCentralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8B21F79F01B004CC770 /* VgcCentralViewController.swift */; };
@@ -52,24 +52,17 @@
 			remoteGlobalIDString = 208DFBFB1BA7C99800C75E41;
 			remoteInfo = CentralVirtualGameControlleriOSSample;
 		};
-		2095F86E1F79EB2A004CC770 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 20855CDB1C192DDB00F82CED /* VirtualGameControllerIOS.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 202BBF601BE569BC004D47EC;
-			remoteInfo = VirtualGameControllerIOS;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2095F8701F79EB2A004CC770 /* Embed Frameworks */ = {
+		205104591F8FBC31003D34A8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2095F86D1F79EB2A004CC770 /* VirtualGameController.framework in Embed Frameworks */,
-				2016B4461F8EB04E00556A9E /* Starscream.framework in Embed Frameworks */,
+				205104581F8FBC31003D34A8 /* VirtualGameController.framework in Embed Frameworks */,
+				2051045C1F8FBC44003D34A8 /* Starscream.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2016B4441F8EB04E00556A9E /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Starscream.framework; sourceTree = "<group>"; };
+		205104561F8FBC31003D34A8 /* VirtualGameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VirtualGameController.framework; path = "../../../../Library/Developer/Xcode/DerivedData/VirtualGameController-fwfpsqaqbeoebkcjialovqtonhto/Build/Products/Debug-iphoneos/VirtualGameController.framework"; sourceTree = "<group>"; };
+		2051045A1F8FBC44003D34A8 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = ../Peripheral_iOS/Starscream.framework; sourceTree = "<group>"; };
 		2077112E1F79E9ED0006081B /* Central_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Central_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		207711301F79E9ED0006081B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		207711321F79E9ED0006081B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,8 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2095F86C1F79EB2A004CC770 /* VirtualGameController.framework in Frameworks */,
-				2016B4451F8EB04E00556A9E /* Starscream.framework in Frameworks */,
+				205104571F8FBC31003D34A8 /* VirtualGameController.framework in Frameworks */,
+				2051045B1F8FBC44003D34A8 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,7 +153,8 @@
 		208DFBF31BA7C99800C75E41 = {
 			isa = PBXGroup;
 			children = (
-				2016B4441F8EB04E00556A9E /* Starscream.framework */,
+				2051045A1F8FBC44003D34A8 /* Starscream.framework */,
+				205104561F8FBC31003D34A8 /* VirtualGameController.framework */,
 				20855CDB1C192DDB00F82CED /* VirtualGameControllerIOS.xcodeproj */,
 				2077112F1F79E9ED0006081B /* Central_iOS */,
 				208DFBFD1BA7C99800C75E41 /* Products */,
@@ -187,12 +182,11 @@
 				2077112A1F79E9ED0006081B /* Sources */,
 				2077112B1F79E9ED0006081B /* Frameworks */,
 				2077112C1F79E9ED0006081B /* Resources */,
-				2095F8701F79EB2A004CC770 /* Embed Frameworks */,
+				205104591F8FBC31003D34A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2095F86F1F79EB2A004CC770 /* PBXTargetDependency */,
 			);
 			name = Central_iOS;
 			productName = Central_iOS;
@@ -407,11 +401,6 @@
 			target = 208DFBFB1BA7C99800C75E41 /* vgcCentral_iOS */;
 			targetProxy = 208DFC1C1BA7C99800C75E41 /* PBXContainerItemProxy */;
 		};
-		2095F86F1F79EB2A004CC770 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = VirtualGameControllerIOS;
-			targetProxy = 2095F86E1F79EB2A004CC770 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -437,7 +426,6 @@
 		2077113D1F79E9ED0006081B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -452,6 +440,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -464,6 +453,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Central-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,7 +463,6 @@
 		2077113E1F79E9ED0006081B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -488,6 +477,7 @@
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -500,6 +490,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.Central-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
