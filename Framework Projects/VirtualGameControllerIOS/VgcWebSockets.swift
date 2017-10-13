@@ -110,7 +110,23 @@ class WebSocketCentral: WebSocketDelegate {
                         
                         //let deviceInfo = DeviceInfo(deviceUID: peripheralID, vendorName: "dddd", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
                         //controller.deviceInfo = peripheral.dev
+                        
+                        
+                        let commandDictionary = ["command": "peripheralConnected", "peripheralID": peripheralID]
+                        let jsonEncoder = JSONEncoder()
+                        do {
+                            vgcLogDebug("Peripheral letting server central know that it has connected to the central")
+                            let jsonDataDict = try jsonEncoder.encode(commandDictionary)
+                            let jsonString = String(data: jsonDataDict, encoding: .utf8)
+                            self.socket.write(string: jsonString!)
+                        }
+                        catch {
+                        }
+                        
                     }
+                    
+
+
                     
                 default:
                     print("Default")
@@ -148,7 +164,8 @@ class WebSocketPeripheral: WebSocketDelegate {
     
     var socket: WebSocket!
     var streamDataType: StreamDataType = .largeData
-    var availableServices = [VgcService]()
+    var availableServices = Set<VgcService>()
+    var vgcService: VgcService!
     
     func setup() {
         
@@ -224,8 +241,8 @@ class WebSocketPeripheral: WebSocketDelegate {
                     catch {
                     }
                     // Sending bogus NetService() - we don't need it in the WebSockets context
-                    let vgcService = VgcService(name: service.name!, type: .Central, netService: NetService(), ID: service.ID )
-                    availableServices.append(vgcService)
+                    vgcService = VgcService(name: service.name!, type: .Central, netService: NetService(), ID: service.ID )
+                    availableServices.insert(vgcService)
                     NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
                     
                     /*
@@ -239,6 +256,12 @@ class WebSocketPeripheral: WebSocketDelegate {
                     //VgcManager.peripheral.browser.serviceLookup[netService] = vgcService
                     //NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
                 
+                case "centralDisconnected":
+                    
+                    VgcManager.peripheral.lostConnectionToCentral(vgcService)
+                    
+                    availableServices.remove(vgcService)
+                    
                 default:
                     vgcLogError("Default case")
                 }

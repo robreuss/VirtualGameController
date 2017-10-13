@@ -270,7 +270,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     @objc open var availableServices: [VgcService] {
         get {
             if VgcManager.useWebSocketServer {
-                return webSocketPeripheralSmallData.availableServices
+                return Array(webSocketPeripheralSmallData.availableServices)
             } else {
                 let services = [VgcService](browser.serviceLookup.values)
                 return services
