@@ -189,7 +189,13 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     /// by browsing the network.
     ///
     @objc open func connectToService(_ vgcService: VgcService) {
-        browser.connectToService(vgcService)
+        if VgcManager.useWebSocketServer {
+            VgcManager.peripheral.haveConnectionToCentral = true
+            NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
+            VgcManager.peripheral.gotConnectionToCentral()
+        } else {
+            browser.connectToService(vgcService)
+        }
     }
     
     @objc open func disconnectFromService() {
@@ -263,8 +269,12 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     
     @objc open var availableServices: [VgcService] {
         get {
-            let services = [VgcService](browser.serviceLookup.values)
-            return services
+            if VgcManager.useWebSocketServer {
+                return webSocketPeripheralSmallData.availableServices
+            } else {
+                let services = [VgcService](browser.serviceLookup.values)
+                return services
+            }
         }
     }
     

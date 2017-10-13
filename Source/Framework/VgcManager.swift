@@ -157,13 +157,15 @@ let messageValueSeperator = ":"
 @objc open class VgcService: NSObject {
     
     open var name: String
+    open var ID: String!
     open var type: AppRole
     internal var netService: NetService
     
     @objc open var fullName: String { return "\(name) (\(type.description))" }
     
-    init(name: String, type: AppRole, netService: NetService) {
+    init(name: String, type: AppRole, netService: NetService, ID: String) {
         self.name = name
+        self.ID = ID
         self.type = type
         self.netService = netService
     }

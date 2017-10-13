@@ -49,7 +49,7 @@ class WebSocketCentral: WebSocketDelegate {
             
             vgcLogDebug("Central has a connected socket")
             
-            let commandDictionary = ["command": "publishCentral", "centralID": ID]
+            let commandDictionary = ["command": "publishCentral", "centralID": ID, "name": VgcManager.centralServiceName]
             let jsonEncoder = JSONEncoder()
             do {
                 let jsonDataDict = try jsonEncoder.encode(commandDictionary)
@@ -148,6 +148,7 @@ class WebSocketPeripheral: WebSocketDelegate {
     
     var socket: WebSocket!
     var streamDataType: StreamDataType = .largeData
+    var availableServices = [VgcService]()
     
     func setup() {
         
@@ -222,12 +223,16 @@ class WebSocketPeripheral: WebSocketDelegate {
                     }
                     catch {
                     }
+                    // Sending bogus NetService() - we don't need it in the WebSockets context
+                    let vgcService = VgcService(name: service.name!, type: .Central, netService: NetService(), ID: service.ID )
+                    availableServices.append(vgcService)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralFoundService), object: vgcService)
                     
-                    VgcManager.peripheral.haveConnectionToCentral = true
-                    NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
+                    /*
 
-                    VgcManager.peripheral.gotConnectionToCentral()
-                    
+ 
+ */
+ 
                     //print("App role: \(VgcManager.appRole)")
                     //let netService = NetService()
                     //var vgcService = VgcService(name: service.name, type:.Central, netService: netService)

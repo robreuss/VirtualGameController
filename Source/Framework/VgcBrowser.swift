@@ -318,7 +318,7 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
         var success: Bool
         var inStream: InputStream?
         var outStream: OutputStream?
-        success = vgcService.netService.getInputStream(&inStream, outputStream: &outStream)
+        success = (vgcService.netService.getInputStream(&inStream, outputStream: &outStream))
         if ( !success ) {
             
             vgcLogDebug("Something went wrong connecting to service: \(vgcService.fullName)")
@@ -397,9 +397,9 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
             vgcLogDebug("Found service of type \(service.type) at \(service.name)")
             var vgcService: VgcService
             if service.type == VgcManager.bonjourTypeBridge {
-                vgcService = VgcService(name: service.name, type:.Bridge, netService: service)
+                vgcService = VgcService(name: service.name, type:.Bridge,netService: service, ID: "" )
             } else {
-                vgcService = VgcService(name: service.name, type:.Central, netService: service)
+                vgcService = VgcService(name: service.name, type:.Central, netService: service, ID: "")
             }
             
             serviceLookup[service] = vgcService
