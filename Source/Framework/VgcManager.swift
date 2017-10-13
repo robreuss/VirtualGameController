@@ -222,11 +222,11 @@ let messageValueSeperator = ":"
                 var usi: String
                 let defaults = UserDefaults.standard
                 if let usi = defaults.string(forKey: "includeUniqueServiceIdentifier") {
-                    vgcLogDebug("Found Unique Service Identifier")
+                    vgcLogDebug("Found existing Unique Service Identifier: \(usi)")
                     return usi
                 } else {
                     usi = UUID().uuidString
-                    vgcLogDebug("Created new Unique Service Identifier")
+                    vgcLogDebug("Created new Unique Service Identifier: \(usi)")
                     defaults.set(usi, forKey: "includeUniqueServiceIdentifier")
                     return usi
                 }
@@ -400,11 +400,11 @@ let messageValueSeperator = ":"
             return
         }
         if appRole == .MultiplayerPeer {
-            vgcLogError("MULTIPEER mode so setting service name to something random (guarenteed unique).")
+            vgcLogDebug("MULTIPEER mode so setting service name to something random (guarenteed unique).")
             useRandomServiceName = true // Must use unique name when operating in peer mode
-            vgcLogError("MULTIPEER mode so starting as .Central first.")
+            vgcLogDebug("MULTIPEER mode so starting as .Central first.")
             startAs(.Central, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
-            vgcLogError("MULTIPEER mode so starting as .Peripheral second.")
+            vgcLogDebug("MULTIPEER mode so starting as .Peripheral second.")
             startAs(.Peripheral, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
             self.appRole = .MultiplayerPeer
         } else {
@@ -518,11 +518,11 @@ public func deviceIsTypeOfBridge() -> Bool {
         if deviceUID == "" {
             let defaults = UserDefaults.standard
             if let existingDeviceUID = defaults.string(forKey: "deviceUID") {
-                vgcLogDebug("Found existing UID for device: \(existingDeviceUID)")
+                vgcLogDebug("Found existing UID for peripheral: \(existingDeviceUID)")
                 deviceUID = existingDeviceUID
             } else {
                 deviceUID = UUID().uuidString
-                vgcLogDebug("Created new UID for device: \(deviceUID)")
+                vgcLogDebug("Created new UID for peripheral: \(deviceUID)")
                 defaults.set(deviceUID, forKey: "deviceUID")
             }
         }

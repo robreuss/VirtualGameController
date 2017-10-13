@@ -60,8 +60,6 @@ open class Peripheral: NSObject, VgcWatchDelegate {
 
         haveConnectionToCentral = false
         
-         peripheralID = UUID().uuidString
-        
         #if !os(watchOS)
             browser = VgcBrowser(peripheral: self)
         #endif
@@ -251,6 +249,8 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     
     @objc open func stopBrowsingForServices() {
         
+        guard !VgcManager.useWebSocketServer else { return }
+        
         if deviceIsTypeOfBridge() {
             vgcLogDebug("Refusing to stop browsing for service because I am a BRIDGE")
         } else {
@@ -294,7 +294,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
         
         vgcLogDebug("Got connection to Central (Already? \(haveConnectionToCentral))")
         
-        if (haveOpenStreamsToCentral == true) { return }
+        if (haveOpenStreamsToCentral == true && !VgcManager.useWebSocketServer ) { return }
         
         previousElements.reserveCapacity(VgcManager.elements.allElementsCollection().count)
         for element in VgcManager.elements.allElementsCollection() {

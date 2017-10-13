@@ -86,12 +86,16 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
     
     // This is a callback from the streamer
     func disconnect() {
+        
+        guard !VgcManager.useWebSocketServer else { return }
+
         vgcLogDebug("Browser received disconnect")
         closeStreams()
         browsing = false
         if connectedVgcService != nil { peripheral.lostConnectionToCentral(connectedVgcService) }
         connectedVgcService = nil
         browseForCentral()
+
     }
     
     func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
@@ -274,6 +278,8 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
     
     func browseForCentral() {
         
+        guard !VgcManager.useWebSocketServer else { return }
+        
         if browsing {
         
             vgcLogDebug("Not browsing for central because already browsing")
@@ -300,6 +306,9 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
     }
     
     func stopBrowsing() {
+        
+        guard !VgcManager.useWebSocketServer else { return }
+        
         vgcLogDebug("Stopping browse for Centrals")
         if centralBrowser != nil { centralBrowser.stop() } else {
             vgcLogError("stopBrowsing() called before browser started")

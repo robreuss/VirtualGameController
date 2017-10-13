@@ -50,13 +50,13 @@ class GameViewController: UIViewController, ARSKViewDelegate {
             NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
             NotificationCenter.default.addObserver(self, selector: #selector(self.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
             
+            VgcManager.loggerLogLevel = .Debug
+            
             VgcManager.startAs(.MultiplayerPeer, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: false, enableLocalController: true)
             
             // Look for Centrals.  Note, system is automatically setup to use UID-based device names so that a
             // Peripheral device does not try to connect to it's own Central service.
             VgcManager.peripheral.browseForServices()
-            
-            VgcManager.loggerLogLevel = .Debug
             
         }
     }
@@ -92,9 +92,13 @@ class GameViewController: UIViewController, ARSKViewDelegate {
     
     // Auto-connect to opposite device
     @objc func foundService(_ notification: Notification) {
-        print("Connecting to service")
+        vgcLogDebug("[SAMPLE: Connecting to service")
         let vgcService = notification.object as! VgcService
-        VgcManager.peripheral.connectToService(vgcService)
+        if vgcService.ID == VgcManager.uniqueServiceIdentifierString {
+            vgcLogDebug("SAMPLE: Not connecting to my own service")
+        } else {
+            VgcManager.peripheral.connectToService(vgcService)
+        }
     }
     
     @objc func peripheralDidConnect(_ notification: Notification) {

@@ -54,7 +54,7 @@ class WebSocketCentral: WebSocketDelegate {
             do {
                 let jsonDataDict = try jsonEncoder.encode(commandDictionary)
                 let jsonString = String(data: jsonDataDict, encoding: .utf8)
-                vgcLogDebug("Central publishing to server")
+                vgcLogDebug("Central publishing to socket server")
                 self.socket.write(string: jsonString!)
             }
             catch {
@@ -169,28 +169,30 @@ class WebSocketPeripheral: WebSocketDelegate {
     
     func setup() {
         
-        vgcLogDebug("Setting-up socket-based peripheral")
+        vgcLogDebug("Setting-up socket for peripheral")
         
         socket = WebSocket(url: URL(string: "ws://192.168.86.99:8080/peripheral")!)
         socket.delegate = self
         
         socket.onConnect = {
-            let commandDictionary = ["command": "subscribeToServiceList", "peripheralID": VgcManager.peripheral.peripheralID]
+            vgcLogDebug("Peripheral connected to socket server")
+            let commandDictionary = ["command": "subscribeToServiceList", "peripheralID": VgcManager.peripheral.deviceInfo.deviceUID]
             let jsonEncoder = JSONEncoder()
             do {
-                vgcLogDebug("Peripheral requesting service list from server")
+                vgcLogDebug("Peripheral requesting service list from socket server")
                 let jsonDataDict = try jsonEncoder.encode(commandDictionary)
                 let jsonString = String(data: jsonDataDict, encoding: .utf8)
                 self.socket.write(string: jsonString!)
             }
             catch {
+                vgcLogError("Peripheral got error requesting service list from socket server")
             }
         }
     }
     
     func subscribeToServiceList()  {
         
-        vgcLogDebug("Peripheral attempting to connect to server")
+        vgcLogDebug("Peripheral attempting to connect to socket server")
         socket.connect()
         
     }
@@ -230,15 +232,19 @@ class WebSocketPeripheral: WebSocketDelegate {
                     
                     let service = try! JSONDecoder().decode(Service.self, from: text.data(using: .utf8)!)
                     
-                    let commandDictionary = ["command": "connectPeripheral", "peripheralID": VgcManager.peripheral.peripheralID, "centralID": service.ID]
+                    let commandDictionary = ["command": "connectPeripheral", "peripheralID": VgcManager.peripheral.deviceInfo.deviceUID, "centralID": service.ID]
                     let jsonEncoder = JSONEncoder()
-                    do {
-                        vgcLogDebug("Peripheral requesting connection to service ID \(service.ID)")
-                        let jsonDataDict = try jsonEncoder.encode(commandDictionary)
-                        let jsonString = String(data: jsonDataDict, encoding: .utf8)
-                        self.socket.write(string: jsonString!)
-                    }
-                    catch {
+                    if service.ID != VgcManager.uniqueServiceIdentifierString {
+                        do {
+                            vgcLogDebug("Peripheral requesting connection to service ID \(service.ID)")
+                            let jsonDataDict = try jsonEncoder.encode(commandDictionary)
+                            let jsonString = String(data: jsonDataDict, encoding: .utf8)
+                            self.socket.write(string: jsonString!)
+                        }
+                        catch {
+                        }
+                    } else {
+                        vgcLogDebug("Peripheral refusing to connect to it's own Central service: \(service.ID)")
                     }
                     // Sending bogus NetService() - we don't need it in the WebSockets context
                     vgcService = VgcService(name: service.name!, type: .Central, netService: NetService(), ID: service.ID )
