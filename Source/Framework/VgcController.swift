@@ -993,7 +993,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             
             if deviceIsTypeOfBridge() { peripheral.browseForServices() }  // Now that we have a peripheral, let the Central know we can act as a peripheral (forwarding)
             
-            if !self.isLocalController { sendConnectionAcknowledgement() }
+            if !self.isLocalController && !isHardwareController { sendConnectionAcknowledgement() }
             
             DispatchQueue.main.async {
                 
