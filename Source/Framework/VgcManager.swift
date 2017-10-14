@@ -292,8 +292,11 @@ let messageValueSeperator = ":"
     
     @objc open static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
     
-    // Future
+    
     @objc open static var useWebSocketServer = true
+    @objc open static var roomID = "Default"
+    @objc open static var roomName = "Default Room"
+    
     // Future functionality for streaming controller inputs through WebSockets server
     @objc open static var includeRoutingHeaders = false    // Includes unique identifying information for peripherals and centrals
     

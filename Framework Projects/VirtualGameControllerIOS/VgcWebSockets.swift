@@ -24,7 +24,6 @@ struct CentralID: Codable {
  
 */
     
-
 struct Service: Codable {
     enum Commands: String, Codable {
         case addedService, removedService
@@ -34,12 +33,26 @@ struct Service: Codable {
     var ID: String!
 }
 
-    
 class WebSocketCentral: WebSocketDelegate {
     
     var socket: WebSocket!
     var controller: VgcController!
-    
+
+    func setRoom(ID: String, roomName: String) {
+        
+        let commandDictionary = ["command": "setRoom", "roomID": ID, "roomName": roomName]
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonDataDict = try jsonEncoder.encode(commandDictionary)
+            let jsonString = String(data: jsonDataDict, encoding: .utf8)
+            vgcLogDebug("Central setting it's room to: \(roomName) - \(ID)")
+            self.socket.write(string: jsonString!)
+        }
+        catch {
+        }
+        
+    }
+
     func publishCentral(ID: String)  {
         
         vgcLogDebug("Central connecting to server")
@@ -59,6 +72,8 @@ class WebSocketCentral: WebSocketDelegate {
             }
             catch {
             }
+            
+            self.setRoom(ID: VgcManager.roomID, roomName: VgcManager.roomName)
  
         }
         socket.connect()
@@ -81,7 +96,9 @@ class WebSocketCentral: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        print("websocket is disconnected: \(error?.localizedDescription)")
+        for controller in VgcController.controllers() {
+            controller.disconnect()
+        }
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
@@ -170,6 +187,21 @@ class WebSocketPeripheral: WebSocketDelegate {
     var availableServices = Set<VgcService>()
     var vgcService: VgcService!
     
+    func setRoom(ID: String, roomName: String) {
+        
+        let commandDictionary = ["command": "setRoom", "roomID": ID, "roomName": roomName]
+        let jsonEncoder = JSONEncoder()
+        do {
+            let jsonDataDict = try jsonEncoder.encode(commandDictionary)
+            let jsonString = String(data: jsonDataDict, encoding: .utf8)
+            vgcLogDebug("Peripheral setting it's room to: \(roomName) - \(ID)")
+            self.socket.write(string: jsonString!)
+        }
+        catch {
+        }
+        
+    }
+    
     func setup() {
         
         vgcLogDebug("Setting-up socket for peripheral")
@@ -178,6 +210,9 @@ class WebSocketPeripheral: WebSocketDelegate {
         socket.delegate = self
         
         socket.onConnect = {
+            
+            self.setRoom(ID: VgcManager.roomID, roomName: VgcManager.roomName)
+            
             vgcLogDebug("Peripheral connected to socket server")
             let commandDictionary = ["command": "subscribeToServiceList", "peripheralID": VgcManager.peripheral.deviceInfo.deviceUID]
             let jsonEncoder = JSONEncoder()
@@ -216,7 +251,25 @@ class WebSocketPeripheral: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        vgcLogDebug("Peripheral socket is disconnected: \(error?.localizedDescription)")
+        
+        guard vgcService != nil else { return }
+        
+        availableServices.remove(vgcService)
+        
+        // A normal disconnection...server went offline
+        if error == nil {
+            vgcLogDebug("Peripheral socket is disconnected.")
+            VgcManager.peripheral.lostConnectionToCentral(vgcService)
+        } else {
+            // Server is offline - need to avoid a loop
+            let errorcode = (error! as NSError).code
+            if errorcode != 61 {
+                vgcLogDebug("Peripheral socket is disconnected: \(error?.localizedDescription), code \(errorcode)")
+                VgcManager.peripheral.lostConnectionToCentral(vgcService)
+            } else {
+                vgcLogDebug("Peripheral socket connection refused by server (server offline?): \(error?.localizedDescription), code \(errorcode)")
+            }
+        }
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
