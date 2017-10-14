@@ -10,14 +10,12 @@
 import Foundation
 import Starscream
 
-/*
-struct Command: Codable {
-    enum Commands: String, Codable {
-        case publishCentral, unpublishCentral, connectPeripheral, getCentralList
-    }
-    var command: Commands
+struct DataEnvelope: Codable {
+    var idList: [String]?
+    var payload: Data?
 }
 
+/*
 struct CentralID: Codable {
     var centralID: String
 }
@@ -26,15 +24,17 @@ struct CentralID: Codable {
  
 */
     
-    struct Service: Codable {
-        enum Commands: String, Codable {
-            case addedService, removedService
-        }
-        var command: Commands
-        var name: String!
-        var ID: String!
-    }
 
+struct Service: Codable {
+    enum Commands: String, Codable {
+        case addedService, removedService
+    }
+    var command: Commands
+    var name: String!
+    var ID: String!
+}
+
+    
 class WebSocketCentral: WebSocketDelegate {
     
     var socket: WebSocket!
@@ -126,7 +126,10 @@ class WebSocketCentral: WebSocketDelegate {
                     }
                     
 
-
+                case "peripheralDisconnected":
+                    
+                    vgcLogDebug("A peripheral has disconnected from the socket server")
+                    controller.disconnect()
                     
                 default:
                     print("Default")

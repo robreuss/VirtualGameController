@@ -283,8 +283,22 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     open func sendElementStateToPeripheral(_ element: Element) {
 
         if VgcManager.useWebSocketServer {
-   
+            
             webSocket.sendElement(element: element)
+            
+            /*
+            let envelope = DataEnvelope(idList: [peripheral.deviceInfo.deviceUID], payload: element.valueAsNSData)
+            let encoder = JSONEncoder()
+            do {
+                let json = try encoder.encode(envelope)
+                let jsonString = String(data: json, encoding: .utf8)
+                webSocket.socket.write(string: jsonString!)
+            }
+            catch {
+                
+            }
+            */
+            
             /*
             if element.dataType == .Data {
                 peripheral.webSocketPeripheralLargeData.sendElement(element: element)
@@ -351,7 +365,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         
         // We don't need to worry about NSNetService stuff if we're dealing with
         // a watch
-        if deviceInfo != nil && deviceInfo.controllerType != .Watch {
+        if deviceInfo != nil && deviceInfo.controllerType != .Watch && !VgcManager.useWebSocketServer {
             
             vgcLogDebug("Closing streams for controller \(deviceInfo.vendorName)")
             
