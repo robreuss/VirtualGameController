@@ -15,7 +15,7 @@ import VirtualGameController
 class GameViewController: UIViewController, ARSKViewDelegate {
     
     var scene: GameScene!
-    var sceneView: ARSKView!
+    var sceneView: SKView!
     
     override func viewDidLoad() {
         
@@ -24,11 +24,11 @@ class GameViewController: UIViewController, ARSKViewDelegate {
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             
-            self.sceneView = ARSKView(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: view.bounds.size))
+            self.sceneView = SKView(frame: CGRect(origin: CGPoint(x: 0,y: 0), size: view.bounds.size))
             view.addSubview(self.sceneView)
             
             // Set the view's delegate
-            sceneView.delegate = self
+            //sceneView.delegate = self
             
             // Show statistics such as fps and node count
             sceneView.showsFPS = true
