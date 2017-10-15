@@ -12,7 +12,6 @@ import WatchKit
 import WatchConnectivity
     
     public class VgcWatchConnectivity: NSObject, WCSessionDelegate, URLSessionDelegate {
-        
 
 
     @objc public let elements = Elements()

@@ -294,7 +294,7 @@ let messageValueSeperator = ":"
     
     
     @objc open static var useWebSocketServer = true
-    @objc open static var roomID = "Default"
+    @objc open static var roomID = "Default2"
     @objc open static var roomName = "Default Room"
     
     // Future functionality for streaming controller inputs through WebSockets server

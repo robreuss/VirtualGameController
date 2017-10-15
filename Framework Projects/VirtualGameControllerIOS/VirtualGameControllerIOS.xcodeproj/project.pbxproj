@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2016B4401F8EAF5400556A9E /* VgcWebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2016B43F1F8EAF5400556A9E /* VgcWebSockets.swift */; };
 		201C2CB71C20C927004B4826 /* VgcPeripheralSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAB1C20C927004B4826 /* VgcPeripheralSetup.swift */; };
 		201C2CB81C20C927004B4826 /* VgcManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAC1C20C927004B4826 /* VgcManager.swift */; };
 		201C2CB91C20C927004B4826 /* VgcCentralPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201C2CAD1C20C927004B4826 /* VgcCentralPublisher.swift */; };
@@ -21,11 +20,29 @@
 		2047C4661C23C00000842944 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2047C4641C23BFEC00842944 /* WatchKit.framework */; };
 		207A78BB1C276D8200529768 /* VgcLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A78BA1C276D8200529768 /* VgcLogger.swift */; };
 		208E558D1C24A8080050D8AD /* VgcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E558C1C24A8080050D8AD /* VgcWatch.swift */; };
+		20A6A1241F93C3D8002C61F0 /* VgcWebSockets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A6A1231F93C3D8002C61F0 /* VgcWebSockets.swift */; };
+		20A6A1E01F93C62A002C61F0 /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A6A1D21F93C5DC002C61F0 /* Starscream.framework */; };
 		20D1A3831C20F2260032EC10 /* VgcStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1A3821C20F2260032EC10 /* VgcStreamer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		20A6A1D11F93C5DC002C61F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20A6A1CC1F93C5DC002C61F0 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 33CCF0921F5DDC030099B092;
+			remoteInfo = Starscream;
+		};
+		20A6A1D31F93C5DC002C61F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20A6A1CC1F93C5DC002C61F0 /* Starscream.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 335FA2021F5DF71D00F6D2EC;
+			remoteInfo = "Starscream Tests";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		2016B43F1F8EAF5400556A9E /* VgcWebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWebSockets.swift; path = "/Users/robreuss/Development/VirtualGameController/Framework Projects/VirtualGameControllerIOS/VgcWebSockets.swift"; sourceTree = "<absolute>"; };
 		201C2CAB1C20C927004B4826 /* VgcPeripheralSetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcPeripheralSetup.swift; path = ../../../Source/Framework/VgcPeripheralSetup.swift; sourceTree = "<group>"; };
 		201C2CAC1C20C927004B4826 /* VgcManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcManager.swift; path = ../../../Source/Framework/VgcManager.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		201C2CAD1C20C927004B4826 /* VgcCentralPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCentralPublisher.swift; path = ../../../Source/Framework/VgcCentralPublisher.swift; sourceTree = "<group>"; };
@@ -39,10 +56,11 @@
 		202BBF641BE569BD004D47EC /* VirtualGameControllerIOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VirtualGameControllerIOS.h; sourceTree = "<group>"; };
 		202BBF661BE569BD004D47EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2047C4641C23BFEC00842944 /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = System/Library/Frameworks/WatchKit.framework; sourceTree = SDKROOT; };
-		207416981F8E7C6100A2DD42 /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Starscream-gyckupwuvtyefnepanvngkcmxneu/Build/Products/Debug-iphoneos/Starscream.framework"; sourceTree = "<group>"; };
 		207A78BA1C276D8200529768 /* VgcLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcLogger.swift; path = ../../../Source/Framework/VgcLogger.swift; sourceTree = "<group>"; };
 		208E558C1C24A8080050D8AD /* VgcWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = ../../Source/Framework/VgcWatch.swift; sourceTree = "<group>"; };
 		20A4904E1C399E3800E66788 /* VgcWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = "/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS/../../../Source/Framework/VgcWatch.swift"; sourceTree = "<absolute>"; };
+		20A6A1231F93C3D8002C61F0 /* VgcWebSockets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWebSockets.swift; path = ../../Source/Framework/VgcWebSockets.swift; sourceTree = "<group>"; };
+		20A6A1CC1F93C5DC002C61F0 /* Starscream.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Starscream.xcodeproj; path = "../../../../Downloads/Starscream-master-2/Starscream.xcodeproj"; sourceTree = "<group>"; };
 		20D1A3821C20F2260032EC10 /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2047C4661C23C00000842944 /* WatchKit.framework in Frameworks */,
+				20A6A1E01F93C62A002C61F0 /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +80,8 @@
 		202BBF571BE569BC004D47EC = {
 			isa = PBXGroup;
 			children = (
-				2016B43F1F8EAF5400556A9E /* VgcWebSockets.swift */,
+				20A6A1CC1F93C5DC002C61F0 /* Starscream.xcodeproj */,
+				20A6A1231F93C3D8002C61F0 /* VgcWebSockets.swift */,
 				208E558C1C24A8080050D8AD /* VgcWatch.swift */,
 				2047C4641C23BFEC00842944 /* WatchKit.framework */,
 				202BBF631BE569BD004D47EC /* VirtualGameControllerIOS */,
@@ -99,10 +119,18 @@
 			path = VirtualGameControllerIOS;
 			sourceTree = "<group>";
 		};
+		20A6A1CD1F93C5DC002C61F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				20A6A1D21F93C5DC002C61F0 /* Starscream.framework */,
+				20A6A1D41F93C5DC002C61F0 /* Starscream Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		20B742171F8DCDA30091A5EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				207416981F8E7C6100A2DD42 /* Starscream.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,12 +194,35 @@
 			mainGroup = 202BBF571BE569BC004D47EC;
 			productRefGroup = 202BBF621BE569BD004D47EC /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 20A6A1CD1F93C5DC002C61F0 /* Products */;
+					ProjectRef = 20A6A1CC1F93C5DC002C61F0 /* Starscream.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				202BBF601BE569BC004D47EC /* VirtualGameControllerIOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		20A6A1D21F93C5DC002C61F0 /* Starscream.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Starscream.framework;
+			remoteRef = 20A6A1D11F93C5DC002C61F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20A6A1D41F93C5DC002C61F0 /* Starscream Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Starscream Tests.xctest";
+			remoteRef = 20A6A1D31F93C5DC002C61F0 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		202BBF5F1BE569BC004D47EC /* Resources */ = {
@@ -197,8 +248,8 @@
 				208E558D1C24A8080050D8AD /* VgcWatch.swift in Sources */,
 				201C2CBF1C20C927004B4826 /* VgcMotion.swift in Sources */,
 				201C2CBE1C20C927004B4826 /* VgcIcadePeripheral.swift in Sources */,
+				20A6A1241F93C3D8002C61F0 /* VgcWebSockets.swift in Sources */,
 				201C2CB91C20C927004B4826 /* VgcCentralPublisher.swift in Sources */,
-				2016B4401F8EAF5400556A9E /* VgcWebSockets.swift in Sources */,
 				201C2CC01C20C927004B4826 /* VgcPeripheral.swift in Sources */,
 				20D1A3831C20F2260032EC10 /* VgcStreamer.swift in Sources */,
 			);

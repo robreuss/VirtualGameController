@@ -1,8 +1,0 @@
-version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
-options: "8aaf60ac321baff54a306d566539d640"
-build_time: [1507599547, 962228000]
-inputs:
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/multipart.git-4210556629793786970/Sources/FormData/ContentDispositionParser.swift": [1507599509, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/multipart.git-4210556629793786970/Sources/FormData/Field.swift": [1507599509, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/multipart.git-4210556629793786970/Sources/FormData/Parser.swift": [1507599509, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/multipart.git-4210556629793786970/Sources/FormData/Serializer.swift": [1507599509, 0]

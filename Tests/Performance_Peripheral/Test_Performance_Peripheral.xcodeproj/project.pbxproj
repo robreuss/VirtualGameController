@@ -16,8 +16,6 @@
 		203C33631F854721000C0C5E /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 203C33611F854721000C0C5E /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		203C336F1F854760000C0C5E /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C336D1F854760000C0C5E /* VgcCustomElements.swift */; };
 		203C33701F854760000C0C5E /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203C336E1F854760000C0C5E /* VgcCustomMappings.swift */; };
-		20E963461F8EB7E9005EAB1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E963451F8EB7E9005EAB1D /* Starscream.framework */; };
-		20E963471F8EB7E9005EAB1D /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E963451F8EB7E9005EAB1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +26,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				203C33631F854721000C0C5E /* VirtualGameController.framework in Embed Frameworks */,
-				20E963471F8EB7E9005EAB1D /* Starscream.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +43,6 @@
 		203C33611F854721000C0C5E /* VirtualGameController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VirtualGameController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		203C336D1F854760000C0C5E /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
 		203C336E1F854760000C0C5E /* VgcCustomMappings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcCustomMappings.swift; path = ../../../Source/External/VgcCustomMappings.swift; sourceTree = "<group>"; };
-		20E963451F8EB7E9005EAB1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../../../Library/Developer/Xcode/DerivedData/Starscream-gyckupwuvtyefnepanvngkcmxneu/Build/Products/Debug-iphoneos/Starscream.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +51,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				203C33621F854721000C0C5E /* VirtualGameController.framework in Frameworks */,
-				20E963461F8EB7E9005EAB1D /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +60,6 @@
 		203C33431F854269000C0C5E = {
 			isa = PBXGroup;
 			children = (
-				20E963451F8EB7E9005EAB1D /* Starscream.framework */,
 				203C33611F854721000C0C5E /* VirtualGameController.framework */,
 				203C334E1F854269000C0C5E /* Performance_Peripheral */,
 				203C334D1F854269000C0C5E /* Products */,

@@ -1,6 +1,0 @@
-version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
-options: "7ba7dee0454c77f45b73e9b7ee19b9f9"
-build_time: [1507599536, 816914000]
-inputs:
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Cache/CacheProtocol.swift": [1507599507, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/vapor.git-5492988889259800272/Sources/Cache/MemoryCache.swift": [1507599507, 0]

@@ -188,6 +188,9 @@ open class Peripheral: NSObject, VgcWatchDelegate {
     ///
     @objc open func connectToService(_ vgcService: VgcService) {
         if VgcManager.useWebSocketServer {
+            
+            VgcManager.peripheral.webSocketPeripheralSmallData.connectToService(service: vgcService)
+            
             VgcManager.peripheral.haveConnectionToCentral = true
             NotificationCenter.default.post(name: Notification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
             VgcManager.peripheral.gotConnectionToCentral()

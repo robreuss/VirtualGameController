@@ -1,9 +1,0 @@
-version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
-options: "90452eea5771443042927d5919a22c24"
-build_time: [1507599590, 53997000]
-inputs:
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/App/Controllers/PostController.swift": [1507598927, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/App/Models/Post.swift": [1507598927, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/App/Routes/Routes.swift": [1507598927, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/App/Setup/Config+Setup.swift": [1507598927, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/Sources/App/Setup/Droplet+Setup.swift": [1507599581, 0]

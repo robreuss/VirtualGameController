@@ -16,8 +16,6 @@
 		2068BFA21F8541F200791871 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2068BFA01F8541F200791871 /* Main.storyboard */; };
 		2068BFA41F8541F200791871 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2068BFA31F8541F200791871 /* Assets.xcassets */; };
 		2068BFA71F8541F200791871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2068BFA51F8541F200791871 /* LaunchScreen.storyboard */; };
-		20E963491F8EB7F1005EAB1D /* Starscream.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20E963481F8EB7F1005EAB1D /* Starscream.framework */; };
-		20E9634A1F8EB7F1005EAB1D /* Starscream.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 20E963481F8EB7F1005EAB1D /* Starscream.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +26,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				203C33671F85472B000C0C5E /* VirtualGameController.framework in Embed Frameworks */,
-				20E9634A1F8EB7F1005EAB1D /* Starscream.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,7 +43,6 @@
 		2068BFA31F8541F200791871 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2068BFA61F8541F200791871 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2068BFA81F8541F200791871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20E963481F8EB7F1005EAB1D /* Starscream.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Starscream.framework; path = "../../../Library/Developer/Xcode/DerivedData/Starscream-gyckupwuvtyefnepanvngkcmxneu/Build/Products/Debug-iphoneos/Starscream.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +51,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				203C33661F85472B000C0C5E /* VirtualGameController.framework in Frameworks */,
-				20E963491F8EB7F1005EAB1D /* Starscream.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,7 +60,6 @@
 		2068BF901F8541F200791871 = {
 			isa = PBXGroup;
 			children = (
-				20E963481F8EB7F1005EAB1D /* Starscream.framework */,
 				203C33651F85472B000C0C5E /* VirtualGameController.framework */,
 				2068BF9B1F8541F200791871 /* Performance_Central */,
 				2068BF9A1F8541F200791871 /* Products */,

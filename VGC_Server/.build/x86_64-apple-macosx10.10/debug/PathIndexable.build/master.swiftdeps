@@ -1,6 +1,0 @@
-version: "Apple Swift version 4.0.1 (swiftlang-900.0.68 clang-900.0.38)"
-options: "f09929e2b03f8dffb71eeedeaed6d4c9"
-build_time: [1507599523, 490500000]
-inputs:
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/node.git-9175390252000121167/Sources/PathIndexable/PathIndexable+Subscripting.swift": [1507599509, 0]
-  "/Users/robreuss/Development/VirtualGameController/VGC_Server/.build/checkouts/node.git-9175390252000121167/Sources/PathIndexable/PathIndexable.swift": [1507599509, 0]
