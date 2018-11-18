@@ -12,7 +12,7 @@ xcode_sdk:
 - appletvos12.1
 - watchos5.1
 script:
-- xcodebuild [DEFAULT_OPTIONS] CODE_SIGNING_REQUIRED=NO
+- xcodebuild CODE_SIGNING_REQUIRED=NO
 matrix:
      exclude:
            - xcode_scheme: VirtualGameControllerIOS
