@@ -136,7 +136,7 @@ VirtualGameController is a wrapper around Apple's Game Controller framework, and
 ## License
 The MIT License (MIT)
 
-Copyright (c) [2018] [Rob Reuss]
+Copyright (c) [2017] [Rob Reuss]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
