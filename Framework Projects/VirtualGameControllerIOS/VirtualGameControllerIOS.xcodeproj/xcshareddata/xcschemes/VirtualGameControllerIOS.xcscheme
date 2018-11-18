@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "20AD71F821A1B0E700753DDD"
+               BuildableName = "VirtualGameControllerIOS_Tests.xctest"
+               BlueprintName = "VirtualGameControllerIOS_Tests"
+               ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
