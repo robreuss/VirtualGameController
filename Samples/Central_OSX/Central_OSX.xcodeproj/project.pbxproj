@@ -39,6 +39,13 @@
 			remoteGlobalIDString = 20A121791BDAED5B00E30083;
 			remoteInfo = VirtualGameController;
 		};
+		20AD724B21A1F1EF00753DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CE71C192E1600F82CED /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20AD724221A1EF3B00753DDD;
+			remoteInfo = VirtualGameControllerOSX_Tests;
+		};
 		20D60C271BB3E8B000C3FAE0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20D60C0D1BB3E8B000C3FAE0 /* Project object */;
@@ -113,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				20855CEC1C192E1600F82CED /* VirtualGameController.framework */,
+				20AD724C21A1F1EF00753DDD /* VirtualGameControllerOSX_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,7 +230,7 @@
 					20D60C141BB3E8B000C3FAE0 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					20D60C251BB3E8B000C3FAE0 = {
 						CreatedOnToolsVersion = 7.1;
@@ -266,6 +274,13 @@
 			fileType = wrapper.framework;
 			path = VirtualGameController.framework;
 			remoteRef = 20855CEB1C192E1600F82CED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20AD724C21A1F1EF00753DDD /* VirtualGameControllerOSX_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VirtualGameControllerOSX_Tests.xctest;
+			remoteRef = 20AD724B21A1F1EF00753DDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -464,6 +479,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -489,6 +505,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
