@@ -10,7 +10,7 @@ xcode_sdk:
 - macosx10.13
 - appletvos11.0
 matrix:
-exclude:
+exclude: 
 - xcode_scheme: VirtualGameControllerIOS
 xcode_sdk: macosx10.13
 - xcode_scheme: VirtualGameControllerIOS
