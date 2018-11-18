@@ -175,7 +175,7 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					20AD724121A1EF3B00753DDD = {
 						CreatedOnToolsVersion = 10.1;
@@ -359,7 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer: Robert Reuss (77XE2X8DAR)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
@@ -382,7 +382,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer: Robert Reuss (77XE2X8DAR)";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;

@@ -229,7 +229,6 @@
 				TargetAttributes = {
 					20D60C141BB3E8B000C3FAE0 = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = CN7G7TCUME;
 						ProvisioningStyle = Manual;
 					};
 					20D60C251BB3E8B000C3FAE0 = {
@@ -481,7 +480,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = CN7G7TCUME;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerOSXSample",
