@@ -41,12 +41,12 @@
 			remoteGlobalIDString = 20A1208A1BDA976000E30083;
 			remoteInfo = VirtualGameController;
 		};
-		20AD721621A1C41300753DDD /* PBXContainerItemProxy */ = {
+		20AD724E21A1F6AC00753DDD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 20AD720721A1C13C00753DDD;
-			remoteInfo = VirtualGameControllerTvOS_Tests;
+			remoteGlobalIDString = 20AD723321A1ED5300753DDD;
+			remoteInfo = VirtualGameController_Tests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -141,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				20855CD41C192D9E00F82CED /* VirtualGameController.framework */,
-				20AD721721A1C41300753DDD /* VirtualGameControllerTvOS_Tests.xctest */,
+				20AD724F21A1F6AC00753DDD /* VirtualGameController_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -218,11 +218,11 @@
 			remoteRef = 20855CD31C192D9E00F82CED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		20AD721721A1C41300753DDD /* VirtualGameControllerTvOS_Tests.xctest */ = {
+		20AD724F21A1F6AC00753DDD /* VirtualGameController_Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = VirtualGameControllerTvOS_Tests.xctest;
-			remoteRef = 20AD721621A1C41300753DDD /* PBXContainerItemProxy */;
+			path = VirtualGameController_Tests.xctest;
+			remoteRef = 20AD724E21A1F6AC00753DDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -384,8 +384,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -409,8 +409,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
