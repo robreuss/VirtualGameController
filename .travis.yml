@@ -23,7 +23,7 @@ matrix:
         xcode_sdk: macosx10.14
         - xcode_scheme: VirtualGameControllerTvOS
         xcode_sdk: appletvos12.1
-        - xcode_scheme: VirtualGameControllerWatchOS
+        - xcode_scheme: VirtualGameControllerWatchOS 
         xcode_sdk: iphonesimulator12.1
         - xcode_scheme: VirtualGameControllerWatchOS
         xcode_sdk: appletvos12.1
