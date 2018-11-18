@@ -174,7 +174,7 @@
 					20A121791BDAED5B00E30083 = {
 						CreatedOnToolsVersion = 7.1;
 						LastSwiftMigration = 0830;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					20AD724121A1EF3B00753DDD = {
 						CreatedOnToolsVersion = 10.1;
@@ -360,7 +360,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -383,7 +383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
