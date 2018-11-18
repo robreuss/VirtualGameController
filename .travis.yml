@@ -1,12 +1,12 @@
 language: swift
-osx_image: xcode9
+osx_image: xcode10.1
 xcode_workspace: VirtualGameController.xcworkspace
 xcode_scheme:
 - VirtualGameControllerIOS
 - VirtualGameControllerOSX
 - VirtualGameControllerTvOS
 xcode_sdk:
-- iphonesimulator11.0
+- iphonesimulator12.1
 - macosx10.13
 - appletvos11.0
 matrix:
