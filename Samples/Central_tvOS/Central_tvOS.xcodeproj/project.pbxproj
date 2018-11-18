@@ -49,6 +49,13 @@
 			remoteGlobalIDString = 20A1208A1BDA976000E30083;
 			remoteInfo = VirtualGameController;
 		};
+		20AD721621A1C41300753DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20AD720721A1C13C00753DDD;
+			remoteInfo = VirtualGameControllerTvOS_Tests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				20855CD41C192D9E00F82CED /* VirtualGameController.framework */,
+				20AD721721A1C41300753DDD /* VirtualGameControllerTvOS_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -209,6 +217,7 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
+						ProvisioningStyle = Automatic;
 					};
 					2027BCDE1BA613FE0097452D = {
 						CreatedOnToolsVersion = 7.1;
@@ -248,6 +257,13 @@
 			fileType = wrapper.framework;
 			path = VirtualGameController.framework;
 			remoteRef = 20855CD31C192D9E00F82CED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20AD721721A1C41300753DDD /* VirtualGameControllerTvOS_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VirtualGameControllerTvOS_Tests.xctest;
+			remoteRef = 20AD721621A1C41300753DDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -431,6 +447,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
@@ -441,6 +459,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -453,6 +472,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
@@ -463,6 +484,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
