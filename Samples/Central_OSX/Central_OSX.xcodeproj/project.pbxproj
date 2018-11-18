@@ -230,7 +230,7 @@
 					20D60C141BB3E8B000C3FAE0 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					20D60C251BB3E8B000C3FAE0 = {
 						CreatedOnToolsVersion = 7.1;
@@ -479,7 +479,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -505,7 +505,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_MODULE_DEBUGGING = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
