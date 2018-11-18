@@ -11,8 +11,6 @@ xcode_sdk:
 - macosx10.14
 - appletvos12.1
 - watchos5.1
-script:
-- xcodebuild CODE_SIGNING_REQUIRED=NO
 matrix:
      exclude:
            - xcode_scheme: VirtualGameControllerIOS
