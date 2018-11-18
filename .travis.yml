@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode9
+osx_image: xcode10.1
 xcode_workspace: VirtualGameController.xcworkspace
 xcode_scheme:
 - VirtualGameControllerIOS
