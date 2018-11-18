@@ -20,6 +20,7 @@
 		208E55991C24BC4F0050D8AD /* VgcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E55981C24BC4F0050D8AD /* VgcWatch.swift */; };
 		20A1217E1BDAED5B00E30083 /* VirtualGameControllerOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = 20A1217D1BDAED5B00E30083 /* VirtualGameControllerOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20A4910D1C3A1ABB00E66788 /* VgcMotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A4910C1C3A1ABB00E66788 /* VgcMotion.swift */; };
+		20AD724521A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD724421A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +40,20 @@
 		20A1217F1BDAED5B00E30083 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20A4904C1C399DEF00E66788 /* VgcMotion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = "/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS/../../../Source/Framework/VgcMotion.swift"; sourceTree = "<absolute>"; };
 		20A4910C1C3A1ABB00E66788 /* VgcMotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcMotion.swift; path = ../../Source/Framework/VgcMotion.swift; sourceTree = "<group>"; };
+		20AD724221A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualGameControllerOSX_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20AD724421A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualGameControllerOSX_Tests.swift; sourceTree = "<group>"; };
+		20AD724621A1EF3B00753DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		20A121761BDAED5B00E30083 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20AD723F21A1EF3B00753DDD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -57,6 +68,7 @@
 			children = (
 				20A4910C1C3A1ABB00E66788 /* VgcMotion.swift */,
 				20A1217C1BDAED5B00E30083 /* VirtualGameControllerOSX */,
+				20AD724321A1EF3B00753DDD /* VirtualGameControllerOSX_Tests */,
 				20A1217B1BDAED5B00E30083 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				20A1217A1BDAED5B00E30083 /* VirtualGameController.framework */,
+				20AD724221A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -88,6 +101,15 @@
 				20A1217F1BDAED5B00E30083 /* Info.plist */,
 			);
 			path = VirtualGameControllerOSX;
+			sourceTree = "<group>";
+		};
+		20AD724321A1EF3B00753DDD /* VirtualGameControllerOSX_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				20AD724421A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.swift */,
+				20AD724621A1EF3B00753DDD /* Info.plist */,
+			);
+			path = VirtualGameControllerOSX_Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,12 +144,30 @@
 			productReference = 20A1217A1BDAED5B00E30083 /* VirtualGameController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		20AD724121A1EF3B00753DDD /* VirtualGameControllerOSX_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20AD724921A1EF3B00753DDD /* Build configuration list for PBXNativeTarget "VirtualGameControllerOSX_Tests" */;
+			buildPhases = (
+				20AD723E21A1EF3B00753DDD /* Sources */,
+				20AD723F21A1EF3B00753DDD /* Frameworks */,
+				20AD724021A1EF3B00753DDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VirtualGameControllerOSX_Tests;
+			productName = VirtualGameControllerOSX_Tests;
+			productReference = 20AD724221A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		20A121711BDAED5B00E30083 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Rob Reuss";
 				TargetAttributes = {
@@ -135,6 +175,11 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
+					};
+					20AD724121A1EF3B00753DDD = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = CN7G7TCUME;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -151,12 +196,20 @@
 			projectRoot = "";
 			targets = (
 				20A121791BDAED5B00E30083 /* VirtualGameController */,
+				20AD724121A1EF3B00753DDD /* VirtualGameControllerOSX_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		20A121781BDAED5B00E30083 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20AD724021A1EF3B00753DDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -182,6 +235,14 @@
 				202BBFB31BE56C63004D47EC /* VgcController.swift in Sources */,
 				202BBFB11BE56C63004D47EC /* VgcCentralPublisher.swift in Sources */,
 				2023EA3F1BED64BE009AE7F7 /* VgcBrowser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20AD723E21A1EF3B00753DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AD724521A1EF3B00753DDD /* VirtualGameControllerOSX_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +395,61 @@
 			};
 			name = Release;
 		};
+		20AD724721A1EF3B00753DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VirtualGameControllerOSX_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.VirtualGameControllerOSX-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Debug;
+		};
+		20AD724821A1EF3B00753DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VirtualGameControllerOSX_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.VirtualGameControllerOSX-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -351,6 +467,15 @@
 			buildConfigurations = (
 				20A121831BDAED5B00E30083 /* Debug */,
 				20A121841BDAED5B00E30083 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20AD724921A1EF3B00753DDD /* Build configuration list for PBXNativeTarget "VirtualGameControllerOSX_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20AD724721A1EF3B00753DDD /* Debug */,
+				20AD724821A1EF3B00753DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
