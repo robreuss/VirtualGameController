@@ -32,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "2027BCDE1BA613FE0097452D"
-               BuildableName = "Central_tvOS.xctest"
-               BlueprintName = "Central_tvOSTests"
-               ReferencedContainer = "container:../../Samples/Central_tvOS/Central_tvOS.xcodeproj">
+               BlueprintIdentifier = "20AD723221A1ED5300753DDD"
+               BuildableName = "VirtualGameController_Tests.xctest"
+               BlueprintName = "VirtualGameController_Tests"
+               ReferencedContainer = "container:VirtualGameControllerTvOS.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

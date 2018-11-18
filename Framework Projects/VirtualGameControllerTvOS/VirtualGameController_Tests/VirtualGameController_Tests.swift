@@ -1,6 +1,6 @@
 //
-//  VirtualGameControllerTvOS_Tests.swift
-//  VirtualGameControllerTvOS_Tests
+//  VirtualGameController_Tests.swift
+//  VirtualGameController_Tests
 //
 //  Created by Rob Reuss on 11/18/18.
 //  Copyright © 2018 Rob Reuss. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class VirtualGameControllerTvOS_Tests: XCTestCase {
+class VirtualGameController_Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
