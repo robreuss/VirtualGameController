@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode9
+osx_image: xcode10.1
 xcode_workspace: VirtualGameController.xcworkspace
 xcode_scheme:
 - VirtualGameControllerIOS
@@ -7,33 +7,33 @@ xcode_scheme:
 - VirtualGameControllerTvOS
 - VirtualGameControllerWatchOS
 xcode_sdk:
-- iphonesimulator11.0
-- macosx10.13
-- appletvos11.0
-- watchos4.0
+- iphonesimulator12.1
+- macosx10.14
+- appletvos12.1
+- watchos5.1
 matrix:
      exclude:
            - xcode_scheme: VirtualGameControllerIOS
-             xcode_sdk: macosx10.13
+             xcode_sdk: macosx10.14
            - xcode_scheme: VirtualGameControllerIOS
-             xcode_sdk: appletvos11.0
+             xcode_sdk: appletvos12.1
            - xcode_scheme: VirtualGameControllerIOS
-             xcode_sdk: watchos4.0
+             xcode_sdk: watchos5.1
            - xcode_scheme: VirtualGameControllerOSX
-             xcode_sdk: iphonesimulator11.0
+             xcode_sdk: iphonesimulator12.1
            - xcode_scheme: VirtualGameControllerOSX
-             xcode_sdk: appletvos11.0
+             xcode_sdk: appletvos12.1
            - xcode_scheme: VirtualGameControllerOSX
-             xcode_sdk: watchos4.0
+             xcode_sdk: watchos5.1
            - xcode_scheme: VirtualGameControllerTvOS
-             xcode_sdk: macosx10.13
+             xcode_sdk: macosx10.14
            - xcode_scheme: VirtualGameControllerTvOS
-             xcode_sdk: appletvos11.0
+             xcode_sdk: appletvos12.1
            - xcode_scheme: VirtualGameControllerTvOS
-             xcode_sdk: watchos4.0
+             xcode_sdk: watchos5.1
            - xcode_scheme: VirtualGameControllerWatchOS
-             xcode_sdk: iphonesimulator11.0
+             xcode_sdk: iphonesimulator12.1
            - xcode_scheme: VirtualGameControllerWatchOS
-             xcode_sdk: appletvos11.0
+             xcode_sdk: appletvos12.1
            - xcode_scheme: VirtualGameControllerWatchOS
-             xcode_sdk: watchos4.0
+             xcode_sdk: watchos5.1

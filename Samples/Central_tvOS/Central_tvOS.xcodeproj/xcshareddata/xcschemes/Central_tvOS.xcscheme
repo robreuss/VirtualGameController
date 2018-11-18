@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0910"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "202BBF601BE569BC004D47EC"
-               BuildableName = "VirtualGameController.framework"
-               BlueprintName = "VirtualGameControllerIOS"
-               ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
+               BlueprintIdentifier = "2027BCCD1BA613FD0097452D"
+               BuildableName = "Central_tvOS.app"
+               BlueprintName = "Central_tvOS"
+               ReferencedContainer = "container:Central_tvOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,24 +28,14 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "20AD71F821A1B0E700753DDD"
-               BuildableName = "VirtualGameControllerIOS_Tests.xctest"
-               BlueprintName = "VirtualGameControllerIOS_Tests"
-               ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "202BBF601BE569BC004D47EC"
-            BuildableName = "VirtualGameController.framework"
-            BlueprintName = "VirtualGameControllerIOS"
-            ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
+            BlueprintIdentifier = "2027BCCD1BA613FD0097452D"
+            BuildableName = "Central_tvOS.app"
+            BlueprintName = "Central_tvOS"
+            ReferencedContainer = "container:Central_tvOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -61,15 +51,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "202BBF601BE569BC004D47EC"
-            BuildableName = "VirtualGameController.framework"
-            BlueprintName = "VirtualGameControllerIOS"
-            ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
+            BlueprintIdentifier = "2027BCCD1BA613FD0097452D"
+            BuildableName = "Central_tvOS.app"
+            BlueprintName = "Central_tvOS"
+            ReferencedContainer = "container:Central_tvOS.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -79,15 +70,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "202BBF601BE569BC004D47EC"
-            BuildableName = "VirtualGameController.framework"
-            BlueprintName = "VirtualGameControllerIOS"
-            ReferencedContainer = "container:VirtualGameControllerIOS.xcodeproj">
+            BlueprintIdentifier = "2027BCCD1BA613FD0097452D"
+            BuildableName = "Central_tvOS.app"
+            BlueprintName = "Central_tvOS"
+            ReferencedContainer = "container:Central_tvOS.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

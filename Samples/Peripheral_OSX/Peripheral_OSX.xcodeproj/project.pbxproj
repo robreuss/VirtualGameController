@@ -53,6 +53,13 @@
 			remoteGlobalIDString = 20A121791BDAED5B00E30083;
 			remoteInfo = VirtualGameController;
 		};
+		20AD725121A1F7A000753DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CFF1C192E9900F82CED /* VirtualGameControllerOSX.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20AD724221A1EF3B00753DDD;
+			remoteInfo = VirtualGameControllerOSX_Tests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -147,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				20855D041C192E9A00F82CED /* VirtualGameController.framework */,
+				20AD725221A1F7A000753DDD /* VirtualGameControllerOSX_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -268,6 +276,13 @@
 			fileType = wrapper.framework;
 			path = VirtualGameController.framework;
 			remoteRef = 20855D031C192E9A00F82CED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		20AD725221A1F7A000753DDD /* VirtualGameControllerOSX_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VirtualGameControllerOSX_Tests.xctest;
+			remoteRef = 20AD725121A1F7A000753DDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -463,7 +478,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer: Robert Reuss (77XE2X8DAR)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -484,7 +499,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "Mac Developer: Robert Reuss (77XE2X8DAR)";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (

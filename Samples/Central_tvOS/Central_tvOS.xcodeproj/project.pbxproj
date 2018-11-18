@@ -11,7 +11,6 @@
 		2027BCD41BA613FD0097452D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027BCD31BA613FD0097452D /* ViewController.swift */; };
 		2027BCD71BA613FD0097452D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2027BCD51BA613FD0097452D /* Main.storyboard */; };
 		2027BCD91BA613FD0097452D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2027BCD81BA613FD0097452D /* Assets.xcassets */; };
-		2027BCE41BA613FE0097452D /* CentralVirtualGameControllerTVSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027BCE31BA613FE0097452D /* CentralVirtualGameControllerTVSampleTests.swift */; };
 		202BBF9B1BE56BC7004D47EC /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */; };
 		202BBF9C1BE56BC7004D47EC /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF991BE56BC7004D47EC /* VgcCustomMappings.swift */; };
 		202BBF9D1BE56BC7004D47EC /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202BBF9A1BE56BC7004D47EC /* VgcSharedViews.swift */; };
@@ -21,13 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2027BCE01BA613FE0097452D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2027BCC61BA613FD0097452D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2027BCCD1BA613FD0097452D;
-			remoteInfo = CentralVirtualGameControllerTVSample;
-		};
 		20855CD31C192D9E00F82CED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
@@ -48,6 +40,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 20A1208A1BDA976000E30083;
 			remoteInfo = VirtualGameController;
+		};
+		20AD724E21A1F6AC00753DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 20855CCF1C192D9E00F82CED /* VirtualGameControllerTvOS.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 20AD723321A1ED5300753DDD;
+			remoteInfo = VirtualGameController_Tests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -72,7 +71,6 @@
 		2027BCD61BA613FD0097452D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2027BCD81BA613FD0097452D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2027BCDA1BA613FD0097452D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2027BCDF1BA613FE0097452D /* Central_tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Central_tvOS.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2027BCE31BA613FE0097452D /* CentralVirtualGameControllerTVSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentralVirtualGameControllerTVSampleTests.swift; sourceTree = "<group>"; };
 		2027BCE51BA613FE0097452D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		202BBF981BE56BC7004D47EC /* VgcCustomElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcCustomElements.swift; path = ../../../Source/External/VgcCustomElements.swift; sourceTree = "<group>"; };
@@ -88,13 +86,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				20855CD71C192DBE00F82CED /* VirtualGameController.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2027BCDC1BA613FE0097452D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				2027BCCE1BA613FD0097452D /* Central_tvOS.app */,
-				2027BCDF1BA613FE0097452D /* Central_tvOS.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				20855CD41C192D9E00F82CED /* VirtualGameController.framework */,
+				20AD724F21A1F6AC00753DDD /* VirtualGameController_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -178,24 +169,6 @@
 			productReference = 2027BCCE1BA613FD0097452D /* Central_tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2027BCDE1BA613FE0097452D /* Central_tvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2027BCEB1BA613FE0097452D /* Build configuration list for PBXNativeTarget "Central_tvOSTests" */;
-			buildPhases = (
-				2027BCDB1BA613FE0097452D /* Sources */,
-				2027BCDC1BA613FE0097452D /* Frameworks */,
-				2027BCDD1BA613FE0097452D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2027BCE11BA613FE0097452D /* PBXTargetDependency */,
-			);
-			name = Central_tvOSTests;
-			productName = CentralVirtualGameControllerTVSampleTests;
-			productReference = 2027BCDF1BA613FE0097452D /* Central_tvOS.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -209,11 +182,7 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
-					};
-					2027BCDE1BA613FE0097452D = {
-						CreatedOnToolsVersion = 7.1;
-						LastSwiftMigration = 0830;
-						TestTargetID = 2027BCCD1BA613FD0097452D;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -237,7 +206,6 @@
 			projectRoot = "";
 			targets = (
 				2027BCCD1BA613FD0097452D /* Central_tvOS */,
-				2027BCDE1BA613FE0097452D /* Central_tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +218,13 @@
 			remoteRef = 20855CD31C192D9E00F82CED /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		20AD724F21A1F6AC00753DDD /* VirtualGameController_Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = VirtualGameController_Tests.xctest;
+			remoteRef = 20AD724E21A1F6AC00753DDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -259,13 +234,6 @@
 			files = (
 				2027BCD91BA613FD0097452D /* Assets.xcassets in Resources */,
 				2027BCD71BA613FD0097452D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2027BCDD1BA613FE0097452D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,22 +253,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2027BCDB1BA613FE0097452D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2027BCE41BA613FE0097452D /* CentralVirtualGameControllerTVSampleTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2027BCE11BA613FE0097452D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2027BCCD1BA613FD0097452D /* Central_tvOS */;
-			targetProxy = 2027BCE01BA613FE0097452D /* PBXContainerItemProxy */;
-		};
 		20855CD61C192DA700F82CED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = VirtualGameController;
@@ -429,8 +384,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
@@ -441,6 +398,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -451,8 +409,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "iPhone Developer: Robert Reuss (77XE2X8DAR)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/CentralVirtualGameControllerTVSample",
@@ -463,33 +423,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.CentralVirtualGameControllerTVSample;
 				PRODUCT_NAME = Central_tvOS;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		2027BCEC1BA613FE0097452D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CentralVirtualGameControllerTVSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSampleTests;
-				PRODUCT_NAME = Central_tvOS;
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Central_tvOS.app/Central_tvOS";
-			};
-			name = Debug;
-		};
-		2027BCED1BA613FE0097452D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CentralVirtualGameControllerTVSampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.simplyformed.net.CentralVirtualGameControllerTVSampleTests;
-				PRODUCT_NAME = Central_tvOS;
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Central_tvOS.app/Central_tvOS";
 			};
 			name = Release;
 		};
@@ -510,15 +445,6 @@
 			buildConfigurations = (
 				2027BCE91BA613FE0097452D /* Debug */,
 				2027BCEA1BA613FE0097452D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2027BCEB1BA613FE0097452D /* Build configuration list for PBXNativeTarget "Central_tvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2027BCEC1BA613FE0097452D /* Debug */,
-				2027BCED1BA613FE0097452D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

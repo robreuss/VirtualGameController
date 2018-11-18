@@ -20,6 +20,8 @@
 		2047C4661C23C00000842944 /* WatchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2047C4641C23BFEC00842944 /* WatchKit.framework */; };
 		207A78BB1C276D8200529768 /* VgcLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207A78BA1C276D8200529768 /* VgcLogger.swift */; };
 		208E558D1C24A8080050D8AD /* VgcWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E558C1C24A8080050D8AD /* VgcWatch.swift */; };
+		20AD71FC21A1B0E700753DDD /* VirtualGameControllerIOS_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD71FB21A1B0E700753DDD /* VirtualGameControllerIOS_Tests.swift */; };
+		20AD720221A1B13600753DDD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20AD720121A1B13600753DDD /* XCTest.framework */; };
 		20D1A3831C20F2260032EC10 /* VgcStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D1A3821C20F2260032EC10 /* VgcStreamer.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,11 @@
 		207A78BA1C276D8200529768 /* VgcLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcLogger.swift; path = ../../../Source/Framework/VgcLogger.swift; sourceTree = "<group>"; };
 		208E558C1C24A8080050D8AD /* VgcWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = ../../Source/Framework/VgcWatch.swift; sourceTree = "<group>"; };
 		20A4904E1C399E3800E66788 /* VgcWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VgcWatch.swift; path = "/Users/robreuss/Documents/Development/VirtualGameController/Framework Projects/VirtualGameControllerTvOS/VirtualGameControllerTvOS/../../../Source/Framework/VgcWatch.swift"; sourceTree = "<absolute>"; };
+		20AD71EF21A1AF1B00753DDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		20AD71F921A1B0E700753DDD /* VirtualGameControllerIOS_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VirtualGameControllerIOS_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20AD71FB21A1B0E700753DDD /* VirtualGameControllerIOS_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualGameControllerIOS_Tests.swift; sourceTree = "<group>"; };
+		20AD71FD21A1B0E700753DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20AD720121A1B13600753DDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/AppleTVOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20D1A3821C20F2260032EC10 /* VgcStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = VgcStreamer.swift; path = ../../../Source/Framework/VgcStreamer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +59,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		20AD71F621A1B0E700753DDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AD720221A1B13600753DDD /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -61,7 +76,9 @@
 				208E558C1C24A8080050D8AD /* VgcWatch.swift */,
 				2047C4641C23BFEC00842944 /* WatchKit.framework */,
 				202BBF631BE569BD004D47EC /* VirtualGameControllerIOS */,
+				20AD71FA21A1B0E700753DDD /* VirtualGameControllerIOS_Tests */,
 				202BBF621BE569BD004D47EC /* Products */,
+				20AD71EE21A1AF1B00753DDD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				202BBF611BE569BD004D47EC /* VirtualGameController.framework */,
+				20AD71F921A1B0E700753DDD /* VirtualGameControllerIOS_Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -92,6 +110,24 @@
 				202BBF661BE569BD004D47EC /* Info.plist */,
 			);
 			path = VirtualGameControllerIOS;
+			sourceTree = "<group>";
+		};
+		20AD71EE21A1AF1B00753DDD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20AD720121A1B13600753DDD /* XCTest.framework */,
+				20AD71EF21A1AF1B00753DDD /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		20AD71FA21A1B0E700753DDD /* VirtualGameControllerIOS_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				20AD71FB21A1B0E700753DDD /* VirtualGameControllerIOS_Tests.swift */,
+				20AD71FD21A1B0E700753DDD /* Info.plist */,
+			);
+			path = VirtualGameControllerIOS_Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,12 +162,30 @@
 			productReference = 202BBF611BE569BD004D47EC /* VirtualGameController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		20AD71F821A1B0E700753DDD /* VirtualGameControllerIOS_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 20AD71FE21A1B0E700753DDD /* Build configuration list for PBXNativeTarget "VirtualGameControllerIOS_Tests" */;
+			buildPhases = (
+				20AD71F521A1B0E700753DDD /* Sources */,
+				20AD71F621A1B0E700753DDD /* Frameworks */,
+				20AD71F721A1B0E700753DDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VirtualGameControllerIOS_Tests;
+			productName = VirtualGameControllerIOS_Tests;
+			productReference = 20AD71F921A1B0E700753DDD /* VirtualGameControllerIOS_Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		202BBF581BE569BC004D47EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Rob Reuss";
 				TargetAttributes = {
@@ -139,6 +193,11 @@
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = CN7G7TCUME;
 						LastSwiftMigration = 0830;
+					};
+					20AD71F821A1B0E700753DDD = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = CN7G7TCUME;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -155,12 +214,20 @@
 			projectRoot = "";
 			targets = (
 				202BBF601BE569BC004D47EC /* VirtualGameControllerIOS */,
+				20AD71F821A1B0E700753DDD /* VirtualGameControllerIOS_Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		202BBF5F1BE569BC004D47EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20AD71F721A1B0E700753DDD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -186,6 +253,14 @@
 				201C2CB91C20C927004B4826 /* VgcCentralPublisher.swift in Sources */,
 				201C2CC01C20C927004B4826 /* VgcPeripheral.swift in Sources */,
 				20D1A3831C20F2260032EC10 /* VgcStreamer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20AD71F521A1B0E700753DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20AD71FC21A1B0E700753DDD /* VirtualGameControllerIOS_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +421,60 @@
 			};
 			name = Release;
 		};
+		20AD71FF21A1B0E700753DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VirtualGameControllerIOS_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.VirtualGameControllerIOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Debug;
+		};
+		20AD720021A1B0E700753DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CN7G7TCUME;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = VirtualGameControllerIOS_Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.simplyformed.VirtualGameControllerIOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 12.1;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +492,15 @@
 			buildConfigurations = (
 				202BBF6A1BE569BD004D47EC /* Debug */,
 				202BBF6B1BE569BD004D47EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		20AD71FE21A1B0E700753DDD /* Build configuration list for PBXNativeTarget "VirtualGameControllerIOS_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				20AD71FF21A1B0E700753DDD /* Debug */,
+				20AD720021A1B0E700753DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
