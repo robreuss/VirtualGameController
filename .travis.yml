@@ -6,7 +6,7 @@ xcode_scheme:
 - VirtualGameControllerOSX
 - VirtualGameControllerTvOS
 xcode_sdk:
-- iphonesimulator11.0
+#- iphonesimulator11.0
 - macosx10.13
 - appletvos11.0
 matrix:
