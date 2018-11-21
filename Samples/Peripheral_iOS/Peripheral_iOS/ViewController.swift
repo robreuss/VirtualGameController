@@ -59,7 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         // Make this non-zero if you'd like to see some basic performance statistics
         // written to console. - OPTIONAL
-        VgcManager.performanceSamplingDisplayFrequency = 10.0
+        VgcManager.performanceSamplingDisplayFrequency = 0.0
 
         // REQUIRED: Run as a PERIPHERAL
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
