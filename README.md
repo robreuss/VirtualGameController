@@ -95,6 +95,8 @@ carthage update --platform watchOS
 ## Reference Apps
 The project includes a pair apps that implement most of the available framework features and settings, as well as providing a generally helpful test environment.
 
+NOTE: You cannot run more than one app using simulators at one time because of IP address sharing.  Run a Central or Peripheral in a simulator, and use hardware devices to interact.
+
 ### Peripheral_iOS ###
 The ````Peripheral_iOS```` sample project provides a reference implementation of a software-based game controller.  Once you have implemented VGC in your game (Central) you can use the Peripheral_iOS app to test it:
 
