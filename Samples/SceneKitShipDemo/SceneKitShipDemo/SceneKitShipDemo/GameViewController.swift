@@ -27,8 +27,7 @@ class GameViewController: UIViewController {
         
         VgcManager.loggerLogLevel = .Debug
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.peripheralDidConnect(_:)), name: NSNotification.Name(rawValue: VgcPeripheralDidConnectNotification), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
 
         // Uncomment to run using the iOS Peripheral sample app to control the ship.  Be sure to turn Motion on through the iOS Peripheral sample app.
         VgcManager.startAs(.Central, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: false)
@@ -37,7 +36,7 @@ class GameViewController: UIViewController {
         //VgcManager.startAs(.MultiplayerPeer, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: true)
         //VgcManager.peripheral.browseForServices()
         
-        VgcManager.performanceSamplingDisplayFrequency = 10
+        VgcManager.performanceSamplingDisplayFrequency = 0
         
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
@@ -100,38 +99,21 @@ class GameViewController: UIViewController {
         //scnView.delegate = sharedCode
     }
     
-    // Auto-connect to opposite device, for testing scenarios where both devices
-    // act as both Peripheral and Central.
-    
-    @objc func foundService(_ notification: Notification) {
-        let vgcService = notification.object as! VgcService
-        VgcManager.peripheral.connectToService(vgcService)
+    // A peripheral connected so we're going to adjust the motion settings
+    // to maximize performance, and turn motion detection on
+    @objc func controllerDidConnect(notification: NSNotification) {
+        guard let newController: VgcController = notification.object as? VgcController else {
+            vgcLogDebug("Got nil controller in controllerDidConnect")
+            return
+        }
+        vgcLogDebug("Got controllerDidConnect notification")
+        VgcManager.peripheralSetup.motionActive = true
+        VgcManager.peripheralSetup.enableMotionAttitude = true
+        VgcManager.peripheralSetup.enableMotionGravity = false
+        VgcManager.peripheralSetup.enableMotionUserAcceleration = false
+        VgcManager.peripheralSetup.enableMotionRotationRate = false
+        VgcManager.peripheralSetup.sendToController(newController)
     }
- 
-    
-    @objc func peripheralDidConnect(_ notification: Notification) {
 
-        #if !os(tvOS)
-            
-             vgcLogDebug("Got VgcPeripheralDidConnectNotification notification")
-            VgcManager.peripheral.stopBrowsingForServices()
-            VgcManager.peripheral.motion.enableAttitude = true
-            VgcManager.peripheral.motion.enableUserAcceleration = false
-            VgcManager.peripheral.motion.enableGravity = false
-            VgcManager.peripheral.motion.enableRotationRate = false
-            VgcManager.peripheral.motion.start()
-            
-            if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
-                
-                // We're mimicing the Apple TV remote here, which starts with motion turned on
-                VgcManager.peripheral.motion.enableAttitude = false
-                VgcManager.peripheral.motion.enableUserAcceleration = true
-                VgcManager.peripheral.motion.enableGravity = true
-                VgcManager.peripheral.motion.enableRotationRate = false
-                VgcManager.peripheral.motion.start()
-            }
-        #endif
-        
-    }
     
 }
