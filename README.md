@@ -1,4 +1,4 @@
-[![Language](https://img.shields.io/badge/Language-Swift%203.2%20%7C%20Obj%20C-orange.svg?style=flat)](https://developer.apple.com/swift/)
+[![Language](https://img.shields.io/badge/Language-Swift%204.2%20%7C%20Obj%20C-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platforms OS X | iOS | watchOS | tvOS](https://img.shields.io/badge/Platforms-OS%20X%20%7C%20iOS%20%7C%20watchOS%20%7C%20tvOS-lightgray.svg?style=flat)](https://developer.apple.com/swift/)
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat)](https://github.com/robreuss/VirtualGameController/blob/master/LICENSE)
 [![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
