@@ -236,6 +236,9 @@ let messageValueSeperator = ":"
                 #if os(OSX)
                     return Host.current().localizedName!
                 #endif
+                // This nees to be here in spite of the compiler warning - won't
+                // compile without it
+                return ""
             }
         }
     }
