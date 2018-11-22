@@ -577,7 +577,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.scenekit.SceneKitVehicle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos.internal;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -600,7 +600,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.simplyformed.scenekit.SceneKitVehicle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SDKROOT = iphoneos.internal;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
