@@ -37,7 +37,7 @@ While VGC is typically used to have an iOS device act as a controller for anothe
 ## Requirements 
 
 - iOS 9.0+ / MacOS 10.9+
-- Xcode 9 / Swift 3.2 & 4.0 / Objective C
+- Xcode 9 / Swift 4.2 / Objective C
 
 ## Platform Support
 
