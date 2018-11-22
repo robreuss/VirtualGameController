@@ -36,7 +36,7 @@ class GameViewController: UIViewController {
         //VgcManager.startAs(.MultiplayerPeer, appIdentifier: "vgc", customElements: nil, customMappings: nil, includesPeerToPeer: true, enableLocalController: true)
         //VgcManager.peripheral.browseForServices()
         
-        VgcManager.performanceSamplingDisplayFrequency = 0
+        VgcManager.performanceSamplingDisplayFrequency = 0.0
         
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/ship.scn")!
