@@ -13,7 +13,7 @@ Virtual Game Controller (VGC) makes it simple to create software-based controlle
 
 While VGC is typically used to have an iOS device act as a controller for another iOS or tvOS device, it can also be used where two iOS devices act as peers, with a shared game environment presented on each device.  In that type of implementation, user inputs through on-screen controls flow through the framework and are processed by the handlers on both devices.  VGC supports easy creation of custom element types, including images and Data types, so that game logic such as state can be coordinated between the two devices.  This capability is perfect for table-top games with two players, including ARKit games where you want both players to see and act on a common game space.  
 
-The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, including both SceneKit and SprikeKit examples.
+**Important**: The framework comes with a rich set of sample apps for iOS, tvOS, and MacOS, including both SceneKit and SprikeKit examples.  A considerable amount of documentation appears as comments in the iOS Peripheral and iOS Central sample projects.
 
 ## Features
 
