@@ -26,8 +26,8 @@
 		2095F8C71F79F1BA004CC770 /* VgcSharedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2095F8C61F79F1BA004CC770 /* VgcSharedViews.swift */; };
 		20B1C58F1F83D9C6006CCF5C /* VgcCustomElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C58D1F83D9C6006CCF5C /* VgcCustomElements.swift */; };
 		20B1C5901F83D9C6006CCF5C /* VgcCustomMappings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20B1C58E1F83D9C6006CCF5C /* VgcCustomMappings.swift */; };
-		20F7111921A6312200E880AE /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2031E0331C24A21600EE5FCA /* VirtualGameController.framework */; };
-		20F7111A21A6312200E880AE /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2031E0331C24A21600EE5FCA /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		20B4957A21A73DEC0081D1E2 /* VirtualGameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; };
+		20B4957B21A73DEC0081D1E2 /* VirtualGameController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 208E55861C24A4740050D8AD /* VirtualGameController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,12 +73,12 @@
 			remoteGlobalIDString = 20A120BA1BDA97BF00E30083;
 			remoteInfo = VirtualGameControllerWatchOS;
 		};
-		20F7111B21A6312200E880AE /* PBXContainerItemProxy */ = {
+		20B4957C21A73DEC0081D1E2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2031E02E1C24A21500EE5FCA /* VirtualGameControllerIOS.xcodeproj */;
+			containerPortal = 208E55811C24A4730050D8AD /* VirtualGameControllerWatchOS.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 202BBF601BE569BC004D47EC;
-			remoteInfo = VirtualGameControllerIOS;
+			remoteGlobalIDString = 20A120B91BDA97BF00E30083;
+			remoteInfo = VirtualGameControllerWatchOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -116,13 +116,13 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		20F7111D21A6312200E880AE /* Embed Frameworks */ = {
+		20B4957E21A73DEC0081D1E2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				20F7111A21A6312200E880AE /* VirtualGameController.framework in Embed Frameworks */,
+				20B4957B21A73DEC0081D1E2 /* VirtualGameController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,7 +172,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20F7111921A6312200E880AE /* VirtualGameController.framework in Frameworks */,
+				20B4957A21A73DEC0081D1E2 /* VirtualGameController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,12 +317,12 @@
 				2031E0081C24A19100EE5FCA /* Sources */,
 				2031E0091C24A19100EE5FCA /* Frameworks */,
 				2031E00A1C24A19100EE5FCA /* Resources */,
-				20F7111D21A6312200E880AE /* Embed Frameworks */,
+				20B4957E21A73DEC0081D1E2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				20F7111C21A6312200E880AE /* PBXTargetDependency */,
+				20B4957D21A73DEC0081D1E2 /* PBXTargetDependency */,
 			);
 			name = "Peripheral_iOS WatchKit Extension";
 			productName = "Peripheral_iOS WatchKit Extension";
@@ -482,10 +482,10 @@
 			name = VirtualGameControllerIOS;
 			targetProxy = 2031E0361C24A22600EE5FCA /* PBXContainerItemProxy */;
 		};
-		20F7111C21A6312200E880AE /* PBXTargetDependency */ = {
+		20B4957D21A73DEC0081D1E2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = VirtualGameControllerIOS;
-			targetProxy = 20F7111B21A6312200E880AE /* PBXContainerItemProxy */;
+			name = VirtualGameControllerWatchOS;
+			targetProxy = 20B4957C21A73DEC0081D1E2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
