@@ -142,7 +142,7 @@ public let VgcWatchDidDisconnectNotification:  String = "VgcWatchDidDisconnectNo
     open func sendElementState(_ element: Element) {
         
         if wcSession != nil && wcSession.isReachable {
-            let message = ["\(element.identifier)": element.value]
+            let message = ["\(String(describing: element.identifier))": element.value]
             wcSession.sendMessage(message , replyHandler: { (content:[String : Any]) -> Void in
                 vgcLogDebug("Watch Connectivity: Our counterpart sent something back. This is optional")
                 }, errorHandler: {  (error ) -> Void in

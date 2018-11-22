@@ -168,7 +168,7 @@ open class Element: NSObject {
     #if os(iOS) || os(OSX) || os(tvOS)
     
     // Make class hashable - function to make it equatable appears below outside the class definition
-    open override var hashValue: Int {
+    open override var hash: Int {
         return type.hashValue
     }
     #endif
@@ -503,8 +503,8 @@ open class Elements: NSObject {
     @objc open var watchProfileElements: [Element]
     fileprivate var elementsByHashValue = Dictionary<Int, Element>()
     
-    @objc open static var customElements: CustomElementsSuperclass!
-    @objc open static var customMappings: CustomMappingsSuperclass!
+    @objc public static var customElements: CustomElementsSuperclass!
+    @objc public static var customMappings: CustomMappingsSuperclass!
     
     @objc open var custom = Dictionary<Int, Element>()
     @objc open var customProfileElements = [Element]()

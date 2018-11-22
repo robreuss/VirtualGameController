@@ -36,7 +36,7 @@ import VirtualGameController
         
         // Horizontal scrollview that contains the debug views
         scrollview = UIScrollView(frame: CGRect(x: 0, y: 70, width: self.view.bounds.width, height: self.view.bounds.size.height - 70))
-        scrollview.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+        scrollview.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
         scrollview.contentSize = CGSize(width: scrollview.bounds.size.width, height: scrollview.bounds.size.height)
         scrollview.backgroundColor = UIColor.gray
         self.view.addSubview(scrollview)
@@ -160,7 +160,7 @@ import VirtualGameController
         if VgcManager.iCadeControllerMode != .Disabled && VgcController.iCadeController != nil {
             
             
-            vgcLogDebug("Sending iCade character: \(iCadeTextField.text) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
+            vgcLogDebug("Sending iCade character: \(String(describing: iCadeTextField.text)) using iCade mode: \(VgcManager.iCadeControllerMode.description)")
             var element: Element?
             var value: Int
             (element, value) = VgcManager.iCadePeripheral.elementForCharacter( iCadeTextField.text!, controllerElements: VgcController.iCadeController.elements)
@@ -230,7 +230,7 @@ import VirtualGameController
         
         // Debug views are the UI element representing each controller
         let elementDebugView = ElementDebugView(frame: CGRect(x: -(self.debugViewWidth), y: 0, width: self.debugViewWidth, height: scrollview.bounds.size.height - 50), controller: newController)
-        elementDebugView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleLeftMargin]
+        elementDebugView.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleRightMargin, UIView.AutoresizingMask.flexibleLeftMargin]
         scrollview.addSubview(elementDebugView)
         
         if !newController.isHardwareController {
@@ -368,7 +368,7 @@ import VirtualGameController
         newController.elements.custom[CustomElementType.Keyboard.rawValue]!.valueChangedHandler = { (controller, element) in
             
             let stringValue = String(describing: controller.elements.custom[CustomElementType.Keyboard.rawValue]!.value)
-            if stringValue.characters.count > 1 {
+            if stringValue.count > 1 {
                 let synthesizer = AVSpeechSynthesizer()
                 let utterance = AVSpeechUtterance(string: (stringValue))
                 utterance.rate = AVSpeechUtteranceMaximumSpeechRate / 3.0
@@ -405,7 +405,7 @@ import VirtualGameController
         if elementDebugView != nil {
             
             // Send to back so it animates off-screen behind other debug views
-            self.scrollview.sendSubview(toBack: elementDebugView!)
+            self.scrollview.sendSubviewToBack(elementDebugView!)
             
             UIView.animate(withDuration: animationSpeed, delay: 0.0, options: .curveEaseIn, animations: {
                 elementDebugView!.frame = CGRect(x: -(self.debugViewWidth), y: 5, width: self.debugViewWidth, height: self.scrollview.bounds.size.height - 5)

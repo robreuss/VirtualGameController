@@ -105,7 +105,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             vgcLogDebug("[SAMPLE] Custom element handler fired for Send Image")
             self.peripheralControlPadView.flashView.image = nil
             self.peripheralControlPadView.flashView.image = UIImage(data: (element.value as! NSData) as Data)
-            self.peripheralControlPadView.flashView.contentMode = UIViewContentMode.bottom
+            self.peripheralControlPadView.flashView.contentMode = UIView.ContentMode.bottom
             self.peripheralControlPadView.flashView.alpha = 1.0
             self.peripheralControlPadView.flashView.backgroundColor = UIColor.clear
         }
@@ -313,7 +313,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
             DispatchQueue.global(qos: .background).async {
                 let imageElement = VgcManager.elements.elementFromIdentifier(ElementType.image.rawValue)
-                let imageData = UIImageJPEGRepresentation(image, 1.0)
+                let imageData = image.jpegData(compressionQuality: 1.0)
                 imageElement?.value = imageData! as AnyObject
                 imageElement?.clearValueAfterTransfer = true
                 VgcManager.peripheral.sendElementState(imageElement!)

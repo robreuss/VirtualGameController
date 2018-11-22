@@ -177,29 +177,29 @@ let messageValueSeperator = ":"
     fileprivate override init() {}
 
     // Default to being a Peripheral
-    @objc open static var appRole: AppRole = .Peripheral
+    @objc public static var appRole: AppRole = .Peripheral
     
     #if !os(watchOS)
     /// Used by the Central to configure a software controller, in terms of profile type, background
     /// color and such
-    open static var peripheralSetup = VgcPeripheralSetup()
+    public static var peripheralSetup = VgcPeripheralSetup()
     #endif
     
     ///
     /// Shared set of elements (in contrast to controllers on a Central/Bridge, each
     /// of which have their own set of elements).
     ///
-    @objc open static var elements = Elements()
+    @objc public static var elements = Elements()
     
     /// Log Level "Debug" is a standard level of logging for debugging - set to "Error" for release
-    @objc open static var loggerLogLevel: LogLevel = LogLevel.Debug {
+    @objc public static var loggerLogLevel: LogLevel = LogLevel.Debug {
         didSet {
             vgcLogDebug("Set logLevel: \(VgcManager.loggerLogLevel)")
         }
     }
     
     /// Use either NSLog or Swift "print" for logging - NSLog gives more detail
-    @objc open static var loggerUseNSLog: Bool = false {
+    @objc public static var loggerUseNSLog: Bool = false {
         didSet {
             vgcLogDebug("Set NSLog logging to: \(VgcManager.loggerUseNSLog)")
         }
@@ -209,11 +209,11 @@ let messageValueSeperator = ":"
     /// Used as a component of the bonjour names for the various app types.
     /// This should be set to something that uniquely identifies your app.
     ///
-    @objc open static var appIdentifier = "vgc"
+    @objc public static var appIdentifier = "vgc"
 
     @objc static var serviceDomain = "local"
     
-    @objc open static var uniqueServiceIdentifierString: String {
+    @objc public static var uniqueServiceIdentifierString: String {
         get {
 
             if VgcManager.useRandomServiceName == true {
@@ -237,7 +237,6 @@ let messageValueSeperator = ":"
                     return Host.current().localizedName!
                 #endif
             }
-            return ""
         }
     }
 
@@ -248,7 +247,7 @@ let messageValueSeperator = ":"
     /// An app in Bridge mode can call it's handlers or simply relay
     /// data forward to the Central.  Relaying is more performant.
     ///
-    @objc open static var bridgeRelayOnly = false
+    @objc public static var bridgeRelayOnly = false
 
     #if !os(watchOS)
     ///
@@ -257,7 +256,7 @@ let messageValueSeperator = ":"
     /// in response to an end-user selecting the type of iCade controller they've paired
     /// with their iOS device.
     ///
-    open static var iCadeControllerMode: IcadeControllerMode = .Disabled {
+    public static var iCadeControllerMode: IcadeControllerMode = .Disabled {
 
         didSet {
             
@@ -268,7 +267,7 @@ let messageValueSeperator = ":"
         }
     }
 
-    open static var iCadePeripheral: VgcIcadePeripheral!
+    public static var iCadePeripheral: VgcIcadePeripheral!
     #endif
     
     ///
@@ -276,19 +275,19 @@ let messageValueSeperator = ":"
     /// is recommended; it is more efficient because two values do not need to be transmitted.
     /// Central-side mapping also works with hardware controllers.
     ///
-    @objc open static var usePeripheralSideMapping: Bool = false
+    @objc public static var usePeripheralSideMapping: Bool = false
     
     ///
     /// Filter duplicate float values, with comparison occuring at a certain
     /// degree of decimal precision
     ///
-    @objc open static var enableDupFiltering = false
-    @objc open static var dupFilteringPrecision = 2
+    @objc public static var enableDupFiltering = false
+    @objc public static var dupFilteringPrecision = 2
 
-    @objc open static var netServiceBufferSize = 4080
-    @objc open static var maxDataBufferSizeMessages = 512 // Number of messages to hold in a FIFO buffer until stream returns
+    @objc public static var netServiceBufferSize = 4080
+    @objc public static var maxDataBufferSizeMessages = 512 // Number of messages to hold in a FIFO buffer until stream returns
     
-    @objc open static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
+    @objc public static var netServiceLatencyLogging = false // DO NOT USE: Unreliable method.  Use "Test_Performance_Peripheral" and "Test_Performance_Central" projects instead
     
     // The header length of messages
     @objc static var netServiceHeaderLength: Int {
@@ -319,26 +318,26 @@ let messageValueSeperator = ":"
     // functionality placed in those handlers.  This functionality is useful if you want to have local peripheral
     // activity to both the local game and a remote game, for example if implementing an ARKit environment
     // where controller activity is needed by both instance of the app (on both devices).
-    @objc open static var enableLocalController = false
+    @objc public static var enableLocalController = false
     
     // Include unique string in bonjour name to allow multiple unique central/peripheral combos to connect
     // to one another (bi-directional).  It effectively gives each of the two Central's it's own unique service
     // identity.  Uses a UID in the bonjour name.
-    @objc open static var useRandomServiceName = false
+    @objc public static var useRandomServiceName = false
     
     ///
     /// Logs measurements of mesages transmitted/received and displays in console
     ///
-    @objc open static var performanceSamplingEnabled: Bool { get { return performanceSamplingDisplayFrequency > 0 } }
+    @objc public static var performanceSamplingEnabled: Bool { get { return performanceSamplingDisplayFrequency > 0 } }
     
     ///
     /// Controls how long we wait before averaging the number of messages
     /// transmitted/received per second when logging performance.  Set to 0 to disable.
     ///
-    @objc open static var performanceSamplingDisplayFrequency: Float = 0.0
+    @objc public static var performanceSamplingDisplayFrequency: Float = 0.0
 
     #if !os(watchOS)
-    @objc open static var peripheral: Peripheral!
+    @objc public static var peripheral: Peripheral!
     
     open var controller: VgcController {
         get {
@@ -349,7 +348,7 @@ let messageValueSeperator = ":"
     #endif
     
     /// Network name for publishing service, defaults to device name
-    open static var centralServiceName = VgcManager.uniqueServiceIdentifierString
+    public static var centralServiceName = VgcManager.uniqueServiceIdentifierString
 
     #if !os(watchOS)
     open class func publishCentralService() {

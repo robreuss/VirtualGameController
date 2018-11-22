@@ -294,7 +294,7 @@ open class Peripheral: NSObject, VgcWatchDelegate {
 
         #if !(os(tvOS))  && !(os(OSX))
             if !deviceIsTypeOfBridge() {
-                vgcLogDebug("Stopping motion data on motion \(motion)")
+                vgcLogDebug("Stopping motion data on motion \(String(describing: motion))")
                 motion.stop()
             }
         #endif

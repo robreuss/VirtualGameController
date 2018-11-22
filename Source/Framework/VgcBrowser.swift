@@ -326,24 +326,24 @@ class VgcBrowser: NSObject, NetServiceDelegate, NetServiceBrowserDelegate, Strea
                 
                 peripheral.controller.toCentralOutputStream[streamDataType] = outStream;
                 peripheral.controller.toCentralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
-                peripheral.controller.toCentralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                peripheral.controller.toCentralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 peripheral.controller.toCentralOutputStream[streamDataType]!.open()
                 
                 peripheral.controller.fromCentralInputStream[streamDataType] = inStream
                 peripheral.controller.fromCentralInputStream[streamDataType]!.delegate = streamer[streamDataType]
-                peripheral.controller.fromCentralInputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                peripheral.controller.fromCentralInputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 peripheral.controller.fromCentralInputStream[streamDataType]!.open()
                 
             } else {
                 
                 outputStream[streamDataType] = outStream;
                 outputStream[streamDataType]!.delegate = streamer[streamDataType]
-                outputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                outputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 outputStream[streamDataType]!.open()
                 
                 inputStream[streamDataType] = inStream
                 inputStream[streamDataType]!.delegate = streamer[streamDataType] 
-                inputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+                inputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
                 inputStream[streamDataType]!.open()
                 
             }

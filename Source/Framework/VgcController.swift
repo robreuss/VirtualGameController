@@ -115,7 +115,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
     // A Central can have it's own iCade controller, but only one, because it requires that
     // a text field be exposed on the UI to receive the keyboard input an iCade controller
     // generates.
-    open static var iCadeController: VgcController!
+    public static var iCadeController: VgcController!
     
     // Provide access to the single controller used when in .EnhancementBridge mode, so that
     // the "peripheral" component can send values through this controller to the Central.
@@ -211,11 +211,11 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
 
         // Open our Peripheral-bound streams
         toPeripheralOutputStream[streamDataType]!.delegate = streamer[streamDataType]
-        toPeripheralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        toPeripheralOutputStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         toPeripheralOutputStream[streamDataType]!.open()
         
         fromPeripheraInputlStream[streamDataType]!.delegate = streamer[streamDataType] 
-        fromPeripheraInputlStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        fromPeripheraInputlStream[streamDataType]!.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         fromPeripheraInputlStream[streamDataType]!.open()
     }
 
@@ -257,7 +257,7 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
         
     }
     
-    open static func sendElementStateToAllPeripherals(_ element: Element) {
+    public static func sendElementStateToAllPeripherals(_ element: Element) {
         
         // Test if element is generic from VGCManager
         let genericElement = VgcManager.elements.elementFromIdentifier(element.identifier)
@@ -340,10 +340,10 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             vgcLogDebug("Closing streams for controller \(deviceInfo.vendorName)")
             
             fromPeripheraInputlStream[.largeData]!.close()
-            fromPeripheraInputlStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            fromPeripheraInputlStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
             fromPeripheraInputlStream[.largeData]!.delegate = nil
             fromPeripheraInputlStream[.smallData]!.close()
-            fromPeripheraInputlStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            fromPeripheraInputlStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
             fromPeripheraInputlStream[.smallData]!.delegate = nil
             
             // If we're a Bridge, pass along the disconnect notice to the Central, and
@@ -356,10 +356,10 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             }
             
             toPeripheralOutputStream[.largeData]!.close()
-            toPeripheralOutputStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            toPeripheralOutputStream[.largeData]!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
             toPeripheralOutputStream[.largeData]!.delegate = nil
             toPeripheralOutputStream[.smallData]!.close()
-            toPeripheralOutputStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+            toPeripheralOutputStream[.smallData]!.remove(from: RunLoop.current, forMode: RunLoop.Mode.default)
             toPeripheralOutputStream[.smallData]!.delegate = nil
 
             streamer[.largeData] = nil
@@ -520,9 +520,9 @@ open class VgcController: NSObject, StreamDelegate, VgcStreamerDelegate, NetServ
             //vgcLogDebug("Setting value \(value) on Keypath \(element.setterKeypath(self))")
             
             if element.dataType == .Float {
-                setValue(Float(value as! NSNumber), forKeyPath: element.setterKeypath(self))
+                setValue(Float(truncating: value as! NSNumber), forKeyPath: element.setterKeypath(self))
             } else if element.dataType == .Double {
-                setValue(Double(value as! NSNumber), forKeyPath: element.setterKeypath(self))
+                setValue(Double(truncating: value as! NSNumber), forKeyPath: element.setterKeypath(self))
             }
             
 
@@ -1819,10 +1819,11 @@ enum EncodingStructError: Error {
 }
 
 func encodeSnapshot<T>(_ value: T) -> Data {
-        var value = value
-    return withUnsafePointer(to: &value) { p in
+    var localValue = value
+    return withUnsafePointer(to: &localValue) { p in
         Data(bytes: p, count: MemoryLayout.size(ofValue: value))
     }
+ 
 }
 
 func decodeSnapshot<T>(_ data: Data) throws -> T {

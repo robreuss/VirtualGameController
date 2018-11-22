@@ -74,17 +74,17 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         vgcLogDebug("Opening pending streams")
 
         outputStream.delegate = streamer
-        outputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        outputStream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         outputStream.open()
         
         inputStream.delegate = streamer
-        inputStream.schedule(in: RunLoop.current, forMode: RunLoopMode.defaultRunLoopMode)
+        inputStream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         inputStream.open()
         
     }
 
     // Make class hashable - function to make it equatable appears below outside the class definition
-    override var hashValue: Int {
+    override var hash: Int {
         return inputStream.hashValue
     }
 
@@ -245,7 +245,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     }
     
     internal func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
-        vgcLogDebug("Central net service did not publish, error: \(errorDict), registered name: \(self.registeredName), server name: \(self.localService.name)")
+        vgcLogDebug("Central net service did not publish, error: \(errorDict), registered name: \(String(describing: self.registeredName)), server name: \(self.localService.name)")
         vgcLogDebug("Republishing net service")
         unpublishService()
         publishService()

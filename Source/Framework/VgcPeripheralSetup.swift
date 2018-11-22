@@ -99,8 +99,8 @@ required convenience public init(coder decoder: NSCoder) {
         
         var result: String = "\n"
         result += "Peripheral Setup:\n\n"
-        result += "Profile Type:             \(self.profileType)\n"
-        result += "Background Color:         \(self.backgroundColor)\n"
+        result += "Profile Type:             \(String(describing: self.profileType))\n"
+        result += "Background Color:         \(String(describing: self.backgroundColor))\n"
         result += "Motion:\n"
         result += "  Active:                 \(self.motionActive)\n"
         result += "  User Acceleration:      \(self.enableMotionUserAcceleration)\n"
