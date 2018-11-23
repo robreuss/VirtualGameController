@@ -9,26 +9,23 @@
 import Foundation
 
 #if os(iOS) || os(OSX) || os(tvOS)
-    import GameController
+import GameController
 #endif
 
 #if os(iOS) || os(watchOS) || os(tvOS)
-    import UIKit
+import UIKit
 #endif
 
 public enum SystemMessages: Int, CustomStringConvertible {
-    
     case connectionAcknowledgement = 100
     case disconnect = 101
     case receivedInvalidMessage = 102
     
-    public var description : String {
-        
+    public var description: String {
         switch self {
         case .connectionAcknowledgement: return "ConnectionAcknowledgement"
         case .disconnect: return "Disconnect"
         case .receivedInvalidMessage: return "Received invalid message"
-            
         }
     }
 }
@@ -36,28 +33,23 @@ public enum SystemMessages: Int, CustomStringConvertible {
 // The type of data that will be sent for a given
 // element.
 @objc public enum ElementDataType: Int {
-    
     case Int
     case Float
     case Double
     case String
     case Data
-    
 }
 
 // The type of data that will be sent for a given
 // element.
 public enum StreamDataType: Int, CustomStringConvertible {
-    
     case smallData
     case largeData
     
-    public var description : String {
-        
+    public var description: String {
         switch self {
         case .smallData: return "Small Data"
         case .largeData: return "Large Data"
-            
         }
     }
 }
@@ -65,7 +57,6 @@ public enum StreamDataType: Int, CustomStringConvertible {
 // The whole population of system and standard elements
 
 @objc public enum ElementType: Int {
-    
     case deviceInfoElement
     case systemMessage
     case playerIndex
@@ -110,7 +101,6 @@ public enum StreamDataType: Int, CustomStringConvertible {
     
     // Custom
     case custom
-    
 }
 
 // Message header identifier is a random pre-generated 32-bit integer
@@ -138,7 +128,6 @@ let headerIdentifierAsNSData = Data(bytes: &VgcManager.headerIdentifier, count: 
 /// - parameter mappingComplete: A state management value used as a part of the peripheral-side element mapping system.
 ///
 open class Element: NSObject {
-    
     @objc open var type: ElementType
     @objc open var dataType: ElementDataType
     
@@ -174,23 +163,21 @@ open class Element: NSObject {
     #endif
     
     // Init for a standard (not custom) element
-    @objc public init(type: ElementType, dataType: ElementDataType,  name: String, getterKeypath: String, setterKeypath: String) {
-        
+    @objc public init(type: ElementType, dataType: ElementDataType, name: String, getterKeypath: String, setterKeypath: String) {
         self.type = type
         self.dataType = dataType
         self.name = name
-        self.value = Float(0.0) as AnyObject
-        self.mappingComplete = false
+        value = Float(0.0) as AnyObject
+        mappingComplete = false
         self.getterKeypath = getterKeypath
         self.setterKeypath = setterKeypath
-        self.identifier = type.rawValue
+        identifier = type.rawValue
         
         super.init()
     }
     
     @objc open func clearValue() {
-        switch self.dataType {
-            
+        switch dataType {
         case .Int:
             value = 0 as AnyObject
             
@@ -209,7 +196,6 @@ open class Element: NSObject {
     }
     
     @objc open var dataMessage: NSMutableData {
-        
         let elementValueAsNSData = valueAsNSData
         
         var elementIdentifierAsUInt8: UInt8 = UInt8(identifier)
@@ -221,31 +207,25 @@ open class Element: NSObject {
         let messageData = NSMutableData()
         
         // Message header
-        messageData.append(headerIdentifierAsNSData)  // 4 bytes:   indicates the start of an individual message, random 32-bit int
+        messageData.append(headerIdentifierAsNSData) // 4 bytes:   indicates the start of an individual message, random 32-bit int
         messageData.append(elementIdentifierAsNSData) // 1 byte:    identifies the type of the element
-        messageData.append(valueLengthAsNSData)       // 4 bytes:   length of the message
+        messageData.append(valueLengthAsNSData) // 4 bytes:   length of the message
         
-        
-        if VgcManager.netServiceLatencyLogging {                   // 8 bytes:  For latency testing
-            
+        if VgcManager.netServiceLatencyLogging { // 8 bytes:  For latency testing
             var timestamp: Double = Date().timeIntervalSince1970
             let timestampAsNSData = Data(bytes: &timestamp, count: MemoryLayout<Double>.size)
             messageData.append(timestampAsNSData)
-            
         }
-            
+        
         // Body of message
-        messageData.append(elementValueAsNSData)      // Variable:  the message itself, 4 for Floats, 4 for Int, variable for NSData
+        messageData.append(elementValueAsNSData) // Variable:  the message itself, 4 for Floats, 4 for Int, variable for NSData
         
         return messageData
     }
     
     @objc open var valueAsNSData: Data {
-        
         get {
-
-            switch self.dataType {
-                
+            switch dataType {
             case .Int:
                 
                 var value: Int = self.value as! Int
@@ -263,9 +243,9 @@ open class Element: NSObject {
                 var value: Double = self.value as! Double
                 let data = NSData(bytes: &value, length: MemoryLayout<Double>.size)
                 return data as Data
-      
+                
             case .Data:
-                return self.value as! Data
+                return value as! Data
                 
             case .String:
                 if let myData = (self.value as! String).data(using: String.Encoding.utf8) {
@@ -278,47 +258,43 @@ open class Element: NSObject {
         }
         
         set {
-            switch self.dataType {
-                
+            switch dataType {
             case .Int:
-
+                
                 let data: NSData = newValue as NSData
                 var tempFloat: Int = 0
                 data.getBytes(&tempFloat, length: MemoryLayout<Int>.size)
-                self.value = tempFloat as AnyObject
+                value = tempFloat as AnyObject
                 
             case .Float:
                 
                 let data: NSData = newValue as NSData
                 var tempFloat: Float = 0
                 data.getBytes(&tempFloat, length: MemoryLayout<Float>.size)
-                self.value = tempFloat as AnyObject
+                value = tempFloat as AnyObject
                 
             case .Double:
                 
                 let data: NSData = newValue as NSData
                 var tempFloat: Double = 0
                 data.getBytes(&tempFloat, length: MemoryLayout<Double>.size)
-                self.value = tempFloat as AnyObject
+                value = tempFloat as AnyObject
                 
             case .Data:
-                self.value = newValue as AnyObject
+                value = newValue as AnyObject
                 
             case .String:
-                self.value = String(data: newValue, encoding: String.Encoding.utf8)! as AnyObject
-                
+                value = String(data: newValue, encoding: String.Encoding.utf8)! as AnyObject
             }
         }
     }
     
     #if os(iOS) || os(OSX) || os(tvOS)
-       
+    
     // Provides calculated keypaths for access to game controller elements
     
     open func getterKeypath(_ controller: VgcController) -> String {
-        
-        switch (type) {
-            
+        switch type {
         case .systemMessage, .playerIndex, .pauseButton, .deviceInfoElement, .peripheralSetup, .vibrateDevice, .image: return ""
             
         case .motionAttitudeX, .motionAttitudeW, .motionAttitudeY, .motionAttitudeZ, .motionGravityX, .motionGravityY, .motionGravityZ, .motionRotationRateX, .motionRotationRateY, .motionRotationRateZ, .motionUserAccelerationX, .motionUserAccelerationY, .motionUserAccelerationZ:
@@ -327,11 +303,10 @@ open class Element: NSObject {
             
         default: return controller.profileType.pathComponentRead + "." + getterKeypath
         }
-        
     }
+    
     open func setterKeypath(_ controller: VgcController) -> String {
-        
-        switch (type) {
+        switch type {
         case .systemMessage, .playerIndex, .deviceInfoElement, .peripheralSetup, .vibrateDevice, .image: return ""
         case .motionAttitudeX, .motionAttitudeW, .motionAttitudeY, .motionAttitudeZ, .motionGravityX, .motionGravityY, .motionGravityZ, .motionRotationRateX, .motionRotationRateY, .motionRotationRateZ, .motionUserAccelerationX, .motionUserAccelerationY, .motionUserAccelerationZ:
             
@@ -340,42 +315,37 @@ open class Element: NSObject {
         }
     }
     
-    required convenience public init(coder decoder: NSCoder) {
-        
+    public required convenience init(coder decoder: NSCoder) {
         let type = ElementType(rawValue: decoder.decodeInteger(forKey: "type"))!
         let dataType = ElementDataType(rawValue: decoder.decodeInteger(forKey: "type"))!
         let name = decoder.decodeObject(forKey: "name") as! String
         let getterKeypath = decoder.decodeObject(forKey: "getterKeypath") as! String
         let setterKeypath = decoder.decodeObject(forKey: "setterKeypath") as! String
         
-        self.init(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
-        
+        self.init(type: type, dataType: dataType, name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
     }
     
     open func encodeWithCoder(_ coder: NSCoder) {
-    
         coder.encode(type.rawValue, forKey: "type")
         coder.encode(dataType.rawValue, forKey: "dataType")
         coder.encode(name, forKey: "name")
         coder.encode(getterKeypath, forKey: "getterKeypath")
         coder.encode(setterKeypath, forKey: "setterKeypath")
-    
     }
     
     #endif
-
+    
     @objc func clone() -> Element {
-        let clone = Element(type: type, dataType: dataType,  name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
+        let clone = Element(type: type, dataType: dataType, name: name, getterKeypath: getterKeypath, setterKeypath: setterKeypath)
         return clone
     }
-
 }
 
 #if os(iOS) || os(OSX) || os(tvOS)
-    // Make class equatable
-    func ==(lhs: Element, rhs: Element) -> Bool {
-        return lhs.type.hashValue == rhs.type.hashValue
-    }
+// Make class equatable
+func ==(lhs: Element, rhs: Element) -> Bool {
+    return lhs.type.hashValue == rhs.type.hashValue
+}
 #endif
 
 ///
@@ -383,9 +353,7 @@ open class Element: NSObject {
 /// providing definitions of the population of elements for each profile type.
 ///
 open class Elements: NSObject {
-    
     override init() {
-        
         systemElements = []
         systemElements.append(systemMessage)
         systemElements.append(deviceInfoElement)
@@ -409,7 +377,6 @@ open class Elements: NSObject {
         motionProfileElements.append(motionGravityY)
         motionProfileElements.append(motionGravityZ)
         
-        
         // MicroGamepad profile element collection
         microGamepadProfileElements = []
         microGamepadProfileElements.append(pauseButton)
@@ -418,7 +385,6 @@ open class Elements: NSObject {
         microGamepadProfileElements.append(dpadYAxis)
         microGamepadProfileElements.append(buttonA)
         microGamepadProfileElements.append(buttonX)
-        
         
         // Gamepad profile element collection
         gamepadProfileElements = []
@@ -479,7 +445,6 @@ open class Elements: NSObject {
             elementCopy.identifier = customElement.identifier
             custom[elementCopy.identifier] = elementCopy
             customProfileElements.append(elementCopy)
-            
         }
         
         super.init()
@@ -492,7 +457,6 @@ open class Elements: NSObject {
         for element in allElementsCollection() {
             elementsByHashValue.updateValue(element, forKey: element.identifier)
         }
-        
     }
     
     @objc var systemElements: [Element]
@@ -510,27 +474,24 @@ open class Elements: NSObject {
     @objc open var customProfileElements = [Element]()
     
     @objc open func allElementsCollection() -> [Element] {
-        
         let myAll = systemElements + extendedGamepadProfileElements + motionProfileElements + customProfileElements
         return myAll
-        
     }
     
     #if !os(watchOS)
     open func elementsForController(_ controller: VgcController) -> [Element] {
-        
         var supplemental: [Element] = []
         if controller.deviceInfo.supportsMotion { supplemental = motionProfileElements }
         
         // Get the controller-specific set of custom elements so they contain the
         // current values for the elements
         let customElements = controller.elements.custom.values
-        //let customElements: [Element] = controller.custom.values
+        // let customElements: [Element] = controller.custom.values
         supplemental = supplemental + customElements
         
         supplemental.insert(systemMessage, at: 0)
         
-        switch(controller.profileType) {
+        switch controller.profileType {
         case .MicroGamepad:
             return microGamepadProfileElements + supplemental
         case .Gamepad:
@@ -540,7 +501,6 @@ open class Elements: NSObject {
         default:
             return extendedGamepadProfileElements + supplemental
         }
-        
     }
     #endif
     
@@ -590,58 +550,44 @@ open class Elements: NSObject {
     
     // Convience functions for getting a controller element object based on specific properties of the
     // controller element
-
     
     @objc open func elementFromType(_ type: ElementType) -> Element! {
-        
         for element in allElementsCollection() {
             if element.type == type { return element }
         }
         return nil
-        
     }
     
     @objc open func elementFromIdentifier(_ identifier: Int) -> Element! {
-        
         guard let element = elementsByHashValue[identifier] else { return nil }
         return element
-        
     }
 }
 
 // Convienance initializer, simplifies creation of custom elements
 open class CustomElement: Element {
-    
     // Init for a custom element
     @objc public init(name: String, dataType: ElementDataType, type: Int) {
-        
-        super.init(type: .custom , dataType: dataType, name: name, getterKeypath: "", setterKeypath: "")
+        super.init(type: .custom, dataType: dataType, name: name, getterKeypath: "", setterKeypath: "")
         
         identifier = type
-        
     }
     
-    @objc required convenience public init(coder decoder: NSCoder) {
+    @objc public required convenience init(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 // A stub, to support creation of a custom mappings class external to a framework
 open class CustomMappingsSuperclass: NSObject {
-    
     @objc open var mappings = Dictionary<Int, Int>()
     public override init() {
-        
         super.init()
-        
     }
-    
 }
 
 // A stub, to support creation of a custom elements class external to a framework
 open class CustomElementsSuperclass: NSObject {
-    
     // Custom profile-level handler
     // Watch OS implementation does not include VgcController because it does not support parent class GCController
     #if !os(watchOS)
@@ -652,8 +598,6 @@ open class CustomElementsSuperclass: NSObject {
     @objc open var customProfileElements: [Element] = []
     
     public override init() {
-        
         super.init()
     }
-    
 }

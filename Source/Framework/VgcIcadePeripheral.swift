@@ -11,7 +11,6 @@ import Foundation
 #if !os(watchOS)
 
 public enum IcadeControllerMode: CustomStringConvertible {
- 
     case Disabled
     case SnakebyteIdroidCon
     case SteelSeriesFree
@@ -26,8 +25,7 @@ public enum IcadeControllerMode: CustomStringConvertible {
     case IMpulse
     case Nyko
     
-    public var description : String {
-        
+    public var description: String {
         switch self {
         case .Disabled: return "iCade Support Disabled"
         case .SnakebyteIdroidCon: return "Snakebyte iDroid:con"
@@ -42,43 +40,37 @@ public enum IcadeControllerMode: CustomStringConvertible {
         case .GameDock: return "GameDock"
         case .IMpulse: return "iMpulse"
         case .Nyko: return "Nyko PlayPad / Pro"
-            
         }
     }
 }
 
 open class VgcIcadePeripheral: NSObject {
-    
     let peripheralManager = VgcManager.peripheral
     
     ///
     /// Return an element in exchange for a character sent by the iCade controller.
     ///
     /// - parameter characterString: The character received through a text field in response to an end-user action on an iCade controller.
-    /// - parameter controllerElements: The population of elements that the correct element for the given iCade character should be identified from.  
+    /// - parameter controllerElements: The population of elements that the correct element for the given iCade character should be identified from.
     /// For Central/Bridge-based controller implementations, this will be VgcController.iCadeController.elements.  For Peripheral-based implementations,
-    /// it will be the global population of elements contained in VgcManager.elements.  
+    /// it will be the global population of elements contained in VgcManager.elements.
     ///
     open func elementForCharacter(_ characterString: String, controllerElements: Elements) -> (Element?, Int) {
-
         let elementCharacter = characterString.uppercased()
         
         // Handle dpad, which is common to known iCade controllers
         if "WEXZDCAQ".range(of: elementCharacter) != nil {
             return standardDpad(elementCharacter, controllerElements: controllerElements)
-            
         }
         
         switch VgcManager.iCadeControllerMode {
-            
         case .Disabled:
             return (nil, 0)
             
         case .SnakebyteIdroidCon: // DONE
             
             switch elementCharacter {
-                
-                // A/B/X/Y Buttons
+            // A/B/X/Y Buttons
             case "Y":
                 return (controllerElements.buttonY, 1)
             case "T":
@@ -99,7 +91,7 @@ open class VgcIcadePeripheral: NSObject {
             case "R":
                 return (controllerElements.buttonB, 0)
                 
-                // Shoulders
+            // Shoulders
             case "K":
                 return (controllerElements.rightShoulder, 1)
             case "P":
@@ -110,7 +102,7 @@ open class VgcIcadePeripheral: NSObject {
             case "M":
                 return (controllerElements.leftShoulder, 0)
                 
-                // Triggers
+            // Triggers
             case "O":
                 return (controllerElements.rightTrigger, 1)
             case "G":
@@ -124,17 +116,15 @@ open class VgcIcadePeripheral: NSObject {
             default:
                 
                 break
-                
             }
             
         case .ICadeMobile: // DONE
             
             switch elementCharacter {
-                
-            case "U","F","Y","T","H","R","J","N":
+            case "U", "F", "Y", "T", "H", "R", "J", "N":
                 return set5678ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case  "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
@@ -143,37 +133,32 @@ open class VgcIcadePeripheral: NSObject {
         case .SteelSeriesFree: // DONE
             
             switch elementCharacter {
-                
-            case "U","F","Y","T","H","R","J","N":
+            case "U", "F", "Y", "T", "H", "R", "J", "N":
                 return set5678ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
-                
             }
             
         case .ICadeJr: // DONE
             switch elementCharacter {
-                
-            case "U","F","Y","T","H","R","J","N":
+            case "U", "F", "Y", "T", "H", "R", "J", "N":
                 return set5678ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
             }
             
-            
         case .ICade: // DONE
             switch elementCharacter {
-                
-            case "U","F","Y","T","H","R","J","N":
+            case "U", "F", "Y", "T", "H", "R", "J", "N":
                 return set5678ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
@@ -181,24 +166,21 @@ open class VgcIcadePeripheral: NSObject {
             
         case .IControlPadLate: // DONE
             switch elementCharacter {
-                
-            case "U","F","Y","T","H","R","J","N":
+            case "U", "F", "Y", "T", "H", "R", "J", "N":
                 return set5678ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
             }
             
-            
         case .Eightbitty:
             switch elementCharacter {
-                
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "Y","T","H","R","U","F","J","N":
+            case "Y", "T", "H", "R", "U", "F", "J", "N":
                 return set5678ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
@@ -206,11 +188,10 @@ open class VgcIcadePeripheral: NSObject {
             
         case .Gametel:
             switch elementCharacter {
-                
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "Y","T","H","R","U","F","J","N":
+            case "Y", "T", "H", "R", "U", "F", "J", "N":
                 return set5678ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
@@ -218,11 +199,10 @@ open class VgcIcadePeripheral: NSObject {
             
         case .IControlPadEarly:
             switch elementCharacter {
-                
-            case "I","M","K","P","L","V","O","G":
+            case "I", "M", "K", "P", "L", "V", "O", "G":
                 return set09E1E2ABXYButtons(elementCharacter, controllerElements: controllerElements)
                 
-            case "Y","T","H","R","U","F","J","N":
+            case "Y", "T", "H", "R", "U", "F", "J", "N":
                 return set5678ShouldersAndTriggers(elementCharacter, controllerElements: controllerElements)
                 
             default: break
@@ -230,17 +210,14 @@ open class VgcIcadePeripheral: NSObject {
             
         default:
             break
-            
         }
         return (nil, 0)
     }
 }
 
 func standardDpad(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
-    
     switch elementCharacter {
-        
-        // dpad Y axis
+    // dpad Y axis
     case "W":
         return (controllerElements.dpadYAxis, 1)
     case "E":
@@ -251,8 +228,7 @@ func standardDpad(_ elementCharacter: String, controllerElements: Elements) -> (
     case "Z":
         return (controllerElements.dpadYAxis, 0)
         
-        
-        // dpad X axis
+    // dpad X axis
     case "D":
         return (controllerElements.dpadXAxis, 1)
     case "C":
@@ -269,10 +245,8 @@ func standardDpad(_ elementCharacter: String, controllerElements: Elements) -> (
 }
 
 func set09E1E2ABXYButtons(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
-    
     switch elementCharacter {
-        
-        // A/B/X/Y Buttons
+    // A/B/X/Y Buttons
     case "I":
         return (controllerElements.buttonY, 1)
     case "M":
@@ -296,13 +270,10 @@ func set09E1E2ABXYButtons(_ elementCharacter: String, controllerElements: Elemen
     default:
         return (nil, 0)
     }
-    
 }
 
 func set09E1E2ShouldersAndTriggers(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
-    
     switch elementCharacter {
-        
     case "K":
         return (controllerElements.rightShoulder, 1)
     case "P":
@@ -325,13 +296,10 @@ func set09E1E2ShouldersAndTriggers(_ elementCharacter: String, controllerElement
     default:
         return (nil, 0)
     }
-    
 }
 
 func set5678ShouldersAndTriggers(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
-    
     switch elementCharacter {
-        
     case "Y":
         return (controllerElements.leftTrigger, 1)
     case "T":
@@ -353,14 +321,11 @@ func set5678ShouldersAndTriggers(_ elementCharacter: String, controllerElements:
     default:
         return (nil, 0)
     }
-    
 }
 
 func set5678ABXYButtons(_ elementCharacter: String, controllerElements: Elements) -> (Element?, Int) {
-    
     switch elementCharacter {
-        
-        // A/B/X/Y Buttons
+    // A/B/X/Y Buttons
     case "U":
         return (controllerElements.buttonY, 1)
     case "F":

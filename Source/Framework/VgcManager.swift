@@ -1,6 +1,6 @@
 //
 //  VgcManager.swift
-//  
+//
 //
 //  Created by Rob Reuss on 10/8/15.
 //
@@ -11,23 +11,23 @@ import Foundation
 import GameController
 #endif
 #if os(iOS) || os(tvOS) // Need this only for UIDevice
-    import UIKit
+import UIKit
 #endif
 #if os(watchOS)
-    import WatchKit
+import WatchKit
 #endif
 
 /// The "elements" global should be considered private from the Central development side of things.
 /// In that context, it provides the backing state of the software controller for
-/// the various profiles, and should not be accessed directly.  
-/// 
+/// the various profiles, and should not be accessed directly.
+///
 /// On the peripheral development side, it is a key part of developing a custom software-based
 /// peripheral, providing the basis for sending element values to the Central.
 ///
 /// This variable provides a reference to an Elements object that acts as an
 /// an interface to both standard and custom elements, provides a couple of methods
 /// for access those sets, and provides access to individual Element instances for
-/// each supported element.  
+/// each supported element.
 ///
 
 public var customElements: CustomElementsSuperclass!
@@ -50,13 +50,12 @@ public var customElements: CustomElementsSuperclass!
 ///                                 positioned in a slide-on controller will typically function as
 ///                                 as a Bridge (although it can also be a Central).  An iPhone paired
 ///                                 with an Apple Watch that is functioning as a Peripheral will act
-///                                 as a Bridge.  
+///                                 as a Bridge.
 ///
 /// - parameter .EnhancementBridge:  Special Bridge mode for using a form-fitting/slide-on controller
 ///                                 with an iPhone.  Prevents additional Peripherals from connecting.
 ///
 @objc public enum AppRole: Int, CustomStringConvertible {
-    
     case Undefined = 0
     case Central = 1
     case Peripheral = 2
@@ -64,7 +63,7 @@ public var customElements: CustomElementsSuperclass!
     case EnhancementBridge = 4
     case MultiplayerPeer = 5
     
-    public var description : String {
+    public var description: String {
         switch self {
         case .Undefined: return "Undefined"
         case .Central: return "Central"
@@ -90,7 +89,7 @@ public var customElements: CustomElementsSuperclass!
     case BridgedICadeHardware
     case Watch
     
-    public var description : String {
+    public var description: String {
         switch self {
         case .MFiHardware: return "MFi Hardware"
         case .ICadeHardware: return "iCade Hardware"
@@ -103,7 +102,6 @@ public var customElements: CustomElementsSuperclass!
 }
 
 @objc public enum ProfileType: Int, CustomStringConvertible {
-    
     case Unknown
     case GenericGamepad
     case MicroGamepad
@@ -112,7 +110,7 @@ public var customElements: CustomElementsSuperclass!
     case Motion
     case Watch
     
-    public var description : String {
+    public var description: String {
         switch self {
         case .Unknown: return "Unknown"
         case .GenericGamepad: return "GenericGamepad"
@@ -124,7 +122,7 @@ public var customElements: CustomElementsSuperclass!
         }
     }
     
-    var pathComponentRead : String {
+    var pathComponentRead: String {
         switch self {
         case .Unknown: return ""
         case .GenericGamepad: return ""
@@ -136,7 +134,7 @@ public var customElements: CustomElementsSuperclass!
         }
     }
     
-    var pathComponentWrite : String {
+    var pathComponentWrite: String {
         switch self {
         case .Unknown: return ""
         case .GenericGamepad: return ""
@@ -147,7 +145,6 @@ public var customElements: CustomElementsSuperclass!
         case .Watch: return "vgcExtendedGamepad"
         }
     }
-    
 }
 
 /// For transmitted element value messages...
@@ -155,7 +152,6 @@ let messageValueSeperator = ":"
 
 #if !os(watchOS)
 @objc open class VgcService: NSObject {
-    
     open var name: String
     open var type: AppRole
     internal var netService: NetService
@@ -171,11 +167,10 @@ let messageValueSeperator = ":"
 #endif
 
 @objc open class VgcManager: NSObject {
-   
     // Define this as a singleton although never used as such; only class methods used
     @objc static let sharedInstance = VgcManager()
     fileprivate override init() {}
-
+    
     // Default to being a Peripheral
     @objc public static var appRole: AppRole = .Peripheral
     
@@ -210,39 +205,36 @@ let messageValueSeperator = ":"
     /// This should be set to something that uniquely identifies your app.
     ///
     @objc public static var appIdentifier = "vgc"
-
+    
     @objc static var serviceDomain = "local"
     
     @objc public static var uniqueServiceIdentifierString: String {
-        get {
-
-            if VgcManager.useRandomServiceName == true {
-                var usi: String
-                let defaults = UserDefaults.standard
-                if let usi = defaults.string(forKey: "includeUniqueServiceIdentifier") {
-                    vgcLogDebug("Found Unique Service Identifier")
-                    return usi
-                } else {
-                    usi = UUID().uuidString
-                    vgcLogDebug("Created new Unique Service Identifier")
-                    defaults.set(usi, forKey: "includeUniqueServiceIdentifier")
-                    return usi
-                }
+        if VgcManager.useRandomServiceName == true {
+            var usi: String
+            let defaults = UserDefaults.standard
+            if let usi = defaults.string(forKey: "includeUniqueServiceIdentifier") {
+                vgcLogDebug("Found Unique Service Identifier")
+                return usi
             } else {
-                #if os(iOS) || os(tvOS)
-                    return UIDevice.current.name
-                #endif
-                
-                #if os(OSX)
-                    return Host.current().localizedName!
-                #endif
-                // This nees to be here in spite of the compiler warning - won't
-                // compile without it
-                return ""
+                usi = UUID().uuidString
+                vgcLogDebug("Created new Unique Service Identifier")
+                defaults.set(usi, forKey: "includeUniqueServiceIdentifier")
+                return usi
             }
+        } else {
+            #if os(iOS) || os(tvOS)
+            return UIDevice.current.name
+            #endif
+            
+            #if os(OSX)
+            return Host.current().localizedName!
+            #endif
+            // This nees to be here in spite of the compiler warning - won't
+            // compile without it
+            return ""
         }
     }
-
+    
     @objc static var bonjourTypeCentral: String { return "_\(VgcManager.appIdentifier)_central._tcp." }
     @objc static var bonjourTypeBridge: String { return "_\(VgcManager.appIdentifier)_bridge._tcp." }
     
@@ -251,7 +243,7 @@ let messageValueSeperator = ":"
     /// data forward to the Central.  Relaying is more performant.
     ///
     @objc public static var bridgeRelayOnly = false
-
+    
     #if !os(watchOS)
     ///
     /// The vendor of the iCade controller in use, or .Disabled if the functionality
@@ -260,16 +252,13 @@ let messageValueSeperator = ":"
     /// with their iOS device.
     ///
     public static var iCadeControllerMode: IcadeControllerMode = .Disabled {
-
         didSet {
-            
             #if !os(watchOS)
             if iCadeControllerMode != .Disabled { iCadePeripheral = VgcIcadePeripheral() } else { iCadePeripheral = nil }
             #endif
-            
         }
     }
-
+    
     public static var iCadePeripheral: VgcIcadePeripheral!
     #endif
     
@@ -286,7 +275,7 @@ let messageValueSeperator = ":"
     ///
     @objc public static var enableDupFiltering = false
     @objc public static var dupFilteringPrecision = 2
-
+    
     @objc public static var netServiceBufferSize = 4080
     @objc public static var maxDataBufferSizeMessages = 512 // Number of messages to hold in a FIFO buffer until stream returns
     
@@ -294,15 +283,11 @@ let messageValueSeperator = ":"
     
     // The header length of messages
     @objc static var netServiceHeaderLength: Int {
-        
-        get {
-            if VgcManager.netServiceLatencyLogging {
-                return 17
-            } else {
-                return 9
-            }
+        if VgcManager.netServiceLatencyLogging {
+            return 17
+        } else {
+            return 9
         }
-        
     }
     
     // Indicator of start of header
@@ -331,28 +316,26 @@ let messageValueSeperator = ":"
     ///
     /// Logs measurements of mesages transmitted/received and displays in console
     ///
-    @objc public static var performanceSamplingEnabled: Bool { get { return performanceSamplingDisplayFrequency > 0 } }
+    @objc public static var performanceSamplingEnabled: Bool { return performanceSamplingDisplayFrequency > 0 }
     
     ///
     /// Controls how long we wait before averaging the number of messages
     /// transmitted/received per second when logging performance.  Set to 0 to disable.
     ///
     @objc public static var performanceSamplingDisplayFrequency: Float = 0.0
-
+    
     #if !os(watchOS)
     @objc public static var peripheral: Peripheral!
     
     open var controller: VgcController {
-        get {
-            return VgcManager.peripheral.controller
-        }
+        return VgcManager.peripheral.controller
     }
     
     #endif
     
     /// Network name for publishing service, defaults to device name
     public static var centralServiceName = VgcManager.uniqueServiceIdentifierString
-
+    
     #if !os(watchOS)
     open class func publishCentralService() {
         if appRole == .Central {
@@ -408,14 +391,12 @@ let messageValueSeperator = ":"
             startAs(appRole, appIdentifier: appIdentifier, customElements: customElements, customMappings: customMappings)
         }
     }
-
     
-     ///
+    ///
     /// Kicks off the search for software controllers.  This is a required method and should be
     /// called early in the application launch process.
     ///
     @objc open class func startAs(_ appRole: AppRole, appIdentifier: String, customElements: CustomElementsSuperclass!, customMappings: CustomMappingsSuperclass!) {
-
         #if !os(watchOS)
         //if (appRoleVar == .Central) && (VgcManager.peripheral != nil) {
         //    vgcLogError("Cannot call startAs twice for Central and Periperal.  Use .Multiplayer appRole instead.")
@@ -429,52 +410,49 @@ let messageValueSeperator = ":"
         
         var customElements = customElements
         var customMappings = customMappings
-        if customElements == nil { customElements = CustomElementsSuperclass()}
-        if customMappings == nil { customMappings = CustomMappingsSuperclass()}
+        if customElements == nil { customElements = CustomElementsSuperclass() }
+        if customMappings == nil { customMappings = CustomMappingsSuperclass() }
         Elements.customElements = customElements
         Elements.customMappings = customMappings
         
         vgcLogDebug("Setting up as a \(VgcManager.appRole.description.uppercased())")
         vgcLogDebug("IncludesPeerToPeer is set to: \(VgcManager.includesPeerToPeer)")
-
+        
         #if !os(watchOS)
-
-        switch (VgcManager.appRole) {
+        
+        switch VgcManager.appRole {
+        case .Undefined:
+            return
             
-            case .Undefined:
-                return
+        case .Peripheral, .MultiplayerPeer:
             
-            case .Peripheral, .MultiplayerPeer:
-
-                VgcManager.peripheral = Peripheral()
-                
-                // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
-                VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
+            VgcManager.peripheral = Peripheral()
             
-                #if os(iOS)
-                    VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)
-                #endif
+            // Default device for software Peripheral, can be overriden by setting the VgcManager.peripheral.deviceInfo property
+            VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
             
-            case .Central:
-                VgcController.setup()
+            #if os(iOS)
+            VgcManager.peripheral.watch = VgcWatch(delegate: VgcManager.peripheral)
+            #endif
             
-            case .Bridge, .EnhancementBridge:
-                
-                VgcController.setup()
-            }
-      
-            // Create a controller for use with a peripheral
-            if VgcManager.enableLocalController && appRole == .Peripheral {
-                vgcLogDebug("Enabling LOCAL game controller")
-                self.peripheral.localController = VgcController()
-                self.peripheral.localController.isLocalController = true
-                self.peripheral.localController.deviceInfo = VgcManager.peripheral.deviceInfo
-             }
+        case .Central:
+            VgcController.setup()
             
+        case .Bridge, .EnhancementBridge:
+            
+            VgcController.setup()
+        }
+        
+        // Create a controller for use with a peripheral
+        if VgcManager.enableLocalController && appRole == .Peripheral {
+            vgcLogDebug("Enabling LOCAL game controller")
+            peripheral.localController = VgcController()
+            peripheral.localController.isLocalController = true
+            peripheral.localController.deviceInfo = VgcManager.peripheral.deviceInfo
+        }
+        
         #endif
-
     }
-    
 }
 
 // Convienance function
@@ -487,8 +465,8 @@ public func deviceIsTypeOfBridge() -> Bool {
 // supports copying, for use in the bridge/forwarding context, and
 // supports archiving for transmission from peripheral to central.
 
-/// DeviceInfo contains key properties of a controller, either hardware or software.  
-/// 
+/// DeviceInfo contains key properties of a controller, either hardware or software.
+///
 /// - parameter deviceUID: Unique identifier for the controller.  Hardware controllers have this built-in.  An arbitrary identifier can be given to a software controller, and the NSUUID().UUIDString function is recommended.
 ///
 /// - parameter vendorName: Built-in to a hardware controller.  For software controllers, either define a name or use an empty string "" and the machine/device name will be used.
@@ -499,13 +477,12 @@ public func deviceIsTypeOfBridge() -> Bool {
 ///
 
 @objc open class DeviceInfo: NSObject, NSCoding {
-    
     @objc internal(set) var deviceUID: String
-    @objc internal(set) open var vendorName: String
-    @objc internal(set) open var attachedToDevice: Bool
+    @objc open internal(set) var vendorName: String
+    @objc open internal(set) var attachedToDevice: Bool
     @objc open var profileType: ProfileType
-    @objc internal(set) open var controllerType: ControllerType
-    @objc internal(set) open var supportsMotion: Bool
+    @objc open internal(set) var controllerType: ControllerType
+    @objc open internal(set) var supportsMotion: Bool
     
     @objc public init(deviceUID: String, vendorName: String, attachedToDevice: Bool, profileType: ProfileType, controllerType: ControllerType, supportsMotion: Bool) {
         var deviceUID = deviceUID
@@ -533,15 +510,15 @@ public func deviceIsTypeOfBridge() -> Bool {
         
         super.init()
         
-        if (self.vendorName == "") {
+        if self.vendorName == "" {
             #if os(iOS) || os(tvOS)
-                self.vendorName = UIDevice.current.name
+            self.vendorName = UIDevice.current.name
             #endif
             #if os(OSX)
-                self.vendorName = Host.current().localizedName!
+            self.vendorName = Host.current().localizedName!
             #endif
             #if os(watchOS)
-                self.vendorName = WKInterfaceDevice.current().name
+            self.vendorName = WKInterfaceDevice.current().name
             #endif
         }
         if self.vendorName == "" {
@@ -551,28 +528,24 @@ public func deviceIsTypeOfBridge() -> Bool {
         if profileType == .MicroGamepad {
             vgcLogError("The use of the .MicroGamepad profile for software-based controllers will lead to unpredictable results.")
         }
-        
     }
     
     open override var description: String {
-        
         var result: String = "\n"
         result += "Device information:\n\n"
-        result += "Vendor:    \(self.vendorName)\n"
-        result += "Type:      \(self.controllerType)\n"
-        result += "Profile:   \(self.profileType)\n"
-        result += "Attached:  \(self.attachedToDevice)\n"
-        result += "Motion:    \(self.supportsMotion)\n"
-        result += "ID:        \(self.deviceUID)\n"
+        result += "Vendor:    \(vendorName)\n"
+        result += "Type:      \(controllerType)\n"
+        result += "Profile:   \(profileType)\n"
+        result += "Attached:  \(attachedToDevice)\n"
+        result += "Motion:    \(supportsMotion)\n"
+        result += "ID:        \(deviceUID)\n"
         return result
-        
     }
     
     // The deviceInfo is sent over-the-wire to a Bridge or Central using
     // NSKeyed archiving...
     
-    required convenience public init(coder decoder: NSCoder) {
-        
+    public required convenience init(coder decoder: NSCoder) {
         let deviceUID = decoder.decodeObject(forKey: "deviceUID") as! String
         let vendorName = decoder.decodeObject(forKey: "vendorName") as! String
         let attachedToDevice = decoder.decodeBool(forKey: "attachedToDevice")
@@ -581,18 +554,15 @@ public func deviceIsTypeOfBridge() -> Bool {
         let controllerType = ControllerType(rawValue: decoder.decodeInteger(forKey: "controllerType"))
         
         self.init(deviceUID: deviceUID, vendorName: vendorName, attachedToDevice: attachedToDevice, profileType: profileType!, controllerType: controllerType!, supportsMotion: supportsMotion)
-        
     }
     
     open func encode(with coder: NSCoder) {
-        
-        coder.encode(self.deviceUID, forKey: "deviceUID")
-        coder.encode(self.vendorName, forKey: "vendorName")
-        coder.encode(self.attachedToDevice, forKey: "attachedToDevice")
-        coder.encode(self.profileType.rawValue, forKey: "profileType")
-        coder.encode(self.controllerType.rawValue, forKey: "controllerType")
-        coder.encode(self.supportsMotion, forKey: "supportsMotion")
-        
+        coder.encode(deviceUID, forKey: "deviceUID")
+        coder.encode(vendorName, forKey: "vendorName")
+        coder.encode(attachedToDevice, forKey: "attachedToDevice")
+        coder.encode(profileType.rawValue, forKey: "profileType")
+        coder.encode(controllerType.rawValue, forKey: "controllerType")
+        coder.encode(supportsMotion, forKey: "supportsMotion")
     }
     
     // A copy of the deviceInfo object is made when forwarding it through a Bridge.
@@ -601,6 +571,7 @@ public func deviceIsTypeOfBridge() -> Bool {
         let copy = DeviceInfo(deviceUID: deviceUID, vendorName: vendorName, attachedToDevice: attachedToDevice, profileType: profileType, controllerType: controllerType, supportsMotion: supportsMotion)
         return copy
     }
+    
     /*
     func copyWithZone(zone: NSZone) -> AnyObject {
         // This is the reason why `init(_ model: GameModel)`
@@ -611,5 +582,4 @@ public func deviceIsTypeOfBridge() -> Bool {
     //public func copy(with zone: NSZone? = nil) -> Any {
     //    return Swift.type(of:self).init(self)
     //}
-
 }

@@ -5,24 +5,22 @@
 //  Copyright © 2015 Rob Reuss. All rights reserved.
 //
 
-import UIKit
-import GameController
-import VirtualGameController
 //import <AudioToolbox/AudioServices.h>
 import AudioToolbox
 import CoreMotion
+import GameController
+import UIKit
+import VirtualGameController
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     var peripheralControlPadView: PeripheralControlPadView!
     var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(controllerDidConnect), name: NSNotification.Name(rawValue: VgcControllerDidConnectNotification), object: nil)
+        
         // REQUIRED: Fired off each time a Central is found
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.foundService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralFoundService), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.lostService(_:)), name: NSNotification.Name(rawValue: VgcPeripheralLostService), object: nil)
@@ -49,9 +47,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Use a compiler flag to control the logging level, dropping it to just errors if this
         // is a release build.
         #if Release
-        VgcManager.loggerLogLevel = .Error // Minimal logging
+            VgcManager.loggerLogLevel = .Error // Minimal logging
         #else
-        VgcManager.loggerLogLevel = .Debug // Robust logging
+            VgcManager.loggerLogLevel = .Debug // Robust logging
         #endif
         
         // NSLog provides time/date/context information - OPTIONAL
@@ -60,10 +58,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // Make this non-zero if you'd like to see some basic performance statistics
         // written to console. - OPTIONAL
         VgcManager.performanceSamplingDisplayFrequency = 0.0
-
+        
         // REQUIRED: Run as a PERIPHERAL
         VgcManager.startAs(.Peripheral, appIdentifier: "vgc", customElements: CustomElements(), customMappings: CustomMappings(), includesPeerToPeer: false, enableLocalController: true)
-
+        
         // Set peripheral device info - OPTIONAL
         // Send an empty string for deviceUID and UID will be auto-generated and stored to user defaults
         VgcManager.peripheral.deviceInfo = DeviceInfo(deviceUID: "", vendorName: "", attachedToDevice: false, profileType: .ExtendedGamepad, controllerType: .Software, supportsMotion: true)
@@ -77,7 +75,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         peripheralControlPadView = PeripheralControlPadView(vc: self)
         
         // Frequency at which the motion sensors are polled - OPTIONAL
-        VgcManager.peripheral.motion.updateInterval = 1/60
+        VgcManager.peripheral.motion.updateInterval = 1 / 60
         
         // Which motion sensors to poll and generate data for - OPTIONAL
         // Use only those you need!
@@ -90,7 +88,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         // shake.
         VgcManager.peripheral.motion.enableAdaptiveFilter = true
         VgcManager.peripheral.motion.enableLowPassFilter = true
-
+        
         // Skip sending float values if they are the same as the preceding value - mainly useful
         // for motion data, which can be a pretty intense flow of data if you are using multiple
         // types of motion data. - OPTIONAL
@@ -115,13 +113,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         VgcManager.peripheral.watch.valueChangedHandler = { (element: Element) in
             
             vgcLogDebug("[SAMPLE] Value changed handler received element state from watch: \(element.name) with value \(element.value)")
-            
         }
-
+        
         // REQUIRED: Kick off the search for Centrals and Bridges that we can connect to.  When
         // services are found, the VgcPeripheralFoundService will fire.
         VgcManager.peripheral.browseForServices()
-        
     }
     
     // Add new service to our list of available services.
@@ -149,10 +145,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         vgcLogDebug("[SAMPLE] Service browser reset, isMainThread: \(Thread.isMainThread)")
         peripheralControlPadView.serviceSelectorView.refresh()
     }
-
+    
     // The Central has sent PeripheralSetup information - OPTIONAL
     @objc func receivedPeripheralSetup(_ notification: Notification) {
-      
         if VgcManager.peripheralSetup.motionActive {
             VgcManager.peripheral.motion.start()
         } else {
@@ -171,33 +166,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         peripheralControlPadView = PeripheralControlPadView(vc: self)
         peripheralControlPadView.controlOverlay.frame = CGRect(x: 0, y: -peripheralControlPadView.parentView.bounds.size.height, width: peripheralControlPadView.parentView.bounds.size.width, height: peripheralControlPadView.parentView.bounds.size.height)
-
+        
         peripheralControlPadView.parentView.backgroundColor = VgcManager.peripheralSetup.backgroundColor
     }
     
-
     @objc func receivedSystemMessage(_ notification: Notification) {
-        
         let systemMessageTypeRaw = notification.object as! Int
         let systemMessageType = SystemMessages(rawValue: systemMessageTypeRaw)
         if systemMessageType == SystemMessages.receivedInvalidMessage {
-            
             if VgcManager.peripheral.motion.active == true {
-                
                 // Decrease motion update interval to prevent invalid messages
                 //VgcManager.peripheral.motion.updateInterval = VgcManager.peripheral.motion.updateInterval + (VgcManager.peripheral.motion.updateInterval * 0.05)
                 //vgcLogDebug("Modifying motion update interval to \(VgcManager.peripheral.motion.updateInterval)")
-                
             }
             
             // Flash the UI red to indicate bad messages being sent
-            self.peripheralControlPadView.flashView.backgroundColor = UIColor.red
+            peripheralControlPadView.flashView.backgroundColor = UIColor.red
             UIView.animate(withDuration: 0.1, delay: 0.0, options: .curveEaseIn, animations: {
                 self.peripheralControlPadView.flashView!.alpha = 1
-                }, completion: { finished in
+            }, completion: { _ in
                 self.peripheralControlPadView.flashView!.alpha = 0
             })
-
         }
     }
     
@@ -208,42 +197,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // in "peer" mode, you can use this notification to contain blocks that will be executed when EITHER
     // the local or remote device receives controller input.  - OPTIONAL
     @objc func controllerDidConnect(_ notification: Notification) {
-        
         guard let controller: VgcController = notification.object as? VgcController else { return }
-
+        
         // Refresh on all extended gamepad changes (Global handler)
-        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+        controller.extendedGamepad?.valueChangedHandler = { (gamepad: GCExtendedGamepad, _: GCControllerElement) in
             
             print("[SAMPLE] LOCAL HANDLER: Profile level (Extended), Left thumbstick value: \(gamepad.leftThumbstick.xAxis.value)  ")
-            
         }
         
-        controller.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { (thumbstick, value) in
-            
+        controller.extendedGamepad?.leftThumbstick.xAxis.valueChangedHandler = { thumbstick, value in
             
             print("[SAMPLE] LOCAL HANDLER: Left thumbstick xAxis: \(value)  \(thumbstick.value)")
-            
         }
         
-        controller.extendedGamepad?.leftThumbstick.valueChangedHandler = { (dpad, xValue, yValue) in
+        controller.extendedGamepad?.leftThumbstick.valueChangedHandler = { _, xValue, yValue in
             
             print("[SAMPLE] LOCAL HANDLER: Left Thumbstick: \(xValue), \(yValue)")
-            
         }
-        
     }
     
     // This should be implemented in order to stop browsing for Central services, unless your
     // implementation calls for it (can't imagine why).
     @objc func peripheralDidConnect(_ notification: Notification) {
-        
         vgcLogDebug("[SAMPLE] Got VgcPeripheralDidConnectNotification notification")
         VgcManager.peripheral.stopBrowsingForServices()
         
-
         #if !os(tvOS)
             if VgcManager.peripheral.deviceInfo.profileType == .MicroGamepad {
-                
                 // We're mimicing the Apple TV remote here, which starts with motion turned on
                 VgcManager.peripheral.motion.enableAttitude = false
                 VgcManager.peripheral.motion.enableUserAcceleration = true
@@ -257,58 +237,53 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         //var motionPollingTimer = Timer.scheduledTimer(timeInterval: 0.004, target: self, selector: #selector(sendRandomData), userInfo: nil, repeats: true)
     }
+    
     /*
     @objc func sendRandomData() {
         VgcManager.elements.rightTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.rightTrigger)
-        
+     
         VgcManager.elements.leftTrigger.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.leftTrigger)
-        
+     
         VgcManager.elements.rightShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.rightShoulder)
-        
+     
         VgcManager.elements.leftShoulder.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.leftShoulder)
-        
-        
+     
         VgcManager.elements.dpadXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.dpadXAxis)
-        
+     
         VgcManager.elements.dpadYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.dpadYAxis)
-        
+     
         VgcManager.elements.leftThumbstickXAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickXAxis)
-        
+     
         VgcManager.elements.leftThumbstickYAxis.value = CGFloat(Float(arc4random()) / Float(UINT32_MAX)) as AnyObject
         VgcManager.peripheral.sendElementState(VgcManager.elements.leftThumbstickYAxis)
-
+     
     }
 */
     
     // My implementation of this Peripheral starts browsing for services again when
     // the Central disconnects for whatever reason.
     @objc func peripheralDidDisconnect(_ notification: Notification) {
-        
         vgcLogDebug("[SAMPLE] Got VgcPeripheralDidDisconnectNotification notification")
         VgcManager.peripheral.browseForServices()
-        
     }
-    
     
     // Used for sending photos to the Central...
     @objc func displayPhotoPicker(_ sender: AnyObject) {
-        
-        imagePicker =  UIImagePickerController()
+        imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         
         present(imagePicker, animated: true, completion: nil)
     }
     
-    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String: AnyObject]?) {
         imagePicker.dismiss(animated: true) { () -> Void in
             
             DispatchQueue.global(qos: .background).async {
@@ -318,9 +293,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 imageElement?.clearValueAfterTransfer = true
                 VgcManager.peripheral.sendElementState(imageElement!)
             }
-            
         }
-        
     }
     
     // Watch reachability changed
@@ -337,7 +310,4 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

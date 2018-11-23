@@ -8,22 +8,19 @@
 
 import Foundation
 #if os(iOS) || os(tvOS) // Need this only for UIDevice
-    import UIKit
+import UIKit
 #endif
 #if os(iOS) || os(OSX) || os(tvOS)
-    import GameController
+import GameController
 #endif
 
 #if !os(watchOS)
 
 @objc internal protocol VgcPendingStreamDelegate {
-    
     func testForMatchingStreams()
-    
 }
 
 class VgcPendingStream: NSObject, VgcStreamerDelegate {
-    
     weak var delegate: VgcPendingStreamDelegate?
     var createTime = Date()
     var inputStream: InputStream
@@ -32,7 +29,6 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
     var deviceInfo: DeviceInfo!
     
     init(inputStream: InputStream, outputStream: OutputStream, delegate: VgcPendingStreamDelegate) {
-        
         self.delegate = delegate
         self.inputStream = inputStream
         self.outputStream = outputStream
@@ -40,29 +36,21 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         super.init()
     }
     
-    
     func disconnect() {
         vgcLogError("Got disconnect from pending stream streamer")
     }
-
     
     func receivedNetServiceMessage(_ elementIdentifier: Int, elementValue: Data) {
-        
         if let element = VgcManager.elements.elementFromIdentifier(elementIdentifier) {
-        
             if element.type == .deviceInfoElement {
-                
                 element.valueAsNSData = elementValue
                 NSKeyedUnarchiver.setClass(DeviceInfo.self, forClassName: "DeviceInfo")
                 if let di = (NSKeyedUnarchiver.unarchiveObject(with: (element.valueAsNSData)) as? DeviceInfo) {
                     deviceInfo = di
                     delegate?.testForMatchingStreams()
                 } else {
-                    
                     vgcLogError("Received nil DeviceInfo")
-                    
                 }
-                
             }
         } else {
             vgcLogError("Expected DeviceInfo but got nil element based on identifer \(elementIdentifier)")
@@ -70,9 +58,8 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
     }
     
     func openstreams() {
-        
         vgcLogDebug("Opening pending streams")
-
+        
         outputStream.delegate = streamer
         outputStream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         outputStream.open()
@@ -80,14 +67,12 @@ class VgcPendingStream: NSObject, VgcStreamerDelegate {
         inputStream.delegate = streamer
         inputStream.schedule(in: RunLoop.current, forMode: RunLoop.Mode.default)
         inputStream.open()
-        
     }
-
+    
     // Make class hashable - function to make it equatable appears below outside the class definition
     override var hash: Int {
         return inputStream.hashValue
     }
-
 }
 
 // Make class equatable
@@ -95,9 +80,7 @@ func ==(lhs: VgcPendingStream, rhs: VgcPendingStream) -> Bool {
     return lhs.inputStream.hashValue == rhs.inputStream.hashValue
 }
 
-
 internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate, VgcPendingStreamDelegate {
-    
     var localService: NetService!
     var remoteService: NetService!
     var registeredName: String!
@@ -108,29 +91,27 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     var pendingStreams = Set<VgcPendingStream>()
     
     override init() {
-        
         vgcLogDebug("Initializing Central Publisher")
         
-        self.haveConnectionToPeripheral = false
+        haveConnectionToPeripheral = false
         
         super.init()
         
         if deviceIsTypeOfBridge() {
-            self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
+            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeBridge, name: VgcManager.centralServiceName, port: 0)
         } else {
-            self.localService = NetService.init(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
+            localService = NetService(domain: VgcManager.serviceDomain, type: VgcManager.bonjourTypeCentral, name: VgcManager.centralServiceName, port: 0)
         }
         
-        self.localService.delegate = self
-        self.localService.includesPeerToPeer = VgcManager.includesPeerToPeer
-
+        localService.delegate = self
+        localService.includesPeerToPeer = VgcManager.includesPeerToPeer
     }
     
     // So that peripherals will be able to see us over NetServices
     func publishService() {
-        vgcLogDebug("Publishing NetService service to listen for Peripherals on \(self.localService.name)")
-        vgcLogDebug("Service bonjour domain is \(self.localService.domain), type is \(self.localService.type), name is \(self.localService.name)")
-        self.localService.publish(options: .listenForConnections)
+        vgcLogDebug("Publishing NetService service to listen for Peripherals on \(localService.name)")
+        vgcLogDebug("Service bonjour domain is \(localService.domain), type is \(localService.type), name is \(localService.name)")
+        localService.publish(options: .listenForConnections)
     }
     
     func unpublishService() {
@@ -139,7 +120,6 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     }
     
     func updateMatchingStreamTimer() {
-        
         if pendingStreams.count == 0 && streamMatchingTimer.isValid {
             vgcLogDebug("Invalidating matching stream timer")
             streamMatchingTimer.invalidate()
@@ -148,18 +128,15 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
             vgcLogDebug("Setting matching stream timer")
             streamMatchingTimer = Timer.scheduledTimer(timeInterval: VgcManager.maxTimeForMatchingStreams, target: self, selector: #selector(VgcPendingStreamDelegate.testForMatchingStreams), userInfo: nil, repeats: false)
         }
-        
     }
     
     let lockQueuePendingStreams = DispatchQueue(label: "net.simplyformed.lockQueuePendingStreams", attributes: [])
     
     func testForMatchingStreams() {
-        
-        var pendingStream1: VgcPendingStream! = nil
-        var pendingStream2: VgcPendingStream! = nil
+        var pendingStream1: VgcPendingStream!
+        var pendingStream2: VgcPendingStream!
         
         lockQueuePendingStreams.sync {
-            
             if self.pendingStreams.count > 0 { vgcLogDebug("Testing for matching streams among \(self.pendingStreams.count) pending streams") }
             
             for comparisonStream in self.pendingStreams {
@@ -185,7 +162,6 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
             }
             
             if pendingStream1 != nil {
-                
                 self.pendingStreams.remove(pendingStream1)
                 self.pendingStreams.remove(pendingStream2)
                 
@@ -202,25 +178,22 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
                 controller.deviceInfo = pendingStream1.deviceInfo
                 
                 pendingStream1.streamer = nil
-                pendingStream2.streamer = nil 
+                pendingStream2.streamer = nil
             }
-
         }
-
+        
         updateMatchingStreamTimer()
-
     }
     
     internal func netService(_ service: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
-
         vgcLogDebug("Assigning input/output streams to pending stream object")
         
-        self.haveConnectionToPeripheral = true
+        haveConnectionToPeripheral = true
         
         let pendingStream = VgcPendingStream(inputStream: inputStream, outputStream: outputStream, delegate: self)
-
-        pendingStream.streamer = VgcStreamer(delegate: pendingStream, delegateName:"Central Publisher")
-
+        
+        pendingStream.streamer = VgcStreamer(delegate: pendingStream, delegateName: "Central Publisher")
+        
         lockQueuePendingStreams.sync {
             vgcLogDebug("Syncing pending stream")
             self.pendingStreams.insert(pendingStream)
@@ -228,7 +201,6 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         pendingStream.openstreams()
         
         updateMatchingStreamTimer()
-        
     }
     
     internal func netService(_ sender: NetService, didUpdateTXTRecord data: Data) {
@@ -241,11 +213,11 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         } else {
             vgcLogDebug("Central is now published on: \(sender.domain + sender.type + sender.name)")
         }
-        self.registeredName = sender.name
+        registeredName = sender.name
     }
     
-    internal func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
-        vgcLogDebug("Central net service did not publish, error: \(errorDict), registered name: \(String(describing: self.registeredName)), server name: \(self.localService.name)")
+    internal func netService(_ sender: NetService, didNotPublish errorDict: [String: NSNumber]) {
+        vgcLogDebug("Central net service did not publish, error: \(errorDict), registered name: \(String(describing: registeredName)), server name: \(localService.name)")
         vgcLogDebug("Republishing net service")
         unpublishService()
         publishService()
@@ -259,7 +231,7 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
         vgcLogDebug("CENTRAL: netServiceWillResolve")
     }
     
-    internal func netService(_ sender: NetService, didNotResolve errorDict: [String : NSNumber]) {
+    internal func netService(_ sender: NetService, didNotResolve errorDict: [String: NSNumber]) {
         vgcLogDebug("CENTRAL: netService didNotResolve: \(errorDict)")
     }
     
@@ -269,10 +241,8 @@ internal class VgcCentralPublisher: NSObject, NetServiceDelegate, StreamDelegate
     
     internal func netServiceDidStop(_ sender: NetService) {
         vgcLogDebug("CENTRAL: netServiceDidStop")
-        self.haveConnectionToPeripheral = false
+        haveConnectionToPeripheral = false
     }
-    
-    
 }
 
 #endif
