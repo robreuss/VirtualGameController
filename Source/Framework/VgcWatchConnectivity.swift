@@ -11,7 +11,15 @@ import Foundation
     import WatchConnectivity
     import WatchKit
 
-    public class VgcWatchConnectivity: NSObject, WCSessionDelegate, URLSessionDelegate {
+public class VgcWatchConnectivity: NSObject, WCSessionDelegate, URLSessionDelegate {
+    public func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    public func sessionDidDeactivate(_ session: WCSession) {
+         
+    }
+    
         @objc public let elements = Elements()
         @objc var session: WCSession!
         @objc var httpSession: URLSession!
