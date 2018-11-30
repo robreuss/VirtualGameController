@@ -17,10 +17,10 @@
          location = "group:External"
          name = "External">
          <FileRef
-            location = "group:../Framework/VgcCustomElements.swift">
+            location = "group:../../../../../.Trash/VgcCustomElements.swift">
          </FileRef>
          <FileRef
-            location = "group:../Framework/VgcCustomMappings.swift">
+            location = "group:../../../../../.Trash/VgcCustomMappings.swift">
          </FileRef>
          <FileRef
             location = "group:VgcSharedViews.swift">
